@@ -12,3 +12,4 @@ system-test/*key.json
 .DS_Store
 package-lock.json
 __pycache__
+messaging-0.1.0

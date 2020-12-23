@@ -8,7 +8,11 @@
   "main": "build/src/index.js",
   "files": [
     "build/src",
-    "build/protos"
+    "build/protos",
+    "libs/custom-google-auth/build/src",
+    "libs/custom-gtoken/build/src",
+    "libs/custom-google-auth/package.json",
+    "libs/custom-gtoken/package.json"
   ],
   "keywords": [
     "google apis client",
