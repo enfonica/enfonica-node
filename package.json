@@ -1,0 +1,11 @@
+{
+  "name": "enfonica-node",
+  "version": "0.1.0",
+  "description": "Client Libraries for Enfonica APIS",
+  "license": "Apache-2.0",
+  "scripts": {
+    "generatelibs": "./generatelibs.sh",
+    "overridelibs": "./overrides.sh",
+    "build": "npm run generatelibs && npm run overridelibs"
+  }
+}

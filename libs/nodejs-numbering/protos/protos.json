@@ -2,410 +2,176 @@
   "nested": {
     "enfonica": {
       "nested": {
-        "messaging": {
+        "numbering": {
           "nested": {
-            "v1": {
+            "v1beta1": {
               "options": {
-                "csharp_namespace": "Enfonica.Messaging.V1"
+                "csharp_namespace": "Enfonica.Numbering.V1Beta1"
               },
               "nested": {
-                "Messages": {
+                "PhoneNumberInstances": {
                   "options": {
-                    "(google.api.default_host)": "messaging.api.enfonica.com",
-                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/messaging"
+                    "(google.api.default_host)": "numbering.api.enfonica.com"
                   },
                   "methods": {
-                    "CreateMessage": {
-                      "requestType": "CreateMessageRequest",
-                      "responseType": "Message",
+                    "CreatePhoneNumberInstance": {
+                      "requestType": "CreatePhoneNumberInstanceRequest",
+                      "responseType": "PhoneNumberInstance",
                       "options": {
-                        "(google.api.http).post": "/v1/{parent=projects/*}/messages",
-                        "(google.api.http).body": "message"
+                        "(google.api.http).post": "/v1beta1/{parent=projects/*}/phoneNumberInstances",
+                        "(google.api.http).body": "phone_number_instance"
                       },
                       "parsedOptions": [
                         {
                           "(google.api.http)": {
-                            "post": "/v1/{parent=projects/*}/messages",
-                            "body": "message"
+                            "post": "/v1beta1/{parent=projects/*}/phoneNumberInstances",
+                            "body": "phone_number_instance"
                           }
                         }
                       ]
                     },
-                    "GetMessage": {
-                      "requestType": "GetMessageRequest",
-                      "responseType": "Message",
+                    "GetPhoneNumberInstance": {
+                      "requestType": "GetPhoneNumberInstanceRequest",
+                      "responseType": "PhoneNumberInstance",
                       "options": {
-                        "(google.api.http).get": "/v1/{name=projects/*/messages/*}",
-                        "(google.api.method_signature)": "name"
+                        "(google.api.http).get": "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
                       },
                       "parsedOptions": [
                         {
                           "(google.api.http)": {
-                            "get": "/v1/{name=projects/*/messages/*}"
+                            "get": "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
                           }
-                        },
-                        {
-                          "(google.api.method_signature)": "name"
                         }
                       ]
                     },
-                    "ListMessages": {
-                      "requestType": "ListMessagesRequest",
-                      "responseType": "ListMessagesResponse",
+                    "ListPhoneNumberInstances": {
+                      "requestType": "ListPhoneNumberInstancesRequest",
+                      "responseType": "ListPhoneNumberInstancesResponse",
                       "options": {
-                        "(google.api.http).get": "/v1/{parent=projects/*}/messages"
+                        "(google.api.http).get": "/v1beta1/{parent=projects/*}/phoneNumberInstances"
                       },
                       "parsedOptions": [
                         {
                           "(google.api.http)": {
-                            "get": "/v1/{parent=projects/*}/messages"
+                            "get": "/v1beta1/{parent=projects/*}/phoneNumberInstances"
+                          }
+                        }
+                      ]
+                    },
+                    "UpdatePhoneNumberInstance": {
+                      "requestType": "UpdatePhoneNumberInstanceRequest",
+                      "responseType": "PhoneNumberInstance",
+                      "options": {
+                        "(google.api.http).patch": "/v1beta1/{name=projects/*/phoneNumberInstances/*}",
+                        "(google.api.http).body": "phone_number_instance"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "patch": "/v1beta1/{name=projects/*/phoneNumberInstances/*}",
+                            "body": "phone_number_instance"
+                          }
+                        }
+                      ]
+                    },
+                    "DeletePhoneNumberInstance": {
+                      "requestType": "DeletePhoneNumberInstanceRequest",
+                      "responseType": "PhoneNumberInstance",
+                      "options": {
+                        "(google.api.http).delete": "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "delete": "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
+                          }
+                        }
+                      ]
+                    },
+                    "GetProvisionedPhoneNumberInstance": {
+                      "requestType": "GetProvisionedPhoneNumberInstanceRequest",
+                      "responseType": "PhoneNumberInstance",
+                      "options": {
+                        "(google.api.http).post": "/v1beta1/{parent=projects/*}/phoneNumberInstances:getProvisioned",
+                        "(google.api.http).body": "*"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "post": "/v1beta1/{parent=projects/*}/phoneNumberInstances:getProvisioned",
+                            "body": "*"
                           }
                         }
                       ]
                     }
                   }
                 },
-                "Message": {
+                "PhoneNumberInstance": {
                   "fields": {
                     "name": {
                       "type": "string",
                       "id": 1
                     },
-                    "to": {
-                      "type": "string",
+                    "phoneNumber": {
+                      "type": "PhoneNumber",
                       "id": 2
                     },
-                    "from": {
+                    "displayName": {
                       "type": "string",
                       "id": 3
                     },
-                    "body": {
+                    "labels": {
+                      "keyType": "string",
                       "type": "string",
                       "id": 4
                     },
-                    "statusUpdateUrl": {
+                    "incomingMessageHandlerUris": {
+                      "rule": "repeated",
                       "type": "string",
                       "id": 5
                     },
-                    "replyUrl": {
+                    "incomingCallHandlerUris": {
+                      "rule": "repeated",
                       "type": "string",
                       "id": 6
                     },
-                    "validityPeriodSeconds": {
-                      "type": "int32",
-                      "id": 7
-                    },
-                    "smartEncoding": {
-                      "type": "bool",
-                      "id": 8
-                    },
-                    "labels": {
-                      "keyType": "string",
-                      "type": "string",
-                      "id": 20
-                    },
-                    "classification": {
-                      "type": "MessageClassification",
-                      "id": 21
-                    },
-                    "unsubscribeContentBehavior": {
-                      "type": "UnsubscribeContentBehavior",
-                      "id": 22
-                    },
-                    "direction": {
-                      "type": "Direction",
+                    "createTime": {
+                      "type": "google.protobuf.Timestamp",
                       "id": 10
                     },
-                    "errorCode": {
-                      "type": "string",
+                    "deleteTime": {
+                      "type": "google.protobuf.Timestamp",
                       "id": 11
                     },
-                    "errorMessage": {
-                      "type": "string",
+                    "lifecycleState": {
+                      "type": "LifecycleState",
                       "id": 12
-                    },
-                    "segmentCount": {
-                      "type": "int32",
-                      "id": 13
-                    },
-                    "price": {
-                      "type": "google.type.Money",
-                      "id": 14
-                    },
-                    "status": {
-                      "type": "Status",
-                      "id": 15
-                    },
-                    "createIdentity": {
-                      "type": "string",
-                      "id": 16
-                    },
-                    "createTime": {
-                      "type": "google.protobuf.Timestamp",
-                      "id": 17
-                    },
-                    "sendTime": {
-                      "type": "google.protobuf.Timestamp",
-                      "id": 18
-                    },
-                    "deliverTime": {
-                      "type": "google.protobuf.Timestamp",
-                      "id": 19
-                    },
-                    "encoding": {
-                      "type": "MessageEncoding",
-                      "id": 23
                     }
                   },
                   "nested": {
-                    "Status": {
+                    "LifecycleState": {
                       "values": {
-                        "STATUS_UNKNOWN": 0,
-                        "QUEUED": 1,
-                        "SENDING": 2,
-                        "SENT": 3,
-                        "FAILED": 4,
-                        "DELIVERED": 5,
-                        "UNDELIVERED": 6,
-                        "RECEIVED": 7
-                      }
-                    },
-                    "Direction": {
-                      "values": {
-                        "DIRECTION_UNKNOWN": 0,
-                        "OUTGOING": 1,
-                        "INCOMING": 2
-                      }
-                    },
-                    "MessageClassification": {
-                      "values": {
-                        "UNSPECIFIED": 0,
-                        "UNCLASSIFIED": 1,
-                        "TRANSACTIONAL": 2,
-                        "MARKETING": 3
-                      }
-                    },
-                    "UnsubscribeContentBehavior": {
-                      "values": {
-                        "UNSUBSCRIBE_CONTENT_UNKNOWN": 0,
-                        "NONE": 1,
-                        "APPEND_URL": 2
-                      }
-                    },
-                    "MessageEncoding": {
-                      "values": {
-                        "MESSAGE_ENCODING_UNKNOWN": 0,
-                        "GSM7": 1,
-                        "UCS2": 2
+                        "LIFECYCLE_STATE_UNKNOWN": 0,
+                        "ACTIVE": 1,
+                        "DELETED": 2,
+                        "SUSPENDED": 3
                       }
                     }
                   }
                 },
-                "CreateMessageRequest": {
-                  "fields": {
-                    "parent": {
-                      "type": "string",
-                      "id": 1,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
-                    },
-                    "message": {
-                      "type": "Message",
-                      "id": 2,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
-                    }
-                  }
-                },
-                "GetMessageRequest": {
-                  "fields": {
-                    "name": {
-                      "type": "string",
-                      "id": 1,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
-                    }
-                  }
-                },
-                "ListMessagesRequest": {
-                  "fields": {
-                    "parent": {
-                      "type": "string",
-                      "id": 1,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
-                    },
-                    "pageSize": {
-                      "type": "int32",
-                      "id": 2
-                    },
-                    "pageToken": {
-                      "type": "string",
-                      "id": 3
-                    },
-                    "startTime": {
-                      "type": "google.protobuf.Timestamp",
-                      "id": 4,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
-                    },
-                    "endTime": {
-                      "type": "google.protobuf.Timestamp",
-                      "id": 5,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
-                    }
-                  }
-                },
-                "ListMessagesResponse": {
-                  "fields": {
-                    "messages": {
-                      "rule": "repeated",
-                      "type": "Message",
-                      "id": 1
-                    },
-                    "nextPageToken": {
-                      "type": "string",
-                      "id": 2
-                    }
-                  }
-                },
-                "Unsubscribers": {
-                  "options": {
-                    "(google.api.default_host)": "messaging.api.enfonica.com",
-                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/messaging"
-                  },
-                  "methods": {
-                    "CreateUnsubscriber": {
-                      "requestType": "CreateUnsubscriberRequest",
-                      "responseType": "Unsubscriber",
-                      "options": {
-                        "(google.api.http).post": "/v1/{parent=projects/*}/unsubscribers",
-                        "(google.api.http).body": "unsubscriber"
-                      },
-                      "parsedOptions": [
-                        {
-                          "(google.api.http)": {
-                            "post": "/v1/{parent=projects/*}/unsubscribers",
-                            "body": "unsubscriber"
-                          }
-                        }
-                      ]
-                    },
-                    "GetUnsubscriber": {
-                      "requestType": "GetUnsubscriberRequest",
-                      "responseType": "Unsubscriber",
-                      "options": {
-                        "(google.api.http).get": "/v1/{name=projects/*/unsubscribers/*}"
-                      },
-                      "parsedOptions": [
-                        {
-                          "(google.api.http)": {
-                            "get": "/v1/{name=projects/*/unsubscribers/*}"
-                          }
-                        }
-                      ]
-                    },
-                    "ListUnsubscribers": {
-                      "requestType": "ListUnsubscribersRequest",
-                      "responseType": "ListUnsubscribersResponse",
-                      "options": {
-                        "(google.api.http).get": "/v1/{parent=projects/*}/unsubscribers"
-                      },
-                      "parsedOptions": [
-                        {
-                          "(google.api.http)": {
-                            "get": "/v1/{parent=projects/*}/unsubscribers"
-                          }
-                        }
-                      ]
-                    },
-                    "UpdateUnsubscriber": {
-                      "requestType": "UpdateUnsubscriberRequest",
-                      "responseType": "Unsubscriber",
-                      "options": {
-                        "(google.api.http).patch": "/v1/{unsubscriber.name=projects/*/unsubscribers/*}",
-                        "(google.api.http).body": "unsubscriber"
-                      },
-                      "parsedOptions": [
-                        {
-                          "(google.api.http)": {
-                            "patch": "/v1/{unsubscriber.name=projects/*/unsubscribers/*}",
-                            "body": "unsubscriber"
-                          }
-                        }
-                      ]
-                    },
-                    "DeleteUnsubscriber": {
-                      "requestType": "DeleteUnsubscriberRequest",
-                      "responseType": "Unsubscriber",
-                      "options": {
-                        "(google.api.http).delete": "/v1/{name=projects/*/unsubscribers/*}"
-                      },
-                      "parsedOptions": [
-                        {
-                          "(google.api.http)": {
-                            "delete": "/v1/{name=projects/*/unsubscribers/*}"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                },
-                "Unsubscriber": {
-                  "fields": {
-                    "name": {
-                      "type": "string",
-                      "id": 1
-                    },
-                    "phone": {
-                      "type": "string",
-                      "id": 2
-                    },
-                    "unsubscribeMethod": {
-                      "type": "UnsubscribeMethod",
-                      "id": 3
-                    },
-                    "labels": {
-                      "keyType": "string",
-                      "type": "string",
-                      "id": 4
-                    },
-                    "createTime": {
-                      "type": "google.protobuf.Timestamp",
-                      "id": 8
-                    }
-                  },
-                  "nested": {
-                    "UnsubscribeMethod": {
-                      "values": {
-                        "UNKNOWN": 0,
-                        "URL": 1,
-                        "MESSAGE": 2,
-                        "MANUAL": 3
-                      }
-                    }
-                  }
-                },
-                "CreateUnsubscriberRequest": {
+                "CreatePhoneNumberInstanceRequest": {
                   "fields": {
                     "parent": {
                       "type": "string",
                       "id": 1
                     },
-                    "unsubscriber": {
-                      "type": "Unsubscriber",
+                    "phoneNumberInstance": {
+                      "type": "PhoneNumberInstance",
                       "id": 2
                     }
                   }
                 },
-                "GetUnsubscriberRequest": {
+                "GetPhoneNumberInstanceRequest": {
                   "fields": {
                     "name": {
                       "type": "string",
@@ -413,7 +179,7 @@
                     }
                   }
                 },
-                "ListUnsubscribersRequest": {
+                "ListPhoneNumberInstancesRequest": {
                   "fields": {
                     "parent": {
                       "type": "string",
@@ -427,17 +193,21 @@
                       "type": "string",
                       "id": 3
                     },
-                    "phone": {
+                    "prefix": {
                       "type": "string",
                       "id": 4
+                    },
+                    "includeDeleted": {
+                      "type": "bool",
+                      "id": 5
                     }
                   }
                 },
-                "ListUnsubscribersResponse": {
+                "ListPhoneNumberInstancesResponse": {
                   "fields": {
-                    "unsubscribers": {
+                    "phoneNumberInstances": {
                       "rule": "repeated",
-                      "type": "Unsubscriber",
+                      "type": "PhoneNumberInstance",
                       "id": 1
                     },
                     "nextPageToken": {
@@ -446,23 +216,319 @@
                     }
                   }
                 },
-                "UpdateUnsubscriberRequest": {
+                "UpdatePhoneNumberInstanceRequest": {
                   "fields": {
-                    "unsubscriber": {
-                      "type": "Unsubscriber",
+                    "name": {
+                      "type": "string",
                       "id": 1
+                    },
+                    "phoneNumberInstance": {
+                      "type": "PhoneNumberInstance",
+                      "id": 2
                     },
                     "updateMask": {
                       "type": "google.protobuf.FieldMask",
-                      "id": 2
+                      "id": 3
                     }
                   }
                 },
-                "DeleteUnsubscriberRequest": {
+                "DeletePhoneNumberInstanceRequest": {
                   "fields": {
                     "name": {
                       "type": "string",
                       "id": 1
+                    }
+                  }
+                },
+                "GetProvisionedPhoneNumberInstanceRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "phoneNumber": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "PhoneNumbers": {
+                  "options": {
+                    "(google.api.default_host)": "numbering.api.enfonica.com"
+                  },
+                  "methods": {
+                    "CreatePhoneNumber": {
+                      "requestType": "CreatePhoneNumberRequest",
+                      "responseType": "PhoneNumber",
+                      "options": {
+                        "(google.api.http).post": "/v1beta1/phoneNumbers",
+                        "(google.api.http).body": "phone_number"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "post": "/v1beta1/phoneNumbers",
+                            "body": "phone_number"
+                          }
+                        }
+                      ]
+                    },
+                    "GetPhoneNumber": {
+                      "requestType": "GetPhoneNumberRequest",
+                      "responseType": "PhoneNumber",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{name=phoneNumbers/*}"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{name=phoneNumbers/*}"
+                          }
+                        }
+                      ]
+                    },
+                    "ListPhoneNumbers": {
+                      "requestType": "ListPhoneNumbersRequest",
+                      "responseType": "ListPhoneNumbersResponse",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/phoneNumbers"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/phoneNumbers"
+                          }
+                        }
+                      ]
+                    },
+                    "UpdatePhoneNumber": {
+                      "requestType": "UpdatePhoneNumberRequest",
+                      "responseType": "PhoneNumber",
+                      "options": {
+                        "(google.api.http).patch": "/v1beta1/{name=phoneNumbers/*}",
+                        "(google.api.http).body": "phone_number"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "patch": "/v1beta1/{name=phoneNumbers/*}",
+                            "body": "phone_number"
+                          }
+                        }
+                      ]
+                    },
+                    "DeletePhoneNumber": {
+                      "requestType": "DeletePhoneNumberRequest",
+                      "responseType": "PhoneNumber",
+                      "options": {
+                        "(google.api.http).delete": "/v1beta1/{name=phoneNumbers/*}"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "delete": "/v1beta1/{name=phoneNumbers/*}"
+                          }
+                        }
+                      ]
+                    },
+                    "SearchPhoneNumbers": {
+                      "requestType": "SearchPhoneNumbersRequest",
+                      "responseType": "SearchPhoneNumbersResponse",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/phoneNumbers:search"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/phoneNumbers:search"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "PhoneNumber": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "phoneNumber": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "capabilities": {
+                      "rule": "repeated",
+                      "type": "PhoneNumberCapability",
+                      "id": 3
+                    },
+                    "sku": {
+                      "type": "string",
+                      "id": 4
+                    },
+                    "carrier": {
+                      "type": "string",
+                      "id": 5
+                    },
+                    "numberType": {
+                      "type": "PhoneNumberType",
+                      "id": 10
+                    },
+                    "countryCode": {
+                      "type": "string",
+                      "id": 11
+                    },
+                    "createTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 12
+                    },
+                    "deleteTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 13
+                    },
+                    "state": {
+                      "type": "PhoneNumberState",
+                      "id": 14
+                    },
+                    "localAccessArea": {
+                      "type": "string",
+                      "id": 15
+                    }
+                  },
+                  "nested": {
+                    "PhoneNumberState": {
+                      "values": {
+                        "PHONE_NUMBER_STATE_UNSPECIFIED": 0,
+                        "AVAILABLE": 1,
+                        "IN_USE": 2,
+                        "QUARANTINED": 3,
+                        "DELETED": 4
+                      }
+                    },
+                    "PhoneNumberCapability": {
+                      "values": {
+                        "PHONE_NUMBER_CAPABILITY_UNSPECIFIED": 0,
+                        "SMS": 1,
+                        "MMS": 2,
+                        "VOICE": 4
+                      }
+                    },
+                    "PhoneNumberType": {
+                      "values": {
+                        "PHONE_NUMBER_TYPE_UNSPECIFIED": 0,
+                        "LOCAL": 1,
+                        "NATIONAL": 2,
+                        "MOBILE": 3,
+                        "TOLL_FREE": 4,
+                        "SHARED_RATE": 5
+                      }
+                    }
+                  }
+                },
+                "CreatePhoneNumberRequest": {
+                  "fields": {
+                    "phoneNumber": {
+                      "type": "PhoneNumber",
+                      "id": 1
+                    }
+                  }
+                },
+                "GetPhoneNumberRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    }
+                  }
+                },
+                "ListPhoneNumbersRequest": {
+                  "fields": {
+                    "pageSize": {
+                      "type": "int32",
+                      "id": 1
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "ListPhoneNumbersResponse": {
+                  "fields": {
+                    "phoneNumbers": {
+                      "rule": "repeated",
+                      "type": "PhoneNumber",
+                      "id": 1
+                    },
+                    "nextPageToken": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "UpdatePhoneNumberRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "phoneNumber": {
+                      "type": "PhoneNumber",
+                      "id": 2
+                    },
+                    "updateMask": {
+                      "type": "google.protobuf.FieldMask",
+                      "id": 3
+                    }
+                  }
+                },
+                "DeletePhoneNumberRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    }
+                  }
+                },
+                "SearchPhoneNumbersRequest": {
+                  "fields": {
+                    "pageSize": {
+                      "type": "int32",
+                      "id": 1
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "capabilities": {
+                      "rule": "repeated",
+                      "type": "PhoneNumber.PhoneNumberCapability",
+                      "id": 3
+                    },
+                    "numberType": {
+                      "type": "PhoneNumber.PhoneNumberType",
+                      "id": 4
+                    },
+                    "countryCode": {
+                      "type": "string",
+                      "id": 5
+                    },
+                    "prefix": {
+                      "type": "string",
+                      "id": 6
+                    }
+                  }
+                },
+                "SearchPhoneNumbersResponse": {
+                  "fields": {
+                    "phoneNumbers": {
+                      "rule": "repeated",
+                      "type": "PhoneNumber",
+                      "id": 1
+                    },
+                    "nextPageToken": {
+                      "type": "string",
+                      "id": 2
                     }
                   }
                 }
@@ -494,6 +560,15 @@
                 "nanos": {
                   "type": "int32",
                   "id": 2
+                }
+              }
+            },
+            "FieldMask": {
+              "fields": {
+                "paths": {
+                  "rule": "repeated",
+                  "type": "string",
+                  "id": 1
                 }
               }
             },
@@ -1380,15 +1455,6 @@
                   }
                 }
               }
-            },
-            "FieldMask": {
-              "fields": {
-                "paths": {
-                  "rule": "repeated",
-                  "type": "string",
-                  "id": 1
-                }
-              }
             }
           }
         },
@@ -1489,22 +1555,6 @@
                 }
               }
             },
-            "fieldBehavior": {
-              "rule": "repeated",
-              "type": "google.api.FieldBehavior",
-              "id": 1052,
-              "extend": "google.protobuf.FieldOptions"
-            },
-            "FieldBehavior": {
-              "values": {
-                "FIELD_BEHAVIOR_UNSPECIFIED": 0,
-                "OPTIONAL": 1,
-                "REQUIRED": 2,
-                "OUTPUT_ONLY": 3,
-                "INPUT_ONLY": 4,
-                "IMMUTABLE": 5
-              }
-            },
             "methodSignature": {
               "rule": "repeated",
               "type": "string",
@@ -1520,34 +1570,6 @@
               "type": "string",
               "id": 1050,
               "extend": "google.protobuf.ServiceOptions"
-            }
-          }
-        },
-        "type": {
-          "options": {
-            "cc_enable_arenas": true,
-            "go_package": "google.golang.org/genproto/googleapis/type/money;money",
-            "java_multiple_files": true,
-            "java_outer_classname": "MoneyProto",
-            "java_package": "com.google.type",
-            "objc_class_prefix": "GTP"
-          },
-          "nested": {
-            "Money": {
-              "fields": {
-                "currencyCode": {
-                  "type": "string",
-                  "id": 1
-                },
-                "units": {
-                  "type": "int64",
-                  "id": 2
-                },
-                "nanos": {
-                  "type": "int32",
-                  "id": 3
-                }
-              }
             }
           }
         }

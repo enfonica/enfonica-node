@@ -24,17 +24,16 @@ import * as path from 'path';
 import { Transform } from 'stream';
 import { RequestType } from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
-import * as gapicConfig from './messages_client_config.json';
+import * as gapicConfig from './unsubscribers_client_config.json';
 
 const version = require('../../../package.json').version;
 
 /**
- *  Manages Messages.
- *  Messages can be SMS, whatsapp messages, etc.
+ *  Manages Unsubscribers.
  * @class
  * @memberof v1
  */
-export class MessagesClient {
+export class UnsubscribersClient {
   private _terminated = false;
   private _opts: ClientOptions;
   private _gaxModule: typeof gax | typeof gax.fallback;
@@ -49,10 +48,10 @@ export class MessagesClient {
     batching: {},
   };
   innerApiCalls: {[name: string]: Function};
-  messagesStub?: Promise<{[name: string]: Function}>;
+  unsubscribersStub?: Promise<{[name: string]: Function}>;
 
   /**
-   * Construct an instance of MessagesClient.
+   * Construct an instance of UnsubscribersClient.
    *
    * @param {object} [options] - The configuration object. See the subsequent
    *   parameters for more details.
@@ -79,7 +78,7 @@ export class MessagesClient {
 
   constructor(opts?: any) {
     // Ensure that options include the service address and port.
-    const staticMembers = this.constructor as typeof MessagesClient;
+    const staticMembers = this.constructor as typeof UnsubscribersClient;
     const servicePath = opts && opts.servicePath ?
         opts.servicePath :
         ((opts && opts.apiEndpoint) ? opts.apiEndpoint :
@@ -104,12 +103,12 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
     // If we're running in browser, it's OK to omit `fallback` since
     // google-gax has `browser` field in its `package.json`.
     // For Electron (which does not respect `browser` field),
-    // pass `{fallback: true}` to the MessagesClient constructor.
+    // pass `{fallback: true}` to the UnsubscribersClient constructor.
     this._gaxModule = opts.fallback ? gax.fallback : gax;
 
     // Create a `gaxGrpc` object, with any grpc-specific options
     // sent to the client.
-    opts.scopes = (this.constructor as typeof MessagesClient).scopes;
+    opts.scopes = (this.constructor as typeof UnsubscribersClient).scopes;
     this._gaxGrpc = new this._gaxModule.GrpcClient(opts);
 
     // Save options to use in initialize() method.
@@ -150,13 +149,13 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
     // (e.g. 50 results at a time, with tokens to get subsequent
     // pages). Denote the keys used for pagination and results.
     this.descriptors.page = {
-      listMessages:
-          new this._gaxModule.PageDescriptor('pageToken', 'nextPageToken', 'messages')
+      listUnsubscribers:
+          new this._gaxModule.PageDescriptor('pageToken', 'nextPageToken', 'unsubscribers')
     };
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-        'enfonica.messaging.v1.Messages', gapicConfig as gax.ClientConfig,
+        'enfonica.messaging.v1.Unsubscribers', gapicConfig as gax.ClientConfig,
         opts.clientConfig || {}, {'x-goog-api-client': clientHeader.join(' ')});
 
     // Set up a dictionary of "inner API calls"; the core implementation
@@ -178,25 +177,25 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
    */
   initialize() {
     // If the client stub promise is already initialized, return immediately.
-    if (this.messagesStub) {
-      return this.messagesStub;
+    if (this.unsubscribersStub) {
+      return this.unsubscribersStub;
     }
 
     // Put together the "service stub" for
-    // enfonica.messaging.v1.Messages.
-    this.messagesStub = this._gaxGrpc.createStub(
+    // enfonica.messaging.v1.Unsubscribers.
+    this.unsubscribersStub = this._gaxGrpc.createStub(
         this._opts.fallback ?
-          (this._protos as protobuf.Root).lookupService('enfonica.messaging.v1.Messages') :
+          (this._protos as protobuf.Root).lookupService('enfonica.messaging.v1.Unsubscribers') :
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (this._protos as any).enfonica.messaging.v1.Messages,
+          (this._protos as any).enfonica.messaging.v1.Unsubscribers,
         this._opts) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const messagesStubMethods =
-        ['createMessage', 'getMessage', 'listMessages'];
-    for (const methodName of messagesStubMethods) {
-      const callPromise = this.messagesStub.then(
+    const unsubscribersStubMethods =
+        ['createUnsubscriber', 'getUnsubscriber', 'listUnsubscribers', 'updateUnsubscriber', 'deleteUnsubscriber'];
+    for (const methodName of unsubscribersStubMethods) {
+      const callPromise = this.unsubscribersStub.then(
         stub => (...args: Array<{}>) => {
           if (this._terminated) {
             return Promise.reject('The client has already been closed.');
@@ -220,7 +219,7 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
       this.innerApiCalls[methodName] = apiCall;
     }
 
-    return this.messagesStub;
+    return this.unsubscribersStub;
   }
 
   /**
@@ -274,58 +273,57 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
   // -------------------
   // -- Service calls --
   // -------------------
-  createMessage(
-      request: protos.enfonica.messaging.v1.ICreateMessageRequest,
+  createUnsubscriber(
+      request: protos.enfonica.messaging.v1.ICreateUnsubscriberRequest,
       options?: gax.CallOptions):
       Promise<[
-        protos.enfonica.messaging.v1.IMessage,
-        protos.enfonica.messaging.v1.ICreateMessageRequest|undefined, {}|undefined
+        protos.enfonica.messaging.v1.IUnsubscriber,
+        protos.enfonica.messaging.v1.ICreateUnsubscriberRequest|undefined, {}|undefined
       ]>;
-  createMessage(
-      request: protos.enfonica.messaging.v1.ICreateMessageRequest,
+  createUnsubscriber(
+      request: protos.enfonica.messaging.v1.ICreateUnsubscriberRequest,
       options: gax.CallOptions,
       callback: Callback<
-          protos.enfonica.messaging.v1.IMessage,
-          protos.enfonica.messaging.v1.ICreateMessageRequest|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.ICreateUnsubscriberRequest|null|undefined,
           {}|null|undefined>): void;
-  createMessage(
-      request: protos.enfonica.messaging.v1.ICreateMessageRequest,
+  createUnsubscriber(
+      request: protos.enfonica.messaging.v1.ICreateUnsubscriberRequest,
       callback: Callback<
-          protos.enfonica.messaging.v1.IMessage,
-          protos.enfonica.messaging.v1.ICreateMessageRequest|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.ICreateUnsubscriberRequest|null|undefined,
           {}|null|undefined>): void;
 /**
- * Creates a Message and queues it for sending.
- * Returns the created message.
+ * Creates an unsubscriber.
  *
- * The caller must have `messaging.messages.create` permission on the project.
+ * The caller must have `messaging.unsubscribers.create` permission on the project.
  *
  * @param {Object} request
  *   The request object that will be sent.
  * @param {string} request.parent
- *   The resource name of the parent project to create the message under.
+ *   The resource name of the parent project to create the unsubscriber under.
  *   Must be of the form `projects/*`.
- * @param {enfonica.messaging.v1.Message} request.message
- *   The message resource to be created.
+ * @param {enfonica.messaging.v1.Unsubscriber} request.unsubscriber
+ *   The unsubscriber resource to be created.
  * @param {object} [options]
  *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
  * @returns {Promise} - The promise which resolves to an array.
- *   The first element of the array is an object representing [Message]{@link enfonica.messaging.v1.Message}.
+ *   The first element of the array is an object representing [Unsubscriber]{@link enfonica.messaging.v1.Unsubscriber}.
  *   The promise has a method named "cancel" which cancels the ongoing API call.
  */
-  createMessage(
-      request: protos.enfonica.messaging.v1.ICreateMessageRequest,
+  createUnsubscriber(
+      request: protos.enfonica.messaging.v1.ICreateUnsubscriberRequest,
       optionsOrCallback?: gax.CallOptions|Callback<
-          protos.enfonica.messaging.v1.IMessage,
-          protos.enfonica.messaging.v1.ICreateMessageRequest|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.ICreateUnsubscriberRequest|null|undefined,
           {}|null|undefined>,
       callback?: Callback<
-          protos.enfonica.messaging.v1.IMessage,
-          protos.enfonica.messaging.v1.ICreateMessageRequest|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.ICreateUnsubscriberRequest|null|undefined,
           {}|null|undefined>):
       Promise<[
-        protos.enfonica.messaging.v1.IMessage,
-        protos.enfonica.messaging.v1.ICreateMessageRequest|undefined, {}|undefined
+        protos.enfonica.messaging.v1.IUnsubscriber,
+        protos.enfonica.messaging.v1.ICreateUnsubscriberRequest|undefined, {}|undefined
       ]>|void {
     request = request || {};
     let options: gax.CallOptions;
@@ -345,57 +343,57 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
       'parent': request.parent || '',
     });
     this.initialize();
-    return this.innerApiCalls.createMessage(request, options, callback);
+    return this.innerApiCalls.createUnsubscriber(request, options, callback);
   }
-  getMessage(
-      request: protos.enfonica.messaging.v1.IGetMessageRequest,
+  getUnsubscriber(
+      request: protos.enfonica.messaging.v1.IGetUnsubscriberRequest,
       options?: gax.CallOptions):
       Promise<[
-        protos.enfonica.messaging.v1.IMessage,
-        protos.enfonica.messaging.v1.IGetMessageRequest|undefined, {}|undefined
+        protos.enfonica.messaging.v1.IUnsubscriber,
+        protos.enfonica.messaging.v1.IGetUnsubscriberRequest|undefined, {}|undefined
       ]>;
-  getMessage(
-      request: protos.enfonica.messaging.v1.IGetMessageRequest,
+  getUnsubscriber(
+      request: protos.enfonica.messaging.v1.IGetUnsubscriberRequest,
       options: gax.CallOptions,
       callback: Callback<
-          protos.enfonica.messaging.v1.IMessage,
-          protos.enfonica.messaging.v1.IGetMessageRequest|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IGetUnsubscriberRequest|null|undefined,
           {}|null|undefined>): void;
-  getMessage(
-      request: protos.enfonica.messaging.v1.IGetMessageRequest,
+  getUnsubscriber(
+      request: protos.enfonica.messaging.v1.IGetUnsubscriberRequest,
       callback: Callback<
-          protos.enfonica.messaging.v1.IMessage,
-          protos.enfonica.messaging.v1.IGetMessageRequest|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IGetUnsubscriberRequest|null|undefined,
           {}|null|undefined>): void;
 /**
- * Retrieves a Message identified by the supplied resource name.
+ * Retrieves a Unsubscriber identified by the supplied resource name.
  *
- * The caller must have `messaging.messages.get` permission on the project.
+ * The caller must have `messaging.unsubscribers.get` permission on the project.
  *
  * @param {Object} request
  *   The request object that will be sent.
  * @param {string} request.name
- *   The resource name of the Message to retrieve.
- *   Must be of the form `projects/* /messages/*`.
+ *   The resource name of the Unsubscriber to retrieve.
+ *   Must be of the form `projects/* /unsubscribers/*`.
  * @param {object} [options]
  *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
  * @returns {Promise} - The promise which resolves to an array.
- *   The first element of the array is an object representing [Message]{@link enfonica.messaging.v1.Message}.
+ *   The first element of the array is an object representing [Unsubscriber]{@link enfonica.messaging.v1.Unsubscriber}.
  *   The promise has a method named "cancel" which cancels the ongoing API call.
  */
-  getMessage(
-      request: protos.enfonica.messaging.v1.IGetMessageRequest,
+  getUnsubscriber(
+      request: protos.enfonica.messaging.v1.IGetUnsubscriberRequest,
       optionsOrCallback?: gax.CallOptions|Callback<
-          protos.enfonica.messaging.v1.IMessage,
-          protos.enfonica.messaging.v1.IGetMessageRequest|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IGetUnsubscriberRequest|null|undefined,
           {}|null|undefined>,
       callback?: Callback<
-          protos.enfonica.messaging.v1.IMessage,
-          protos.enfonica.messaging.v1.IGetMessageRequest|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IGetUnsubscriberRequest|null|undefined,
           {}|null|undefined>):
       Promise<[
-        protos.enfonica.messaging.v1.IMessage,
-        protos.enfonica.messaging.v1.IGetMessageRequest|undefined, {}|undefined
+        protos.enfonica.messaging.v1.IUnsubscriber,
+        protos.enfonica.messaging.v1.IGetUnsubscriberRequest|undefined, {}|undefined
       ]>|void {
     request = request || {};
     let options: gax.CallOptions;
@@ -415,86 +413,223 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
       'name': request.name || '',
     });
     this.initialize();
-    return this.innerApiCalls.getMessage(request, options, callback);
+    return this.innerApiCalls.getUnsubscriber(request, options, callback);
   }
-
-  listMessages(
-      request: protos.enfonica.messaging.v1.IListMessagesRequest,
+  updateUnsubscriber(
+      request: protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest,
       options?: gax.CallOptions):
       Promise<[
-        protos.enfonica.messaging.v1.IMessage[],
-        protos.enfonica.messaging.v1.IListMessagesRequest|null,
-        protos.enfonica.messaging.v1.IListMessagesResponse
+        protos.enfonica.messaging.v1.IUnsubscriber,
+        protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest|undefined, {}|undefined
       ]>;
-  listMessages(
-      request: protos.enfonica.messaging.v1.IListMessagesRequest,
+  updateUnsubscriber(
+      request: protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest,
+      options: gax.CallOptions,
+      callback: Callback<
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest|null|undefined,
+          {}|null|undefined>): void;
+  updateUnsubscriber(
+      request: protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest,
+      callback: Callback<
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Updates an unsubscriber.
+ *
+ * The caller must have `messaging.unsubscribers.update` permission on the project.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {enfonica.messaging.v1.Unsubscriber} request.unsubscriber
+ *   The new definition of the Unsubscriber.
+ * @param {google.protobuf.FieldMask} request.updateMask
+ *   Fields to be updated. Only `labels` can be updated.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Unsubscriber]{@link enfonica.messaging.v1.Unsubscriber}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  updateUnsubscriber(
+      request: protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.enfonica.messaging.v1.IUnsubscriber,
+        protos.enfonica.messaging.v1.IUpdateUnsubscriberRequest|undefined, {}|undefined
+      ]>|void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    }
+    else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers[
+      'x-goog-request-params'
+    ] = gax.routingHeader.fromParams({
+      'unsubscriber.name': request.unsubscriber!.name || '',
+    });
+    this.initialize();
+    return this.innerApiCalls.updateUnsubscriber(request, options, callback);
+  }
+  deleteUnsubscriber(
+      request: protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.enfonica.messaging.v1.IUnsubscriber,
+        protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest|undefined, {}|undefined
+      ]>;
+  deleteUnsubscriber(
+      request: protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest,
+      options: gax.CallOptions,
+      callback: Callback<
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest|null|undefined,
+          {}|null|undefined>): void;
+  deleteUnsubscriber(
+      request: protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest,
+      callback: Callback<
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Deletes an unsubscriber.
+ *
+ * The caller must have `messaging.unsubscribers.delete` permission on the project.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   The resource name of the Unsubscriber to be deleted.
+ *   Must be of the form `projects/* /unsubscribers/*`.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Unsubscriber]{@link enfonica.messaging.v1.Unsubscriber}.
+ *   The promise has a method named "cancel" which cancels the ongoing API call.
+ */
+  deleteUnsubscriber(
+      request: protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest,
+      optionsOrCallback?: gax.CallOptions|Callback<
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.enfonica.messaging.v1.IUnsubscriber,
+          protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.enfonica.messaging.v1.IUnsubscriber,
+        protos.enfonica.messaging.v1.IDeleteUnsubscriberRequest|undefined, {}|undefined
+      ]>|void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    }
+    else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers[
+      'x-goog-request-params'
+    ] = gax.routingHeader.fromParams({
+      'name': request.name || '',
+    });
+    this.initialize();
+    return this.innerApiCalls.deleteUnsubscriber(request, options, callback);
+  }
+
+  listUnsubscribers(
+      request: protos.enfonica.messaging.v1.IListUnsubscribersRequest,
+      options?: gax.CallOptions):
+      Promise<[
+        protos.enfonica.messaging.v1.IUnsubscriber[],
+        protos.enfonica.messaging.v1.IListUnsubscribersRequest|null,
+        protos.enfonica.messaging.v1.IListUnsubscribersResponse
+      ]>;
+  listUnsubscribers(
+      request: protos.enfonica.messaging.v1.IListUnsubscribersRequest,
       options: gax.CallOptions,
       callback: PaginationCallback<
-          protos.enfonica.messaging.v1.IListMessagesRequest,
-          protos.enfonica.messaging.v1.IListMessagesResponse|null|undefined,
-          protos.enfonica.messaging.v1.IMessage>): void;
-  listMessages(
-      request: protos.enfonica.messaging.v1.IListMessagesRequest,
+          protos.enfonica.messaging.v1.IListUnsubscribersRequest,
+          protos.enfonica.messaging.v1.IListUnsubscribersResponse|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber>): void;
+  listUnsubscribers(
+      request: protos.enfonica.messaging.v1.IListUnsubscribersRequest,
       callback: PaginationCallback<
-          protos.enfonica.messaging.v1.IListMessagesRequest,
-          protos.enfonica.messaging.v1.IListMessagesResponse|null|undefined,
-          protos.enfonica.messaging.v1.IMessage>): void;
+          protos.enfonica.messaging.v1.IListUnsubscribersRequest,
+          protos.enfonica.messaging.v1.IListUnsubscribersResponse|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber>): void;
 /**
- * Lists the Messages of the specified project.
- * List returns Messages sorted by create_time descending.
+ * Lists the Unsubscribers of the specified project.
+ * List returns Unsubscribers sorted by create_time descending.
  *
- * The caller must have `messaging.messages.list` permission on the project.
+ * The caller must have `messaging.unsubscribers.list` permission on the project.
  *
  * @param {Object} request
  *   The request object that will be sent.
  * @param {string} request.parent
- *   The resource name of the parent of which to list messages.
+ *   The resource name of the parent of which to list unsubscribers.
  *   Must be of the form `projects/*`.
  * @param {number} request.pageSize
- *   The maximum number of Messages to return in the response.
+ *   The maximum number of Unsubscribers to return in the response.
  *   Optional, with a default value of 10 and maximum value of 100.
  * @param {string} request.pageToken
- *   A pagination token returned from a previous call to `ListMessages`
+ *   A pagination token returned from a previous call to `ListUnsubscribers`
  *   that indicates where this listing should continue from.
  *   Optional.
- * @param {google.protobuf.Timestamp} request.startTime
- *   The timestamp (inclusive) from which to retrieve messages. The
- *   create_time of the Message is used.
- * @param {google.protobuf.Timestamp} request.endTime
- *   The timestamp (exclusive) until which to retrieve messages. The
- *   create_time of the Message is used.
+ * @param {string} request.phone
+ *   Only return the unsubscriber that matches the phone number exactly.
  * @param {object} [options]
  *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
  * @returns {Promise} - The promise which resolves to an array.
- *   The first element of the array is Array of [Message]{@link enfonica.messaging.v1.Message}.
+ *   The first element of the array is Array of [Unsubscriber]{@link enfonica.messaging.v1.Unsubscriber}.
  *   The client library support auto-pagination by default: it will call the API as many
  *   times as needed and will merge results from all the pages into this array.
  *
  *   When autoPaginate: false is specified through options, the array has three elements.
- *   The first element is Array of [Message]{@link enfonica.messaging.v1.Message} that corresponds to
+ *   The first element is Array of [Unsubscriber]{@link enfonica.messaging.v1.Unsubscriber} that corresponds to
  *   the one page received from the API server.
- *   If the second element is not null it contains the request object of type [ListMessagesRequest]{@link enfonica.messaging.v1.ListMessagesRequest}
+ *   If the second element is not null it contains the request object of type [ListUnsubscribersRequest]{@link enfonica.messaging.v1.ListUnsubscribersRequest}
  *   that can be used to obtain the next page of the results.
  *   If it is null, the next page does not exist.
  *   The third element contains the raw response received from the API server. Its type is
- *   [ListMessagesResponse]{@link enfonica.messaging.v1.ListMessagesResponse}.
+ *   [ListUnsubscribersResponse]{@link enfonica.messaging.v1.ListUnsubscribersResponse}.
  *
  *   The promise has a method named "cancel" which cancels the ongoing API call.
  */
-  listMessages(
-      request: protos.enfonica.messaging.v1.IListMessagesRequest,
+  listUnsubscribers(
+      request: protos.enfonica.messaging.v1.IListUnsubscribersRequest,
       optionsOrCallback?: gax.CallOptions|PaginationCallback<
-          protos.enfonica.messaging.v1.IListMessagesRequest,
-          protos.enfonica.messaging.v1.IListMessagesResponse|null|undefined,
-          protos.enfonica.messaging.v1.IMessage>,
+          protos.enfonica.messaging.v1.IListUnsubscribersRequest,
+          protos.enfonica.messaging.v1.IListUnsubscribersResponse|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber>,
       callback?: PaginationCallback<
-          protos.enfonica.messaging.v1.IListMessagesRequest,
-          protos.enfonica.messaging.v1.IListMessagesResponse|null|undefined,
-          protos.enfonica.messaging.v1.IMessage>):
+          protos.enfonica.messaging.v1.IListUnsubscribersRequest,
+          protos.enfonica.messaging.v1.IListUnsubscribersResponse|null|undefined,
+          protos.enfonica.messaging.v1.IUnsubscriber>):
       Promise<[
-        protos.enfonica.messaging.v1.IMessage[],
-        protos.enfonica.messaging.v1.IListMessagesRequest|null,
-        protos.enfonica.messaging.v1.IListMessagesResponse
+        protos.enfonica.messaging.v1.IUnsubscriber[],
+        protos.enfonica.messaging.v1.IListUnsubscribersRequest|null,
+        protos.enfonica.messaging.v1.IListUnsubscribersResponse
       ]>|void {
     request = request || {};
     let options: gax.CallOptions;
@@ -514,13 +649,13 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
       'parent': request.parent || '',
     });
     this.initialize();
-    return this.innerApiCalls.listMessages(request, options, callback);
+    return this.innerApiCalls.listUnsubscribers(request, options, callback);
   }
 
 /**
- * Equivalent to {@link listMessages}, but returns a NodeJS Stream object.
+ * Equivalent to {@link listUnsubscribers}, but returns a NodeJS Stream object.
  *
- * This fetches the paged responses for {@link listMessages} continuously
+ * This fetches the paged responses for {@link listUnsubscribers} continuously
  * and invokes the callback registered for 'data' event for each element in the
  * responses.
  *
@@ -533,28 +668,24 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
  * @param {Object} request
  *   The request object that will be sent.
  * @param {string} request.parent
- *   The resource name of the parent of which to list messages.
+ *   The resource name of the parent of which to list unsubscribers.
  *   Must be of the form `projects/*`.
  * @param {number} request.pageSize
- *   The maximum number of Messages to return in the response.
+ *   The maximum number of Unsubscribers to return in the response.
  *   Optional, with a default value of 10 and maximum value of 100.
  * @param {string} request.pageToken
- *   A pagination token returned from a previous call to `ListMessages`
+ *   A pagination token returned from a previous call to `ListUnsubscribers`
  *   that indicates where this listing should continue from.
  *   Optional.
- * @param {google.protobuf.Timestamp} request.startTime
- *   The timestamp (inclusive) from which to retrieve messages. The
- *   create_time of the Message is used.
- * @param {google.protobuf.Timestamp} request.endTime
- *   The timestamp (exclusive) until which to retrieve messages. The
- *   create_time of the Message is used.
+ * @param {string} request.phone
+ *   Only return the unsubscriber that matches the phone number exactly.
  * @param {object} [options]
  *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
  * @returns {Stream}
- *   An object stream which emits an object representing [Message]{@link enfonica.messaging.v1.Message} on 'data' event.
+ *   An object stream which emits an object representing [Unsubscriber]{@link enfonica.messaging.v1.Unsubscriber} on 'data' event.
  */
-  listMessagesStream(
-      request?: protos.enfonica.messaging.v1.IListMessagesRequest,
+  listUnsubscribersStream(
+      request?: protos.enfonica.messaging.v1.IListUnsubscribersRequest,
       options?: gax.CallOptions):
     Transform{
     request = request || {};
@@ -568,45 +699,41 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
     });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
-    return this.descriptors.page.listMessages.createStream(
-      this.innerApiCalls.listMessages as gax.GaxCall,
+    return this.descriptors.page.listUnsubscribers.createStream(
+      this.innerApiCalls.listUnsubscribers as gax.GaxCall,
       request,
       callSettings
     );
   }
 
 /**
- * Equivalent to {@link listMessages}, but returns an iterable object.
+ * Equivalent to {@link listUnsubscribers}, but returns an iterable object.
  *
  * for-await-of syntax is used with the iterable to recursively get response element on-demand.
  *
  * @param {Object} request
  *   The request object that will be sent.
  * @param {string} request.parent
- *   The resource name of the parent of which to list messages.
+ *   The resource name of the parent of which to list unsubscribers.
  *   Must be of the form `projects/*`.
  * @param {number} request.pageSize
- *   The maximum number of Messages to return in the response.
+ *   The maximum number of Unsubscribers to return in the response.
  *   Optional, with a default value of 10 and maximum value of 100.
  * @param {string} request.pageToken
- *   A pagination token returned from a previous call to `ListMessages`
+ *   A pagination token returned from a previous call to `ListUnsubscribers`
  *   that indicates where this listing should continue from.
  *   Optional.
- * @param {google.protobuf.Timestamp} request.startTime
- *   The timestamp (inclusive) from which to retrieve messages. The
- *   create_time of the Message is used.
- * @param {google.protobuf.Timestamp} request.endTime
- *   The timestamp (exclusive) until which to retrieve messages. The
- *   create_time of the Message is used.
+ * @param {string} request.phone
+ *   Only return the unsubscriber that matches the phone number exactly.
  * @param {object} [options]
  *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
  * @returns {Object}
  *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
  */
-  listMessagesAsync(
-      request?: protos.enfonica.messaging.v1.IListMessagesRequest,
+  listUnsubscribersAsync(
+      request?: protos.enfonica.messaging.v1.IListUnsubscribersRequest,
       options?: gax.CallOptions):
-    AsyncIterable<protos.enfonica.messaging.v1.IMessage>{
+    AsyncIterable<protos.enfonica.messaging.v1.IUnsubscriber>{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -619,11 +746,11 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
-    return this.descriptors.page.listMessages.asyncIterate(
-      this.innerApiCalls['listMessages'] as GaxCall,
+    return this.descriptors.page.listUnsubscribers.asyncIterate(
+      this.innerApiCalls['listUnsubscribers'] as GaxCall,
       request as unknown as RequestType,
       callSettings
-    ) as AsyncIterable<protos.enfonica.messaging.v1.IMessage>;
+    ) as AsyncIterable<protos.enfonica.messaging.v1.IUnsubscriber>;
   }
 
   /**
@@ -634,7 +761,7 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
   close(): Promise<void> {
     this.initialize();
     if (!this._terminated) {
-      return this.messagesStub!.then(stub => {
+      return this.unsubscribersStub!.then(stub => {
         this._terminated = true;
         stub.close();
       });

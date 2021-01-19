@@ -28,7 +28,7 @@
     var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
     
     // Exported root namespace
-    var $root = $protobuf.roots._enfonica_messaging_protos || ($protobuf.roots._enfonica_messaging_protos = {});
+    var $root = $protobuf.roots._enfonica_numbering_protos || ($protobuf.roots._enfonica_numbering_protos = {});
     
     $root.enfonica = (function() {
     
@@ -39,198 +39,286 @@
          */
         var enfonica = {};
     
-        enfonica.messaging = (function() {
+        enfonica.numbering = (function() {
     
             /**
-             * Namespace messaging.
+             * Namespace numbering.
              * @memberof enfonica
              * @namespace
              */
-            var messaging = {};
+            var numbering = {};
     
-            messaging.v1 = (function() {
+            numbering.v1beta1 = (function() {
     
                 /**
-                 * Namespace v1.
-                 * @memberof enfonica.messaging
+                 * Namespace v1beta1.
+                 * @memberof enfonica.numbering
                  * @namespace
                  */
-                var v1 = {};
+                var v1beta1 = {};
     
-                v1.Messages = (function() {
+                v1beta1.PhoneNumberInstances = (function() {
     
                     /**
-                     * Constructs a new Messages service.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a Messages
+                     * Constructs a new PhoneNumberInstances service.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a PhoneNumberInstances
                      * @extends $protobuf.rpc.Service
                      * @constructor
                      * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
                      * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
                      * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
                      */
-                    function Messages(rpcImpl, requestDelimited, responseDelimited) {
+                    function PhoneNumberInstances(rpcImpl, requestDelimited, responseDelimited) {
                         $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
                     }
     
-                    (Messages.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Messages;
+                    (PhoneNumberInstances.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = PhoneNumberInstances;
     
                     /**
-                     * Creates new Messages service using the specified rpc implementation.
+                     * Creates new PhoneNumberInstances service using the specified rpc implementation.
                      * @function create
-                     * @memberof enfonica.messaging.v1.Messages
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @static
                      * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
                      * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
                      * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
-                     * @returns {Messages} RPC service. Useful where requests and/or responses are streamed.
+                     * @returns {PhoneNumberInstances} RPC service. Useful where requests and/or responses are streamed.
                      */
-                    Messages.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+                    PhoneNumberInstances.create = function create(rpcImpl, requestDelimited, responseDelimited) {
                         return new this(rpcImpl, requestDelimited, responseDelimited);
                     };
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Messages#createMessage}.
-                     * @memberof enfonica.messaging.v1.Messages
-                     * @typedef CreateMessageCallback
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#createPhoneNumberInstance}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @typedef CreatePhoneNumberInstanceCallback
                      * @type {function}
                      * @param {Error|null} error Error, if any
-                     * @param {enfonica.messaging.v1.Message} [response] Message
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstance} [response] PhoneNumberInstance
                      */
     
                     /**
-                     * Calls CreateMessage.
-                     * @function createMessage
-                     * @memberof enfonica.messaging.v1.Messages
+                     * Calls CreatePhoneNumberInstance.
+                     * @function createPhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @instance
-                     * @param {enfonica.messaging.v1.ICreateMessageRequest} request CreateMessageRequest message or plain object
-                     * @param {enfonica.messaging.v1.Messages.CreateMessageCallback} callback Node-style callback called with the error, if any, and Message
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest} request CreatePhoneNumberInstanceRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstances.CreatePhoneNumberInstanceCallback} callback Node-style callback called with the error, if any, and PhoneNumberInstance
                      * @returns {undefined}
                      * @variation 1
                      */
-                    Object.defineProperty(Messages.prototype.createMessage = function createMessage(request, callback) {
-                        return this.rpcCall(createMessage, $root.enfonica.messaging.v1.CreateMessageRequest, $root.enfonica.messaging.v1.Message, request, callback);
-                    }, "name", { value: "CreateMessage" });
+                    Object.defineProperty(PhoneNumberInstances.prototype.createPhoneNumberInstance = function createPhoneNumberInstance(request, callback) {
+                        return this.rpcCall(createPhoneNumberInstance, $root.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest, $root.enfonica.numbering.v1beta1.PhoneNumberInstance, request, callback);
+                    }, "name", { value: "CreatePhoneNumberInstance" });
     
                     /**
-                     * Calls CreateMessage.
-                     * @function createMessage
-                     * @memberof enfonica.messaging.v1.Messages
+                     * Calls CreatePhoneNumberInstance.
+                     * @function createPhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @instance
-                     * @param {enfonica.messaging.v1.ICreateMessageRequest} request CreateMessageRequest message or plain object
-                     * @returns {Promise<enfonica.messaging.v1.Message>} Promise
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest} request CreatePhoneNumberInstanceRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>} Promise
                      * @variation 2
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Messages#getMessage}.
-                     * @memberof enfonica.messaging.v1.Messages
-                     * @typedef GetMessageCallback
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#getPhoneNumberInstance}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @typedef GetPhoneNumberInstanceCallback
                      * @type {function}
                      * @param {Error|null} error Error, if any
-                     * @param {enfonica.messaging.v1.Message} [response] Message
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstance} [response] PhoneNumberInstance
                      */
     
                     /**
-                     * Calls GetMessage.
-                     * @function getMessage
-                     * @memberof enfonica.messaging.v1.Messages
+                     * Calls GetPhoneNumberInstance.
+                     * @function getPhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @instance
-                     * @param {enfonica.messaging.v1.IGetMessageRequest} request GetMessageRequest message or plain object
-                     * @param {enfonica.messaging.v1.Messages.GetMessageCallback} callback Node-style callback called with the error, if any, and Message
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest} request GetPhoneNumberInstanceRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstances.GetPhoneNumberInstanceCallback} callback Node-style callback called with the error, if any, and PhoneNumberInstance
                      * @returns {undefined}
                      * @variation 1
                      */
-                    Object.defineProperty(Messages.prototype.getMessage = function getMessage(request, callback) {
-                        return this.rpcCall(getMessage, $root.enfonica.messaging.v1.GetMessageRequest, $root.enfonica.messaging.v1.Message, request, callback);
-                    }, "name", { value: "GetMessage" });
+                    Object.defineProperty(PhoneNumberInstances.prototype.getPhoneNumberInstance = function getPhoneNumberInstance(request, callback) {
+                        return this.rpcCall(getPhoneNumberInstance, $root.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest, $root.enfonica.numbering.v1beta1.PhoneNumberInstance, request, callback);
+                    }, "name", { value: "GetPhoneNumberInstance" });
     
                     /**
-                     * Calls GetMessage.
-                     * @function getMessage
-                     * @memberof enfonica.messaging.v1.Messages
+                     * Calls GetPhoneNumberInstance.
+                     * @function getPhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @instance
-                     * @param {enfonica.messaging.v1.IGetMessageRequest} request GetMessageRequest message or plain object
-                     * @returns {Promise<enfonica.messaging.v1.Message>} Promise
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest} request GetPhoneNumberInstanceRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>} Promise
                      * @variation 2
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Messages#listMessages}.
-                     * @memberof enfonica.messaging.v1.Messages
-                     * @typedef ListMessagesCallback
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#listPhoneNumberInstances}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @typedef ListPhoneNumberInstancesCallback
                      * @type {function}
                      * @param {Error|null} error Error, if any
-                     * @param {enfonica.messaging.v1.ListMessagesResponse} [response] ListMessagesResponse
+                     * @param {enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse} [response] ListPhoneNumberInstancesResponse
                      */
     
                     /**
-                     * Calls ListMessages.
-                     * @function listMessages
-                     * @memberof enfonica.messaging.v1.Messages
+                     * Calls ListPhoneNumberInstances.
+                     * @function listPhoneNumberInstances
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @instance
-                     * @param {enfonica.messaging.v1.IListMessagesRequest} request ListMessagesRequest message or plain object
-                     * @param {enfonica.messaging.v1.Messages.ListMessagesCallback} callback Node-style callback called with the error, if any, and ListMessagesResponse
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest} request ListPhoneNumberInstancesRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstances.ListPhoneNumberInstancesCallback} callback Node-style callback called with the error, if any, and ListPhoneNumberInstancesResponse
                      * @returns {undefined}
                      * @variation 1
                      */
-                    Object.defineProperty(Messages.prototype.listMessages = function listMessages(request, callback) {
-                        return this.rpcCall(listMessages, $root.enfonica.messaging.v1.ListMessagesRequest, $root.enfonica.messaging.v1.ListMessagesResponse, request, callback);
-                    }, "name", { value: "ListMessages" });
+                    Object.defineProperty(PhoneNumberInstances.prototype.listPhoneNumberInstances = function listPhoneNumberInstances(request, callback) {
+                        return this.rpcCall(listPhoneNumberInstances, $root.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest, $root.enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse, request, callback);
+                    }, "name", { value: "ListPhoneNumberInstances" });
     
                     /**
-                     * Calls ListMessages.
-                     * @function listMessages
-                     * @memberof enfonica.messaging.v1.Messages
+                     * Calls ListPhoneNumberInstances.
+                     * @function listPhoneNumberInstances
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @instance
-                     * @param {enfonica.messaging.v1.IListMessagesRequest} request ListMessagesRequest message or plain object
-                     * @returns {Promise<enfonica.messaging.v1.ListMessagesResponse>} Promise
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest} request ListPhoneNumberInstancesRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse>} Promise
                      * @variation 2
                      */
     
-                    return Messages;
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#updatePhoneNumberInstance}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @typedef UpdatePhoneNumberInstanceCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstance} [response] PhoneNumberInstance
+                     */
+    
+                    /**
+                     * Calls UpdatePhoneNumberInstance.
+                     * @function updatePhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest} request UpdatePhoneNumberInstanceRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstances.UpdatePhoneNumberInstanceCallback} callback Node-style callback called with the error, if any, and PhoneNumberInstance
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumberInstances.prototype.updatePhoneNumberInstance = function updatePhoneNumberInstance(request, callback) {
+                        return this.rpcCall(updatePhoneNumberInstance, $root.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest, $root.enfonica.numbering.v1beta1.PhoneNumberInstance, request, callback);
+                    }, "name", { value: "UpdatePhoneNumberInstance" });
+    
+                    /**
+                     * Calls UpdatePhoneNumberInstance.
+                     * @function updatePhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest} request UpdatePhoneNumberInstanceRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#deletePhoneNumberInstance}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @typedef DeletePhoneNumberInstanceCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstance} [response] PhoneNumberInstance
+                     */
+    
+                    /**
+                     * Calls DeletePhoneNumberInstance.
+                     * @function deletePhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest} request DeletePhoneNumberInstanceRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstances.DeletePhoneNumberInstanceCallback} callback Node-style callback called with the error, if any, and PhoneNumberInstance
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumberInstances.prototype.deletePhoneNumberInstance = function deletePhoneNumberInstance(request, callback) {
+                        return this.rpcCall(deletePhoneNumberInstance, $root.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest, $root.enfonica.numbering.v1beta1.PhoneNumberInstance, request, callback);
+                    }, "name", { value: "DeletePhoneNumberInstance" });
+    
+                    /**
+                     * Calls DeletePhoneNumberInstance.
+                     * @function deletePhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest} request DeletePhoneNumberInstanceRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#getProvisionedPhoneNumberInstance}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @typedef GetProvisionedPhoneNumberInstanceCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstance} [response] PhoneNumberInstance
+                     */
+    
+                    /**
+                     * Calls GetProvisionedPhoneNumberInstance.
+                     * @function getProvisionedPhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest} request GetProvisionedPhoneNumberInstanceRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstances.GetProvisionedPhoneNumberInstanceCallback} callback Node-style callback called with the error, if any, and PhoneNumberInstance
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumberInstances.prototype.getProvisionedPhoneNumberInstance = function getProvisionedPhoneNumberInstance(request, callback) {
+                        return this.rpcCall(getProvisionedPhoneNumberInstance, $root.enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest, $root.enfonica.numbering.v1beta1.PhoneNumberInstance, request, callback);
+                    }, "name", { value: "GetProvisionedPhoneNumberInstance" });
+    
+                    /**
+                     * Calls GetProvisionedPhoneNumberInstance.
+                     * @function getProvisionedPhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest} request GetProvisionedPhoneNumberInstanceRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>} Promise
+                     * @variation 2
+                     */
+    
+                    return PhoneNumberInstances;
                 })();
     
-                v1.Message = (function() {
+                v1beta1.PhoneNumberInstance = (function() {
     
                     /**
-                     * Properties of a Message.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IMessage
-                     * @property {string|null} [name] Message name
-                     * @property {string|null} [to] Message to
-                     * @property {string|null} [from] Message from
-                     * @property {string|null} [body] Message body
-                     * @property {string|null} [statusUpdateUrl] Message statusUpdateUrl
-                     * @property {string|null} [replyUrl] Message replyUrl
-                     * @property {number|null} [validityPeriodSeconds] Message validityPeriodSeconds
-                     * @property {boolean|null} [smartEncoding] Message smartEncoding
-                     * @property {Object.<string,string>|null} [labels] Message labels
-                     * @property {enfonica.messaging.v1.Message.MessageClassification|null} [classification] Message classification
-                     * @property {enfonica.messaging.v1.Message.UnsubscribeContentBehavior|null} [unsubscribeContentBehavior] Message unsubscribeContentBehavior
-                     * @property {enfonica.messaging.v1.Message.Direction|null} [direction] Message direction
-                     * @property {string|null} [errorCode] Message errorCode
-                     * @property {string|null} [errorMessage] Message errorMessage
-                     * @property {number|null} [segmentCount] Message segmentCount
-                     * @property {google.type.IMoney|null} [price] Message price
-                     * @property {enfonica.messaging.v1.Message.Status|null} [status] Message status
-                     * @property {string|null} [createIdentity] Message createIdentity
-                     * @property {google.protobuf.ITimestamp|null} [createTime] Message createTime
-                     * @property {google.protobuf.ITimestamp|null} [sendTime] Message sendTime
-                     * @property {google.protobuf.ITimestamp|null} [deliverTime] Message deliverTime
-                     * @property {enfonica.messaging.v1.Message.MessageEncoding|null} [encoding] Message encoding
+                     * Properties of a PhoneNumberInstance.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IPhoneNumberInstance
+                     * @property {string|null} [name] PhoneNumberInstance name
+                     * @property {enfonica.numbering.v1beta1.IPhoneNumber|null} [phoneNumber] PhoneNumberInstance phoneNumber
+                     * @property {string|null} [displayName] PhoneNumberInstance displayName
+                     * @property {Object.<string,string>|null} [labels] PhoneNumberInstance labels
+                     * @property {Array.<string>|null} [incomingMessageHandlerUris] PhoneNumberInstance incomingMessageHandlerUris
+                     * @property {Array.<string>|null} [incomingCallHandlerUris] PhoneNumberInstance incomingCallHandlerUris
+                     * @property {google.protobuf.ITimestamp|null} [createTime] PhoneNumberInstance createTime
+                     * @property {google.protobuf.ITimestamp|null} [deleteTime] PhoneNumberInstance deleteTime
+                     * @property {enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|null} [lifecycleState] PhoneNumberInstance lifecycleState
                      */
     
                     /**
-                     * Constructs a new Message.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a Message.
-                     * @implements IMessage
+                     * Constructs a new PhoneNumberInstance.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a PhoneNumberInstance.
+                     * @implements IPhoneNumberInstance
                      * @constructor
-                     * @param {enfonica.messaging.v1.IMessage=} [properties] Properties to set
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumberInstance=} [properties] Properties to set
                      */
-                    function Message(properties) {
+                    function PhoneNumberInstance(properties) {
                         this.labels = {};
+                        this.incomingMessageHandlerUris = [];
+                        this.incomingCallHandlerUris = [];
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -238,2131 +326,153 @@
                     }
     
                     /**
-                     * Message name.
+                     * PhoneNumberInstance name.
                      * @member {string} name
-                     * @memberof enfonica.messaging.v1.Message
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.name = "";
+                    PhoneNumberInstance.prototype.name = "";
     
                     /**
-                     * Message to.
-                     * @member {string} to
-                     * @memberof enfonica.messaging.v1.Message
+                     * PhoneNumberInstance phoneNumber.
+                     * @member {enfonica.numbering.v1beta1.IPhoneNumber|null|undefined} phoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.to = "";
+                    PhoneNumberInstance.prototype.phoneNumber = null;
     
                     /**
-                     * Message from.
-                     * @member {string} from
-                     * @memberof enfonica.messaging.v1.Message
+                     * PhoneNumberInstance displayName.
+                     * @member {string} displayName
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.from = "";
+                    PhoneNumberInstance.prototype.displayName = "";
     
                     /**
-                     * Message body.
-                     * @member {string} body
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.body = "";
-    
-                    /**
-                     * Message statusUpdateUrl.
-                     * @member {string} statusUpdateUrl
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.statusUpdateUrl = "";
-    
-                    /**
-                     * Message replyUrl.
-                     * @member {string} replyUrl
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.replyUrl = "";
-    
-                    /**
-                     * Message validityPeriodSeconds.
-                     * @member {number} validityPeriodSeconds
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.validityPeriodSeconds = 0;
-    
-                    /**
-                     * Message smartEncoding.
-                     * @member {boolean} smartEncoding
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.smartEncoding = false;
-    
-                    /**
-                     * Message labels.
+                     * PhoneNumberInstance labels.
                      * @member {Object.<string,string>} labels
-                     * @memberof enfonica.messaging.v1.Message
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.labels = $util.emptyObject;
+                    PhoneNumberInstance.prototype.labels = $util.emptyObject;
     
                     /**
-                     * Message classification.
-                     * @member {enfonica.messaging.v1.Message.MessageClassification} classification
-                     * @memberof enfonica.messaging.v1.Message
+                     * PhoneNumberInstance incomingMessageHandlerUris.
+                     * @member {Array.<string>} incomingMessageHandlerUris
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.classification = 0;
+                    PhoneNumberInstance.prototype.incomingMessageHandlerUris = $util.emptyArray;
     
                     /**
-                     * Message unsubscribeContentBehavior.
-                     * @member {enfonica.messaging.v1.Message.UnsubscribeContentBehavior} unsubscribeContentBehavior
-                     * @memberof enfonica.messaging.v1.Message
+                     * PhoneNumberInstance incomingCallHandlerUris.
+                     * @member {Array.<string>} incomingCallHandlerUris
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.unsubscribeContentBehavior = 0;
+                    PhoneNumberInstance.prototype.incomingCallHandlerUris = $util.emptyArray;
     
                     /**
-                     * Message direction.
-                     * @member {enfonica.messaging.v1.Message.Direction} direction
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.direction = 0;
-    
-                    /**
-                     * Message errorCode.
-                     * @member {string} errorCode
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.errorCode = "";
-    
-                    /**
-                     * Message errorMessage.
-                     * @member {string} errorMessage
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.errorMessage = "";
-    
-                    /**
-                     * Message segmentCount.
-                     * @member {number} segmentCount
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.segmentCount = 0;
-    
-                    /**
-                     * Message price.
-                     * @member {google.type.IMoney|null|undefined} price
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.price = null;
-    
-                    /**
-                     * Message status.
-                     * @member {enfonica.messaging.v1.Message.Status} status
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.status = 0;
-    
-                    /**
-                     * Message createIdentity.
-                     * @member {string} createIdentity
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.createIdentity = "";
-    
-                    /**
-                     * Message createTime.
+                     * PhoneNumberInstance createTime.
                      * @member {google.protobuf.ITimestamp|null|undefined} createTime
-                     * @memberof enfonica.messaging.v1.Message
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.createTime = null;
+                    PhoneNumberInstance.prototype.createTime = null;
     
                     /**
-                     * Message sendTime.
-                     * @member {google.protobuf.ITimestamp|null|undefined} sendTime
-                     * @memberof enfonica.messaging.v1.Message
+                     * PhoneNumberInstance deleteTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} deleteTime
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.sendTime = null;
+                    PhoneNumberInstance.prototype.deleteTime = null;
     
                     /**
-                     * Message deliverTime.
-                     * @member {google.protobuf.ITimestamp|null|undefined} deliverTime
-                     * @memberof enfonica.messaging.v1.Message
+                     * PhoneNumberInstance lifecycleState.
+                     * @member {enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState} lifecycleState
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      */
-                    Message.prototype.deliverTime = null;
+                    PhoneNumberInstance.prototype.lifecycleState = 0;
     
                     /**
-                     * Message encoding.
-                     * @member {enfonica.messaging.v1.Message.MessageEncoding} encoding
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     */
-                    Message.prototype.encoding = 0;
-    
-                    /**
-                     * Creates a new Message instance using the specified properties.
+                     * Creates a new PhoneNumberInstance instance using the specified properties.
                      * @function create
-                     * @memberof enfonica.messaging.v1.Message
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @static
-                     * @param {enfonica.messaging.v1.IMessage=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.Message} Message instance
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumberInstance=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumberInstance} PhoneNumberInstance instance
                      */
-                    Message.create = function create(properties) {
-                        return new Message(properties);
+                    PhoneNumberInstance.create = function create(properties) {
+                        return new PhoneNumberInstance(properties);
                     };
     
                     /**
-                     * Encodes the specified Message message. Does not implicitly {@link enfonica.messaging.v1.Message.verify|verify} messages.
+                     * Encodes the specified PhoneNumberInstance message. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumberInstance.verify|verify} messages.
                      * @function encode
-                     * @memberof enfonica.messaging.v1.Message
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @static
-                     * @param {enfonica.messaging.v1.IMessage} message Message message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumberInstance} message PhoneNumberInstance message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    Message.encode = function encode(message, writer) {
+                    PhoneNumberInstance.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
                         if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                             writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                        if (message.to != null && Object.hasOwnProperty.call(message, "to"))
-                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.to);
-                        if (message.from != null && Object.hasOwnProperty.call(message, "from"))
-                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.from);
-                        if (message.body != null && Object.hasOwnProperty.call(message, "body"))
-                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.body);
-                        if (message.statusUpdateUrl != null && Object.hasOwnProperty.call(message, "statusUpdateUrl"))
-                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.statusUpdateUrl);
-                        if (message.replyUrl != null && Object.hasOwnProperty.call(message, "replyUrl"))
-                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.replyUrl);
-                        if (message.validityPeriodSeconds != null && Object.hasOwnProperty.call(message, "validityPeriodSeconds"))
-                            writer.uint32(/* id 7, wireType 0 =*/56).int32(message.validityPeriodSeconds);
-                        if (message.smartEncoding != null && Object.hasOwnProperty.call(message, "smartEncoding"))
-                            writer.uint32(/* id 8, wireType 0 =*/64).bool(message.smartEncoding);
-                        if (message.direction != null && Object.hasOwnProperty.call(message, "direction"))
-                            writer.uint32(/* id 10, wireType 0 =*/80).int32(message.direction);
-                        if (message.errorCode != null && Object.hasOwnProperty.call(message, "errorCode"))
-                            writer.uint32(/* id 11, wireType 2 =*/90).string(message.errorCode);
-                        if (message.errorMessage != null && Object.hasOwnProperty.call(message, "errorMessage"))
-                            writer.uint32(/* id 12, wireType 2 =*/98).string(message.errorMessage);
-                        if (message.segmentCount != null && Object.hasOwnProperty.call(message, "segmentCount"))
-                            writer.uint32(/* id 13, wireType 0 =*/104).int32(message.segmentCount);
-                        if (message.price != null && Object.hasOwnProperty.call(message, "price"))
-                            $root.google.type.Money.encode(message.price, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
-                        if (message.status != null && Object.hasOwnProperty.call(message, "status"))
-                            writer.uint32(/* id 15, wireType 0 =*/120).int32(message.status);
-                        if (message.createIdentity != null && Object.hasOwnProperty.call(message, "createIdentity"))
-                            writer.uint32(/* id 16, wireType 2 =*/130).string(message.createIdentity);
-                        if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
-                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 17, wireType 2 =*/138).fork()).ldelim();
-                        if (message.sendTime != null && Object.hasOwnProperty.call(message, "sendTime"))
-                            $root.google.protobuf.Timestamp.encode(message.sendTime, writer.uint32(/* id 18, wireType 2 =*/146).fork()).ldelim();
-                        if (message.deliverTime != null && Object.hasOwnProperty.call(message, "deliverTime"))
-                            $root.google.protobuf.Timestamp.encode(message.deliverTime, writer.uint32(/* id 19, wireType 2 =*/154).fork()).ldelim();
-                        if (message.labels != null && Object.hasOwnProperty.call(message, "labels"))
-                            for (var keys = Object.keys(message.labels), i = 0; i < keys.length; ++i)
-                                writer.uint32(/* id 20, wireType 2 =*/162).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]).uint32(/* id 2, wireType 2 =*/18).string(message.labels[keys[i]]).ldelim();
-                        if (message.classification != null && Object.hasOwnProperty.call(message, "classification"))
-                            writer.uint32(/* id 21, wireType 0 =*/168).int32(message.classification);
-                        if (message.unsubscribeContentBehavior != null && Object.hasOwnProperty.call(message, "unsubscribeContentBehavior"))
-                            writer.uint32(/* id 22, wireType 0 =*/176).int32(message.unsubscribeContentBehavior);
-                        if (message.encoding != null && Object.hasOwnProperty.call(message, "encoding"))
-                            writer.uint32(/* id 23, wireType 0 =*/184).int32(message.encoding);
-                        return writer;
-                    };
-    
-                    /**
-                     * Encodes the specified Message message, length delimited. Does not implicitly {@link enfonica.messaging.v1.Message.verify|verify} messages.
-                     * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.Message
-                     * @static
-                     * @param {enfonica.messaging.v1.IMessage} message Message message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    Message.encodeDelimited = function encodeDelimited(message, writer) {
-                        return this.encode(message, writer).ldelim();
-                    };
-    
-                    /**
-                     * Decodes a Message message from the specified reader or buffer.
-                     * @function decode
-                     * @memberof enfonica.messaging.v1.Message
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.Message} Message
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    Message.decode = function decode(reader, length) {
-                        if (!(reader instanceof $Reader))
-                            reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.Message(), key, value;
-                        while (reader.pos < end) {
-                            var tag = reader.uint32();
-                            switch (tag >>> 3) {
-                            case 1:
-                                message.name = reader.string();
-                                break;
-                            case 2:
-                                message.to = reader.string();
-                                break;
-                            case 3:
-                                message.from = reader.string();
-                                break;
-                            case 4:
-                                message.body = reader.string();
-                                break;
-                            case 5:
-                                message.statusUpdateUrl = reader.string();
-                                break;
-                            case 6:
-                                message.replyUrl = reader.string();
-                                break;
-                            case 7:
-                                message.validityPeriodSeconds = reader.int32();
-                                break;
-                            case 8:
-                                message.smartEncoding = reader.bool();
-                                break;
-                            case 20:
-                                if (message.labels === $util.emptyObject)
-                                    message.labels = {};
-                                var end2 = reader.uint32() + reader.pos;
-                                key = "";
-                                value = "";
-                                while (reader.pos < end2) {
-                                    var tag2 = reader.uint32();
-                                    switch (tag2 >>> 3) {
-                                    case 1:
-                                        key = reader.string();
-                                        break;
-                                    case 2:
-                                        value = reader.string();
-                                        break;
-                                    default:
-                                        reader.skipType(tag2 & 7);
-                                        break;
-                                    }
-                                }
-                                message.labels[key] = value;
-                                break;
-                            case 21:
-                                message.classification = reader.int32();
-                                break;
-                            case 22:
-                                message.unsubscribeContentBehavior = reader.int32();
-                                break;
-                            case 10:
-                                message.direction = reader.int32();
-                                break;
-                            case 11:
-                                message.errorCode = reader.string();
-                                break;
-                            case 12:
-                                message.errorMessage = reader.string();
-                                break;
-                            case 13:
-                                message.segmentCount = reader.int32();
-                                break;
-                            case 14:
-                                message.price = $root.google.type.Money.decode(reader, reader.uint32());
-                                break;
-                            case 15:
-                                message.status = reader.int32();
-                                break;
-                            case 16:
-                                message.createIdentity = reader.string();
-                                break;
-                            case 17:
-                                message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
-                                break;
-                            case 18:
-                                message.sendTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
-                                break;
-                            case 19:
-                                message.deliverTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
-                                break;
-                            case 23:
-                                message.encoding = reader.int32();
-                                break;
-                            default:
-                                reader.skipType(tag & 7);
-                                break;
-                            }
-                        }
-                        return message;
-                    };
-    
-                    /**
-                     * Decodes a Message message from the specified reader or buffer, length delimited.
-                     * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.Message
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.Message} Message
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    Message.decodeDelimited = function decodeDelimited(reader) {
-                        if (!(reader instanceof $Reader))
-                            reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
-                    };
-    
-                    /**
-                     * Verifies a Message message.
-                     * @function verify
-                     * @memberof enfonica.messaging.v1.Message
-                     * @static
-                     * @param {Object.<string,*>} message Plain object to verify
-                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                     */
-                    Message.verify = function verify(message) {
-                        if (typeof message !== "object" || message === null)
-                            return "object expected";
-                        if (message.name != null && message.hasOwnProperty("name"))
-                            if (!$util.isString(message.name))
-                                return "name: string expected";
-                        if (message.to != null && message.hasOwnProperty("to"))
-                            if (!$util.isString(message.to))
-                                return "to: string expected";
-                        if (message.from != null && message.hasOwnProperty("from"))
-                            if (!$util.isString(message.from))
-                                return "from: string expected";
-                        if (message.body != null && message.hasOwnProperty("body"))
-                            if (!$util.isString(message.body))
-                                return "body: string expected";
-                        if (message.statusUpdateUrl != null && message.hasOwnProperty("statusUpdateUrl"))
-                            if (!$util.isString(message.statusUpdateUrl))
-                                return "statusUpdateUrl: string expected";
-                        if (message.replyUrl != null && message.hasOwnProperty("replyUrl"))
-                            if (!$util.isString(message.replyUrl))
-                                return "replyUrl: string expected";
-                        if (message.validityPeriodSeconds != null && message.hasOwnProperty("validityPeriodSeconds"))
-                            if (!$util.isInteger(message.validityPeriodSeconds))
-                                return "validityPeriodSeconds: integer expected";
-                        if (message.smartEncoding != null && message.hasOwnProperty("smartEncoding"))
-                            if (typeof message.smartEncoding !== "boolean")
-                                return "smartEncoding: boolean expected";
-                        if (message.labels != null && message.hasOwnProperty("labels")) {
-                            if (!$util.isObject(message.labels))
-                                return "labels: object expected";
-                            var key = Object.keys(message.labels);
-                            for (var i = 0; i < key.length; ++i)
-                                if (!$util.isString(message.labels[key[i]]))
-                                    return "labels: string{k:string} expected";
-                        }
-                        if (message.classification != null && message.hasOwnProperty("classification"))
-                            switch (message.classification) {
-                            default:
-                                return "classification: enum value expected";
-                            case 0:
-                            case 1:
-                            case 2:
-                            case 3:
-                                break;
-                            }
-                        if (message.unsubscribeContentBehavior != null && message.hasOwnProperty("unsubscribeContentBehavior"))
-                            switch (message.unsubscribeContentBehavior) {
-                            default:
-                                return "unsubscribeContentBehavior: enum value expected";
-                            case 0:
-                            case 1:
-                            case 2:
-                                break;
-                            }
-                        if (message.direction != null && message.hasOwnProperty("direction"))
-                            switch (message.direction) {
-                            default:
-                                return "direction: enum value expected";
-                            case 0:
-                            case 1:
-                            case 2:
-                                break;
-                            }
-                        if (message.errorCode != null && message.hasOwnProperty("errorCode"))
-                            if (!$util.isString(message.errorCode))
-                                return "errorCode: string expected";
-                        if (message.errorMessage != null && message.hasOwnProperty("errorMessage"))
-                            if (!$util.isString(message.errorMessage))
-                                return "errorMessage: string expected";
-                        if (message.segmentCount != null && message.hasOwnProperty("segmentCount"))
-                            if (!$util.isInteger(message.segmentCount))
-                                return "segmentCount: integer expected";
-                        if (message.price != null && message.hasOwnProperty("price")) {
-                            var error = $root.google.type.Money.verify(message.price);
-                            if (error)
-                                return "price." + error;
-                        }
-                        if (message.status != null && message.hasOwnProperty("status"))
-                            switch (message.status) {
-                            default:
-                                return "status: enum value expected";
-                            case 0:
-                            case 1:
-                            case 2:
-                            case 3:
-                            case 4:
-                            case 5:
-                            case 6:
-                            case 7:
-                                break;
-                            }
-                        if (message.createIdentity != null && message.hasOwnProperty("createIdentity"))
-                            if (!$util.isString(message.createIdentity))
-                                return "createIdentity: string expected";
-                        if (message.createTime != null && message.hasOwnProperty("createTime")) {
-                            var error = $root.google.protobuf.Timestamp.verify(message.createTime);
-                            if (error)
-                                return "createTime." + error;
-                        }
-                        if (message.sendTime != null && message.hasOwnProperty("sendTime")) {
-                            var error = $root.google.protobuf.Timestamp.verify(message.sendTime);
-                            if (error)
-                                return "sendTime." + error;
-                        }
-                        if (message.deliverTime != null && message.hasOwnProperty("deliverTime")) {
-                            var error = $root.google.protobuf.Timestamp.verify(message.deliverTime);
-                            if (error)
-                                return "deliverTime." + error;
-                        }
-                        if (message.encoding != null && message.hasOwnProperty("encoding"))
-                            switch (message.encoding) {
-                            default:
-                                return "encoding: enum value expected";
-                            case 0:
-                            case 1:
-                            case 2:
-                                break;
-                            }
-                        return null;
-                    };
-    
-                    /**
-                     * Creates a Message message from a plain object. Also converts values to their respective internal types.
-                     * @function fromObject
-                     * @memberof enfonica.messaging.v1.Message
-                     * @static
-                     * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.Message} Message
-                     */
-                    Message.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.Message)
-                            return object;
-                        var message = new $root.enfonica.messaging.v1.Message();
-                        if (object.name != null)
-                            message.name = String(object.name);
-                        if (object.to != null)
-                            message.to = String(object.to);
-                        if (object.from != null)
-                            message.from = String(object.from);
-                        if (object.body != null)
-                            message.body = String(object.body);
-                        if (object.statusUpdateUrl != null)
-                            message.statusUpdateUrl = String(object.statusUpdateUrl);
-                        if (object.replyUrl != null)
-                            message.replyUrl = String(object.replyUrl);
-                        if (object.validityPeriodSeconds != null)
-                            message.validityPeriodSeconds = object.validityPeriodSeconds | 0;
-                        if (object.smartEncoding != null)
-                            message.smartEncoding = Boolean(object.smartEncoding);
-                        if (object.labels) {
-                            if (typeof object.labels !== "object")
-                                throw TypeError(".enfonica.messaging.v1.Message.labels: object expected");
-                            message.labels = {};
-                            for (var keys = Object.keys(object.labels), i = 0; i < keys.length; ++i)
-                                message.labels[keys[i]] = String(object.labels[keys[i]]);
-                        }
-                        switch (object.classification) {
-                        case "UNSPECIFIED":
-                        case 0:
-                            message.classification = 0;
-                            break;
-                        case "UNCLASSIFIED":
-                        case 1:
-                            message.classification = 1;
-                            break;
-                        case "TRANSACTIONAL":
-                        case 2:
-                            message.classification = 2;
-                            break;
-                        case "MARKETING":
-                        case 3:
-                            message.classification = 3;
-                            break;
-                        }
-                        switch (object.unsubscribeContentBehavior) {
-                        case "UNSUBSCRIBE_CONTENT_UNKNOWN":
-                        case 0:
-                            message.unsubscribeContentBehavior = 0;
-                            break;
-                        case "NONE":
-                        case 1:
-                            message.unsubscribeContentBehavior = 1;
-                            break;
-                        case "APPEND_URL":
-                        case 2:
-                            message.unsubscribeContentBehavior = 2;
-                            break;
-                        }
-                        switch (object.direction) {
-                        case "DIRECTION_UNKNOWN":
-                        case 0:
-                            message.direction = 0;
-                            break;
-                        case "OUTGOING":
-                        case 1:
-                            message.direction = 1;
-                            break;
-                        case "INCOMING":
-                        case 2:
-                            message.direction = 2;
-                            break;
-                        }
-                        if (object.errorCode != null)
-                            message.errorCode = String(object.errorCode);
-                        if (object.errorMessage != null)
-                            message.errorMessage = String(object.errorMessage);
-                        if (object.segmentCount != null)
-                            message.segmentCount = object.segmentCount | 0;
-                        if (object.price != null) {
-                            if (typeof object.price !== "object")
-                                throw TypeError(".enfonica.messaging.v1.Message.price: object expected");
-                            message.price = $root.google.type.Money.fromObject(object.price);
-                        }
-                        switch (object.status) {
-                        case "STATUS_UNKNOWN":
-                        case 0:
-                            message.status = 0;
-                            break;
-                        case "QUEUED":
-                        case 1:
-                            message.status = 1;
-                            break;
-                        case "SENDING":
-                        case 2:
-                            message.status = 2;
-                            break;
-                        case "SENT":
-                        case 3:
-                            message.status = 3;
-                            break;
-                        case "FAILED":
-                        case 4:
-                            message.status = 4;
-                            break;
-                        case "DELIVERED":
-                        case 5:
-                            message.status = 5;
-                            break;
-                        case "UNDELIVERED":
-                        case 6:
-                            message.status = 6;
-                            break;
-                        case "RECEIVED":
-                        case 7:
-                            message.status = 7;
-                            break;
-                        }
-                        if (object.createIdentity != null)
-                            message.createIdentity = String(object.createIdentity);
-                        if (object.createTime != null) {
-                            if (typeof object.createTime !== "object")
-                                throw TypeError(".enfonica.messaging.v1.Message.createTime: object expected");
-                            message.createTime = $root.google.protobuf.Timestamp.fromObject(object.createTime);
-                        }
-                        if (object.sendTime != null) {
-                            if (typeof object.sendTime !== "object")
-                                throw TypeError(".enfonica.messaging.v1.Message.sendTime: object expected");
-                            message.sendTime = $root.google.protobuf.Timestamp.fromObject(object.sendTime);
-                        }
-                        if (object.deliverTime != null) {
-                            if (typeof object.deliverTime !== "object")
-                                throw TypeError(".enfonica.messaging.v1.Message.deliverTime: object expected");
-                            message.deliverTime = $root.google.protobuf.Timestamp.fromObject(object.deliverTime);
-                        }
-                        switch (object.encoding) {
-                        case "MESSAGE_ENCODING_UNKNOWN":
-                        case 0:
-                            message.encoding = 0;
-                            break;
-                        case "GSM7":
-                        case 1:
-                            message.encoding = 1;
-                            break;
-                        case "UCS2":
-                        case 2:
-                            message.encoding = 2;
-                            break;
-                        }
-                        return message;
-                    };
-    
-                    /**
-                     * Creates a plain object from a Message message. Also converts values to other types if specified.
-                     * @function toObject
-                     * @memberof enfonica.messaging.v1.Message
-                     * @static
-                     * @param {enfonica.messaging.v1.Message} message Message
-                     * @param {$protobuf.IConversionOptions} [options] Conversion options
-                     * @returns {Object.<string,*>} Plain object
-                     */
-                    Message.toObject = function toObject(message, options) {
-                        if (!options)
-                            options = {};
-                        var object = {};
-                        if (options.objects || options.defaults)
-                            object.labels = {};
-                        if (options.defaults) {
-                            object.name = "";
-                            object.to = "";
-                            object.from = "";
-                            object.body = "";
-                            object.statusUpdateUrl = "";
-                            object.replyUrl = "";
-                            object.validityPeriodSeconds = 0;
-                            object.smartEncoding = false;
-                            object.direction = options.enums === String ? "DIRECTION_UNKNOWN" : 0;
-                            object.errorCode = "";
-                            object.errorMessage = "";
-                            object.segmentCount = 0;
-                            object.price = null;
-                            object.status = options.enums === String ? "STATUS_UNKNOWN" : 0;
-                            object.createIdentity = "";
-                            object.createTime = null;
-                            object.sendTime = null;
-                            object.deliverTime = null;
-                            object.classification = options.enums === String ? "UNSPECIFIED" : 0;
-                            object.unsubscribeContentBehavior = options.enums === String ? "UNSUBSCRIBE_CONTENT_UNKNOWN" : 0;
-                            object.encoding = options.enums === String ? "MESSAGE_ENCODING_UNKNOWN" : 0;
-                        }
-                        if (message.name != null && message.hasOwnProperty("name"))
-                            object.name = message.name;
-                        if (message.to != null && message.hasOwnProperty("to"))
-                            object.to = message.to;
-                        if (message.from != null && message.hasOwnProperty("from"))
-                            object.from = message.from;
-                        if (message.body != null && message.hasOwnProperty("body"))
-                            object.body = message.body;
-                        if (message.statusUpdateUrl != null && message.hasOwnProperty("statusUpdateUrl"))
-                            object.statusUpdateUrl = message.statusUpdateUrl;
-                        if (message.replyUrl != null && message.hasOwnProperty("replyUrl"))
-                            object.replyUrl = message.replyUrl;
-                        if (message.validityPeriodSeconds != null && message.hasOwnProperty("validityPeriodSeconds"))
-                            object.validityPeriodSeconds = message.validityPeriodSeconds;
-                        if (message.smartEncoding != null && message.hasOwnProperty("smartEncoding"))
-                            object.smartEncoding = message.smartEncoding;
-                        if (message.direction != null && message.hasOwnProperty("direction"))
-                            object.direction = options.enums === String ? $root.enfonica.messaging.v1.Message.Direction[message.direction] : message.direction;
-                        if (message.errorCode != null && message.hasOwnProperty("errorCode"))
-                            object.errorCode = message.errorCode;
-                        if (message.errorMessage != null && message.hasOwnProperty("errorMessage"))
-                            object.errorMessage = message.errorMessage;
-                        if (message.segmentCount != null && message.hasOwnProperty("segmentCount"))
-                            object.segmentCount = message.segmentCount;
-                        if (message.price != null && message.hasOwnProperty("price"))
-                            object.price = $root.google.type.Money.toObject(message.price, options);
-                        if (message.status != null && message.hasOwnProperty("status"))
-                            object.status = options.enums === String ? $root.enfonica.messaging.v1.Message.Status[message.status] : message.status;
-                        if (message.createIdentity != null && message.hasOwnProperty("createIdentity"))
-                            object.createIdentity = message.createIdentity;
-                        if (message.createTime != null && message.hasOwnProperty("createTime"))
-                            object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
-                        if (message.sendTime != null && message.hasOwnProperty("sendTime"))
-                            object.sendTime = $root.google.protobuf.Timestamp.toObject(message.sendTime, options);
-                        if (message.deliverTime != null && message.hasOwnProperty("deliverTime"))
-                            object.deliverTime = $root.google.protobuf.Timestamp.toObject(message.deliverTime, options);
-                        var keys2;
-                        if (message.labels && (keys2 = Object.keys(message.labels)).length) {
-                            object.labels = {};
-                            for (var j = 0; j < keys2.length; ++j)
-                                object.labels[keys2[j]] = message.labels[keys2[j]];
-                        }
-                        if (message.classification != null && message.hasOwnProperty("classification"))
-                            object.classification = options.enums === String ? $root.enfonica.messaging.v1.Message.MessageClassification[message.classification] : message.classification;
-                        if (message.unsubscribeContentBehavior != null && message.hasOwnProperty("unsubscribeContentBehavior"))
-                            object.unsubscribeContentBehavior = options.enums === String ? $root.enfonica.messaging.v1.Message.UnsubscribeContentBehavior[message.unsubscribeContentBehavior] : message.unsubscribeContentBehavior;
-                        if (message.encoding != null && message.hasOwnProperty("encoding"))
-                            object.encoding = options.enums === String ? $root.enfonica.messaging.v1.Message.MessageEncoding[message.encoding] : message.encoding;
-                        return object;
-                    };
-    
-                    /**
-                     * Converts this Message to JSON.
-                     * @function toJSON
-                     * @memberof enfonica.messaging.v1.Message
-                     * @instance
-                     * @returns {Object.<string,*>} JSON object
-                     */
-                    Message.prototype.toJSON = function toJSON() {
-                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                    };
-    
-                    /**
-                     * Status enum.
-                     * @name enfonica.messaging.v1.Message.Status
-                     * @enum {number}
-                     * @property {number} STATUS_UNKNOWN=0 STATUS_UNKNOWN value
-                     * @property {number} QUEUED=1 QUEUED value
-                     * @property {number} SENDING=2 SENDING value
-                     * @property {number} SENT=3 SENT value
-                     * @property {number} FAILED=4 FAILED value
-                     * @property {number} DELIVERED=5 DELIVERED value
-                     * @property {number} UNDELIVERED=6 UNDELIVERED value
-                     * @property {number} RECEIVED=7 RECEIVED value
-                     */
-                    Message.Status = (function() {
-                        var valuesById = {}, values = Object.create(valuesById);
-                        values[valuesById[0] = "STATUS_UNKNOWN"] = 0;
-                        values[valuesById[1] = "QUEUED"] = 1;
-                        values[valuesById[2] = "SENDING"] = 2;
-                        values[valuesById[3] = "SENT"] = 3;
-                        values[valuesById[4] = "FAILED"] = 4;
-                        values[valuesById[5] = "DELIVERED"] = 5;
-                        values[valuesById[6] = "UNDELIVERED"] = 6;
-                        values[valuesById[7] = "RECEIVED"] = 7;
-                        return values;
-                    })();
-    
-                    /**
-                     * Direction enum.
-                     * @name enfonica.messaging.v1.Message.Direction
-                     * @enum {number}
-                     * @property {number} DIRECTION_UNKNOWN=0 DIRECTION_UNKNOWN value
-                     * @property {number} OUTGOING=1 OUTGOING value
-                     * @property {number} INCOMING=2 INCOMING value
-                     */
-                    Message.Direction = (function() {
-                        var valuesById = {}, values = Object.create(valuesById);
-                        values[valuesById[0] = "DIRECTION_UNKNOWN"] = 0;
-                        values[valuesById[1] = "OUTGOING"] = 1;
-                        values[valuesById[2] = "INCOMING"] = 2;
-                        return values;
-                    })();
-    
-                    /**
-                     * MessageClassification enum.
-                     * @name enfonica.messaging.v1.Message.MessageClassification
-                     * @enum {number}
-                     * @property {number} UNSPECIFIED=0 UNSPECIFIED value
-                     * @property {number} UNCLASSIFIED=1 UNCLASSIFIED value
-                     * @property {number} TRANSACTIONAL=2 TRANSACTIONAL value
-                     * @property {number} MARKETING=3 MARKETING value
-                     */
-                    Message.MessageClassification = (function() {
-                        var valuesById = {}, values = Object.create(valuesById);
-                        values[valuesById[0] = "UNSPECIFIED"] = 0;
-                        values[valuesById[1] = "UNCLASSIFIED"] = 1;
-                        values[valuesById[2] = "TRANSACTIONAL"] = 2;
-                        values[valuesById[3] = "MARKETING"] = 3;
-                        return values;
-                    })();
-    
-                    /**
-                     * UnsubscribeContentBehavior enum.
-                     * @name enfonica.messaging.v1.Message.UnsubscribeContentBehavior
-                     * @enum {number}
-                     * @property {number} UNSUBSCRIBE_CONTENT_UNKNOWN=0 UNSUBSCRIBE_CONTENT_UNKNOWN value
-                     * @property {number} NONE=1 NONE value
-                     * @property {number} APPEND_URL=2 APPEND_URL value
-                     */
-                    Message.UnsubscribeContentBehavior = (function() {
-                        var valuesById = {}, values = Object.create(valuesById);
-                        values[valuesById[0] = "UNSUBSCRIBE_CONTENT_UNKNOWN"] = 0;
-                        values[valuesById[1] = "NONE"] = 1;
-                        values[valuesById[2] = "APPEND_URL"] = 2;
-                        return values;
-                    })();
-    
-                    /**
-                     * MessageEncoding enum.
-                     * @name enfonica.messaging.v1.Message.MessageEncoding
-                     * @enum {number}
-                     * @property {number} MESSAGE_ENCODING_UNKNOWN=0 MESSAGE_ENCODING_UNKNOWN value
-                     * @property {number} GSM7=1 GSM7 value
-                     * @property {number} UCS2=2 UCS2 value
-                     */
-                    Message.MessageEncoding = (function() {
-                        var valuesById = {}, values = Object.create(valuesById);
-                        values[valuesById[0] = "MESSAGE_ENCODING_UNKNOWN"] = 0;
-                        values[valuesById[1] = "GSM7"] = 1;
-                        values[valuesById[2] = "UCS2"] = 2;
-                        return values;
-                    })();
-    
-                    return Message;
-                })();
-    
-                v1.CreateMessageRequest = (function() {
-    
-                    /**
-                     * Properties of a CreateMessageRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @interface ICreateMessageRequest
-                     * @property {string|null} [parent] CreateMessageRequest parent
-                     * @property {enfonica.messaging.v1.IMessage|null} [message] CreateMessageRequest message
-                     */
-    
-                    /**
-                     * Constructs a new CreateMessageRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a CreateMessageRequest.
-                     * @implements ICreateMessageRequest
-                     * @constructor
-                     * @param {enfonica.messaging.v1.ICreateMessageRequest=} [properties] Properties to set
-                     */
-                    function CreateMessageRequest(properties) {
-                        if (properties)
-                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                                if (properties[keys[i]] != null)
-                                    this[keys[i]] = properties[keys[i]];
-                    }
-    
-                    /**
-                     * CreateMessageRequest parent.
-                     * @member {string} parent
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @instance
-                     */
-                    CreateMessageRequest.prototype.parent = "";
-    
-                    /**
-                     * CreateMessageRequest message.
-                     * @member {enfonica.messaging.v1.IMessage|null|undefined} message
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @instance
-                     */
-                    CreateMessageRequest.prototype.message = null;
-    
-                    /**
-                     * Creates a new CreateMessageRequest instance using the specified properties.
-                     * @function create
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.ICreateMessageRequest=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.CreateMessageRequest} CreateMessageRequest instance
-                     */
-                    CreateMessageRequest.create = function create(properties) {
-                        return new CreateMessageRequest(properties);
-                    };
-    
-                    /**
-                     * Encodes the specified CreateMessageRequest message. Does not implicitly {@link enfonica.messaging.v1.CreateMessageRequest.verify|verify} messages.
-                     * @function encode
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.ICreateMessageRequest} message CreateMessageRequest message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    CreateMessageRequest.encode = function encode(message, writer) {
-                        if (!writer)
-                            writer = $Writer.create();
-                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
-                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
-                        if (message.message != null && Object.hasOwnProperty.call(message, "message"))
-                            $root.enfonica.messaging.v1.Message.encode(message.message, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                        return writer;
-                    };
-    
-                    /**
-                     * Encodes the specified CreateMessageRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.CreateMessageRequest.verify|verify} messages.
-                     * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.ICreateMessageRequest} message CreateMessageRequest message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    CreateMessageRequest.encodeDelimited = function encodeDelimited(message, writer) {
-                        return this.encode(message, writer).ldelim();
-                    };
-    
-                    /**
-                     * Decodes a CreateMessageRequest message from the specified reader or buffer.
-                     * @function decode
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.CreateMessageRequest} CreateMessageRequest
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    CreateMessageRequest.decode = function decode(reader, length) {
-                        if (!(reader instanceof $Reader))
-                            reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.CreateMessageRequest();
-                        while (reader.pos < end) {
-                            var tag = reader.uint32();
-                            switch (tag >>> 3) {
-                            case 1:
-                                message.parent = reader.string();
-                                break;
-                            case 2:
-                                message.message = $root.enfonica.messaging.v1.Message.decode(reader, reader.uint32());
-                                break;
-                            default:
-                                reader.skipType(tag & 7);
-                                break;
-                            }
-                        }
-                        return message;
-                    };
-    
-                    /**
-                     * Decodes a CreateMessageRequest message from the specified reader or buffer, length delimited.
-                     * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.CreateMessageRequest} CreateMessageRequest
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    CreateMessageRequest.decodeDelimited = function decodeDelimited(reader) {
-                        if (!(reader instanceof $Reader))
-                            reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
-                    };
-    
-                    /**
-                     * Verifies a CreateMessageRequest message.
-                     * @function verify
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @static
-                     * @param {Object.<string,*>} message Plain object to verify
-                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                     */
-                    CreateMessageRequest.verify = function verify(message) {
-                        if (typeof message !== "object" || message === null)
-                            return "object expected";
-                        if (message.parent != null && message.hasOwnProperty("parent"))
-                            if (!$util.isString(message.parent))
-                                return "parent: string expected";
-                        if (message.message != null && message.hasOwnProperty("message")) {
-                            var error = $root.enfonica.messaging.v1.Message.verify(message.message);
-                            if (error)
-                                return "message." + error;
-                        }
-                        return null;
-                    };
-    
-                    /**
-                     * Creates a CreateMessageRequest message from a plain object. Also converts values to their respective internal types.
-                     * @function fromObject
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @static
-                     * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.CreateMessageRequest} CreateMessageRequest
-                     */
-                    CreateMessageRequest.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.CreateMessageRequest)
-                            return object;
-                        var message = new $root.enfonica.messaging.v1.CreateMessageRequest();
-                        if (object.parent != null)
-                            message.parent = String(object.parent);
-                        if (object.message != null) {
-                            if (typeof object.message !== "object")
-                                throw TypeError(".enfonica.messaging.v1.CreateMessageRequest.message: object expected");
-                            message.message = $root.enfonica.messaging.v1.Message.fromObject(object.message);
-                        }
-                        return message;
-                    };
-    
-                    /**
-                     * Creates a plain object from a CreateMessageRequest message. Also converts values to other types if specified.
-                     * @function toObject
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.CreateMessageRequest} message CreateMessageRequest
-                     * @param {$protobuf.IConversionOptions} [options] Conversion options
-                     * @returns {Object.<string,*>} Plain object
-                     */
-                    CreateMessageRequest.toObject = function toObject(message, options) {
-                        if (!options)
-                            options = {};
-                        var object = {};
-                        if (options.defaults) {
-                            object.parent = "";
-                            object.message = null;
-                        }
-                        if (message.parent != null && message.hasOwnProperty("parent"))
-                            object.parent = message.parent;
-                        if (message.message != null && message.hasOwnProperty("message"))
-                            object.message = $root.enfonica.messaging.v1.Message.toObject(message.message, options);
-                        return object;
-                    };
-    
-                    /**
-                     * Converts this CreateMessageRequest to JSON.
-                     * @function toJSON
-                     * @memberof enfonica.messaging.v1.CreateMessageRequest
-                     * @instance
-                     * @returns {Object.<string,*>} JSON object
-                     */
-                    CreateMessageRequest.prototype.toJSON = function toJSON() {
-                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                    };
-    
-                    return CreateMessageRequest;
-                })();
-    
-                v1.GetMessageRequest = (function() {
-    
-                    /**
-                     * Properties of a GetMessageRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IGetMessageRequest
-                     * @property {string|null} [name] GetMessageRequest name
-                     */
-    
-                    /**
-                     * Constructs a new GetMessageRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a GetMessageRequest.
-                     * @implements IGetMessageRequest
-                     * @constructor
-                     * @param {enfonica.messaging.v1.IGetMessageRequest=} [properties] Properties to set
-                     */
-                    function GetMessageRequest(properties) {
-                        if (properties)
-                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                                if (properties[keys[i]] != null)
-                                    this[keys[i]] = properties[keys[i]];
-                    }
-    
-                    /**
-                     * GetMessageRequest name.
-                     * @member {string} name
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @instance
-                     */
-                    GetMessageRequest.prototype.name = "";
-    
-                    /**
-                     * Creates a new GetMessageRequest instance using the specified properties.
-                     * @function create
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.IGetMessageRequest=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.GetMessageRequest} GetMessageRequest instance
-                     */
-                    GetMessageRequest.create = function create(properties) {
-                        return new GetMessageRequest(properties);
-                    };
-    
-                    /**
-                     * Encodes the specified GetMessageRequest message. Does not implicitly {@link enfonica.messaging.v1.GetMessageRequest.verify|verify} messages.
-                     * @function encode
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.IGetMessageRequest} message GetMessageRequest message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    GetMessageRequest.encode = function encode(message, writer) {
-                        if (!writer)
-                            writer = $Writer.create();
-                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                        return writer;
-                    };
-    
-                    /**
-                     * Encodes the specified GetMessageRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.GetMessageRequest.verify|verify} messages.
-                     * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.IGetMessageRequest} message GetMessageRequest message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    GetMessageRequest.encodeDelimited = function encodeDelimited(message, writer) {
-                        return this.encode(message, writer).ldelim();
-                    };
-    
-                    /**
-                     * Decodes a GetMessageRequest message from the specified reader or buffer.
-                     * @function decode
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.GetMessageRequest} GetMessageRequest
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    GetMessageRequest.decode = function decode(reader, length) {
-                        if (!(reader instanceof $Reader))
-                            reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.GetMessageRequest();
-                        while (reader.pos < end) {
-                            var tag = reader.uint32();
-                            switch (tag >>> 3) {
-                            case 1:
-                                message.name = reader.string();
-                                break;
-                            default:
-                                reader.skipType(tag & 7);
-                                break;
-                            }
-                        }
-                        return message;
-                    };
-    
-                    /**
-                     * Decodes a GetMessageRequest message from the specified reader or buffer, length delimited.
-                     * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.GetMessageRequest} GetMessageRequest
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    GetMessageRequest.decodeDelimited = function decodeDelimited(reader) {
-                        if (!(reader instanceof $Reader))
-                            reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
-                    };
-    
-                    /**
-                     * Verifies a GetMessageRequest message.
-                     * @function verify
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @static
-                     * @param {Object.<string,*>} message Plain object to verify
-                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                     */
-                    GetMessageRequest.verify = function verify(message) {
-                        if (typeof message !== "object" || message === null)
-                            return "object expected";
-                        if (message.name != null && message.hasOwnProperty("name"))
-                            if (!$util.isString(message.name))
-                                return "name: string expected";
-                        return null;
-                    };
-    
-                    /**
-                     * Creates a GetMessageRequest message from a plain object. Also converts values to their respective internal types.
-                     * @function fromObject
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @static
-                     * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.GetMessageRequest} GetMessageRequest
-                     */
-                    GetMessageRequest.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.GetMessageRequest)
-                            return object;
-                        var message = new $root.enfonica.messaging.v1.GetMessageRequest();
-                        if (object.name != null)
-                            message.name = String(object.name);
-                        return message;
-                    };
-    
-                    /**
-                     * Creates a plain object from a GetMessageRequest message. Also converts values to other types if specified.
-                     * @function toObject
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.GetMessageRequest} message GetMessageRequest
-                     * @param {$protobuf.IConversionOptions} [options] Conversion options
-                     * @returns {Object.<string,*>} Plain object
-                     */
-                    GetMessageRequest.toObject = function toObject(message, options) {
-                        if (!options)
-                            options = {};
-                        var object = {};
-                        if (options.defaults)
-                            object.name = "";
-                        if (message.name != null && message.hasOwnProperty("name"))
-                            object.name = message.name;
-                        return object;
-                    };
-    
-                    /**
-                     * Converts this GetMessageRequest to JSON.
-                     * @function toJSON
-                     * @memberof enfonica.messaging.v1.GetMessageRequest
-                     * @instance
-                     * @returns {Object.<string,*>} JSON object
-                     */
-                    GetMessageRequest.prototype.toJSON = function toJSON() {
-                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                    };
-    
-                    return GetMessageRequest;
-                })();
-    
-                v1.ListMessagesRequest = (function() {
-    
-                    /**
-                     * Properties of a ListMessagesRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IListMessagesRequest
-                     * @property {string|null} [parent] ListMessagesRequest parent
-                     * @property {number|null} [pageSize] ListMessagesRequest pageSize
-                     * @property {string|null} [pageToken] ListMessagesRequest pageToken
-                     * @property {google.protobuf.ITimestamp|null} [startTime] ListMessagesRequest startTime
-                     * @property {google.protobuf.ITimestamp|null} [endTime] ListMessagesRequest endTime
-                     */
-    
-                    /**
-                     * Constructs a new ListMessagesRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a ListMessagesRequest.
-                     * @implements IListMessagesRequest
-                     * @constructor
-                     * @param {enfonica.messaging.v1.IListMessagesRequest=} [properties] Properties to set
-                     */
-                    function ListMessagesRequest(properties) {
-                        if (properties)
-                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                                if (properties[keys[i]] != null)
-                                    this[keys[i]] = properties[keys[i]];
-                    }
-    
-                    /**
-                     * ListMessagesRequest parent.
-                     * @member {string} parent
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @instance
-                     */
-                    ListMessagesRequest.prototype.parent = "";
-    
-                    /**
-                     * ListMessagesRequest pageSize.
-                     * @member {number} pageSize
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @instance
-                     */
-                    ListMessagesRequest.prototype.pageSize = 0;
-    
-                    /**
-                     * ListMessagesRequest pageToken.
-                     * @member {string} pageToken
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @instance
-                     */
-                    ListMessagesRequest.prototype.pageToken = "";
-    
-                    /**
-                     * ListMessagesRequest startTime.
-                     * @member {google.protobuf.ITimestamp|null|undefined} startTime
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @instance
-                     */
-                    ListMessagesRequest.prototype.startTime = null;
-    
-                    /**
-                     * ListMessagesRequest endTime.
-                     * @member {google.protobuf.ITimestamp|null|undefined} endTime
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @instance
-                     */
-                    ListMessagesRequest.prototype.endTime = null;
-    
-                    /**
-                     * Creates a new ListMessagesRequest instance using the specified properties.
-                     * @function create
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.IListMessagesRequest=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.ListMessagesRequest} ListMessagesRequest instance
-                     */
-                    ListMessagesRequest.create = function create(properties) {
-                        return new ListMessagesRequest(properties);
-                    };
-    
-                    /**
-                     * Encodes the specified ListMessagesRequest message. Does not implicitly {@link enfonica.messaging.v1.ListMessagesRequest.verify|verify} messages.
-                     * @function encode
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.IListMessagesRequest} message ListMessagesRequest message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    ListMessagesRequest.encode = function encode(message, writer) {
-                        if (!writer)
-                            writer = $Writer.create();
-                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
-                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
-                        if (message.pageSize != null && Object.hasOwnProperty.call(message, "pageSize"))
-                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pageSize);
-                        if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
-                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.pageToken);
-                        if (message.startTime != null && Object.hasOwnProperty.call(message, "startTime"))
-                            $root.google.protobuf.Timestamp.encode(message.startTime, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-                        if (message.endTime != null && Object.hasOwnProperty.call(message, "endTime"))
-                            $root.google.protobuf.Timestamp.encode(message.endTime, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-                        return writer;
-                    };
-    
-                    /**
-                     * Encodes the specified ListMessagesRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.ListMessagesRequest.verify|verify} messages.
-                     * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.IListMessagesRequest} message ListMessagesRequest message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    ListMessagesRequest.encodeDelimited = function encodeDelimited(message, writer) {
-                        return this.encode(message, writer).ldelim();
-                    };
-    
-                    /**
-                     * Decodes a ListMessagesRequest message from the specified reader or buffer.
-                     * @function decode
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.ListMessagesRequest} ListMessagesRequest
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    ListMessagesRequest.decode = function decode(reader, length) {
-                        if (!(reader instanceof $Reader))
-                            reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.ListMessagesRequest();
-                        while (reader.pos < end) {
-                            var tag = reader.uint32();
-                            switch (tag >>> 3) {
-                            case 1:
-                                message.parent = reader.string();
-                                break;
-                            case 2:
-                                message.pageSize = reader.int32();
-                                break;
-                            case 3:
-                                message.pageToken = reader.string();
-                                break;
-                            case 4:
-                                message.startTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
-                                break;
-                            case 5:
-                                message.endTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
-                                break;
-                            default:
-                                reader.skipType(tag & 7);
-                                break;
-                            }
-                        }
-                        return message;
-                    };
-    
-                    /**
-                     * Decodes a ListMessagesRequest message from the specified reader or buffer, length delimited.
-                     * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.ListMessagesRequest} ListMessagesRequest
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    ListMessagesRequest.decodeDelimited = function decodeDelimited(reader) {
-                        if (!(reader instanceof $Reader))
-                            reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
-                    };
-    
-                    /**
-                     * Verifies a ListMessagesRequest message.
-                     * @function verify
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @static
-                     * @param {Object.<string,*>} message Plain object to verify
-                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                     */
-                    ListMessagesRequest.verify = function verify(message) {
-                        if (typeof message !== "object" || message === null)
-                            return "object expected";
-                        if (message.parent != null && message.hasOwnProperty("parent"))
-                            if (!$util.isString(message.parent))
-                                return "parent: string expected";
-                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
-                            if (!$util.isInteger(message.pageSize))
-                                return "pageSize: integer expected";
-                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
-                            if (!$util.isString(message.pageToken))
-                                return "pageToken: string expected";
-                        if (message.startTime != null && message.hasOwnProperty("startTime")) {
-                            var error = $root.google.protobuf.Timestamp.verify(message.startTime);
-                            if (error)
-                                return "startTime." + error;
-                        }
-                        if (message.endTime != null && message.hasOwnProperty("endTime")) {
-                            var error = $root.google.protobuf.Timestamp.verify(message.endTime);
-                            if (error)
-                                return "endTime." + error;
-                        }
-                        return null;
-                    };
-    
-                    /**
-                     * Creates a ListMessagesRequest message from a plain object. Also converts values to their respective internal types.
-                     * @function fromObject
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @static
-                     * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.ListMessagesRequest} ListMessagesRequest
-                     */
-                    ListMessagesRequest.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.ListMessagesRequest)
-                            return object;
-                        var message = new $root.enfonica.messaging.v1.ListMessagesRequest();
-                        if (object.parent != null)
-                            message.parent = String(object.parent);
-                        if (object.pageSize != null)
-                            message.pageSize = object.pageSize | 0;
-                        if (object.pageToken != null)
-                            message.pageToken = String(object.pageToken);
-                        if (object.startTime != null) {
-                            if (typeof object.startTime !== "object")
-                                throw TypeError(".enfonica.messaging.v1.ListMessagesRequest.startTime: object expected");
-                            message.startTime = $root.google.protobuf.Timestamp.fromObject(object.startTime);
-                        }
-                        if (object.endTime != null) {
-                            if (typeof object.endTime !== "object")
-                                throw TypeError(".enfonica.messaging.v1.ListMessagesRequest.endTime: object expected");
-                            message.endTime = $root.google.protobuf.Timestamp.fromObject(object.endTime);
-                        }
-                        return message;
-                    };
-    
-                    /**
-                     * Creates a plain object from a ListMessagesRequest message. Also converts values to other types if specified.
-                     * @function toObject
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @static
-                     * @param {enfonica.messaging.v1.ListMessagesRequest} message ListMessagesRequest
-                     * @param {$protobuf.IConversionOptions} [options] Conversion options
-                     * @returns {Object.<string,*>} Plain object
-                     */
-                    ListMessagesRequest.toObject = function toObject(message, options) {
-                        if (!options)
-                            options = {};
-                        var object = {};
-                        if (options.defaults) {
-                            object.parent = "";
-                            object.pageSize = 0;
-                            object.pageToken = "";
-                            object.startTime = null;
-                            object.endTime = null;
-                        }
-                        if (message.parent != null && message.hasOwnProperty("parent"))
-                            object.parent = message.parent;
-                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
-                            object.pageSize = message.pageSize;
-                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
-                            object.pageToken = message.pageToken;
-                        if (message.startTime != null && message.hasOwnProperty("startTime"))
-                            object.startTime = $root.google.protobuf.Timestamp.toObject(message.startTime, options);
-                        if (message.endTime != null && message.hasOwnProperty("endTime"))
-                            object.endTime = $root.google.protobuf.Timestamp.toObject(message.endTime, options);
-                        return object;
-                    };
-    
-                    /**
-                     * Converts this ListMessagesRequest to JSON.
-                     * @function toJSON
-                     * @memberof enfonica.messaging.v1.ListMessagesRequest
-                     * @instance
-                     * @returns {Object.<string,*>} JSON object
-                     */
-                    ListMessagesRequest.prototype.toJSON = function toJSON() {
-                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                    };
-    
-                    return ListMessagesRequest;
-                })();
-    
-                v1.ListMessagesResponse = (function() {
-    
-                    /**
-                     * Properties of a ListMessagesResponse.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IListMessagesResponse
-                     * @property {Array.<enfonica.messaging.v1.IMessage>|null} [messages] ListMessagesResponse messages
-                     * @property {string|null} [nextPageToken] ListMessagesResponse nextPageToken
-                     */
-    
-                    /**
-                     * Constructs a new ListMessagesResponse.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a ListMessagesResponse.
-                     * @implements IListMessagesResponse
-                     * @constructor
-                     * @param {enfonica.messaging.v1.IListMessagesResponse=} [properties] Properties to set
-                     */
-                    function ListMessagesResponse(properties) {
-                        this.messages = [];
-                        if (properties)
-                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                                if (properties[keys[i]] != null)
-                                    this[keys[i]] = properties[keys[i]];
-                    }
-    
-                    /**
-                     * ListMessagesResponse messages.
-                     * @member {Array.<enfonica.messaging.v1.IMessage>} messages
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @instance
-                     */
-                    ListMessagesResponse.prototype.messages = $util.emptyArray;
-    
-                    /**
-                     * ListMessagesResponse nextPageToken.
-                     * @member {string} nextPageToken
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @instance
-                     */
-                    ListMessagesResponse.prototype.nextPageToken = "";
-    
-                    /**
-                     * Creates a new ListMessagesResponse instance using the specified properties.
-                     * @function create
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @static
-                     * @param {enfonica.messaging.v1.IListMessagesResponse=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.ListMessagesResponse} ListMessagesResponse instance
-                     */
-                    ListMessagesResponse.create = function create(properties) {
-                        return new ListMessagesResponse(properties);
-                    };
-    
-                    /**
-                     * Encodes the specified ListMessagesResponse message. Does not implicitly {@link enfonica.messaging.v1.ListMessagesResponse.verify|verify} messages.
-                     * @function encode
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @static
-                     * @param {enfonica.messaging.v1.IListMessagesResponse} message ListMessagesResponse message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    ListMessagesResponse.encode = function encode(message, writer) {
-                        if (!writer)
-                            writer = $Writer.create();
-                        if (message.messages != null && message.messages.length)
-                            for (var i = 0; i < message.messages.length; ++i)
-                                $root.enfonica.messaging.v1.Message.encode(message.messages[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-                        if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
-                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
-                        return writer;
-                    };
-    
-                    /**
-                     * Encodes the specified ListMessagesResponse message, length delimited. Does not implicitly {@link enfonica.messaging.v1.ListMessagesResponse.verify|verify} messages.
-                     * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @static
-                     * @param {enfonica.messaging.v1.IListMessagesResponse} message ListMessagesResponse message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    ListMessagesResponse.encodeDelimited = function encodeDelimited(message, writer) {
-                        return this.encode(message, writer).ldelim();
-                    };
-    
-                    /**
-                     * Decodes a ListMessagesResponse message from the specified reader or buffer.
-                     * @function decode
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.ListMessagesResponse} ListMessagesResponse
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    ListMessagesResponse.decode = function decode(reader, length) {
-                        if (!(reader instanceof $Reader))
-                            reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.ListMessagesResponse();
-                        while (reader.pos < end) {
-                            var tag = reader.uint32();
-                            switch (tag >>> 3) {
-                            case 1:
-                                if (!(message.messages && message.messages.length))
-                                    message.messages = [];
-                                message.messages.push($root.enfonica.messaging.v1.Message.decode(reader, reader.uint32()));
-                                break;
-                            case 2:
-                                message.nextPageToken = reader.string();
-                                break;
-                            default:
-                                reader.skipType(tag & 7);
-                                break;
-                            }
-                        }
-                        return message;
-                    };
-    
-                    /**
-                     * Decodes a ListMessagesResponse message from the specified reader or buffer, length delimited.
-                     * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @static
-                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.ListMessagesResponse} ListMessagesResponse
-                     * @throws {Error} If the payload is not a reader or valid buffer
-                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                     */
-                    ListMessagesResponse.decodeDelimited = function decodeDelimited(reader) {
-                        if (!(reader instanceof $Reader))
-                            reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
-                    };
-    
-                    /**
-                     * Verifies a ListMessagesResponse message.
-                     * @function verify
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @static
-                     * @param {Object.<string,*>} message Plain object to verify
-                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                     */
-                    ListMessagesResponse.verify = function verify(message) {
-                        if (typeof message !== "object" || message === null)
-                            return "object expected";
-                        if (message.messages != null && message.hasOwnProperty("messages")) {
-                            if (!Array.isArray(message.messages))
-                                return "messages: array expected";
-                            for (var i = 0; i < message.messages.length; ++i) {
-                                var error = $root.enfonica.messaging.v1.Message.verify(message.messages[i]);
-                                if (error)
-                                    return "messages." + error;
-                            }
-                        }
-                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
-                            if (!$util.isString(message.nextPageToken))
-                                return "nextPageToken: string expected";
-                        return null;
-                    };
-    
-                    /**
-                     * Creates a ListMessagesResponse message from a plain object. Also converts values to their respective internal types.
-                     * @function fromObject
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @static
-                     * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.ListMessagesResponse} ListMessagesResponse
-                     */
-                    ListMessagesResponse.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.ListMessagesResponse)
-                            return object;
-                        var message = new $root.enfonica.messaging.v1.ListMessagesResponse();
-                        if (object.messages) {
-                            if (!Array.isArray(object.messages))
-                                throw TypeError(".enfonica.messaging.v1.ListMessagesResponse.messages: array expected");
-                            message.messages = [];
-                            for (var i = 0; i < object.messages.length; ++i) {
-                                if (typeof object.messages[i] !== "object")
-                                    throw TypeError(".enfonica.messaging.v1.ListMessagesResponse.messages: object expected");
-                                message.messages[i] = $root.enfonica.messaging.v1.Message.fromObject(object.messages[i]);
-                            }
-                        }
-                        if (object.nextPageToken != null)
-                            message.nextPageToken = String(object.nextPageToken);
-                        return message;
-                    };
-    
-                    /**
-                     * Creates a plain object from a ListMessagesResponse message. Also converts values to other types if specified.
-                     * @function toObject
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @static
-                     * @param {enfonica.messaging.v1.ListMessagesResponse} message ListMessagesResponse
-                     * @param {$protobuf.IConversionOptions} [options] Conversion options
-                     * @returns {Object.<string,*>} Plain object
-                     */
-                    ListMessagesResponse.toObject = function toObject(message, options) {
-                        if (!options)
-                            options = {};
-                        var object = {};
-                        if (options.arrays || options.defaults)
-                            object.messages = [];
-                        if (options.defaults)
-                            object.nextPageToken = "";
-                        if (message.messages && message.messages.length) {
-                            object.messages = [];
-                            for (var j = 0; j < message.messages.length; ++j)
-                                object.messages[j] = $root.enfonica.messaging.v1.Message.toObject(message.messages[j], options);
-                        }
-                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
-                            object.nextPageToken = message.nextPageToken;
-                        return object;
-                    };
-    
-                    /**
-                     * Converts this ListMessagesResponse to JSON.
-                     * @function toJSON
-                     * @memberof enfonica.messaging.v1.ListMessagesResponse
-                     * @instance
-                     * @returns {Object.<string,*>} JSON object
-                     */
-                    ListMessagesResponse.prototype.toJSON = function toJSON() {
-                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                    };
-    
-                    return ListMessagesResponse;
-                })();
-    
-                v1.Unsubscribers = (function() {
-    
-                    /**
-                     * Constructs a new Unsubscribers service.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents an Unsubscribers
-                     * @extends $protobuf.rpc.Service
-                     * @constructor
-                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
-                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
-                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
-                     */
-                    function Unsubscribers(rpcImpl, requestDelimited, responseDelimited) {
-                        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
-                    }
-    
-                    (Unsubscribers.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Unsubscribers;
-    
-                    /**
-                     * Creates new Unsubscribers service using the specified rpc implementation.
-                     * @function create
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @static
-                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
-                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
-                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
-                     * @returns {Unsubscribers} RPC service. Useful where requests and/or responses are streamed.
-                     */
-                    Unsubscribers.create = function create(rpcImpl, requestDelimited, responseDelimited) {
-                        return new this(rpcImpl, requestDelimited, responseDelimited);
-                    };
-    
-                    /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#createUnsubscriber}.
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @typedef CreateUnsubscriberCallback
-                     * @type {function}
-                     * @param {Error|null} error Error, if any
-                     * @param {enfonica.messaging.v1.Unsubscriber} [response] Unsubscriber
-                     */
-    
-                    /**
-                     * Calls CreateUnsubscriber.
-                     * @function createUnsubscriber
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.ICreateUnsubscriberRequest} request CreateUnsubscriberRequest message or plain object
-                     * @param {enfonica.messaging.v1.Unsubscribers.CreateUnsubscriberCallback} callback Node-style callback called with the error, if any, and Unsubscriber
-                     * @returns {undefined}
-                     * @variation 1
-                     */
-                    Object.defineProperty(Unsubscribers.prototype.createUnsubscriber = function createUnsubscriber(request, callback) {
-                        return this.rpcCall(createUnsubscriber, $root.enfonica.messaging.v1.CreateUnsubscriberRequest, $root.enfonica.messaging.v1.Unsubscriber, request, callback);
-                    }, "name", { value: "CreateUnsubscriber" });
-    
-                    /**
-                     * Calls CreateUnsubscriber.
-                     * @function createUnsubscriber
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.ICreateUnsubscriberRequest} request CreateUnsubscriberRequest message or plain object
-                     * @returns {Promise<enfonica.messaging.v1.Unsubscriber>} Promise
-                     * @variation 2
-                     */
-    
-                    /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#getUnsubscriber}.
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @typedef GetUnsubscriberCallback
-                     * @type {function}
-                     * @param {Error|null} error Error, if any
-                     * @param {enfonica.messaging.v1.Unsubscriber} [response] Unsubscriber
-                     */
-    
-                    /**
-                     * Calls GetUnsubscriber.
-                     * @function getUnsubscriber
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.IGetUnsubscriberRequest} request GetUnsubscriberRequest message or plain object
-                     * @param {enfonica.messaging.v1.Unsubscribers.GetUnsubscriberCallback} callback Node-style callback called with the error, if any, and Unsubscriber
-                     * @returns {undefined}
-                     * @variation 1
-                     */
-                    Object.defineProperty(Unsubscribers.prototype.getUnsubscriber = function getUnsubscriber(request, callback) {
-                        return this.rpcCall(getUnsubscriber, $root.enfonica.messaging.v1.GetUnsubscriberRequest, $root.enfonica.messaging.v1.Unsubscriber, request, callback);
-                    }, "name", { value: "GetUnsubscriber" });
-    
-                    /**
-                     * Calls GetUnsubscriber.
-                     * @function getUnsubscriber
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.IGetUnsubscriberRequest} request GetUnsubscriberRequest message or plain object
-                     * @returns {Promise<enfonica.messaging.v1.Unsubscriber>} Promise
-                     * @variation 2
-                     */
-    
-                    /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#listUnsubscribers}.
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @typedef ListUnsubscribersCallback
-                     * @type {function}
-                     * @param {Error|null} error Error, if any
-                     * @param {enfonica.messaging.v1.ListUnsubscribersResponse} [response] ListUnsubscribersResponse
-                     */
-    
-                    /**
-                     * Calls ListUnsubscribers.
-                     * @function listUnsubscribers
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.IListUnsubscribersRequest} request ListUnsubscribersRequest message or plain object
-                     * @param {enfonica.messaging.v1.Unsubscribers.ListUnsubscribersCallback} callback Node-style callback called with the error, if any, and ListUnsubscribersResponse
-                     * @returns {undefined}
-                     * @variation 1
-                     */
-                    Object.defineProperty(Unsubscribers.prototype.listUnsubscribers = function listUnsubscribers(request, callback) {
-                        return this.rpcCall(listUnsubscribers, $root.enfonica.messaging.v1.ListUnsubscribersRequest, $root.enfonica.messaging.v1.ListUnsubscribersResponse, request, callback);
-                    }, "name", { value: "ListUnsubscribers" });
-    
-                    /**
-                     * Calls ListUnsubscribers.
-                     * @function listUnsubscribers
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.IListUnsubscribersRequest} request ListUnsubscribersRequest message or plain object
-                     * @returns {Promise<enfonica.messaging.v1.ListUnsubscribersResponse>} Promise
-                     * @variation 2
-                     */
-    
-                    /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#updateUnsubscriber}.
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @typedef UpdateUnsubscriberCallback
-                     * @type {function}
-                     * @param {Error|null} error Error, if any
-                     * @param {enfonica.messaging.v1.Unsubscriber} [response] Unsubscriber
-                     */
-    
-                    /**
-                     * Calls UpdateUnsubscriber.
-                     * @function updateUnsubscriber
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.IUpdateUnsubscriberRequest} request UpdateUnsubscriberRequest message or plain object
-                     * @param {enfonica.messaging.v1.Unsubscribers.UpdateUnsubscriberCallback} callback Node-style callback called with the error, if any, and Unsubscriber
-                     * @returns {undefined}
-                     * @variation 1
-                     */
-                    Object.defineProperty(Unsubscribers.prototype.updateUnsubscriber = function updateUnsubscriber(request, callback) {
-                        return this.rpcCall(updateUnsubscriber, $root.enfonica.messaging.v1.UpdateUnsubscriberRequest, $root.enfonica.messaging.v1.Unsubscriber, request, callback);
-                    }, "name", { value: "UpdateUnsubscriber" });
-    
-                    /**
-                     * Calls UpdateUnsubscriber.
-                     * @function updateUnsubscriber
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.IUpdateUnsubscriberRequest} request UpdateUnsubscriberRequest message or plain object
-                     * @returns {Promise<enfonica.messaging.v1.Unsubscriber>} Promise
-                     * @variation 2
-                     */
-    
-                    /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#deleteUnsubscriber}.
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @typedef DeleteUnsubscriberCallback
-                     * @type {function}
-                     * @param {Error|null} error Error, if any
-                     * @param {enfonica.messaging.v1.Unsubscriber} [response] Unsubscriber
-                     */
-    
-                    /**
-                     * Calls DeleteUnsubscriber.
-                     * @function deleteUnsubscriber
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.IDeleteUnsubscriberRequest} request DeleteUnsubscriberRequest message or plain object
-                     * @param {enfonica.messaging.v1.Unsubscribers.DeleteUnsubscriberCallback} callback Node-style callback called with the error, if any, and Unsubscriber
-                     * @returns {undefined}
-                     * @variation 1
-                     */
-                    Object.defineProperty(Unsubscribers.prototype.deleteUnsubscriber = function deleteUnsubscriber(request, callback) {
-                        return this.rpcCall(deleteUnsubscriber, $root.enfonica.messaging.v1.DeleteUnsubscriberRequest, $root.enfonica.messaging.v1.Unsubscriber, request, callback);
-                    }, "name", { value: "DeleteUnsubscriber" });
-    
-                    /**
-                     * Calls DeleteUnsubscriber.
-                     * @function deleteUnsubscriber
-                     * @memberof enfonica.messaging.v1.Unsubscribers
-                     * @instance
-                     * @param {enfonica.messaging.v1.IDeleteUnsubscriberRequest} request DeleteUnsubscriberRequest message or plain object
-                     * @returns {Promise<enfonica.messaging.v1.Unsubscriber>} Promise
-                     * @variation 2
-                     */
-    
-                    return Unsubscribers;
-                })();
-    
-                v1.Unsubscriber = (function() {
-    
-                    /**
-                     * Properties of an Unsubscriber.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IUnsubscriber
-                     * @property {string|null} [name] Unsubscriber name
-                     * @property {string|null} [phone] Unsubscriber phone
-                     * @property {enfonica.messaging.v1.Unsubscriber.UnsubscribeMethod|null} [unsubscribeMethod] Unsubscriber unsubscribeMethod
-                     * @property {Object.<string,string>|null} [labels] Unsubscriber labels
-                     * @property {google.protobuf.ITimestamp|null} [createTime] Unsubscriber createTime
-                     */
-    
-                    /**
-                     * Constructs a new Unsubscriber.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents an Unsubscriber.
-                     * @implements IUnsubscriber
-                     * @constructor
-                     * @param {enfonica.messaging.v1.IUnsubscriber=} [properties] Properties to set
-                     */
-                    function Unsubscriber(properties) {
-                        this.labels = {};
-                        if (properties)
-                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                                if (properties[keys[i]] != null)
-                                    this[keys[i]] = properties[keys[i]];
-                    }
-    
-                    /**
-                     * Unsubscriber name.
-                     * @member {string} name
-                     * @memberof enfonica.messaging.v1.Unsubscriber
-                     * @instance
-                     */
-                    Unsubscriber.prototype.name = "";
-    
-                    /**
-                     * Unsubscriber phone.
-                     * @member {string} phone
-                     * @memberof enfonica.messaging.v1.Unsubscriber
-                     * @instance
-                     */
-                    Unsubscriber.prototype.phone = "";
-    
-                    /**
-                     * Unsubscriber unsubscribeMethod.
-                     * @member {enfonica.messaging.v1.Unsubscriber.UnsubscribeMethod} unsubscribeMethod
-                     * @memberof enfonica.messaging.v1.Unsubscriber
-                     * @instance
-                     */
-                    Unsubscriber.prototype.unsubscribeMethod = 0;
-    
-                    /**
-                     * Unsubscriber labels.
-                     * @member {Object.<string,string>} labels
-                     * @memberof enfonica.messaging.v1.Unsubscriber
-                     * @instance
-                     */
-                    Unsubscriber.prototype.labels = $util.emptyObject;
-    
-                    /**
-                     * Unsubscriber createTime.
-                     * @member {google.protobuf.ITimestamp|null|undefined} createTime
-                     * @memberof enfonica.messaging.v1.Unsubscriber
-                     * @instance
-                     */
-                    Unsubscriber.prototype.createTime = null;
-    
-                    /**
-                     * Creates a new Unsubscriber instance using the specified properties.
-                     * @function create
-                     * @memberof enfonica.messaging.v1.Unsubscriber
-                     * @static
-                     * @param {enfonica.messaging.v1.IUnsubscriber=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.Unsubscriber} Unsubscriber instance
-                     */
-                    Unsubscriber.create = function create(properties) {
-                        return new Unsubscriber(properties);
-                    };
-    
-                    /**
-                     * Encodes the specified Unsubscriber message. Does not implicitly {@link enfonica.messaging.v1.Unsubscriber.verify|verify} messages.
-                     * @function encode
-                     * @memberof enfonica.messaging.v1.Unsubscriber
-                     * @static
-                     * @param {enfonica.messaging.v1.IUnsubscriber} message Unsubscriber message or plain object to encode
-                     * @param {$protobuf.Writer} [writer] Writer to encode to
-                     * @returns {$protobuf.Writer} Writer
-                     */
-                    Unsubscriber.encode = function encode(message, writer) {
-                        if (!writer)
-                            writer = $Writer.create();
-                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                        if (message.phone != null && Object.hasOwnProperty.call(message, "phone"))
-                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.phone);
-                        if (message.unsubscribeMethod != null && Object.hasOwnProperty.call(message, "unsubscribeMethod"))
-                            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.unsubscribeMethod);
+                        if (message.phoneNumber != null && Object.hasOwnProperty.call(message, "phoneNumber"))
+                            $root.enfonica.numbering.v1beta1.PhoneNumber.encode(message.phoneNumber, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        if (message.displayName != null && Object.hasOwnProperty.call(message, "displayName"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.displayName);
                         if (message.labels != null && Object.hasOwnProperty.call(message, "labels"))
                             for (var keys = Object.keys(message.labels), i = 0; i < keys.length; ++i)
                                 writer.uint32(/* id 4, wireType 2 =*/34).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]).uint32(/* id 2, wireType 2 =*/18).string(message.labels[keys[i]]).ldelim();
+                        if (message.incomingMessageHandlerUris != null && message.incomingMessageHandlerUris.length)
+                            for (var i = 0; i < message.incomingMessageHandlerUris.length; ++i)
+                                writer.uint32(/* id 5, wireType 2 =*/42).string(message.incomingMessageHandlerUris[i]);
+                        if (message.incomingCallHandlerUris != null && message.incomingCallHandlerUris.length)
+                            for (var i = 0; i < message.incomingCallHandlerUris.length; ++i)
+                                writer.uint32(/* id 6, wireType 2 =*/50).string(message.incomingCallHandlerUris[i]);
                         if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
-                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
+                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
+                        if (message.deleteTime != null && Object.hasOwnProperty.call(message, "deleteTime"))
+                            $root.google.protobuf.Timestamp.encode(message.deleteTime, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
+                        if (message.lifecycleState != null && Object.hasOwnProperty.call(message, "lifecycleState"))
+                            writer.uint32(/* id 12, wireType 0 =*/96).int32(message.lifecycleState);
                         return writer;
                     };
     
                     /**
-                     * Encodes the specified Unsubscriber message, length delimited. Does not implicitly {@link enfonica.messaging.v1.Unsubscriber.verify|verify} messages.
+                     * Encodes the specified PhoneNumberInstance message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumberInstance.verify|verify} messages.
                      * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.Unsubscriber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @static
-                     * @param {enfonica.messaging.v1.IUnsubscriber} message Unsubscriber message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumberInstance} message PhoneNumberInstance message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    Unsubscriber.encodeDelimited = function encodeDelimited(message, writer) {
+                    PhoneNumberInstance.encodeDelimited = function encodeDelimited(message, writer) {
                         return this.encode(message, writer).ldelim();
                     };
     
                     /**
-                     * Decodes an Unsubscriber message from the specified reader or buffer.
+                     * Decodes a PhoneNumberInstance message from the specified reader or buffer.
                      * @function decode
-                     * @memberof enfonica.messaging.v1.Unsubscriber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                      * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.Unsubscriber} Unsubscriber
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumberInstance} PhoneNumberInstance
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    Unsubscriber.decode = function decode(reader, length) {
+                    PhoneNumberInstance.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.Unsubscriber(), key, value;
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.PhoneNumberInstance(), key, value;
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
@@ -2370,10 +480,10 @@
                                 message.name = reader.string();
                                 break;
                             case 2:
-                                message.phone = reader.string();
+                                message.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.decode(reader, reader.uint32());
                                 break;
                             case 3:
-                                message.unsubscribeMethod = reader.int32();
+                                message.displayName = reader.string();
                                 break;
                             case 4:
                                 if (message.labels === $util.emptyObject)
@@ -2397,8 +507,24 @@
                                 }
                                 message.labels[key] = value;
                                 break;
-                            case 8:
+                            case 5:
+                                if (!(message.incomingMessageHandlerUris && message.incomingMessageHandlerUris.length))
+                                    message.incomingMessageHandlerUris = [];
+                                message.incomingMessageHandlerUris.push(reader.string());
+                                break;
+                            case 6:
+                                if (!(message.incomingCallHandlerUris && message.incomingCallHandlerUris.length))
+                                    message.incomingCallHandlerUris = [];
+                                message.incomingCallHandlerUris.push(reader.string());
+                                break;
+                            case 10:
                                 message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 11:
+                                message.deleteTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 12:
+                                message.lifecycleState = reader.int32();
                                 break;
                             default:
                                 reader.skipType(tag & 7);
@@ -2409,48 +535,43 @@
                     };
     
                     /**
-                     * Decodes an Unsubscriber message from the specified reader or buffer, length delimited.
+                     * Decodes a PhoneNumberInstance message from the specified reader or buffer, length delimited.
                      * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.Unsubscriber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.Unsubscriber} Unsubscriber
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumberInstance} PhoneNumberInstance
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    Unsubscriber.decodeDelimited = function decodeDelimited(reader) {
+                    PhoneNumberInstance.decodeDelimited = function decodeDelimited(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
                         return this.decode(reader, reader.uint32());
                     };
     
                     /**
-                     * Verifies an Unsubscriber message.
+                     * Verifies a PhoneNumberInstance message.
                      * @function verify
-                     * @memberof enfonica.messaging.v1.Unsubscriber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @static
                      * @param {Object.<string,*>} message Plain object to verify
                      * @returns {string|null} `null` if valid, otherwise the reason why it is not
                      */
-                    Unsubscriber.verify = function verify(message) {
+                    PhoneNumberInstance.verify = function verify(message) {
                         if (typeof message !== "object" || message === null)
                             return "object expected";
                         if (message.name != null && message.hasOwnProperty("name"))
                             if (!$util.isString(message.name))
                                 return "name: string expected";
-                        if (message.phone != null && message.hasOwnProperty("phone"))
-                            if (!$util.isString(message.phone))
-                                return "phone: string expected";
-                        if (message.unsubscribeMethod != null && message.hasOwnProperty("unsubscribeMethod"))
-                            switch (message.unsubscribeMethod) {
-                            default:
-                                return "unsubscribeMethod: enum value expected";
-                            case 0:
-                            case 1:
-                            case 2:
-                            case 3:
-                                break;
-                            }
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber")) {
+                            var error = $root.enfonica.numbering.v1beta1.PhoneNumber.verify(message.phoneNumber);
+                            if (error)
+                                return "phoneNumber." + error;
+                        }
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            if (!$util.isString(message.displayName))
+                                return "displayName: string expected";
                         if (message.labels != null && message.hasOwnProperty("labels")) {
                             if (!$util.isObject(message.labels))
                                 return "labels: object expected";
@@ -2459,152 +580,225 @@
                                 if (!$util.isString(message.labels[key[i]]))
                                     return "labels: string{k:string} expected";
                         }
+                        if (message.incomingMessageHandlerUris != null && message.hasOwnProperty("incomingMessageHandlerUris")) {
+                            if (!Array.isArray(message.incomingMessageHandlerUris))
+                                return "incomingMessageHandlerUris: array expected";
+                            for (var i = 0; i < message.incomingMessageHandlerUris.length; ++i)
+                                if (!$util.isString(message.incomingMessageHandlerUris[i]))
+                                    return "incomingMessageHandlerUris: string[] expected";
+                        }
+                        if (message.incomingCallHandlerUris != null && message.hasOwnProperty("incomingCallHandlerUris")) {
+                            if (!Array.isArray(message.incomingCallHandlerUris))
+                                return "incomingCallHandlerUris: array expected";
+                            for (var i = 0; i < message.incomingCallHandlerUris.length; ++i)
+                                if (!$util.isString(message.incomingCallHandlerUris[i]))
+                                    return "incomingCallHandlerUris: string[] expected";
+                        }
                         if (message.createTime != null && message.hasOwnProperty("createTime")) {
                             var error = $root.google.protobuf.Timestamp.verify(message.createTime);
                             if (error)
                                 return "createTime." + error;
                         }
+                        if (message.deleteTime != null && message.hasOwnProperty("deleteTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.deleteTime);
+                            if (error)
+                                return "deleteTime." + error;
+                        }
+                        if (message.lifecycleState != null && message.hasOwnProperty("lifecycleState"))
+                            switch (message.lifecycleState) {
+                            default:
+                                return "lifecycleState: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                                break;
+                            }
                         return null;
                     };
     
                     /**
-                     * Creates an Unsubscriber message from a plain object. Also converts values to their respective internal types.
+                     * Creates a PhoneNumberInstance message from a plain object. Also converts values to their respective internal types.
                      * @function fromObject
-                     * @memberof enfonica.messaging.v1.Unsubscriber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @static
                      * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.Unsubscriber} Unsubscriber
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumberInstance} PhoneNumberInstance
                      */
-                    Unsubscriber.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.Unsubscriber)
+                    PhoneNumberInstance.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.PhoneNumberInstance)
                             return object;
-                        var message = new $root.enfonica.messaging.v1.Unsubscriber();
+                        var message = new $root.enfonica.numbering.v1beta1.PhoneNumberInstance();
                         if (object.name != null)
                             message.name = String(object.name);
-                        if (object.phone != null)
-                            message.phone = String(object.phone);
-                        switch (object.unsubscribeMethod) {
-                        case "UNKNOWN":
-                        case 0:
-                            message.unsubscribeMethod = 0;
-                            break;
-                        case "URL":
-                        case 1:
-                            message.unsubscribeMethod = 1;
-                            break;
-                        case "MESSAGE":
-                        case 2:
-                            message.unsubscribeMethod = 2;
-                            break;
-                        case "MANUAL":
-                        case 3:
-                            message.unsubscribeMethod = 3;
-                            break;
+                        if (object.phoneNumber != null) {
+                            if (typeof object.phoneNumber !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.phoneNumber: object expected");
+                            message.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.fromObject(object.phoneNumber);
                         }
+                        if (object.displayName != null)
+                            message.displayName = String(object.displayName);
                         if (object.labels) {
                             if (typeof object.labels !== "object")
-                                throw TypeError(".enfonica.messaging.v1.Unsubscriber.labels: object expected");
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.labels: object expected");
                             message.labels = {};
                             for (var keys = Object.keys(object.labels), i = 0; i < keys.length; ++i)
                                 message.labels[keys[i]] = String(object.labels[keys[i]]);
                         }
+                        if (object.incomingMessageHandlerUris) {
+                            if (!Array.isArray(object.incomingMessageHandlerUris))
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.incomingMessageHandlerUris: array expected");
+                            message.incomingMessageHandlerUris = [];
+                            for (var i = 0; i < object.incomingMessageHandlerUris.length; ++i)
+                                message.incomingMessageHandlerUris[i] = String(object.incomingMessageHandlerUris[i]);
+                        }
+                        if (object.incomingCallHandlerUris) {
+                            if (!Array.isArray(object.incomingCallHandlerUris))
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.incomingCallHandlerUris: array expected");
+                            message.incomingCallHandlerUris = [];
+                            for (var i = 0; i < object.incomingCallHandlerUris.length; ++i)
+                                message.incomingCallHandlerUris[i] = String(object.incomingCallHandlerUris[i]);
+                        }
                         if (object.createTime != null) {
                             if (typeof object.createTime !== "object")
-                                throw TypeError(".enfonica.messaging.v1.Unsubscriber.createTime: object expected");
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.createTime: object expected");
                             message.createTime = $root.google.protobuf.Timestamp.fromObject(object.createTime);
+                        }
+                        if (object.deleteTime != null) {
+                            if (typeof object.deleteTime !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.deleteTime: object expected");
+                            message.deleteTime = $root.google.protobuf.Timestamp.fromObject(object.deleteTime);
+                        }
+                        switch (object.lifecycleState) {
+                        case "LIFECYCLE_STATE_UNKNOWN":
+                        case 0:
+                            message.lifecycleState = 0;
+                            break;
+                        case "ACTIVE":
+                        case 1:
+                            message.lifecycleState = 1;
+                            break;
+                        case "DELETED":
+                        case 2:
+                            message.lifecycleState = 2;
+                            break;
+                        case "SUSPENDED":
+                        case 3:
+                            message.lifecycleState = 3;
+                            break;
                         }
                         return message;
                     };
     
                     /**
-                     * Creates a plain object from an Unsubscriber message. Also converts values to other types if specified.
+                     * Creates a plain object from a PhoneNumberInstance message. Also converts values to other types if specified.
                      * @function toObject
-                     * @memberof enfonica.messaging.v1.Unsubscriber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @static
-                     * @param {enfonica.messaging.v1.Unsubscriber} message Unsubscriber
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstance} message PhoneNumberInstance
                      * @param {$protobuf.IConversionOptions} [options] Conversion options
                      * @returns {Object.<string,*>} Plain object
                      */
-                    Unsubscriber.toObject = function toObject(message, options) {
+                    PhoneNumberInstance.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
                         var object = {};
+                        if (options.arrays || options.defaults) {
+                            object.incomingMessageHandlerUris = [];
+                            object.incomingCallHandlerUris = [];
+                        }
                         if (options.objects || options.defaults)
                             object.labels = {};
                         if (options.defaults) {
                             object.name = "";
-                            object.phone = "";
-                            object.unsubscribeMethod = options.enums === String ? "UNKNOWN" : 0;
+                            object.phoneNumber = null;
+                            object.displayName = "";
                             object.createTime = null;
+                            object.deleteTime = null;
+                            object.lifecycleState = options.enums === String ? "LIFECYCLE_STATE_UNKNOWN" : 0;
                         }
                         if (message.name != null && message.hasOwnProperty("name"))
                             object.name = message.name;
-                        if (message.phone != null && message.hasOwnProperty("phone"))
-                            object.phone = message.phone;
-                        if (message.unsubscribeMethod != null && message.hasOwnProperty("unsubscribeMethod"))
-                            object.unsubscribeMethod = options.enums === String ? $root.enfonica.messaging.v1.Unsubscriber.UnsubscribeMethod[message.unsubscribeMethod] : message.unsubscribeMethod;
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber"))
+                            object.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.toObject(message.phoneNumber, options);
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            object.displayName = message.displayName;
                         var keys2;
                         if (message.labels && (keys2 = Object.keys(message.labels)).length) {
                             object.labels = {};
                             for (var j = 0; j < keys2.length; ++j)
                                 object.labels[keys2[j]] = message.labels[keys2[j]];
                         }
+                        if (message.incomingMessageHandlerUris && message.incomingMessageHandlerUris.length) {
+                            object.incomingMessageHandlerUris = [];
+                            for (var j = 0; j < message.incomingMessageHandlerUris.length; ++j)
+                                object.incomingMessageHandlerUris[j] = message.incomingMessageHandlerUris[j];
+                        }
+                        if (message.incomingCallHandlerUris && message.incomingCallHandlerUris.length) {
+                            object.incomingCallHandlerUris = [];
+                            for (var j = 0; j < message.incomingCallHandlerUris.length; ++j)
+                                object.incomingCallHandlerUris[j] = message.incomingCallHandlerUris[j];
+                        }
                         if (message.createTime != null && message.hasOwnProperty("createTime"))
                             object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
+                        if (message.deleteTime != null && message.hasOwnProperty("deleteTime"))
+                            object.deleteTime = $root.google.protobuf.Timestamp.toObject(message.deleteTime, options);
+                        if (message.lifecycleState != null && message.hasOwnProperty("lifecycleState"))
+                            object.lifecycleState = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState[message.lifecycleState] : message.lifecycleState;
                         return object;
                     };
     
                     /**
-                     * Converts this Unsubscriber to JSON.
+                     * Converts this PhoneNumberInstance to JSON.
                      * @function toJSON
-                     * @memberof enfonica.messaging.v1.Unsubscriber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
                      * @instance
                      * @returns {Object.<string,*>} JSON object
                      */
-                    Unsubscriber.prototype.toJSON = function toJSON() {
+                    PhoneNumberInstance.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
     
                     /**
-                     * UnsubscribeMethod enum.
-                     * @name enfonica.messaging.v1.Unsubscriber.UnsubscribeMethod
+                     * LifecycleState enum.
+                     * @name enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState
                      * @enum {number}
-                     * @property {number} UNKNOWN=0 UNKNOWN value
-                     * @property {number} URL=1 URL value
-                     * @property {number} MESSAGE=2 MESSAGE value
-                     * @property {number} MANUAL=3 MANUAL value
+                     * @property {number} LIFECYCLE_STATE_UNKNOWN=0 LIFECYCLE_STATE_UNKNOWN value
+                     * @property {number} ACTIVE=1 ACTIVE value
+                     * @property {number} DELETED=2 DELETED value
+                     * @property {number} SUSPENDED=3 SUSPENDED value
                      */
-                    Unsubscriber.UnsubscribeMethod = (function() {
+                    PhoneNumberInstance.LifecycleState = (function() {
                         var valuesById = {}, values = Object.create(valuesById);
-                        values[valuesById[0] = "UNKNOWN"] = 0;
-                        values[valuesById[1] = "URL"] = 1;
-                        values[valuesById[2] = "MESSAGE"] = 2;
-                        values[valuesById[3] = "MANUAL"] = 3;
+                        values[valuesById[0] = "LIFECYCLE_STATE_UNKNOWN"] = 0;
+                        values[valuesById[1] = "ACTIVE"] = 1;
+                        values[valuesById[2] = "DELETED"] = 2;
+                        values[valuesById[3] = "SUSPENDED"] = 3;
                         return values;
                     })();
     
-                    return Unsubscriber;
+                    return PhoneNumberInstance;
                 })();
     
-                v1.CreateUnsubscriberRequest = (function() {
+                v1beta1.CreatePhoneNumberInstanceRequest = (function() {
     
                     /**
-                     * Properties of a CreateUnsubscriberRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @interface ICreateUnsubscriberRequest
-                     * @property {string|null} [parent] CreateUnsubscriberRequest parent
-                     * @property {enfonica.messaging.v1.IUnsubscriber|null} [unsubscriber] CreateUnsubscriberRequest unsubscriber
+                     * Properties of a CreatePhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ICreatePhoneNumberInstanceRequest
+                     * @property {string|null} [parent] CreatePhoneNumberInstanceRequest parent
+                     * @property {enfonica.numbering.v1beta1.IPhoneNumberInstance|null} [phoneNumberInstance] CreatePhoneNumberInstanceRequest phoneNumberInstance
                      */
     
                     /**
-                     * Constructs a new CreateUnsubscriberRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a CreateUnsubscriberRequest.
-                     * @implements ICreateUnsubscriberRequest
+                     * Constructs a new CreatePhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a CreatePhoneNumberInstanceRequest.
+                     * @implements ICreatePhoneNumberInstanceRequest
                      * @constructor
-                     * @param {enfonica.messaging.v1.ICreateUnsubscriberRequest=} [properties] Properties to set
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest=} [properties] Properties to set
                      */
-                    function CreateUnsubscriberRequest(properties) {
+                    function CreatePhoneNumberInstanceRequest(properties) {
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -2612,80 +806,80 @@
                     }
     
                     /**
-                     * CreateUnsubscriberRequest parent.
+                     * CreatePhoneNumberInstanceRequest parent.
                      * @member {string} parent
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @instance
                      */
-                    CreateUnsubscriberRequest.prototype.parent = "";
+                    CreatePhoneNumberInstanceRequest.prototype.parent = "";
     
                     /**
-                     * CreateUnsubscriberRequest unsubscriber.
-                     * @member {enfonica.messaging.v1.IUnsubscriber|null|undefined} unsubscriber
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * CreatePhoneNumberInstanceRequest phoneNumberInstance.
+                     * @member {enfonica.numbering.v1beta1.IPhoneNumberInstance|null|undefined} phoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @instance
                      */
-                    CreateUnsubscriberRequest.prototype.unsubscriber = null;
+                    CreatePhoneNumberInstanceRequest.prototype.phoneNumberInstance = null;
     
                     /**
-                     * Creates a new CreateUnsubscriberRequest instance using the specified properties.
+                     * Creates a new CreatePhoneNumberInstanceRequest instance using the specified properties.
                      * @function create
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.ICreateUnsubscriberRequest=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.CreateUnsubscriberRequest} CreateUnsubscriberRequest instance
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest} CreatePhoneNumberInstanceRequest instance
                      */
-                    CreateUnsubscriberRequest.create = function create(properties) {
-                        return new CreateUnsubscriberRequest(properties);
+                    CreatePhoneNumberInstanceRequest.create = function create(properties) {
+                        return new CreatePhoneNumberInstanceRequest(properties);
                     };
     
                     /**
-                     * Encodes the specified CreateUnsubscriberRequest message. Does not implicitly {@link enfonica.messaging.v1.CreateUnsubscriberRequest.verify|verify} messages.
+                     * Encodes the specified CreatePhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest.verify|verify} messages.
                      * @function encode
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.ICreateUnsubscriberRequest} message CreateUnsubscriberRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest} message CreatePhoneNumberInstanceRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    CreateUnsubscriberRequest.encode = function encode(message, writer) {
+                    CreatePhoneNumberInstanceRequest.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
                         if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
                             writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
-                        if (message.unsubscriber != null && Object.hasOwnProperty.call(message, "unsubscriber"))
-                            $root.enfonica.messaging.v1.Unsubscriber.encode(message.unsubscriber, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        if (message.phoneNumberInstance != null && Object.hasOwnProperty.call(message, "phoneNumberInstance"))
+                            $root.enfonica.numbering.v1beta1.PhoneNumberInstance.encode(message.phoneNumberInstance, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                         return writer;
                     };
     
                     /**
-                     * Encodes the specified CreateUnsubscriberRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.CreateUnsubscriberRequest.verify|verify} messages.
+                     * Encodes the specified CreatePhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest.verify|verify} messages.
                      * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.ICreateUnsubscriberRequest} message CreateUnsubscriberRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest} message CreatePhoneNumberInstanceRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    CreateUnsubscriberRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                    CreatePhoneNumberInstanceRequest.encodeDelimited = function encodeDelimited(message, writer) {
                         return this.encode(message, writer).ldelim();
                     };
     
                     /**
-                     * Decodes a CreateUnsubscriberRequest message from the specified reader or buffer.
+                     * Decodes a CreatePhoneNumberInstanceRequest message from the specified reader or buffer.
                      * @function decode
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                      * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.CreateUnsubscriberRequest} CreateUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest} CreatePhoneNumberInstanceRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    CreateUnsubscriberRequest.decode = function decode(reader, length) {
+                    CreatePhoneNumberInstanceRequest.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.CreateUnsubscriberRequest();
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
@@ -2693,7 +887,7 @@
                                 message.parent = reader.string();
                                 break;
                             case 2:
-                                message.unsubscriber = $root.enfonica.messaging.v1.Unsubscriber.decode(reader, reader.uint32());
+                                message.phoneNumberInstance = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.decode(reader, reader.uint32());
                                 break;
                             default:
                                 reader.skipType(tag & 7);
@@ -2704,121 +898,121 @@
                     };
     
                     /**
-                     * Decodes a CreateUnsubscriberRequest message from the specified reader or buffer, length delimited.
+                     * Decodes a CreatePhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
                      * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.CreateUnsubscriberRequest} CreateUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest} CreatePhoneNumberInstanceRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    CreateUnsubscriberRequest.decodeDelimited = function decodeDelimited(reader) {
+                    CreatePhoneNumberInstanceRequest.decodeDelimited = function decodeDelimited(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
                         return this.decode(reader, reader.uint32());
                     };
     
                     /**
-                     * Verifies a CreateUnsubscriberRequest message.
+                     * Verifies a CreatePhoneNumberInstanceRequest message.
                      * @function verify
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @static
                      * @param {Object.<string,*>} message Plain object to verify
                      * @returns {string|null} `null` if valid, otherwise the reason why it is not
                      */
-                    CreateUnsubscriberRequest.verify = function verify(message) {
+                    CreatePhoneNumberInstanceRequest.verify = function verify(message) {
                         if (typeof message !== "object" || message === null)
                             return "object expected";
                         if (message.parent != null && message.hasOwnProperty("parent"))
                             if (!$util.isString(message.parent))
                                 return "parent: string expected";
-                        if (message.unsubscriber != null && message.hasOwnProperty("unsubscriber")) {
-                            var error = $root.enfonica.messaging.v1.Unsubscriber.verify(message.unsubscriber);
+                        if (message.phoneNumberInstance != null && message.hasOwnProperty("phoneNumberInstance")) {
+                            var error = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.verify(message.phoneNumberInstance);
                             if (error)
-                                return "unsubscriber." + error;
+                                return "phoneNumberInstance." + error;
                         }
                         return null;
                     };
     
                     /**
-                     * Creates a CreateUnsubscriberRequest message from a plain object. Also converts values to their respective internal types.
+                     * Creates a CreatePhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
                      * @function fromObject
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @static
                      * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.CreateUnsubscriberRequest} CreateUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest} CreatePhoneNumberInstanceRequest
                      */
-                    CreateUnsubscriberRequest.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.CreateUnsubscriberRequest)
+                    CreatePhoneNumberInstanceRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest)
                             return object;
-                        var message = new $root.enfonica.messaging.v1.CreateUnsubscriberRequest();
+                        var message = new $root.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest();
                         if (object.parent != null)
                             message.parent = String(object.parent);
-                        if (object.unsubscriber != null) {
-                            if (typeof object.unsubscriber !== "object")
-                                throw TypeError(".enfonica.messaging.v1.CreateUnsubscriberRequest.unsubscriber: object expected");
-                            message.unsubscriber = $root.enfonica.messaging.v1.Unsubscriber.fromObject(object.unsubscriber);
+                        if (object.phoneNumberInstance != null) {
+                            if (typeof object.phoneNumberInstance !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest.phoneNumberInstance: object expected");
+                            message.phoneNumberInstance = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.fromObject(object.phoneNumberInstance);
                         }
                         return message;
                     };
     
                     /**
-                     * Creates a plain object from a CreateUnsubscriberRequest message. Also converts values to other types if specified.
+                     * Creates a plain object from a CreatePhoneNumberInstanceRequest message. Also converts values to other types if specified.
                      * @function toObject
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.CreateUnsubscriberRequest} message CreateUnsubscriberRequest
+                     * @param {enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest} message CreatePhoneNumberInstanceRequest
                      * @param {$protobuf.IConversionOptions} [options] Conversion options
                      * @returns {Object.<string,*>} Plain object
                      */
-                    CreateUnsubscriberRequest.toObject = function toObject(message, options) {
+                    CreatePhoneNumberInstanceRequest.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
                         var object = {};
                         if (options.defaults) {
                             object.parent = "";
-                            object.unsubscriber = null;
+                            object.phoneNumberInstance = null;
                         }
                         if (message.parent != null && message.hasOwnProperty("parent"))
                             object.parent = message.parent;
-                        if (message.unsubscriber != null && message.hasOwnProperty("unsubscriber"))
-                            object.unsubscriber = $root.enfonica.messaging.v1.Unsubscriber.toObject(message.unsubscriber, options);
+                        if (message.phoneNumberInstance != null && message.hasOwnProperty("phoneNumberInstance"))
+                            object.phoneNumberInstance = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.toObject(message.phoneNumberInstance, options);
                         return object;
                     };
     
                     /**
-                     * Converts this CreateUnsubscriberRequest to JSON.
+                     * Converts this CreatePhoneNumberInstanceRequest to JSON.
                      * @function toJSON
-                     * @memberof enfonica.messaging.v1.CreateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest
                      * @instance
                      * @returns {Object.<string,*>} JSON object
                      */
-                    CreateUnsubscriberRequest.prototype.toJSON = function toJSON() {
+                    CreatePhoneNumberInstanceRequest.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
     
-                    return CreateUnsubscriberRequest;
+                    return CreatePhoneNumberInstanceRequest;
                 })();
     
-                v1.GetUnsubscriberRequest = (function() {
+                v1beta1.GetPhoneNumberInstanceRequest = (function() {
     
                     /**
-                     * Properties of a GetUnsubscriberRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IGetUnsubscriberRequest
-                     * @property {string|null} [name] GetUnsubscriberRequest name
+                     * Properties of a GetPhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IGetPhoneNumberInstanceRequest
+                     * @property {string|null} [name] GetPhoneNumberInstanceRequest name
                      */
     
                     /**
-                     * Constructs a new GetUnsubscriberRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a GetUnsubscriberRequest.
-                     * @implements IGetUnsubscriberRequest
+                     * Constructs a new GetPhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a GetPhoneNumberInstanceRequest.
+                     * @implements IGetPhoneNumberInstanceRequest
                      * @constructor
-                     * @param {enfonica.messaging.v1.IGetUnsubscriberRequest=} [properties] Properties to set
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest=} [properties] Properties to set
                      */
-                    function GetUnsubscriberRequest(properties) {
+                    function GetPhoneNumberInstanceRequest(properties) {
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -2826,35 +1020,35 @@
                     }
     
                     /**
-                     * GetUnsubscriberRequest name.
+                     * GetPhoneNumberInstanceRequest name.
                      * @member {string} name
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @instance
                      */
-                    GetUnsubscriberRequest.prototype.name = "";
+                    GetPhoneNumberInstanceRequest.prototype.name = "";
     
                     /**
-                     * Creates a new GetUnsubscriberRequest instance using the specified properties.
+                     * Creates a new GetPhoneNumberInstanceRequest instance using the specified properties.
                      * @function create
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IGetUnsubscriberRequest=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.GetUnsubscriberRequest} GetUnsubscriberRequest instance
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest} GetPhoneNumberInstanceRequest instance
                      */
-                    GetUnsubscriberRequest.create = function create(properties) {
-                        return new GetUnsubscriberRequest(properties);
+                    GetPhoneNumberInstanceRequest.create = function create(properties) {
+                        return new GetPhoneNumberInstanceRequest(properties);
                     };
     
                     /**
-                     * Encodes the specified GetUnsubscriberRequest message. Does not implicitly {@link enfonica.messaging.v1.GetUnsubscriberRequest.verify|verify} messages.
+                     * Encodes the specified GetPhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest.verify|verify} messages.
                      * @function encode
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IGetUnsubscriberRequest} message GetUnsubscriberRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest} message GetPhoneNumberInstanceRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    GetUnsubscriberRequest.encode = function encode(message, writer) {
+                    GetPhoneNumberInstanceRequest.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
                         if (message.name != null && Object.hasOwnProperty.call(message, "name"))
@@ -2863,33 +1057,33 @@
                     };
     
                     /**
-                     * Encodes the specified GetUnsubscriberRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.GetUnsubscriberRequest.verify|verify} messages.
+                     * Encodes the specified GetPhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest.verify|verify} messages.
                      * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IGetUnsubscriberRequest} message GetUnsubscriberRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest} message GetPhoneNumberInstanceRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    GetUnsubscriberRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                    GetPhoneNumberInstanceRequest.encodeDelimited = function encodeDelimited(message, writer) {
                         return this.encode(message, writer).ldelim();
                     };
     
                     /**
-                     * Decodes a GetUnsubscriberRequest message from the specified reader or buffer.
+                     * Decodes a GetPhoneNumberInstanceRequest message from the specified reader or buffer.
                      * @function decode
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                      * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.GetUnsubscriberRequest} GetUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest} GetPhoneNumberInstanceRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    GetUnsubscriberRequest.decode = function decode(reader, length) {
+                    GetPhoneNumberInstanceRequest.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.GetUnsubscriberRequest();
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
@@ -2905,30 +1099,30 @@
                     };
     
                     /**
-                     * Decodes a GetUnsubscriberRequest message from the specified reader or buffer, length delimited.
+                     * Decodes a GetPhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
                      * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.GetUnsubscriberRequest} GetUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest} GetPhoneNumberInstanceRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    GetUnsubscriberRequest.decodeDelimited = function decodeDelimited(reader) {
+                    GetPhoneNumberInstanceRequest.decodeDelimited = function decodeDelimited(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
                         return this.decode(reader, reader.uint32());
                     };
     
                     /**
-                     * Verifies a GetUnsubscriberRequest message.
+                     * Verifies a GetPhoneNumberInstanceRequest message.
                      * @function verify
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @static
                      * @param {Object.<string,*>} message Plain object to verify
                      * @returns {string|null} `null` if valid, otherwise the reason why it is not
                      */
-                    GetUnsubscriberRequest.verify = function verify(message) {
+                    GetPhoneNumberInstanceRequest.verify = function verify(message) {
                         if (typeof message !== "object" || message === null)
                             return "object expected";
                         if (message.name != null && message.hasOwnProperty("name"))
@@ -2938,32 +1132,32 @@
                     };
     
                     /**
-                     * Creates a GetUnsubscriberRequest message from a plain object. Also converts values to their respective internal types.
+                     * Creates a GetPhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
                      * @function fromObject
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @static
                      * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.GetUnsubscriberRequest} GetUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest} GetPhoneNumberInstanceRequest
                      */
-                    GetUnsubscriberRequest.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.GetUnsubscriberRequest)
+                    GetPhoneNumberInstanceRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest)
                             return object;
-                        var message = new $root.enfonica.messaging.v1.GetUnsubscriberRequest();
+                        var message = new $root.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest();
                         if (object.name != null)
                             message.name = String(object.name);
                         return message;
                     };
     
                     /**
-                     * Creates a plain object from a GetUnsubscriberRequest message. Also converts values to other types if specified.
+                     * Creates a plain object from a GetPhoneNumberInstanceRequest message. Also converts values to other types if specified.
                      * @function toObject
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.GetUnsubscriberRequest} message GetUnsubscriberRequest
+                     * @param {enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest} message GetPhoneNumberInstanceRequest
                      * @param {$protobuf.IConversionOptions} [options] Conversion options
                      * @returns {Object.<string,*>} Plain object
                      */
-                    GetUnsubscriberRequest.toObject = function toObject(message, options) {
+                    GetPhoneNumberInstanceRequest.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
                         var object = {};
@@ -2975,40 +1169,41 @@
                     };
     
                     /**
-                     * Converts this GetUnsubscriberRequest to JSON.
+                     * Converts this GetPhoneNumberInstanceRequest to JSON.
                      * @function toJSON
-                     * @memberof enfonica.messaging.v1.GetUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest
                      * @instance
                      * @returns {Object.<string,*>} JSON object
                      */
-                    GetUnsubscriberRequest.prototype.toJSON = function toJSON() {
+                    GetPhoneNumberInstanceRequest.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
     
-                    return GetUnsubscriberRequest;
+                    return GetPhoneNumberInstanceRequest;
                 })();
     
-                v1.ListUnsubscribersRequest = (function() {
+                v1beta1.ListPhoneNumberInstancesRequest = (function() {
     
                     /**
-                     * Properties of a ListUnsubscribersRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IListUnsubscribersRequest
-                     * @property {string|null} [parent] ListUnsubscribersRequest parent
-                     * @property {number|null} [pageSize] ListUnsubscribersRequest pageSize
-                     * @property {string|null} [pageToken] ListUnsubscribersRequest pageToken
-                     * @property {string|null} [phone] ListUnsubscribersRequest phone
+                     * Properties of a ListPhoneNumberInstancesRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IListPhoneNumberInstancesRequest
+                     * @property {string|null} [parent] ListPhoneNumberInstancesRequest parent
+                     * @property {number|null} [pageSize] ListPhoneNumberInstancesRequest pageSize
+                     * @property {string|null} [pageToken] ListPhoneNumberInstancesRequest pageToken
+                     * @property {string|null} [prefix] ListPhoneNumberInstancesRequest prefix
+                     * @property {boolean|null} [includeDeleted] ListPhoneNumberInstancesRequest includeDeleted
                      */
     
                     /**
-                     * Constructs a new ListUnsubscribersRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a ListUnsubscribersRequest.
-                     * @implements IListUnsubscribersRequest
+                     * Constructs a new ListPhoneNumberInstancesRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a ListPhoneNumberInstancesRequest.
+                     * @implements IListPhoneNumberInstancesRequest
                      * @constructor
-                     * @param {enfonica.messaging.v1.IListUnsubscribersRequest=} [properties] Properties to set
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest=} [properties] Properties to set
                      */
-                    function ListUnsubscribersRequest(properties) {
+                    function ListPhoneNumberInstancesRequest(properties) {
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -3016,59 +1211,67 @@
                     }
     
                     /**
-                     * ListUnsubscribersRequest parent.
+                     * ListPhoneNumberInstancesRequest parent.
                      * @member {string} parent
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @instance
                      */
-                    ListUnsubscribersRequest.prototype.parent = "";
+                    ListPhoneNumberInstancesRequest.prototype.parent = "";
     
                     /**
-                     * ListUnsubscribersRequest pageSize.
+                     * ListPhoneNumberInstancesRequest pageSize.
                      * @member {number} pageSize
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @instance
                      */
-                    ListUnsubscribersRequest.prototype.pageSize = 0;
+                    ListPhoneNumberInstancesRequest.prototype.pageSize = 0;
     
                     /**
-                     * ListUnsubscribersRequest pageToken.
+                     * ListPhoneNumberInstancesRequest pageToken.
                      * @member {string} pageToken
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @instance
                      */
-                    ListUnsubscribersRequest.prototype.pageToken = "";
+                    ListPhoneNumberInstancesRequest.prototype.pageToken = "";
     
                     /**
-                     * ListUnsubscribersRequest phone.
-                     * @member {string} phone
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * ListPhoneNumberInstancesRequest prefix.
+                     * @member {string} prefix
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @instance
                      */
-                    ListUnsubscribersRequest.prototype.phone = "";
+                    ListPhoneNumberInstancesRequest.prototype.prefix = "";
     
                     /**
-                     * Creates a new ListUnsubscribersRequest instance using the specified properties.
+                     * ListPhoneNumberInstancesRequest includeDeleted.
+                     * @member {boolean} includeDeleted
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
+                     * @instance
+                     */
+                    ListPhoneNumberInstancesRequest.prototype.includeDeleted = false;
+    
+                    /**
+                     * Creates a new ListPhoneNumberInstancesRequest instance using the specified properties.
                      * @function create
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IListUnsubscribersRequest=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.ListUnsubscribersRequest} ListUnsubscribersRequest instance
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest} ListPhoneNumberInstancesRequest instance
                      */
-                    ListUnsubscribersRequest.create = function create(properties) {
-                        return new ListUnsubscribersRequest(properties);
+                    ListPhoneNumberInstancesRequest.create = function create(properties) {
+                        return new ListPhoneNumberInstancesRequest(properties);
                     };
     
                     /**
-                     * Encodes the specified ListUnsubscribersRequest message. Does not implicitly {@link enfonica.messaging.v1.ListUnsubscribersRequest.verify|verify} messages.
+                     * Encodes the specified ListPhoneNumberInstancesRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest.verify|verify} messages.
                      * @function encode
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IListUnsubscribersRequest} message ListUnsubscribersRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest} message ListPhoneNumberInstancesRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    ListUnsubscribersRequest.encode = function encode(message, writer) {
+                    ListPhoneNumberInstancesRequest.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
                         if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
@@ -3077,39 +1280,41 @@
                             writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pageSize);
                         if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
                             writer.uint32(/* id 3, wireType 2 =*/26).string(message.pageToken);
-                        if (message.phone != null && Object.hasOwnProperty.call(message, "phone"))
-                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.phone);
+                        if (message.prefix != null && Object.hasOwnProperty.call(message, "prefix"))
+                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.prefix);
+                        if (message.includeDeleted != null && Object.hasOwnProperty.call(message, "includeDeleted"))
+                            writer.uint32(/* id 5, wireType 0 =*/40).bool(message.includeDeleted);
                         return writer;
                     };
     
                     /**
-                     * Encodes the specified ListUnsubscribersRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.ListUnsubscribersRequest.verify|verify} messages.
+                     * Encodes the specified ListPhoneNumberInstancesRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest.verify|verify} messages.
                      * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IListUnsubscribersRequest} message ListUnsubscribersRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest} message ListPhoneNumberInstancesRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    ListUnsubscribersRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                    ListPhoneNumberInstancesRequest.encodeDelimited = function encodeDelimited(message, writer) {
                         return this.encode(message, writer).ldelim();
                     };
     
                     /**
-                     * Decodes a ListUnsubscribersRequest message from the specified reader or buffer.
+                     * Decodes a ListPhoneNumberInstancesRequest message from the specified reader or buffer.
                      * @function decode
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                      * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.ListUnsubscribersRequest} ListUnsubscribersRequest
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest} ListPhoneNumberInstancesRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    ListUnsubscribersRequest.decode = function decode(reader, length) {
+                    ListPhoneNumberInstancesRequest.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.ListUnsubscribersRequest();
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
@@ -3123,7 +1328,10 @@
                                 message.pageToken = reader.string();
                                 break;
                             case 4:
-                                message.phone = reader.string();
+                                message.prefix = reader.string();
+                                break;
+                            case 5:
+                                message.includeDeleted = reader.bool();
                                 break;
                             default:
                                 reader.skipType(tag & 7);
@@ -3134,30 +1342,30 @@
                     };
     
                     /**
-                     * Decodes a ListUnsubscribersRequest message from the specified reader or buffer, length delimited.
+                     * Decodes a ListPhoneNumberInstancesRequest message from the specified reader or buffer, length delimited.
                      * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.ListUnsubscribersRequest} ListUnsubscribersRequest
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest} ListPhoneNumberInstancesRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    ListUnsubscribersRequest.decodeDelimited = function decodeDelimited(reader) {
+                    ListPhoneNumberInstancesRequest.decodeDelimited = function decodeDelimited(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
                         return this.decode(reader, reader.uint32());
                     };
     
                     /**
-                     * Verifies a ListUnsubscribersRequest message.
+                     * Verifies a ListPhoneNumberInstancesRequest message.
                      * @function verify
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @static
                      * @param {Object.<string,*>} message Plain object to verify
                      * @returns {string|null} `null` if valid, otherwise the reason why it is not
                      */
-                    ListUnsubscribersRequest.verify = function verify(message) {
+                    ListPhoneNumberInstancesRequest.verify = function verify(message) {
                         if (typeof message !== "object" || message === null)
                             return "object expected";
                         if (message.parent != null && message.hasOwnProperty("parent"))
@@ -3169,45 +1377,50 @@
                         if (message.pageToken != null && message.hasOwnProperty("pageToken"))
                             if (!$util.isString(message.pageToken))
                                 return "pageToken: string expected";
-                        if (message.phone != null && message.hasOwnProperty("phone"))
-                            if (!$util.isString(message.phone))
-                                return "phone: string expected";
+                        if (message.prefix != null && message.hasOwnProperty("prefix"))
+                            if (!$util.isString(message.prefix))
+                                return "prefix: string expected";
+                        if (message.includeDeleted != null && message.hasOwnProperty("includeDeleted"))
+                            if (typeof message.includeDeleted !== "boolean")
+                                return "includeDeleted: boolean expected";
                         return null;
                     };
     
                     /**
-                     * Creates a ListUnsubscribersRequest message from a plain object. Also converts values to their respective internal types.
+                     * Creates a ListPhoneNumberInstancesRequest message from a plain object. Also converts values to their respective internal types.
                      * @function fromObject
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @static
                      * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.ListUnsubscribersRequest} ListUnsubscribersRequest
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest} ListPhoneNumberInstancesRequest
                      */
-                    ListUnsubscribersRequest.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.ListUnsubscribersRequest)
+                    ListPhoneNumberInstancesRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest)
                             return object;
-                        var message = new $root.enfonica.messaging.v1.ListUnsubscribersRequest();
+                        var message = new $root.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest();
                         if (object.parent != null)
                             message.parent = String(object.parent);
                         if (object.pageSize != null)
                             message.pageSize = object.pageSize | 0;
                         if (object.pageToken != null)
                             message.pageToken = String(object.pageToken);
-                        if (object.phone != null)
-                            message.phone = String(object.phone);
+                        if (object.prefix != null)
+                            message.prefix = String(object.prefix);
+                        if (object.includeDeleted != null)
+                            message.includeDeleted = Boolean(object.includeDeleted);
                         return message;
                     };
     
                     /**
-                     * Creates a plain object from a ListUnsubscribersRequest message. Also converts values to other types if specified.
+                     * Creates a plain object from a ListPhoneNumberInstancesRequest message. Also converts values to other types if specified.
                      * @function toObject
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @static
-                     * @param {enfonica.messaging.v1.ListUnsubscribersRequest} message ListUnsubscribersRequest
+                     * @param {enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest} message ListPhoneNumberInstancesRequest
                      * @param {$protobuf.IConversionOptions} [options] Conversion options
                      * @returns {Object.<string,*>} Plain object
                      */
-                    ListUnsubscribersRequest.toObject = function toObject(message, options) {
+                    ListPhoneNumberInstancesRequest.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
                         var object = {};
@@ -3215,7 +1428,8 @@
                             object.parent = "";
                             object.pageSize = 0;
                             object.pageToken = "";
-                            object.phone = "";
+                            object.prefix = "";
+                            object.includeDeleted = false;
                         }
                         if (message.parent != null && message.hasOwnProperty("parent"))
                             object.parent = message.parent;
@@ -3223,45 +1437,47 @@
                             object.pageSize = message.pageSize;
                         if (message.pageToken != null && message.hasOwnProperty("pageToken"))
                             object.pageToken = message.pageToken;
-                        if (message.phone != null && message.hasOwnProperty("phone"))
-                            object.phone = message.phone;
+                        if (message.prefix != null && message.hasOwnProperty("prefix"))
+                            object.prefix = message.prefix;
+                        if (message.includeDeleted != null && message.hasOwnProperty("includeDeleted"))
+                            object.includeDeleted = message.includeDeleted;
                         return object;
                     };
     
                     /**
-                     * Converts this ListUnsubscribersRequest to JSON.
+                     * Converts this ListPhoneNumberInstancesRequest to JSON.
                      * @function toJSON
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersRequest
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest
                      * @instance
                      * @returns {Object.<string,*>} JSON object
                      */
-                    ListUnsubscribersRequest.prototype.toJSON = function toJSON() {
+                    ListPhoneNumberInstancesRequest.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
     
-                    return ListUnsubscribersRequest;
+                    return ListPhoneNumberInstancesRequest;
                 })();
     
-                v1.ListUnsubscribersResponse = (function() {
+                v1beta1.ListPhoneNumberInstancesResponse = (function() {
     
                     /**
-                     * Properties of a ListUnsubscribersResponse.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IListUnsubscribersResponse
-                     * @property {Array.<enfonica.messaging.v1.IUnsubscriber>|null} [unsubscribers] ListUnsubscribersResponse unsubscribers
-                     * @property {string|null} [nextPageToken] ListUnsubscribersResponse nextPageToken
+                     * Properties of a ListPhoneNumberInstancesResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IListPhoneNumberInstancesResponse
+                     * @property {Array.<enfonica.numbering.v1beta1.IPhoneNumberInstance>|null} [phoneNumberInstances] ListPhoneNumberInstancesResponse phoneNumberInstances
+                     * @property {string|null} [nextPageToken] ListPhoneNumberInstancesResponse nextPageToken
                      */
     
                     /**
-                     * Constructs a new ListUnsubscribersResponse.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a ListUnsubscribersResponse.
-                     * @implements IListUnsubscribersResponse
+                     * Constructs a new ListPhoneNumberInstancesResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a ListPhoneNumberInstancesResponse.
+                     * @implements IListPhoneNumberInstancesResponse
                      * @constructor
-                     * @param {enfonica.messaging.v1.IListUnsubscribersResponse=} [properties] Properties to set
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesResponse=} [properties] Properties to set
                      */
-                    function ListUnsubscribersResponse(properties) {
-                        this.unsubscribers = [];
+                    function ListPhoneNumberInstancesResponse(properties) {
+                        this.phoneNumberInstances = [];
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -3269,88 +1485,88 @@
                     }
     
                     /**
-                     * ListUnsubscribersResponse unsubscribers.
-                     * @member {Array.<enfonica.messaging.v1.IUnsubscriber>} unsubscribers
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * ListPhoneNumberInstancesResponse phoneNumberInstances.
+                     * @member {Array.<enfonica.numbering.v1beta1.IPhoneNumberInstance>} phoneNumberInstances
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @instance
                      */
-                    ListUnsubscribersResponse.prototype.unsubscribers = $util.emptyArray;
+                    ListPhoneNumberInstancesResponse.prototype.phoneNumberInstances = $util.emptyArray;
     
                     /**
-                     * ListUnsubscribersResponse nextPageToken.
+                     * ListPhoneNumberInstancesResponse nextPageToken.
                      * @member {string} nextPageToken
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @instance
                      */
-                    ListUnsubscribersResponse.prototype.nextPageToken = "";
+                    ListPhoneNumberInstancesResponse.prototype.nextPageToken = "";
     
                     /**
-                     * Creates a new ListUnsubscribersResponse instance using the specified properties.
+                     * Creates a new ListPhoneNumberInstancesResponse instance using the specified properties.
                      * @function create
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @static
-                     * @param {enfonica.messaging.v1.IListUnsubscribersResponse=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.ListUnsubscribersResponse} ListUnsubscribersResponse instance
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesResponse=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse} ListPhoneNumberInstancesResponse instance
                      */
-                    ListUnsubscribersResponse.create = function create(properties) {
-                        return new ListUnsubscribersResponse(properties);
+                    ListPhoneNumberInstancesResponse.create = function create(properties) {
+                        return new ListPhoneNumberInstancesResponse(properties);
                     };
     
                     /**
-                     * Encodes the specified ListUnsubscribersResponse message. Does not implicitly {@link enfonica.messaging.v1.ListUnsubscribersResponse.verify|verify} messages.
+                     * Encodes the specified ListPhoneNumberInstancesResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse.verify|verify} messages.
                      * @function encode
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @static
-                     * @param {enfonica.messaging.v1.IListUnsubscribersResponse} message ListUnsubscribersResponse message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesResponse} message ListPhoneNumberInstancesResponse message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    ListUnsubscribersResponse.encode = function encode(message, writer) {
+                    ListPhoneNumberInstancesResponse.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
-                        if (message.unsubscribers != null && message.unsubscribers.length)
-                            for (var i = 0; i < message.unsubscribers.length; ++i)
-                                $root.enfonica.messaging.v1.Unsubscriber.encode(message.unsubscribers[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.phoneNumberInstances != null && message.phoneNumberInstances.length)
+                            for (var i = 0; i < message.phoneNumberInstances.length; ++i)
+                                $root.enfonica.numbering.v1beta1.PhoneNumberInstance.encode(message.phoneNumberInstances[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                         if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
                             writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
                         return writer;
                     };
     
                     /**
-                     * Encodes the specified ListUnsubscribersResponse message, length delimited. Does not implicitly {@link enfonica.messaging.v1.ListUnsubscribersResponse.verify|verify} messages.
+                     * Encodes the specified ListPhoneNumberInstancesResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse.verify|verify} messages.
                      * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @static
-                     * @param {enfonica.messaging.v1.IListUnsubscribersResponse} message ListUnsubscribersResponse message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumberInstancesResponse} message ListPhoneNumberInstancesResponse message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    ListUnsubscribersResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                    ListPhoneNumberInstancesResponse.encodeDelimited = function encodeDelimited(message, writer) {
                         return this.encode(message, writer).ldelim();
                     };
     
                     /**
-                     * Decodes a ListUnsubscribersResponse message from the specified reader or buffer.
+                     * Decodes a ListPhoneNumberInstancesResponse message from the specified reader or buffer.
                      * @function decode
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                      * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.ListUnsubscribersResponse} ListUnsubscribersResponse
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse} ListPhoneNumberInstancesResponse
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    ListUnsubscribersResponse.decode = function decode(reader, length) {
+                    ListPhoneNumberInstancesResponse.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.ListUnsubscribersResponse();
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
                             case 1:
-                                if (!(message.unsubscribers && message.unsubscribers.length))
-                                    message.unsubscribers = [];
-                                message.unsubscribers.push($root.enfonica.messaging.v1.Unsubscriber.decode(reader, reader.uint32()));
+                                if (!(message.phoneNumberInstances && message.phoneNumberInstances.length))
+                                    message.phoneNumberInstances = [];
+                                message.phoneNumberInstances.push($root.enfonica.numbering.v1beta1.PhoneNumberInstance.decode(reader, reader.uint32()));
                                 break;
                             case 2:
                                 message.nextPageToken = reader.string();
@@ -3364,39 +1580,39 @@
                     };
     
                     /**
-                     * Decodes a ListUnsubscribersResponse message from the specified reader or buffer, length delimited.
+                     * Decodes a ListPhoneNumberInstancesResponse message from the specified reader or buffer, length delimited.
                      * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.ListUnsubscribersResponse} ListUnsubscribersResponse
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse} ListPhoneNumberInstancesResponse
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    ListUnsubscribersResponse.decodeDelimited = function decodeDelimited(reader) {
+                    ListPhoneNumberInstancesResponse.decodeDelimited = function decodeDelimited(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
                         return this.decode(reader, reader.uint32());
                     };
     
                     /**
-                     * Verifies a ListUnsubscribersResponse message.
+                     * Verifies a ListPhoneNumberInstancesResponse message.
                      * @function verify
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @static
                      * @param {Object.<string,*>} message Plain object to verify
                      * @returns {string|null} `null` if valid, otherwise the reason why it is not
                      */
-                    ListUnsubscribersResponse.verify = function verify(message) {
+                    ListPhoneNumberInstancesResponse.verify = function verify(message) {
                         if (typeof message !== "object" || message === null)
                             return "object expected";
-                        if (message.unsubscribers != null && message.hasOwnProperty("unsubscribers")) {
-                            if (!Array.isArray(message.unsubscribers))
-                                return "unsubscribers: array expected";
-                            for (var i = 0; i < message.unsubscribers.length; ++i) {
-                                var error = $root.enfonica.messaging.v1.Unsubscriber.verify(message.unsubscribers[i]);
+                        if (message.phoneNumberInstances != null && message.hasOwnProperty("phoneNumberInstances")) {
+                            if (!Array.isArray(message.phoneNumberInstances))
+                                return "phoneNumberInstances: array expected";
+                            for (var i = 0; i < message.phoneNumberInstances.length; ++i) {
+                                var error = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.verify(message.phoneNumberInstances[i]);
                                 if (error)
-                                    return "unsubscribers." + error;
+                                    return "phoneNumberInstances." + error;
                             }
                         }
                         if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
@@ -3406,25 +1622,25 @@
                     };
     
                     /**
-                     * Creates a ListUnsubscribersResponse message from a plain object. Also converts values to their respective internal types.
+                     * Creates a ListPhoneNumberInstancesResponse message from a plain object. Also converts values to their respective internal types.
                      * @function fromObject
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @static
                      * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.ListUnsubscribersResponse} ListUnsubscribersResponse
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse} ListPhoneNumberInstancesResponse
                      */
-                    ListUnsubscribersResponse.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.ListUnsubscribersResponse)
+                    ListPhoneNumberInstancesResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse)
                             return object;
-                        var message = new $root.enfonica.messaging.v1.ListUnsubscribersResponse();
-                        if (object.unsubscribers) {
-                            if (!Array.isArray(object.unsubscribers))
-                                throw TypeError(".enfonica.messaging.v1.ListUnsubscribersResponse.unsubscribers: array expected");
-                            message.unsubscribers = [];
-                            for (var i = 0; i < object.unsubscribers.length; ++i) {
-                                if (typeof object.unsubscribers[i] !== "object")
-                                    throw TypeError(".enfonica.messaging.v1.ListUnsubscribersResponse.unsubscribers: object expected");
-                                message.unsubscribers[i] = $root.enfonica.messaging.v1.Unsubscriber.fromObject(object.unsubscribers[i]);
+                        var message = new $root.enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse();
+                        if (object.phoneNumberInstances) {
+                            if (!Array.isArray(object.phoneNumberInstances))
+                                throw TypeError(".enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse.phoneNumberInstances: array expected");
+                            message.phoneNumberInstances = [];
+                            for (var i = 0; i < object.phoneNumberInstances.length; ++i) {
+                                if (typeof object.phoneNumberInstances[i] !== "object")
+                                    throw TypeError(".enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse.phoneNumberInstances: object expected");
+                                message.phoneNumberInstances[i] = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.fromObject(object.phoneNumberInstances[i]);
                             }
                         }
                         if (object.nextPageToken != null)
@@ -3433,26 +1649,26 @@
                     };
     
                     /**
-                     * Creates a plain object from a ListUnsubscribersResponse message. Also converts values to other types if specified.
+                     * Creates a plain object from a ListPhoneNumberInstancesResponse message. Also converts values to other types if specified.
                      * @function toObject
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @static
-                     * @param {enfonica.messaging.v1.ListUnsubscribersResponse} message ListUnsubscribersResponse
+                     * @param {enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse} message ListPhoneNumberInstancesResponse
                      * @param {$protobuf.IConversionOptions} [options] Conversion options
                      * @returns {Object.<string,*>} Plain object
                      */
-                    ListUnsubscribersResponse.toObject = function toObject(message, options) {
+                    ListPhoneNumberInstancesResponse.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
                         var object = {};
                         if (options.arrays || options.defaults)
-                            object.unsubscribers = [];
+                            object.phoneNumberInstances = [];
                         if (options.defaults)
                             object.nextPageToken = "";
-                        if (message.unsubscribers && message.unsubscribers.length) {
-                            object.unsubscribers = [];
-                            for (var j = 0; j < message.unsubscribers.length; ++j)
-                                object.unsubscribers[j] = $root.enfonica.messaging.v1.Unsubscriber.toObject(message.unsubscribers[j], options);
+                        if (message.phoneNumberInstances && message.phoneNumberInstances.length) {
+                            object.phoneNumberInstances = [];
+                            for (var j = 0; j < message.phoneNumberInstances.length; ++j)
+                                object.phoneNumberInstances[j] = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.toObject(message.phoneNumberInstances[j], options);
                         }
                         if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
                             object.nextPageToken = message.nextPageToken;
@@ -3460,38 +1676,39 @@
                     };
     
                     /**
-                     * Converts this ListUnsubscribersResponse to JSON.
+                     * Converts this ListPhoneNumberInstancesResponse to JSON.
                      * @function toJSON
-                     * @memberof enfonica.messaging.v1.ListUnsubscribersResponse
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse
                      * @instance
                      * @returns {Object.<string,*>} JSON object
                      */
-                    ListUnsubscribersResponse.prototype.toJSON = function toJSON() {
+                    ListPhoneNumberInstancesResponse.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
     
-                    return ListUnsubscribersResponse;
+                    return ListPhoneNumberInstancesResponse;
                 })();
     
-                v1.UpdateUnsubscriberRequest = (function() {
+                v1beta1.UpdatePhoneNumberInstanceRequest = (function() {
     
                     /**
-                     * Properties of an UpdateUnsubscriberRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IUpdateUnsubscriberRequest
-                     * @property {enfonica.messaging.v1.IUnsubscriber|null} [unsubscriber] UpdateUnsubscriberRequest unsubscriber
-                     * @property {google.protobuf.IFieldMask|null} [updateMask] UpdateUnsubscriberRequest updateMask
+                     * Properties of an UpdatePhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IUpdatePhoneNumberInstanceRequest
+                     * @property {string|null} [name] UpdatePhoneNumberInstanceRequest name
+                     * @property {enfonica.numbering.v1beta1.IPhoneNumberInstance|null} [phoneNumberInstance] UpdatePhoneNumberInstanceRequest phoneNumberInstance
+                     * @property {google.protobuf.IFieldMask|null} [updateMask] UpdatePhoneNumberInstanceRequest updateMask
                      */
     
                     /**
-                     * Constructs a new UpdateUnsubscriberRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents an UpdateUnsubscriberRequest.
-                     * @implements IUpdateUnsubscriberRequest
+                     * Constructs a new UpdatePhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents an UpdatePhoneNumberInstanceRequest.
+                     * @implements IUpdatePhoneNumberInstanceRequest
                      * @constructor
-                     * @param {enfonica.messaging.v1.IUpdateUnsubscriberRequest=} [properties] Properties to set
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest=} [properties] Properties to set
                      */
-                    function UpdateUnsubscriberRequest(properties) {
+                    function UpdatePhoneNumberInstanceRequest(properties) {
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -3499,87 +1716,100 @@
                     }
     
                     /**
-                     * UpdateUnsubscriberRequest unsubscriber.
-                     * @member {enfonica.messaging.v1.IUnsubscriber|null|undefined} unsubscriber
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * UpdatePhoneNumberInstanceRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @instance
                      */
-                    UpdateUnsubscriberRequest.prototype.unsubscriber = null;
+                    UpdatePhoneNumberInstanceRequest.prototype.name = "";
     
                     /**
-                     * UpdateUnsubscriberRequest updateMask.
+                     * UpdatePhoneNumberInstanceRequest phoneNumberInstance.
+                     * @member {enfonica.numbering.v1beta1.IPhoneNumberInstance|null|undefined} phoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
+                     * @instance
+                     */
+                    UpdatePhoneNumberInstanceRequest.prototype.phoneNumberInstance = null;
+    
+                    /**
+                     * UpdatePhoneNumberInstanceRequest updateMask.
                      * @member {google.protobuf.IFieldMask|null|undefined} updateMask
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @instance
                      */
-                    UpdateUnsubscriberRequest.prototype.updateMask = null;
+                    UpdatePhoneNumberInstanceRequest.prototype.updateMask = null;
     
                     /**
-                     * Creates a new UpdateUnsubscriberRequest instance using the specified properties.
+                     * Creates a new UpdatePhoneNumberInstanceRequest instance using the specified properties.
                      * @function create
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IUpdateUnsubscriberRequest=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.UpdateUnsubscriberRequest} UpdateUnsubscriberRequest instance
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest} UpdatePhoneNumberInstanceRequest instance
                      */
-                    UpdateUnsubscriberRequest.create = function create(properties) {
-                        return new UpdateUnsubscriberRequest(properties);
+                    UpdatePhoneNumberInstanceRequest.create = function create(properties) {
+                        return new UpdatePhoneNumberInstanceRequest(properties);
                     };
     
                     /**
-                     * Encodes the specified UpdateUnsubscriberRequest message. Does not implicitly {@link enfonica.messaging.v1.UpdateUnsubscriberRequest.verify|verify} messages.
+                     * Encodes the specified UpdatePhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest.verify|verify} messages.
                      * @function encode
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IUpdateUnsubscriberRequest} message UpdateUnsubscriberRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest} message UpdatePhoneNumberInstanceRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    UpdateUnsubscriberRequest.encode = function encode(message, writer) {
+                    UpdatePhoneNumberInstanceRequest.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
-                        if (message.unsubscriber != null && Object.hasOwnProperty.call(message, "unsubscriber"))
-                            $root.enfonica.messaging.v1.Unsubscriber.encode(message.unsubscriber, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.phoneNumberInstance != null && Object.hasOwnProperty.call(message, "phoneNumberInstance"))
+                            $root.enfonica.numbering.v1beta1.PhoneNumberInstance.encode(message.phoneNumberInstance, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                         if (message.updateMask != null && Object.hasOwnProperty.call(message, "updateMask"))
-                            $root.google.protobuf.FieldMask.encode(message.updateMask, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                            $root.google.protobuf.FieldMask.encode(message.updateMask, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                         return writer;
                     };
     
                     /**
-                     * Encodes the specified UpdateUnsubscriberRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.UpdateUnsubscriberRequest.verify|verify} messages.
+                     * Encodes the specified UpdatePhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest.verify|verify} messages.
                      * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IUpdateUnsubscriberRequest} message UpdateUnsubscriberRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest} message UpdatePhoneNumberInstanceRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    UpdateUnsubscriberRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                    UpdatePhoneNumberInstanceRequest.encodeDelimited = function encodeDelimited(message, writer) {
                         return this.encode(message, writer).ldelim();
                     };
     
                     /**
-                     * Decodes an UpdateUnsubscriberRequest message from the specified reader or buffer.
+                     * Decodes an UpdatePhoneNumberInstanceRequest message from the specified reader or buffer.
                      * @function decode
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                      * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.UpdateUnsubscriberRequest} UpdateUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest} UpdatePhoneNumberInstanceRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    UpdateUnsubscriberRequest.decode = function decode(reader, length) {
+                    UpdatePhoneNumberInstanceRequest.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.UpdateUnsubscriberRequest();
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
                             case 1:
-                                message.unsubscriber = $root.enfonica.messaging.v1.Unsubscriber.decode(reader, reader.uint32());
+                                message.name = reader.string();
                                 break;
                             case 2:
+                                message.phoneNumberInstance = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.decode(reader, reader.uint32());
+                                break;
+                            case 3:
                                 message.updateMask = $root.google.protobuf.FieldMask.decode(reader, reader.uint32());
                                 break;
                             default:
@@ -3591,36 +1821,39 @@
                     };
     
                     /**
-                     * Decodes an UpdateUnsubscriberRequest message from the specified reader or buffer, length delimited.
+                     * Decodes an UpdatePhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
                      * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.UpdateUnsubscriberRequest} UpdateUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest} UpdatePhoneNumberInstanceRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    UpdateUnsubscriberRequest.decodeDelimited = function decodeDelimited(reader) {
+                    UpdatePhoneNumberInstanceRequest.decodeDelimited = function decodeDelimited(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
                         return this.decode(reader, reader.uint32());
                     };
     
                     /**
-                     * Verifies an UpdateUnsubscriberRequest message.
+                     * Verifies an UpdatePhoneNumberInstanceRequest message.
                      * @function verify
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @static
                      * @param {Object.<string,*>} message Plain object to verify
                      * @returns {string|null} `null` if valid, otherwise the reason why it is not
                      */
-                    UpdateUnsubscriberRequest.verify = function verify(message) {
+                    UpdatePhoneNumberInstanceRequest.verify = function verify(message) {
                         if (typeof message !== "object" || message === null)
                             return "object expected";
-                        if (message.unsubscriber != null && message.hasOwnProperty("unsubscriber")) {
-                            var error = $root.enfonica.messaging.v1.Unsubscriber.verify(message.unsubscriber);
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.phoneNumberInstance != null && message.hasOwnProperty("phoneNumberInstance")) {
+                            var error = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.verify(message.phoneNumberInstance);
                             if (error)
-                                return "unsubscriber." + error;
+                                return "phoneNumberInstance." + error;
                         }
                         if (message.updateMask != null && message.hasOwnProperty("updateMask")) {
                             var error = $root.google.protobuf.FieldMask.verify(message.updateMask);
@@ -3631,86 +1864,91 @@
                     };
     
                     /**
-                     * Creates an UpdateUnsubscriberRequest message from a plain object. Also converts values to their respective internal types.
+                     * Creates an UpdatePhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
                      * @function fromObject
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @static
                      * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.UpdateUnsubscriberRequest} UpdateUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest} UpdatePhoneNumberInstanceRequest
                      */
-                    UpdateUnsubscriberRequest.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.UpdateUnsubscriberRequest)
+                    UpdatePhoneNumberInstanceRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest)
                             return object;
-                        var message = new $root.enfonica.messaging.v1.UpdateUnsubscriberRequest();
-                        if (object.unsubscriber != null) {
-                            if (typeof object.unsubscriber !== "object")
-                                throw TypeError(".enfonica.messaging.v1.UpdateUnsubscriberRequest.unsubscriber: object expected");
-                            message.unsubscriber = $root.enfonica.messaging.v1.Unsubscriber.fromObject(object.unsubscriber);
+                        var message = new $root.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.phoneNumberInstance != null) {
+                            if (typeof object.phoneNumberInstance !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest.phoneNumberInstance: object expected");
+                            message.phoneNumberInstance = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.fromObject(object.phoneNumberInstance);
                         }
                         if (object.updateMask != null) {
                             if (typeof object.updateMask !== "object")
-                                throw TypeError(".enfonica.messaging.v1.UpdateUnsubscriberRequest.updateMask: object expected");
+                                throw TypeError(".enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest.updateMask: object expected");
                             message.updateMask = $root.google.protobuf.FieldMask.fromObject(object.updateMask);
                         }
                         return message;
                     };
     
                     /**
-                     * Creates a plain object from an UpdateUnsubscriberRequest message. Also converts values to other types if specified.
+                     * Creates a plain object from an UpdatePhoneNumberInstanceRequest message. Also converts values to other types if specified.
                      * @function toObject
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.UpdateUnsubscriberRequest} message UpdateUnsubscriberRequest
+                     * @param {enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest} message UpdatePhoneNumberInstanceRequest
                      * @param {$protobuf.IConversionOptions} [options] Conversion options
                      * @returns {Object.<string,*>} Plain object
                      */
-                    UpdateUnsubscriberRequest.toObject = function toObject(message, options) {
+                    UpdatePhoneNumberInstanceRequest.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
                         var object = {};
                         if (options.defaults) {
-                            object.unsubscriber = null;
+                            object.name = "";
+                            object.phoneNumberInstance = null;
                             object.updateMask = null;
                         }
-                        if (message.unsubscriber != null && message.hasOwnProperty("unsubscriber"))
-                            object.unsubscriber = $root.enfonica.messaging.v1.Unsubscriber.toObject(message.unsubscriber, options);
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.phoneNumberInstance != null && message.hasOwnProperty("phoneNumberInstance"))
+                            object.phoneNumberInstance = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.toObject(message.phoneNumberInstance, options);
                         if (message.updateMask != null && message.hasOwnProperty("updateMask"))
                             object.updateMask = $root.google.protobuf.FieldMask.toObject(message.updateMask, options);
                         return object;
                     };
     
                     /**
-                     * Converts this UpdateUnsubscriberRequest to JSON.
+                     * Converts this UpdatePhoneNumberInstanceRequest to JSON.
                      * @function toJSON
-                     * @memberof enfonica.messaging.v1.UpdateUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest
                      * @instance
                      * @returns {Object.<string,*>} JSON object
                      */
-                    UpdateUnsubscriberRequest.prototype.toJSON = function toJSON() {
+                    UpdatePhoneNumberInstanceRequest.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
     
-                    return UpdateUnsubscriberRequest;
+                    return UpdatePhoneNumberInstanceRequest;
                 })();
     
-                v1.DeleteUnsubscriberRequest = (function() {
+                v1beta1.DeletePhoneNumberInstanceRequest = (function() {
     
                     /**
-                     * Properties of a DeleteUnsubscriberRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @interface IDeleteUnsubscriberRequest
-                     * @property {string|null} [name] DeleteUnsubscriberRequest name
+                     * Properties of a DeletePhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IDeletePhoneNumberInstanceRequest
+                     * @property {string|null} [name] DeletePhoneNumberInstanceRequest name
                      */
     
                     /**
-                     * Constructs a new DeleteUnsubscriberRequest.
-                     * @memberof enfonica.messaging.v1
-                     * @classdesc Represents a DeleteUnsubscriberRequest.
-                     * @implements IDeleteUnsubscriberRequest
+                     * Constructs a new DeletePhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a DeletePhoneNumberInstanceRequest.
+                     * @implements IDeletePhoneNumberInstanceRequest
                      * @constructor
-                     * @param {enfonica.messaging.v1.IDeleteUnsubscriberRequest=} [properties] Properties to set
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest=} [properties] Properties to set
                      */
-                    function DeleteUnsubscriberRequest(properties) {
+                    function DeletePhoneNumberInstanceRequest(properties) {
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -3718,35 +1956,35 @@
                     }
     
                     /**
-                     * DeleteUnsubscriberRequest name.
+                     * DeletePhoneNumberInstanceRequest name.
                      * @member {string} name
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @instance
                      */
-                    DeleteUnsubscriberRequest.prototype.name = "";
+                    DeletePhoneNumberInstanceRequest.prototype.name = "";
     
                     /**
-                     * Creates a new DeleteUnsubscriberRequest instance using the specified properties.
+                     * Creates a new DeletePhoneNumberInstanceRequest instance using the specified properties.
                      * @function create
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IDeleteUnsubscriberRequest=} [properties] Properties to set
-                     * @returns {enfonica.messaging.v1.DeleteUnsubscriberRequest} DeleteUnsubscriberRequest instance
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest} DeletePhoneNumberInstanceRequest instance
                      */
-                    DeleteUnsubscriberRequest.create = function create(properties) {
-                        return new DeleteUnsubscriberRequest(properties);
+                    DeletePhoneNumberInstanceRequest.create = function create(properties) {
+                        return new DeletePhoneNumberInstanceRequest(properties);
                     };
     
                     /**
-                     * Encodes the specified DeleteUnsubscriberRequest message. Does not implicitly {@link enfonica.messaging.v1.DeleteUnsubscriberRequest.verify|verify} messages.
+                     * Encodes the specified DeletePhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest.verify|verify} messages.
                      * @function encode
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IDeleteUnsubscriberRequest} message DeleteUnsubscriberRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest} message DeletePhoneNumberInstanceRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    DeleteUnsubscriberRequest.encode = function encode(message, writer) {
+                    DeletePhoneNumberInstanceRequest.encode = function encode(message, writer) {
                         if (!writer)
                             writer = $Writer.create();
                         if (message.name != null && Object.hasOwnProperty.call(message, "name"))
@@ -3755,33 +1993,33 @@
                     };
     
                     /**
-                     * Encodes the specified DeleteUnsubscriberRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.DeleteUnsubscriberRequest.verify|verify} messages.
+                     * Encodes the specified DeletePhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest.verify|verify} messages.
                      * @function encodeDelimited
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.IDeleteUnsubscriberRequest} message DeleteUnsubscriberRequest message or plain object to encode
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest} message DeletePhoneNumberInstanceRequest message or plain object to encode
                      * @param {$protobuf.Writer} [writer] Writer to encode to
                      * @returns {$protobuf.Writer} Writer
                      */
-                    DeleteUnsubscriberRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                    DeletePhoneNumberInstanceRequest.encodeDelimited = function encodeDelimited(message, writer) {
                         return this.encode(message, writer).ldelim();
                     };
     
                     /**
-                     * Decodes a DeleteUnsubscriberRequest message from the specified reader or buffer.
+                     * Decodes a DeletePhoneNumberInstanceRequest message from the specified reader or buffer.
                      * @function decode
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                      * @param {number} [length] Message length if known beforehand
-                     * @returns {enfonica.messaging.v1.DeleteUnsubscriberRequest} DeleteUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest} DeletePhoneNumberInstanceRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    DeleteUnsubscriberRequest.decode = function decode(reader, length) {
+                    DeletePhoneNumberInstanceRequest.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.messaging.v1.DeleteUnsubscriberRequest();
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest();
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
@@ -3797,30 +2035,30 @@
                     };
     
                     /**
-                     * Decodes a DeleteUnsubscriberRequest message from the specified reader or buffer, length delimited.
+                     * Decodes a DeletePhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
                      * @function decodeDelimited
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @static
                      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                     * @returns {enfonica.messaging.v1.DeleteUnsubscriberRequest} DeleteUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest} DeletePhoneNumberInstanceRequest
                      * @throws {Error} If the payload is not a reader or valid buffer
                      * @throws {$protobuf.util.ProtocolError} If required fields are missing
                      */
-                    DeleteUnsubscriberRequest.decodeDelimited = function decodeDelimited(reader) {
+                    DeletePhoneNumberInstanceRequest.decodeDelimited = function decodeDelimited(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
                         return this.decode(reader, reader.uint32());
                     };
     
                     /**
-                     * Verifies a DeleteUnsubscriberRequest message.
+                     * Verifies a DeletePhoneNumberInstanceRequest message.
                      * @function verify
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @static
                      * @param {Object.<string,*>} message Plain object to verify
                      * @returns {string|null} `null` if valid, otherwise the reason why it is not
                      */
-                    DeleteUnsubscriberRequest.verify = function verify(message) {
+                    DeletePhoneNumberInstanceRequest.verify = function verify(message) {
                         if (typeof message !== "object" || message === null)
                             return "object expected";
                         if (message.name != null && message.hasOwnProperty("name"))
@@ -3830,32 +2068,32 @@
                     };
     
                     /**
-                     * Creates a DeleteUnsubscriberRequest message from a plain object. Also converts values to their respective internal types.
+                     * Creates a DeletePhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
                      * @function fromObject
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @static
                      * @param {Object.<string,*>} object Plain object
-                     * @returns {enfonica.messaging.v1.DeleteUnsubscriberRequest} DeleteUnsubscriberRequest
+                     * @returns {enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest} DeletePhoneNumberInstanceRequest
                      */
-                    DeleteUnsubscriberRequest.fromObject = function fromObject(object) {
-                        if (object instanceof $root.enfonica.messaging.v1.DeleteUnsubscriberRequest)
+                    DeletePhoneNumberInstanceRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest)
                             return object;
-                        var message = new $root.enfonica.messaging.v1.DeleteUnsubscriberRequest();
+                        var message = new $root.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest();
                         if (object.name != null)
                             message.name = String(object.name);
                         return message;
                     };
     
                     /**
-                     * Creates a plain object from a DeleteUnsubscriberRequest message. Also converts values to other types if specified.
+                     * Creates a plain object from a DeletePhoneNumberInstanceRequest message. Also converts values to other types if specified.
                      * @function toObject
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @static
-                     * @param {enfonica.messaging.v1.DeleteUnsubscriberRequest} message DeleteUnsubscriberRequest
+                     * @param {enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest} message DeletePhoneNumberInstanceRequest
                      * @param {$protobuf.IConversionOptions} [options] Conversion options
                      * @returns {Object.<string,*>} Plain object
                      */
-                    DeleteUnsubscriberRequest.toObject = function toObject(message, options) {
+                    DeletePhoneNumberInstanceRequest.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
                         var object = {};
@@ -3867,23 +2105,2916 @@
                     };
     
                     /**
-                     * Converts this DeleteUnsubscriberRequest to JSON.
+                     * Converts this DeletePhoneNumberInstanceRequest to JSON.
                      * @function toJSON
-                     * @memberof enfonica.messaging.v1.DeleteUnsubscriberRequest
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest
                      * @instance
                      * @returns {Object.<string,*>} JSON object
                      */
-                    DeleteUnsubscriberRequest.prototype.toJSON = function toJSON() {
+                    DeletePhoneNumberInstanceRequest.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
     
-                    return DeleteUnsubscriberRequest;
+                    return DeletePhoneNumberInstanceRequest;
                 })();
     
-                return v1;
+                v1beta1.GetProvisionedPhoneNumberInstanceRequest = (function() {
+    
+                    /**
+                     * Properties of a GetProvisionedPhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IGetProvisionedPhoneNumberInstanceRequest
+                     * @property {string|null} [parent] GetProvisionedPhoneNumberInstanceRequest parent
+                     * @property {string|null} [phoneNumber] GetProvisionedPhoneNumberInstanceRequest phoneNumber
+                     */
+    
+                    /**
+                     * Constructs a new GetProvisionedPhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a GetProvisionedPhoneNumberInstanceRequest.
+                     * @implements IGetProvisionedPhoneNumberInstanceRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest=} [properties] Properties to set
+                     */
+                    function GetProvisionedPhoneNumberInstanceRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * GetProvisionedPhoneNumberInstanceRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @instance
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.prototype.parent = "";
+    
+                    /**
+                     * GetProvisionedPhoneNumberInstanceRequest phoneNumber.
+                     * @member {string} phoneNumber
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @instance
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.prototype.phoneNumber = "";
+    
+                    /**
+                     * Creates a new GetProvisionedPhoneNumberInstanceRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest} GetProvisionedPhoneNumberInstanceRequest instance
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.create = function create(properties) {
+                        return new GetProvisionedPhoneNumberInstanceRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified GetProvisionedPhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest} message GetProvisionedPhoneNumberInstanceRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.phoneNumber != null && Object.hasOwnProperty.call(message, "phoneNumber"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.phoneNumber);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified GetProvisionedPhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest} message GetProvisionedPhoneNumberInstanceRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a GetProvisionedPhoneNumberInstanceRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest} GetProvisionedPhoneNumberInstanceRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.phoneNumber = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a GetProvisionedPhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest} GetProvisionedPhoneNumberInstanceRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a GetProvisionedPhoneNumberInstanceRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber"))
+                            if (!$util.isString(message.phoneNumber))
+                                return "phoneNumber: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a GetProvisionedPhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest} GetProvisionedPhoneNumberInstanceRequest
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.phoneNumber != null)
+                            message.phoneNumber = String(object.phoneNumber);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a GetProvisionedPhoneNumberInstanceRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest} message GetProvisionedPhoneNumberInstanceRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.phoneNumber = "";
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber"))
+                            object.phoneNumber = message.phoneNumber;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this GetProvisionedPhoneNumberInstanceRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    GetProvisionedPhoneNumberInstanceRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return GetProvisionedPhoneNumberInstanceRequest;
+                })();
+    
+                v1beta1.PhoneNumbers = (function() {
+    
+                    /**
+                     * Constructs a new PhoneNumbers service.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a PhoneNumbers
+                     * @extends $protobuf.rpc.Service
+                     * @constructor
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     */
+                    function PhoneNumbers(rpcImpl, requestDelimited, responseDelimited) {
+                        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+                    }
+    
+                    (PhoneNumbers.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = PhoneNumbers;
+    
+                    /**
+                     * Creates new PhoneNumbers service using the specified rpc implementation.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @static
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     * @returns {PhoneNumbers} RPC service. Useful where requests and/or responses are streamed.
+                     */
+                    PhoneNumbers.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+                        return new this(rpcImpl, requestDelimited, responseDelimited);
+                    };
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#createPhoneNumber}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @typedef CreatePhoneNumberCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.PhoneNumber} [response] PhoneNumber
+                     */
+    
+                    /**
+                     * Calls CreatePhoneNumber.
+                     * @function createPhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberRequest} request CreatePhoneNumberRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumbers.CreatePhoneNumberCallback} callback Node-style callback called with the error, if any, and PhoneNumber
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumbers.prototype.createPhoneNumber = function createPhoneNumber(request, callback) {
+                        return this.rpcCall(createPhoneNumber, $root.enfonica.numbering.v1beta1.CreatePhoneNumberRequest, $root.enfonica.numbering.v1beta1.PhoneNumber, request, callback);
+                    }, "name", { value: "CreatePhoneNumber" });
+    
+                    /**
+                     * Calls CreatePhoneNumber.
+                     * @function createPhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberRequest} request CreatePhoneNumberRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumber>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#getPhoneNumber}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @typedef GetPhoneNumberCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.PhoneNumber} [response] PhoneNumber
+                     */
+    
+                    /**
+                     * Calls GetPhoneNumber.
+                     * @function getPhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberRequest} request GetPhoneNumberRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumbers.GetPhoneNumberCallback} callback Node-style callback called with the error, if any, and PhoneNumber
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumbers.prototype.getPhoneNumber = function getPhoneNumber(request, callback) {
+                        return this.rpcCall(getPhoneNumber, $root.enfonica.numbering.v1beta1.GetPhoneNumberRequest, $root.enfonica.numbering.v1beta1.PhoneNumber, request, callback);
+                    }, "name", { value: "GetPhoneNumber" });
+    
+                    /**
+                     * Calls GetPhoneNumber.
+                     * @function getPhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberRequest} request GetPhoneNumberRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumber>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#listPhoneNumbers}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @typedef ListPhoneNumbersCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.ListPhoneNumbersResponse} [response] ListPhoneNumbersResponse
+                     */
+    
+                    /**
+                     * Calls ListPhoneNumbers.
+                     * @function listPhoneNumbers
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersRequest} request ListPhoneNumbersRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumbers.ListPhoneNumbersCallback} callback Node-style callback called with the error, if any, and ListPhoneNumbersResponse
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumbers.prototype.listPhoneNumbers = function listPhoneNumbers(request, callback) {
+                        return this.rpcCall(listPhoneNumbers, $root.enfonica.numbering.v1beta1.ListPhoneNumbersRequest, $root.enfonica.numbering.v1beta1.ListPhoneNumbersResponse, request, callback);
+                    }, "name", { value: "ListPhoneNumbers" });
+    
+                    /**
+                     * Calls ListPhoneNumbers.
+                     * @function listPhoneNumbers
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersRequest} request ListPhoneNumbersRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.ListPhoneNumbersResponse>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#updatePhoneNumber}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @typedef UpdatePhoneNumberCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.PhoneNumber} [response] PhoneNumber
+                     */
+    
+                    /**
+                     * Calls UpdatePhoneNumber.
+                     * @function updatePhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest} request UpdatePhoneNumberRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumbers.UpdatePhoneNumberCallback} callback Node-style callback called with the error, if any, and PhoneNumber
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumbers.prototype.updatePhoneNumber = function updatePhoneNumber(request, callback) {
+                        return this.rpcCall(updatePhoneNumber, $root.enfonica.numbering.v1beta1.UpdatePhoneNumberRequest, $root.enfonica.numbering.v1beta1.PhoneNumber, request, callback);
+                    }, "name", { value: "UpdatePhoneNumber" });
+    
+                    /**
+                     * Calls UpdatePhoneNumber.
+                     * @function updatePhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest} request UpdatePhoneNumberRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumber>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#deletePhoneNumber}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @typedef DeletePhoneNumberCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.PhoneNumber} [response] PhoneNumber
+                     */
+    
+                    /**
+                     * Calls DeletePhoneNumber.
+                     * @function deletePhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberRequest} request DeletePhoneNumberRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumbers.DeletePhoneNumberCallback} callback Node-style callback called with the error, if any, and PhoneNumber
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumbers.prototype.deletePhoneNumber = function deletePhoneNumber(request, callback) {
+                        return this.rpcCall(deletePhoneNumber, $root.enfonica.numbering.v1beta1.DeletePhoneNumberRequest, $root.enfonica.numbering.v1beta1.PhoneNumber, request, callback);
+                    }, "name", { value: "DeletePhoneNumber" });
+    
+                    /**
+                     * Calls DeletePhoneNumber.
+                     * @function deletePhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberRequest} request DeletePhoneNumberRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumber>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#searchPhoneNumbers}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @typedef SearchPhoneNumbersCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.SearchPhoneNumbersResponse} [response] SearchPhoneNumbersResponse
+                     */
+    
+                    /**
+                     * Calls SearchPhoneNumbers.
+                     * @function searchPhoneNumbers
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest} request SearchPhoneNumbersRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumbers.SearchPhoneNumbersCallback} callback Node-style callback called with the error, if any, and SearchPhoneNumbersResponse
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumbers.prototype.searchPhoneNumbers = function searchPhoneNumbers(request, callback) {
+                        return this.rpcCall(searchPhoneNumbers, $root.enfonica.numbering.v1beta1.SearchPhoneNumbersRequest, $root.enfonica.numbering.v1beta1.SearchPhoneNumbersResponse, request, callback);
+                    }, "name", { value: "SearchPhoneNumbers" });
+    
+                    /**
+                     * Calls SearchPhoneNumbers.
+                     * @function searchPhoneNumbers
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumbers
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest} request SearchPhoneNumbersRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.SearchPhoneNumbersResponse>} Promise
+                     * @variation 2
+                     */
+    
+                    return PhoneNumbers;
+                })();
+    
+                v1beta1.PhoneNumber = (function() {
+    
+                    /**
+                     * Properties of a PhoneNumber.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IPhoneNumber
+                     * @property {string|null} [name] PhoneNumber name
+                     * @property {string|null} [phoneNumber] PhoneNumber phoneNumber
+                     * @property {Array.<enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability>|null} [capabilities] PhoneNumber capabilities
+                     * @property {string|null} [sku] PhoneNumber sku
+                     * @property {string|null} [carrier] PhoneNumber carrier
+                     * @property {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null} [numberType] PhoneNumber numberType
+                     * @property {string|null} [countryCode] PhoneNumber countryCode
+                     * @property {google.protobuf.ITimestamp|null} [createTime] PhoneNumber createTime
+                     * @property {google.protobuf.ITimestamp|null} [deleteTime] PhoneNumber deleteTime
+                     * @property {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberState|null} [state] PhoneNumber state
+                     * @property {string|null} [localAccessArea] PhoneNumber localAccessArea
+                     */
+    
+                    /**
+                     * Constructs a new PhoneNumber.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a PhoneNumber.
+                     * @implements IPhoneNumber
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumber=} [properties] Properties to set
+                     */
+                    function PhoneNumber(properties) {
+                        this.capabilities = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * PhoneNumber name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.name = "";
+    
+                    /**
+                     * PhoneNumber phoneNumber.
+                     * @member {string} phoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.phoneNumber = "";
+    
+                    /**
+                     * PhoneNumber capabilities.
+                     * @member {Array.<enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability>} capabilities
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.capabilities = $util.emptyArray;
+    
+                    /**
+                     * PhoneNumber sku.
+                     * @member {string} sku
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.sku = "";
+    
+                    /**
+                     * PhoneNumber carrier.
+                     * @member {string} carrier
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.carrier = "";
+    
+                    /**
+                     * PhoneNumber numberType.
+                     * @member {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} numberType
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.numberType = 0;
+    
+                    /**
+                     * PhoneNumber countryCode.
+                     * @member {string} countryCode
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.countryCode = "";
+    
+                    /**
+                     * PhoneNumber createTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} createTime
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.createTime = null;
+    
+                    /**
+                     * PhoneNumber deleteTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} deleteTime
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.deleteTime = null;
+    
+                    /**
+                     * PhoneNumber state.
+                     * @member {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberState} state
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.state = 0;
+    
+                    /**
+                     * PhoneNumber localAccessArea.
+                     * @member {string} localAccessArea
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.localAccessArea = "";
+    
+                    /**
+                     * Creates a new PhoneNumber instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumber=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumber} PhoneNumber instance
+                     */
+                    PhoneNumber.create = function create(properties) {
+                        return new PhoneNumber(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified PhoneNumber message. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumber.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumber} message PhoneNumber message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    PhoneNumber.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.phoneNumber != null && Object.hasOwnProperty.call(message, "phoneNumber"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.phoneNumber);
+                        if (message.capabilities != null && message.capabilities.length) {
+                            writer.uint32(/* id 3, wireType 2 =*/26).fork();
+                            for (var i = 0; i < message.capabilities.length; ++i)
+                                writer.int32(message.capabilities[i]);
+                            writer.ldelim();
+                        }
+                        if (message.sku != null && Object.hasOwnProperty.call(message, "sku"))
+                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.sku);
+                        if (message.carrier != null && Object.hasOwnProperty.call(message, "carrier"))
+                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.carrier);
+                        if (message.numberType != null && Object.hasOwnProperty.call(message, "numberType"))
+                            writer.uint32(/* id 10, wireType 0 =*/80).int32(message.numberType);
+                        if (message.countryCode != null && Object.hasOwnProperty.call(message, "countryCode"))
+                            writer.uint32(/* id 11, wireType 2 =*/90).string(message.countryCode);
+                        if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
+                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
+                        if (message.deleteTime != null && Object.hasOwnProperty.call(message, "deleteTime"))
+                            $root.google.protobuf.Timestamp.encode(message.deleteTime, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
+                        if (message.state != null && Object.hasOwnProperty.call(message, "state"))
+                            writer.uint32(/* id 14, wireType 0 =*/112).int32(message.state);
+                        if (message.localAccessArea != null && Object.hasOwnProperty.call(message, "localAccessArea"))
+                            writer.uint32(/* id 15, wireType 2 =*/122).string(message.localAccessArea);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified PhoneNumber message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumber.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumber} message PhoneNumber message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    PhoneNumber.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a PhoneNumber message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumber} PhoneNumber
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    PhoneNumber.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.PhoneNumber();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.phoneNumber = reader.string();
+                                break;
+                            case 3:
+                                if (!(message.capabilities && message.capabilities.length))
+                                    message.capabilities = [];
+                                if ((tag & 7) === 2) {
+                                    var end2 = reader.uint32() + reader.pos;
+                                    while (reader.pos < end2)
+                                        message.capabilities.push(reader.int32());
+                                } else
+                                    message.capabilities.push(reader.int32());
+                                break;
+                            case 4:
+                                message.sku = reader.string();
+                                break;
+                            case 5:
+                                message.carrier = reader.string();
+                                break;
+                            case 10:
+                                message.numberType = reader.int32();
+                                break;
+                            case 11:
+                                message.countryCode = reader.string();
+                                break;
+                            case 12:
+                                message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 13:
+                                message.deleteTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 14:
+                                message.state = reader.int32();
+                                break;
+                            case 15:
+                                message.localAccessArea = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a PhoneNumber message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumber} PhoneNumber
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    PhoneNumber.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a PhoneNumber message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    PhoneNumber.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber"))
+                            if (!$util.isString(message.phoneNumber))
+                                return "phoneNumber: string expected";
+                        if (message.capabilities != null && message.hasOwnProperty("capabilities")) {
+                            if (!Array.isArray(message.capabilities))
+                                return "capabilities: array expected";
+                            for (var i = 0; i < message.capabilities.length; ++i)
+                                switch (message.capabilities[i]) {
+                                default:
+                                    return "capabilities: enum value[] expected";
+                                case 0:
+                                case 1:
+                                case 2:
+                                case 4:
+                                    break;
+                                }
+                        }
+                        if (message.sku != null && message.hasOwnProperty("sku"))
+                            if (!$util.isString(message.sku))
+                                return "sku: string expected";
+                        if (message.carrier != null && message.hasOwnProperty("carrier"))
+                            if (!$util.isString(message.carrier))
+                                return "carrier: string expected";
+                        if (message.numberType != null && message.hasOwnProperty("numberType"))
+                            switch (message.numberType) {
+                            default:
+                                return "numberType: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                            case 5:
+                                break;
+                            }
+                        if (message.countryCode != null && message.hasOwnProperty("countryCode"))
+                            if (!$util.isString(message.countryCode))
+                                return "countryCode: string expected";
+                        if (message.createTime != null && message.hasOwnProperty("createTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.createTime);
+                            if (error)
+                                return "createTime." + error;
+                        }
+                        if (message.deleteTime != null && message.hasOwnProperty("deleteTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.deleteTime);
+                            if (error)
+                                return "deleteTime." + error;
+                        }
+                        if (message.state != null && message.hasOwnProperty("state"))
+                            switch (message.state) {
+                            default:
+                                return "state: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                                break;
+                            }
+                        if (message.localAccessArea != null && message.hasOwnProperty("localAccessArea"))
+                            if (!$util.isString(message.localAccessArea))
+                                return "localAccessArea: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a PhoneNumber message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumber} PhoneNumber
+                     */
+                    PhoneNumber.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.PhoneNumber)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.PhoneNumber();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.phoneNumber != null)
+                            message.phoneNumber = String(object.phoneNumber);
+                        if (object.capabilities) {
+                            if (!Array.isArray(object.capabilities))
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumber.capabilities: array expected");
+                            message.capabilities = [];
+                            for (var i = 0; i < object.capabilities.length; ++i)
+                                switch (object.capabilities[i]) {
+                                default:
+                                case "PHONE_NUMBER_CAPABILITY_UNSPECIFIED":
+                                case 0:
+                                    message.capabilities[i] = 0;
+                                    break;
+                                case "SMS":
+                                case 1:
+                                    message.capabilities[i] = 1;
+                                    break;
+                                case "MMS":
+                                case 2:
+                                    message.capabilities[i] = 2;
+                                    break;
+                                case "VOICE":
+                                case 4:
+                                    message.capabilities[i] = 4;
+                                    break;
+                                }
+                        }
+                        if (object.sku != null)
+                            message.sku = String(object.sku);
+                        if (object.carrier != null)
+                            message.carrier = String(object.carrier);
+                        switch (object.numberType) {
+                        case "PHONE_NUMBER_TYPE_UNSPECIFIED":
+                        case 0:
+                            message.numberType = 0;
+                            break;
+                        case "LOCAL":
+                        case 1:
+                            message.numberType = 1;
+                            break;
+                        case "NATIONAL":
+                        case 2:
+                            message.numberType = 2;
+                            break;
+                        case "MOBILE":
+                        case 3:
+                            message.numberType = 3;
+                            break;
+                        case "TOLL_FREE":
+                        case 4:
+                            message.numberType = 4;
+                            break;
+                        case "SHARED_RATE":
+                        case 5:
+                            message.numberType = 5;
+                            break;
+                        }
+                        if (object.countryCode != null)
+                            message.countryCode = String(object.countryCode);
+                        if (object.createTime != null) {
+                            if (typeof object.createTime !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumber.createTime: object expected");
+                            message.createTime = $root.google.protobuf.Timestamp.fromObject(object.createTime);
+                        }
+                        if (object.deleteTime != null) {
+                            if (typeof object.deleteTime !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumber.deleteTime: object expected");
+                            message.deleteTime = $root.google.protobuf.Timestamp.fromObject(object.deleteTime);
+                        }
+                        switch (object.state) {
+                        case "PHONE_NUMBER_STATE_UNSPECIFIED":
+                        case 0:
+                            message.state = 0;
+                            break;
+                        case "AVAILABLE":
+                        case 1:
+                            message.state = 1;
+                            break;
+                        case "IN_USE":
+                        case 2:
+                            message.state = 2;
+                            break;
+                        case "QUARANTINED":
+                        case 3:
+                            message.state = 3;
+                            break;
+                        case "DELETED":
+                        case 4:
+                            message.state = 4;
+                            break;
+                        }
+                        if (object.localAccessArea != null)
+                            message.localAccessArea = String(object.localAccessArea);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a PhoneNumber message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.PhoneNumber} message PhoneNumber
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    PhoneNumber.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.capabilities = [];
+                        if (options.defaults) {
+                            object.name = "";
+                            object.phoneNumber = "";
+                            object.sku = "";
+                            object.carrier = "";
+                            object.numberType = options.enums === String ? "PHONE_NUMBER_TYPE_UNSPECIFIED" : 0;
+                            object.countryCode = "";
+                            object.createTime = null;
+                            object.deleteTime = null;
+                            object.state = options.enums === String ? "PHONE_NUMBER_STATE_UNSPECIFIED" : 0;
+                            object.localAccessArea = "";
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber"))
+                            object.phoneNumber = message.phoneNumber;
+                        if (message.capabilities && message.capabilities.length) {
+                            object.capabilities = [];
+                            for (var j = 0; j < message.capabilities.length; ++j)
+                                object.capabilities[j] = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[message.capabilities[j]] : message.capabilities[j];
+                        }
+                        if (message.sku != null && message.hasOwnProperty("sku"))
+                            object.sku = message.sku;
+                        if (message.carrier != null && message.hasOwnProperty("carrier"))
+                            object.carrier = message.carrier;
+                        if (message.numberType != null && message.hasOwnProperty("numberType"))
+                            object.numberType = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType[message.numberType] : message.numberType;
+                        if (message.countryCode != null && message.hasOwnProperty("countryCode"))
+                            object.countryCode = message.countryCode;
+                        if (message.createTime != null && message.hasOwnProperty("createTime"))
+                            object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
+                        if (message.deleteTime != null && message.hasOwnProperty("deleteTime"))
+                            object.deleteTime = $root.google.protobuf.Timestamp.toObject(message.deleteTime, options);
+                        if (message.state != null && message.hasOwnProperty("state"))
+                            object.state = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberState[message.state] : message.state;
+                        if (message.localAccessArea != null && message.hasOwnProperty("localAccessArea"))
+                            object.localAccessArea = message.localAccessArea;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this PhoneNumber to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    PhoneNumber.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    /**
+                     * PhoneNumberState enum.
+                     * @name enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberState
+                     * @enum {number}
+                     * @property {number} PHONE_NUMBER_STATE_UNSPECIFIED=0 PHONE_NUMBER_STATE_UNSPECIFIED value
+                     * @property {number} AVAILABLE=1 AVAILABLE value
+                     * @property {number} IN_USE=2 IN_USE value
+                     * @property {number} QUARANTINED=3 QUARANTINED value
+                     * @property {number} DELETED=4 DELETED value
+                     */
+                    PhoneNumber.PhoneNumberState = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "PHONE_NUMBER_STATE_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "AVAILABLE"] = 1;
+                        values[valuesById[2] = "IN_USE"] = 2;
+                        values[valuesById[3] = "QUARANTINED"] = 3;
+                        values[valuesById[4] = "DELETED"] = 4;
+                        return values;
+                    })();
+    
+                    /**
+                     * PhoneNumberCapability enum.
+                     * @name enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability
+                     * @enum {number}
+                     * @property {number} PHONE_NUMBER_CAPABILITY_UNSPECIFIED=0 PHONE_NUMBER_CAPABILITY_UNSPECIFIED value
+                     * @property {number} SMS=1 SMS value
+                     * @property {number} MMS=2 MMS value
+                     * @property {number} VOICE=4 VOICE value
+                     */
+                    PhoneNumber.PhoneNumberCapability = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "PHONE_NUMBER_CAPABILITY_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "SMS"] = 1;
+                        values[valuesById[2] = "MMS"] = 2;
+                        values[valuesById[4] = "VOICE"] = 4;
+                        return values;
+                    })();
+    
+                    /**
+                     * PhoneNumberType enum.
+                     * @name enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType
+                     * @enum {number}
+                     * @property {number} PHONE_NUMBER_TYPE_UNSPECIFIED=0 PHONE_NUMBER_TYPE_UNSPECIFIED value
+                     * @property {number} LOCAL=1 LOCAL value
+                     * @property {number} NATIONAL=2 NATIONAL value
+                     * @property {number} MOBILE=3 MOBILE value
+                     * @property {number} TOLL_FREE=4 TOLL_FREE value
+                     * @property {number} SHARED_RATE=5 SHARED_RATE value
+                     */
+                    PhoneNumber.PhoneNumberType = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "PHONE_NUMBER_TYPE_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "LOCAL"] = 1;
+                        values[valuesById[2] = "NATIONAL"] = 2;
+                        values[valuesById[3] = "MOBILE"] = 3;
+                        values[valuesById[4] = "TOLL_FREE"] = 4;
+                        values[valuesById[5] = "SHARED_RATE"] = 5;
+                        return values;
+                    })();
+    
+                    return PhoneNumber;
+                })();
+    
+                v1beta1.CreatePhoneNumberRequest = (function() {
+    
+                    /**
+                     * Properties of a CreatePhoneNumberRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ICreatePhoneNumberRequest
+                     * @property {enfonica.numbering.v1beta1.IPhoneNumber|null} [phoneNumber] CreatePhoneNumberRequest phoneNumber
+                     */
+    
+                    /**
+                     * Constructs a new CreatePhoneNumberRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a CreatePhoneNumberRequest.
+                     * @implements ICreatePhoneNumberRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberRequest=} [properties] Properties to set
+                     */
+                    function CreatePhoneNumberRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * CreatePhoneNumberRequest phoneNumber.
+                     * @member {enfonica.numbering.v1beta1.IPhoneNumber|null|undefined} phoneNumber
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @instance
+                     */
+                    CreatePhoneNumberRequest.prototype.phoneNumber = null;
+    
+                    /**
+                     * Creates a new CreatePhoneNumberRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.CreatePhoneNumberRequest} CreatePhoneNumberRequest instance
+                     */
+                    CreatePhoneNumberRequest.create = function create(properties) {
+                        return new CreatePhoneNumberRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified CreatePhoneNumberRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.CreatePhoneNumberRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberRequest} message CreatePhoneNumberRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreatePhoneNumberRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.phoneNumber != null && Object.hasOwnProperty.call(message, "phoneNumber"))
+                            $root.enfonica.numbering.v1beta1.PhoneNumber.encode(message.phoneNumber, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified CreatePhoneNumberRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.CreatePhoneNumberRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ICreatePhoneNumberRequest} message CreatePhoneNumberRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreatePhoneNumberRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a CreatePhoneNumberRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.CreatePhoneNumberRequest} CreatePhoneNumberRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreatePhoneNumberRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.CreatePhoneNumberRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a CreatePhoneNumberRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.CreatePhoneNumberRequest} CreatePhoneNumberRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreatePhoneNumberRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a CreatePhoneNumberRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    CreatePhoneNumberRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber")) {
+                            var error = $root.enfonica.numbering.v1beta1.PhoneNumber.verify(message.phoneNumber);
+                            if (error)
+                                return "phoneNumber." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a CreatePhoneNumberRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.CreatePhoneNumberRequest} CreatePhoneNumberRequest
+                     */
+                    CreatePhoneNumberRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.CreatePhoneNumberRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.CreatePhoneNumberRequest();
+                        if (object.phoneNumber != null) {
+                            if (typeof object.phoneNumber !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.CreatePhoneNumberRequest.phoneNumber: object expected");
+                            message.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.fromObject(object.phoneNumber);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a CreatePhoneNumberRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.CreatePhoneNumberRequest} message CreatePhoneNumberRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    CreatePhoneNumberRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.phoneNumber = null;
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber"))
+                            object.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.toObject(message.phoneNumber, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this CreatePhoneNumberRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.CreatePhoneNumberRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    CreatePhoneNumberRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return CreatePhoneNumberRequest;
+                })();
+    
+                v1beta1.GetPhoneNumberRequest = (function() {
+    
+                    /**
+                     * Properties of a GetPhoneNumberRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IGetPhoneNumberRequest
+                     * @property {string|null} [name] GetPhoneNumberRequest name
+                     */
+    
+                    /**
+                     * Constructs a new GetPhoneNumberRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a GetPhoneNumberRequest.
+                     * @implements IGetPhoneNumberRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberRequest=} [properties] Properties to set
+                     */
+                    function GetPhoneNumberRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * GetPhoneNumberRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @instance
+                     */
+                    GetPhoneNumberRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new GetPhoneNumberRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.GetPhoneNumberRequest} GetPhoneNumberRequest instance
+                     */
+                    GetPhoneNumberRequest.create = function create(properties) {
+                        return new GetPhoneNumberRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified GetPhoneNumberRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.GetPhoneNumberRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberRequest} message GetPhoneNumberRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetPhoneNumberRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified GetPhoneNumberRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GetPhoneNumberRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetPhoneNumberRequest} message GetPhoneNumberRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetPhoneNumberRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a GetPhoneNumberRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.GetPhoneNumberRequest} GetPhoneNumberRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetPhoneNumberRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.GetPhoneNumberRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a GetPhoneNumberRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.GetPhoneNumberRequest} GetPhoneNumberRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetPhoneNumberRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a GetPhoneNumberRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    GetPhoneNumberRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a GetPhoneNumberRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.GetPhoneNumberRequest} GetPhoneNumberRequest
+                     */
+                    GetPhoneNumberRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.GetPhoneNumberRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.GetPhoneNumberRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a GetPhoneNumberRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.GetPhoneNumberRequest} message GetPhoneNumberRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    GetPhoneNumberRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this GetPhoneNumberRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.GetPhoneNumberRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    GetPhoneNumberRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return GetPhoneNumberRequest;
+                })();
+    
+                v1beta1.ListPhoneNumbersRequest = (function() {
+    
+                    /**
+                     * Properties of a ListPhoneNumbersRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IListPhoneNumbersRequest
+                     * @property {number|null} [pageSize] ListPhoneNumbersRequest pageSize
+                     * @property {string|null} [pageToken] ListPhoneNumbersRequest pageToken
+                     */
+    
+                    /**
+                     * Constructs a new ListPhoneNumbersRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a ListPhoneNumbersRequest.
+                     * @implements IListPhoneNumbersRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersRequest=} [properties] Properties to set
+                     */
+                    function ListPhoneNumbersRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListPhoneNumbersRequest pageSize.
+                     * @member {number} pageSize
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @instance
+                     */
+                    ListPhoneNumbersRequest.prototype.pageSize = 0;
+    
+                    /**
+                     * ListPhoneNumbersRequest pageToken.
+                     * @member {string} pageToken
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @instance
+                     */
+                    ListPhoneNumbersRequest.prototype.pageToken = "";
+    
+                    /**
+                     * Creates a new ListPhoneNumbersRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumbersRequest} ListPhoneNumbersRequest instance
+                     */
+                    ListPhoneNumbersRequest.create = function create(properties) {
+                        return new ListPhoneNumbersRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListPhoneNumbersRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumbersRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersRequest} message ListPhoneNumbersRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListPhoneNumbersRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.pageSize != null && Object.hasOwnProperty.call(message, "pageSize"))
+                            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.pageSize);
+                        if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.pageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListPhoneNumbersRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumbersRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersRequest} message ListPhoneNumbersRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListPhoneNumbersRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListPhoneNumbersRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumbersRequest} ListPhoneNumbersRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListPhoneNumbersRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.ListPhoneNumbersRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.pageSize = reader.int32();
+                                break;
+                            case 2:
+                                message.pageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListPhoneNumbersRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumbersRequest} ListPhoneNumbersRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListPhoneNumbersRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListPhoneNumbersRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListPhoneNumbersRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            if (!$util.isInteger(message.pageSize))
+                                return "pageSize: integer expected";
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            if (!$util.isString(message.pageToken))
+                                return "pageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListPhoneNumbersRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumbersRequest} ListPhoneNumbersRequest
+                     */
+                    ListPhoneNumbersRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.ListPhoneNumbersRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.ListPhoneNumbersRequest();
+                        if (object.pageSize != null)
+                            message.pageSize = object.pageSize | 0;
+                        if (object.pageToken != null)
+                            message.pageToken = String(object.pageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListPhoneNumbersRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ListPhoneNumbersRequest} message ListPhoneNumbersRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListPhoneNumbersRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.pageSize = 0;
+                            object.pageToken = "";
+                        }
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            object.pageSize = message.pageSize;
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            object.pageToken = message.pageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListPhoneNumbersRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListPhoneNumbersRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListPhoneNumbersRequest;
+                })();
+    
+                v1beta1.ListPhoneNumbersResponse = (function() {
+    
+                    /**
+                     * Properties of a ListPhoneNumbersResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IListPhoneNumbersResponse
+                     * @property {Array.<enfonica.numbering.v1beta1.IPhoneNumber>|null} [phoneNumbers] ListPhoneNumbersResponse phoneNumbers
+                     * @property {string|null} [nextPageToken] ListPhoneNumbersResponse nextPageToken
+                     */
+    
+                    /**
+                     * Constructs a new ListPhoneNumbersResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a ListPhoneNumbersResponse.
+                     * @implements IListPhoneNumbersResponse
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersResponse=} [properties] Properties to set
+                     */
+                    function ListPhoneNumbersResponse(properties) {
+                        this.phoneNumbers = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListPhoneNumbersResponse phoneNumbers.
+                     * @member {Array.<enfonica.numbering.v1beta1.IPhoneNumber>} phoneNumbers
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @instance
+                     */
+                    ListPhoneNumbersResponse.prototype.phoneNumbers = $util.emptyArray;
+    
+                    /**
+                     * ListPhoneNumbersResponse nextPageToken.
+                     * @member {string} nextPageToken
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @instance
+                     */
+                    ListPhoneNumbersResponse.prototype.nextPageToken = "";
+    
+                    /**
+                     * Creates a new ListPhoneNumbersResponse instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersResponse=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumbersResponse} ListPhoneNumbersResponse instance
+                     */
+                    ListPhoneNumbersResponse.create = function create(properties) {
+                        return new ListPhoneNumbersResponse(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListPhoneNumbersResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumbersResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersResponse} message ListPhoneNumbersResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListPhoneNumbersResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.phoneNumbers != null && message.phoneNumbers.length)
+                            for (var i = 0; i < message.phoneNumbers.length; ++i)
+                                $root.enfonica.numbering.v1beta1.PhoneNumber.encode(message.phoneNumbers[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListPhoneNumbersResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumbersResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListPhoneNumbersResponse} message ListPhoneNumbersResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListPhoneNumbersResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListPhoneNumbersResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumbersResponse} ListPhoneNumbersResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListPhoneNumbersResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.ListPhoneNumbersResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.phoneNumbers && message.phoneNumbers.length))
+                                    message.phoneNumbers = [];
+                                message.phoneNumbers.push($root.enfonica.numbering.v1beta1.PhoneNumber.decode(reader, reader.uint32()));
+                                break;
+                            case 2:
+                                message.nextPageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListPhoneNumbersResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumbersResponse} ListPhoneNumbersResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListPhoneNumbersResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListPhoneNumbersResponse message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListPhoneNumbersResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.phoneNumbers != null && message.hasOwnProperty("phoneNumbers")) {
+                            if (!Array.isArray(message.phoneNumbers))
+                                return "phoneNumbers: array expected";
+                            for (var i = 0; i < message.phoneNumbers.length; ++i) {
+                                var error = $root.enfonica.numbering.v1beta1.PhoneNumber.verify(message.phoneNumbers[i]);
+                                if (error)
+                                    return "phoneNumbers." + error;
+                            }
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            if (!$util.isString(message.nextPageToken))
+                                return "nextPageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListPhoneNumbersResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.ListPhoneNumbersResponse} ListPhoneNumbersResponse
+                     */
+                    ListPhoneNumbersResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.ListPhoneNumbersResponse)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.ListPhoneNumbersResponse();
+                        if (object.phoneNumbers) {
+                            if (!Array.isArray(object.phoneNumbers))
+                                throw TypeError(".enfonica.numbering.v1beta1.ListPhoneNumbersResponse.phoneNumbers: array expected");
+                            message.phoneNumbers = [];
+                            for (var i = 0; i < object.phoneNumbers.length; ++i) {
+                                if (typeof object.phoneNumbers[i] !== "object")
+                                    throw TypeError(".enfonica.numbering.v1beta1.ListPhoneNumbersResponse.phoneNumbers: object expected");
+                                message.phoneNumbers[i] = $root.enfonica.numbering.v1beta1.PhoneNumber.fromObject(object.phoneNumbers[i]);
+                            }
+                        }
+                        if (object.nextPageToken != null)
+                            message.nextPageToken = String(object.nextPageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListPhoneNumbersResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ListPhoneNumbersResponse} message ListPhoneNumbersResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListPhoneNumbersResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.phoneNumbers = [];
+                        if (options.defaults)
+                            object.nextPageToken = "";
+                        if (message.phoneNumbers && message.phoneNumbers.length) {
+                            object.phoneNumbers = [];
+                            for (var j = 0; j < message.phoneNumbers.length; ++j)
+                                object.phoneNumbers[j] = $root.enfonica.numbering.v1beta1.PhoneNumber.toObject(message.phoneNumbers[j], options);
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            object.nextPageToken = message.nextPageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListPhoneNumbersResponse to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.ListPhoneNumbersResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListPhoneNumbersResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListPhoneNumbersResponse;
+                })();
+    
+                v1beta1.UpdatePhoneNumberRequest = (function() {
+    
+                    /**
+                     * Properties of an UpdatePhoneNumberRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IUpdatePhoneNumberRequest
+                     * @property {string|null} [name] UpdatePhoneNumberRequest name
+                     * @property {enfonica.numbering.v1beta1.IPhoneNumber|null} [phoneNumber] UpdatePhoneNumberRequest phoneNumber
+                     * @property {google.protobuf.IFieldMask|null} [updateMask] UpdatePhoneNumberRequest updateMask
+                     */
+    
+                    /**
+                     * Constructs a new UpdatePhoneNumberRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents an UpdatePhoneNumberRequest.
+                     * @implements IUpdatePhoneNumberRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest=} [properties] Properties to set
+                     */
+                    function UpdatePhoneNumberRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * UpdatePhoneNumberRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @instance
+                     */
+                    UpdatePhoneNumberRequest.prototype.name = "";
+    
+                    /**
+                     * UpdatePhoneNumberRequest phoneNumber.
+                     * @member {enfonica.numbering.v1beta1.IPhoneNumber|null|undefined} phoneNumber
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @instance
+                     */
+                    UpdatePhoneNumberRequest.prototype.phoneNumber = null;
+    
+                    /**
+                     * UpdatePhoneNumberRequest updateMask.
+                     * @member {google.protobuf.IFieldMask|null|undefined} updateMask
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @instance
+                     */
+                    UpdatePhoneNumberRequest.prototype.updateMask = null;
+    
+                    /**
+                     * Creates a new UpdatePhoneNumberRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.UpdatePhoneNumberRequest} UpdatePhoneNumberRequest instance
+                     */
+                    UpdatePhoneNumberRequest.create = function create(properties) {
+                        return new UpdatePhoneNumberRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified UpdatePhoneNumberRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.UpdatePhoneNumberRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest} message UpdatePhoneNumberRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    UpdatePhoneNumberRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.phoneNumber != null && Object.hasOwnProperty.call(message, "phoneNumber"))
+                            $root.enfonica.numbering.v1beta1.PhoneNumber.encode(message.phoneNumber, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        if (message.updateMask != null && Object.hasOwnProperty.call(message, "updateMask"))
+                            $root.google.protobuf.FieldMask.encode(message.updateMask, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified UpdatePhoneNumberRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.UpdatePhoneNumberRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest} message UpdatePhoneNumberRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    UpdatePhoneNumberRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes an UpdatePhoneNumberRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.UpdatePhoneNumberRequest} UpdatePhoneNumberRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    UpdatePhoneNumberRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.UpdatePhoneNumberRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.decode(reader, reader.uint32());
+                                break;
+                            case 3:
+                                message.updateMask = $root.google.protobuf.FieldMask.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes an UpdatePhoneNumberRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.UpdatePhoneNumberRequest} UpdatePhoneNumberRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    UpdatePhoneNumberRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies an UpdatePhoneNumberRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    UpdatePhoneNumberRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber")) {
+                            var error = $root.enfonica.numbering.v1beta1.PhoneNumber.verify(message.phoneNumber);
+                            if (error)
+                                return "phoneNumber." + error;
+                        }
+                        if (message.updateMask != null && message.hasOwnProperty("updateMask")) {
+                            var error = $root.google.protobuf.FieldMask.verify(message.updateMask);
+                            if (error)
+                                return "updateMask." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates an UpdatePhoneNumberRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.UpdatePhoneNumberRequest} UpdatePhoneNumberRequest
+                     */
+                    UpdatePhoneNumberRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.UpdatePhoneNumberRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.UpdatePhoneNumberRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.phoneNumber != null) {
+                            if (typeof object.phoneNumber !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.UpdatePhoneNumberRequest.phoneNumber: object expected");
+                            message.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.fromObject(object.phoneNumber);
+                        }
+                        if (object.updateMask != null) {
+                            if (typeof object.updateMask !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.UpdatePhoneNumberRequest.updateMask: object expected");
+                            message.updateMask = $root.google.protobuf.FieldMask.fromObject(object.updateMask);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from an UpdatePhoneNumberRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.UpdatePhoneNumberRequest} message UpdatePhoneNumberRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    UpdatePhoneNumberRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.name = "";
+                            object.phoneNumber = null;
+                            object.updateMask = null;
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.phoneNumber != null && message.hasOwnProperty("phoneNumber"))
+                            object.phoneNumber = $root.enfonica.numbering.v1beta1.PhoneNumber.toObject(message.phoneNumber, options);
+                        if (message.updateMask != null && message.hasOwnProperty("updateMask"))
+                            object.updateMask = $root.google.protobuf.FieldMask.toObject(message.updateMask, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this UpdatePhoneNumberRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.UpdatePhoneNumberRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    UpdatePhoneNumberRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return UpdatePhoneNumberRequest;
+                })();
+    
+                v1beta1.DeletePhoneNumberRequest = (function() {
+    
+                    /**
+                     * Properties of a DeletePhoneNumberRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IDeletePhoneNumberRequest
+                     * @property {string|null} [name] DeletePhoneNumberRequest name
+                     */
+    
+                    /**
+                     * Constructs a new DeletePhoneNumberRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a DeletePhoneNumberRequest.
+                     * @implements IDeletePhoneNumberRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberRequest=} [properties] Properties to set
+                     */
+                    function DeletePhoneNumberRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * DeletePhoneNumberRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @instance
+                     */
+                    DeletePhoneNumberRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new DeletePhoneNumberRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.DeletePhoneNumberRequest} DeletePhoneNumberRequest instance
+                     */
+                    DeletePhoneNumberRequest.create = function create(properties) {
+                        return new DeletePhoneNumberRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified DeletePhoneNumberRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.DeletePhoneNumberRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberRequest} message DeletePhoneNumberRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeletePhoneNumberRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified DeletePhoneNumberRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.DeletePhoneNumberRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IDeletePhoneNumberRequest} message DeletePhoneNumberRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeletePhoneNumberRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a DeletePhoneNumberRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.DeletePhoneNumberRequest} DeletePhoneNumberRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeletePhoneNumberRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.DeletePhoneNumberRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a DeletePhoneNumberRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.DeletePhoneNumberRequest} DeletePhoneNumberRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeletePhoneNumberRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a DeletePhoneNumberRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    DeletePhoneNumberRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a DeletePhoneNumberRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.DeletePhoneNumberRequest} DeletePhoneNumberRequest
+                     */
+                    DeletePhoneNumberRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.DeletePhoneNumberRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.DeletePhoneNumberRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a DeletePhoneNumberRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.DeletePhoneNumberRequest} message DeletePhoneNumberRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    DeletePhoneNumberRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this DeletePhoneNumberRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.DeletePhoneNumberRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    DeletePhoneNumberRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return DeletePhoneNumberRequest;
+                })();
+    
+                v1beta1.SearchPhoneNumbersRequest = (function() {
+    
+                    /**
+                     * Properties of a SearchPhoneNumbersRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ISearchPhoneNumbersRequest
+                     * @property {number|null} [pageSize] SearchPhoneNumbersRequest pageSize
+                     * @property {string|null} [pageToken] SearchPhoneNumbersRequest pageToken
+                     * @property {Array.<enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability>|null} [capabilities] SearchPhoneNumbersRequest capabilities
+                     * @property {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null} [numberType] SearchPhoneNumbersRequest numberType
+                     * @property {string|null} [countryCode] SearchPhoneNumbersRequest countryCode
+                     * @property {string|null} [prefix] SearchPhoneNumbersRequest prefix
+                     */
+    
+                    /**
+                     * Constructs a new SearchPhoneNumbersRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a SearchPhoneNumbersRequest.
+                     * @implements ISearchPhoneNumbersRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest=} [properties] Properties to set
+                     */
+                    function SearchPhoneNumbersRequest(properties) {
+                        this.capabilities = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SearchPhoneNumbersRequest pageSize.
+                     * @member {number} pageSize
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.pageSize = 0;
+    
+                    /**
+                     * SearchPhoneNumbersRequest pageToken.
+                     * @member {string} pageToken
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.pageToken = "";
+    
+                    /**
+                     * SearchPhoneNumbersRequest capabilities.
+                     * @member {Array.<enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability>} capabilities
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.capabilities = $util.emptyArray;
+    
+                    /**
+                     * SearchPhoneNumbersRequest numberType.
+                     * @member {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} numberType
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.numberType = 0;
+    
+                    /**
+                     * SearchPhoneNumbersRequest countryCode.
+                     * @member {string} countryCode
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.countryCode = "";
+    
+                    /**
+                     * SearchPhoneNumbersRequest prefix.
+                     * @member {string} prefix
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.prefix = "";
+    
+                    /**
+                     * Creates a new SearchPhoneNumbersRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.SearchPhoneNumbersRequest} SearchPhoneNumbersRequest instance
+                     */
+                    SearchPhoneNumbersRequest.create = function create(properties) {
+                        return new SearchPhoneNumbersRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SearchPhoneNumbersRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.SearchPhoneNumbersRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest} message SearchPhoneNumbersRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SearchPhoneNumbersRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.pageSize != null && Object.hasOwnProperty.call(message, "pageSize"))
+                            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.pageSize);
+                        if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.pageToken);
+                        if (message.capabilities != null && message.capabilities.length) {
+                            writer.uint32(/* id 3, wireType 2 =*/26).fork();
+                            for (var i = 0; i < message.capabilities.length; ++i)
+                                writer.int32(message.capabilities[i]);
+                            writer.ldelim();
+                        }
+                        if (message.numberType != null && Object.hasOwnProperty.call(message, "numberType"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).int32(message.numberType);
+                        if (message.countryCode != null && Object.hasOwnProperty.call(message, "countryCode"))
+                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.countryCode);
+                        if (message.prefix != null && Object.hasOwnProperty.call(message, "prefix"))
+                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.prefix);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SearchPhoneNumbersRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SearchPhoneNumbersRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest} message SearchPhoneNumbersRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SearchPhoneNumbersRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SearchPhoneNumbersRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.SearchPhoneNumbersRequest} SearchPhoneNumbersRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SearchPhoneNumbersRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.SearchPhoneNumbersRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.pageSize = reader.int32();
+                                break;
+                            case 2:
+                                message.pageToken = reader.string();
+                                break;
+                            case 3:
+                                if (!(message.capabilities && message.capabilities.length))
+                                    message.capabilities = [];
+                                if ((tag & 7) === 2) {
+                                    var end2 = reader.uint32() + reader.pos;
+                                    while (reader.pos < end2)
+                                        message.capabilities.push(reader.int32());
+                                } else
+                                    message.capabilities.push(reader.int32());
+                                break;
+                            case 4:
+                                message.numberType = reader.int32();
+                                break;
+                            case 5:
+                                message.countryCode = reader.string();
+                                break;
+                            case 6:
+                                message.prefix = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SearchPhoneNumbersRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.SearchPhoneNumbersRequest} SearchPhoneNumbersRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SearchPhoneNumbersRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SearchPhoneNumbersRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SearchPhoneNumbersRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            if (!$util.isInteger(message.pageSize))
+                                return "pageSize: integer expected";
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            if (!$util.isString(message.pageToken))
+                                return "pageToken: string expected";
+                        if (message.capabilities != null && message.hasOwnProperty("capabilities")) {
+                            if (!Array.isArray(message.capabilities))
+                                return "capabilities: array expected";
+                            for (var i = 0; i < message.capabilities.length; ++i)
+                                switch (message.capabilities[i]) {
+                                default:
+                                    return "capabilities: enum value[] expected";
+                                case 0:
+                                case 1:
+                                case 2:
+                                case 4:
+                                    break;
+                                }
+                        }
+                        if (message.numberType != null && message.hasOwnProperty("numberType"))
+                            switch (message.numberType) {
+                            default:
+                                return "numberType: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                            case 5:
+                                break;
+                            }
+                        if (message.countryCode != null && message.hasOwnProperty("countryCode"))
+                            if (!$util.isString(message.countryCode))
+                                return "countryCode: string expected";
+                        if (message.prefix != null && message.hasOwnProperty("prefix"))
+                            if (!$util.isString(message.prefix))
+                                return "prefix: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SearchPhoneNumbersRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.SearchPhoneNumbersRequest} SearchPhoneNumbersRequest
+                     */
+                    SearchPhoneNumbersRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.SearchPhoneNumbersRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.SearchPhoneNumbersRequest();
+                        if (object.pageSize != null)
+                            message.pageSize = object.pageSize | 0;
+                        if (object.pageToken != null)
+                            message.pageToken = String(object.pageToken);
+                        if (object.capabilities) {
+                            if (!Array.isArray(object.capabilities))
+                                throw TypeError(".enfonica.numbering.v1beta1.SearchPhoneNumbersRequest.capabilities: array expected");
+                            message.capabilities = [];
+                            for (var i = 0; i < object.capabilities.length; ++i)
+                                switch (object.capabilities[i]) {
+                                default:
+                                case "PHONE_NUMBER_CAPABILITY_UNSPECIFIED":
+                                case 0:
+                                    message.capabilities[i] = 0;
+                                    break;
+                                case "SMS":
+                                case 1:
+                                    message.capabilities[i] = 1;
+                                    break;
+                                case "MMS":
+                                case 2:
+                                    message.capabilities[i] = 2;
+                                    break;
+                                case "VOICE":
+                                case 4:
+                                    message.capabilities[i] = 4;
+                                    break;
+                                }
+                        }
+                        switch (object.numberType) {
+                        case "PHONE_NUMBER_TYPE_UNSPECIFIED":
+                        case 0:
+                            message.numberType = 0;
+                            break;
+                        case "LOCAL":
+                        case 1:
+                            message.numberType = 1;
+                            break;
+                        case "NATIONAL":
+                        case 2:
+                            message.numberType = 2;
+                            break;
+                        case "MOBILE":
+                        case 3:
+                            message.numberType = 3;
+                            break;
+                        case "TOLL_FREE":
+                        case 4:
+                            message.numberType = 4;
+                            break;
+                        case "SHARED_RATE":
+                        case 5:
+                            message.numberType = 5;
+                            break;
+                        }
+                        if (object.countryCode != null)
+                            message.countryCode = String(object.countryCode);
+                        if (object.prefix != null)
+                            message.prefix = String(object.prefix);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SearchPhoneNumbersRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.SearchPhoneNumbersRequest} message SearchPhoneNumbersRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SearchPhoneNumbersRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.capabilities = [];
+                        if (options.defaults) {
+                            object.pageSize = 0;
+                            object.pageToken = "";
+                            object.numberType = options.enums === String ? "PHONE_NUMBER_TYPE_UNSPECIFIED" : 0;
+                            object.countryCode = "";
+                            object.prefix = "";
+                        }
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            object.pageSize = message.pageSize;
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            object.pageToken = message.pageToken;
+                        if (message.capabilities && message.capabilities.length) {
+                            object.capabilities = [];
+                            for (var j = 0; j < message.capabilities.length; ++j)
+                                object.capabilities[j] = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[message.capabilities[j]] : message.capabilities[j];
+                        }
+                        if (message.numberType != null && message.hasOwnProperty("numberType"))
+                            object.numberType = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType[message.numberType] : message.numberType;
+                        if (message.countryCode != null && message.hasOwnProperty("countryCode"))
+                            object.countryCode = message.countryCode;
+                        if (message.prefix != null && message.hasOwnProperty("prefix"))
+                            object.prefix = message.prefix;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SearchPhoneNumbersRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SearchPhoneNumbersRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return SearchPhoneNumbersRequest;
+                })();
+    
+                v1beta1.SearchPhoneNumbersResponse = (function() {
+    
+                    /**
+                     * Properties of a SearchPhoneNumbersResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ISearchPhoneNumbersResponse
+                     * @property {Array.<enfonica.numbering.v1beta1.IPhoneNumber>|null} [phoneNumbers] SearchPhoneNumbersResponse phoneNumbers
+                     * @property {string|null} [nextPageToken] SearchPhoneNumbersResponse nextPageToken
+                     */
+    
+                    /**
+                     * Constructs a new SearchPhoneNumbersResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a SearchPhoneNumbersResponse.
+                     * @implements ISearchPhoneNumbersResponse
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersResponse=} [properties] Properties to set
+                     */
+                    function SearchPhoneNumbersResponse(properties) {
+                        this.phoneNumbers = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SearchPhoneNumbersResponse phoneNumbers.
+                     * @member {Array.<enfonica.numbering.v1beta1.IPhoneNumber>} phoneNumbers
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @instance
+                     */
+                    SearchPhoneNumbersResponse.prototype.phoneNumbers = $util.emptyArray;
+    
+                    /**
+                     * SearchPhoneNumbersResponse nextPageToken.
+                     * @member {string} nextPageToken
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @instance
+                     */
+                    SearchPhoneNumbersResponse.prototype.nextPageToken = "";
+    
+                    /**
+                     * Creates a new SearchPhoneNumbersResponse instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersResponse=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.SearchPhoneNumbersResponse} SearchPhoneNumbersResponse instance
+                     */
+                    SearchPhoneNumbersResponse.create = function create(properties) {
+                        return new SearchPhoneNumbersResponse(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SearchPhoneNumbersResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.SearchPhoneNumbersResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersResponse} message SearchPhoneNumbersResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SearchPhoneNumbersResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.phoneNumbers != null && message.phoneNumbers.length)
+                            for (var i = 0; i < message.phoneNumbers.length; ++i)
+                                $root.enfonica.numbering.v1beta1.PhoneNumber.encode(message.phoneNumbers[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SearchPhoneNumbersResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SearchPhoneNumbersResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersResponse} message SearchPhoneNumbersResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SearchPhoneNumbersResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SearchPhoneNumbersResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.SearchPhoneNumbersResponse} SearchPhoneNumbersResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SearchPhoneNumbersResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.SearchPhoneNumbersResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.phoneNumbers && message.phoneNumbers.length))
+                                    message.phoneNumbers = [];
+                                message.phoneNumbers.push($root.enfonica.numbering.v1beta1.PhoneNumber.decode(reader, reader.uint32()));
+                                break;
+                            case 2:
+                                message.nextPageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SearchPhoneNumbersResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.SearchPhoneNumbersResponse} SearchPhoneNumbersResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SearchPhoneNumbersResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SearchPhoneNumbersResponse message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SearchPhoneNumbersResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.phoneNumbers != null && message.hasOwnProperty("phoneNumbers")) {
+                            if (!Array.isArray(message.phoneNumbers))
+                                return "phoneNumbers: array expected";
+                            for (var i = 0; i < message.phoneNumbers.length; ++i) {
+                                var error = $root.enfonica.numbering.v1beta1.PhoneNumber.verify(message.phoneNumbers[i]);
+                                if (error)
+                                    return "phoneNumbers." + error;
+                            }
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            if (!$util.isString(message.nextPageToken))
+                                return "nextPageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SearchPhoneNumbersResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.SearchPhoneNumbersResponse} SearchPhoneNumbersResponse
+                     */
+                    SearchPhoneNumbersResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.SearchPhoneNumbersResponse)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.SearchPhoneNumbersResponse();
+                        if (object.phoneNumbers) {
+                            if (!Array.isArray(object.phoneNumbers))
+                                throw TypeError(".enfonica.numbering.v1beta1.SearchPhoneNumbersResponse.phoneNumbers: array expected");
+                            message.phoneNumbers = [];
+                            for (var i = 0; i < object.phoneNumbers.length; ++i) {
+                                if (typeof object.phoneNumbers[i] !== "object")
+                                    throw TypeError(".enfonica.numbering.v1beta1.SearchPhoneNumbersResponse.phoneNumbers: object expected");
+                                message.phoneNumbers[i] = $root.enfonica.numbering.v1beta1.PhoneNumber.fromObject(object.phoneNumbers[i]);
+                            }
+                        }
+                        if (object.nextPageToken != null)
+                            message.nextPageToken = String(object.nextPageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SearchPhoneNumbersResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.SearchPhoneNumbersResponse} message SearchPhoneNumbersResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SearchPhoneNumbersResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.phoneNumbers = [];
+                        if (options.defaults)
+                            object.nextPageToken = "";
+                        if (message.phoneNumbers && message.phoneNumbers.length) {
+                            object.phoneNumbers = [];
+                            for (var j = 0; j < message.phoneNumbers.length; ++j)
+                                object.phoneNumbers[j] = $root.enfonica.numbering.v1beta1.PhoneNumber.toObject(message.phoneNumbers[j], options);
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            object.nextPageToken = message.nextPageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SearchPhoneNumbersResponse to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SearchPhoneNumbersResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return SearchPhoneNumbersResponse;
+                })();
+    
+                return v1beta1;
             })();
     
-            return messaging;
+            return numbering;
         })();
     
         return enfonica;
@@ -4129,6 +5260,209 @@
                 };
     
                 return Timestamp;
+            })();
+    
+            protobuf.FieldMask = (function() {
+    
+                /**
+                 * Properties of a FieldMask.
+                 * @memberof google.protobuf
+                 * @interface IFieldMask
+                 * @property {Array.<string>|null} [paths] FieldMask paths
+                 */
+    
+                /**
+                 * Constructs a new FieldMask.
+                 * @memberof google.protobuf
+                 * @classdesc Represents a FieldMask.
+                 * @implements IFieldMask
+                 * @constructor
+                 * @param {google.protobuf.IFieldMask=} [properties] Properties to set
+                 */
+                function FieldMask(properties) {
+                    this.paths = [];
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+    
+                /**
+                 * FieldMask paths.
+                 * @member {Array.<string>} paths
+                 * @memberof google.protobuf.FieldMask
+                 * @instance
+                 */
+                FieldMask.prototype.paths = $util.emptyArray;
+    
+                /**
+                 * Creates a new FieldMask instance using the specified properties.
+                 * @function create
+                 * @memberof google.protobuf.FieldMask
+                 * @static
+                 * @param {google.protobuf.IFieldMask=} [properties] Properties to set
+                 * @returns {google.protobuf.FieldMask} FieldMask instance
+                 */
+                FieldMask.create = function create(properties) {
+                    return new FieldMask(properties);
+                };
+    
+                /**
+                 * Encodes the specified FieldMask message. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
+                 * @function encode
+                 * @memberof google.protobuf.FieldMask
+                 * @static
+                 * @param {google.protobuf.IFieldMask} message FieldMask message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                FieldMask.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.paths != null && message.paths.length)
+                        for (var i = 0; i < message.paths.length; ++i)
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.paths[i]);
+                    return writer;
+                };
+    
+                /**
+                 * Encodes the specified FieldMask message, length delimited. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof google.protobuf.FieldMask
+                 * @static
+                 * @param {google.protobuf.IFieldMask} message FieldMask message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                FieldMask.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+    
+                /**
+                 * Decodes a FieldMask message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof google.protobuf.FieldMask
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {google.protobuf.FieldMask} FieldMask
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                FieldMask.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.FieldMask();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1:
+                            if (!(message.paths && message.paths.length))
+                                message.paths = [];
+                            message.paths.push(reader.string());
+                            break;
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Decodes a FieldMask message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof google.protobuf.FieldMask
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {google.protobuf.FieldMask} FieldMask
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                FieldMask.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+    
+                /**
+                 * Verifies a FieldMask message.
+                 * @function verify
+                 * @memberof google.protobuf.FieldMask
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                FieldMask.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.paths != null && message.hasOwnProperty("paths")) {
+                        if (!Array.isArray(message.paths))
+                            return "paths: array expected";
+                        for (var i = 0; i < message.paths.length; ++i)
+                            if (!$util.isString(message.paths[i]))
+                                return "paths: string[] expected";
+                    }
+                    return null;
+                };
+    
+                /**
+                 * Creates a FieldMask message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof google.protobuf.FieldMask
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {google.protobuf.FieldMask} FieldMask
+                 */
+                FieldMask.fromObject = function fromObject(object) {
+                    if (object instanceof $root.google.protobuf.FieldMask)
+                        return object;
+                    var message = new $root.google.protobuf.FieldMask();
+                    if (object.paths) {
+                        if (!Array.isArray(object.paths))
+                            throw TypeError(".google.protobuf.FieldMask.paths: array expected");
+                        message.paths = [];
+                        for (var i = 0; i < object.paths.length; ++i)
+                            message.paths[i] = String(object.paths[i]);
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Creates a plain object from a FieldMask message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof google.protobuf.FieldMask
+                 * @static
+                 * @param {google.protobuf.FieldMask} message FieldMask
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                FieldMask.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.arrays || options.defaults)
+                        object.paths = [];
+                    if (message.paths && message.paths.length) {
+                        object.paths = [];
+                        for (var j = 0; j < message.paths.length; ++j)
+                            object.paths[j] = message.paths[j];
+                    }
+                    return object;
+                };
+    
+                /**
+                 * Converts this FieldMask to JSON.
+                 * @function toJSON
+                 * @memberof google.protobuf.FieldMask
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                FieldMask.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                return FieldMask;
             })();
     
             protobuf.FileDescriptorSet = (function() {
@@ -9280,7 +10614,6 @@
                  * @property {boolean|null} [deprecated] FieldOptions deprecated
                  * @property {boolean|null} [weak] FieldOptions weak
                  * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] FieldOptions uninterpretedOption
-                 * @property {Array.<google.api.FieldBehavior>|null} [".google.api.fieldBehavior"] FieldOptions .google.api.fieldBehavior
                  */
     
                 /**
@@ -9293,7 +10626,6 @@
                  */
                 function FieldOptions(properties) {
                     this.uninterpretedOption = [];
-                    this[".google.api.fieldBehavior"] = [];
                     if (properties)
                         for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                             if (properties[keys[i]] != null)
@@ -9357,14 +10689,6 @@
                 FieldOptions.prototype.uninterpretedOption = $util.emptyArray;
     
                 /**
-                 * FieldOptions .google.api.fieldBehavior.
-                 * @member {Array.<google.api.FieldBehavior>} .google.api.fieldBehavior
-                 * @memberof google.protobuf.FieldOptions
-                 * @instance
-                 */
-                FieldOptions.prototype[".google.api.fieldBehavior"] = $util.emptyArray;
-    
-                /**
                  * Creates a new FieldOptions instance using the specified properties.
                  * @function create
                  * @memberof google.protobuf.FieldOptions
@@ -9403,12 +10727,6 @@
                     if (message.uninterpretedOption != null && message.uninterpretedOption.length)
                         for (var i = 0; i < message.uninterpretedOption.length; ++i)
                             $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
-                    if (message[".google.api.fieldBehavior"] != null && message[".google.api.fieldBehavior"].length) {
-                        writer.uint32(/* id 1052, wireType 2 =*/8418).fork();
-                        for (var i = 0; i < message[".google.api.fieldBehavior"].length; ++i)
-                            writer.int32(message[".google.api.fieldBehavior"][i]);
-                        writer.ldelim();
-                    }
                     return writer;
                 };
     
@@ -9465,16 +10783,6 @@
                             if (!(message.uninterpretedOption && message.uninterpretedOption.length))
                                 message.uninterpretedOption = [];
                             message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
-                            break;
-                        case 1052:
-                            if (!(message[".google.api.fieldBehavior"] && message[".google.api.fieldBehavior"].length))
-                                message[".google.api.fieldBehavior"] = [];
-                            if ((tag & 7) === 2) {
-                                var end2 = reader.uint32() + reader.pos;
-                                while (reader.pos < end2)
-                                    message[".google.api.fieldBehavior"].push(reader.int32());
-                            } else
-                                message[".google.api.fieldBehavior"].push(reader.int32());
                             break;
                         default:
                             reader.skipType(tag & 7);
@@ -9550,22 +10858,6 @@
                                 return "uninterpretedOption." + error;
                         }
                     }
-                    if (message[".google.api.fieldBehavior"] != null && message.hasOwnProperty(".google.api.fieldBehavior")) {
-                        if (!Array.isArray(message[".google.api.fieldBehavior"]))
-                            return ".google.api.fieldBehavior: array expected";
-                        for (var i = 0; i < message[".google.api.fieldBehavior"].length; ++i)
-                            switch (message[".google.api.fieldBehavior"][i]) {
-                            default:
-                                return ".google.api.fieldBehavior: enum value[] expected";
-                            case 0:
-                            case 1:
-                            case 2:
-                            case 3:
-                            case 4:
-                            case 5:
-                                break;
-                            }
-                    }
                     return null;
                 };
     
@@ -9627,39 +10919,6 @@
                             message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                         }
                     }
-                    if (object[".google.api.fieldBehavior"]) {
-                        if (!Array.isArray(object[".google.api.fieldBehavior"]))
-                            throw TypeError(".google.protobuf.FieldOptions..google.api.fieldBehavior: array expected");
-                        message[".google.api.fieldBehavior"] = [];
-                        for (var i = 0; i < object[".google.api.fieldBehavior"].length; ++i)
-                            switch (object[".google.api.fieldBehavior"][i]) {
-                            default:
-                            case "FIELD_BEHAVIOR_UNSPECIFIED":
-                            case 0:
-                                message[".google.api.fieldBehavior"][i] = 0;
-                                break;
-                            case "OPTIONAL":
-                            case 1:
-                                message[".google.api.fieldBehavior"][i] = 1;
-                                break;
-                            case "REQUIRED":
-                            case 2:
-                                message[".google.api.fieldBehavior"][i] = 2;
-                                break;
-                            case "OUTPUT_ONLY":
-                            case 3:
-                                message[".google.api.fieldBehavior"][i] = 3;
-                                break;
-                            case "INPUT_ONLY":
-                            case 4:
-                                message[".google.api.fieldBehavior"][i] = 4;
-                                break;
-                            case "IMMUTABLE":
-                            case 5:
-                                message[".google.api.fieldBehavior"][i] = 5;
-                                break;
-                            }
-                    }
                     return message;
                 };
     
@@ -9676,10 +10935,8 @@
                     if (!options)
                         options = {};
                     var object = {};
-                    if (options.arrays || options.defaults) {
+                    if (options.arrays || options.defaults)
                         object.uninterpretedOption = [];
-                        object[".google.api.fieldBehavior"] = [];
-                    }
                     if (options.defaults) {
                         object.ctype = options.enums === String ? "STRING" : 0;
                         object.packed = false;
@@ -9704,11 +10961,6 @@
                         object.uninterpretedOption = [];
                         for (var j = 0; j < message.uninterpretedOption.length; ++j)
                             object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
-                    }
-                    if (message[".google.api.fieldBehavior"] && message[".google.api.fieldBehavior"].length) {
-                        object[".google.api.fieldBehavior"] = [];
-                        for (var j = 0; j < message[".google.api.fieldBehavior"].length; ++j)
-                            object[".google.api.fieldBehavior"][j] = options.enums === String ? $root.google.api.FieldBehavior[message[".google.api.fieldBehavior"][j]] : message[".google.api.fieldBehavior"][j];
                     }
                     return object;
                 };
@@ -12708,209 +13960,6 @@
                 return GeneratedCodeInfo;
             })();
     
-            protobuf.FieldMask = (function() {
-    
-                /**
-                 * Properties of a FieldMask.
-                 * @memberof google.protobuf
-                 * @interface IFieldMask
-                 * @property {Array.<string>|null} [paths] FieldMask paths
-                 */
-    
-                /**
-                 * Constructs a new FieldMask.
-                 * @memberof google.protobuf
-                 * @classdesc Represents a FieldMask.
-                 * @implements IFieldMask
-                 * @constructor
-                 * @param {google.protobuf.IFieldMask=} [properties] Properties to set
-                 */
-                function FieldMask(properties) {
-                    this.paths = [];
-                    if (properties)
-                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                            if (properties[keys[i]] != null)
-                                this[keys[i]] = properties[keys[i]];
-                }
-    
-                /**
-                 * FieldMask paths.
-                 * @member {Array.<string>} paths
-                 * @memberof google.protobuf.FieldMask
-                 * @instance
-                 */
-                FieldMask.prototype.paths = $util.emptyArray;
-    
-                /**
-                 * Creates a new FieldMask instance using the specified properties.
-                 * @function create
-                 * @memberof google.protobuf.FieldMask
-                 * @static
-                 * @param {google.protobuf.IFieldMask=} [properties] Properties to set
-                 * @returns {google.protobuf.FieldMask} FieldMask instance
-                 */
-                FieldMask.create = function create(properties) {
-                    return new FieldMask(properties);
-                };
-    
-                /**
-                 * Encodes the specified FieldMask message. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
-                 * @function encode
-                 * @memberof google.protobuf.FieldMask
-                 * @static
-                 * @param {google.protobuf.IFieldMask} message FieldMask message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                FieldMask.encode = function encode(message, writer) {
-                    if (!writer)
-                        writer = $Writer.create();
-                    if (message.paths != null && message.paths.length)
-                        for (var i = 0; i < message.paths.length; ++i)
-                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.paths[i]);
-                    return writer;
-                };
-    
-                /**
-                 * Encodes the specified FieldMask message, length delimited. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
-                 * @function encodeDelimited
-                 * @memberof google.protobuf.FieldMask
-                 * @static
-                 * @param {google.protobuf.IFieldMask} message FieldMask message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                FieldMask.encodeDelimited = function encodeDelimited(message, writer) {
-                    return this.encode(message, writer).ldelim();
-                };
-    
-                /**
-                 * Decodes a FieldMask message from the specified reader or buffer.
-                 * @function decode
-                 * @memberof google.protobuf.FieldMask
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @param {number} [length] Message length if known beforehand
-                 * @returns {google.protobuf.FieldMask} FieldMask
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                FieldMask.decode = function decode(reader, length) {
-                    if (!(reader instanceof $Reader))
-                        reader = $Reader.create(reader);
-                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.FieldMask();
-                    while (reader.pos < end) {
-                        var tag = reader.uint32();
-                        switch (tag >>> 3) {
-                        case 1:
-                            if (!(message.paths && message.paths.length))
-                                message.paths = [];
-                            message.paths.push(reader.string());
-                            break;
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
-                        }
-                    }
-                    return message;
-                };
-    
-                /**
-                 * Decodes a FieldMask message from the specified reader or buffer, length delimited.
-                 * @function decodeDelimited
-                 * @memberof google.protobuf.FieldMask
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @returns {google.protobuf.FieldMask} FieldMask
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                FieldMask.decodeDelimited = function decodeDelimited(reader) {
-                    if (!(reader instanceof $Reader))
-                        reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
-                };
-    
-                /**
-                 * Verifies a FieldMask message.
-                 * @function verify
-                 * @memberof google.protobuf.FieldMask
-                 * @static
-                 * @param {Object.<string,*>} message Plain object to verify
-                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                 */
-                FieldMask.verify = function verify(message) {
-                    if (typeof message !== "object" || message === null)
-                        return "object expected";
-                    if (message.paths != null && message.hasOwnProperty("paths")) {
-                        if (!Array.isArray(message.paths))
-                            return "paths: array expected";
-                        for (var i = 0; i < message.paths.length; ++i)
-                            if (!$util.isString(message.paths[i]))
-                                return "paths: string[] expected";
-                    }
-                    return null;
-                };
-    
-                /**
-                 * Creates a FieldMask message from a plain object. Also converts values to their respective internal types.
-                 * @function fromObject
-                 * @memberof google.protobuf.FieldMask
-                 * @static
-                 * @param {Object.<string,*>} object Plain object
-                 * @returns {google.protobuf.FieldMask} FieldMask
-                 */
-                FieldMask.fromObject = function fromObject(object) {
-                    if (object instanceof $root.google.protobuf.FieldMask)
-                        return object;
-                    var message = new $root.google.protobuf.FieldMask();
-                    if (object.paths) {
-                        if (!Array.isArray(object.paths))
-                            throw TypeError(".google.protobuf.FieldMask.paths: array expected");
-                        message.paths = [];
-                        for (var i = 0; i < object.paths.length; ++i)
-                            message.paths[i] = String(object.paths[i]);
-                    }
-                    return message;
-                };
-    
-                /**
-                 * Creates a plain object from a FieldMask message. Also converts values to other types if specified.
-                 * @function toObject
-                 * @memberof google.protobuf.FieldMask
-                 * @static
-                 * @param {google.protobuf.FieldMask} message FieldMask
-                 * @param {$protobuf.IConversionOptions} [options] Conversion options
-                 * @returns {Object.<string,*>} Plain object
-                 */
-                FieldMask.toObject = function toObject(message, options) {
-                    if (!options)
-                        options = {};
-                    var object = {};
-                    if (options.arrays || options.defaults)
-                        object.paths = [];
-                    if (message.paths && message.paths.length) {
-                        object.paths = [];
-                        for (var j = 0; j < message.paths.length; ++j)
-                            object.paths[j] = message.paths[j];
-                    }
-                    return object;
-                };
-    
-                /**
-                 * Converts this FieldMask to JSON.
-                 * @function toJSON
-                 * @memberof google.protobuf.FieldMask
-                 * @instance
-                 * @returns {Object.<string,*>} JSON object
-                 */
-                FieldMask.prototype.toJSON = function toJSON() {
-                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                };
-    
-                return FieldMask;
-            })();
-    
             return protobuf;
         })();
     
@@ -13827,287 +14876,7 @@
                 return CustomHttpPattern;
             })();
     
-            /**
-             * FieldBehavior enum.
-             * @name google.api.FieldBehavior
-             * @enum {number}
-             * @property {number} FIELD_BEHAVIOR_UNSPECIFIED=0 FIELD_BEHAVIOR_UNSPECIFIED value
-             * @property {number} OPTIONAL=1 OPTIONAL value
-             * @property {number} REQUIRED=2 REQUIRED value
-             * @property {number} OUTPUT_ONLY=3 OUTPUT_ONLY value
-             * @property {number} INPUT_ONLY=4 INPUT_ONLY value
-             * @property {number} IMMUTABLE=5 IMMUTABLE value
-             */
-            api.FieldBehavior = (function() {
-                var valuesById = {}, values = Object.create(valuesById);
-                values[valuesById[0] = "FIELD_BEHAVIOR_UNSPECIFIED"] = 0;
-                values[valuesById[1] = "OPTIONAL"] = 1;
-                values[valuesById[2] = "REQUIRED"] = 2;
-                values[valuesById[3] = "OUTPUT_ONLY"] = 3;
-                values[valuesById[4] = "INPUT_ONLY"] = 4;
-                values[valuesById[5] = "IMMUTABLE"] = 5;
-                return values;
-            })();
-    
             return api;
-        })();
-    
-        google.type = (function() {
-    
-            /**
-             * Namespace type.
-             * @memberof google
-             * @namespace
-             */
-            var type = {};
-    
-            type.Money = (function() {
-    
-                /**
-                 * Properties of a Money.
-                 * @memberof google.type
-                 * @interface IMoney
-                 * @property {string|null} [currencyCode] Money currencyCode
-                 * @property {number|Long|null} [units] Money units
-                 * @property {number|null} [nanos] Money nanos
-                 */
-    
-                /**
-                 * Constructs a new Money.
-                 * @memberof google.type
-                 * @classdesc Represents a Money.
-                 * @implements IMoney
-                 * @constructor
-                 * @param {google.type.IMoney=} [properties] Properties to set
-                 */
-                function Money(properties) {
-                    if (properties)
-                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                            if (properties[keys[i]] != null)
-                                this[keys[i]] = properties[keys[i]];
-                }
-    
-                /**
-                 * Money currencyCode.
-                 * @member {string} currencyCode
-                 * @memberof google.type.Money
-                 * @instance
-                 */
-                Money.prototype.currencyCode = "";
-    
-                /**
-                 * Money units.
-                 * @member {number|Long} units
-                 * @memberof google.type.Money
-                 * @instance
-                 */
-                Money.prototype.units = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-    
-                /**
-                 * Money nanos.
-                 * @member {number} nanos
-                 * @memberof google.type.Money
-                 * @instance
-                 */
-                Money.prototype.nanos = 0;
-    
-                /**
-                 * Creates a new Money instance using the specified properties.
-                 * @function create
-                 * @memberof google.type.Money
-                 * @static
-                 * @param {google.type.IMoney=} [properties] Properties to set
-                 * @returns {google.type.Money} Money instance
-                 */
-                Money.create = function create(properties) {
-                    return new Money(properties);
-                };
-    
-                /**
-                 * Encodes the specified Money message. Does not implicitly {@link google.type.Money.verify|verify} messages.
-                 * @function encode
-                 * @memberof google.type.Money
-                 * @static
-                 * @param {google.type.IMoney} message Money message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                Money.encode = function encode(message, writer) {
-                    if (!writer)
-                        writer = $Writer.create();
-                    if (message.currencyCode != null && Object.hasOwnProperty.call(message, "currencyCode"))
-                        writer.uint32(/* id 1, wireType 2 =*/10).string(message.currencyCode);
-                    if (message.units != null && Object.hasOwnProperty.call(message, "units"))
-                        writer.uint32(/* id 2, wireType 0 =*/16).int64(message.units);
-                    if (message.nanos != null && Object.hasOwnProperty.call(message, "nanos"))
-                        writer.uint32(/* id 3, wireType 0 =*/24).int32(message.nanos);
-                    return writer;
-                };
-    
-                /**
-                 * Encodes the specified Money message, length delimited. Does not implicitly {@link google.type.Money.verify|verify} messages.
-                 * @function encodeDelimited
-                 * @memberof google.type.Money
-                 * @static
-                 * @param {google.type.IMoney} message Money message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                Money.encodeDelimited = function encodeDelimited(message, writer) {
-                    return this.encode(message, writer).ldelim();
-                };
-    
-                /**
-                 * Decodes a Money message from the specified reader or buffer.
-                 * @function decode
-                 * @memberof google.type.Money
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @param {number} [length] Message length if known beforehand
-                 * @returns {google.type.Money} Money
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                Money.decode = function decode(reader, length) {
-                    if (!(reader instanceof $Reader))
-                        reader = $Reader.create(reader);
-                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.type.Money();
-                    while (reader.pos < end) {
-                        var tag = reader.uint32();
-                        switch (tag >>> 3) {
-                        case 1:
-                            message.currencyCode = reader.string();
-                            break;
-                        case 2:
-                            message.units = reader.int64();
-                            break;
-                        case 3:
-                            message.nanos = reader.int32();
-                            break;
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
-                        }
-                    }
-                    return message;
-                };
-    
-                /**
-                 * Decodes a Money message from the specified reader or buffer, length delimited.
-                 * @function decodeDelimited
-                 * @memberof google.type.Money
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @returns {google.type.Money} Money
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                Money.decodeDelimited = function decodeDelimited(reader) {
-                    if (!(reader instanceof $Reader))
-                        reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
-                };
-    
-                /**
-                 * Verifies a Money message.
-                 * @function verify
-                 * @memberof google.type.Money
-                 * @static
-                 * @param {Object.<string,*>} message Plain object to verify
-                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                 */
-                Money.verify = function verify(message) {
-                    if (typeof message !== "object" || message === null)
-                        return "object expected";
-                    if (message.currencyCode != null && message.hasOwnProperty("currencyCode"))
-                        if (!$util.isString(message.currencyCode))
-                            return "currencyCode: string expected";
-                    if (message.units != null && message.hasOwnProperty("units"))
-                        if (!$util.isInteger(message.units) && !(message.units && $util.isInteger(message.units.low) && $util.isInteger(message.units.high)))
-                            return "units: integer|Long expected";
-                    if (message.nanos != null && message.hasOwnProperty("nanos"))
-                        if (!$util.isInteger(message.nanos))
-                            return "nanos: integer expected";
-                    return null;
-                };
-    
-                /**
-                 * Creates a Money message from a plain object. Also converts values to their respective internal types.
-                 * @function fromObject
-                 * @memberof google.type.Money
-                 * @static
-                 * @param {Object.<string,*>} object Plain object
-                 * @returns {google.type.Money} Money
-                 */
-                Money.fromObject = function fromObject(object) {
-                    if (object instanceof $root.google.type.Money)
-                        return object;
-                    var message = new $root.google.type.Money();
-                    if (object.currencyCode != null)
-                        message.currencyCode = String(object.currencyCode);
-                    if (object.units != null)
-                        if ($util.Long)
-                            (message.units = $util.Long.fromValue(object.units)).unsigned = false;
-                        else if (typeof object.units === "string")
-                            message.units = parseInt(object.units, 10);
-                        else if (typeof object.units === "number")
-                            message.units = object.units;
-                        else if (typeof object.units === "object")
-                            message.units = new $util.LongBits(object.units.low >>> 0, object.units.high >>> 0).toNumber();
-                    if (object.nanos != null)
-                        message.nanos = object.nanos | 0;
-                    return message;
-                };
-    
-                /**
-                 * Creates a plain object from a Money message. Also converts values to other types if specified.
-                 * @function toObject
-                 * @memberof google.type.Money
-                 * @static
-                 * @param {google.type.Money} message Money
-                 * @param {$protobuf.IConversionOptions} [options] Conversion options
-                 * @returns {Object.<string,*>} Plain object
-                 */
-                Money.toObject = function toObject(message, options) {
-                    if (!options)
-                        options = {};
-                    var object = {};
-                    if (options.defaults) {
-                        object.currencyCode = "";
-                        if ($util.Long) {
-                            var long = new $util.Long(0, 0, false);
-                            object.units = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                        } else
-                            object.units = options.longs === String ? "0" : 0;
-                        object.nanos = 0;
-                    }
-                    if (message.currencyCode != null && message.hasOwnProperty("currencyCode"))
-                        object.currencyCode = message.currencyCode;
-                    if (message.units != null && message.hasOwnProperty("units"))
-                        if (typeof message.units === "number")
-                            object.units = options.longs === String ? String(message.units) : message.units;
-                        else
-                            object.units = options.longs === String ? $util.Long.prototype.toString.call(message.units) : options.longs === Number ? new $util.LongBits(message.units.low >>> 0, message.units.high >>> 0).toNumber() : message.units;
-                    if (message.nanos != null && message.hasOwnProperty("nanos"))
-                        object.nanos = message.nanos;
-                    return object;
-                };
-    
-                /**
-                 * Converts this Money to JSON.
-                 * @function toJSON
-                 * @memberof google.type.Money
-                 * @instance
-                 * @returns {Object.<string,*>} JSON object
-                 */
-                Money.prototype.toJSON = function toJSON() {
-                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                };
-    
-                return Money;
-            })();
-    
-            return type;
         })();
     
         return google;

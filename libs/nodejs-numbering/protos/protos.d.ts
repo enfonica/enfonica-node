@@ -17,17 +17,17 @@ import {protobuf as $protobuf} from "google-gax";
 /** Namespace enfonica. */
 export namespace enfonica {
 
-    /** Namespace messaging. */
-    namespace messaging {
+    /** Namespace numbering. */
+    namespace numbering {
 
-        /** Namespace v1. */
-        namespace v1 {
+        /** Namespace v1beta1. */
+        namespace v1beta1 {
 
-            /** Represents a Messages */
-            class Messages extends $protobuf.rpc.Service {
+            /** Represents a PhoneNumberInstances */
+            class PhoneNumberInstances extends $protobuf.rpc.Service {
 
                 /**
-                 * Constructs a new Messages service.
+                 * Constructs a new PhoneNumberInstances service.
                  * @param rpcImpl RPC implementation
                  * @param [requestDelimited=false] Whether requests are length-delimited
                  * @param [responseDelimited=false] Whether responses are length-delimited
@@ -35,1562 +35,2082 @@ export namespace enfonica {
                 constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
 
                 /**
-                 * Creates new Messages service using the specified rpc implementation.
+                 * Creates new PhoneNumberInstances service using the specified rpc implementation.
                  * @param rpcImpl RPC implementation
                  * @param [requestDelimited=false] Whether requests are length-delimited
                  * @param [responseDelimited=false] Whether responses are length-delimited
                  * @returns RPC service. Useful where requests and/or responses are streamed.
                  */
-                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Messages;
+                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): PhoneNumberInstances;
 
                 /**
-                 * Calls CreateMessage.
-                 * @param request CreateMessageRequest message or plain object
-                 * @param callback Node-style callback called with the error, if any, and Message
+                 * Calls CreatePhoneNumberInstance.
+                 * @param request CreatePhoneNumberInstanceRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumberInstance
                  */
-                public createMessage(request: enfonica.messaging.v1.ICreateMessageRequest, callback: enfonica.messaging.v1.Messages.CreateMessageCallback): void;
+                public createPhoneNumberInstance(request: enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest, callback: enfonica.numbering.v1beta1.PhoneNumberInstances.CreatePhoneNumberInstanceCallback): void;
 
                 /**
-                 * Calls CreateMessage.
-                 * @param request CreateMessageRequest message or plain object
+                 * Calls CreatePhoneNumberInstance.
+                 * @param request CreatePhoneNumberInstanceRequest message or plain object
                  * @returns Promise
                  */
-                public createMessage(request: enfonica.messaging.v1.ICreateMessageRequest): Promise<enfonica.messaging.v1.Message>;
+                public createPhoneNumberInstance(request: enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest): Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>;
 
                 /**
-                 * Calls GetMessage.
-                 * @param request GetMessageRequest message or plain object
-                 * @param callback Node-style callback called with the error, if any, and Message
+                 * Calls GetPhoneNumberInstance.
+                 * @param request GetPhoneNumberInstanceRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumberInstance
                  */
-                public getMessage(request: enfonica.messaging.v1.IGetMessageRequest, callback: enfonica.messaging.v1.Messages.GetMessageCallback): void;
+                public getPhoneNumberInstance(request: enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest, callback: enfonica.numbering.v1beta1.PhoneNumberInstances.GetPhoneNumberInstanceCallback): void;
 
                 /**
-                 * Calls GetMessage.
-                 * @param request GetMessageRequest message or plain object
+                 * Calls GetPhoneNumberInstance.
+                 * @param request GetPhoneNumberInstanceRequest message or plain object
                  * @returns Promise
                  */
-                public getMessage(request: enfonica.messaging.v1.IGetMessageRequest): Promise<enfonica.messaging.v1.Message>;
+                public getPhoneNumberInstance(request: enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest): Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>;
 
                 /**
-                 * Calls ListMessages.
-                 * @param request ListMessagesRequest message or plain object
-                 * @param callback Node-style callback called with the error, if any, and ListMessagesResponse
+                 * Calls ListPhoneNumberInstances.
+                 * @param request ListPhoneNumberInstancesRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and ListPhoneNumberInstancesResponse
                  */
-                public listMessages(request: enfonica.messaging.v1.IListMessagesRequest, callback: enfonica.messaging.v1.Messages.ListMessagesCallback): void;
+                public listPhoneNumberInstances(request: enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest, callback: enfonica.numbering.v1beta1.PhoneNumberInstances.ListPhoneNumberInstancesCallback): void;
 
                 /**
-                 * Calls ListMessages.
-                 * @param request ListMessagesRequest message or plain object
+                 * Calls ListPhoneNumberInstances.
+                 * @param request ListPhoneNumberInstancesRequest message or plain object
                  * @returns Promise
                  */
-                public listMessages(request: enfonica.messaging.v1.IListMessagesRequest): Promise<enfonica.messaging.v1.ListMessagesResponse>;
+                public listPhoneNumberInstances(request: enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest): Promise<enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse>;
+
+                /**
+                 * Calls UpdatePhoneNumberInstance.
+                 * @param request UpdatePhoneNumberInstanceRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumberInstance
+                 */
+                public updatePhoneNumberInstance(request: enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest, callback: enfonica.numbering.v1beta1.PhoneNumberInstances.UpdatePhoneNumberInstanceCallback): void;
+
+                /**
+                 * Calls UpdatePhoneNumberInstance.
+                 * @param request UpdatePhoneNumberInstanceRequest message or plain object
+                 * @returns Promise
+                 */
+                public updatePhoneNumberInstance(request: enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest): Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>;
+
+                /**
+                 * Calls DeletePhoneNumberInstance.
+                 * @param request DeletePhoneNumberInstanceRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumberInstance
+                 */
+                public deletePhoneNumberInstance(request: enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest, callback: enfonica.numbering.v1beta1.PhoneNumberInstances.DeletePhoneNumberInstanceCallback): void;
+
+                /**
+                 * Calls DeletePhoneNumberInstance.
+                 * @param request DeletePhoneNumberInstanceRequest message or plain object
+                 * @returns Promise
+                 */
+                public deletePhoneNumberInstance(request: enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest): Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>;
+
+                /**
+                 * Calls GetProvisionedPhoneNumberInstance.
+                 * @param request GetProvisionedPhoneNumberInstanceRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumberInstance
+                 */
+                public getProvisionedPhoneNumberInstance(request: enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest, callback: enfonica.numbering.v1beta1.PhoneNumberInstances.GetProvisionedPhoneNumberInstanceCallback): void;
+
+                /**
+                 * Calls GetProvisionedPhoneNumberInstance.
+                 * @param request GetProvisionedPhoneNumberInstanceRequest message or plain object
+                 * @returns Promise
+                 */
+                public getProvisionedPhoneNumberInstance(request: enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest): Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>;
             }
 
-            namespace Messages {
+            namespace PhoneNumberInstances {
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Messages#createMessage}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#createPhoneNumberInstance}.
                  * @param error Error, if any
-                 * @param [response] Message
+                 * @param [response] PhoneNumberInstance
                  */
-                type CreateMessageCallback = (error: (Error|null), response?: enfonica.messaging.v1.Message) => void;
+                type CreatePhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Messages#getMessage}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#getPhoneNumberInstance}.
                  * @param error Error, if any
-                 * @param [response] Message
+                 * @param [response] PhoneNumberInstance
                  */
-                type GetMessageCallback = (error: (Error|null), response?: enfonica.messaging.v1.Message) => void;
+                type GetPhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Messages#listMessages}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#listPhoneNumberInstances}.
                  * @param error Error, if any
-                 * @param [response] ListMessagesResponse
+                 * @param [response] ListPhoneNumberInstancesResponse
                  */
-                type ListMessagesCallback = (error: (Error|null), response?: enfonica.messaging.v1.ListMessagesResponse) => void;
+                type ListPhoneNumberInstancesCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#updatePhoneNumberInstance}.
+                 * @param error Error, if any
+                 * @param [response] PhoneNumberInstance
+                 */
+                type UpdatePhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#deletePhoneNumberInstance}.
+                 * @param error Error, if any
+                 * @param [response] PhoneNumberInstance
+                 */
+                type DeletePhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#getProvisionedPhoneNumberInstance}.
+                 * @param error Error, if any
+                 * @param [response] PhoneNumberInstance
+                 */
+                type GetProvisionedPhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
             }
 
-            /** Properties of a Message. */
-            interface IMessage {
+            /** Properties of a PhoneNumberInstance. */
+            interface IPhoneNumberInstance {
 
-                /** Message name */
+                /** PhoneNumberInstance name */
                 name?: (string|null);
 
-                /** Message to */
-                to?: (string|null);
+                /** PhoneNumberInstance phoneNumber */
+                phoneNumber?: (enfonica.numbering.v1beta1.IPhoneNumber|null);
 
-                /** Message from */
-                from?: (string|null);
+                /** PhoneNumberInstance displayName */
+                displayName?: (string|null);
 
-                /** Message body */
-                body?: (string|null);
-
-                /** Message statusUpdateUrl */
-                statusUpdateUrl?: (string|null);
-
-                /** Message replyUrl */
-                replyUrl?: (string|null);
-
-                /** Message validityPeriodSeconds */
-                validityPeriodSeconds?: (number|null);
-
-                /** Message smartEncoding */
-                smartEncoding?: (boolean|null);
-
-                /** Message labels */
+                /** PhoneNumberInstance labels */
                 labels?: ({ [k: string]: string }|null);
 
-                /** Message classification */
-                classification?: (enfonica.messaging.v1.Message.MessageClassification|keyof typeof enfonica.messaging.v1.Message.MessageClassification|null);
+                /** PhoneNumberInstance incomingMessageHandlerUris */
+                incomingMessageHandlerUris?: (string[]|null);
 
-                /** Message unsubscribeContentBehavior */
-                unsubscribeContentBehavior?: (enfonica.messaging.v1.Message.UnsubscribeContentBehavior|keyof typeof enfonica.messaging.v1.Message.UnsubscribeContentBehavior|null);
+                /** PhoneNumberInstance incomingCallHandlerUris */
+                incomingCallHandlerUris?: (string[]|null);
 
-                /** Message direction */
-                direction?: (enfonica.messaging.v1.Message.Direction|keyof typeof enfonica.messaging.v1.Message.Direction|null);
-
-                /** Message errorCode */
-                errorCode?: (string|null);
-
-                /** Message errorMessage */
-                errorMessage?: (string|null);
-
-                /** Message segmentCount */
-                segmentCount?: (number|null);
-
-                /** Message price */
-                price?: (google.type.IMoney|null);
-
-                /** Message status */
-                status?: (enfonica.messaging.v1.Message.Status|keyof typeof enfonica.messaging.v1.Message.Status|null);
-
-                /** Message createIdentity */
-                createIdentity?: (string|null);
-
-                /** Message createTime */
+                /** PhoneNumberInstance createTime */
                 createTime?: (google.protobuf.ITimestamp|null);
 
-                /** Message sendTime */
-                sendTime?: (google.protobuf.ITimestamp|null);
+                /** PhoneNumberInstance deleteTime */
+                deleteTime?: (google.protobuf.ITimestamp|null);
 
-                /** Message deliverTime */
-                deliverTime?: (google.protobuf.ITimestamp|null);
-
-                /** Message encoding */
-                encoding?: (enfonica.messaging.v1.Message.MessageEncoding|keyof typeof enfonica.messaging.v1.Message.MessageEncoding|null);
+                /** PhoneNumberInstance lifecycleState */
+                lifecycleState?: (enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|keyof typeof enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|null);
             }
 
-            /** Represents a Message. */
-            class Message implements IMessage {
+            /** Represents a PhoneNumberInstance. */
+            class PhoneNumberInstance implements IPhoneNumberInstance {
 
                 /**
-                 * Constructs a new Message.
+                 * Constructs a new PhoneNumberInstance.
                  * @param [properties] Properties to set
                  */
-                constructor(properties?: enfonica.messaging.v1.IMessage);
+                constructor(properties?: enfonica.numbering.v1beta1.IPhoneNumberInstance);
 
-                /** Message name. */
+                /** PhoneNumberInstance name. */
                 public name: string;
 
-                /** Message to. */
-                public to: string;
+                /** PhoneNumberInstance phoneNumber. */
+                public phoneNumber?: (enfonica.numbering.v1beta1.IPhoneNumber|null);
 
-                /** Message from. */
-                public from: string;
+                /** PhoneNumberInstance displayName. */
+                public displayName: string;
 
-                /** Message body. */
-                public body: string;
-
-                /** Message statusUpdateUrl. */
-                public statusUpdateUrl: string;
-
-                /** Message replyUrl. */
-                public replyUrl: string;
-
-                /** Message validityPeriodSeconds. */
-                public validityPeriodSeconds: number;
-
-                /** Message smartEncoding. */
-                public smartEncoding: boolean;
-
-                /** Message labels. */
+                /** PhoneNumberInstance labels. */
                 public labels: { [k: string]: string };
 
-                /** Message classification. */
-                public classification: (enfonica.messaging.v1.Message.MessageClassification|keyof typeof enfonica.messaging.v1.Message.MessageClassification);
+                /** PhoneNumberInstance incomingMessageHandlerUris. */
+                public incomingMessageHandlerUris: string[];
 
-                /** Message unsubscribeContentBehavior. */
-                public unsubscribeContentBehavior: (enfonica.messaging.v1.Message.UnsubscribeContentBehavior|keyof typeof enfonica.messaging.v1.Message.UnsubscribeContentBehavior);
+                /** PhoneNumberInstance incomingCallHandlerUris. */
+                public incomingCallHandlerUris: string[];
 
-                /** Message direction. */
-                public direction: (enfonica.messaging.v1.Message.Direction|keyof typeof enfonica.messaging.v1.Message.Direction);
-
-                /** Message errorCode. */
-                public errorCode: string;
-
-                /** Message errorMessage. */
-                public errorMessage: string;
-
-                /** Message segmentCount. */
-                public segmentCount: number;
-
-                /** Message price. */
-                public price?: (google.type.IMoney|null);
-
-                /** Message status. */
-                public status: (enfonica.messaging.v1.Message.Status|keyof typeof enfonica.messaging.v1.Message.Status);
-
-                /** Message createIdentity. */
-                public createIdentity: string;
-
-                /** Message createTime. */
+                /** PhoneNumberInstance createTime. */
                 public createTime?: (google.protobuf.ITimestamp|null);
 
-                /** Message sendTime. */
-                public sendTime?: (google.protobuf.ITimestamp|null);
+                /** PhoneNumberInstance deleteTime. */
+                public deleteTime?: (google.protobuf.ITimestamp|null);
 
-                /** Message deliverTime. */
-                public deliverTime?: (google.protobuf.ITimestamp|null);
-
-                /** Message encoding. */
-                public encoding: (enfonica.messaging.v1.Message.MessageEncoding|keyof typeof enfonica.messaging.v1.Message.MessageEncoding);
+                /** PhoneNumberInstance lifecycleState. */
+                public lifecycleState: (enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|keyof typeof enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState);
 
                 /**
-                 * Creates a new Message instance using the specified properties.
+                 * Creates a new PhoneNumberInstance instance using the specified properties.
                  * @param [properties] Properties to set
-                 * @returns Message instance
+                 * @returns PhoneNumberInstance instance
                  */
-                public static create(properties?: enfonica.messaging.v1.IMessage): enfonica.messaging.v1.Message;
+                public static create(properties?: enfonica.numbering.v1beta1.IPhoneNumberInstance): enfonica.numbering.v1beta1.PhoneNumberInstance;
 
                 /**
-                 * Encodes the specified Message message. Does not implicitly {@link enfonica.messaging.v1.Message.verify|verify} messages.
-                 * @param message Message message or plain object to encode
+                 * Encodes the specified PhoneNumberInstance message. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumberInstance.verify|verify} messages.
+                 * @param message PhoneNumberInstance message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encode(message: enfonica.messaging.v1.IMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encode(message: enfonica.numbering.v1beta1.IPhoneNumberInstance, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Encodes the specified Message message, length delimited. Does not implicitly {@link enfonica.messaging.v1.Message.verify|verify} messages.
-                 * @param message Message message or plain object to encode
+                 * Encodes the specified PhoneNumberInstance message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumberInstance.verify|verify} messages.
+                 * @param message PhoneNumberInstance message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encodeDelimited(message: enfonica.messaging.v1.IMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IPhoneNumberInstance, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Decodes a Message message from the specified reader or buffer.
+                 * Decodes a PhoneNumberInstance message from the specified reader or buffer.
                  * @param reader Reader or buffer to decode from
                  * @param [length] Message length if known beforehand
-                 * @returns Message
+                 * @returns PhoneNumberInstance
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.Message;
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.PhoneNumberInstance;
 
                 /**
-                 * Decodes a Message message from the specified reader or buffer, length delimited.
+                 * Decodes a PhoneNumberInstance message from the specified reader or buffer, length delimited.
                  * @param reader Reader or buffer to decode from
-                 * @returns Message
+                 * @returns PhoneNumberInstance
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.Message;
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.PhoneNumberInstance;
 
                 /**
-                 * Verifies a Message message.
+                 * Verifies a PhoneNumberInstance message.
                  * @param message Plain object to verify
                  * @returns `null` if valid, otherwise the reason why it is not
                  */
                 public static verify(message: { [k: string]: any }): (string|null);
 
                 /**
-                 * Creates a Message message from a plain object. Also converts values to their respective internal types.
+                 * Creates a PhoneNumberInstance message from a plain object. Also converts values to their respective internal types.
                  * @param object Plain object
-                 * @returns Message
+                 * @returns PhoneNumberInstance
                  */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.Message;
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.PhoneNumberInstance;
 
                 /**
-                 * Creates a plain object from a Message message. Also converts values to other types if specified.
-                 * @param message Message
+                 * Creates a plain object from a PhoneNumberInstance message. Also converts values to other types if specified.
+                 * @param message PhoneNumberInstance
                  * @param [options] Conversion options
                  * @returns Plain object
                  */
-                public static toObject(message: enfonica.messaging.v1.Message, options?: $protobuf.IConversionOptions): { [k: string]: any };
+                public static toObject(message: enfonica.numbering.v1beta1.PhoneNumberInstance, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
                 /**
-                 * Converts this Message to JSON.
+                 * Converts this PhoneNumberInstance to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
             }
 
-            namespace Message {
+            namespace PhoneNumberInstance {
 
-                /** Status enum. */
-                enum Status {
-                    STATUS_UNKNOWN = 0,
-                    QUEUED = 1,
-                    SENDING = 2,
-                    SENT = 3,
-                    FAILED = 4,
-                    DELIVERED = 5,
-                    UNDELIVERED = 6,
-                    RECEIVED = 7
-                }
-
-                /** Direction enum. */
-                enum Direction {
-                    DIRECTION_UNKNOWN = 0,
-                    OUTGOING = 1,
-                    INCOMING = 2
-                }
-
-                /** MessageClassification enum. */
-                enum MessageClassification {
-                    UNSPECIFIED = 0,
-                    UNCLASSIFIED = 1,
-                    TRANSACTIONAL = 2,
-                    MARKETING = 3
-                }
-
-                /** UnsubscribeContentBehavior enum. */
-                enum UnsubscribeContentBehavior {
-                    UNSUBSCRIBE_CONTENT_UNKNOWN = 0,
-                    NONE = 1,
-                    APPEND_URL = 2
-                }
-
-                /** MessageEncoding enum. */
-                enum MessageEncoding {
-                    MESSAGE_ENCODING_UNKNOWN = 0,
-                    GSM7 = 1,
-                    UCS2 = 2
+                /** LifecycleState enum. */
+                enum LifecycleState {
+                    LIFECYCLE_STATE_UNKNOWN = 0,
+                    ACTIVE = 1,
+                    DELETED = 2,
+                    SUSPENDED = 3
                 }
             }
 
-            /** Properties of a CreateMessageRequest. */
-            interface ICreateMessageRequest {
+            /** Properties of a CreatePhoneNumberInstanceRequest. */
+            interface ICreatePhoneNumberInstanceRequest {
 
-                /** CreateMessageRequest parent */
+                /** CreatePhoneNumberInstanceRequest parent */
                 parent?: (string|null);
 
-                /** CreateMessageRequest message */
-                message?: (enfonica.messaging.v1.IMessage|null);
+                /** CreatePhoneNumberInstanceRequest phoneNumberInstance */
+                phoneNumberInstance?: (enfonica.numbering.v1beta1.IPhoneNumberInstance|null);
             }
 
-            /** Represents a CreateMessageRequest. */
-            class CreateMessageRequest implements ICreateMessageRequest {
+            /** Represents a CreatePhoneNumberInstanceRequest. */
+            class CreatePhoneNumberInstanceRequest implements ICreatePhoneNumberInstanceRequest {
 
                 /**
-                 * Constructs a new CreateMessageRequest.
+                 * Constructs a new CreatePhoneNumberInstanceRequest.
                  * @param [properties] Properties to set
                  */
-                constructor(properties?: enfonica.messaging.v1.ICreateMessageRequest);
+                constructor(properties?: enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest);
 
-                /** CreateMessageRequest parent. */
+                /** CreatePhoneNumberInstanceRequest parent. */
                 public parent: string;
 
-                /** CreateMessageRequest message. */
-                public message?: (enfonica.messaging.v1.IMessage|null);
+                /** CreatePhoneNumberInstanceRequest phoneNumberInstance. */
+                public phoneNumberInstance?: (enfonica.numbering.v1beta1.IPhoneNumberInstance|null);
 
                 /**
-                 * Creates a new CreateMessageRequest instance using the specified properties.
+                 * Creates a new CreatePhoneNumberInstanceRequest instance using the specified properties.
                  * @param [properties] Properties to set
-                 * @returns CreateMessageRequest instance
+                 * @returns CreatePhoneNumberInstanceRequest instance
                  */
-                public static create(properties?: enfonica.messaging.v1.ICreateMessageRequest): enfonica.messaging.v1.CreateMessageRequest;
+                public static create(properties?: enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest): enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest;
 
                 /**
-                 * Encodes the specified CreateMessageRequest message. Does not implicitly {@link enfonica.messaging.v1.CreateMessageRequest.verify|verify} messages.
-                 * @param message CreateMessageRequest message or plain object to encode
+                 * Encodes the specified CreatePhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message CreatePhoneNumberInstanceRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encode(message: enfonica.messaging.v1.ICreateMessageRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encode(message: enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Encodes the specified CreateMessageRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.CreateMessageRequest.verify|verify} messages.
-                 * @param message CreateMessageRequest message or plain object to encode
+                 * Encodes the specified CreatePhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message CreatePhoneNumberInstanceRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encodeDelimited(message: enfonica.messaging.v1.ICreateMessageRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ICreatePhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Decodes a CreateMessageRequest message from the specified reader or buffer.
+                 * Decodes a CreatePhoneNumberInstanceRequest message from the specified reader or buffer.
                  * @param reader Reader or buffer to decode from
                  * @param [length] Message length if known beforehand
-                 * @returns CreateMessageRequest
+                 * @returns CreatePhoneNumberInstanceRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.CreateMessageRequest;
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest;
 
                 /**
-                 * Decodes a CreateMessageRequest message from the specified reader or buffer, length delimited.
+                 * Decodes a CreatePhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
                  * @param reader Reader or buffer to decode from
-                 * @returns CreateMessageRequest
+                 * @returns CreatePhoneNumberInstanceRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.CreateMessageRequest;
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest;
 
                 /**
-                 * Verifies a CreateMessageRequest message.
+                 * Verifies a CreatePhoneNumberInstanceRequest message.
                  * @param message Plain object to verify
                  * @returns `null` if valid, otherwise the reason why it is not
                  */
                 public static verify(message: { [k: string]: any }): (string|null);
 
                 /**
-                 * Creates a CreateMessageRequest message from a plain object. Also converts values to their respective internal types.
+                 * Creates a CreatePhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
                  * @param object Plain object
-                 * @returns CreateMessageRequest
+                 * @returns CreatePhoneNumberInstanceRequest
                  */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.CreateMessageRequest;
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest;
 
                 /**
-                 * Creates a plain object from a CreateMessageRequest message. Also converts values to other types if specified.
-                 * @param message CreateMessageRequest
+                 * Creates a plain object from a CreatePhoneNumberInstanceRequest message. Also converts values to other types if specified.
+                 * @param message CreatePhoneNumberInstanceRequest
                  * @param [options] Conversion options
                  * @returns Plain object
                  */
-                public static toObject(message: enfonica.messaging.v1.CreateMessageRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+                public static toObject(message: enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
                 /**
-                 * Converts this CreateMessageRequest to JSON.
+                 * Converts this CreatePhoneNumberInstanceRequest to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
             }
 
-            /** Properties of a GetMessageRequest. */
-            interface IGetMessageRequest {
+            /** Properties of a GetPhoneNumberInstanceRequest. */
+            interface IGetPhoneNumberInstanceRequest {
 
-                /** GetMessageRequest name */
+                /** GetPhoneNumberInstanceRequest name */
                 name?: (string|null);
             }
 
-            /** Represents a GetMessageRequest. */
-            class GetMessageRequest implements IGetMessageRequest {
+            /** Represents a GetPhoneNumberInstanceRequest. */
+            class GetPhoneNumberInstanceRequest implements IGetPhoneNumberInstanceRequest {
 
                 /**
-                 * Constructs a new GetMessageRequest.
+                 * Constructs a new GetPhoneNumberInstanceRequest.
                  * @param [properties] Properties to set
                  */
-                constructor(properties?: enfonica.messaging.v1.IGetMessageRequest);
+                constructor(properties?: enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest);
 
-                /** GetMessageRequest name. */
+                /** GetPhoneNumberInstanceRequest name. */
                 public name: string;
 
                 /**
-                 * Creates a new GetMessageRequest instance using the specified properties.
+                 * Creates a new GetPhoneNumberInstanceRequest instance using the specified properties.
                  * @param [properties] Properties to set
-                 * @returns GetMessageRequest instance
+                 * @returns GetPhoneNumberInstanceRequest instance
                  */
-                public static create(properties?: enfonica.messaging.v1.IGetMessageRequest): enfonica.messaging.v1.GetMessageRequest;
+                public static create(properties?: enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest): enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest;
 
                 /**
-                 * Encodes the specified GetMessageRequest message. Does not implicitly {@link enfonica.messaging.v1.GetMessageRequest.verify|verify} messages.
-                 * @param message GetMessageRequest message or plain object to encode
+                 * Encodes the specified GetPhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message GetPhoneNumberInstanceRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encode(message: enfonica.messaging.v1.IGetMessageRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encode(message: enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Encodes the specified GetMessageRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.GetMessageRequest.verify|verify} messages.
-                 * @param message GetMessageRequest message or plain object to encode
+                 * Encodes the specified GetPhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message GetPhoneNumberInstanceRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encodeDelimited(message: enfonica.messaging.v1.IGetMessageRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IGetPhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Decodes a GetMessageRequest message from the specified reader or buffer.
+                 * Decodes a GetPhoneNumberInstanceRequest message from the specified reader or buffer.
                  * @param reader Reader or buffer to decode from
                  * @param [length] Message length if known beforehand
-                 * @returns GetMessageRequest
+                 * @returns GetPhoneNumberInstanceRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.GetMessageRequest;
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest;
 
                 /**
-                 * Decodes a GetMessageRequest message from the specified reader or buffer, length delimited.
+                 * Decodes a GetPhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
                  * @param reader Reader or buffer to decode from
-                 * @returns GetMessageRequest
+                 * @returns GetPhoneNumberInstanceRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.GetMessageRequest;
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest;
 
                 /**
-                 * Verifies a GetMessageRequest message.
+                 * Verifies a GetPhoneNumberInstanceRequest message.
                  * @param message Plain object to verify
                  * @returns `null` if valid, otherwise the reason why it is not
                  */
                 public static verify(message: { [k: string]: any }): (string|null);
 
                 /**
-                 * Creates a GetMessageRequest message from a plain object. Also converts values to their respective internal types.
+                 * Creates a GetPhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
                  * @param object Plain object
-                 * @returns GetMessageRequest
+                 * @returns GetPhoneNumberInstanceRequest
                  */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.GetMessageRequest;
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest;
 
                 /**
-                 * Creates a plain object from a GetMessageRequest message. Also converts values to other types if specified.
-                 * @param message GetMessageRequest
+                 * Creates a plain object from a GetPhoneNumberInstanceRequest message. Also converts values to other types if specified.
+                 * @param message GetPhoneNumberInstanceRequest
                  * @param [options] Conversion options
                  * @returns Plain object
                  */
-                public static toObject(message: enfonica.messaging.v1.GetMessageRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+                public static toObject(message: enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
                 /**
-                 * Converts this GetMessageRequest to JSON.
+                 * Converts this GetPhoneNumberInstanceRequest to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
             }
 
-            /** Properties of a ListMessagesRequest. */
-            interface IListMessagesRequest {
+            /** Properties of a ListPhoneNumberInstancesRequest. */
+            interface IListPhoneNumberInstancesRequest {
 
-                /** ListMessagesRequest parent */
+                /** ListPhoneNumberInstancesRequest parent */
                 parent?: (string|null);
 
-                /** ListMessagesRequest pageSize */
+                /** ListPhoneNumberInstancesRequest pageSize */
                 pageSize?: (number|null);
 
-                /** ListMessagesRequest pageToken */
+                /** ListPhoneNumberInstancesRequest pageToken */
                 pageToken?: (string|null);
 
-                /** ListMessagesRequest startTime */
-                startTime?: (google.protobuf.ITimestamp|null);
+                /** ListPhoneNumberInstancesRequest prefix */
+                prefix?: (string|null);
 
-                /** ListMessagesRequest endTime */
-                endTime?: (google.protobuf.ITimestamp|null);
+                /** ListPhoneNumberInstancesRequest includeDeleted */
+                includeDeleted?: (boolean|null);
             }
 
-            /** Represents a ListMessagesRequest. */
-            class ListMessagesRequest implements IListMessagesRequest {
+            /** Represents a ListPhoneNumberInstancesRequest. */
+            class ListPhoneNumberInstancesRequest implements IListPhoneNumberInstancesRequest {
 
                 /**
-                 * Constructs a new ListMessagesRequest.
+                 * Constructs a new ListPhoneNumberInstancesRequest.
                  * @param [properties] Properties to set
                  */
-                constructor(properties?: enfonica.messaging.v1.IListMessagesRequest);
+                constructor(properties?: enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest);
 
-                /** ListMessagesRequest parent. */
+                /** ListPhoneNumberInstancesRequest parent. */
                 public parent: string;
 
-                /** ListMessagesRequest pageSize. */
+                /** ListPhoneNumberInstancesRequest pageSize. */
                 public pageSize: number;
 
-                /** ListMessagesRequest pageToken. */
+                /** ListPhoneNumberInstancesRequest pageToken. */
                 public pageToken: string;
 
-                /** ListMessagesRequest startTime. */
-                public startTime?: (google.protobuf.ITimestamp|null);
+                /** ListPhoneNumberInstancesRequest prefix. */
+                public prefix: string;
 
-                /** ListMessagesRequest endTime. */
-                public endTime?: (google.protobuf.ITimestamp|null);
+                /** ListPhoneNumberInstancesRequest includeDeleted. */
+                public includeDeleted: boolean;
 
                 /**
-                 * Creates a new ListMessagesRequest instance using the specified properties.
+                 * Creates a new ListPhoneNumberInstancesRequest instance using the specified properties.
                  * @param [properties] Properties to set
-                 * @returns ListMessagesRequest instance
+                 * @returns ListPhoneNumberInstancesRequest instance
                  */
-                public static create(properties?: enfonica.messaging.v1.IListMessagesRequest): enfonica.messaging.v1.ListMessagesRequest;
+                public static create(properties?: enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest): enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest;
 
                 /**
-                 * Encodes the specified ListMessagesRequest message. Does not implicitly {@link enfonica.messaging.v1.ListMessagesRequest.verify|verify} messages.
-                 * @param message ListMessagesRequest message or plain object to encode
+                 * Encodes the specified ListPhoneNumberInstancesRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest.verify|verify} messages.
+                 * @param message ListPhoneNumberInstancesRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encode(message: enfonica.messaging.v1.IListMessagesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encode(message: enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Encodes the specified ListMessagesRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.ListMessagesRequest.verify|verify} messages.
-                 * @param message ListMessagesRequest message or plain object to encode
+                 * Encodes the specified ListPhoneNumberInstancesRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest.verify|verify} messages.
+                 * @param message ListPhoneNumberInstancesRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encodeDelimited(message: enfonica.messaging.v1.IListMessagesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Decodes a ListMessagesRequest message from the specified reader or buffer.
+                 * Decodes a ListPhoneNumberInstancesRequest message from the specified reader or buffer.
                  * @param reader Reader or buffer to decode from
                  * @param [length] Message length if known beforehand
-                 * @returns ListMessagesRequest
+                 * @returns ListPhoneNumberInstancesRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.ListMessagesRequest;
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest;
 
                 /**
-                 * Decodes a ListMessagesRequest message from the specified reader or buffer, length delimited.
+                 * Decodes a ListPhoneNumberInstancesRequest message from the specified reader or buffer, length delimited.
                  * @param reader Reader or buffer to decode from
-                 * @returns ListMessagesRequest
+                 * @returns ListPhoneNumberInstancesRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.ListMessagesRequest;
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest;
 
                 /**
-                 * Verifies a ListMessagesRequest message.
+                 * Verifies a ListPhoneNumberInstancesRequest message.
                  * @param message Plain object to verify
                  * @returns `null` if valid, otherwise the reason why it is not
                  */
                 public static verify(message: { [k: string]: any }): (string|null);
 
                 /**
-                 * Creates a ListMessagesRequest message from a plain object. Also converts values to their respective internal types.
+                 * Creates a ListPhoneNumberInstancesRequest message from a plain object. Also converts values to their respective internal types.
                  * @param object Plain object
-                 * @returns ListMessagesRequest
+                 * @returns ListPhoneNumberInstancesRequest
                  */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.ListMessagesRequest;
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest;
 
                 /**
-                 * Creates a plain object from a ListMessagesRequest message. Also converts values to other types if specified.
-                 * @param message ListMessagesRequest
+                 * Creates a plain object from a ListPhoneNumberInstancesRequest message. Also converts values to other types if specified.
+                 * @param message ListPhoneNumberInstancesRequest
                  * @param [options] Conversion options
                  * @returns Plain object
                  */
-                public static toObject(message: enfonica.messaging.v1.ListMessagesRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+                public static toObject(message: enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
                 /**
-                 * Converts this ListMessagesRequest to JSON.
+                 * Converts this ListPhoneNumberInstancesRequest to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
             }
 
-            /** Properties of a ListMessagesResponse. */
-            interface IListMessagesResponse {
+            /** Properties of a ListPhoneNumberInstancesResponse. */
+            interface IListPhoneNumberInstancesResponse {
 
-                /** ListMessagesResponse messages */
-                messages?: (enfonica.messaging.v1.IMessage[]|null);
+                /** ListPhoneNumberInstancesResponse phoneNumberInstances */
+                phoneNumberInstances?: (enfonica.numbering.v1beta1.IPhoneNumberInstance[]|null);
 
-                /** ListMessagesResponse nextPageToken */
+                /** ListPhoneNumberInstancesResponse nextPageToken */
                 nextPageToken?: (string|null);
             }
 
-            /** Represents a ListMessagesResponse. */
-            class ListMessagesResponse implements IListMessagesResponse {
+            /** Represents a ListPhoneNumberInstancesResponse. */
+            class ListPhoneNumberInstancesResponse implements IListPhoneNumberInstancesResponse {
 
                 /**
-                 * Constructs a new ListMessagesResponse.
+                 * Constructs a new ListPhoneNumberInstancesResponse.
                  * @param [properties] Properties to set
                  */
-                constructor(properties?: enfonica.messaging.v1.IListMessagesResponse);
+                constructor(properties?: enfonica.numbering.v1beta1.IListPhoneNumberInstancesResponse);
 
-                /** ListMessagesResponse messages. */
-                public messages: enfonica.messaging.v1.IMessage[];
+                /** ListPhoneNumberInstancesResponse phoneNumberInstances. */
+                public phoneNumberInstances: enfonica.numbering.v1beta1.IPhoneNumberInstance[];
 
-                /** ListMessagesResponse nextPageToken. */
+                /** ListPhoneNumberInstancesResponse nextPageToken. */
                 public nextPageToken: string;
 
                 /**
-                 * Creates a new ListMessagesResponse instance using the specified properties.
+                 * Creates a new ListPhoneNumberInstancesResponse instance using the specified properties.
                  * @param [properties] Properties to set
-                 * @returns ListMessagesResponse instance
+                 * @returns ListPhoneNumberInstancesResponse instance
                  */
-                public static create(properties?: enfonica.messaging.v1.IListMessagesResponse): enfonica.messaging.v1.ListMessagesResponse;
+                public static create(properties?: enfonica.numbering.v1beta1.IListPhoneNumberInstancesResponse): enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse;
 
                 /**
-                 * Encodes the specified ListMessagesResponse message. Does not implicitly {@link enfonica.messaging.v1.ListMessagesResponse.verify|verify} messages.
-                 * @param message ListMessagesResponse message or plain object to encode
+                 * Encodes the specified ListPhoneNumberInstancesResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse.verify|verify} messages.
+                 * @param message ListPhoneNumberInstancesResponse message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encode(message: enfonica.messaging.v1.IListMessagesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encode(message: enfonica.numbering.v1beta1.IListPhoneNumberInstancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Encodes the specified ListMessagesResponse message, length delimited. Does not implicitly {@link enfonica.messaging.v1.ListMessagesResponse.verify|verify} messages.
-                 * @param message ListMessagesResponse message or plain object to encode
+                 * Encodes the specified ListPhoneNumberInstancesResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse.verify|verify} messages.
+                 * @param message ListPhoneNumberInstancesResponse message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encodeDelimited(message: enfonica.messaging.v1.IListMessagesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IListPhoneNumberInstancesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Decodes a ListMessagesResponse message from the specified reader or buffer.
+                 * Decodes a ListPhoneNumberInstancesResponse message from the specified reader or buffer.
                  * @param reader Reader or buffer to decode from
                  * @param [length] Message length if known beforehand
-                 * @returns ListMessagesResponse
+                 * @returns ListPhoneNumberInstancesResponse
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.ListMessagesResponse;
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse;
 
                 /**
-                 * Decodes a ListMessagesResponse message from the specified reader or buffer, length delimited.
+                 * Decodes a ListPhoneNumberInstancesResponse message from the specified reader or buffer, length delimited.
                  * @param reader Reader or buffer to decode from
-                 * @returns ListMessagesResponse
+                 * @returns ListPhoneNumberInstancesResponse
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.ListMessagesResponse;
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse;
 
                 /**
-                 * Verifies a ListMessagesResponse message.
+                 * Verifies a ListPhoneNumberInstancesResponse message.
                  * @param message Plain object to verify
                  * @returns `null` if valid, otherwise the reason why it is not
                  */
                 public static verify(message: { [k: string]: any }): (string|null);
 
                 /**
-                 * Creates a ListMessagesResponse message from a plain object. Also converts values to their respective internal types.
+                 * Creates a ListPhoneNumberInstancesResponse message from a plain object. Also converts values to their respective internal types.
                  * @param object Plain object
-                 * @returns ListMessagesResponse
+                 * @returns ListPhoneNumberInstancesResponse
                  */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.ListMessagesResponse;
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse;
 
                 /**
-                 * Creates a plain object from a ListMessagesResponse message. Also converts values to other types if specified.
-                 * @param message ListMessagesResponse
+                 * Creates a plain object from a ListPhoneNumberInstancesResponse message. Also converts values to other types if specified.
+                 * @param message ListPhoneNumberInstancesResponse
                  * @param [options] Conversion options
                  * @returns Plain object
                  */
-                public static toObject(message: enfonica.messaging.v1.ListMessagesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+                public static toObject(message: enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
                 /**
-                 * Converts this ListMessagesResponse to JSON.
+                 * Converts this ListPhoneNumberInstancesResponse to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
             }
 
-            /** Represents an Unsubscribers */
-            class Unsubscribers extends $protobuf.rpc.Service {
+            /** Properties of an UpdatePhoneNumberInstanceRequest. */
+            interface IUpdatePhoneNumberInstanceRequest {
 
-                /**
-                 * Constructs a new Unsubscribers service.
-                 * @param rpcImpl RPC implementation
-                 * @param [requestDelimited=false] Whether requests are length-delimited
-                 * @param [responseDelimited=false] Whether responses are length-delimited
-                 */
-                constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
-
-                /**
-                 * Creates new Unsubscribers service using the specified rpc implementation.
-                 * @param rpcImpl RPC implementation
-                 * @param [requestDelimited=false] Whether requests are length-delimited
-                 * @param [responseDelimited=false] Whether responses are length-delimited
-                 * @returns RPC service. Useful where requests and/or responses are streamed.
-                 */
-                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Unsubscribers;
-
-                /**
-                 * Calls CreateUnsubscriber.
-                 * @param request CreateUnsubscriberRequest message or plain object
-                 * @param callback Node-style callback called with the error, if any, and Unsubscriber
-                 */
-                public createUnsubscriber(request: enfonica.messaging.v1.ICreateUnsubscriberRequest, callback: enfonica.messaging.v1.Unsubscribers.CreateUnsubscriberCallback): void;
-
-                /**
-                 * Calls CreateUnsubscriber.
-                 * @param request CreateUnsubscriberRequest message or plain object
-                 * @returns Promise
-                 */
-                public createUnsubscriber(request: enfonica.messaging.v1.ICreateUnsubscriberRequest): Promise<enfonica.messaging.v1.Unsubscriber>;
-
-                /**
-                 * Calls GetUnsubscriber.
-                 * @param request GetUnsubscriberRequest message or plain object
-                 * @param callback Node-style callback called with the error, if any, and Unsubscriber
-                 */
-                public getUnsubscriber(request: enfonica.messaging.v1.IGetUnsubscriberRequest, callback: enfonica.messaging.v1.Unsubscribers.GetUnsubscriberCallback): void;
-
-                /**
-                 * Calls GetUnsubscriber.
-                 * @param request GetUnsubscriberRequest message or plain object
-                 * @returns Promise
-                 */
-                public getUnsubscriber(request: enfonica.messaging.v1.IGetUnsubscriberRequest): Promise<enfonica.messaging.v1.Unsubscriber>;
-
-                /**
-                 * Calls ListUnsubscribers.
-                 * @param request ListUnsubscribersRequest message or plain object
-                 * @param callback Node-style callback called with the error, if any, and ListUnsubscribersResponse
-                 */
-                public listUnsubscribers(request: enfonica.messaging.v1.IListUnsubscribersRequest, callback: enfonica.messaging.v1.Unsubscribers.ListUnsubscribersCallback): void;
-
-                /**
-                 * Calls ListUnsubscribers.
-                 * @param request ListUnsubscribersRequest message or plain object
-                 * @returns Promise
-                 */
-                public listUnsubscribers(request: enfonica.messaging.v1.IListUnsubscribersRequest): Promise<enfonica.messaging.v1.ListUnsubscribersResponse>;
-
-                /**
-                 * Calls UpdateUnsubscriber.
-                 * @param request UpdateUnsubscriberRequest message or plain object
-                 * @param callback Node-style callback called with the error, if any, and Unsubscriber
-                 */
-                public updateUnsubscriber(request: enfonica.messaging.v1.IUpdateUnsubscriberRequest, callback: enfonica.messaging.v1.Unsubscribers.UpdateUnsubscriberCallback): void;
-
-                /**
-                 * Calls UpdateUnsubscriber.
-                 * @param request UpdateUnsubscriberRequest message or plain object
-                 * @returns Promise
-                 */
-                public updateUnsubscriber(request: enfonica.messaging.v1.IUpdateUnsubscriberRequest): Promise<enfonica.messaging.v1.Unsubscriber>;
-
-                /**
-                 * Calls DeleteUnsubscriber.
-                 * @param request DeleteUnsubscriberRequest message or plain object
-                 * @param callback Node-style callback called with the error, if any, and Unsubscriber
-                 */
-                public deleteUnsubscriber(request: enfonica.messaging.v1.IDeleteUnsubscriberRequest, callback: enfonica.messaging.v1.Unsubscribers.DeleteUnsubscriberCallback): void;
-
-                /**
-                 * Calls DeleteUnsubscriber.
-                 * @param request DeleteUnsubscriberRequest message or plain object
-                 * @returns Promise
-                 */
-                public deleteUnsubscriber(request: enfonica.messaging.v1.IDeleteUnsubscriberRequest): Promise<enfonica.messaging.v1.Unsubscriber>;
-            }
-
-            namespace Unsubscribers {
-
-                /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#createUnsubscriber}.
-                 * @param error Error, if any
-                 * @param [response] Unsubscriber
-                 */
-                type CreateUnsubscriberCallback = (error: (Error|null), response?: enfonica.messaging.v1.Unsubscriber) => void;
-
-                /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#getUnsubscriber}.
-                 * @param error Error, if any
-                 * @param [response] Unsubscriber
-                 */
-                type GetUnsubscriberCallback = (error: (Error|null), response?: enfonica.messaging.v1.Unsubscriber) => void;
-
-                /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#listUnsubscribers}.
-                 * @param error Error, if any
-                 * @param [response] ListUnsubscribersResponse
-                 */
-                type ListUnsubscribersCallback = (error: (Error|null), response?: enfonica.messaging.v1.ListUnsubscribersResponse) => void;
-
-                /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#updateUnsubscriber}.
-                 * @param error Error, if any
-                 * @param [response] Unsubscriber
-                 */
-                type UpdateUnsubscriberCallback = (error: (Error|null), response?: enfonica.messaging.v1.Unsubscriber) => void;
-
-                /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#deleteUnsubscriber}.
-                 * @param error Error, if any
-                 * @param [response] Unsubscriber
-                 */
-                type DeleteUnsubscriberCallback = (error: (Error|null), response?: enfonica.messaging.v1.Unsubscriber) => void;
-            }
-
-            /** Properties of an Unsubscriber. */
-            interface IUnsubscriber {
-
-                /** Unsubscriber name */
+                /** UpdatePhoneNumberInstanceRequest name */
                 name?: (string|null);
 
-                /** Unsubscriber phone */
-                phone?: (string|null);
+                /** UpdatePhoneNumberInstanceRequest phoneNumberInstance */
+                phoneNumberInstance?: (enfonica.numbering.v1beta1.IPhoneNumberInstance|null);
 
-                /** Unsubscriber unsubscribeMethod */
-                unsubscribeMethod?: (enfonica.messaging.v1.Unsubscriber.UnsubscribeMethod|keyof typeof enfonica.messaging.v1.Unsubscriber.UnsubscribeMethod|null);
-
-                /** Unsubscriber labels */
-                labels?: ({ [k: string]: string }|null);
-
-                /** Unsubscriber createTime */
-                createTime?: (google.protobuf.ITimestamp|null);
-            }
-
-            /** Represents an Unsubscriber. */
-            class Unsubscriber implements IUnsubscriber {
-
-                /**
-                 * Constructs a new Unsubscriber.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: enfonica.messaging.v1.IUnsubscriber);
-
-                /** Unsubscriber name. */
-                public name: string;
-
-                /** Unsubscriber phone. */
-                public phone: string;
-
-                /** Unsubscriber unsubscribeMethod. */
-                public unsubscribeMethod: (enfonica.messaging.v1.Unsubscriber.UnsubscribeMethod|keyof typeof enfonica.messaging.v1.Unsubscriber.UnsubscribeMethod);
-
-                /** Unsubscriber labels. */
-                public labels: { [k: string]: string };
-
-                /** Unsubscriber createTime. */
-                public createTime?: (google.protobuf.ITimestamp|null);
-
-                /**
-                 * Creates a new Unsubscriber instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns Unsubscriber instance
-                 */
-                public static create(properties?: enfonica.messaging.v1.IUnsubscriber): enfonica.messaging.v1.Unsubscriber;
-
-                /**
-                 * Encodes the specified Unsubscriber message. Does not implicitly {@link enfonica.messaging.v1.Unsubscriber.verify|verify} messages.
-                 * @param message Unsubscriber message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: enfonica.messaging.v1.IUnsubscriber, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified Unsubscriber message, length delimited. Does not implicitly {@link enfonica.messaging.v1.Unsubscriber.verify|verify} messages.
-                 * @param message Unsubscriber message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: enfonica.messaging.v1.IUnsubscriber, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes an Unsubscriber message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns Unsubscriber
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.Unsubscriber;
-
-                /**
-                 * Decodes an Unsubscriber message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns Unsubscriber
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.Unsubscriber;
-
-                /**
-                 * Verifies an Unsubscriber message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates an Unsubscriber message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns Unsubscriber
-                 */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.Unsubscriber;
-
-                /**
-                 * Creates a plain object from an Unsubscriber message. Also converts values to other types if specified.
-                 * @param message Unsubscriber
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: enfonica.messaging.v1.Unsubscriber, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this Unsubscriber to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-
-            namespace Unsubscriber {
-
-                /** UnsubscribeMethod enum. */
-                enum UnsubscribeMethod {
-                    UNKNOWN = 0,
-                    URL = 1,
-                    MESSAGE = 2,
-                    MANUAL = 3
-                }
-            }
-
-            /** Properties of a CreateUnsubscriberRequest. */
-            interface ICreateUnsubscriberRequest {
-
-                /** CreateUnsubscriberRequest parent */
-                parent?: (string|null);
-
-                /** CreateUnsubscriberRequest unsubscriber */
-                unsubscriber?: (enfonica.messaging.v1.IUnsubscriber|null);
-            }
-
-            /** Represents a CreateUnsubscriberRequest. */
-            class CreateUnsubscriberRequest implements ICreateUnsubscriberRequest {
-
-                /**
-                 * Constructs a new CreateUnsubscriberRequest.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: enfonica.messaging.v1.ICreateUnsubscriberRequest);
-
-                /** CreateUnsubscriberRequest parent. */
-                public parent: string;
-
-                /** CreateUnsubscriberRequest unsubscriber. */
-                public unsubscriber?: (enfonica.messaging.v1.IUnsubscriber|null);
-
-                /**
-                 * Creates a new CreateUnsubscriberRequest instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns CreateUnsubscriberRequest instance
-                 */
-                public static create(properties?: enfonica.messaging.v1.ICreateUnsubscriberRequest): enfonica.messaging.v1.CreateUnsubscriberRequest;
-
-                /**
-                 * Encodes the specified CreateUnsubscriberRequest message. Does not implicitly {@link enfonica.messaging.v1.CreateUnsubscriberRequest.verify|verify} messages.
-                 * @param message CreateUnsubscriberRequest message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: enfonica.messaging.v1.ICreateUnsubscriberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified CreateUnsubscriberRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.CreateUnsubscriberRequest.verify|verify} messages.
-                 * @param message CreateUnsubscriberRequest message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: enfonica.messaging.v1.ICreateUnsubscriberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a CreateUnsubscriberRequest message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns CreateUnsubscriberRequest
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.CreateUnsubscriberRequest;
-
-                /**
-                 * Decodes a CreateUnsubscriberRequest message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns CreateUnsubscriberRequest
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.CreateUnsubscriberRequest;
-
-                /**
-                 * Verifies a CreateUnsubscriberRequest message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a CreateUnsubscriberRequest message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns CreateUnsubscriberRequest
-                 */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.CreateUnsubscriberRequest;
-
-                /**
-                 * Creates a plain object from a CreateUnsubscriberRequest message. Also converts values to other types if specified.
-                 * @param message CreateUnsubscriberRequest
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: enfonica.messaging.v1.CreateUnsubscriberRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this CreateUnsubscriberRequest to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-
-            /** Properties of a GetUnsubscriberRequest. */
-            interface IGetUnsubscriberRequest {
-
-                /** GetUnsubscriberRequest name */
-                name?: (string|null);
-            }
-
-            /** Represents a GetUnsubscriberRequest. */
-            class GetUnsubscriberRequest implements IGetUnsubscriberRequest {
-
-                /**
-                 * Constructs a new GetUnsubscriberRequest.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: enfonica.messaging.v1.IGetUnsubscriberRequest);
-
-                /** GetUnsubscriberRequest name. */
-                public name: string;
-
-                /**
-                 * Creates a new GetUnsubscriberRequest instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns GetUnsubscriberRequest instance
-                 */
-                public static create(properties?: enfonica.messaging.v1.IGetUnsubscriberRequest): enfonica.messaging.v1.GetUnsubscriberRequest;
-
-                /**
-                 * Encodes the specified GetUnsubscriberRequest message. Does not implicitly {@link enfonica.messaging.v1.GetUnsubscriberRequest.verify|verify} messages.
-                 * @param message GetUnsubscriberRequest message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: enfonica.messaging.v1.IGetUnsubscriberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified GetUnsubscriberRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.GetUnsubscriberRequest.verify|verify} messages.
-                 * @param message GetUnsubscriberRequest message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: enfonica.messaging.v1.IGetUnsubscriberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a GetUnsubscriberRequest message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns GetUnsubscriberRequest
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.GetUnsubscriberRequest;
-
-                /**
-                 * Decodes a GetUnsubscriberRequest message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns GetUnsubscriberRequest
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.GetUnsubscriberRequest;
-
-                /**
-                 * Verifies a GetUnsubscriberRequest message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a GetUnsubscriberRequest message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns GetUnsubscriberRequest
-                 */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.GetUnsubscriberRequest;
-
-                /**
-                 * Creates a plain object from a GetUnsubscriberRequest message. Also converts values to other types if specified.
-                 * @param message GetUnsubscriberRequest
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: enfonica.messaging.v1.GetUnsubscriberRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this GetUnsubscriberRequest to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-
-            /** Properties of a ListUnsubscribersRequest. */
-            interface IListUnsubscribersRequest {
-
-                /** ListUnsubscribersRequest parent */
-                parent?: (string|null);
-
-                /** ListUnsubscribersRequest pageSize */
-                pageSize?: (number|null);
-
-                /** ListUnsubscribersRequest pageToken */
-                pageToken?: (string|null);
-
-                /** ListUnsubscribersRequest phone */
-                phone?: (string|null);
-            }
-
-            /** Represents a ListUnsubscribersRequest. */
-            class ListUnsubscribersRequest implements IListUnsubscribersRequest {
-
-                /**
-                 * Constructs a new ListUnsubscribersRequest.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: enfonica.messaging.v1.IListUnsubscribersRequest);
-
-                /** ListUnsubscribersRequest parent. */
-                public parent: string;
-
-                /** ListUnsubscribersRequest pageSize. */
-                public pageSize: number;
-
-                /** ListUnsubscribersRequest pageToken. */
-                public pageToken: string;
-
-                /** ListUnsubscribersRequest phone. */
-                public phone: string;
-
-                /**
-                 * Creates a new ListUnsubscribersRequest instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns ListUnsubscribersRequest instance
-                 */
-                public static create(properties?: enfonica.messaging.v1.IListUnsubscribersRequest): enfonica.messaging.v1.ListUnsubscribersRequest;
-
-                /**
-                 * Encodes the specified ListUnsubscribersRequest message. Does not implicitly {@link enfonica.messaging.v1.ListUnsubscribersRequest.verify|verify} messages.
-                 * @param message ListUnsubscribersRequest message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: enfonica.messaging.v1.IListUnsubscribersRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified ListUnsubscribersRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.ListUnsubscribersRequest.verify|verify} messages.
-                 * @param message ListUnsubscribersRequest message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: enfonica.messaging.v1.IListUnsubscribersRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a ListUnsubscribersRequest message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns ListUnsubscribersRequest
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.ListUnsubscribersRequest;
-
-                /**
-                 * Decodes a ListUnsubscribersRequest message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns ListUnsubscribersRequest
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.ListUnsubscribersRequest;
-
-                /**
-                 * Verifies a ListUnsubscribersRequest message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a ListUnsubscribersRequest message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns ListUnsubscribersRequest
-                 */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.ListUnsubscribersRequest;
-
-                /**
-                 * Creates a plain object from a ListUnsubscribersRequest message. Also converts values to other types if specified.
-                 * @param message ListUnsubscribersRequest
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: enfonica.messaging.v1.ListUnsubscribersRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this ListUnsubscribersRequest to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-
-            /** Properties of a ListUnsubscribersResponse. */
-            interface IListUnsubscribersResponse {
-
-                /** ListUnsubscribersResponse unsubscribers */
-                unsubscribers?: (enfonica.messaging.v1.IUnsubscriber[]|null);
-
-                /** ListUnsubscribersResponse nextPageToken */
-                nextPageToken?: (string|null);
-            }
-
-            /** Represents a ListUnsubscribersResponse. */
-            class ListUnsubscribersResponse implements IListUnsubscribersResponse {
-
-                /**
-                 * Constructs a new ListUnsubscribersResponse.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: enfonica.messaging.v1.IListUnsubscribersResponse);
-
-                /** ListUnsubscribersResponse unsubscribers. */
-                public unsubscribers: enfonica.messaging.v1.IUnsubscriber[];
-
-                /** ListUnsubscribersResponse nextPageToken. */
-                public nextPageToken: string;
-
-                /**
-                 * Creates a new ListUnsubscribersResponse instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns ListUnsubscribersResponse instance
-                 */
-                public static create(properties?: enfonica.messaging.v1.IListUnsubscribersResponse): enfonica.messaging.v1.ListUnsubscribersResponse;
-
-                /**
-                 * Encodes the specified ListUnsubscribersResponse message. Does not implicitly {@link enfonica.messaging.v1.ListUnsubscribersResponse.verify|verify} messages.
-                 * @param message ListUnsubscribersResponse message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: enfonica.messaging.v1.IListUnsubscribersResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified ListUnsubscribersResponse message, length delimited. Does not implicitly {@link enfonica.messaging.v1.ListUnsubscribersResponse.verify|verify} messages.
-                 * @param message ListUnsubscribersResponse message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: enfonica.messaging.v1.IListUnsubscribersResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a ListUnsubscribersResponse message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns ListUnsubscribersResponse
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.ListUnsubscribersResponse;
-
-                /**
-                 * Decodes a ListUnsubscribersResponse message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns ListUnsubscribersResponse
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.ListUnsubscribersResponse;
-
-                /**
-                 * Verifies a ListUnsubscribersResponse message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a ListUnsubscribersResponse message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns ListUnsubscribersResponse
-                 */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.ListUnsubscribersResponse;
-
-                /**
-                 * Creates a plain object from a ListUnsubscribersResponse message. Also converts values to other types if specified.
-                 * @param message ListUnsubscribersResponse
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: enfonica.messaging.v1.ListUnsubscribersResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this ListUnsubscribersResponse to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-            }
-
-            /** Properties of an UpdateUnsubscriberRequest. */
-            interface IUpdateUnsubscriberRequest {
-
-                /** UpdateUnsubscriberRequest unsubscriber */
-                unsubscriber?: (enfonica.messaging.v1.IUnsubscriber|null);
-
-                /** UpdateUnsubscriberRequest updateMask */
+                /** UpdatePhoneNumberInstanceRequest updateMask */
                 updateMask?: (google.protobuf.IFieldMask|null);
             }
 
-            /** Represents an UpdateUnsubscriberRequest. */
-            class UpdateUnsubscriberRequest implements IUpdateUnsubscriberRequest {
+            /** Represents an UpdatePhoneNumberInstanceRequest. */
+            class UpdatePhoneNumberInstanceRequest implements IUpdatePhoneNumberInstanceRequest {
 
                 /**
-                 * Constructs a new UpdateUnsubscriberRequest.
+                 * Constructs a new UpdatePhoneNumberInstanceRequest.
                  * @param [properties] Properties to set
                  */
-                constructor(properties?: enfonica.messaging.v1.IUpdateUnsubscriberRequest);
+                constructor(properties?: enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest);
 
-                /** UpdateUnsubscriberRequest unsubscriber. */
-                public unsubscriber?: (enfonica.messaging.v1.IUnsubscriber|null);
+                /** UpdatePhoneNumberInstanceRequest name. */
+                public name: string;
 
-                /** UpdateUnsubscriberRequest updateMask. */
+                /** UpdatePhoneNumberInstanceRequest phoneNumberInstance. */
+                public phoneNumberInstance?: (enfonica.numbering.v1beta1.IPhoneNumberInstance|null);
+
+                /** UpdatePhoneNumberInstanceRequest updateMask. */
                 public updateMask?: (google.protobuf.IFieldMask|null);
 
                 /**
-                 * Creates a new UpdateUnsubscriberRequest instance using the specified properties.
+                 * Creates a new UpdatePhoneNumberInstanceRequest instance using the specified properties.
                  * @param [properties] Properties to set
-                 * @returns UpdateUnsubscriberRequest instance
+                 * @returns UpdatePhoneNumberInstanceRequest instance
                  */
-                public static create(properties?: enfonica.messaging.v1.IUpdateUnsubscriberRequest): enfonica.messaging.v1.UpdateUnsubscriberRequest;
+                public static create(properties?: enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest): enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest;
 
                 /**
-                 * Encodes the specified UpdateUnsubscriberRequest message. Does not implicitly {@link enfonica.messaging.v1.UpdateUnsubscriberRequest.verify|verify} messages.
-                 * @param message UpdateUnsubscriberRequest message or plain object to encode
+                 * Encodes the specified UpdatePhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message UpdatePhoneNumberInstanceRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encode(message: enfonica.messaging.v1.IUpdateUnsubscriberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encode(message: enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Encodes the specified UpdateUnsubscriberRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.UpdateUnsubscriberRequest.verify|verify} messages.
-                 * @param message UpdateUnsubscriberRequest message or plain object to encode
+                 * Encodes the specified UpdatePhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message UpdatePhoneNumberInstanceRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encodeDelimited(message: enfonica.messaging.v1.IUpdateUnsubscriberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IUpdatePhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Decodes an UpdateUnsubscriberRequest message from the specified reader or buffer.
+                 * Decodes an UpdatePhoneNumberInstanceRequest message from the specified reader or buffer.
                  * @param reader Reader or buffer to decode from
                  * @param [length] Message length if known beforehand
-                 * @returns UpdateUnsubscriberRequest
+                 * @returns UpdatePhoneNumberInstanceRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.UpdateUnsubscriberRequest;
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest;
 
                 /**
-                 * Decodes an UpdateUnsubscriberRequest message from the specified reader or buffer, length delimited.
+                 * Decodes an UpdatePhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
                  * @param reader Reader or buffer to decode from
-                 * @returns UpdateUnsubscriberRequest
+                 * @returns UpdatePhoneNumberInstanceRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.UpdateUnsubscriberRequest;
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest;
 
                 /**
-                 * Verifies an UpdateUnsubscriberRequest message.
+                 * Verifies an UpdatePhoneNumberInstanceRequest message.
                  * @param message Plain object to verify
                  * @returns `null` if valid, otherwise the reason why it is not
                  */
                 public static verify(message: { [k: string]: any }): (string|null);
 
                 /**
-                 * Creates an UpdateUnsubscriberRequest message from a plain object. Also converts values to their respective internal types.
+                 * Creates an UpdatePhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
                  * @param object Plain object
-                 * @returns UpdateUnsubscriberRequest
+                 * @returns UpdatePhoneNumberInstanceRequest
                  */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.UpdateUnsubscriberRequest;
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest;
 
                 /**
-                 * Creates a plain object from an UpdateUnsubscriberRequest message. Also converts values to other types if specified.
-                 * @param message UpdateUnsubscriberRequest
+                 * Creates a plain object from an UpdatePhoneNumberInstanceRequest message. Also converts values to other types if specified.
+                 * @param message UpdatePhoneNumberInstanceRequest
                  * @param [options] Conversion options
                  * @returns Plain object
                  */
-                public static toObject(message: enfonica.messaging.v1.UpdateUnsubscriberRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+                public static toObject(message: enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
                 /**
-                 * Converts this UpdateUnsubscriberRequest to JSON.
+                 * Converts this UpdatePhoneNumberInstanceRequest to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
             }
 
-            /** Properties of a DeleteUnsubscriberRequest. */
-            interface IDeleteUnsubscriberRequest {
+            /** Properties of a DeletePhoneNumberInstanceRequest. */
+            interface IDeletePhoneNumberInstanceRequest {
 
-                /** DeleteUnsubscriberRequest name */
+                /** DeletePhoneNumberInstanceRequest name */
                 name?: (string|null);
             }
 
-            /** Represents a DeleteUnsubscriberRequest. */
-            class DeleteUnsubscriberRequest implements IDeleteUnsubscriberRequest {
+            /** Represents a DeletePhoneNumberInstanceRequest. */
+            class DeletePhoneNumberInstanceRequest implements IDeletePhoneNumberInstanceRequest {
 
                 /**
-                 * Constructs a new DeleteUnsubscriberRequest.
+                 * Constructs a new DeletePhoneNumberInstanceRequest.
                  * @param [properties] Properties to set
                  */
-                constructor(properties?: enfonica.messaging.v1.IDeleteUnsubscriberRequest);
+                constructor(properties?: enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest);
 
-                /** DeleteUnsubscriberRequest name. */
+                /** DeletePhoneNumberInstanceRequest name. */
                 public name: string;
 
                 /**
-                 * Creates a new DeleteUnsubscriberRequest instance using the specified properties.
+                 * Creates a new DeletePhoneNumberInstanceRequest instance using the specified properties.
                  * @param [properties] Properties to set
-                 * @returns DeleteUnsubscriberRequest instance
+                 * @returns DeletePhoneNumberInstanceRequest instance
                  */
-                public static create(properties?: enfonica.messaging.v1.IDeleteUnsubscriberRequest): enfonica.messaging.v1.DeleteUnsubscriberRequest;
+                public static create(properties?: enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest): enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest;
 
                 /**
-                 * Encodes the specified DeleteUnsubscriberRequest message. Does not implicitly {@link enfonica.messaging.v1.DeleteUnsubscriberRequest.verify|verify} messages.
-                 * @param message DeleteUnsubscriberRequest message or plain object to encode
+                 * Encodes the specified DeletePhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message DeletePhoneNumberInstanceRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encode(message: enfonica.messaging.v1.IDeleteUnsubscriberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encode(message: enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Encodes the specified DeleteUnsubscriberRequest message, length delimited. Does not implicitly {@link enfonica.messaging.v1.DeleteUnsubscriberRequest.verify|verify} messages.
-                 * @param message DeleteUnsubscriberRequest message or plain object to encode
+                 * Encodes the specified DeletePhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message DeletePhoneNumberInstanceRequest message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encodeDelimited(message: enfonica.messaging.v1.IDeleteUnsubscriberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Decodes a DeleteUnsubscriberRequest message from the specified reader or buffer.
+                 * Decodes a DeletePhoneNumberInstanceRequest message from the specified reader or buffer.
                  * @param reader Reader or buffer to decode from
                  * @param [length] Message length if known beforehand
-                 * @returns DeleteUnsubscriberRequest
+                 * @returns DeletePhoneNumberInstanceRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.messaging.v1.DeleteUnsubscriberRequest;
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest;
 
                 /**
-                 * Decodes a DeleteUnsubscriberRequest message from the specified reader or buffer, length delimited.
+                 * Decodes a DeletePhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
                  * @param reader Reader or buffer to decode from
-                 * @returns DeleteUnsubscriberRequest
+                 * @returns DeletePhoneNumberInstanceRequest
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.messaging.v1.DeleteUnsubscriberRequest;
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest;
 
                 /**
-                 * Verifies a DeleteUnsubscriberRequest message.
+                 * Verifies a DeletePhoneNumberInstanceRequest message.
                  * @param message Plain object to verify
                  * @returns `null` if valid, otherwise the reason why it is not
                  */
                 public static verify(message: { [k: string]: any }): (string|null);
 
                 /**
-                 * Creates a DeleteUnsubscriberRequest message from a plain object. Also converts values to their respective internal types.
+                 * Creates a DeletePhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
                  * @param object Plain object
-                 * @returns DeleteUnsubscriberRequest
+                 * @returns DeletePhoneNumberInstanceRequest
                  */
-                public static fromObject(object: { [k: string]: any }): enfonica.messaging.v1.DeleteUnsubscriberRequest;
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest;
 
                 /**
-                 * Creates a plain object from a DeleteUnsubscriberRequest message. Also converts values to other types if specified.
-                 * @param message DeleteUnsubscriberRequest
+                 * Creates a plain object from a DeletePhoneNumberInstanceRequest message. Also converts values to other types if specified.
+                 * @param message DeletePhoneNumberInstanceRequest
                  * @param [options] Conversion options
                  * @returns Plain object
                  */
-                public static toObject(message: enfonica.messaging.v1.DeleteUnsubscriberRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+                public static toObject(message: enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
                 /**
-                 * Converts this DeleteUnsubscriberRequest to JSON.
+                 * Converts this DeletePhoneNumberInstanceRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a GetProvisionedPhoneNumberInstanceRequest. */
+            interface IGetProvisionedPhoneNumberInstanceRequest {
+
+                /** GetProvisionedPhoneNumberInstanceRequest parent */
+                parent?: (string|null);
+
+                /** GetProvisionedPhoneNumberInstanceRequest phoneNumber */
+                phoneNumber?: (string|null);
+            }
+
+            /** Represents a GetProvisionedPhoneNumberInstanceRequest. */
+            class GetProvisionedPhoneNumberInstanceRequest implements IGetProvisionedPhoneNumberInstanceRequest {
+
+                /**
+                 * Constructs a new GetProvisionedPhoneNumberInstanceRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest);
+
+                /** GetProvisionedPhoneNumberInstanceRequest parent. */
+                public parent: string;
+
+                /** GetProvisionedPhoneNumberInstanceRequest phoneNumber. */
+                public phoneNumber: string;
+
+                /**
+                 * Creates a new GetProvisionedPhoneNumberInstanceRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns GetProvisionedPhoneNumberInstanceRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest): enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest;
+
+                /**
+                 * Encodes the specified GetProvisionedPhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message GetProvisionedPhoneNumberInstanceRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified GetProvisionedPhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message GetProvisionedPhoneNumberInstanceRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IGetProvisionedPhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a GetProvisionedPhoneNumberInstanceRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns GetProvisionedPhoneNumberInstanceRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest;
+
+                /**
+                 * Decodes a GetProvisionedPhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns GetProvisionedPhoneNumberInstanceRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest;
+
+                /**
+                 * Verifies a GetProvisionedPhoneNumberInstanceRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a GetProvisionedPhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns GetProvisionedPhoneNumberInstanceRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest;
+
+                /**
+                 * Creates a plain object from a GetProvisionedPhoneNumberInstanceRequest message. Also converts values to other types if specified.
+                 * @param message GetProvisionedPhoneNumberInstanceRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this GetProvisionedPhoneNumberInstanceRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Represents a PhoneNumbers */
+            class PhoneNumbers extends $protobuf.rpc.Service {
+
+                /**
+                 * Constructs a new PhoneNumbers service.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 */
+                constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+                /**
+                 * Creates new PhoneNumbers service using the specified rpc implementation.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 * @returns RPC service. Useful where requests and/or responses are streamed.
+                 */
+                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): PhoneNumbers;
+
+                /**
+                 * Calls CreatePhoneNumber.
+                 * @param request CreatePhoneNumberRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumber
+                 */
+                public createPhoneNumber(request: enfonica.numbering.v1beta1.ICreatePhoneNumberRequest, callback: enfonica.numbering.v1beta1.PhoneNumbers.CreatePhoneNumberCallback): void;
+
+                /**
+                 * Calls CreatePhoneNumber.
+                 * @param request CreatePhoneNumberRequest message or plain object
+                 * @returns Promise
+                 */
+                public createPhoneNumber(request: enfonica.numbering.v1beta1.ICreatePhoneNumberRequest): Promise<enfonica.numbering.v1beta1.PhoneNumber>;
+
+                /**
+                 * Calls GetPhoneNumber.
+                 * @param request GetPhoneNumberRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumber
+                 */
+                public getPhoneNumber(request: enfonica.numbering.v1beta1.IGetPhoneNumberRequest, callback: enfonica.numbering.v1beta1.PhoneNumbers.GetPhoneNumberCallback): void;
+
+                /**
+                 * Calls GetPhoneNumber.
+                 * @param request GetPhoneNumberRequest message or plain object
+                 * @returns Promise
+                 */
+                public getPhoneNumber(request: enfonica.numbering.v1beta1.IGetPhoneNumberRequest): Promise<enfonica.numbering.v1beta1.PhoneNumber>;
+
+                /**
+                 * Calls ListPhoneNumbers.
+                 * @param request ListPhoneNumbersRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and ListPhoneNumbersResponse
+                 */
+                public listPhoneNumbers(request: enfonica.numbering.v1beta1.IListPhoneNumbersRequest, callback: enfonica.numbering.v1beta1.PhoneNumbers.ListPhoneNumbersCallback): void;
+
+                /**
+                 * Calls ListPhoneNumbers.
+                 * @param request ListPhoneNumbersRequest message or plain object
+                 * @returns Promise
+                 */
+                public listPhoneNumbers(request: enfonica.numbering.v1beta1.IListPhoneNumbersRequest): Promise<enfonica.numbering.v1beta1.ListPhoneNumbersResponse>;
+
+                /**
+                 * Calls UpdatePhoneNumber.
+                 * @param request UpdatePhoneNumberRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumber
+                 */
+                public updatePhoneNumber(request: enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest, callback: enfonica.numbering.v1beta1.PhoneNumbers.UpdatePhoneNumberCallback): void;
+
+                /**
+                 * Calls UpdatePhoneNumber.
+                 * @param request UpdatePhoneNumberRequest message or plain object
+                 * @returns Promise
+                 */
+                public updatePhoneNumber(request: enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest): Promise<enfonica.numbering.v1beta1.PhoneNumber>;
+
+                /**
+                 * Calls DeletePhoneNumber.
+                 * @param request DeletePhoneNumberRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumber
+                 */
+                public deletePhoneNumber(request: enfonica.numbering.v1beta1.IDeletePhoneNumberRequest, callback: enfonica.numbering.v1beta1.PhoneNumbers.DeletePhoneNumberCallback): void;
+
+                /**
+                 * Calls DeletePhoneNumber.
+                 * @param request DeletePhoneNumberRequest message or plain object
+                 * @returns Promise
+                 */
+                public deletePhoneNumber(request: enfonica.numbering.v1beta1.IDeletePhoneNumberRequest): Promise<enfonica.numbering.v1beta1.PhoneNumber>;
+
+                /**
+                 * Calls SearchPhoneNumbers.
+                 * @param request SearchPhoneNumbersRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and SearchPhoneNumbersResponse
+                 */
+                public searchPhoneNumbers(request: enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest, callback: enfonica.numbering.v1beta1.PhoneNumbers.SearchPhoneNumbersCallback): void;
+
+                /**
+                 * Calls SearchPhoneNumbers.
+                 * @param request SearchPhoneNumbersRequest message or plain object
+                 * @returns Promise
+                 */
+                public searchPhoneNumbers(request: enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest): Promise<enfonica.numbering.v1beta1.SearchPhoneNumbersResponse>;
+            }
+
+            namespace PhoneNumbers {
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#createPhoneNumber}.
+                 * @param error Error, if any
+                 * @param [response] PhoneNumber
+                 */
+                type CreatePhoneNumberCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumber) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#getPhoneNumber}.
+                 * @param error Error, if any
+                 * @param [response] PhoneNumber
+                 */
+                type GetPhoneNumberCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumber) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#listPhoneNumbers}.
+                 * @param error Error, if any
+                 * @param [response] ListPhoneNumbersResponse
+                 */
+                type ListPhoneNumbersCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.ListPhoneNumbersResponse) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#updatePhoneNumber}.
+                 * @param error Error, if any
+                 * @param [response] PhoneNumber
+                 */
+                type UpdatePhoneNumberCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumber) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#deletePhoneNumber}.
+                 * @param error Error, if any
+                 * @param [response] PhoneNumber
+                 */
+                type DeletePhoneNumberCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumber) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#searchPhoneNumbers}.
+                 * @param error Error, if any
+                 * @param [response] SearchPhoneNumbersResponse
+                 */
+                type SearchPhoneNumbersCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.SearchPhoneNumbersResponse) => void;
+            }
+
+            /** Properties of a PhoneNumber. */
+            interface IPhoneNumber {
+
+                /** PhoneNumber name */
+                name?: (string|null);
+
+                /** PhoneNumber phoneNumber */
+                phoneNumber?: (string|null);
+
+                /** PhoneNumber capabilities */
+                capabilities?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[]|null);
+
+                /** PhoneNumber sku */
+                sku?: (string|null);
+
+                /** PhoneNumber carrier */
+                carrier?: (string|null);
+
+                /** PhoneNumber numberType */
+                numberType?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null);
+
+                /** PhoneNumber countryCode */
+                countryCode?: (string|null);
+
+                /** PhoneNumber createTime */
+                createTime?: (google.protobuf.ITimestamp|null);
+
+                /** PhoneNumber deleteTime */
+                deleteTime?: (google.protobuf.ITimestamp|null);
+
+                /** PhoneNumber state */
+                state?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberState|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberState|null);
+
+                /** PhoneNumber localAccessArea */
+                localAccessArea?: (string|null);
+            }
+
+            /** Represents a PhoneNumber. */
+            class PhoneNumber implements IPhoneNumber {
+
+                /**
+                 * Constructs a new PhoneNumber.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IPhoneNumber);
+
+                /** PhoneNumber name. */
+                public name: string;
+
+                /** PhoneNumber phoneNumber. */
+                public phoneNumber: string;
+
+                /** PhoneNumber capabilities. */
+                public capabilities: enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[];
+
+                /** PhoneNumber sku. */
+                public sku: string;
+
+                /** PhoneNumber carrier. */
+                public carrier: string;
+
+                /** PhoneNumber numberType. */
+                public numberType: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType);
+
+                /** PhoneNumber countryCode. */
+                public countryCode: string;
+
+                /** PhoneNumber createTime. */
+                public createTime?: (google.protobuf.ITimestamp|null);
+
+                /** PhoneNumber deleteTime. */
+                public deleteTime?: (google.protobuf.ITimestamp|null);
+
+                /** PhoneNumber state. */
+                public state: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberState|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberState);
+
+                /** PhoneNumber localAccessArea. */
+                public localAccessArea: string;
+
+                /**
+                 * Creates a new PhoneNumber instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns PhoneNumber instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IPhoneNumber): enfonica.numbering.v1beta1.PhoneNumber;
+
+                /**
+                 * Encodes the specified PhoneNumber message. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumber.verify|verify} messages.
+                 * @param message PhoneNumber message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IPhoneNumber, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified PhoneNumber message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumber.verify|verify} messages.
+                 * @param message PhoneNumber message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IPhoneNumber, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a PhoneNumber message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns PhoneNumber
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.PhoneNumber;
+
+                /**
+                 * Decodes a PhoneNumber message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns PhoneNumber
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.PhoneNumber;
+
+                /**
+                 * Verifies a PhoneNumber message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a PhoneNumber message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns PhoneNumber
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.PhoneNumber;
+
+                /**
+                 * Creates a plain object from a PhoneNumber message. Also converts values to other types if specified.
+                 * @param message PhoneNumber
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.PhoneNumber, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this PhoneNumber to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            namespace PhoneNumber {
+
+                /** PhoneNumberState enum. */
+                enum PhoneNumberState {
+                    PHONE_NUMBER_STATE_UNSPECIFIED = 0,
+                    AVAILABLE = 1,
+                    IN_USE = 2,
+                    QUARANTINED = 3,
+                    DELETED = 4
+                }
+
+                /** PhoneNumberCapability enum. */
+                enum PhoneNumberCapability {
+                    PHONE_NUMBER_CAPABILITY_UNSPECIFIED = 0,
+                    SMS = 1,
+                    MMS = 2,
+                    VOICE = 4
+                }
+
+                /** PhoneNumberType enum. */
+                enum PhoneNumberType {
+                    PHONE_NUMBER_TYPE_UNSPECIFIED = 0,
+                    LOCAL = 1,
+                    NATIONAL = 2,
+                    MOBILE = 3,
+                    TOLL_FREE = 4,
+                    SHARED_RATE = 5
+                }
+            }
+
+            /** Properties of a CreatePhoneNumberRequest. */
+            interface ICreatePhoneNumberRequest {
+
+                /** CreatePhoneNumberRequest phoneNumber */
+                phoneNumber?: (enfonica.numbering.v1beta1.IPhoneNumber|null);
+            }
+
+            /** Represents a CreatePhoneNumberRequest. */
+            class CreatePhoneNumberRequest implements ICreatePhoneNumberRequest {
+
+                /**
+                 * Constructs a new CreatePhoneNumberRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.ICreatePhoneNumberRequest);
+
+                /** CreatePhoneNumberRequest phoneNumber. */
+                public phoneNumber?: (enfonica.numbering.v1beta1.IPhoneNumber|null);
+
+                /**
+                 * Creates a new CreatePhoneNumberRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns CreatePhoneNumberRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.ICreatePhoneNumberRequest): enfonica.numbering.v1beta1.CreatePhoneNumberRequest;
+
+                /**
+                 * Encodes the specified CreatePhoneNumberRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.CreatePhoneNumberRequest.verify|verify} messages.
+                 * @param message CreatePhoneNumberRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.ICreatePhoneNumberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified CreatePhoneNumberRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.CreatePhoneNumberRequest.verify|verify} messages.
+                 * @param message CreatePhoneNumberRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ICreatePhoneNumberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a CreatePhoneNumberRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns CreatePhoneNumberRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.CreatePhoneNumberRequest;
+
+                /**
+                 * Decodes a CreatePhoneNumberRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns CreatePhoneNumberRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.CreatePhoneNumberRequest;
+
+                /**
+                 * Verifies a CreatePhoneNumberRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a CreatePhoneNumberRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns CreatePhoneNumberRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.CreatePhoneNumberRequest;
+
+                /**
+                 * Creates a plain object from a CreatePhoneNumberRequest message. Also converts values to other types if specified.
+                 * @param message CreatePhoneNumberRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.CreatePhoneNumberRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this CreatePhoneNumberRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a GetPhoneNumberRequest. */
+            interface IGetPhoneNumberRequest {
+
+                /** GetPhoneNumberRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a GetPhoneNumberRequest. */
+            class GetPhoneNumberRequest implements IGetPhoneNumberRequest {
+
+                /**
+                 * Constructs a new GetPhoneNumberRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IGetPhoneNumberRequest);
+
+                /** GetPhoneNumberRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new GetPhoneNumberRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns GetPhoneNumberRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IGetPhoneNumberRequest): enfonica.numbering.v1beta1.GetPhoneNumberRequest;
+
+                /**
+                 * Encodes the specified GetPhoneNumberRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.GetPhoneNumberRequest.verify|verify} messages.
+                 * @param message GetPhoneNumberRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IGetPhoneNumberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified GetPhoneNumberRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GetPhoneNumberRequest.verify|verify} messages.
+                 * @param message GetPhoneNumberRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IGetPhoneNumberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a GetPhoneNumberRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns GetPhoneNumberRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.GetPhoneNumberRequest;
+
+                /**
+                 * Decodes a GetPhoneNumberRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns GetPhoneNumberRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.GetPhoneNumberRequest;
+
+                /**
+                 * Verifies a GetPhoneNumberRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a GetPhoneNumberRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns GetPhoneNumberRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.GetPhoneNumberRequest;
+
+                /**
+                 * Creates a plain object from a GetPhoneNumberRequest message. Also converts values to other types if specified.
+                 * @param message GetPhoneNumberRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.GetPhoneNumberRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this GetPhoneNumberRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListPhoneNumbersRequest. */
+            interface IListPhoneNumbersRequest {
+
+                /** ListPhoneNumbersRequest pageSize */
+                pageSize?: (number|null);
+
+                /** ListPhoneNumbersRequest pageToken */
+                pageToken?: (string|null);
+            }
+
+            /** Represents a ListPhoneNumbersRequest. */
+            class ListPhoneNumbersRequest implements IListPhoneNumbersRequest {
+
+                /**
+                 * Constructs a new ListPhoneNumbersRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IListPhoneNumbersRequest);
+
+                /** ListPhoneNumbersRequest pageSize. */
+                public pageSize: number;
+
+                /** ListPhoneNumbersRequest pageToken. */
+                public pageToken: string;
+
+                /**
+                 * Creates a new ListPhoneNumbersRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListPhoneNumbersRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IListPhoneNumbersRequest): enfonica.numbering.v1beta1.ListPhoneNumbersRequest;
+
+                /**
+                 * Encodes the specified ListPhoneNumbersRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumbersRequest.verify|verify} messages.
+                 * @param message ListPhoneNumbersRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IListPhoneNumbersRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListPhoneNumbersRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumbersRequest.verify|verify} messages.
+                 * @param message ListPhoneNumbersRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IListPhoneNumbersRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListPhoneNumbersRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListPhoneNumbersRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.ListPhoneNumbersRequest;
+
+                /**
+                 * Decodes a ListPhoneNumbersRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListPhoneNumbersRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.ListPhoneNumbersRequest;
+
+                /**
+                 * Verifies a ListPhoneNumbersRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListPhoneNumbersRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListPhoneNumbersRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.ListPhoneNumbersRequest;
+
+                /**
+                 * Creates a plain object from a ListPhoneNumbersRequest message. Also converts values to other types if specified.
+                 * @param message ListPhoneNumbersRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.ListPhoneNumbersRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListPhoneNumbersRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListPhoneNumbersResponse. */
+            interface IListPhoneNumbersResponse {
+
+                /** ListPhoneNumbersResponse phoneNumbers */
+                phoneNumbers?: (enfonica.numbering.v1beta1.IPhoneNumber[]|null);
+
+                /** ListPhoneNumbersResponse nextPageToken */
+                nextPageToken?: (string|null);
+            }
+
+            /** Represents a ListPhoneNumbersResponse. */
+            class ListPhoneNumbersResponse implements IListPhoneNumbersResponse {
+
+                /**
+                 * Constructs a new ListPhoneNumbersResponse.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IListPhoneNumbersResponse);
+
+                /** ListPhoneNumbersResponse phoneNumbers. */
+                public phoneNumbers: enfonica.numbering.v1beta1.IPhoneNumber[];
+
+                /** ListPhoneNumbersResponse nextPageToken. */
+                public nextPageToken: string;
+
+                /**
+                 * Creates a new ListPhoneNumbersResponse instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListPhoneNumbersResponse instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IListPhoneNumbersResponse): enfonica.numbering.v1beta1.ListPhoneNumbersResponse;
+
+                /**
+                 * Encodes the specified ListPhoneNumbersResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumbersResponse.verify|verify} messages.
+                 * @param message ListPhoneNumbersResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IListPhoneNumbersResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListPhoneNumbersResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListPhoneNumbersResponse.verify|verify} messages.
+                 * @param message ListPhoneNumbersResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IListPhoneNumbersResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListPhoneNumbersResponse message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListPhoneNumbersResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.ListPhoneNumbersResponse;
+
+                /**
+                 * Decodes a ListPhoneNumbersResponse message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListPhoneNumbersResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.ListPhoneNumbersResponse;
+
+                /**
+                 * Verifies a ListPhoneNumbersResponse message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListPhoneNumbersResponse message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListPhoneNumbersResponse
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.ListPhoneNumbersResponse;
+
+                /**
+                 * Creates a plain object from a ListPhoneNumbersResponse message. Also converts values to other types if specified.
+                 * @param message ListPhoneNumbersResponse
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.ListPhoneNumbersResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListPhoneNumbersResponse to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of an UpdatePhoneNumberRequest. */
+            interface IUpdatePhoneNumberRequest {
+
+                /** UpdatePhoneNumberRequest name */
+                name?: (string|null);
+
+                /** UpdatePhoneNumberRequest phoneNumber */
+                phoneNumber?: (enfonica.numbering.v1beta1.IPhoneNumber|null);
+
+                /** UpdatePhoneNumberRequest updateMask */
+                updateMask?: (google.protobuf.IFieldMask|null);
+            }
+
+            /** Represents an UpdatePhoneNumberRequest. */
+            class UpdatePhoneNumberRequest implements IUpdatePhoneNumberRequest {
+
+                /**
+                 * Constructs a new UpdatePhoneNumberRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest);
+
+                /** UpdatePhoneNumberRequest name. */
+                public name: string;
+
+                /** UpdatePhoneNumberRequest phoneNumber. */
+                public phoneNumber?: (enfonica.numbering.v1beta1.IPhoneNumber|null);
+
+                /** UpdatePhoneNumberRequest updateMask. */
+                public updateMask?: (google.protobuf.IFieldMask|null);
+
+                /**
+                 * Creates a new UpdatePhoneNumberRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns UpdatePhoneNumberRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest): enfonica.numbering.v1beta1.UpdatePhoneNumberRequest;
+
+                /**
+                 * Encodes the specified UpdatePhoneNumberRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.UpdatePhoneNumberRequest.verify|verify} messages.
+                 * @param message UpdatePhoneNumberRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified UpdatePhoneNumberRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.UpdatePhoneNumberRequest.verify|verify} messages.
+                 * @param message UpdatePhoneNumberRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IUpdatePhoneNumberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an UpdatePhoneNumberRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns UpdatePhoneNumberRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.UpdatePhoneNumberRequest;
+
+                /**
+                 * Decodes an UpdatePhoneNumberRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns UpdatePhoneNumberRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.UpdatePhoneNumberRequest;
+
+                /**
+                 * Verifies an UpdatePhoneNumberRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an UpdatePhoneNumberRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns UpdatePhoneNumberRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.UpdatePhoneNumberRequest;
+
+                /**
+                 * Creates a plain object from an UpdatePhoneNumberRequest message. Also converts values to other types if specified.
+                 * @param message UpdatePhoneNumberRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.UpdatePhoneNumberRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this UpdatePhoneNumberRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a DeletePhoneNumberRequest. */
+            interface IDeletePhoneNumberRequest {
+
+                /** DeletePhoneNumberRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a DeletePhoneNumberRequest. */
+            class DeletePhoneNumberRequest implements IDeletePhoneNumberRequest {
+
+                /**
+                 * Constructs a new DeletePhoneNumberRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IDeletePhoneNumberRequest);
+
+                /** DeletePhoneNumberRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new DeletePhoneNumberRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns DeletePhoneNumberRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IDeletePhoneNumberRequest): enfonica.numbering.v1beta1.DeletePhoneNumberRequest;
+
+                /**
+                 * Encodes the specified DeletePhoneNumberRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.DeletePhoneNumberRequest.verify|verify} messages.
+                 * @param message DeletePhoneNumberRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IDeletePhoneNumberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified DeletePhoneNumberRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.DeletePhoneNumberRequest.verify|verify} messages.
+                 * @param message DeletePhoneNumberRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IDeletePhoneNumberRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a DeletePhoneNumberRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns DeletePhoneNumberRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.DeletePhoneNumberRequest;
+
+                /**
+                 * Decodes a DeletePhoneNumberRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns DeletePhoneNumberRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.DeletePhoneNumberRequest;
+
+                /**
+                 * Verifies a DeletePhoneNumberRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a DeletePhoneNumberRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns DeletePhoneNumberRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.DeletePhoneNumberRequest;
+
+                /**
+                 * Creates a plain object from a DeletePhoneNumberRequest message. Also converts values to other types if specified.
+                 * @param message DeletePhoneNumberRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.DeletePhoneNumberRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this DeletePhoneNumberRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a SearchPhoneNumbersRequest. */
+            interface ISearchPhoneNumbersRequest {
+
+                /** SearchPhoneNumbersRequest pageSize */
+                pageSize?: (number|null);
+
+                /** SearchPhoneNumbersRequest pageToken */
+                pageToken?: (string|null);
+
+                /** SearchPhoneNumbersRequest capabilities */
+                capabilities?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[]|null);
+
+                /** SearchPhoneNumbersRequest numberType */
+                numberType?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null);
+
+                /** SearchPhoneNumbersRequest countryCode */
+                countryCode?: (string|null);
+
+                /** SearchPhoneNumbersRequest prefix */
+                prefix?: (string|null);
+            }
+
+            /** Represents a SearchPhoneNumbersRequest. */
+            class SearchPhoneNumbersRequest implements ISearchPhoneNumbersRequest {
+
+                /**
+                 * Constructs a new SearchPhoneNumbersRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest);
+
+                /** SearchPhoneNumbersRequest pageSize. */
+                public pageSize: number;
+
+                /** SearchPhoneNumbersRequest pageToken. */
+                public pageToken: string;
+
+                /** SearchPhoneNumbersRequest capabilities. */
+                public capabilities: enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[];
+
+                /** SearchPhoneNumbersRequest numberType. */
+                public numberType: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType);
+
+                /** SearchPhoneNumbersRequest countryCode. */
+                public countryCode: string;
+
+                /** SearchPhoneNumbersRequest prefix. */
+                public prefix: string;
+
+                /**
+                 * Creates a new SearchPhoneNumbersRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SearchPhoneNumbersRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest): enfonica.numbering.v1beta1.SearchPhoneNumbersRequest;
+
+                /**
+                 * Encodes the specified SearchPhoneNumbersRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.SearchPhoneNumbersRequest.verify|verify} messages.
+                 * @param message SearchPhoneNumbersRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SearchPhoneNumbersRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SearchPhoneNumbersRequest.verify|verify} messages.
+                 * @param message SearchPhoneNumbersRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SearchPhoneNumbersRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SearchPhoneNumbersRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.SearchPhoneNumbersRequest;
+
+                /**
+                 * Decodes a SearchPhoneNumbersRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SearchPhoneNumbersRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.SearchPhoneNumbersRequest;
+
+                /**
+                 * Verifies a SearchPhoneNumbersRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SearchPhoneNumbersRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SearchPhoneNumbersRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.SearchPhoneNumbersRequest;
+
+                /**
+                 * Creates a plain object from a SearchPhoneNumbersRequest message. Also converts values to other types if specified.
+                 * @param message SearchPhoneNumbersRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.SearchPhoneNumbersRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SearchPhoneNumbersRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a SearchPhoneNumbersResponse. */
+            interface ISearchPhoneNumbersResponse {
+
+                /** SearchPhoneNumbersResponse phoneNumbers */
+                phoneNumbers?: (enfonica.numbering.v1beta1.IPhoneNumber[]|null);
+
+                /** SearchPhoneNumbersResponse nextPageToken */
+                nextPageToken?: (string|null);
+            }
+
+            /** Represents a SearchPhoneNumbersResponse. */
+            class SearchPhoneNumbersResponse implements ISearchPhoneNumbersResponse {
+
+                /**
+                 * Constructs a new SearchPhoneNumbersResponse.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.ISearchPhoneNumbersResponse);
+
+                /** SearchPhoneNumbersResponse phoneNumbers. */
+                public phoneNumbers: enfonica.numbering.v1beta1.IPhoneNumber[];
+
+                /** SearchPhoneNumbersResponse nextPageToken. */
+                public nextPageToken: string;
+
+                /**
+                 * Creates a new SearchPhoneNumbersResponse instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SearchPhoneNumbersResponse instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.ISearchPhoneNumbersResponse): enfonica.numbering.v1beta1.SearchPhoneNumbersResponse;
+
+                /**
+                 * Encodes the specified SearchPhoneNumbersResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.SearchPhoneNumbersResponse.verify|verify} messages.
+                 * @param message SearchPhoneNumbersResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.ISearchPhoneNumbersResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SearchPhoneNumbersResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SearchPhoneNumbersResponse.verify|verify} messages.
+                 * @param message SearchPhoneNumbersResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ISearchPhoneNumbersResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SearchPhoneNumbersResponse message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SearchPhoneNumbersResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.SearchPhoneNumbersResponse;
+
+                /**
+                 * Decodes a SearchPhoneNumbersResponse message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SearchPhoneNumbersResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.SearchPhoneNumbersResponse;
+
+                /**
+                 * Verifies a SearchPhoneNumbersResponse message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SearchPhoneNumbersResponse message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SearchPhoneNumbersResponse
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.SearchPhoneNumbersResponse;
+
+                /**
+                 * Creates a plain object from a SearchPhoneNumbersResponse message. Also converts values to other types if specified.
+                 * @param message SearchPhoneNumbersResponse
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.SearchPhoneNumbersResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SearchPhoneNumbersResponse to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
@@ -1696,6 +2216,96 @@ export namespace google {
 
             /**
              * Converts this Timestamp to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a FieldMask. */
+        interface IFieldMask {
+
+            /** FieldMask paths */
+            paths?: (string[]|null);
+        }
+
+        /** Represents a FieldMask. */
+        class FieldMask implements IFieldMask {
+
+            /**
+             * Constructs a new FieldMask.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IFieldMask);
+
+            /** FieldMask paths. */
+            public paths: string[];
+
+            /**
+             * Creates a new FieldMask instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns FieldMask instance
+             */
+            public static create(properties?: google.protobuf.IFieldMask): google.protobuf.FieldMask;
+
+            /**
+             * Encodes the specified FieldMask message. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
+             * @param message FieldMask message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IFieldMask, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified FieldMask message, length delimited. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
+             * @param message FieldMask message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IFieldMask, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a FieldMask message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns FieldMask
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.FieldMask;
+
+            /**
+             * Decodes a FieldMask message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns FieldMask
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.FieldMask;
+
+            /**
+             * Verifies a FieldMask message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a FieldMask message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns FieldMask
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.FieldMask;
+
+            /**
+             * Creates a plain object from a FieldMask message. Also converts values to other types if specified.
+             * @param message FieldMask
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.FieldMask, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this FieldMask to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -3554,9 +4164,6 @@ export namespace google {
 
             /** FieldOptions uninterpretedOption */
             uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
-
-            /** FieldOptions .google.api.fieldBehavior */
-            ".google.api.fieldBehavior"?: (google.api.FieldBehavior[]|null);
         }
 
         /** Represents a FieldOptions. */
@@ -4817,96 +5424,6 @@ export namespace google {
                 public toJSON(): { [k: string]: any };
             }
         }
-
-        /** Properties of a FieldMask. */
-        interface IFieldMask {
-
-            /** FieldMask paths */
-            paths?: (string[]|null);
-        }
-
-        /** Represents a FieldMask. */
-        class FieldMask implements IFieldMask {
-
-            /**
-             * Constructs a new FieldMask.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.protobuf.IFieldMask);
-
-            /** FieldMask paths. */
-            public paths: string[];
-
-            /**
-             * Creates a new FieldMask instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns FieldMask instance
-             */
-            public static create(properties?: google.protobuf.IFieldMask): google.protobuf.FieldMask;
-
-            /**
-             * Encodes the specified FieldMask message. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
-             * @param message FieldMask message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.protobuf.IFieldMask, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified FieldMask message, length delimited. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
-             * @param message FieldMask message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.protobuf.IFieldMask, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a FieldMask message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns FieldMask
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.FieldMask;
-
-            /**
-             * Decodes a FieldMask message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns FieldMask
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.FieldMask;
-
-            /**
-             * Verifies a FieldMask message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a FieldMask message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns FieldMask
-             */
-            public static fromObject(object: { [k: string]: any }): google.protobuf.FieldMask;
-
-            /**
-             * Creates a plain object from a FieldMask message. Also converts values to other types if specified.
-             * @param message FieldMask
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.protobuf.FieldMask, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this FieldMask to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
     }
 
     /** Namespace api. */
@@ -5246,122 +5763,6 @@ export namespace google {
 
             /**
              * Converts this CustomHttpPattern to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** FieldBehavior enum. */
-        enum FieldBehavior {
-            FIELD_BEHAVIOR_UNSPECIFIED = 0,
-            OPTIONAL = 1,
-            REQUIRED = 2,
-            OUTPUT_ONLY = 3,
-            INPUT_ONLY = 4,
-            IMMUTABLE = 5
-        }
-    }
-
-    /** Namespace type. */
-    namespace type {
-
-        /** Properties of a Money. */
-        interface IMoney {
-
-            /** Money currencyCode */
-            currencyCode?: (string|null);
-
-            /** Money units */
-            units?: (number|Long|string|null);
-
-            /** Money nanos */
-            nanos?: (number|null);
-        }
-
-        /** Represents a Money. */
-        class Money implements IMoney {
-
-            /**
-             * Constructs a new Money.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.type.IMoney);
-
-            /** Money currencyCode. */
-            public currencyCode: string;
-
-            /** Money units. */
-            public units: (number|Long|string);
-
-            /** Money nanos. */
-            public nanos: number;
-
-            /**
-             * Creates a new Money instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns Money instance
-             */
-            public static create(properties?: google.type.IMoney): google.type.Money;
-
-            /**
-             * Encodes the specified Money message. Does not implicitly {@link google.type.Money.verify|verify} messages.
-             * @param message Money message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.type.IMoney, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Money message, length delimited. Does not implicitly {@link google.type.Money.verify|verify} messages.
-             * @param message Money message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.type.IMoney, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Money message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Money
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.type.Money;
-
-            /**
-             * Decodes a Money message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Money
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.type.Money;
-
-            /**
-             * Verifies a Money message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Money message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Money
-             */
-            public static fromObject(object: { [k: string]: any }): google.type.Money;
-
-            /**
-             * Creates a plain object from a Money message. Also converts values to other types if specified.
-             * @param message Money
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.type.Money, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Money to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };

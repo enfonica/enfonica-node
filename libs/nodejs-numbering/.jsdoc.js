@@ -16,13 +16,40 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
+'use strict';
 
-/* eslint-disable node/no-missing-require, no-unused-vars */
-const messaging = require('messaging');
-
-function main() {
-  const messagesClient = new messaging.MessagesClient();
-  const unsubscribersClient = new messaging.UnsubscribersClient();
-}
-
-main();
+module.exports = {
+  opts: {
+    readme: './README.md',
+    package: './package.json',
+    template: './node_modules/jsdoc-fresh',
+    recurse: true,
+    verbose: true,
+    destination: './docs/'
+  },
+  plugins: [
+    'plugins/markdown',
+    'jsdoc-region-tag'
+  ],
+  source: {
+    excludePattern: '(^|\\/|\\\\)[._]',
+    include: [
+      'build/src',
+      'protos'
+    ],
+    includePattern: '\\.js$'
+  },
+  templates: {
+    copyright: 'Copyright 2021 Google LLC',
+    includeDate: false,
+    sourceFiles: false,
+    systemName: 'numbering',
+    theme: 'lumen',
+    default: {
+      outputSourceFiles: false
+    }
+  },
+  markdown: {
+    idInHeadings: true
+  }
+};

@@ -1,0 +1,248 @@
+// Copyright 2020 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.numbering.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "enfonica/numbering/v1beta1/phone_numbers.proto";
+
+option csharp_namespace = "Enfonica.Numbering.V1Beta1";
+
+// Manages PhoneNumberInstances.
+service PhoneNumberInstances {
+  option (google.api.default_host) = "numbering.api.enfonica.com";
+
+  // Creates a phone number instance.
+  //
+  // The caller must have `numbering.phoneNumberInstances.create` permission on the project.
+  rpc CreatePhoneNumberInstance(CreatePhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
+    option (google.api.http) = {
+      post: "/v1beta1/{parent=projects/*}/phoneNumberInstances"
+      body: "phone_number_instance"
+    };
+  }
+
+  // Retrieves a phone number instance identified by the supplied resource name.
+  //
+  // The caller must have `numbering.phoneNumberInstances.get` permission on the project.
+  rpc GetPhoneNumberInstance(GetPhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
+    option (google.api.http) = {
+      get: "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
+    };
+  }
+
+  // Lists all PhoneNumberInstances.
+  // List returns phone number instance sorted by create_time descending.
+  //
+  // The caller must have `numbering.phoneNumberInstances.list` permission on the project.
+  rpc ListPhoneNumberInstances(ListPhoneNumberInstancesRequest) returns (ListPhoneNumberInstancesResponse) {
+    option (google.api.http) = {
+      get: "/v1beta1/{parent=projects/*}/phoneNumberInstances"
+    };
+  }
+
+  // Updates a phone number instance.
+  //
+  // The caller must have `numbering.phoneNumberInstances.update` permission on the project.
+  rpc UpdatePhoneNumberInstance(UpdatePhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
+    option (google.api.http) = {
+      patch: "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
+      body: "phone_number_instance"
+    };
+  }
+
+  // Deletes a phone number instance.
+  //
+  // The caller must have `numbering.phoneNumberInstances.delete` permission on the project.
+  rpc DeletePhoneNumberInstance(DeletePhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
+    option (google.api.http) = {
+      delete: "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
+    };
+  }
+
+  // @Private
+  // Gets the provisioned phone number instance based on the supplied phone number.
+  // The instance returned will have a lifecycle state of either ACTIVE or SUSPENDED.
+  // `parent` must be specified as `projects/-`.
+  // If no provisioned instance is found, throws NOT_FOUND.
+  //
+  // The caller must auth with an Enfonica token.
+  rpc GetProvisionedPhoneNumberInstance(GetProvisionedPhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
+    option (google.api.http) = {
+      post: "/v1beta1/{parent=projects/*}/phoneNumberInstances:getProvisioned"
+      body: "*"
+    };
+  }
+}
+
+// The PhoneNumberInstance resource.
+message PhoneNumberInstance {
+  // Lifecycle states of phone number instances.
+  enum LifecycleState {
+    // Unspecified lifecycle state.
+    LIFECYCLE_STATE_UNKNOWN = 0;
+
+    // The phone number instance is active and can be used.
+    ACTIVE = 1;
+
+    // The phone number instance has been deleted.
+    DELETED = 2;
+
+    // The phone number instance has been suspended.
+    SUSPENDED = 3;
+  }
+
+  // Resource name of the phone number instance. It must match the pattern
+  // `projects/*/phoneNumberInstances/*`
+  // Output only.
+  string name = 1;
+
+  // The phone number associated with the instance.
+  // Can only be set on creation.
+  PhoneNumber phone_number = 2;
+
+  // The display name of the phone number for use in the UI.
+  // Optional. Max length 100 characters.
+  string display_name = 3;
+
+  // The labels associated with the phone number.
+  // Max key length 100.  Max value length 1000. Max keys 50.
+  map<string, string> labels = 4;
+
+  // List of URIs in priority order where incoming messages will be sent to.
+  //
+  // The first URI is the primary, and the subsequent URIs are used in order
+  // if the previous URIs fail.  If no URIs are specified, then no action is
+  // taken when receiving messages.
+  //
+  // Currently URIs must be fully qualified HTTP/HTTPS URLs, but this may change
+  // to include other types of URIs.
+  //
+  // Maximum 5 URIs.
+  repeated string incoming_message_handler_uris = 5;
+
+  // List of URIs in priority order that will be executed for incoming calls.
+  //
+  // The first URI is the primary, and the subsequent URIs are used in order
+  // if the previous URIs fail.  If no URIs are specified, then no action is
+  // taken when receiving messages.
+  //
+  // Currently URIs must be fully qualified HTTP/HTTPS URLs, but this may change
+  // to include other types of URIs.
+  //
+  // Maximum 5 URIs.
+  repeated string incoming_call_handler_uris = 6;
+
+  // Output only ---
+
+  // The creation time of the phone number instance.
+  // Output only.
+  google.protobuf.Timestamp create_time = 10;
+
+  // The deletion time of the phone number instance, if it has been deleted.
+  // Output only.
+  google.protobuf.Timestamp delete_time = 11;
+
+  // The state of the phone number instance in its lifecycle.
+  // Output only.
+  LifecycleState lifecycle_state = 12;
+}
+
+// Request to create a new phone number instance.
+message CreatePhoneNumberInstanceRequest {
+  // The project under which to create the phone number instance
+  // in the form `projects/*`.
+  string parent = 1;
+
+  // The phone number resource to be created.
+  // At minimum, you must supply `phone_number.phone_number`.
+  PhoneNumberInstance phone_number_instance = 2;
+}
+
+// The GetPhoneNumberInstance request message.
+message GetPhoneNumberInstanceRequest {
+  // The resource name of the phone number instance to retrieve.
+  // Must be of the form `projects/*/phoneNumberInstances/*`.
+  string name = 1;
+}
+
+// The ListPhoneNumberInstances request.
+message ListPhoneNumberInstancesRequest {
+  // The project under which to list phone number instance, in the form `projects/*`.
+  string parent = 1;
+
+  // The maximum number of phone number instance to return in the response.
+  // Optional, with a default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous call to `ListPhoneNumberInstances`
+  // that indicates where this listing should continue from.
+  // Optional.
+  string page_token = 3;
+
+  // The prefix, either in E164 or 0NSN, of numbers to retrieve.
+  // Optional.
+  string prefix = 4;
+
+  // Whether to include deleted phone numbers in the response.
+  // Optional (default false).
+  bool include_deleted = 5;
+}
+
+// The ListPhoneNumberInstances response.
+message ListPhoneNumberInstancesResponse {
+  // A possibly paginated list of phone number instance that are direct descendants of
+  // the specified parent resource.
+  repeated PhoneNumberInstance phone_number_instances = 1;
+
+  // A pagination token returned from a previous call to `ListPhoneNumberInstances`
+  // that indicates from where listing should continue.
+  // Optional.
+  string next_page_token = 2;
+}
+
+// The request message for updating a phonenumberinstance's properties.
+message UpdatePhoneNumberInstanceRequest {
+  // The name of the phone number instance to be updated.
+  // Must be of the form `projects/*/phoneNumberInstances/*`.
+  string name = 1;
+
+  // The new definition of the PhoneNumberInstance.
+  PhoneNumberInstance phone_number_instance = 2;
+
+  // Fields to be updated.
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+// The DeletePhoneNumberInstance request message.
+message DeletePhoneNumberInstanceRequest {
+  // The resource name of the phone number instance to be deleted.
+  // Must be of the form `projects/*/phoneNumberInstances/*`.
+  string name = 1;
+}
+
+// The GetProvisionedPhoneNumberInstance request message.
+message GetProvisionedPhoneNumberInstanceRequest {
+  // The parent to search under. This must be set as
+  // `projects/-`.
+  string parent = 1;
+
+  // The phone number of the instance to find, in +E164.
+  string phone_number = 2;
+}

@@ -1,8 +1,8 @@
 {
-  "name": "@enfonica/messaging",
+  "name": "@enfonica/numbering",
   "version": "0.1.0",
-  "description": "Messaging client for Node.js",
-  "repository": "googleapis/nodejs-messaging",
+  "description": "Numbering client for Node.js",
+  "repository": "googleapis/nodejs-numbering",
   "license": "Apache-2.0",
   "author": "Google LLC",
   "main": "build/src/index.js",
@@ -19,10 +19,10 @@
     "google cloud platform",
     "google cloud",
     "cloud",
-    "google messaging",
-    "@enfonica/messaging",
-    "messages",
-    "unsubscribers"
+    "google numbering",
+    "@enfonica/numbering",
+    "phone number instances",
+    "phone numbers"
   ],
   "scripts": {
     "clean": "gts clean",

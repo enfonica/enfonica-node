@@ -1,0 +1,183 @@
+// Copyright 2020 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.messaging.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+
+option csharp_namespace = "Enfonica.Messaging.V1";
+
+// Manages Unsubscribers.
+service Unsubscribers {
+  option (google.api.default_host) = "messaging.api.enfonica.com";
+  option (google.api.oauth_scopes) = "https://api.enfonica.com/auth/messaging";
+  
+  // Creates an unsubscriber.
+  //
+  // The caller must have `messaging.unsubscribers.create` permission on the project.
+  rpc CreateUnsubscriber(CreateUnsubscriberRequest) returns (Unsubscriber) {
+    option (google.api.http) = {
+      post: "/v1/{parent=projects/*}/unsubscribers"
+      body: "unsubscriber"
+    };
+  }
+
+  // Retrieves a Unsubscriber identified by the supplied resource name.
+  //
+  // The caller must have `messaging.unsubscribers.get` permission on the project.
+  rpc GetUnsubscriber(GetUnsubscriberRequest) returns (Unsubscriber) {
+    option (google.api.http) = {
+      get: "/v1/{name=projects/*/unsubscribers/*}"
+    };
+  }
+
+  // Lists the Unsubscribers of the specified project.
+  // List returns Unsubscribers sorted by create_time descending.
+  //
+  // The caller must have `messaging.unsubscribers.list` permission on the project.
+  rpc ListUnsubscribers(ListUnsubscribersRequest) returns (ListUnsubscribersResponse) {
+    option (google.api.http) = {
+      get: "/v1/{parent=projects/*}/unsubscribers"
+    };
+  }
+
+  // Updates an unsubscriber.
+  //
+  // The caller must have `messaging.unsubscribers.update` permission on the project.
+  rpc UpdateUnsubscriber(UpdateUnsubscriberRequest) returns (Unsubscriber) {
+    option (google.api.http) = {
+      patch: "/v1/{unsubscriber.name=projects/*/unsubscribers/*}"
+      body: "unsubscriber"
+    };
+  }
+
+  // Deletes an unsubscriber.
+  //
+  // The caller must have `messaging.unsubscribers.delete` permission on the project.
+  rpc DeleteUnsubscriber(DeleteUnsubscriberRequest) returns (Unsubscriber) {
+    option (google.api.http) = {
+      delete: "/v1/{name=projects/*/unsubscribers/*}"
+    };
+  }
+}
+
+// The Unsubscriber resource.
+message Unsubscriber {
+  // The method that was used to unsubscribe.
+  enum UnsubscribeMethod {
+    // Unknown unsubscribe method.
+    UNKNOWN = 0;
+
+    // Unsubscribed by visiting a URL.
+    URL = 1;
+
+    // Unsubscribed by sending a message.
+    MESSAGE = 2;
+
+    // A user has manually created the unsubscriber.
+    MANUAL = 3;
+  }
+
+  // Resource name of the unsubscriber. It must match the pattern `projects/*/unsubscribers/*`
+  // Output only.
+  string name = 1;
+
+  // The phone number of the recipient that has unsubscribed, in +E164 format.
+  // Can only be set on create.
+  string phone = 2;
+
+  // The method that was used to unsubscribe.
+  // Can only be set on create.
+  UnsubscribeMethod unsubscribe_method = 3;
+
+  // The labels associated with the unsubscriber.  The maximum key length is 100.  The maximum
+  // value length is 1000. The maximum number of keys is 50.
+  //
+  // Example keys:
+  // - `smsmarketing.enfonica.com/campaign`
+  map<string, string> labels = 4;
+
+  // The creation time of the unsubscriber.
+  // Output only.
+  google.protobuf.Timestamp create_time = 8;
+}
+
+// Request to create a new unsubscriber.
+message CreateUnsubscriberRequest {
+  // The resource name of the parent project to create the unsubscriber under.
+  // Must be of the form `projects/*`.
+  string parent = 1;
+
+  // The unsubscriber resource to be created.
+  Unsubscriber unsubscriber = 2;
+}
+
+// The GetUnsubscriber request unsubscriber.
+message GetUnsubscriberRequest {
+  // The resource name of the Unsubscriber to retrieve.
+  // Must be of the form `projects/*/unsubscribers/*`.
+  string name = 1;
+}
+
+// The ListUnsubscribers request.
+message ListUnsubscribersRequest {
+  // The resource name of the parent of which to list unsubscribers.
+  // Must be of the form `projects/*`.
+  string parent = 1;
+
+  // The maximum number of Unsubscribers to return in the response.
+  // Optional, with a default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous call to `ListUnsubscribers`
+  // that indicates where this listing should continue from.
+  // Optional.
+  string page_token = 3;
+
+  // Only return the unsubscriber that matches the phone number exactly.
+  string phone = 4;
+}
+
+// The ListUnsubscribers response.
+message ListUnsubscribersResponse {
+  // A possibly paginated list of Unsubscribers that are direct descendants of
+  // the specified parent resource.
+  repeated Unsubscriber unsubscribers = 1;
+
+  // A pagination token returned from a previous call to `ListUnsubscribers`
+  // that indicates from where listing should continue.
+  // Optional.
+  string next_page_token = 2;
+}
+
+// The request message for updating an unsubscriber's properties.
+message UpdateUnsubscriberRequest {
+  // The new definition of the Unsubscriber.
+  Unsubscriber unsubscriber = 1;
+
+  // Fields to be updated. Only `labels` can be updated.
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+// The DeleteUnsubscriber request message.
+message DeleteUnsubscriberRequest {
+  // The resource name of the Unsubscriber to be deleted.
+  // Must be of the form `projects/*/unsubscribers/*`.
+  string name = 1;
+}

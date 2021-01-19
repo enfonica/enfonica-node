@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@
 
 import * as v1 from './v1';
 const MessagesClient = v1.MessagesClient;
-export {v1, MessagesClient};
-export default {v1, MessagesClient};
+const UnsubscribersClient = v1.UnsubscribersClient;
+export {v1, MessagesClient, UnsubscribersClient};
+export default {v1, MessagesClient, UnsubscribersClient};
 import * as protos from '../protos/protos';
 export {protos}

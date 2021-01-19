@@ -16,13 +16,10 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-
-/* eslint-disable node/no-missing-require, no-unused-vars */
-const messaging = require('messaging');
-
-function main() {
-  const messagesClient = new messaging.MessagesClient();
-  const unsubscribersClient = new messaging.UnsubscribersClient();
-}
-
-main();
+import * as v1beta1 from './v1beta1';
+const PhoneNumberInstancesClient = v1beta1.PhoneNumberInstancesClient;
+const PhoneNumbersClient = v1beta1.PhoneNumbersClient;
+export {v1beta1, PhoneNumberInstancesClient, PhoneNumbersClient};
+export default {v1beta1, PhoneNumberInstancesClient, PhoneNumbersClient};
+import * as protos from '../protos/protos';
+export {protos}

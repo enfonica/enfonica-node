@@ -18,11 +18,11 @@
 
 
 /* eslint-disable node/no-missing-require, no-unused-vars */
-const messaging = require('messaging');
+const numbering = require('numbering');
 
 function main() {
-  const messagesClient = new messaging.MessagesClient();
-  const unsubscribersClient = new messaging.UnsubscribersClient();
+  const phoneNumberInstancesClient = new numbering.PhoneNumberInstancesClient();
+  const phoneNumbersClient = new numbering.PhoneNumbersClient();
 }
 
 main();
