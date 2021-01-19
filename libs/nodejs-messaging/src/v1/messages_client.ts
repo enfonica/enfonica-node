@@ -20,7 +20,7 @@ import * as gax from 'google-gax';
 import {Callback, CallOptions, Descriptors, ClientOptions, PaginationCallback, GaxCall} from 'google-gax';
 import * as path from 'path';
 // @ts-ignore
-import * as localAuth from 'enfonica-auth-node';
+import * as localAuth from 'enfonica-auth-library';
 import { Transform } from 'stream';
 import { RequestType } from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';

@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "google-gax": "^2.8.0",
-    "enfonica-auth-node": "1.0.0"
+    "enfonica-auth-library": "1.0.0"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.3",
