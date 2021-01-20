@@ -29,7 +29,7 @@ find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/Numbering client for Node.js/Enfonica Numbering SDK for Node.js/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/googleapis/enfonica-node/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/Google LLC/Enfonica/" "$1"' -- {} \;
-find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/google/enfonica/" "$1"' -- {} \;
+find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/google /enfonica /" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/platform/telco/" "$1"' -- {} \;
 
 # Override the client files where neccessary

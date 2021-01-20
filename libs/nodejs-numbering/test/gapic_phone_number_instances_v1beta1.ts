@@ -20,7 +20,7 @@ import * as protos from '../protos/protos';
 import * as assert from 'assert';
 import * as sinon from 'sinon';
 import {SinonStub} from 'sinon';
-import { describe, it } from 'mocha';
+import {describe, it} from 'mocha';
 import * as phonenumberinstancesModule from '../src';
 
 import {PassThrough} from 'stream';
@@ -28,782 +28,1011 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-    const filledObject = (instance.constructor as typeof protobuf.Message)
-        .toObject(instance as protobuf.Message<T>, {defaults: true});
-    return (instance.constructor as typeof protobuf.Message).fromObject(filledObject) as T;
+  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
+    instance as protobuf.Message<T>,
+    {defaults: true}
+  );
+  return (instance.constructor as typeof protobuf.Message).fromObject(
+    filledObject
+  ) as T;
 }
 
 function stubSimpleCall<ResponseType>(response?: ResponseType, error?: Error) {
-    return error ? sinon.stub().rejects(error) : sinon.stub().resolves([response]);
+  return error
+    ? sinon.stub().rejects(error)
+    : sinon.stub().resolves([response]);
 }
 
-function stubSimpleCallWithCallback<ResponseType>(response?: ResponseType, error?: Error) {
-    return error ? sinon.stub().callsArgWith(2, error) : sinon.stub().callsArgWith(2, null, response);
+function stubSimpleCallWithCallback<ResponseType>(
+  response?: ResponseType,
+  error?: Error
+) {
+  return error
+    ? sinon.stub().callsArgWith(2, error)
+    : sinon.stub().callsArgWith(2, null, response);
 }
 
-function stubPageStreamingCall<ResponseType>(responses?: ResponseType[], error?: Error) {
-    const pagingStub = sinon.stub();
-    if (responses) {
-        for (let i = 0; i < responses.length; ++i) {
-            pagingStub.onCall(i).callsArgWith(2, null, responses[i]);
-        }
+function stubPageStreamingCall<ResponseType>(
+  responses?: ResponseType[],
+  error?: Error
+) {
+  const pagingStub = sinon.stub();
+  if (responses) {
+    for (let i = 0; i < responses.length; ++i) {
+      pagingStub.onCall(i).callsArgWith(2, null, responses[i]);
     }
-    const transformStub = error ? sinon.stub().callsArgWith(2, error) : pagingStub;
-    const mockStream = new PassThrough({
-        objectMode: true,
-        transform: transformStub,
+  }
+  const transformStub = error
+    ? sinon.stub().callsArgWith(2, error)
+    : pagingStub;
+  const mockStream = new PassThrough({
+    objectMode: true,
+    transform: transformStub,
+  });
+  // trigger as many responses as needed
+  if (responses) {
+    for (let i = 0; i < responses.length; ++i) {
+      setImmediate(() => {
+        mockStream.write({});
+      });
+    }
+    setImmediate(() => {
+      mockStream.end();
     });
-    // trigger as many responses as needed
-    if (responses) {
-        for (let i = 0; i < responses.length; ++i) {
-            setImmediate(() => { mockStream.write({}); });
-        }
-        setImmediate(() => { mockStream.end(); });
-    } else {
-        setImmediate(() => { mockStream.write({}); });
-        setImmediate(() => { mockStream.end(); });
-    }
-    return sinon.stub().returns(mockStream);
+  } else {
+    setImmediate(() => {
+      mockStream.write({});
+    });
+    setImmediate(() => {
+      mockStream.end();
+    });
+  }
+  return sinon.stub().returns(mockStream);
 }
 
-function stubAsyncIterationCall<ResponseType>(responses?: ResponseType[], error?: Error) {
-    let counter = 0;
-    const asyncIterable = {
-        [Symbol.asyncIterator]() {
-            return {
-                async next() {
-                    if (error) {
-                        return Promise.reject(error);
-                    }
-                    if (counter >= responses!.length) {
-                        return Promise.resolve({done: true, value: undefined});
-                    }
-                    return Promise.resolve({done: false, value: responses![counter++]});
-                }
-            };
-        }
-    };
-    return sinon.stub().returns(asyncIterable);
+function stubAsyncIterationCall<ResponseType>(
+  responses?: ResponseType[],
+  error?: Error
+) {
+  let counter = 0;
+  const asyncIterable = {
+    [Symbol.asyncIterator]() {
+      return {
+        async next() {
+          if (error) {
+            return Promise.reject(error);
+          }
+          if (counter >= responses!.length) {
+            return Promise.resolve({done: true, value: undefined});
+          }
+          return Promise.resolve({done: false, value: responses![counter++]});
+        },
+      };
+    },
+  };
+  return sinon.stub().returns(asyncIterable);
 }
 
 describe('v1beta1.PhoneNumberInstancesClient', () => {
-    it('has servicePath', () => {
-        const servicePath = phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient.servicePath;
-        assert(servicePath);
+  it('has servicePath', () => {
+    const servicePath =
+      phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient.servicePath;
+    assert(servicePath);
+  });
+
+  it('has apiEndpoint', () => {
+    const apiEndpoint =
+      phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient.apiEndpoint;
+    assert(apiEndpoint);
+  });
+
+  it('has port', () => {
+    const port =
+      phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient.port;
+    assert(port);
+    assert(typeof port === 'number');
+  });
+
+  it('should create a client with no option', () => {
+    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient();
+    assert(client);
+  });
+
+  it('should create a client with gRPC fallback', () => {
+    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+      {
+        fallback: true,
+      }
+    );
+    assert(client);
+  });
+
+  it('has initialize method and supports deferred initialization', async () => {
+    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+      {
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      }
+    );
+    assert.strictEqual(client.phoneNumberInstancesStub, undefined);
+    await client.initialize();
+    assert(client.phoneNumberInstancesStub);
+  });
+
+  it('has close method', () => {
+    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+      {
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      }
+    );
+    client.close();
+  });
+
+  it('has getProjectId method', async () => {
+    const fakeProjectId = 'fake-project-id';
+    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+      {
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      }
+    );
+    client.auth.getProjectId = sinon.stub().resolves(fakeProjectId);
+    const result = await client.getProjectId();
+    assert.strictEqual(result, fakeProjectId);
+    assert((client.auth.getProjectId as SinonStub).calledWithExactly());
+  });
+
+  it('has getProjectId method with callback', async () => {
+    const fakeProjectId = 'fake-project-id';
+    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+      {
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      }
+    );
+    client.auth.getProjectId = sinon
+      .stub()
+      .callsArgWith(0, null, fakeProjectId);
+    const promise = new Promise((resolve, reject) => {
+      client.getProjectId((err?: Error | null, projectId?: string | null) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(projectId);
+        }
+      });
+    });
+    const result = await promise;
+    assert.strictEqual(result, fakeProjectId);
+  });
+
+  describe('createPhoneNumberInstance', () => {
+    it('invokes createPhoneNumberInstance without error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+      );
+      client.innerApiCalls.createPhoneNumberInstance = stubSimpleCall(
+        expectedResponse
+      );
+      const [response] = await client.createPhoneNumberInstance(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.createPhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
     });
 
-    it('has apiEndpoint', () => {
-        const apiEndpoint = phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient.apiEndpoint;
-        assert(apiEndpoint);
-    });
-
-    it('has port', () => {
-        const port = phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient.port;
-        assert(port);
-        assert(typeof port === 'number');
-    });
-
-    it('should create a client with no option', () => {
-        const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient();
-        assert(client);
-    });
-
-    it('should create a client with gRPC fallback', () => {
-        const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-            fallback: true,
-        });
-        assert(client);
-    });
-
-    it('has initialize method and supports deferred initialization', async () => {
-        const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-            credentials: { client_email: 'bogus', private_key: 'bogus' },
-            projectId: 'bogus',
-        });
-        assert.strictEqual(client.phoneNumberInstancesStub, undefined);
-        await client.initialize();
-        assert(client.phoneNumberInstancesStub);
-    });
-
-    it('has close method', () => {
-        const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-            credentials: { client_email: 'bogus', private_key: 'bogus' },
-            projectId: 'bogus',
-        });
-        client.close();
-    });
-
-    it('has getProjectId method', async () => {
-        const fakeProjectId = 'fake-project-id';
-        const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-            credentials: { client_email: 'bogus', private_key: 'bogus' },
-            projectId: 'bogus',
-        });
-        client.auth.getProjectId = sinon.stub().resolves(fakeProjectId);
-        const result = await client.getProjectId();
-        assert.strictEqual(result, fakeProjectId);
-        assert((client.auth.getProjectId as SinonStub).calledWithExactly());
-    });
-
-    it('has getProjectId method with callback', async () => {
-        const fakeProjectId = 'fake-project-id';
-        const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-            credentials: { client_email: 'bogus', private_key: 'bogus' },
-            projectId: 'bogus',
-        });
-        client.auth.getProjectId = sinon.stub().callsArgWith(0, null, fakeProjectId);
-        const promise = new Promise((resolve, reject) => {
-            client.getProjectId((err?: Error|null, projectId?: string|null) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(projectId);
-                }
-            });
-        });
-        const result = await promise;
-        assert.strictEqual(result, fakeProjectId);
-    });
-
-    describe('createPhoneNumberInstance', () => {
-        it('invokes createPhoneNumberInstance without error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.createPhoneNumberInstance = stubSimpleCall(expectedResponse);
-            const [response] = await client.createPhoneNumberInstance(request);
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.createPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-
-        it('invokes createPhoneNumberInstance without error using callback', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.createPhoneNumberInstance = stubSimpleCallWithCallback(expectedResponse);
-            const promise = new Promise((resolve, reject) => {
-                 client.createPhoneNumberInstance(
-                    request,
-                    (err?: Error|null, result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance|null) => {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(result);
-                        }
-                    });
-            });
-            const response = await promise;
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.createPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions /*, callback defined above */));
-        });
-
-        it('invokes createPhoneNumberInstance with error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedError = new Error('expected');
-            client.innerApiCalls.createPhoneNumberInstance = stubSimpleCall(undefined, expectedError);
-            await assert.rejects(client.createPhoneNumberInstance(request), expectedError);
-            assert((client.innerApiCalls.createPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-    });
-
-    describe('getPhoneNumberInstance', () => {
-        it('invokes getPhoneNumberInstance without error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.getPhoneNumberInstance = stubSimpleCall(expectedResponse);
-            const [response] = await client.getPhoneNumberInstance(request);
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.getPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-
-        it('invokes getPhoneNumberInstance without error using callback', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.getPhoneNumberInstance = stubSimpleCallWithCallback(expectedResponse);
-            const promise = new Promise((resolve, reject) => {
-                 client.getPhoneNumberInstance(
-                    request,
-                    (err?: Error|null, result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance|null) => {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(result);
-                        }
-                    });
-            });
-            const response = await promise;
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.getPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions /*, callback defined above */));
-        });
-
-        it('invokes getPhoneNumberInstance with error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedError = new Error('expected');
-            client.innerApiCalls.getPhoneNumberInstance = stubSimpleCall(undefined, expectedError);
-            await assert.rejects(client.getPhoneNumberInstance(request), expectedError);
-            assert((client.innerApiCalls.getPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-    });
-
-    describe('updatePhoneNumberInstance', () => {
-        it('invokes updatePhoneNumberInstance without error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.updatePhoneNumberInstance = stubSimpleCall(expectedResponse);
-            const [response] = await client.updatePhoneNumberInstance(request);
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.updatePhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-
-        it('invokes updatePhoneNumberInstance without error using callback', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.updatePhoneNumberInstance = stubSimpleCallWithCallback(expectedResponse);
-            const promise = new Promise((resolve, reject) => {
-                 client.updatePhoneNumberInstance(
-                    request,
-                    (err?: Error|null, result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance|null) => {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(result);
-                        }
-                    });
-            });
-            const response = await promise;
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.updatePhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions /*, callback defined above */));
-        });
-
-        it('invokes updatePhoneNumberInstance with error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedError = new Error('expected');
-            client.innerApiCalls.updatePhoneNumberInstance = stubSimpleCall(undefined, expectedError);
-            await assert.rejects(client.updatePhoneNumberInstance(request), expectedError);
-            assert((client.innerApiCalls.updatePhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-    });
-
-    describe('deletePhoneNumberInstance', () => {
-        it('invokes deletePhoneNumberInstance without error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.deletePhoneNumberInstance = stubSimpleCall(expectedResponse);
-            const [response] = await client.deletePhoneNumberInstance(request);
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.deletePhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-
-        it('invokes deletePhoneNumberInstance without error using callback', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.deletePhoneNumberInstance = stubSimpleCallWithCallback(expectedResponse);
-            const promise = new Promise((resolve, reject) => {
-                 client.deletePhoneNumberInstance(
-                    request,
-                    (err?: Error|null, result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance|null) => {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(result);
-                        }
-                    });
-            });
-            const response = await promise;
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.deletePhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions /*, callback defined above */));
-        });
-
-        it('invokes deletePhoneNumberInstance with error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest());
-            request.name = '';
-            const expectedHeaderRequestParams = "name=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedError = new Error('expected');
-            client.innerApiCalls.deletePhoneNumberInstance = stubSimpleCall(undefined, expectedError);
-            await assert.rejects(client.deletePhoneNumberInstance(request), expectedError);
-            assert((client.innerApiCalls.deletePhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-    });
-
-    describe('getProvisionedPhoneNumberInstance', () => {
-        it('invokes getProvisionedPhoneNumberInstance without error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.getProvisionedPhoneNumberInstance = stubSimpleCall(expectedResponse);
-            const [response] = await client.getProvisionedPhoneNumberInstance(request);
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.getProvisionedPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-
-        it('invokes getProvisionedPhoneNumberInstance without error using callback', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance());
-            client.innerApiCalls.getProvisionedPhoneNumberInstance = stubSimpleCallWithCallback(expectedResponse);
-            const promise = new Promise((resolve, reject) => {
-                 client.getProvisionedPhoneNumberInstance(
-                    request,
-                    (err?: Error|null, result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance|null) => {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(result);
-                        }
-                    });
-            });
-            const response = await promise;
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.getProvisionedPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions /*, callback defined above */));
-        });
-
-        it('invokes getProvisionedPhoneNumberInstance with error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.GetProvisionedPhoneNumberInstanceRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedError = new Error('expected');
-            client.innerApiCalls.getProvisionedPhoneNumberInstance = stubSimpleCall(undefined, expectedError);
-            await assert.rejects(client.getProvisionedPhoneNumberInstance(request), expectedError);
-            assert((client.innerApiCalls.getProvisionedPhoneNumberInstance as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-    });
-
-    describe('listPhoneNumberInstances', () => {
-        it('invokes listPhoneNumberInstances without error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = [
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-            ];
-            client.innerApiCalls.listPhoneNumberInstances = stubSimpleCall(expectedResponse);
-            const [response] = await client.listPhoneNumberInstances(request);
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.listPhoneNumberInstances as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-
-        it('invokes listPhoneNumberInstances without error using callback', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedResponse = [
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-            ];
-            client.innerApiCalls.listPhoneNumberInstances = stubSimpleCallWithCallback(expectedResponse);
-            const promise = new Promise((resolve, reject) => {
-                 client.listPhoneNumberInstances(
-                    request,
-                    (err?: Error|null, result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[]|null) => {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(result);
-                        }
-                    });
-            });
-            const response = await promise;
-            assert.deepStrictEqual(response, expectedResponse);
-            assert((client.innerApiCalls.listPhoneNumberInstances as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions /*, callback defined above */));
-        });
-
-        it('invokes listPhoneNumberInstances with error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedOptions = {
-                otherArgs: {
-                    headers: {
-                        'x-goog-request-params': expectedHeaderRequestParams,
-                    },
-                },
-            };
-            const expectedError = new Error('expected');
-            client.innerApiCalls.listPhoneNumberInstances = stubSimpleCall(undefined, expectedError);
-            await assert.rejects(client.listPhoneNumberInstances(request), expectedError);
-            assert((client.innerApiCalls.listPhoneNumberInstances as SinonStub)
-                .getCall(0).calledWith(request, expectedOptions, undefined));
-        });
-
-        it('invokes listPhoneNumberInstancesStream without error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedResponse = [
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-            ];
-            client.descriptors.page.listPhoneNumberInstances.createStream = stubPageStreamingCall(expectedResponse);
-            const stream = client.listPhoneNumberInstancesStream(request);
-            const promise = new Promise((resolve, reject) => {
-                const responses: protos.enfonica.numbering.v1beta1.PhoneNumberInstance[] = [];
-                stream.on('data', (response: protos.enfonica.numbering.v1beta1.PhoneNumberInstance) => {
-                    responses.push(response);
-                });
-                stream.on('end', () => {
-                    resolve(responses);
-                });
-                stream.on('error', (err: Error) => {
-                    reject(err);
-                });
-            });
-            const responses = await promise;
-            assert.deepStrictEqual(responses, expectedResponse);
-            assert((client.descriptors.page.listPhoneNumberInstances.createStream as SinonStub)
-                .getCall(0).calledWith(client.innerApiCalls.listPhoneNumberInstances, request));
-            assert.strictEqual(
-                (client.descriptors.page.listPhoneNumberInstances.createStream as SinonStub)
-                    .getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
-                expectedHeaderRequestParams
-            );
-        });
-
-        it('invokes listPhoneNumberInstancesStream with error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";
-            const expectedError = new Error('expected');
-            client.descriptors.page.listPhoneNumberInstances.createStream = stubPageStreamingCall(undefined, expectedError);
-            const stream = client.listPhoneNumberInstancesStream(request);
-            const promise = new Promise((resolve, reject) => {
-                const responses: protos.enfonica.numbering.v1beta1.PhoneNumberInstance[] = [];
-                stream.on('data', (response: protos.enfonica.numbering.v1beta1.PhoneNumberInstance) => {
-                    responses.push(response);
-                });
-                stream.on('end', () => {
-                    resolve(responses);
-                });
-                stream.on('error', (err: Error) => {
-                    reject(err);
-                });
-            });
-            await assert.rejects(promise, expectedError);
-            assert((client.descriptors.page.listPhoneNumberInstances.createStream as SinonStub)
-                .getCall(0).calledWith(client.innerApiCalls.listPhoneNumberInstances, request));
-            assert.strictEqual(
-                (client.descriptors.page.listPhoneNumberInstances.createStream as SinonStub)
-                    .getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
-                expectedHeaderRequestParams
-            );
-        });
-
-        it('uses async iteration with listPhoneNumberInstances without error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";const expectedResponse = [
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-              generateSampleMessage(new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()),
-            ];
-            client.descriptors.page.listPhoneNumberInstances.asyncIterate = stubAsyncIterationCall(expectedResponse);
-            const responses: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[] = [];
-            const iterable = client.listPhoneNumberInstancesAsync(request);
-            for await (const resource of iterable) {
-                responses.push(resource!);
+    it('invokes createPhoneNumberInstance without error using callback', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+      );
+      client.innerApiCalls.createPhoneNumberInstance = stubSimpleCallWithCallback(
+        expectedResponse
+      );
+      const promise = new Promise((resolve, reject) => {
+        client.createPhoneNumberInstance(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
             }
-            assert.deepStrictEqual(responses, expectedResponse);
-            assert.deepStrictEqual(
-                (client.descriptors.page.listPhoneNumberInstances.asyncIterate as SinonStub)
-                    .getCall(0).args[1], request);
-            assert.strictEqual(
-                (client.descriptors.page.listPhoneNumberInstances.asyncIterate as SinonStub)
-                    .getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
-                expectedHeaderRequestParams
-            );
-        });
-
-        it('uses async iteration with listPhoneNumberInstances with error', async () => {
-            const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
-                credentials: {client_email: 'bogus', private_key: 'bogus'},
-                projectId: 'bogus',
-            });
-            client.initialize();
-            const request = generateSampleMessage(new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest());
-            request.parent = '';
-            const expectedHeaderRequestParams = "parent=";const expectedError = new Error('expected');
-            client.descriptors.page.listPhoneNumberInstances.asyncIterate = stubAsyncIterationCall(undefined, expectedError);
-            const iterable = client.listPhoneNumberInstancesAsync(request);
-            await assert.rejects(async () => {
-                const responses: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[] = [];
-                for await (const resource of iterable) {
-                    responses.push(resource!);
-                }
-            });
-            assert.deepStrictEqual(
-                (client.descriptors.page.listPhoneNumberInstances.asyncIterate as SinonStub)
-                    .getCall(0).args[1], request);
-            assert.strictEqual(
-                (client.descriptors.page.listPhoneNumberInstances.asyncIterate as SinonStub)
-                    .getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
-                expectedHeaderRequestParams
-            );
-        });
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.createPhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
     });
+
+    it('invokes createPhoneNumberInstance with error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.createPhoneNumberInstance = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(
+        client.createPhoneNumberInstance(request),
+        expectedError
+      );
+      assert(
+        (client.innerApiCalls.createPhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
+  describe('getPhoneNumberInstance', () => {
+    it('invokes getPhoneNumberInstance without error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+      );
+      client.innerApiCalls.getPhoneNumberInstance = stubSimpleCall(
+        expectedResponse
+      );
+      const [response] = await client.getPhoneNumberInstance(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.getPhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes getPhoneNumberInstance without error using callback', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+      );
+      client.innerApiCalls.getPhoneNumberInstance = stubSimpleCallWithCallback(
+        expectedResponse
+      );
+      const promise = new Promise((resolve, reject) => {
+        client.getPhoneNumberInstance(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.getPhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes getPhoneNumberInstance with error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.getPhoneNumberInstance = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(
+        client.getPhoneNumberInstance(request),
+        expectedError
+      );
+      assert(
+        (client.innerApiCalls.getPhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
+  describe('updatePhoneNumberInstance', () => {
+    it('invokes updatePhoneNumberInstance without error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+      );
+      client.innerApiCalls.updatePhoneNumberInstance = stubSimpleCall(
+        expectedResponse
+      );
+      const [response] = await client.updatePhoneNumberInstance(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.updatePhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes updatePhoneNumberInstance without error using callback', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+      );
+      client.innerApiCalls.updatePhoneNumberInstance = stubSimpleCallWithCallback(
+        expectedResponse
+      );
+      const promise = new Promise((resolve, reject) => {
+        client.updatePhoneNumberInstance(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.updatePhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes updatePhoneNumberInstance with error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.updatePhoneNumberInstance = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(
+        client.updatePhoneNumberInstance(request),
+        expectedError
+      );
+      assert(
+        (client.innerApiCalls.updatePhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
+  describe('deletePhoneNumberInstance', () => {
+    it('invokes deletePhoneNumberInstance without error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+      );
+      client.innerApiCalls.deletePhoneNumberInstance = stubSimpleCall(
+        expectedResponse
+      );
+      const [response] = await client.deletePhoneNumberInstance(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.deletePhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes deletePhoneNumberInstance without error using callback', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+      );
+      client.innerApiCalls.deletePhoneNumberInstance = stubSimpleCallWithCallback(
+        expectedResponse
+      );
+      const promise = new Promise((resolve, reject) => {
+        client.deletePhoneNumberInstance(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.deletePhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes deletePhoneNumberInstance with error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.deletePhoneNumberInstance = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(
+        client.deletePhoneNumberInstance(request),
+        expectedError
+      );
+      assert(
+        (client.innerApiCalls.deletePhoneNumberInstance as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
+  describe('listPhoneNumberInstances', () => {
+    it('invokes listPhoneNumberInstances without error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = [
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+      ];
+      client.innerApiCalls.listPhoneNumberInstances = stubSimpleCall(
+        expectedResponse
+      );
+      const [response] = await client.listPhoneNumberInstances(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.listPhoneNumberInstances as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes listPhoneNumberInstances without error using callback', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = [
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+      ];
+      client.innerApiCalls.listPhoneNumberInstances = stubSimpleCallWithCallback(
+        expectedResponse
+      );
+      const promise = new Promise((resolve, reject) => {
+        client.listPhoneNumberInstances(
+          request,
+          (
+            err?: Error | null,
+            result?:
+              | protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[]
+              | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.listPhoneNumberInstances as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes listPhoneNumberInstances with error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.listPhoneNumberInstances = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(
+        client.listPhoneNumberInstances(request),
+        expectedError
+      );
+      assert(
+        (client.innerApiCalls.listPhoneNumberInstances as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes listPhoneNumberInstancesStream without error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedResponse = [
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+      ];
+      client.descriptors.page.listPhoneNumberInstances.createStream = stubPageStreamingCall(
+        expectedResponse
+      );
+      const stream = client.listPhoneNumberInstancesStream(request);
+      const promise = new Promise((resolve, reject) => {
+        const responses: protos.enfonica.numbering.v1beta1.PhoneNumberInstance[] = [];
+        stream.on(
+          'data',
+          (response: protos.enfonica.numbering.v1beta1.PhoneNumberInstance) => {
+            responses.push(response);
+          }
+        );
+        stream.on('end', () => {
+          resolve(responses);
+        });
+        stream.on('error', (err: Error) => {
+          reject(err);
+        });
+      });
+      const responses = await promise;
+      assert.deepStrictEqual(responses, expectedResponse);
+      assert(
+        (client.descriptors.page.listPhoneNumberInstances
+          .createStream as SinonStub)
+          .getCall(0)
+          .calledWith(client.innerApiCalls.listPhoneNumberInstances, request)
+      );
+      assert.strictEqual(
+        (client.descriptors.page.listPhoneNumberInstances
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
+        expectedHeaderRequestParams
+      );
+    });
+
+    it('invokes listPhoneNumberInstancesStream with error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedError = new Error('expected');
+      client.descriptors.page.listPhoneNumberInstances.createStream = stubPageStreamingCall(
+        undefined,
+        expectedError
+      );
+      const stream = client.listPhoneNumberInstancesStream(request);
+      const promise = new Promise((resolve, reject) => {
+        const responses: protos.enfonica.numbering.v1beta1.PhoneNumberInstance[] = [];
+        stream.on(
+          'data',
+          (response: protos.enfonica.numbering.v1beta1.PhoneNumberInstance) => {
+            responses.push(response);
+          }
+        );
+        stream.on('end', () => {
+          resolve(responses);
+        });
+        stream.on('error', (err: Error) => {
+          reject(err);
+        });
+      });
+      await assert.rejects(promise, expectedError);
+      assert(
+        (client.descriptors.page.listPhoneNumberInstances
+          .createStream as SinonStub)
+          .getCall(0)
+          .calledWith(client.innerApiCalls.listPhoneNumberInstances, request)
+      );
+      assert.strictEqual(
+        (client.descriptors.page.listPhoneNumberInstances
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
+        expectedHeaderRequestParams
+      );
+    });
+
+    it('uses async iteration with listPhoneNumberInstances without error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedResponse = [
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
+        ),
+      ];
+      client.descriptors.page.listPhoneNumberInstances.asyncIterate = stubAsyncIterationCall(
+        expectedResponse
+      );
+      const responses: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[] = [];
+      const iterable = client.listPhoneNumberInstancesAsync(request);
+      for await (const resource of iterable) {
+        responses.push(resource!);
+      }
+      assert.deepStrictEqual(responses, expectedResponse);
+      assert.deepStrictEqual(
+        (client.descriptors.page.listPhoneNumberInstances
+          .asyncIterate as SinonStub).getCall(0).args[1],
+        request
+      );
+      assert.strictEqual(
+        (client.descriptors.page.listPhoneNumberInstances
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
+        expectedHeaderRequestParams
+      );
+    });
+
+    it('uses async iteration with listPhoneNumberInstances with error', async () => {
+      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
+        {
+          credentials: {client_email: 'bogus', private_key: 'bogus'},
+          projectId: 'bogus',
+        }
+      );
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedError = new Error('expected');
+      client.descriptors.page.listPhoneNumberInstances.asyncIterate = stubAsyncIterationCall(
+        undefined,
+        expectedError
+      );
+      const iterable = client.listPhoneNumberInstancesAsync(request);
+      await assert.rejects(async () => {
+        const responses: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[] = [];
+        for await (const resource of iterable) {
+          responses.push(resource!);
+        }
+      });
+      assert.deepStrictEqual(
+        (client.descriptors.page.listPhoneNumberInstances
+          .asyncIterate as SinonStub).getCall(0).args[1],
+        request
+      );
+      assert.strictEqual(
+        (client.descriptors.page.listPhoneNumberInstances
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
+        expectedHeaderRequestParams
+      );
+    });
+  });
 });

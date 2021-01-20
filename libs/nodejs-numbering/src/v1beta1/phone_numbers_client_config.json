@@ -20,26 +20,6 @@
         }
       },
       "methods": {
-        "CreatePhoneNumber": {
-          "retry_codes_name": "non_idempotent",
-          "retry_params_name": "default"
-        },
-        "GetPhoneNumber": {
-          "retry_codes_name": "non_idempotent",
-          "retry_params_name": "default"
-        },
-        "ListPhoneNumbers": {
-          "retry_codes_name": "non_idempotent",
-          "retry_params_name": "default"
-        },
-        "UpdatePhoneNumber": {
-          "retry_codes_name": "non_idempotent",
-          "retry_params_name": "default"
-        },
-        "DeletePhoneNumber": {
-          "retry_codes_name": "non_idempotent",
-          "retry_params_name": "default"
-        },
         "SearchPhoneNumbers": {
           "retry_codes_name": "non_idempotent",
           "retry_params_name": "default"

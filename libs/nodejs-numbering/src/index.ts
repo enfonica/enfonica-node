@@ -22,4 +22,4 @@ const PhoneNumbersClient = v1beta1.PhoneNumbersClient;
 export {v1beta1, PhoneNumberInstancesClient, PhoneNumbersClient};
 export default {v1beta1, PhoneNumberInstancesClient, PhoneNumbersClient};
 import * as protos from '../protos/protos';
-export {protos}
+export {protos};

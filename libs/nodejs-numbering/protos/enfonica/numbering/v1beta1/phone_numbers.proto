@@ -26,55 +26,6 @@ option csharp_namespace = "Enfonica.Numbering.V1Beta1";
 // Manages PhoneNumbers.
 service PhoneNumbers {
   option (google.api.default_host) = "numbering.api.enfonica.com";
-  // Creates a phone number.
-  //
-  // The caller must have `numbering.phoneNumbers.create` permission on global resources.
-  rpc CreatePhoneNumber(CreatePhoneNumberRequest) returns (PhoneNumber) {
-    option (google.api.http) = {
-      post: "/v1beta1/phoneNumbers"
-      body: "phone_number"
-    };
-  }
-
-  // Retrieves a phone number identified by the supplied resource name.
-  //
-  // The caller must have `numbering.phoneNumbers.get` permission on global resources.
-  rpc GetPhoneNumber(GetPhoneNumberRequest) returns (PhoneNumber) {
-    option (google.api.http) = {
-      get: "/v1beta1/{name=phoneNumbers/*}"
-    };
-  }
-
-  // Lists all phone numbers.
-  //
-  // List returns phone numbers sorted by create_time descending.
-  //
-  // The caller must have `numbering.phoneNumbers.list` permission on global resources.
-  rpc ListPhoneNumbers(ListPhoneNumbersRequest) returns (ListPhoneNumbersResponse) {
-    option (google.api.http) = {
-      get: "/v1beta1/phoneNumbers"
-    };
-  }
-
-  // Updates a phone number.
-  //
-  // The caller must have `numbering.phoneNumbers.update` permission on global resources.
-  rpc UpdatePhoneNumber(UpdatePhoneNumberRequest) returns (PhoneNumber) {
-    option (google.api.http) = {
-      patch: "/v1beta1/{name=phoneNumbers/*}"
-      body: "phone_number"
-    };
-  }
-
-  // Deletes a phone number.
-  //
-  // The caller must have `numbering.phoneNumbers.delete` permission on global resources.
-  rpc DeletePhoneNumber(DeletePhoneNumberRequest) returns (PhoneNumber) {
-    option (google.api.http) = {
-      delete: "/v1beta1/{name=phoneNumbers/*}"
-    };
-  }
-
   // Searches available phone numbers with the specified filters.
   //
   // Search returns phone numbers sorted by create_time descending.
@@ -89,25 +40,6 @@ service PhoneNumbers {
 
 // The PhoneNumber resource.
 message PhoneNumber {
-  // State of phone numbers.
-  enum PhoneNumberState {
-    // Unspecified state.
-    PHONE_NUMBER_STATE_UNSPECIFIED = 0;
-
-    // The phone number is available to be provisioned.
-    AVAILABLE = 1;
-
-    // The phone number is currently in use.
-    IN_USE = 2;
-
-    // The phone number has been quarantined. It is not in use but
-    // it cannot be provisioned.
-    QUARANTINED = 3;
-
-    // The phone number has been deleted and cannot be provisioned.
-    DELETED = 4;
-  }
-
   // A capability of a phone number.
   enum PhoneNumberCapability {
     // Unspecified phone number capability.
@@ -167,11 +99,6 @@ message PhoneNumber {
   // In the form `services/*/skus/*`.
   string sku = 4;
 
-  // @Private
-  // The carrier that provides carriage of the phone number.
-  // In the form `carriers/*`.
-  string carrier = 5;
-
   // Output only ---
 
   // The type of phone number.
@@ -182,84 +109,6 @@ message PhoneNumber {
   // the phone number.
   // Output only.
   string country_code = 11;
-
-  // @Private
-  // The creation time of the phone number.
-  // Output only.
-  google.protobuf.Timestamp create_time = 12;
-
-  // @Private
-  // The deletion time of the phone number.
-  // Output only.
-  google.protobuf.Timestamp delete_time = 13;
-
-  // @Private
-  // The state of the phone number.
-  // Output only.
-  PhoneNumberState state = 14;
-
-  // @Private
-  // The local access area, in the format `/localAccessGroups/*/areas/*`.
-  // *Should* be set when number_type is LOCAL.
-  // Output only.
-  string local_access_area = 15;
-}
-
-// Request to create a new phonenumber.
-message CreatePhoneNumberRequest {
-  // The phone number resource to be created.
-  PhoneNumber phone_number = 1;
-}
-
-// The GetPhoneNumber request message.
-message GetPhoneNumberRequest {
-  // The resource name of the PhoneNumber to retrieve.
-  // Must be of the form `phoneNumbers/*`.
-  string name = 1;
-}
-
-// The ListPhoneNumbers request.
-message ListPhoneNumbersRequest {
-  // The maximum number of PhoneNumbers to return in the response.
-  // Optional, with a default value of 10 and maximum value of 100.
-  int32 page_size = 1;
-
-  // A pagination token returned from a previous call to `ListPhoneNumbers`
-  // that indicates where this listing should continue from.
-  // Optional.
-  string page_token = 2;
-}
-
-// The ListPhoneNumbers response.
-message ListPhoneNumbersResponse {
-  // A possibly paginated list of PhoneNumbers that are direct descendants of
-  // the specified parent resource.
-  repeated PhoneNumber phone_numbers = 1;
-
-  // A pagination token returned from a previous call to `ListPhoneNumbers`
-  // that indicates from where listing should continue.
-  // Optional.
-  string next_page_token = 2;
-}
-
-// The request message for updating a phonenumber's properties.
-message UpdatePhoneNumberRequest {
-  // The name of the phone number to be updated.
-  // Must be of the form `phoneNumbers/*`.
-  string name = 1;
-
-  // The new definition of the PhoneNumber.
-  PhoneNumber phone_number = 2;
-
-  // Fields to be updated.
-  google.protobuf.FieldMask update_mask = 3;
-}
-
-// The DeletePhoneNumber request message.
-message DeletePhoneNumberRequest {
-  // The resource name of the PhoneNumber to be deleted.
-  // Must be of the form `phoneNumbers/*`.
-  string name = 1;
 }
 
 // The SearchPhoneNumbers request.

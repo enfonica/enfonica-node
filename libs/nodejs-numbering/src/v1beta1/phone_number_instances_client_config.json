@@ -39,10 +39,6 @@
         "DeletePhoneNumberInstance": {
           "retry_codes_name": "non_idempotent",
           "retry_params_name": "default"
-        },
-        "GetProvisionedPhoneNumberInstance": {
-          "retry_codes_name": "non_idempotent",
-          "retry_params_name": "default"
         }
       }
     }

@@ -75,20 +75,6 @@ service PhoneNumberInstances {
       delete: "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
     };
   }
-
-  // @Private
-  // Gets the provisioned phone number instance based on the supplied phone number.
-  // The instance returned will have a lifecycle state of either ACTIVE or SUSPENDED.
-  // `parent` must be specified as `projects/-`.
-  // If no provisioned instance is found, throws NOT_FOUND.
-  //
-  // The caller must auth with an Enfonica token.
-  rpc GetProvisionedPhoneNumberInstance(GetProvisionedPhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
-    option (google.api.http) = {
-      post: "/v1beta1/{parent=projects/*}/phoneNumberInstances:getProvisioned"
-      body: "*"
-    };
-  }
 }
 
 // The PhoneNumberInstance resource.
@@ -235,14 +221,4 @@ message DeletePhoneNumberInstanceRequest {
   // The resource name of the phone number instance to be deleted.
   // Must be of the form `projects/*/phoneNumberInstances/*`.
   string name = 1;
-}
-
-// The GetProvisionedPhoneNumberInstance request message.
-message GetProvisionedPhoneNumberInstanceRequest {
-  // The parent to search under. This must be set as
-  // `projects/-`.
-  string parent = 1;
-
-  // The phone number of the instance to find, in +E164.
-  string phone_number = 2;
 }
