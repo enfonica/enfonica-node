@@ -1,25 +1,25 @@
 {
   "name": "@enfonica/messaging",
   "version": "0.1.0",
-  "description": "Messaging client for Node.js",
-  "repository": "googleapis/nodejs-messaging",
+  "description": "Enfonica Messaging SDK for Node.js",
+  "repository": "enfonica-node/nodejs-messaging",
   "license": "Apache-2.0",
-  "author": "Google LLC",
+  "author": "Enfonica",
   "main": "build/src/index.js",
   "files": [
     "build/src",
     "build/protos"
   ],
   "keywords": [
-    "google apis client",
-    "google api client",
-    "google apis",
-    "google api",
+    "enfonica apis client",
+    "enfonica api client",
+    "enfonica apis",
+    "enfonica api",
     "google",
-    "google cloud platform",
-    "google cloud",
+    "enfonica cloud telco",
+    "enfonica cloud",
     "cloud",
-    "google messaging",
+    "enfonica messaging",
     "@enfonica/messaging",
     "messages",
     "unsubscribers"
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "google-gax": "^2.8.0",
-    "enfonica-auth-library": "1.0.0"
+"enfonica-auth-library": "1.0.0"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.3",
@@ -59,12 +59,12 @@
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "3.3.12",
-    "semver": "^7.1.2",
-    "tmp": "^0.2.0",
-    "uglify-js": "^3.7.7",
-    "espree": "^7.0.0",
-    "escodegen": "^2.0.0",
-    "estraverse": "^5.1.0"
+"semver": "^7.1.2",
+"tmp": "^0.2.0",
+"uglify-js": "^3.7.7",
+"espree": "^7.0.0",
+"escodegen": "^2.0.0",
+"estraverse": "^5.1.0"
   },
   "engines": {
     "node": ">=10.0.0"

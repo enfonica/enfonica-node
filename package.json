@@ -5,7 +5,10 @@
   "license": "Apache-2.0",
   "scripts": {
     "generatelibs": "./generatelibs.sh",
-    "overridelibs": "./overrides.sh",
-    "build": "npm run generatelibs && npm run overridelibs"
+    "overridelibs": "sudo ./overrides.sh",
+    "build": "npm run generatelibs && npm run overridelibs",
+    "fix:messaging": "cd libs/nodejs-messaging && npm run fix",
+    "fix:numbering": "cd libs/nodejs-numbering && npm run fix",
+    "fix": "npm run fix:messaging && npm run fix:numbering"
   }
 }

@@ -22,4 +22,4 @@ const UnsubscribersClient = v1.UnsubscribersClient;
 export {v1, MessagesClient, UnsubscribersClient};
 export default {v1, MessagesClient, UnsubscribersClient};
 import * as protos from '../protos/protos';
-export {protos}
+export {protos};
