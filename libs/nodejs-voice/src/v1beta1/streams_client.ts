@@ -81,10 +81,12 @@ export class StreamsClient {
   constructor(opts?: any) {
     // Ensure that options include the service address and port.
     const staticMembers = this.constructor as typeof StreamsClient;
-    const servicePath = opts && opts.servicePath ?
-        opts.servicePath :
-        ((opts && opts.apiEndpoint) ? opts.apiEndpoint :
-                                      staticMembers.servicePath);
+    const servicePath =
+      opts && opts.servicePath
+        ? opts.servicePath
+        : opts && opts.apiEndpoint
+        ? opts.apiEndpoint
+        : staticMembers.servicePath;
     const port = opts && opts.port ? opts.port : staticMembers.port;
 
     if (!opts) {
@@ -92,7 +94,7 @@ export class StreamsClient {
     }
     opts.servicePath = opts.servicePath || servicePath;
     opts.port = opts.port || port;
-opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
+    opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
 
     // users can override the config from client side, like retry codes name.
     // The detailed structure of the clientConfig can be found here: https://github.com/googleapis/gax-nodejs/blob/master/src/gax.ts#L546
@@ -117,13 +119,10 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
     this._opts = opts;
 
     // Save the auth object to the client, for use by other methods.
-    this.auth = (this._gaxGrpc.auth as any);
+    this.auth = this._gaxGrpc.auth as any;
 
     // Determine the client header string.
-    const clientHeader = [
-      `gax/${this._gaxModule.version}`,
-      `gapic/${version}`,
-    ];
+    const clientHeader = [`gax/${this._gaxModule.version}`, `gapic/${version}`];
     if (typeof process !== 'undefined' && 'versions' in process) {
       clientHeader.push(`gl-node/${process.versions.node}`);
     } else {
@@ -139,12 +138,18 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
     // For Node.js, pass the path to JSON proto file.
     // For browsers, pass the JSON content.
 
-    const nodejsProtoPath = path.join(__dirname, '..', '..', 'protos', 'protos.json');
+    const nodejsProtoPath = path.join(
+      __dirname,
+      '..',
+      '..',
+      'protos',
+      'protos.json'
+    );
     this._protos = this._gaxGrpc.loadProto(
-      opts.fallback ?
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        require("../../protos/protos.json") :
-        nodejsProtoPath
+      opts.fallback
+        ? // eslint-disable-next-line @typescript-eslint/no-var-requires
+          require('../../protos/protos.json')
+        : nodejsProtoPath
     );
 
     // This API contains "path templates"; forward-slash-separated
@@ -165,13 +170,18 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
     // Some of the methods on this service provide streaming responses.
     // Provide descriptors for these.
     this.descriptors.stream = {
-      streamCall: new this._gaxModule.StreamDescriptor(gax.StreamType.BIDI_STREAMING)
+      streamCall: new this._gaxModule.StreamDescriptor(
+        gax.StreamType.BIDI_STREAMING
+      ),
     };
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-        'enfonica.voice.v1beta1.Streams', gapicConfig as gax.ClientConfig,
-        opts.clientConfig || {}, {'x-goog-api-client': clientHeader.join(' ')});
+      'enfonica.voice.v1beta1.Streams',
+      gapicConfig as gax.ClientConfig,
+      opts.clientConfig || {},
+      {'x-goog-api-client': clientHeader.join(' ')}
+    );
 
     // Set up a dictionary of "inner API calls"; the core implementation
     // of calling the API is handled in `google-gax`, with this code
@@ -199,16 +209,18 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
     // Put together the "service stub" for
     // enfonica.voice.v1beta1.Streams.
     this.streamsStub = this._gaxGrpc.createStub(
-        this._opts.fallback ?
-          (this._protos as protobuf.Root).lookupService('enfonica.voice.v1beta1.Streams') :
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this._opts.fallback
+        ? (this._protos as protobuf.Root).lookupService(
+            'enfonica.voice.v1beta1.Streams'
+          )
+        : // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (this._protos as any).enfonica.voice.v1beta1.Streams,
-        this._opts) as Promise<{[method: string]: Function}>;
+      this._opts
+    ) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const streamsStubMethods =
-        ['streamCall'];
+    const streamsStubMethods = ['streamCall'];
     for (const methodName of streamsStubMethods) {
       const callPromise = this.streamsStub.then(
         stub => (...args: Array<{}>) => {
@@ -218,13 +230,12 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
           const func = stub[methodName];
           return func.apply(stub, args);
         },
-        (err: Error|null|undefined) => () => {
+        (err: Error | null | undefined) => () => {
           throw err;
-        });
+        }
+      );
 
-      const descriptor =
-        this.descriptors.stream[methodName] ||
-        undefined;
+      const descriptor = this.descriptors.stream[methodName] || undefined;
       const apiCall = this._gaxModule.createApiCall(
         callPromise,
         this._defaults[methodName],
@@ -264,9 +275,7 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
    * in this service.
    */
   static get scopes() {
-    return [
-      'https://api.enfonica.com/auth/voice'
-    ];
+    return ['https://api.enfonica.com/auth/voice'];
   }
 
   getProjectId(): Promise<string>;
@@ -276,8 +285,9 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
    * @param {function(Error, string)} callback - the callback to
    *   be called with the current project Id.
    */
-  getProjectId(callback?: Callback<string, undefined, undefined>):
-      Promise<string>|void {
+  getProjectId(
+    callback?: Callback<string, undefined, undefined>
+  ): Promise<string> | void {
     if (callback) {
       this.auth.getProjectId(callback);
       return;
@@ -289,22 +299,20 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
   // -- Service calls --
   // -------------------
 
-/**
- * Operates a stream which can be bridged to by a call. This allows bi-directional
- * audio to be passed. This method is only available via the gRPC API (not REST).
- * If the stream is not connected to a call within 30 seconds of establishment,
- * this method will fail.
- *
- * @param {object} [options]
- *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
- * @returns {Stream}
- *   An object stream which is both readable and writable. It accepts objects
- *   representing [StreamCallRequest]{@link enfonica.voice.v1beta1.StreamCallRequest} for write() method, and
- *   will emit objects representing [StreamCallResponse]{@link enfonica.voice.v1beta1.StreamCallResponse} on 'data' event asynchronously.
- */
-  streamCall(
-      options?: gax.CallOptions):
-    gax.CancellableStream {
+  /**
+   * Operates a stream which can be bridged to by a call. This allows bi-directional
+   * audio to be passed. This method is only available via the gRPC API (not REST).
+   * If the stream is not connected to a call within 30 seconds of establishment,
+   * this method will fail.
+   *
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Stream}
+   *   An object stream which is both readable and writable. It accepts objects
+   *   representing [StreamCallRequest]{@link enfonica.voice.v1beta1.StreamCallRequest} for write() method, and
+   *   will emit objects representing [StreamCallResponse]{@link enfonica.voice.v1beta1.StreamCallResponse} on 'data' event asynchronously.
+   */
+  streamCall(options?: gax.CallOptions): gax.CancellableStream {
     this.initialize();
     return this.innerApiCalls.streamCall(options);
   }
@@ -320,7 +328,7 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
    * @param {string} call
    * @returns {string} Resource name string.
    */
-  callPath(project:string,call:string) {
+  callPath(project: string, call: string) {
     return this.pathTemplates.callPathTemplate.render({
       project: project,
       call: call,
@@ -357,7 +365,7 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
    * @param {string} recording
    * @returns {string} Resource name string.
    */
-  recordingPath(project:string,call:string,recording:string) {
+  recordingPath(project: string, call: string, recording: string) {
     return this.pathTemplates.recordingPathTemplate.render({
       project: project,
       call: call,
@@ -373,7 +381,8 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
    * @returns {string} A string representing the project.
    */
   matchProjectFromRecordingName(recordingName: string) {
-    return this.pathTemplates.recordingPathTemplate.match(recordingName).project;
+    return this.pathTemplates.recordingPathTemplate.match(recordingName)
+      .project;
   }
 
   /**
@@ -395,7 +404,8 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
    * @returns {string} A string representing the recording.
    */
   matchRecordingFromRecordingName(recordingName: string) {
-    return this.pathTemplates.recordingPathTemplate.match(recordingName).recording;
+    return this.pathTemplates.recordingPathTemplate.match(recordingName)
+      .recording;
   }
 
   /**
@@ -405,7 +415,7 @@ opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});
    * @param {string} streams
    * @returns {string} Resource name string.
    */
-  streamPath(project:string,streams:string) {
+  streamPath(project: string, streams: string) {
     return this.pathTemplates.streamPathTemplate.render({
       project: project,
       streams: streams,

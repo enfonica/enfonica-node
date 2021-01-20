@@ -23,4 +23,4 @@ const StreamsClient = v1beta1.StreamsClient;
 export {v1beta1, CallsClient, RecordingsClient, StreamsClient};
 export default {v1beta1, CallsClient, RecordingsClient, StreamsClient};
 import * as protos from '../protos/protos';
-export {protos}
+export {protos};
