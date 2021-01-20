@@ -268,7 +268,7 @@ export class PhoneNumbersClient {
    * in this service.
    */
   static get scopes() {
-    return [];
+    return ['https://api.enfonica.com/auth/numbering'];
   }
 
   getProjectId(): Promise<string>;

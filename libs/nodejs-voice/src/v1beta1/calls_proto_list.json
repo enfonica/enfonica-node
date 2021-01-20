@@ -1,0 +1,6 @@
+[
+  "../../protos/enfonica/voice/v1beta1/call_request.proto",
+  "../../protos/enfonica/voice/v1beta1/calls.proto",
+  "../../protos/enfonica/voice/v1beta1/recordings.proto",
+  "../../protos/enfonica/voice/v1beta1/streams.proto"
+]

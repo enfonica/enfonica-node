@@ -1,8 +1,8 @@
 {
-  "name": "@enfonica/numbering",
+  "name": "voice",
   "version": "0.1.0",
-  "description": "Enfonica Numbering SDK for Node.js",
-  "repository": "enfonica-node/nodejs-numbering",
+  "description": "Voice client for Node.js",
+  "repository": "enfonica-node/nodejs-voice",
   "license": "Apache-2.0",
   "author": "Enfonica",
   "main": "build/src/index.js",
@@ -19,10 +19,11 @@
     "enfonica cloud telco",
     "enfonica cloud",
     "cloud",
-    "enfonica numbering",
-    "@enfonica/numbering",
-    "phone number instances",
-    "phone numbers"
+    "enfonica voice",
+    "voice",
+    "calls",
+    "recordings",
+    "streams"
   ],
   "scripts": {
     "clean": "gts clean",
@@ -39,7 +40,7 @@
   },
   "dependencies": {
     "google-gax": "^2.8.0",
-"enfonica-auth-library": "1.0.0"
+    "enfonica-auth-library": "1.0.0"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.3",
@@ -59,12 +60,12 @@
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "3.3.12",
-"semver": "^7.1.2",
-"tmp": "^0.2.0",
-"uglify-js": "^3.7.7",
-"espree": "^7.0.0",
-"escodegen": "^2.0.0",
-"estraverse": "^5.1.0"
+    "semver": "^7.1.2",
+    "tmp": "^0.2.0",
+    "uglify-js": "^3.7.7",
+    "espree": "^7.0.0",
+    "escodegen": "^2.0.0",
+    "estraverse": "^5.1.0"
   },
   "engines": {
     "node": ">=10.0.0"

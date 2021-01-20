@@ -27,6 +27,8 @@ option csharp_namespace = "Enfonica.Numbering.V1Beta1";
 // Manages PhoneNumberInstances.
 service PhoneNumberInstances {
   option (google.api.default_host) = "numbering.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/numbering";
 
   // Creates a phone number instance.
   //

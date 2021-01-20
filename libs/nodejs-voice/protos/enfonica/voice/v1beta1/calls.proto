@@ -1,0 +1,121 @@
+// Copyright 2020 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.voice.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "google/type/money.proto";
+import "google/api/resource.proto";
+import "google/api/field_behavior.proto";
+import "google/api/client.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Voice.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/voice/v1beta1;voice";
+option java_multiple_files = true;
+option java_outer_classname = "CallsProto";
+option java_package = "com.enfonica.voice.v1beta1";
+option objc_class_prefix = "ENFON";
+
+// Manages Calls.
+service Calls {
+  option (google.api.default_host) = "voice.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/voice";
+
+  // Retrieves a Call identified by the supplied resource name.
+  //
+  // The caller must have `voice.calls.get` permission on the project.
+  rpc GetCall(GetCallRequest) returns (Call) {
+    option (google.api.http) = {
+      get: "/v1beta1/{name=projects/*/calls/*}"
+    };
+  }
+
+  // Lists the Calls of the specified project.
+  // List returns Calls sorted by create_time descending.
+  //
+  // The caller must have `voice.calls.list` permission on the project.
+  rpc ListCalls(ListCallsRequest) returns (ListCallsResponse) {
+    option (google.api.http) = {
+      get: "/v1beta1/{parent=projects/*}/calls"
+    };
+  }
+}
+
+// The Call resource. This represents a call. This is a stub message.
+message Call {
+  option (google.api.resource) = {
+    type: "voice.api.enfonica.com/Call"
+    pattern: "projects/{project}/calls/{call}"
+  };
+
+  // Resource name of the call. It must match the pattern `projects/*/calls/*`
+  string name = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// The GetCall request call.
+message GetCallRequest {
+  // The resource name of the Call to retrieve.
+  // Must be of the form `projects/*/calls/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/Call"
+    }
+  ];
+}
+
+// The ListCalls request call.
+message ListCallsRequest {
+  // The resource name of the parent of which to list calls.
+  // Must be of the form `projects/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "voice.api.enfonica.com/Call"
+    }
+  ];
+
+  // The maximum number of Calls to return in the response.
+  // Default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous call to `ListCalls`
+  // that indicates where this listing should continue from.
+  string page_token = 3;
+
+  // The timestamp (inclusive) from which to retrieve calls. The
+  // create_time of the Call is used.
+  google.protobuf.Timestamp start_time = 4;
+
+  // The timestamp (exclusive) until which to retrieve calls. The
+  // create_time of the Call is used.
+  google.protobuf.Timestamp end_time = 5;
+}
+
+// The ListCalls response call.
+message ListCallsResponse {
+  // A possibly paginated list of Calls that are direct descendants of
+  // the specified parent resource.
+  repeated Call calls = 1;
+
+  // A pagination token returned from a previous call to `ListCalls`
+  // that indicates from where listing should continue.
+  // Optional.
+  string next_page_token = 2;
+}

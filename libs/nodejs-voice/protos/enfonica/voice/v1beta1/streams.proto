@@ -1,0 +1,188 @@
+// Copyright 2020 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.voice.v1beta1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+import "google/rpc/status.proto";
+import "google/api/client.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Voice.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/voice/v1beta1;voice";
+option java_multiple_files = true;
+option java_outer_classname = "StreamsProto";
+option java_package = "com.enfonica.voice.v1beta1";
+option objc_class_prefix = "ENFON";
+option (google.api.resource_definition) = {
+  type: "voice.api.enfonica.com/Stream"
+  pattern: "projects/{project}/streams/{streams}"
+};
+
+// A stream is a two-way audio bridge with a call. You operate a stream with the
+// [StreamCall][enfonica.voice.v1beta1.Streams.StreamCall] method. You supply a
+// unique, user-generated stream resource name, and then bridge a call to the stream
+// using the Stream VoiceML action.
+service Streams {
+  option (google.api.default_host) = "voice.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/voice";
+
+  // Operates a stream which can be bridged to by a call. This allows bi-directional
+  // audio to be passed. This method is only available via the gRPC API (not REST).
+  // If the stream is not connected to a call within 30 seconds of establishment,
+  // this method will fail.
+  rpc StreamCall(stream StreamCallRequest) returns (stream StreamCallResponse) {
+  }
+}
+
+// The top-level message sent by the client to the
+// [StreamCall][enfonica.voice.v1beta1.Streams.StreamCall] method.
+//
+// The first message must contain
+// [setup][enfonica.voice.v1beta1.StreamCallRequest.setup] which sets the stream
+// resource name and the audio configuration of the stream. The stream resource name
+// should then be supplied to the VoiceML `<Stream>` action to connect a call to
+// the stream.
+message StreamCallRequest {
+  // The configuration of the stream. This must be specified in the first
+  // message in the request stream. It should not be specified in subsequent
+  // messages, however if it is, it will be ignored.
+  StreamSetup setup = 1;
+
+  // The input audio to play to the call. Input audio will be bufferred by
+  // the stream, unless [clear][enfonica.voice.v1beta1.InputAudio.clear] is true,
+  // in which case the buffer will be cleared and replaced with the specified
+  // audio. The size of the input buffer is limited to 1 minute. Audio specified
+  // beyond this limit will be truncated.
+  InputAudio input_audio = 2;
+
+  // Updates the request parameters of the subsequent VoiceML request once this
+  // stream has completed. This allows you to pass values to your VoiceML handler.
+  // Parameters specified in this message will be merged with any previous
+  // parameters that were specified.
+  UpdateRequestParameters update_request_parameters = 3;
+}
+
+// Setup message to configure the stream.
+message StreamSetup {
+  // The name of the stream.
+  // Format: `projects/<Project ID>/streams/<Stream ID>`.
+  // It's up to the API caller to choose an appropriate `Stream ID`. It must
+  // be unique and the length of `Stream ID` must not exceed 36 characters.
+  string stream = 1 [(google.api.resource_reference) = {
+    type: "voice.api.enfonica.com/Stream"
+  }];
+
+  // The audio configuration of the stream. This will be used for both input
+  // and output audio.
+  AudioConfig audio_config = 2;
+}
+
+// Message to update the request parameters in the subsequent VoiceML request
+// once the stream has completed.
+message UpdateRequestParameters {
+  // The request parameters to merge.
+  // The maximum aggregate size of all persisted keys and values is 50 KiB.
+  map<string, string> parameters = 1;
+}
+
+// The top-level message returned from the
+// [StreamCall][enfonica.voice.v1beta1.Streams.StreamCall] method.
+//
+// Multiple response messages can be returned. The first response message
+// will always have [call_connected][enfonica.voice.v1beta1.StreamCallResponse.call_connected]
+// set, indicating that the stream has been connected to a call.
+//
+// If the call is disconnected, the response stream will be closed.
+message StreamCallResponse {
+  // The event which has occurred.
+  oneof event {
+    // If set, the call has been connected to the stream.
+    // This will always be the first event in the response stream.
+    CallConnectedEvent call_connected = 1;
+
+    // The audio received from the call. The stream will buffer the audio
+    // and send it in chunks. There is no specific size defined for each
+    // chunk, but it should be roughly in the range of 1000 to 2000 bytes.
+    OutputAudioEvent output_audio = 2;
+
+    // Indicates that the input audio specified to be played to the call
+    // has completed and the stream's buffer is empty.
+    InputAudioBufferEmptyEvent input_audio_buffer_empty = 3;
+  }
+}
+
+// Event indicating a call has been connected to the stream.
+message CallConnectedEvent {
+  // The resource name of the call that has been connected to the stream.
+  string call = 1 [(google.api.resource_reference) = {
+                    type: "voice.api.enfonica.com/Call"
+                  }];
+}
+
+// Event containing audio from the stream.
+message OutputAudioEvent {
+  // The audio content encoded as per the audio configuration requested during the
+  // initial stream setup.
+  bytes audio = 1;
+}
+
+// Event indicating that the input audio has completed playing to the call.
+message InputAudioBufferEmptyEvent {
+}
+
+// Represents audio content supplied by the API caller and played to the call.
+message InputAudio {
+  // The configuration of the audio content.
+  // * If config is omitted, the audio configuration from the initial stream setup
+  //   will be used.
+  // * If config is specified, it will be used, and if different to the audio
+  //   configuration from the initial stream setup, the audio content will be transcoded.
+  AudioConfig config = 1;
+
+  // The audio content encoded as per the audio configuration. The maximum length of
+  // audio specified in one message is 960,000 bytes.
+  bytes audio = 2;
+
+  // If true, clears all previously bufferred audio.
+  bool clear = 3;
+}
+
+// Description of the format of audio content.
+message AudioConfig {
+  // Required. Audio encoding of the audio content.
+  AudioEncoding audio_encoding = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // Sample rate (in Hertz) of the audio content.
+  int32 sample_rate_hertz = 2;
+}
+
+// Audio encoding of audio content.
+enum AudioEncoding {
+  // Not specified.
+  AUDIO_ENCODING_UNSPECIFIED = 0;
+
+  // 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.
+  // Only supports 8000Hz sample rate.
+  AUDIO_ENCODING_MULAW = 1;
+
+  // 8-bit samples that compand 14-bit audio samples using G.711 PCMA/a-law.
+  // Only supports 8000Hz sample rate.
+  AUDIO_ENCODING_ALAW = 2;
+}

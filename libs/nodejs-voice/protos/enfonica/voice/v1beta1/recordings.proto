@@ -1,0 +1,289 @@
+// Copyright 2020 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.voice.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/api/annotations.proto";
+import "google/api/resource.proto";
+import "google/api/field_behavior.proto";
+import "google/api/client.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Voice.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/voice/v1beta1;voice";
+option java_multiple_files = true;
+option java_outer_classname = "RecordingsProto";
+option java_package = "com.enfonica.voice.v1beta1";
+option objc_class_prefix = "ENFON";
+
+// Manages Recordings.
+service Recordings {
+  option (google.api.default_host) = "voice.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/voice";
+
+  // Retrieves a Recording identified by the supplied resource name.
+  //
+  // The caller must have `voice.recordings.get` permission on the project.
+  rpc GetRecording(GetRecordingRequest) returns (Recording) {
+    option (google.api.http) = {
+      get: "/v1beta1/{name=projects/*/calls/*/recordings/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+
+  // Lists the Recordings of the specified project.
+  // List returns Recordings sorted by create_time descending.
+  //
+  // The caller must have `voice.recordings.list` permission on the project.
+  rpc ListRecordings(ListRecordingsRequest) returns (ListRecordingsResponse) {
+    option (google.api.http) = {
+      get: "/v1beta1/{parent=projects/*/calls/*}/recordings"
+      additional_bindings {
+        get: "/v1beta1/{parent=projects/*}/recordings"
+      }
+    };
+    option (google.api.method_signature) = "parent";
+  }
+
+  // Deletes a recording.
+  //
+  // The caller must have `voice.recordings.delete` permission on the project.
+  rpc DeleteRecording(DeleteRecordingRequest) returns (Recording) {
+    option (google.api.http) = {
+      delete: "/v1beta1/{name=projects/*/calls/*/recordings/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+}
+
+// The Recording resource. This represents a recording, which can either be a
+// recording of a small section of the call (eg recorded using the <Record> action),
+// or a recording of an entire call.
+message Recording {
+  option (google.api.resource) = {
+    type: "voice.api.enfonica.com/Recording"
+    pattern: "projects/{project}/calls/{call}/recordings/{recording}"
+  };
+
+  // The source of the recording.
+  // It is anticipated that additional values will be added in the future.
+  enum Source {
+    // Unspecified recording source.
+    SOURCE_UNSPECIFIED = 0;
+
+    // The recording was created by the `<Record>` action.
+    RECORD_ACTION = 1;
+  }
+
+  // The state of the recording.
+  enum State {
+    // Unspecified state.
+    STATE_UNSPECIFIED = 0;
+
+    // The audio is currently being recorded, or recording has finished and the audio
+    // is pending processing.
+    PENDING = 1;
+
+    // The audio has successfully been recorded.
+    SUCCEEDED = 2;
+
+    // The audio that was recorded was completely silent.
+    EMPTY = 3;
+
+    // The audio failed to be recorded due to a system error. For more information, see the
+    // value of error_code.
+    FAILED = 4;
+  }
+
+  // Post processing options.
+  enum PostProcessing {
+    // Unspecified post processing.
+    POST_PROCESSING_UNSPECIFIED = 0;
+
+    // Trim silence from the start and end of the audio.
+    TRIM_SILENCE = 1;
+  }
+
+  // Error code definitions.
+  enum ErrorCode {
+    // Unspecified error code.
+    ERROR_CODE_UNSPECIFIED = 0;
+
+    // A timeout occurred, where a pending recording did not complete within the expected
+    // timeframe.
+    TIMEOUT = 1;
+
+    // An internal error occurred while processing the recording.
+    INTERNAL_ERROR = 2;
+  }
+
+  // Resource name of the recording. It must match the pattern `projects/*/calls/*/recordings/*`.
+  // The call will always refer to the parent leg of a two-leg call.
+  string name = 1;
+
+  // The state of the recording.
+  State state = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The source of the recording. This lets you know what triggered the recording to begin.
+  // This cannot be set by users.
+  Source source = 4;
+
+  // The duration of the recording, after any post processing.
+  // This is only set when the state is SUCCEEDED.
+  google.protobuf.Duration duration = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The number of channels that have been recorded.
+  int32 channel_count = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The post processing that should be applied to the recording.
+  repeated PostProcessing post_processing = 7;
+
+  // When state is FAILED, an error code describing the type of error that occurred.
+  ErrorCode error_code = 8 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The audio that was recorded in various formats and encodings. For non-empty, successful
+  // recordings, there should always be an `audio/x-wav` and `audio/mpeg` recording.
+  repeated RecordingAudio audio = 9 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The start time of the recording. This is when recording on the call started. Only
+  // set when state is SUCCEEDED.
+  google.protobuf.Timestamp start_time = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The creation time of the recording. This is the time that the recording resource
+  // was created. This is usually immediately before `start_time`, but can be afterwards
+  // if processing was delayed.
+  // Output only.
+  google.protobuf.Timestamp create_time = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The URI to send the recording ready webhook to when the state transitions to a terminal
+  // state (SUCCEEDED, EMPTY, FAILED). Must be an absolute URI.
+  string ready_uri = 12;
+}
+
+// Audio that is associated with a recording.
+message RecordingAudio {
+  // The audio encoding used.
+  // It is anticipated that additional values will be added in the future.
+  enum AudioEncoding {
+    // Unspecified audio encoding.
+    AUDIO_ENCODING_UNSPECIFIED = 0;
+
+    // PCM 16 bit per sample.
+    AUDIO_ENCODING_PCM_16BIT = 1;
+
+    // MP3 compressed.
+    AUDIO_ENCODING_MP3 = 2;
+  }
+
+  // The MIME type of the audio file. This will likely be "audio/x-wav" or "audio/mpeg".
+  string mime_type = 1;
+
+  // The encoding of the audio.
+  AudioEncoding encoding = 2;
+
+  // The sample rate of the audio. This will likely be 8000.
+  int32 sample_rate = 3;
+
+  // The size of the audio in bytes.
+  int32 size_bytes = 4;
+
+  // An ephemeral URI that can be used to download the recording. The URI is valid for 60 minutes.
+  // Note that this field is only included in the FULL view.
+  string uri = 5;
+}
+
+// The GetRecording request recording.
+message GetRecordingRequest {
+  // The resource name of the Recording to retrieve.
+  // Must be of the form `projects/*/calls/*/recordings/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/Recording"
+    }
+  ];
+
+  // Configuration of partial responses.
+  // Defaults to FULL.
+  RecordingView view = 2;
+}
+
+// The ListRecordings request recording.
+message ListRecordingsRequest {
+  // The resource name of the parent of which to list recordings.
+  // May be of the form `projects/*/calls/*` to list the recordings of that
+  // specific call, or `projects/*` to list recordings across the entire project,
+  // which maps to `projects/*/calls/-`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "voice.api.enfonica.com/Recording"
+    }
+  ];
+
+  // The maximum number of Recordings to return in the response.
+  // Default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous recording to `ListRecordings`
+  // that indicates where this listing should continue from.
+  string page_token = 3;
+
+  // Configuration of partial responses.
+  // Defaults to BASIC.
+  RecordingView view = 4;
+}
+
+// The ListRecordings response recording.
+message ListRecordingsResponse {
+  // A possibly paginated list of Recordings that are direct descendants of
+  // the specified parent resource.
+  repeated Recording recordings = 1;
+
+  // A pagination token returned from a previous recording to `ListRecordings`
+  // that indicates from where listing should continue.
+  string next_page_token = 2;
+}
+
+// The DeleteRecording request message.
+message DeleteRecordingRequest {
+  // The resource name of the Recording to be deleted.
+  // Must be of the form `projects/*/calls/*/recording/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/Recording"
+    }
+  ];
+}
+
+// Configuration of partial responses for the Recording resource.
+enum RecordingView {
+  // The default / unset value.
+  // The API will default to BASIC for ListRecordings and FULL for GetRecording.
+  RECORDING_VIEW_UNSPECIFIED = 0;
+
+  // Includes all fields except [RecordingAudio.uri][enfonica.voice.v1beta1.RecordingAudio.uri].
+  // This is the default for ListRecordings.
+  BASIC = 1;
+
+  // Includes all fields.
+  // This is the default for GetRecording.
+  FULL = 2;
+}

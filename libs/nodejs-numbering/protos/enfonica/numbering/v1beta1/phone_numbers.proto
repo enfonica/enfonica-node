@@ -26,6 +26,9 @@ option csharp_namespace = "Enfonica.Numbering.V1Beta1";
 // Manages PhoneNumbers.
 service PhoneNumbers {
   option (google.api.default_host) = "numbering.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/numbering";
+
   // Searches available phone numbers with the specified filters.
   //
   // Search returns phone numbers sorted by create_time descending.
