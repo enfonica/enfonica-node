@@ -28,31 +28,8 @@ const RecordingsClient = new voice.RecordingsClient({
 
 // Recordings Client Example
 
-// RecordingsClient.listRecordings({ parent: 'projects/first' }).then(res => {
-//   console.log(res);
-// }).catch(err => {
-//   console.log(err);
-// })
-
-// client
-//   .listPhoneNumberInstances({ parent: 'projects/first' })
-//   .then(res => {
-//     console.log(res);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-// client2.createMessage({
-//   parent: '', 
-//   message: {
-//     to: '', 
-//     from: '', 
-//     body: ''
-//   }
-// })
-//   .then(res => {
-//     console.log(res);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+RecordingsClient.listRecordings({ parent: 'projects/first' }).then(res => {
+  console.log(res);
+}).catch(err => {
+  console.log(err);
+})
