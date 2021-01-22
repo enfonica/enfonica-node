@@ -54,6 +54,6 @@ find $API_TMP_DIR -type f -name '*_client.ts' -exec sh -c 'sed -i "s/this.auth =
 # Copy the temp readme files and remove the temp directory
 sudo cp ./temp/messaging/README.md ./libs/nodejs-messaging/
 sudo cp ./temp/numbering/README.md ./libs/nodejs-numbering/
-sudo cp ./temp/numbering/README.md ./libs/nodejs-voice/
+sudo cp ./temp/voice/README.md ./libs/nodejs-voice/
 
 rm -rf ./temp
