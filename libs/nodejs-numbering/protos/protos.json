@@ -11,7 +11,8 @@
               "nested": {
                 "PhoneNumberInstances": {
                   "options": {
-                    "(google.api.default_host)": "numbering.api.enfonica.com"
+                    "(google.api.default_host)": "numbering.api.enfonica.com",
+                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/numbering"
                   },
                   "methods": {
                     "CreatePhoneNumberInstance": {
@@ -226,7 +227,8 @@
                 },
                 "PhoneNumbers": {
                   "options": {
-                    "(google.api.default_host)": "numbering.api.enfonica.com"
+                    "(google.api.default_host)": "numbering.api.enfonica.com",
+                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/numbering"
                   },
                   "methods": {
                     "SearchPhoneNumbers": {

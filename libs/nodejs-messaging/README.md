@@ -1,19 +1,25 @@
 # Enfonica Messaging Client Library for Node.js
 
-Node.js idiomatic client library for [Enfonica](https://enfonica.com/) services.
+Node.js idiomatic client library for [Enfonica](https://enfonica.com/) services. This library uses version 'v1' of the Enfonica Messaging API. View the docs for more details: [Enfonica Docs](https://enfonica.com/docs/)
 
 ## Supported version
 
 The library supports the version 10 and above of Node.js.
 
+### Installing the client library
+
+```bash
+npm install @enfonica/messaging
+```
+
 ## Authentication
 
 Define the location of your service account key file when creating an instance of the library. For example:
 
-```
-const messaging = require('./libs/nodejs-messaging/build/src');
+```js
+import messaging from '@enfonica/messaging';
 const client = new messaging.MessagesClient({
-  keyFile: './1608242628700.json',
+  keyFile: './PATH/TO/KEYFILE.json'
 });
 ```
 
@@ -21,11 +27,11 @@ You can obtain a service account key file from the [Enfonica Console](https://co
 
 ## Example
 
-```cs
+```js
 // create client
-const messaging = require('.');
+import messaging from '@enfonica/messaging';
 const client = new messaging.MessagesClient({
-  keyFile: './1608242628700.json',
+  keyFile: './PATH/TO/KEYFILE.json'
 });
 
 // send an SMS

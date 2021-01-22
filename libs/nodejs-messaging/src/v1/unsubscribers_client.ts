@@ -17,7 +17,7 @@
 // ** All changes to this file may be overwritten. **
 
 import * as gax from 'google-gax';
-import * as localAuth from 'enfonica-auth-library';
+import * as localAuth from '@enfonica/auth-library';
 import {
   Callback,
   CallOptions,

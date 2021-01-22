@@ -1,19 +1,25 @@
-# Enfonica Voice Client Library for Node.js
+# Enfonica Numbering Client Library for Node.js
 
-Node.js idiomatic client library for [Enfonica](https://enfonica.com/) services.
+Node.js idiomatic client library for [Enfonica](https://enfonica.com/) services. This library uses version 'v1beta1' of the Enfonica Voice API. View the docs for more details: [Enfonica Docs](https://enfonica.com/docs/)
 
 ## Supported version
 
 The library supports the version 10 and above of Node.js.
 
+### Installing the client library
+
+```bash
+npm install @enfonica/voice
+```
+
 ## Authentication
 
 Define the location of your service account key file when creating an instance of the library. For example:
 
-```
-const voice = require('.');
+```js
+import voice from '@enfonica/voice';
 const client = new voice.RecordingsClient({
-  keyFile: './1608242628700.json',
+  keyFile: keyFile: './PATH/TO/KEYFILE.json'
 });
 ```
 
@@ -21,14 +27,14 @@ You can obtain a service account key file from the [Enfonica Console](https://co
 
 ## Example
 
-```cs
+```js
 // create client
-const voice = require('.');
+import voice from '@enfonica/voice';
 const client = new voice.RecordingsClient({
-  keyFile: './1608242628700.json',
+  keyFile: keyFile: './PATH/TO/KEYFILE.json'
 });
 
-// send an SMS
+// List recordings
 client.listRecordings({
     parent: 'projects/my-example-project'
 }).then(res => {

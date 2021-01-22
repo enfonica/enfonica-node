@@ -16,7 +16,7 @@
 
 # Override the package.json fields TODO: Make this dynamic
 find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i s=\"messaging=\"@enfonica/messaging=g "$1"' -- {} \;
-find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i "s/\"google-gax\": \"^2.8.0\"/\"google-gax\": \"^2.8.0\",\n\"enfonica-auth-library\": \"1.0.0\"/" "$1"' -- {} \;
+find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i "s/\"google-gax\": \"^2.8.0\"/\"google-gax\": \"^2.8.0\",\n\"@enfonica\/auth-library\": \"1.0.0-alpha.2\"/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i "s/\"webpack-cli\": \"^3.3.12\"/\"webpack-cli\": \"3.3.12\",\n\"semver\": \"^7.1.2\",\n\"tmp\": \"^0.2.0\",\n\"uglify-js\": \"^3.7.7\",\n\"espree\": \"^7.0.0\",\n\"escodegen\": \"^2.0.0\",\n\"estraverse\": \"^5.1.0\"/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i "s/Messaging client for Node.js/Enfonica Messaging SDK for Node.js/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i "s/googleapis/enfonica-node/" "$1"' -- {} \;
@@ -24,7 +24,7 @@ find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec
 find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i "s/google /enfonica /" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i "s/platform/telco/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i s=\"numbering=\"@enfonica/numbering=g "$1"' -- {} \;
-find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/\"google-gax\": \"^2.8.0\"/\"google-gax\": \"^2.8.0\",\n\"enfonica-auth-library\": \"1.0.0\"/" "$1"' -- {} \;
+find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/\"google-gax\": \"^2.8.0\"/\"google-gax\": \"^2.8.0\",\n\"@enfonica\/auth-library\": \"1.0.0-alpha.2\"/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/\"webpack-cli\": \"^3.3.12\"/\"webpack-cli\": \"3.3.12\",\n\"semver\": \"^7.1.2\",\n\"tmp\": \"^0.2.0\",\n\"uglify-js\": \"^3.7.7\",\n\"espree\": \"^7.0.0\",\n\"escodegen\": \"^2.0.0\",\n\"estraverse\": \"^5.1.0\"/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/Numbering client for Node.js/Enfonica Numbering SDK for Node.js/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/googleapis/enfonica-node/" "$1"' -- {} \;
@@ -32,17 +32,20 @@ find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/google /enfonica /" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/platform/telco/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i s=\"numbering=\"@enfonica/numbering=g "$1"' -- {} \;
-find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/\"google-gax\": \"^2.8.0\"/\"google-gax\": \"^2.8.0\",\n\"enfonica-auth-library\": \"1.0.0\"/" "$1"' -- {} \;
+find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/\"google-gax\": \"^2.8.0\"/\"google-gax\": \"^2.8.0\",\n\"@enfonica\/auth-library\": \"1.0.0-alpha.2\"/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/\"webpack-cli\": \"^3.3.12\"/\"webpack-cli\": \"3.3.12\",\n\"semver\": \"^7.1.2\",\n\"tmp\": \"^0.2.0\",\n\"uglify-js\": \"^3.7.7\",\n\"espree\": \"^7.0.0\",\n\"escodegen\": \"^2.0.0\",\n\"estraverse\": \"^5.1.0\"/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/Numbering client for Node.js/Enfonica Numbering SDK for Node.js/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/googleapis/enfonica-node/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/Google LLC/Enfonica/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/google /enfonica /" "$1"' -- {} \;
 find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/platform/telco/" "$1"' -- {} \;
+find $API_TMP_DIR -type f -samefile './libs/nodejs-messaging/package.json' -exec sh -c 'sed -i "s/0.1.0/1.0.0-alpha.1/" "$1"' -- {} \;
+find $API_TMP_DIR -type f -samefile './libs/nodejs-numbering/package.json' -exec sh -c 'sed -i "s/0.1.0/1.0.0-alpha.1/" "$1"' -- {} \;
+find $API_TMP_DIR -type f -samefile './libs/nodejs-voice/package.json' -exec sh -c 'sed -i "s/0.1.0/1.0.0-alpha.1/" "$1"' -- {} \;
 
 # Override the client files where neccessary
 find $API_TMP_DIR -type f -name '*_client.ts' -exec sh -c 'sed -i "s/Google LLC/Enfonica Pty Ltd/" "$1"' -- {} \;
-find $API_TMP_DIR -type f -name '*_client.ts' -exec sh -c 'sed -i "/as gax from/ a\import * as localAuth from '\''enfonica-auth-library'\'';" "$1"' -- {} \;
+find $API_TMP_DIR -type f -name '*_client.ts' -exec sh -c 'sed -i "/as gax from/ a\import * as localAuth from '\''@enfonica\/auth-library'\'';" "$1"' -- {} \;
 find $API_TMP_DIR -type f -name '*_client.ts' -exec sh -c 'sed -i "s/constructor(opts?: ClientOptions) {/constructor(opts?: any) {/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -name '*_client.ts' -exec sh -c 'sed -i "s/auth: gax.GoogleAuth;/auth: any;/" "$1"' -- {} \;
 find $API_TMP_DIR -type f -name '*_client.ts' -exec sh -c 'sed -i "/opts.port = opts.port || port;/ a\opts.auth = new localAuth.GoogleAuth({keyFilename: opts.keyFile});" "$1"' -- {} \;
