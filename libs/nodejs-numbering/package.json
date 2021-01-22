@@ -2,7 +2,7 @@
   "name": "@enfonica/numbering",
   "version": "1.0.0-alpha.1",
   "description": "Enfonica Numbering SDK for Node.js",
-  "repository": "enfonica-node/nodejs-numbering",
+  "repository": "enfonica-node/libs/nodejs-numbering",
   "license": "Apache-2.0",
   "author": "Enfonica",
   "main": "build/src/index.js",
