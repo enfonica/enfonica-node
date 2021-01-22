@@ -1,7 +1,7 @@
 {
-  "name": "voice",
+  "name": "@enfonica/voice",
   "version": "1.0.0-alpha.1",
-  "description": "Voice client for Node.js",
+  "description": "Enfonica Voice SDK for Node.js",
   "repository": "enfonica-node/libs/nodejs-voice",
   "license": "Apache-2.0",
   "author": "Enfonica",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "google-gax": "^2.8.0",
-"@enfonica/auth-library": "1.0.0-alpha.2"
+    "@enfonica/auth-library": "1.0.0-alpha.2"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.3",
@@ -60,12 +60,12 @@
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "3.3.12",
-"semver": "^7.1.2",
-"tmp": "^0.2.0",
-"uglify-js": "^3.7.7",
-"espree": "^7.0.0",
-"escodegen": "^2.0.0",
-"estraverse": "^5.1.0"
+    "semver": "^7.1.2",
+    "tmp": "^0.2.0",
+    "uglify-js": "^3.7.7",
+    "espree": "^7.0.0",
+    "escodegen": "^2.0.0",
+    "estraverse": "^5.1.0"
   },
   "engines": {
     "node": ">=10.0.0"

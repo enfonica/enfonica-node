@@ -40,13 +40,17 @@
                       "requestType": "GetCallRequest",
                       "responseType": "Call",
                       "options": {
-                        "(google.api.http).get": "/v1beta1/{name=projects/*/calls/*}"
+                        "(google.api.http).get": "/v1beta1/{name=projects/*/calls/*}",
+                        "(google.api.method_signature)": "name"
                       },
                       "parsedOptions": [
                         {
                           "(google.api.http)": {
                             "get": "/v1beta1/{name=projects/*/calls/*}"
                           }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
                         }
                       ]
                     },
@@ -54,13 +58,17 @@
                       "requestType": "ListCallsRequest",
                       "responseType": "ListCallsResponse",
                       "options": {
-                        "(google.api.http).get": "/v1beta1/{parent=projects/*}/calls"
+                        "(google.api.http).get": "/v1beta1/{parent=projects/*}/calls",
+                        "(google.api.method_signature)": "parent"
                       },
                       "parsedOptions": [
                         {
                           "(google.api.http)": {
                             "get": "/v1beta1/{parent=projects/*}/calls"
                           }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent"
                         }
                       ]
                     }
@@ -74,10 +82,7 @@
                   "fields": {
                     "name": {
                       "type": "string",
-                      "id": 1,
-                      "options": {
-                        "(google.api.field_behavior)": "OUTPUT_ONLY"
-                      }
+                      "id": 1
                     }
                   }
                 },

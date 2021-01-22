@@ -28,7 +28,7 @@
     var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
     
     // Exported root namespace
-    var $root = $protobuf.roots.voice_protos || ($protobuf.roots.voice_protos = {});
+    var $root = $protobuf.roots._enfonica_voice_protos || ($protobuf.roots._enfonica_voice_protos = {});
     
     $root.enfonica = (function() {
     
