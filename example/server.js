@@ -28,8 +28,6 @@ const RecordingsClient = new voice.RecordingsClient({
 
 // Recordings Client Example
 
-MessagesClient.getMessage
-
 RecordingsClient.listRecordings({ parent: 'projects/first' }).then(res => {
   console.log(res);
 }).catch(err => {
