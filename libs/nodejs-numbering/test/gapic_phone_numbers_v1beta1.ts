@@ -451,4 +451,101 @@ describe('v1beta1.PhoneNumbersClient', () => {
       );
     });
   });
+
+  describe('Path templates', () => {
+    describe('phoneNumber', () => {
+      const fakePath = '/rendered/path/phoneNumber';
+      const expectedParameters = {
+        phone_number: 'phoneNumberValue',
+      };
+      const client = new phonenumbersModule.v1beta1.PhoneNumbersClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.phoneNumberPathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.phoneNumberPathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('phoneNumberPath', () => {
+        const result = client.phoneNumberPath('phoneNumberValue');
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.phoneNumberPathTemplate.render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchPhoneNumberFromPhoneNumberName', () => {
+        const result = client.matchPhoneNumberFromPhoneNumberName(fakePath);
+        assert.strictEqual(result, 'phoneNumberValue');
+        assert(
+          (client.pathTemplates.phoneNumberPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+
+    describe('phoneNumberInstance', () => {
+      const fakePath = '/rendered/path/phoneNumberInstance';
+      const expectedParameters = {
+        project: 'projectValue',
+        phone_number_instance: 'phoneNumberInstanceValue',
+      };
+      const client = new phonenumbersModule.v1beta1.PhoneNumbersClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.phoneNumberInstancePathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.phoneNumberInstancePathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('phoneNumberInstancePath', () => {
+        const result = client.phoneNumberInstancePath(
+          'projectValue',
+          'phoneNumberInstanceValue'
+        );
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.phoneNumberInstancePathTemplate
+            .render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchProjectFromPhoneNumberInstanceName', () => {
+        const result = client.matchProjectFromPhoneNumberInstanceName(fakePath);
+        assert.strictEqual(result, 'projectValue');
+        assert(
+          (client.pathTemplates.phoneNumberInstancePathTemplate
+            .match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchPhoneNumberInstanceFromPhoneNumberInstanceName', () => {
+        const result = client.matchPhoneNumberInstanceFromPhoneNumberInstanceName(
+          fakePath
+        );
+        assert.strictEqual(result, 'phoneNumberInstanceValue');
+        assert(
+          (client.pathTemplates.phoneNumberInstancePathTemplate
+            .match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+  });
 });

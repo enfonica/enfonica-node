@@ -940,4 +940,107 @@ describe('v1.UnsubscribersClient', () => {
       );
     });
   });
+
+  describe('Path templates', () => {
+    describe('message', () => {
+      const fakePath = '/rendered/path/message';
+      const expectedParameters = {
+        project: 'projectValue',
+        message: 'messageValue',
+      };
+      const client = new unsubscribersModule.v1.UnsubscribersClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.messagePathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.messagePathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('messagePath', () => {
+        const result = client.messagePath('projectValue', 'messageValue');
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.messagePathTemplate.render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchProjectFromMessageName', () => {
+        const result = client.matchProjectFromMessageName(fakePath);
+        assert.strictEqual(result, 'projectValue');
+        assert(
+          (client.pathTemplates.messagePathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchMessageFromMessageName', () => {
+        const result = client.matchMessageFromMessageName(fakePath);
+        assert.strictEqual(result, 'messageValue');
+        assert(
+          (client.pathTemplates.messagePathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+
+    describe('unsubscriber', () => {
+      const fakePath = '/rendered/path/unsubscriber';
+      const expectedParameters = {
+        project: 'projectValue',
+        unsubscriber: 'unsubscriberValue',
+      };
+      const client = new unsubscribersModule.v1.UnsubscribersClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.unsubscriberPathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.unsubscriberPathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('unsubscriberPath', () => {
+        const result = client.unsubscriberPath(
+          'projectValue',
+          'unsubscriberValue'
+        );
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.unsubscriberPathTemplate.render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchProjectFromUnsubscriberName', () => {
+        const result = client.matchProjectFromUnsubscriberName(fakePath);
+        assert.strictEqual(result, 'projectValue');
+        assert(
+          (client.pathTemplates.unsubscriberPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchUnsubscriberFromUnsubscriberName', () => {
+        const result = client.matchUnsubscriberFromUnsubscriberName(fakePath);
+        assert.strictEqual(result, 'unsubscriberValue');
+        assert(
+          (client.pathTemplates.unsubscriberPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+  });
 });

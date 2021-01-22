@@ -20,9 +20,17 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
 import "google/api/annotations.proto";
 import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
 import "enfonica/numbering/v1beta1/phone_numbers.proto";
 
+option cc_enable_arenas = true;
 option csharp_namespace = "Enfonica.Numbering.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/numbering/v1beta1;numbering";
+option java_multiple_files = true;
+option java_outer_classname = "PhoneNumberInstancesProto";
+option java_package = "com.enfonica.numbering.v1beta1";
+option objc_class_prefix = "ENFON";
 
 // Manages PhoneNumberInstances.
 service PhoneNumberInstances {
@@ -38,6 +46,7 @@ service PhoneNumberInstances {
       post: "/v1beta1/{parent=projects/*}/phoneNumberInstances"
       body: "phone_number_instance"
     };
+    option (google.api.method_signature) = "parent,phone_number_instance";
   }
 
   // Retrieves a phone number instance identified by the supplied resource name.
@@ -47,6 +56,7 @@ service PhoneNumberInstances {
     option (google.api.http) = {
       get: "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
     };
+    option (google.api.method_signature) = "name";
   }
 
   // Lists all PhoneNumberInstances.
@@ -57,16 +67,22 @@ service PhoneNumberInstances {
     option (google.api.http) = {
       get: "/v1beta1/{parent=projects/*}/phoneNumberInstances"
     };
+    option (google.api.method_signature) = "parent";
   }
 
   // Updates a phone number instance.
   //
   // The caller must have `numbering.phoneNumberInstances.update` permission on the project.
+  // (-- api-linter: core::0134::http-uri-name=disabled
+  //     aip.dev/not-precedent: Update has `name` in the request message in this beta. --)
   rpc UpdatePhoneNumberInstance(UpdatePhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
     option (google.api.http) = {
       patch: "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
       body: "phone_number_instance"
     };
+    // (-- api-linter: core::0134::method-signature=disabled
+    //     aip.dev/not-precedent: Update has `name` in the request message in this beta. --)
+    option (google.api.method_signature) = "name,phone_number_instance,update_mask";
   }
 
   // Deletes a phone number instance.
@@ -76,15 +92,21 @@ service PhoneNumberInstances {
     option (google.api.http) = {
       delete: "/v1beta1/{name=projects/*/phoneNumberInstances/*}"
     };
+    option (google.api.method_signature) = "name";
   }
 }
 
 // The PhoneNumberInstance resource.
 message PhoneNumberInstance {
+  option (google.api.resource) = {
+    type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    pattern: "projects/{project}/phoneNumberInstances/{phone_number_instance}"
+  };
+
   // Lifecycle states of phone number instances.
   enum LifecycleState {
     // Unspecified lifecycle state.
-    LIFECYCLE_STATE_UNKNOWN = 0;
+    LIFECYCLE_STATE_UNSPECIFIED = 0;
 
     // The phone number instance is active and can be used.
     ACTIVE = 1;
@@ -98,7 +120,6 @@ message PhoneNumberInstance {
 
   // Resource name of the phone number instance. It must match the pattern
   // `projects/*/phoneNumberInstances/*`
-  // Output only.
   string name = 1;
 
   // The phone number associated with the instance.
@@ -106,7 +127,7 @@ message PhoneNumberInstance {
   PhoneNumber phone_number = 2;
 
   // The display name of the phone number for use in the UI.
-  // Optional. Max length 100 characters.
+  // Max length 100 characters.
   string display_name = 3;
 
   // The labels associated with the phone number.
@@ -137,59 +158,71 @@ message PhoneNumberInstance {
   // Maximum 5 URIs.
   repeated string incoming_call_handler_uris = 6;
 
-  // Output only ---
-
   // The creation time of the phone number instance.
-  // Output only.
-  google.protobuf.Timestamp create_time = 10;
+  google.protobuf.Timestamp create_time = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The deletion time of the phone number instance, if it has been deleted.
-  // Output only.
-  google.protobuf.Timestamp delete_time = 11;
+  google.protobuf.Timestamp delete_time = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The state of the phone number instance in its lifecycle.
-  // Output only.
-  LifecycleState lifecycle_state = 12;
+  LifecycleState lifecycle_state = 12 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
 // Request to create a new phone number instance.
 message CreatePhoneNumberInstanceRequest {
   // The project under which to create the phone number instance
   // in the form `projects/*`.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
 
   // The phone number resource to be created.
   // At minimum, you must supply `phone_number.phone_number`.
-  PhoneNumberInstance phone_number_instance = 2;
+  PhoneNumberInstance phone_number_instance = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 // The GetPhoneNumberInstance request message.
 message GetPhoneNumberInstanceRequest {
   // The resource name of the phone number instance to retrieve.
   // Must be of the form `projects/*/phoneNumberInstances/*`.
-  string name = 1;
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
 }
 
 // The ListPhoneNumberInstances request.
 message ListPhoneNumberInstancesRequest {
   // The project under which to list phone number instance, in the form `projects/*`.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
 
   // The maximum number of phone number instance to return in the response.
-  // Optional, with a default value of 10 and maximum value of 100.
+  // Default value of 10 and maximum value of 100.
   int32 page_size = 2;
 
   // A pagination token returned from a previous call to `ListPhoneNumberInstances`
   // that indicates where this listing should continue from.
-  // Optional.
   string page_token = 3;
 
   // The prefix, either in E164 or 0NSN, of numbers to retrieve.
-  // Optional.
+  // (-- api-linter: core::0132::request-unknown-fields=disabled
+  //     aip.dev/not-precedent: List has additional fields in this package. --)
   string prefix = 4;
 
   // Whether to include deleted phone numbers in the response.
-  // Optional (default false).
+  // Defaults to false.
+  // (-- api-linter: core::0132::request-unknown-fields=disabled
+  //     aip.dev/not-precedent: List has additional fields in this package. --)
   bool include_deleted = 5;
 }
 
@@ -201,7 +234,6 @@ message ListPhoneNumberInstancesResponse {
 
   // A pagination token returned from a previous call to `ListPhoneNumberInstances`
   // that indicates from where listing should continue.
-  // Optional.
   string next_page_token = 2;
 }
 
@@ -209,10 +241,17 @@ message ListPhoneNumberInstancesResponse {
 message UpdatePhoneNumberInstanceRequest {
   // The name of the phone number instance to be updated.
   // Must be of the form `projects/*/phoneNumberInstances/*`.
-  string name = 1;
+  // (-- api-linter: core::0134::request-unknown-fields=disabled
+  //     aip.dev/not-precedent: Update has `name` in the request message in this beta. --)
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
 
   // The new definition of the PhoneNumberInstance.
-  PhoneNumberInstance phone_number_instance = 2;
+  PhoneNumberInstance phone_number_instance = 2 [(google.api.field_behavior) = REQUIRED];
 
   // Fields to be updated.
   google.protobuf.FieldMask update_mask = 3;
@@ -222,5 +261,10 @@ message UpdatePhoneNumberInstanceRequest {
 message DeletePhoneNumberInstanceRequest {
   // The resource name of the phone number instance to be deleted.
   // Must be of the form `projects/*/phoneNumberInstances/*`.
-  string name = 1;
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
 }

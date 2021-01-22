@@ -55,6 +55,7 @@ export class PhoneNumbersClient {
     batching: {},
   };
   innerApiCalls: {[name: string]: Function};
+  pathTemplates: {[name: string]: gax.PathTemplate};
   phoneNumbersStub?: Promise<{[name: string]: Function}>;
 
   /**
@@ -156,6 +157,18 @@ export class PhoneNumbersClient {
           require('../../protos/protos.json')
         : nodejsProtoPath
     );
+
+    // This API contains "path templates"; forward-slash-separated
+    // identifiers to uniquely identify resources within the API.
+    // Create useful helper objects for these.
+    this.pathTemplates = {
+      phoneNumberPathTemplate: new this._gaxModule.PathTemplate(
+        'phoneNumbers/{phone_number}'
+      ),
+      phoneNumberInstancePathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/phoneNumberInstances/{phone_number_instance}'
+      ),
+    };
 
     // Some of the methods on this service return "paged" results,
     // (e.g. 50 results at a time, with tokens to get subsequent
@@ -334,22 +347,22 @@ export class PhoneNumbersClient {
    *   The request object that will be sent.
    * @param {number} request.pageSize
    *   The maximum number of PhoneNumbers to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `SearchPhoneNumbers`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {number[]} request.capabilities
-   *   The capabilities that the phone number must have. Optional.
+   *   The capabilities that the phone number must have.
    * @param {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} request.numberType
-   *   The type of phone number. Optional.
+   *   The type of phone number.
    * @param {string} request.countryCode
    *   The alpha-2 country code that identifies the country associated with
-   *   the phone number. Required.
+   *   the phone number.
+   *   (-- api-linter: core::0143::standardized-codes=disabled
+   *       aip.dev/not-precedent: Country code is used in this beta. --)
    * @param {string} request.prefix
    *   The prefix that the number must have after the country code. If the
    *   prefix starts with '0', it will be automatically removed.
-   *   Optional.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -423,22 +436,22 @@ export class PhoneNumbersClient {
    *   The request object that will be sent.
    * @param {number} request.pageSize
    *   The maximum number of PhoneNumbers to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `SearchPhoneNumbers`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {number[]} request.capabilities
-   *   The capabilities that the phone number must have. Optional.
+   *   The capabilities that the phone number must have.
    * @param {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} request.numberType
-   *   The type of phone number. Optional.
+   *   The type of phone number.
    * @param {string} request.countryCode
    *   The alpha-2 country code that identifies the country associated with
-   *   the phone number. Required.
+   *   the phone number.
+   *   (-- api-linter: core::0143::standardized-codes=disabled
+   *       aip.dev/not-precedent: Country code is used in this beta. --)
    * @param {string} request.prefix
    *   The prefix that the number must have after the country code. If the
    *   prefix starts with '0', it will be automatically removed.
-   *   Optional.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
@@ -468,22 +481,22 @@ export class PhoneNumbersClient {
    *   The request object that will be sent.
    * @param {number} request.pageSize
    *   The maximum number of PhoneNumbers to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `SearchPhoneNumbers`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {number[]} request.capabilities
-   *   The capabilities that the phone number must have. Optional.
+   *   The capabilities that the phone number must have.
    * @param {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} request.numberType
-   *   The type of phone number. Optional.
+   *   The type of phone number.
    * @param {string} request.countryCode
    *   The alpha-2 country code that identifies the country associated with
-   *   the phone number. Required.
+   *   the phone number.
+   *   (-- api-linter: core::0143::standardized-codes=disabled
+   *       aip.dev/not-precedent: Country code is used in this beta. --)
    * @param {string} request.prefix
    *   The prefix that the number must have after the country code. If the
    *   prefix starts with '0', it will be automatically removed.
-   *   Optional.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}
@@ -503,6 +516,75 @@ export class PhoneNumbersClient {
       (request as unknown) as RequestType,
       callSettings
     ) as AsyncIterable<protos.enfonica.numbering.v1beta1.IPhoneNumber>;
+  }
+  // --------------------
+  // -- Path templates --
+  // --------------------
+
+  /**
+   * Return a fully-qualified phoneNumber resource name string.
+   *
+   * @param {string} phone_number
+   * @returns {string} Resource name string.
+   */
+  phoneNumberPath(phoneNumber: string) {
+    return this.pathTemplates.phoneNumberPathTemplate.render({
+      phone_number: phoneNumber,
+    });
+  }
+
+  /**
+   * Parse the phone_number from PhoneNumber resource.
+   *
+   * @param {string} phoneNumberName
+   *   A fully-qualified path representing PhoneNumber resource.
+   * @returns {string} A string representing the phone_number.
+   */
+  matchPhoneNumberFromPhoneNumberName(phoneNumberName: string) {
+    return this.pathTemplates.phoneNumberPathTemplate.match(phoneNumberName)
+      .phone_number;
+  }
+
+  /**
+   * Return a fully-qualified phoneNumberInstance resource name string.
+   *
+   * @param {string} project
+   * @param {string} phone_number_instance
+   * @returns {string} Resource name string.
+   */
+  phoneNumberInstancePath(project: string, phoneNumberInstance: string) {
+    return this.pathTemplates.phoneNumberInstancePathTemplate.render({
+      project: project,
+      phone_number_instance: phoneNumberInstance,
+    });
+  }
+
+  /**
+   * Parse the project from PhoneNumberInstance resource.
+   *
+   * @param {string} phoneNumberInstanceName
+   *   A fully-qualified path representing PhoneNumberInstance resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromPhoneNumberInstanceName(phoneNumberInstanceName: string) {
+    return this.pathTemplates.phoneNumberInstancePathTemplate.match(
+      phoneNumberInstanceName
+    ).project;
+  }
+
+  /**
+   * Parse the phone_number_instance from PhoneNumberInstance resource.
+   *
+   * @param {string} phoneNumberInstanceName
+   *   A fully-qualified path representing PhoneNumberInstance resource.
+   * @returns {string} A string representing the phone_number_instance.
+   */
+  matchPhoneNumberInstanceFromPhoneNumberInstanceName(
+    phoneNumberInstanceName: string
+  ) {
+    return this.pathTemplates.phoneNumberInstancePathTemplate.match(
+      phoneNumberInstanceName
+    ).phone_number_instance;
   }
 
   /**

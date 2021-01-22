@@ -14,16 +14,13 @@ npm install @enfonica/voice
 
 ## Authentication
 
-Define the location of your service account key file when creating an instance of the library. For example:
-
-```js
-import voice from '@enfonica/voice';
-const client = new voice.RecordingsClient({
-  keyFile: './PATH/TO/KEYFILE.json'
-});
+Define the environment variable `ENFONICA_APPLICATION_CREDENTIALS` to be the location of your service account key file, alternatively add this to a .env file. For example:
+```
+set ENFONICA_APPLICATION_CREDENTIALS=/path/to/key.json
 ```
 
 You can obtain a service account key file from the [Enfonica Console](https://console.enfonica.com/).
+
 
 ## Example
 
@@ -31,7 +28,7 @@ You can obtain a service account key file from the [Enfonica Console](https://co
 // create client
 import voice from '@enfonica/voice';
 const client = new voice.RecordingsClient({
-  keyFile: './PATH/TO/KEYFILE.json'
+  keyFile: process.env.ENFONICA_APPLICATION_CREDENTIALS
 });
 
 // list recordings

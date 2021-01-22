@@ -55,6 +55,7 @@ export class PhoneNumberInstancesClient {
     batching: {},
   };
   innerApiCalls: {[name: string]: Function};
+  pathTemplates: {[name: string]: gax.PathTemplate};
   phoneNumberInstancesStub?: Promise<{[name: string]: Function}>;
 
   /**
@@ -157,6 +158,18 @@ export class PhoneNumberInstancesClient {
           require('../../protos/protos.json')
         : nodejsProtoPath
     );
+
+    // This API contains "path templates"; forward-slash-separated
+    // identifiers to uniquely identify resources within the API.
+    // Create useful helper objects for these.
+    this.pathTemplates = {
+      phoneNumberPathTemplate: new this._gaxModule.PathTemplate(
+        'phoneNumbers/{phone_number}'
+      ),
+      phoneNumberInstancePathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/phoneNumberInstances/{phone_number_instance}'
+      ),
+    };
 
     // Some of the methods on this service return "paged" results,
     // (e.g. 50 results at a time, with tokens to get subsequent
@@ -541,12 +554,16 @@ export class PhoneNumberInstancesClient {
    * Updates a phone number instance.
    *
    * The caller must have `numbering.phoneNumberInstances.update` permission on the project.
+   * (-- api-linter: core::0134::http-uri-name=disabled
+   *     aip.dev/not-precedent: Update has `name` in the request message in this beta. --)
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.name
    *   The name of the phone number instance to be updated.
    *   Must be of the form `projects/* /phoneNumberInstances/*`.
+   *   (-- api-linter: core::0134::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: Update has `name` in the request message in this beta. --)
    * @param {enfonica.numbering.v1beta1.PhoneNumberInstance} request.phoneNumberInstance
    *   The new definition of the PhoneNumberInstance.
    * @param {google.protobuf.FieldMask} request.updateMask
@@ -753,17 +770,19 @@ export class PhoneNumberInstancesClient {
    *   The project under which to list phone number instance, in the form `projects/*`.
    * @param {number} request.pageSize
    *   The maximum number of phone number instance to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListPhoneNumberInstances`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {string} request.prefix
    *   The prefix, either in E164 or 0NSN, of numbers to retrieve.
-   *   Optional.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {boolean} request.includeDeleted
    *   Whether to include deleted phone numbers in the response.
-   *   Optional (default false).
+   *   Defaults to false.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -850,17 +869,19 @@ export class PhoneNumberInstancesClient {
    *   The project under which to list phone number instance, in the form `projects/*`.
    * @param {number} request.pageSize
    *   The maximum number of phone number instance to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListPhoneNumberInstances`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {string} request.prefix
    *   The prefix, either in E164 or 0NSN, of numbers to retrieve.
-   *   Optional.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {boolean} request.includeDeleted
    *   Whether to include deleted phone numbers in the response.
-   *   Optional (default false).
+   *   Defaults to false.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
@@ -899,17 +920,19 @@ export class PhoneNumberInstancesClient {
    *   The project under which to list phone number instance, in the form `projects/*`.
    * @param {number} request.pageSize
    *   The maximum number of phone number instance to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListPhoneNumberInstances`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {string} request.prefix
    *   The prefix, either in E164 or 0NSN, of numbers to retrieve.
-   *   Optional.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {boolean} request.includeDeleted
    *   Whether to include deleted phone numbers in the response.
-   *   Optional (default false).
+   *   Defaults to false.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}
@@ -936,6 +959,75 @@ export class PhoneNumberInstancesClient {
       (request as unknown) as RequestType,
       callSettings
     ) as AsyncIterable<protos.enfonica.numbering.v1beta1.IPhoneNumberInstance>;
+  }
+  // --------------------
+  // -- Path templates --
+  // --------------------
+
+  /**
+   * Return a fully-qualified phoneNumber resource name string.
+   *
+   * @param {string} phone_number
+   * @returns {string} Resource name string.
+   */
+  phoneNumberPath(phoneNumber: string) {
+    return this.pathTemplates.phoneNumberPathTemplate.render({
+      phone_number: phoneNumber,
+    });
+  }
+
+  /**
+   * Parse the phone_number from PhoneNumber resource.
+   *
+   * @param {string} phoneNumberName
+   *   A fully-qualified path representing PhoneNumber resource.
+   * @returns {string} A string representing the phone_number.
+   */
+  matchPhoneNumberFromPhoneNumberName(phoneNumberName: string) {
+    return this.pathTemplates.phoneNumberPathTemplate.match(phoneNumberName)
+      .phone_number;
+  }
+
+  /**
+   * Return a fully-qualified phoneNumberInstance resource name string.
+   *
+   * @param {string} project
+   * @param {string} phone_number_instance
+   * @returns {string} Resource name string.
+   */
+  phoneNumberInstancePath(project: string, phoneNumberInstance: string) {
+    return this.pathTemplates.phoneNumberInstancePathTemplate.render({
+      project: project,
+      phone_number_instance: phoneNumberInstance,
+    });
+  }
+
+  /**
+   * Parse the project from PhoneNumberInstance resource.
+   *
+   * @param {string} phoneNumberInstanceName
+   *   A fully-qualified path representing PhoneNumberInstance resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromPhoneNumberInstanceName(phoneNumberInstanceName: string) {
+    return this.pathTemplates.phoneNumberInstancePathTemplate.match(
+      phoneNumberInstanceName
+    ).project;
+  }
+
+  /**
+   * Parse the phone_number_instance from PhoneNumberInstance resource.
+   *
+   * @param {string} phoneNumberInstanceName
+   *   A fully-qualified path representing PhoneNumberInstance resource.
+   * @returns {string} A string representing the phone_number_instance.
+   */
+  matchPhoneNumberInstanceFromPhoneNumberInstanceName(
+    phoneNumberInstanceName: string
+  ) {
+    return this.pathTemplates.phoneNumberInstancePathTemplate.match(
+      phoneNumberInstanceName
+    ).phone_number_instance;
   }
 
   /**

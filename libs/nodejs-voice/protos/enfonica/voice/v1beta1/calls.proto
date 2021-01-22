@@ -44,6 +44,7 @@ service Calls {
     option (google.api.http) = {
       get: "/v1beta1/{name=projects/*/calls/*}"
     };
+    option (google.api.method_signature) = "name";
   }
 
   // Lists the Calls of the specified project.
@@ -54,10 +55,11 @@ service Calls {
     option (google.api.http) = {
       get: "/v1beta1/{parent=projects/*}/calls"
     };
+    option (google.api.method_signature) = "parent";
   }
 }
 
-// The Call resource. This represents a call. This is a stub message.
+// The Call resource. This represents a call, such as an SMS.
 message Call {
   option (google.api.resource) = {
     type: "voice.api.enfonica.com/Call"
@@ -65,7 +67,7 @@ message Call {
   };
 
   // Resource name of the call. It must match the pattern `projects/*/calls/*`
-  string name = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+  string name = 1;
 }
 
 // The GetCall request call.
@@ -101,10 +103,14 @@ message ListCallsRequest {
 
   // The timestamp (inclusive) from which to retrieve calls. The
   // create_time of the Call is used.
+  // (-- api-linter: core::0132::request-unknown-fields=disabled
+  //     aip.dev/not-precedent: List has additional fields in this package. --)
   google.protobuf.Timestamp start_time = 4;
 
   // The timestamp (exclusive) until which to retrieve calls. The
   // create_time of the Call is used.
+  // (-- api-linter: core::0132::request-unknown-fields=disabled
+  //     aip.dev/not-precedent: List has additional fields in this package. --)
   google.protobuf.Timestamp end_time = 5;
 }
 
@@ -116,6 +122,5 @@ message ListCallsResponse {
 
   // A pagination token returned from a previous call to `ListCalls`
   // that indicates from where listing should continue.
-  // Optional.
   string next_page_token = 2;
 }

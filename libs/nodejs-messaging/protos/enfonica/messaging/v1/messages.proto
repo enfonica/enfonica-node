@@ -20,9 +20,16 @@ import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
 import "google/api/client.proto";
+import "google/api/resource.proto";
 import "google/type/money.proto";
 
+option cc_enable_arenas = true;
 option csharp_namespace = "Enfonica.Messaging.V1";
+option go_package = "github.com/enfonica/enfonica-go/messaging/v1;messaging";
+option java_multiple_files = true;
+option java_outer_classname = "MessagesProto";
+option java_package = "com.enfonica.messaging.v1";
+option objc_class_prefix = "ENFON";
 
 // Manages Messages.
 // Messages can be SMS, whatsapp messages, etc.
@@ -40,6 +47,7 @@ service Messages {
       post: "/v1/{parent=projects/*}/messages"
       body: "message"
     };
+    option (google.api.method_signature) = "parent,message";
   };
 
   // Retrieves a Message identified by the supplied resource name.
@@ -60,15 +68,23 @@ service Messages {
     option (google.api.http) = {
       get: "/v1/{parent=projects/*}/messages"
     };
+    option (google.api.method_signature) = "parent";
   }
 }
 
 // The Message resource. This represents a message, such as an SMS.
 message Message {
+  option (google.api.resource) = {
+    type: "messaging.api.enfonica.com/Message"
+    pattern: "projects/{project}/messages/{message}"
+  };
+
   // The status of a message.
+  // (-- api-linter: core::0216::synonyms=disabled
+  //     aip.dev/not-precedent: `Status` is used instead of `State` in this package. --)
   enum Status {
     // Unspecified status.
-    STATUS_UNKNOWN = 0;
+    STATUS_UNSPECIFIED = 0;
 
     // The message has been queued for sending.
     QUEUED = 1;
@@ -98,7 +114,7 @@ message Message {
   // The direction of a message.
   enum Direction {
     // Unspecified direction.
-    DIRECTION_UNKNOWN = 0;
+    DIRECTION_UNSPECIFIED = 0;
 
     // An outgoing message.
     OUTGOING = 1;
@@ -110,7 +126,7 @@ message Message {
   // The type of message that this is.
   enum MessageClassification {
     // Unspecified.
-    UNSPECIFIED = 0;
+    MESSAGE_CLASSIFICATION_UNSPECIFIED = 0;
 
     // The message is not classified. This message will be checked against unsubscribers
     // before being sent.
@@ -128,7 +144,7 @@ message Message {
   // Behaviour with regards to unsubscribe content within the message.
   enum UnsubscribeContentBehavior {
     // Unspecified.
-    UNSUBSCRIBE_CONTENT_UNKNOWN = 0;
+    UNSUBSCRIBE_CONTENT_BEHAVIOR_UNSPECIFIED = 0;
 
     // Do not insert any unsubscribe content within the message.
     NONE = 1;
@@ -148,7 +164,7 @@ message Message {
   // The encoding of a message body.
   enum MessageEncoding {
     // Unknown message encoding.
-    MESSAGE_ENCODING_UNKNOWN = 0;
+    MESSAGE_ENCODING_UNSPECIFIED = 0;
 
     // GSM 7-bit encoding.
     GSM7 = 1;
@@ -158,13 +174,18 @@ message Message {
   }
 
   // Resource name of the message. It must match the pattern `projects/*/messages/*`
-  // Output only.
   string name = 1;
 
   // The recipient phone number in +E164.
+  // (-- api-linter: core::0140::prepositions=disabled
+  //     aip.dev/not-precedent: Not a preposition. --)
   string to = 2;
 
   // The phone number in +E164 or alphanumeric sender ID that initiated the message.
+  // (-- api-linter: core::0140::prepositions=disabled
+  //     aip.dev/not-precedent: Not a preposition. --)
+  // (-- api-linter: core::0140::reserved-words=disabled
+  //     aip.dev/not-precedent: `from` is a core concept in Enfonica APIs. --)
   string from = 3;
 
   // The text of the message. Maximum of 1530 characters for messages encoding using GSM
@@ -174,19 +195,22 @@ message Message {
 
   // The URL where status updates should be sent.
   // TODO: define better.
-  // Optional.
+  // (-- api-linter: core::0140::uri=disabled
+  //     aip.dev/not-precedent: url is used in this package. --)
   string status_update_url = 5;
 
   // The URL where replies should be sent. This overrides any message handler URLs defined
   // against the phone number receiving the reply.
   // TODO: define better.
-  // Optional.
+  // (-- api-linter: core::0140::uri=disabled
+  //     aip.dev/not-precedent: url is used in this package. --)
   string reply_url = 6;
 
   // How long the message can stay in Enfonica's outgoing message queue, in seconds. Once the
   // message has been accepted by carriers, we cannot guarantee the message will not
   // be queued after this period.
-  // Optional.
+  // (-- api-linter: core::0142::time-field-type=disabled
+  //     aip.dev/not-precedent: Not a timestamp. --)
   int32 validity_period_seconds = 7;
 
   // Whether to automatically reply certain Unicode characters with similar GSM-7
@@ -203,63 +227,58 @@ message Message {
   // Whether the `body` should be modified to include content indicatig how to unsubscribe.
   UnsubscribeContentBehavior unsubscribe_content_behavior = 22;
 
-  // Output only ---
-
   // The direction of the message. Can be `outgoing` for messages that are sent or `incoming`
   // for messages that are received.
-  // Output only.
-  Direction direction = 10;
+  Direction direction = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // If the outgoing message failed to be delivered, the reason why.
   // todo: should this be an enum?
-  // Output only.
-  string error_code = 11;
+  string error_code = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The human readable message associated with the error.
   // todo: do we need this if error code is an enum?
-  // Output only.
-  string error_message = 12;
+  string error_message = 12 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The number of segments that make up the body.
   // todo: explain this.
-  // Output only.
-  int32 segment_count = 13;
+  int32 segment_count = 13 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The price of this message. This may not be populated until a certain stage in the message
   // lifecycle.  todo: is this right? how does/will this work?
-  // Output only.
-  google.type.Money price = 14;
+  google.type.Money price = 14 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The current status of the message.
-  Status status = 15;
+  // (-- api-linter: core::0216::synonyms=disabled
+  //     aip.dev/not-precedent: `status` is used instead of `state` in this package. --)
+  Status status = 15 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The identity that created the message.  This may be your user or service account,
   // or identities used internally by Enfonica products. todo: is this right? should we do this?
-  // Output only.
-  string create_identity = 16;
+  string create_identity = 16 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The creation time of the message.
-  // Output only.
-  google.protobuf.Timestamp create_time = 17;
+  google.protobuf.Timestamp create_time = 17 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The time the message was sent. Only set for outgoing message.
-  // Output only.
-  google.protobuf.Timestamp send_time = 18;
+  google.protobuf.Timestamp send_time = 18 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The time when delivery was confirmed for the message. Only set for outgoing message.
-  // Output only.
-  google.protobuf.Timestamp deliver_time = 19;
+  google.protobuf.Timestamp deliver_time = 19 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The encoding used for the body.
-  // Output only.
-  MessageEncoding encoding = 23;
+  MessageEncoding encoding = 23 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
 // Request to create a new message.
 message CreateMessageRequest {
   // The resource name of the parent project to create the message under.
   // Must be of the form `projects/*`.
-  string parent = 1 [(google.api.field_behavior) = REQUIRED];
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "messaging.api.enfonica.com/Message"
+    }
+  ];
 
   // The message resource to be created.
   Message message = 2 [(google.api.field_behavior) = REQUIRED];
@@ -269,30 +288,43 @@ message CreateMessageRequest {
 message GetMessageRequest {
   // The resource name of the Message to retrieve.
   // Must be of the form `projects/*/messages/*`.
-  string name = 1 [(google.api.field_behavior) = REQUIRED];
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "messaging.api.enfonica.com/Message"
+    }
+  ];
 }
 
 // The ListMessages request message.
 message ListMessagesRequest {
   // The resource name of the parent of which to list messages.
   // Must be of the form `projects/*`.
-  string parent = 1 [(google.api.field_behavior) = REQUIRED];
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "messaging.api.enfonica.com/Message"
+    }
+  ];
 
   // The maximum number of Messages to return in the response.
-  // Optional, with a default value of 10 and maximum value of 100.
+  // Default value is 10 and maximum value is 100.
   int32 page_size = 2;
 
   // A pagination token returned from a previous call to `ListMessages`
   // that indicates where this listing should continue from.
-  // Optional.
   string page_token = 3;
 
   // The timestamp (inclusive) from which to retrieve messages. The
   // create_time of the Message is used.
+  // (-- api-linter: core::0132::request-unknown-fields=disabled
+  //     aip.dev/not-precedent: List has additional fields in this package. --)
   google.protobuf.Timestamp start_time = 4 [(google.api.field_behavior) = REQUIRED];
 
   // The timestamp (exclusive) until which to retrieve messages. The
   // create_time of the Message is used.
+  // (-- api-linter: core::0132::request-unknown-fields=disabled
+  //     aip.dev/not-precedent: List has additional fields in this package. --)
   google.protobuf.Timestamp end_time = 5 [(google.api.field_behavior) = REQUIRED];
 }
 
@@ -304,6 +336,5 @@ message ListMessagesResponse {
 
   // A pagination token returned from a previous call to `ListMessages`
   // that indicates from where listing should continue.
-  // Optional.
   string next_page_token = 2;
 }

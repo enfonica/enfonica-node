@@ -20,8 +20,16 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/field_mask.proto";
 import "google/api/annotations.proto";
 import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
 
+option cc_enable_arenas = true;
 option csharp_namespace = "Enfonica.Numbering.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/numbering/v1beta1;numbering";
+option java_multiple_files = true;
+option java_outer_classname = "PhoneNumbersProto";
+option java_package = "com.enfonica.numbering.v1beta1";
+option objc_class_prefix = "ENFON";
 
 // Manages PhoneNumbers.
 service PhoneNumbers {
@@ -43,6 +51,11 @@ service PhoneNumbers {
 
 // The PhoneNumber resource.
 message PhoneNumber {
+  option (google.api.resource) = {
+    type: "numbering.api.enfonica.com/PhoneNumber"
+    pattern: "phoneNumbers/{phone_number}"
+  };
+
   // A capability of a phone number.
   enum PhoneNumberCapability {
     // Unspecified phone number capability.
@@ -87,57 +100,52 @@ message PhoneNumber {
 
   // Resource name of the phone number. It must match the pattern
   // `phoneNumbers/*`
-  // Output only.
   string name = 1;
 
   // The phone number, in +E164 format.
-  // Can only be set on creation.
   string phone_number = 2;
 
   // The capabilities of the phone number.
   repeated PhoneNumberCapability capabilities = 3;
 
   // The SKU that will be used to bill the phone number.
-  // If not specified on CreatePhoneNumber, this will be automatically determined.
   // In the form `services/*/skus/*`.
   string sku = 4;
 
-  // Output only ---
-
   // The type of phone number.
-  // Output only.
   PhoneNumberType number_type = 10;
 
   // The alpha-2 country code that identifies the country associated with
   // the phone number.
-  // Output only.
+  // (-- api-linter: core::0143::standardized-codes=disabled
+  //     aip.dev/not-precedent: Country code is used in this beta. --)
   string country_code = 11;
 }
 
 // The SearchPhoneNumbers request.
 message SearchPhoneNumbersRequest {
   // The maximum number of PhoneNumbers to return in the response.
-  // Optional, with a default value of 10 and maximum value of 100.
+  // Default value of 10 and maximum value of 100.
   int32 page_size = 1;
 
   // A pagination token returned from a previous call to `SearchPhoneNumbers`
   // that indicates where this listing should continue from.
-  // Optional.
   string page_token = 2;
 
-  // The capabilities that the phone number must have. Optional.
+  // The capabilities that the phone number must have.
   repeated PhoneNumber.PhoneNumberCapability capabilities = 3;
 
-  // The type of phone number. Optional.
+  // The type of phone number.
   PhoneNumber.PhoneNumberType number_type = 4;
 
   // The alpha-2 country code that identifies the country associated with
-  // the phone number. Required.
-  string country_code = 5;
+  // the phone number.
+  // (-- api-linter: core::0143::standardized-codes=disabled
+  //     aip.dev/not-precedent: Country code is used in this beta. --)
+  string country_code = 5 [(google.api.field_behavior) = REQUIRED];
 
   // The prefix that the number must have after the country code. If the
   // prefix starts with '0', it will be automatically removed.
-  // Optional.
   string prefix = 6;
 }
 
@@ -148,6 +156,5 @@ message SearchPhoneNumbersResponse {
 
   // A pagination token returned from a previous call to `SearchPhoneNumbers`
   // that indicates from where listing should continue.
-  // Optional.
   string next_page_token = 2;
 }

@@ -435,9 +435,13 @@ export class CallsClient {
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve calls. The
    *   create_time of the Call is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve calls. The
    *   create_time of the Call is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -524,9 +528,13 @@ export class CallsClient {
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve calls. The
    *   create_time of the Call is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve calls. The
    *   create_time of the Call is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
@@ -573,9 +581,13 @@ export class CallsClient {
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve calls. The
    *   create_time of the Call is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve calls. The
    *   create_time of the Call is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}

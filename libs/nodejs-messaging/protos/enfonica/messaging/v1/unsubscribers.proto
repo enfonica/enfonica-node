@@ -21,8 +21,15 @@ import "google/protobuf/field_mask.proto";
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
 import "google/api/client.proto";
+import "google/api/resource.proto";
 
+option cc_enable_arenas = true;
 option csharp_namespace = "Enfonica.Messaging.V1";
+option go_package = "github.com/enfonica/enfonica-go/messaging/v1;messaging";
+option java_multiple_files = true;
+option java_outer_classname = "UnsubscribersProto";
+option java_package = "com.enfonica.messaging.v1";
+option objc_class_prefix = "ENFON";
 
 // Manages Unsubscribers.
 service Unsubscribers {
@@ -37,6 +44,7 @@ service Unsubscribers {
       post: "/v1/{parent=projects/*}/unsubscribers"
       body: "unsubscriber"
     };
+    option (google.api.method_signature) = "parent,unsubscriber";
   }
 
   // Retrieves a Unsubscriber identified by the supplied resource name.
@@ -46,6 +54,7 @@ service Unsubscribers {
     option (google.api.http) = {
       get: "/v1/{name=projects/*/unsubscribers/*}"
     };
+    option (google.api.method_signature) = "name";
   }
 
   // Lists the Unsubscribers of the specified project.
@@ -56,6 +65,7 @@ service Unsubscribers {
     option (google.api.http) = {
       get: "/v1/{parent=projects/*}/unsubscribers"
     };
+    option (google.api.method_signature) = "parent";
   }
 
   // Updates an unsubscriber.
@@ -66,6 +76,7 @@ service Unsubscribers {
       patch: "/v1/{unsubscriber.name=projects/*/unsubscribers/*}"
       body: "unsubscriber"
     };
+    option (google.api.method_signature) = "unsubscriber,update_mask";
   }
 
   // Deletes an unsubscriber.
@@ -75,15 +86,21 @@ service Unsubscribers {
     option (google.api.http) = {
       delete: "/v1/{name=projects/*/unsubscribers/*}"
     };
+    option (google.api.method_signature) = "name";
   }
 }
 
 // The Unsubscriber resource.
 message Unsubscriber {
+  option (google.api.resource) = {
+    type: "messaging.api.enfonica.com/Unsubscriber"
+    pattern: "projects/{project}/unsubscribers/{unsubscriber}"
+  };
+
   // The method that was used to unsubscribe.
   enum UnsubscribeMethod {
     // Unknown unsubscribe method.
-    UNKNOWN = 0;
+    UNSUBSCRIBE_METHOD_UNSPECIFIED = 0;
 
     // Unsubscribed by visiting a URL.
     URL = 1;
@@ -96,12 +113,11 @@ message Unsubscriber {
   }
 
   // Resource name of the unsubscriber. It must match the pattern `projects/*/unsubscribers/*`
-  // Output only.
   string name = 1;
 
   // The phone number of the recipient that has unsubscribed, in +E164 format.
   // Can only be set on create.
-  string phone = 2;
+  string phone = 2 [(google.api.field_behavior) = REQUIRED];
 
   // The method that was used to unsubscribe.
   // Can only be set on create.
@@ -115,43 +131,58 @@ message Unsubscriber {
   map<string, string> labels = 4;
 
   // The creation time of the unsubscriber.
-  // Output only.
-  google.protobuf.Timestamp create_time = 8;
+  google.protobuf.Timestamp create_time = 8 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
 // Request to create a new unsubscriber.
 message CreateUnsubscriberRequest {
   // The resource name of the parent project to create the unsubscriber under.
   // Must be of the form `projects/*`.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "messaging.api.enfonica.com/Unsubscriber"
+    }
+  ];
 
   // The unsubscriber resource to be created.
-  Unsubscriber unsubscriber = 2;
+  Unsubscriber unsubscriber = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 // The GetUnsubscriber request unsubscriber.
 message GetUnsubscriberRequest {
   // The resource name of the Unsubscriber to retrieve.
   // Must be of the form `projects/*/unsubscribers/*`.
-  string name = 1;
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "messaging.api.enfonica.com/Unsubscriber"
+    }
+  ];
 }
 
 // The ListUnsubscribers request.
 message ListUnsubscribersRequest {
   // The resource name of the parent of which to list unsubscribers.
   // Must be of the form `projects/*`.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "messaging.api.enfonica.com/Unsubscriber"
+    }
+  ];
 
   // The maximum number of Unsubscribers to return in the response.
-  // Optional, with a default value of 10 and maximum value of 100.
+  // Default value is 10 and maximum value is 100.
   int32 page_size = 2;
 
   // A pagination token returned from a previous call to `ListUnsubscribers`
   // that indicates where this listing should continue from.
-  // Optional.
   string page_token = 3;
 
   // Only return the unsubscriber that matches the phone number exactly.
+  // (-- api-linter: core::0132::request-unknown-fields=disabled
+  //     aip.dev/not-precedent: List has additional fields in this package. --)
   string phone = 4;
 }
 
@@ -163,14 +194,13 @@ message ListUnsubscribersResponse {
 
   // A pagination token returned from a previous call to `ListUnsubscribers`
   // that indicates from where listing should continue.
-  // Optional.
   string next_page_token = 2;
 }
 
 // The request message for updating an unsubscriber's properties.
 message UpdateUnsubscriberRequest {
   // The new definition of the Unsubscriber.
-  Unsubscriber unsubscriber = 1;
+  Unsubscriber unsubscriber = 1 [(google.api.field_behavior) = REQUIRED];
 
   // Fields to be updated. Only `labels` can be updated.
   google.protobuf.FieldMask update_mask = 2;
@@ -180,5 +210,10 @@ message UpdateUnsubscriberRequest {
 message DeleteUnsubscriberRequest {
   // The resource name of the Unsubscriber to be deleted.
   // Must be of the form `projects/*/unsubscribers/*`.
-  string name = 1;
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "messaging.api.enfonica.com/Unsubscriber"
+    }
+  ];
 }

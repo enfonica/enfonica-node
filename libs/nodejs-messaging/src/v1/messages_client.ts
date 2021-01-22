@@ -56,6 +56,7 @@ export class MessagesClient {
     batching: {},
   };
   innerApiCalls: {[name: string]: Function};
+  pathTemplates: {[name: string]: gax.PathTemplate};
   messagesStub?: Promise<{[name: string]: Function}>;
 
   /**
@@ -157,6 +158,18 @@ export class MessagesClient {
           require('../../protos/protos.json')
         : nodejsProtoPath
     );
+
+    // This API contains "path templates"; forward-slash-separated
+    // identifiers to uniquely identify resources within the API.
+    // Create useful helper objects for these.
+    this.pathTemplates = {
+      messagePathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/messages/{message}'
+      ),
+      unsubscriberPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/unsubscribers/{unsubscriber}'
+      ),
+    };
 
     // Some of the methods on this service return "paged" results,
     // (e.g. 50 results at a time, with tokens to get subsequent
@@ -502,17 +515,20 @@ export class MessagesClient {
    *   Must be of the form `projects/*`.
    * @param {number} request.pageSize
    *   The maximum number of Messages to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value is 10 and maximum value is 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListMessages`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve messages. The
    *   create_time of the Message is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -592,17 +608,20 @@ export class MessagesClient {
    *   Must be of the form `projects/*`.
    * @param {number} request.pageSize
    *   The maximum number of Messages to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value is 10 and maximum value is 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListMessages`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve messages. The
    *   create_time of the Message is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
@@ -642,17 +661,20 @@ export class MessagesClient {
    *   Must be of the form `projects/*`.
    * @param {number} request.pageSize
    *   The maximum number of Messages to return in the response.
-   *   Optional, with a default value of 10 and maximum value of 100.
+   *   Default value is 10 and maximum value is 100.
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListMessages`
    *   that indicates where this listing should continue from.
-   *   Optional.
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve messages. The
    *   create_time of the Message is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
+   *   (-- api-linter: core::0132::request-unknown-fields=disabled
+   *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}
@@ -679,6 +701,83 @@ export class MessagesClient {
       (request as unknown) as RequestType,
       callSettings
     ) as AsyncIterable<protos.enfonica.messaging.v1.IMessage>;
+  }
+  // --------------------
+  // -- Path templates --
+  // --------------------
+
+  /**
+   * Return a fully-qualified message resource name string.
+   *
+   * @param {string} project
+   * @param {string} message
+   * @returns {string} Resource name string.
+   */
+  messagePath(project: string, message: string) {
+    return this.pathTemplates.messagePathTemplate.render({
+      project: project,
+      message: message,
+    });
+  }
+
+  /**
+   * Parse the project from Message resource.
+   *
+   * @param {string} messageName
+   *   A fully-qualified path representing Message resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromMessageName(messageName: string) {
+    return this.pathTemplates.messagePathTemplate.match(messageName).project;
+  }
+
+  /**
+   * Parse the message from Message resource.
+   *
+   * @param {string} messageName
+   *   A fully-qualified path representing Message resource.
+   * @returns {string} A string representing the message.
+   */
+  matchMessageFromMessageName(messageName: string) {
+    return this.pathTemplates.messagePathTemplate.match(messageName).message;
+  }
+
+  /**
+   * Return a fully-qualified unsubscriber resource name string.
+   *
+   * @param {string} project
+   * @param {string} unsubscriber
+   * @returns {string} Resource name string.
+   */
+  unsubscriberPath(project: string, unsubscriber: string) {
+    return this.pathTemplates.unsubscriberPathTemplate.render({
+      project: project,
+      unsubscriber: unsubscriber,
+    });
+  }
+
+  /**
+   * Parse the project from Unsubscriber resource.
+   *
+   * @param {string} unsubscriberName
+   *   A fully-qualified path representing Unsubscriber resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromUnsubscriberName(unsubscriberName: string) {
+    return this.pathTemplates.unsubscriberPathTemplate.match(unsubscriberName)
+      .project;
+  }
+
+  /**
+   * Parse the unsubscriber from Unsubscriber resource.
+   *
+   * @param {string} unsubscriberName
+   *   A fully-qualified path representing Unsubscriber resource.
+   * @returns {string} A string representing the unsubscriber.
+   */
+  matchUnsubscriberFromUnsubscriberName(unsubscriberName: string) {
+    return this.pathTemplates.unsubscriberPathTemplate.match(unsubscriberName)
+      .unsubscriber;
   }
 
   /**
