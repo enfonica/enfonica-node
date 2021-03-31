@@ -11,5 +11,10 @@
     "fix:numbering": "cd libs/nodejs-numbering && npm run fix",
     "fix:voice": "cd libs/nodejs-voice && npm run fix",
     "fix": "npm run fix:messaging && npm run fix:numbering && npm run fix:voice"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "xml": "^1.0.1"
   }
 }

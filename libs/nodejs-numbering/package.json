@@ -1,6 +1,6 @@
 {
   "name": "@enfonica/numbering",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Enfonica Numbering SDK for Node.js",
   "repository": "enfonica-node/libs/nodejs-numbering",
   "license": "Apache-2.0",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "google-gax": "^2.8.0",
-"@enfonica/auth-library": "1.0.0-alpha.2"
+    "@enfonica/auth-library": "1.0.0-alpha.3"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.3",

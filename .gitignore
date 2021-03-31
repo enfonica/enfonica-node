@@ -1,3 +1,5 @@
 libs/nodejs-numbering/.npmrc
 libs/nodejs-messaging/.npmrc
-example
+libs/nodejs-voice/.npmrc
+example/
+node_modules/
