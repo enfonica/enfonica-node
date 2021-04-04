@@ -66,8 +66,151 @@ message Call {
     pattern: "projects/{project}/calls/{call}"
   };
 
+  // The state of a call.
+  enum State {
+    // Unspecified status.
+    STATE_UNSPECIFIED = 0;
+
+    // The call has been queued.
+    QUEUED = 1;
+
+    // The call is being attempted.
+    STARTING = 2;
+
+    // The remote party is ringing.
+    RINGING = 3;
+
+    // The call has been answered.
+    IN_PROGRESS = 4;
+
+    // The call was answered and is now finished.
+    COMPLETED = 5;
+
+    // The call could not be made.
+    FAILED = 6;
+
+    // The call was not answered. This is the same as the call waiting to
+    // be answered and timing out.
+    NOT_ANSWERED = 7;
+
+    // The remote party indicated they were busy.
+    BUSY = 8;
+    
+    // The call was not answered and it was actively rejected.
+    REJECTED = 9;
+  }
+
+  // The direction of a call.
+  enum Direction {
+    // Unspecified direction.
+    DIRECTION_UNSPECIFIED = 0;
+
+    // An outgoing call.
+    OUTGOING = 1;
+
+    // An incoming call
+    INCOMING = 2;
+  }
+
+  // The transport of a call.
+  enum Transport {
+    // Unspecified transport.
+    TRANSPORT_UNSPECIFIED = 0;
+
+    // The call was transported over PSTN (Public Switched Telephone Network).
+    PSTN = 1;
+
+    // The call was transported over an Enfonica Client (WebRTC).
+    CLIENT = 2;
+
+    // The call was transported over SIP.
+    SIP = 3;
+  }
+
   // Resource name of the call. It must match the pattern `projects/*/calls/*`
   string name = 1;
+
+  // The recipient phone number in +E164.
+  // (-- api-linter: core::0140::prepositions=disabled
+  //     aip.dev/not-precedent: Not a preposition. --)
+  string to = 2 [(google.api.field_behavior) = REQUIRED];
+
+  // The phone number in +E164 that initiated the call (the Caller ID / CLI).
+  // `from` is required on Create, but its value may be hidden in subsequent
+  // Get/List calls if `private` is true.
+  // (-- api-linter: core::0140::prepositions=disabled
+  //     aip.dev/not-precedent: Not a preposition. --)
+  // (-- api-linter: core::0140::reserved-words=disabled
+  //     aip.dev/not-precedent: `from` is a core concept in Enfonica APIs. --)
+  string from = 3 [(google.api.field_behavior) = REQUIRED];
+
+  // Whether the Caller ID is private.
+  bool is_private = 4;
+
+  // The URL where status updates should be sent.
+  string status_update_uri = 5;
+
+  // The URL where VoiceML requests should be made to control the call.
+  // Required when creating a call using the API, but may not be present
+  // otherwise.
+  string handle_uri = 6 [(google.api.field_behavior) = REQUIRED];
+
+  // The maximum amount of time the call is allowed to spend in Enfonica's outgoing
+  // call queue, in seconds. If it is queued for longer than this, then it will be
+  // aborted.
+  // (-- api-linter: core::0142::time-field-type=disabled
+  //     aip.dev/not-precedent: Not a timestamp. --)
+  int32 validity_period_seconds = 7;
+
+  // You can store any arbitrary data against labels. The maximum number of keys is 50.
+  // The maximum length of all keys and values combined is 10kB.
+  map<string, string> labels = 8;
+
+  // The transport that carried this call.
+  Transport transport = 9 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The direction of the call. Can be `outgoing` for calls that are sent or `incoming`
+  // for calls that are received.
+  Direction direction = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // If the outgoing call failed to be delivered, the reason why.
+  string error_code = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The human readable call associated with the error.
+  string error_message = 12 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The price of this call. This may not be populated until a certain stage in the call
+  // lifecycle.
+  google.type.Money price = 13 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The current state of the call.
+  State state = 14 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The creation time of the call.
+  // Output only.
+  google.protobuf.Timestamp create_time = 16 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The time the call was started.
+  // For an incoming call, this is the same as `create_time`.
+  // For an outgoing call, this is the time that the call attempt commenced.
+  google.protobuf.Timestamp start_time = 17 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The time the call started ringing. Only set for outgoing call.
+  google.protobuf.Timestamp ring_time = 18 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The time the call was answered.
+  google.protobuf.Timestamp answer_time = 19 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The time the call finished.
+  google.protobuf.Timestamp end_time = 20 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // Was the call bridged with another call at any point?
+  bool bridged = 21 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The name of the call that originated this call, set
+  // for outgoing calls that were created during the execution of another call,
+  // of the form `projects/*/calls/*`.
+  string originating_call = 22 [(google.api.field_behavior) = OUTPUT_ONLY];
 }
 
 // The GetCall request call.
@@ -101,17 +244,22 @@ message ListCallsRequest {
   // that indicates where this listing should continue from.
   string page_token = 3;
 
-  // The timestamp (inclusive) from which to retrieve calls. The
-  // create_time of the Call is used.
-  // (-- api-linter: core::0132::request-unknown-fields=disabled
-  //     aip.dev/not-precedent: List has additional fields in this package. --)
-  google.protobuf.Timestamp start_time = 4;
-
-  // The timestamp (exclusive) until which to retrieve calls. The
-  // create_time of the Call is used.
-  // (-- api-linter: core::0132::request-unknown-fields=disabled
-  //     aip.dev/not-precedent: List has additional fields in this package. --)
-  google.protobuf.Timestamp end_time = 5;
+  // Filter string to specify which results should be returned.
+  //
+  // The following fields can be filtered:
+  // - `createTime`
+  // - `to`
+  // - `from`
+  // - `state`
+  // - `direction`
+  // - `transport`
+  //
+  // For example:
+  // createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
+  // state = COMPLETED OR state = BUSY AND to = '+61*' OR from = '+61*'
+  //
+  // Note that OR has higher precendence than AND.
+  string filter = 4;
 }
 
 // The ListCalls response call.

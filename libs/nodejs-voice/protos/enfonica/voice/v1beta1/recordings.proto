@@ -89,6 +89,9 @@ message Recording {
 
     // The recording was created by the `<Record>` action.
     RECORD_ACTION = 1;
+
+    // The recording was created by call recording.
+    CALL_RECORDING = 2;
   }
 
   // The state of the recording.

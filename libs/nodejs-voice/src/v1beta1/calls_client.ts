@@ -432,16 +432,22 @@ export class CallsClient {
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListCalls`
    *   that indicates where this listing should continue from.
-   * @param {google.protobuf.Timestamp} request.startTime
-   *   The timestamp (inclusive) from which to retrieve calls. The
-   *   create_time of the Call is used.
-   *   (-- api-linter: core::0132::request-unknown-fields=disabled
-   *       aip.dev/not-precedent: List has additional fields in this package. --)
-   * @param {google.protobuf.Timestamp} request.endTime
-   *   The timestamp (exclusive) until which to retrieve calls. The
-   *   create_time of the Call is used.
-   *   (-- api-linter: core::0132::request-unknown-fields=disabled
-   *       aip.dev/not-precedent: List has additional fields in this package. --)
+   * @param {string} request.filter
+   *   Filter string to specify which results should be returned.
+   *
+   *   The following fields can be filtered:
+   *   - `createTime`
+   *   - `to`
+   *   - `from`
+   *   - `state`
+   *   - `direction`
+   *   - `transport`
+   *
+   *   For example:
+   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
+   *   state = COMPLETED OR state = BUSY AND to = '+61*' OR from = '+61*'
+   *
+   *   Note that OR has higher precendence than AND.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -525,16 +531,22 @@ export class CallsClient {
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListCalls`
    *   that indicates where this listing should continue from.
-   * @param {google.protobuf.Timestamp} request.startTime
-   *   The timestamp (inclusive) from which to retrieve calls. The
-   *   create_time of the Call is used.
-   *   (-- api-linter: core::0132::request-unknown-fields=disabled
-   *       aip.dev/not-precedent: List has additional fields in this package. --)
-   * @param {google.protobuf.Timestamp} request.endTime
-   *   The timestamp (exclusive) until which to retrieve calls. The
-   *   create_time of the Call is used.
-   *   (-- api-linter: core::0132::request-unknown-fields=disabled
-   *       aip.dev/not-precedent: List has additional fields in this package. --)
+   * @param {string} request.filter
+   *   Filter string to specify which results should be returned.
+   *
+   *   The following fields can be filtered:
+   *   - `createTime`
+   *   - `to`
+   *   - `from`
+   *   - `state`
+   *   - `direction`
+   *   - `transport`
+   *
+   *   For example:
+   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
+   *   state = COMPLETED OR state = BUSY AND to = '+61*' OR from = '+61*'
+   *
+   *   Note that OR has higher precendence than AND.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
@@ -578,16 +590,22 @@ export class CallsClient {
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `ListCalls`
    *   that indicates where this listing should continue from.
-   * @param {google.protobuf.Timestamp} request.startTime
-   *   The timestamp (inclusive) from which to retrieve calls. The
-   *   create_time of the Call is used.
-   *   (-- api-linter: core::0132::request-unknown-fields=disabled
-   *       aip.dev/not-precedent: List has additional fields in this package. --)
-   * @param {google.protobuf.Timestamp} request.endTime
-   *   The timestamp (exclusive) until which to retrieve calls. The
-   *   create_time of the Call is used.
-   *   (-- api-linter: core::0132::request-unknown-fields=disabled
-   *       aip.dev/not-precedent: List has additional fields in this package. --)
+   * @param {string} request.filter
+   *   Filter string to specify which results should be returned.
+   *
+   *   The following fields can be filtered:
+   *   - `createTime`
+   *   - `to`
+   *   - `from`
+   *   - `state`
+   *   - `direction`
+   *   - `transport`
+   *
+   *   For example:
+   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
+   *   state = COMPLETED OR state = BUSY AND to = '+61*' OR from = '+61*'
+   *
+   *   Note that OR has higher precendence than AND.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}

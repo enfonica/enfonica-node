@@ -118,6 +118,23 @@ message PhoneNumberInstance {
     SUSPENDED = 3;
   }
 
+  // The trigger to start call recording.
+  enum RecordingTrigger {
+    // Unspecified recording trigger.
+    RECORDING_TRIGGER_UNSPECIFIED = 0;
+
+    // Recording is disabled for calls to this phone number instance.
+    DISABLED = 1;
+
+    // Recording will begin when calls to this phone number instance are answered.
+    ANSWER = 2;
+
+    // Recording will begin when calls to this phone number instance are bridged.
+    // This won't include any messages or menus played before the call was bridged.
+    // This is useful if you want to record only conversations.
+    BRIDGE = 3;
+  }
+
   // Resource name of the phone number instance. It must match the pattern
   // `projects/*/phoneNumberInstances/*`
   string name = 1;
@@ -157,6 +174,16 @@ message PhoneNumberInstance {
   //
   // Maximum 5 URIs.
   repeated string incoming_call_handler_uris = 6;
+
+  // The trigger that will start call recording.
+  //
+  // You need to comply with certain laws and regulations, including those regarding
+  // obtaining consent to record. Enfonica recommends that you consult with your legal
+  // counsel to make sure that you are complying with all applicable laws in connection
+  // with communications you record or store using Enfonica.
+  //
+  // Defaults to DISABLED.
+  RecordingTrigger call_recording_trigger = 7;
 
   // The creation time of the phone number instance.
   google.protobuf.Timestamp create_time = 10 [(google.api.field_behavior) = OUTPUT_ONLY];

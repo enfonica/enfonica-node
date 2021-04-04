@@ -522,13 +522,37 @@ export class MessagesClient {
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve messages. The
    *   create_time of the Message is used.
+   *
+   *   This field is deprecated. Use `filter` instead. If a value is specified for
+   *   both `start_time` and `filter`, the call will fail.
+   *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
+   *
+   *   This field is deprecated. Use `filter` instead. If a value is specified for
+   *   both `end_time` and `filter`, the call will fail.
+   *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   * @param {string} request.filter
+   *   Filter string to specify which results should be returned.
+   *
+   *   The following fields can be filtered:
+   *   - `createTime`
+   *   - `to`
+   *   - `from`
+   *   - `status`
+   *   - `direction`
+   *   - `encoding`
+   *
+   *   For example:
+   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
+   *   status = DELIVERED OR status = UNDELIVERED AND to = '+61*' OR from = '+61*'
+   *
+   *   Note that OR has higher precendence than AND.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -615,13 +639,37 @@ export class MessagesClient {
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve messages. The
    *   create_time of the Message is used.
+   *
+   *   This field is deprecated. Use `filter` instead. If a value is specified for
+   *   both `start_time` and `filter`, the call will fail.
+   *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
+   *
+   *   This field is deprecated. Use `filter` instead. If a value is specified for
+   *   both `end_time` and `filter`, the call will fail.
+   *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   * @param {string} request.filter
+   *   Filter string to specify which results should be returned.
+   *
+   *   The following fields can be filtered:
+   *   - `createTime`
+   *   - `to`
+   *   - `from`
+   *   - `status`
+   *   - `direction`
+   *   - `encoding`
+   *
+   *   For example:
+   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
+   *   status = DELIVERED OR status = UNDELIVERED AND to = '+61*' OR from = '+61*'
+   *
+   *   Note that OR has higher precendence than AND.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
@@ -668,13 +716,37 @@ export class MessagesClient {
    * @param {google.protobuf.Timestamp} request.startTime
    *   The timestamp (inclusive) from which to retrieve messages. The
    *   create_time of the Message is used.
+   *
+   *   This field is deprecated. Use `filter` instead. If a value is specified for
+   *   both `start_time` and `filter`, the call will fail.
+   *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
+   *
+   *   This field is deprecated. Use `filter` instead. If a value is specified for
+   *   both `end_time` and `filter`, the call will fail.
+   *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   * @param {string} request.filter
+   *   Filter string to specify which results should be returned.
+   *
+   *   The following fields can be filtered:
+   *   - `createTime`
+   *   - `to`
+   *   - `from`
+   *   - `status`
+   *   - `direction`
+   *   - `encoding`
+   *
+   *   For example:
+   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
+   *   status = DELIVERED OR status = UNDELIVERED AND to = '+61*' OR from = '+61*'
+   *
+   *   Note that OR has higher precendence than AND.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}
