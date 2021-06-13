@@ -1,4 +1,4 @@
-// Copyright 2021 Enfonica Pty Ltd
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -573,6 +573,9 @@ export namespace enfonica {
 
                 /** ListMessagesRequest endTime */
                 endTime?: (google.protobuf.ITimestamp|null);
+
+                /** ListMessagesRequest filter */
+                filter?: (string|null);
             }
 
             /** Represents a ListMessagesRequest. */
@@ -598,6 +601,9 @@ export namespace enfonica {
 
                 /** ListMessagesRequest endTime. */
                 public endTime?: (google.protobuf.ITimestamp|null);
+
+                /** ListMessagesRequest filter. */
+                public filter: string;
 
                 /**
                  * Creates a new ListMessagesRequest instance using the specified properties.

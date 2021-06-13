@@ -269,6 +269,7 @@
                      * @property {Object.<string,string>|null} [labels] PhoneNumberInstance labels
                      * @property {Array.<string>|null} [incomingMessageHandlerUris] PhoneNumberInstance incomingMessageHandlerUris
                      * @property {Array.<string>|null} [incomingCallHandlerUris] PhoneNumberInstance incomingCallHandlerUris
+                     * @property {enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger|null} [callRecordingTrigger] PhoneNumberInstance callRecordingTrigger
                      * @property {google.protobuf.ITimestamp|null} [createTime] PhoneNumberInstance createTime
                      * @property {google.protobuf.ITimestamp|null} [deleteTime] PhoneNumberInstance deleteTime
                      * @property {enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|null} [lifecycleState] PhoneNumberInstance lifecycleState
@@ -341,6 +342,14 @@
                     PhoneNumberInstance.prototype.incomingCallHandlerUris = $util.emptyArray;
     
                     /**
+                     * PhoneNumberInstance callRecordingTrigger.
+                     * @member {enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger} callRecordingTrigger
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
+                     * @instance
+                     */
+                    PhoneNumberInstance.prototype.callRecordingTrigger = 0;
+    
+                    /**
                      * PhoneNumberInstance createTime.
                      * @member {google.protobuf.ITimestamp|null|undefined} createTime
                      * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
@@ -403,6 +412,8 @@
                         if (message.incomingCallHandlerUris != null && message.incomingCallHandlerUris.length)
                             for (var i = 0; i < message.incomingCallHandlerUris.length; ++i)
                                 writer.uint32(/* id 6, wireType 2 =*/50).string(message.incomingCallHandlerUris[i]);
+                        if (message.callRecordingTrigger != null && Object.hasOwnProperty.call(message, "callRecordingTrigger"))
+                            writer.uint32(/* id 7, wireType 0 =*/56).int32(message.callRecordingTrigger);
                         if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
                             $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
                         if (message.deleteTime != null && Object.hasOwnProperty.call(message, "deleteTime"))
@@ -484,6 +495,9 @@
                                     message.incomingCallHandlerUris = [];
                                 message.incomingCallHandlerUris.push(reader.string());
                                 break;
+                            case 7:
+                                message.callRecordingTrigger = reader.int32();
+                                break;
                             case 10:
                                 message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
                                 break;
@@ -561,6 +575,16 @@
                                 if (!$util.isString(message.incomingCallHandlerUris[i]))
                                     return "incomingCallHandlerUris: string[] expected";
                         }
+                        if (message.callRecordingTrigger != null && message.hasOwnProperty("callRecordingTrigger"))
+                            switch (message.callRecordingTrigger) {
+                            default:
+                                return "callRecordingTrigger: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                                break;
+                            }
                         if (message.createTime != null && message.hasOwnProperty("createTime")) {
                             var error = $root.google.protobuf.Timestamp.verify(message.createTime);
                             if (error)
@@ -626,6 +650,24 @@
                             for (var i = 0; i < object.incomingCallHandlerUris.length; ++i)
                                 message.incomingCallHandlerUris[i] = String(object.incomingCallHandlerUris[i]);
                         }
+                        switch (object.callRecordingTrigger) {
+                        case "RECORDING_TRIGGER_UNSPECIFIED":
+                        case 0:
+                            message.callRecordingTrigger = 0;
+                            break;
+                        case "DISABLED":
+                        case 1:
+                            message.callRecordingTrigger = 1;
+                            break;
+                        case "ANSWER":
+                        case 2:
+                            message.callRecordingTrigger = 2;
+                            break;
+                        case "BRIDGE":
+                        case 3:
+                            message.callRecordingTrigger = 3;
+                            break;
+                        }
                         if (object.createTime != null) {
                             if (typeof object.createTime !== "object")
                                 throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.createTime: object expected");
@@ -680,6 +722,7 @@
                             object.name = "";
                             object.phoneNumber = null;
                             object.displayName = "";
+                            object.callRecordingTrigger = options.enums === String ? "RECORDING_TRIGGER_UNSPECIFIED" : 0;
                             object.createTime = null;
                             object.deleteTime = null;
                             object.lifecycleState = options.enums === String ? "LIFECYCLE_STATE_UNSPECIFIED" : 0;
@@ -706,6 +749,8 @@
                             for (var j = 0; j < message.incomingCallHandlerUris.length; ++j)
                                 object.incomingCallHandlerUris[j] = message.incomingCallHandlerUris[j];
                         }
+                        if (message.callRecordingTrigger != null && message.hasOwnProperty("callRecordingTrigger"))
+                            object.callRecordingTrigger = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger[message.callRecordingTrigger] : message.callRecordingTrigger;
                         if (message.createTime != null && message.hasOwnProperty("createTime"))
                             object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
                         if (message.deleteTime != null && message.hasOwnProperty("deleteTime"))
@@ -741,6 +786,24 @@
                         values[valuesById[1] = "ACTIVE"] = 1;
                         values[valuesById[2] = "DELETED"] = 2;
                         values[valuesById[3] = "SUSPENDED"] = 3;
+                        return values;
+                    })();
+    
+                    /**
+                     * RecordingTrigger enum.
+                     * @name enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger
+                     * @enum {number}
+                     * @property {number} RECORDING_TRIGGER_UNSPECIFIED=0 RECORDING_TRIGGER_UNSPECIFIED value
+                     * @property {number} DISABLED=1 DISABLED value
+                     * @property {number} ANSWER=2 ANSWER value
+                     * @property {number} BRIDGE=3 BRIDGE value
+                     */
+                    PhoneNumberInstance.RecordingTrigger = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "RECORDING_TRIGGER_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "DISABLED"] = 1;
+                        values[valuesById[2] = "ANSWER"] = 2;
+                        values[valuesById[3] = "BRIDGE"] = 3;
                         return values;
                     })();
     

@@ -132,9 +132,6 @@ message SearchPhoneNumbersRequest {
   // that indicates where this listing should continue from.
   string page_token = 2;
 
-  // The capabilities that the phone number must have.
-  repeated PhoneNumber.PhoneNumberCapability capabilities = 3;
-
   // The type of phone number.
   PhoneNumber.PhoneNumberType number_type = 4;
 
@@ -147,6 +144,15 @@ message SearchPhoneNumbersRequest {
   // The prefix that the number must have after the country code. If the
   // prefix starts with '0', it will be automatically removed.
   string prefix = 6;
+
+  // If true, the phone number must support voice.
+  bool supports_voice = 7;
+
+  // If true, the phone number must support SMS.
+  bool supports_sms = 8;
+
+  // If true, the phone number must support MMS.
+  bool supports_mms = 9;  
 }
 
 // The SearchPhoneNumbers response.

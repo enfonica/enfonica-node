@@ -150,6 +150,10 @@
                       "type": "string",
                       "id": 6
                     },
+                    "callRecordingTrigger": {
+                      "type": "RecordingTrigger",
+                      "id": 7
+                    },
                     "createTime": {
                       "type": "google.protobuf.Timestamp",
                       "id": 10,
@@ -179,6 +183,14 @@
                         "ACTIVE": 1,
                         "DELETED": 2,
                         "SUSPENDED": 3
+                      }
+                    },
+                    "RecordingTrigger": {
+                      "values": {
+                        "RECORDING_TRIGGER_UNSPECIFIED": 0,
+                        "DISABLED": 1,
+                        "ANSWER": 2,
+                        "BRIDGE": 3
                       }
                     }
                   }

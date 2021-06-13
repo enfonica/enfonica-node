@@ -1,4 +1,4 @@
-// Copyright 2021 Enfonica Pty Ltd
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1522,6 +1522,7 @@
                      * @property {string|null} [pageToken] ListMessagesRequest pageToken
                      * @property {google.protobuf.ITimestamp|null} [startTime] ListMessagesRequest startTime
                      * @property {google.protobuf.ITimestamp|null} [endTime] ListMessagesRequest endTime
+                     * @property {string|null} [filter] ListMessagesRequest filter
                      */
     
                     /**
@@ -1580,6 +1581,14 @@
                     ListMessagesRequest.prototype.endTime = null;
     
                     /**
+                     * ListMessagesRequest filter.
+                     * @member {string} filter
+                     * @memberof enfonica.messaging.v1.ListMessagesRequest
+                     * @instance
+                     */
+                    ListMessagesRequest.prototype.filter = "";
+    
+                    /**
                      * Creates a new ListMessagesRequest instance using the specified properties.
                      * @function create
                      * @memberof enfonica.messaging.v1.ListMessagesRequest
@@ -1613,6 +1622,8 @@
                             $root.google.protobuf.Timestamp.encode(message.startTime, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                         if (message.endTime != null && Object.hasOwnProperty.call(message, "endTime"))
                             $root.google.protobuf.Timestamp.encode(message.endTime, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                        if (message.filter != null && Object.hasOwnProperty.call(message, "filter"))
+                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.filter);
                         return writer;
                     };
     
@@ -1661,6 +1672,9 @@
                                 break;
                             case 5:
                                 message.endTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 6:
+                                message.filter = reader.string();
                                 break;
                             default:
                                 reader.skipType(tag & 7);
@@ -1716,6 +1730,9 @@
                             if (error)
                                 return "endTime." + error;
                         }
+                        if (message.filter != null && message.hasOwnProperty("filter"))
+                            if (!$util.isString(message.filter))
+                                return "filter: string expected";
                         return null;
                     };
     
@@ -1747,6 +1764,8 @@
                                 throw TypeError(".enfonica.messaging.v1.ListMessagesRequest.endTime: object expected");
                             message.endTime = $root.google.protobuf.Timestamp.fromObject(object.endTime);
                         }
+                        if (object.filter != null)
+                            message.filter = String(object.filter);
                         return message;
                     };
     
@@ -1769,6 +1788,7 @@
                             object.pageToken = "";
                             object.startTime = null;
                             object.endTime = null;
+                            object.filter = "";
                         }
                         if (message.parent != null && message.hasOwnProperty("parent"))
                             object.parent = message.parent;
@@ -1780,6 +1800,8 @@
                             object.startTime = $root.google.protobuf.Timestamp.toObject(message.startTime, options);
                         if (message.endTime != null && message.hasOwnProperty("endTime"))
                             object.endTime = $root.google.protobuf.Timestamp.toObject(message.endTime, options);
+                        if (message.filter != null && message.hasOwnProperty("filter"))
+                            object.filter = message.filter;
                         return object;
                     };
     

@@ -226,7 +226,7 @@ export class CallsClient {
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const callsStubMethods = ['getCall', 'listCalls'];
+    const callsStubMethods = ['createCall', 'getCall', 'listCalls'];
     for (const methodName of callsStubMethods) {
       const callPromise = this.callsStub.then(
         stub => (...args: Array<{}>) => {
@@ -304,6 +304,91 @@ export class CallsClient {
   // -------------------
   // -- Service calls --
   // -------------------
+  createCall(
+    request: protos.enfonica.voice.v1beta1.ICreateCallRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ICall,
+      protos.enfonica.voice.v1beta1.ICreateCallRequest | undefined,
+      {} | undefined
+    ]
+  >;
+  createCall(
+    request: protos.enfonica.voice.v1beta1.ICreateCallRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.ICall,
+      protos.enfonica.voice.v1beta1.ICreateCallRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  createCall(
+    request: protos.enfonica.voice.v1beta1.ICreateCallRequest,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.ICall,
+      protos.enfonica.voice.v1beta1.ICreateCallRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Creates a call in the state QUEUED. This will cause an outgoing call
+   * to be started.
+   *
+   * The caller must have `voice.calls.create` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.parent
+   *   The project under which to create the call in the form `projects/*`.
+   * @param {enfonica.voice.v1beta1.Call} request.call
+   *   The call resource to be created.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Call]{@link enfonica.voice.v1beta1.Call}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  createCall(
+    request: protos.enfonica.voice.v1beta1.ICreateCallRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.enfonica.voice.v1beta1.ICall,
+          protos.enfonica.voice.v1beta1.ICreateCallRequest | null | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.enfonica.voice.v1beta1.ICall,
+      protos.enfonica.voice.v1beta1.ICreateCallRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ICall,
+      protos.enfonica.voice.v1beta1.ICreateCallRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers[
+      'x-goog-request-params'
+    ] = gax.routingHeader.fromParams({
+      parent: request.parent || '',
+    });
+    this.initialize();
+    return this.innerApiCalls.createCall(request, options, callback);
+  }
   getCall(
     request: protos.enfonica.voice.v1beta1.IGetCallRequest,
     options?: gax.CallOptions

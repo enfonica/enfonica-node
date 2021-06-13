@@ -351,8 +351,6 @@ export class PhoneNumbersClient {
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `SearchPhoneNumbers`
    *   that indicates where this listing should continue from.
-   * @param {number[]} request.capabilities
-   *   The capabilities that the phone number must have.
    * @param {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} request.numberType
    *   The type of phone number.
    * @param {string} request.countryCode
@@ -363,6 +361,12 @@ export class PhoneNumbersClient {
    * @param {string} request.prefix
    *   The prefix that the number must have after the country code. If the
    *   prefix starts with '0', it will be automatically removed.
+   * @param {boolean} request.supportsVoice
+   *   If true, the phone number must support voice.
+   * @param {boolean} request.supportsSms
+   *   If true, the phone number must support SMS.
+   * @param {boolean} request.supportsMms
+   *   If true, the phone number must support MMS.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
@@ -440,8 +444,6 @@ export class PhoneNumbersClient {
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `SearchPhoneNumbers`
    *   that indicates where this listing should continue from.
-   * @param {number[]} request.capabilities
-   *   The capabilities that the phone number must have.
    * @param {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} request.numberType
    *   The type of phone number.
    * @param {string} request.countryCode
@@ -452,6 +454,12 @@ export class PhoneNumbersClient {
    * @param {string} request.prefix
    *   The prefix that the number must have after the country code. If the
    *   prefix starts with '0', it will be automatically removed.
+   * @param {boolean} request.supportsVoice
+   *   If true, the phone number must support voice.
+   * @param {boolean} request.supportsSms
+   *   If true, the phone number must support SMS.
+   * @param {boolean} request.supportsMms
+   *   If true, the phone number must support MMS.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
@@ -485,8 +493,6 @@ export class PhoneNumbersClient {
    * @param {string} request.pageToken
    *   A pagination token returned from a previous call to `SearchPhoneNumbers`
    *   that indicates where this listing should continue from.
-   * @param {number[]} request.capabilities
-   *   The capabilities that the phone number must have.
    * @param {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} request.numberType
    *   The type of phone number.
    * @param {string} request.countryCode
@@ -497,6 +503,12 @@ export class PhoneNumbersClient {
    * @param {string} request.prefix
    *   The prefix that the number must have after the country code. If the
    *   prefix starts with '0', it will be automatically removed.
+   * @param {boolean} request.supportsVoice
+   *   If true, the phone number must support voice.
+   * @param {boolean} request.supportsSms
+   *   If true, the phone number must support SMS.
+   * @param {boolean} request.supportsMms
+   *   If true, the phone number must support MMS.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}

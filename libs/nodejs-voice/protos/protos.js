@@ -415,6 +415,26 @@
                      * @memberof enfonica.voice.v1beta1
                      * @interface ICall
                      * @property {string|null} [name] Call name
+                     * @property {string|null} [to] Call to
+                     * @property {string|null} [from] Call from
+                     * @property {boolean|null} [isPrivate] Call isPrivate
+                     * @property {string|null} [statusUpdateUri] Call statusUpdateUri
+                     * @property {string|null} [handleUri] Call handleUri
+                     * @property {number|null} [validityPeriodSeconds] Call validityPeriodSeconds
+                     * @property {Object.<string,string>|null} [labels] Call labels
+                     * @property {enfonica.voice.v1beta1.Call.Transport|null} [transport] Call transport
+                     * @property {enfonica.voice.v1beta1.Call.Direction|null} [direction] Call direction
+                     * @property {string|null} [errorCode] Call errorCode
+                     * @property {string|null} [errorMessage] Call errorMessage
+                     * @property {google.type.IMoney|null} [price] Call price
+                     * @property {enfonica.voice.v1beta1.Call.State|null} [state] Call state
+                     * @property {google.protobuf.ITimestamp|null} [createTime] Call createTime
+                     * @property {google.protobuf.ITimestamp|null} [startTime] Call startTime
+                     * @property {google.protobuf.ITimestamp|null} [ringTime] Call ringTime
+                     * @property {google.protobuf.ITimestamp|null} [answerTime] Call answerTime
+                     * @property {google.protobuf.ITimestamp|null} [endTime] Call endTime
+                     * @property {boolean|null} [bridged] Call bridged
+                     * @property {string|null} [originatingCall] Call originatingCall
                      */
     
                     /**
@@ -426,6 +446,7 @@
                      * @param {enfonica.voice.v1beta1.ICall=} [properties] Properties to set
                      */
                     function Call(properties) {
+                        this.labels = {};
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -439,6 +460,166 @@
                      * @instance
                      */
                     Call.prototype.name = "";
+    
+                    /**
+                     * Call to.
+                     * @member {string} to
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.to = "";
+    
+                    /**
+                     * Call from.
+                     * @member {string} from
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.from = "";
+    
+                    /**
+                     * Call isPrivate.
+                     * @member {boolean} isPrivate
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.isPrivate = false;
+    
+                    /**
+                     * Call statusUpdateUri.
+                     * @member {string} statusUpdateUri
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.statusUpdateUri = "";
+    
+                    /**
+                     * Call handleUri.
+                     * @member {string} handleUri
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.handleUri = "";
+    
+                    /**
+                     * Call validityPeriodSeconds.
+                     * @member {number} validityPeriodSeconds
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.validityPeriodSeconds = 0;
+    
+                    /**
+                     * Call labels.
+                     * @member {Object.<string,string>} labels
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.labels = $util.emptyObject;
+    
+                    /**
+                     * Call transport.
+                     * @member {enfonica.voice.v1beta1.Call.Transport} transport
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.transport = 0;
+    
+                    /**
+                     * Call direction.
+                     * @member {enfonica.voice.v1beta1.Call.Direction} direction
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.direction = 0;
+    
+                    /**
+                     * Call errorCode.
+                     * @member {string} errorCode
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.errorCode = "";
+    
+                    /**
+                     * Call errorMessage.
+                     * @member {string} errorMessage
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.errorMessage = "";
+    
+                    /**
+                     * Call price.
+                     * @member {google.type.IMoney|null|undefined} price
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.price = null;
+    
+                    /**
+                     * Call state.
+                     * @member {enfonica.voice.v1beta1.Call.State} state
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.state = 0;
+    
+                    /**
+                     * Call createTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} createTime
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.createTime = null;
+    
+                    /**
+                     * Call startTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} startTime
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.startTime = null;
+    
+                    /**
+                     * Call ringTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} ringTime
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.ringTime = null;
+    
+                    /**
+                     * Call answerTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} answerTime
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.answerTime = null;
+    
+                    /**
+                     * Call endTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} endTime
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.endTime = null;
+    
+                    /**
+                     * Call bridged.
+                     * @member {boolean} bridged
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.bridged = false;
+    
+                    /**
+                     * Call originatingCall.
+                     * @member {string} originatingCall
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.originatingCall = "";
     
                     /**
                      * Creates a new Call instance using the specified properties.
@@ -466,6 +647,47 @@
                             writer = $Writer.create();
                         if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                             writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.to != null && Object.hasOwnProperty.call(message, "to"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.to);
+                        if (message.from != null && Object.hasOwnProperty.call(message, "from"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.from);
+                        if (message.isPrivate != null && Object.hasOwnProperty.call(message, "isPrivate"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).bool(message.isPrivate);
+                        if (message.statusUpdateUri != null && Object.hasOwnProperty.call(message, "statusUpdateUri"))
+                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.statusUpdateUri);
+                        if (message.handleUri != null && Object.hasOwnProperty.call(message, "handleUri"))
+                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.handleUri);
+                        if (message.validityPeriodSeconds != null && Object.hasOwnProperty.call(message, "validityPeriodSeconds"))
+                            writer.uint32(/* id 7, wireType 0 =*/56).int32(message.validityPeriodSeconds);
+                        if (message.labels != null && Object.hasOwnProperty.call(message, "labels"))
+                            for (var keys = Object.keys(message.labels), i = 0; i < keys.length; ++i)
+                                writer.uint32(/* id 8, wireType 2 =*/66).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]).uint32(/* id 2, wireType 2 =*/18).string(message.labels[keys[i]]).ldelim();
+                        if (message.transport != null && Object.hasOwnProperty.call(message, "transport"))
+                            writer.uint32(/* id 9, wireType 0 =*/72).int32(message.transport);
+                        if (message.direction != null && Object.hasOwnProperty.call(message, "direction"))
+                            writer.uint32(/* id 10, wireType 0 =*/80).int32(message.direction);
+                        if (message.errorCode != null && Object.hasOwnProperty.call(message, "errorCode"))
+                            writer.uint32(/* id 11, wireType 2 =*/90).string(message.errorCode);
+                        if (message.errorMessage != null && Object.hasOwnProperty.call(message, "errorMessage"))
+                            writer.uint32(/* id 12, wireType 2 =*/98).string(message.errorMessage);
+                        if (message.price != null && Object.hasOwnProperty.call(message, "price"))
+                            $root.google.type.Money.encode(message.price, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
+                        if (message.state != null && Object.hasOwnProperty.call(message, "state"))
+                            writer.uint32(/* id 14, wireType 0 =*/112).int32(message.state);
+                        if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
+                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 16, wireType 2 =*/130).fork()).ldelim();
+                        if (message.startTime != null && Object.hasOwnProperty.call(message, "startTime"))
+                            $root.google.protobuf.Timestamp.encode(message.startTime, writer.uint32(/* id 17, wireType 2 =*/138).fork()).ldelim();
+                        if (message.ringTime != null && Object.hasOwnProperty.call(message, "ringTime"))
+                            $root.google.protobuf.Timestamp.encode(message.ringTime, writer.uint32(/* id 18, wireType 2 =*/146).fork()).ldelim();
+                        if (message.answerTime != null && Object.hasOwnProperty.call(message, "answerTime"))
+                            $root.google.protobuf.Timestamp.encode(message.answerTime, writer.uint32(/* id 19, wireType 2 =*/154).fork()).ldelim();
+                        if (message.endTime != null && Object.hasOwnProperty.call(message, "endTime"))
+                            $root.google.protobuf.Timestamp.encode(message.endTime, writer.uint32(/* id 20, wireType 2 =*/162).fork()).ldelim();
+                        if (message.bridged != null && Object.hasOwnProperty.call(message, "bridged"))
+                            writer.uint32(/* id 21, wireType 0 =*/168).bool(message.bridged);
+                        if (message.originatingCall != null && Object.hasOwnProperty.call(message, "originatingCall"))
+                            writer.uint32(/* id 22, wireType 2 =*/178).string(message.originatingCall);
                         return writer;
                     };
     
@@ -496,12 +718,91 @@
                     Call.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.Call();
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.Call(), key, value;
                         while (reader.pos < end) {
                             var tag = reader.uint32();
                             switch (tag >>> 3) {
                             case 1:
                                 message.name = reader.string();
+                                break;
+                            case 2:
+                                message.to = reader.string();
+                                break;
+                            case 3:
+                                message.from = reader.string();
+                                break;
+                            case 4:
+                                message.isPrivate = reader.bool();
+                                break;
+                            case 5:
+                                message.statusUpdateUri = reader.string();
+                                break;
+                            case 6:
+                                message.handleUri = reader.string();
+                                break;
+                            case 7:
+                                message.validityPeriodSeconds = reader.int32();
+                                break;
+                            case 8:
+                                if (message.labels === $util.emptyObject)
+                                    message.labels = {};
+                                var end2 = reader.uint32() + reader.pos;
+                                key = "";
+                                value = "";
+                                while (reader.pos < end2) {
+                                    var tag2 = reader.uint32();
+                                    switch (tag2 >>> 3) {
+                                    case 1:
+                                        key = reader.string();
+                                        break;
+                                    case 2:
+                                        value = reader.string();
+                                        break;
+                                    default:
+                                        reader.skipType(tag2 & 7);
+                                        break;
+                                    }
+                                }
+                                message.labels[key] = value;
+                                break;
+                            case 9:
+                                message.transport = reader.int32();
+                                break;
+                            case 10:
+                                message.direction = reader.int32();
+                                break;
+                            case 11:
+                                message.errorCode = reader.string();
+                                break;
+                            case 12:
+                                message.errorMessage = reader.string();
+                                break;
+                            case 13:
+                                message.price = $root.google.type.Money.decode(reader, reader.uint32());
+                                break;
+                            case 14:
+                                message.state = reader.int32();
+                                break;
+                            case 16:
+                                message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 17:
+                                message.startTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 18:
+                                message.ringTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 19:
+                                message.answerTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 20:
+                                message.endTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 21:
+                                message.bridged = reader.bool();
+                                break;
+                            case 22:
+                                message.originatingCall = reader.string();
                                 break;
                             default:
                                 reader.skipType(tag & 7);
@@ -541,6 +842,109 @@
                         if (message.name != null && message.hasOwnProperty("name"))
                             if (!$util.isString(message.name))
                                 return "name: string expected";
+                        if (message.to != null && message.hasOwnProperty("to"))
+                            if (!$util.isString(message.to))
+                                return "to: string expected";
+                        if (message.from != null && message.hasOwnProperty("from"))
+                            if (!$util.isString(message.from))
+                                return "from: string expected";
+                        if (message.isPrivate != null && message.hasOwnProperty("isPrivate"))
+                            if (typeof message.isPrivate !== "boolean")
+                                return "isPrivate: boolean expected";
+                        if (message.statusUpdateUri != null && message.hasOwnProperty("statusUpdateUri"))
+                            if (!$util.isString(message.statusUpdateUri))
+                                return "statusUpdateUri: string expected";
+                        if (message.handleUri != null && message.hasOwnProperty("handleUri"))
+                            if (!$util.isString(message.handleUri))
+                                return "handleUri: string expected";
+                        if (message.validityPeriodSeconds != null && message.hasOwnProperty("validityPeriodSeconds"))
+                            if (!$util.isInteger(message.validityPeriodSeconds))
+                                return "validityPeriodSeconds: integer expected";
+                        if (message.labels != null && message.hasOwnProperty("labels")) {
+                            if (!$util.isObject(message.labels))
+                                return "labels: object expected";
+                            var key = Object.keys(message.labels);
+                            for (var i = 0; i < key.length; ++i)
+                                if (!$util.isString(message.labels[key[i]]))
+                                    return "labels: string{k:string} expected";
+                        }
+                        if (message.transport != null && message.hasOwnProperty("transport"))
+                            switch (message.transport) {
+                            default:
+                                return "transport: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                                break;
+                            }
+                        if (message.direction != null && message.hasOwnProperty("direction"))
+                            switch (message.direction) {
+                            default:
+                                return "direction: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                                break;
+                            }
+                        if (message.errorCode != null && message.hasOwnProperty("errorCode"))
+                            if (!$util.isString(message.errorCode))
+                                return "errorCode: string expected";
+                        if (message.errorMessage != null && message.hasOwnProperty("errorMessage"))
+                            if (!$util.isString(message.errorMessage))
+                                return "errorMessage: string expected";
+                        if (message.price != null && message.hasOwnProperty("price")) {
+                            var error = $root.google.type.Money.verify(message.price);
+                            if (error)
+                                return "price." + error;
+                        }
+                        if (message.state != null && message.hasOwnProperty("state"))
+                            switch (message.state) {
+                            default:
+                                return "state: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 7:
+                            case 8:
+                            case 9:
+                                break;
+                            }
+                        if (message.createTime != null && message.hasOwnProperty("createTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.createTime);
+                            if (error)
+                                return "createTime." + error;
+                        }
+                        if (message.startTime != null && message.hasOwnProperty("startTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.startTime);
+                            if (error)
+                                return "startTime." + error;
+                        }
+                        if (message.ringTime != null && message.hasOwnProperty("ringTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.ringTime);
+                            if (error)
+                                return "ringTime." + error;
+                        }
+                        if (message.answerTime != null && message.hasOwnProperty("answerTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.answerTime);
+                            if (error)
+                                return "answerTime." + error;
+                        }
+                        if (message.endTime != null && message.hasOwnProperty("endTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.endTime);
+                            if (error)
+                                return "endTime." + error;
+                        }
+                        if (message.bridged != null && message.hasOwnProperty("bridged"))
+                            if (typeof message.bridged !== "boolean")
+                                return "bridged: boolean expected";
+                        if (message.originatingCall != null && message.hasOwnProperty("originatingCall"))
+                            if (!$util.isString(message.originatingCall))
+                                return "originatingCall: string expected";
                         return null;
                     };
     
@@ -558,6 +962,137 @@
                         var message = new $root.enfonica.voice.v1beta1.Call();
                         if (object.name != null)
                             message.name = String(object.name);
+                        if (object.to != null)
+                            message.to = String(object.to);
+                        if (object.from != null)
+                            message.from = String(object.from);
+                        if (object.isPrivate != null)
+                            message.isPrivate = Boolean(object.isPrivate);
+                        if (object.statusUpdateUri != null)
+                            message.statusUpdateUri = String(object.statusUpdateUri);
+                        if (object.handleUri != null)
+                            message.handleUri = String(object.handleUri);
+                        if (object.validityPeriodSeconds != null)
+                            message.validityPeriodSeconds = object.validityPeriodSeconds | 0;
+                        if (object.labels) {
+                            if (typeof object.labels !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.labels: object expected");
+                            message.labels = {};
+                            for (var keys = Object.keys(object.labels), i = 0; i < keys.length; ++i)
+                                message.labels[keys[i]] = String(object.labels[keys[i]]);
+                        }
+                        switch (object.transport) {
+                        case "TRANSPORT_UNSPECIFIED":
+                        case 0:
+                            message.transport = 0;
+                            break;
+                        case "PSTN":
+                        case 1:
+                            message.transport = 1;
+                            break;
+                        case "CLIENT":
+                        case 2:
+                            message.transport = 2;
+                            break;
+                        case "SIP":
+                        case 3:
+                            message.transport = 3;
+                            break;
+                        }
+                        switch (object.direction) {
+                        case "DIRECTION_UNSPECIFIED":
+                        case 0:
+                            message.direction = 0;
+                            break;
+                        case "OUTGOING":
+                        case 1:
+                            message.direction = 1;
+                            break;
+                        case "INCOMING":
+                        case 2:
+                            message.direction = 2;
+                            break;
+                        }
+                        if (object.errorCode != null)
+                            message.errorCode = String(object.errorCode);
+                        if (object.errorMessage != null)
+                            message.errorMessage = String(object.errorMessage);
+                        if (object.price != null) {
+                            if (typeof object.price !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.price: object expected");
+                            message.price = $root.google.type.Money.fromObject(object.price);
+                        }
+                        switch (object.state) {
+                        case "STATE_UNSPECIFIED":
+                        case 0:
+                            message.state = 0;
+                            break;
+                        case "QUEUED":
+                        case 1:
+                            message.state = 1;
+                            break;
+                        case "STARTING":
+                        case 2:
+                            message.state = 2;
+                            break;
+                        case "RINGING":
+                        case 3:
+                            message.state = 3;
+                            break;
+                        case "IN_PROGRESS":
+                        case 4:
+                            message.state = 4;
+                            break;
+                        case "COMPLETED":
+                        case 5:
+                            message.state = 5;
+                            break;
+                        case "FAILED":
+                        case 6:
+                            message.state = 6;
+                            break;
+                        case "NOT_ANSWERED":
+                        case 7:
+                            message.state = 7;
+                            break;
+                        case "BUSY":
+                        case 8:
+                            message.state = 8;
+                            break;
+                        case "REJECTED":
+                        case 9:
+                            message.state = 9;
+                            break;
+                        }
+                        if (object.createTime != null) {
+                            if (typeof object.createTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.createTime: object expected");
+                            message.createTime = $root.google.protobuf.Timestamp.fromObject(object.createTime);
+                        }
+                        if (object.startTime != null) {
+                            if (typeof object.startTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.startTime: object expected");
+                            message.startTime = $root.google.protobuf.Timestamp.fromObject(object.startTime);
+                        }
+                        if (object.ringTime != null) {
+                            if (typeof object.ringTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.ringTime: object expected");
+                            message.ringTime = $root.google.protobuf.Timestamp.fromObject(object.ringTime);
+                        }
+                        if (object.answerTime != null) {
+                            if (typeof object.answerTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.answerTime: object expected");
+                            message.answerTime = $root.google.protobuf.Timestamp.fromObject(object.answerTime);
+                        }
+                        if (object.endTime != null) {
+                            if (typeof object.endTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.endTime: object expected");
+                            message.endTime = $root.google.protobuf.Timestamp.fromObject(object.endTime);
+                        }
+                        if (object.bridged != null)
+                            message.bridged = Boolean(object.bridged);
+                        if (object.originatingCall != null)
+                            message.originatingCall = String(object.originatingCall);
                         return message;
                     };
     
@@ -574,10 +1109,76 @@
                         if (!options)
                             options = {};
                         var object = {};
-                        if (options.defaults)
+                        if (options.objects || options.defaults)
+                            object.labels = {};
+                        if (options.defaults) {
                             object.name = "";
+                            object.to = "";
+                            object.from = "";
+                            object.isPrivate = false;
+                            object.statusUpdateUri = "";
+                            object.handleUri = "";
+                            object.validityPeriodSeconds = 0;
+                            object.transport = options.enums === String ? "TRANSPORT_UNSPECIFIED" : 0;
+                            object.direction = options.enums === String ? "DIRECTION_UNSPECIFIED" : 0;
+                            object.errorCode = "";
+                            object.errorMessage = "";
+                            object.price = null;
+                            object.state = options.enums === String ? "STATE_UNSPECIFIED" : 0;
+                            object.createTime = null;
+                            object.startTime = null;
+                            object.ringTime = null;
+                            object.answerTime = null;
+                            object.endTime = null;
+                            object.bridged = false;
+                            object.originatingCall = "";
+                        }
                         if (message.name != null && message.hasOwnProperty("name"))
                             object.name = message.name;
+                        if (message.to != null && message.hasOwnProperty("to"))
+                            object.to = message.to;
+                        if (message.from != null && message.hasOwnProperty("from"))
+                            object.from = message.from;
+                        if (message.isPrivate != null && message.hasOwnProperty("isPrivate"))
+                            object.isPrivate = message.isPrivate;
+                        if (message.statusUpdateUri != null && message.hasOwnProperty("statusUpdateUri"))
+                            object.statusUpdateUri = message.statusUpdateUri;
+                        if (message.handleUri != null && message.hasOwnProperty("handleUri"))
+                            object.handleUri = message.handleUri;
+                        if (message.validityPeriodSeconds != null && message.hasOwnProperty("validityPeriodSeconds"))
+                            object.validityPeriodSeconds = message.validityPeriodSeconds;
+                        var keys2;
+                        if (message.labels && (keys2 = Object.keys(message.labels)).length) {
+                            object.labels = {};
+                            for (var j = 0; j < keys2.length; ++j)
+                                object.labels[keys2[j]] = message.labels[keys2[j]];
+                        }
+                        if (message.transport != null && message.hasOwnProperty("transport"))
+                            object.transport = options.enums === String ? $root.enfonica.voice.v1beta1.Call.Transport[message.transport] : message.transport;
+                        if (message.direction != null && message.hasOwnProperty("direction"))
+                            object.direction = options.enums === String ? $root.enfonica.voice.v1beta1.Call.Direction[message.direction] : message.direction;
+                        if (message.errorCode != null && message.hasOwnProperty("errorCode"))
+                            object.errorCode = message.errorCode;
+                        if (message.errorMessage != null && message.hasOwnProperty("errorMessage"))
+                            object.errorMessage = message.errorMessage;
+                        if (message.price != null && message.hasOwnProperty("price"))
+                            object.price = $root.google.type.Money.toObject(message.price, options);
+                        if (message.state != null && message.hasOwnProperty("state"))
+                            object.state = options.enums === String ? $root.enfonica.voice.v1beta1.Call.State[message.state] : message.state;
+                        if (message.createTime != null && message.hasOwnProperty("createTime"))
+                            object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
+                        if (message.startTime != null && message.hasOwnProperty("startTime"))
+                            object.startTime = $root.google.protobuf.Timestamp.toObject(message.startTime, options);
+                        if (message.ringTime != null && message.hasOwnProperty("ringTime"))
+                            object.ringTime = $root.google.protobuf.Timestamp.toObject(message.ringTime, options);
+                        if (message.answerTime != null && message.hasOwnProperty("answerTime"))
+                            object.answerTime = $root.google.protobuf.Timestamp.toObject(message.answerTime, options);
+                        if (message.endTime != null && message.hasOwnProperty("endTime"))
+                            object.endTime = $root.google.protobuf.Timestamp.toObject(message.endTime, options);
+                        if (message.bridged != null && message.hasOwnProperty("bridged"))
+                            object.bridged = message.bridged;
+                        if (message.originatingCall != null && message.hasOwnProperty("originatingCall"))
+                            object.originatingCall = message.originatingCall;
                         return object;
                     };
     
@@ -591,6 +1192,70 @@
                     Call.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
+    
+                    /**
+                     * State enum.
+                     * @name enfonica.voice.v1beta1.Call.State
+                     * @enum {number}
+                     * @property {number} STATE_UNSPECIFIED=0 STATE_UNSPECIFIED value
+                     * @property {number} QUEUED=1 QUEUED value
+                     * @property {number} STARTING=2 STARTING value
+                     * @property {number} RINGING=3 RINGING value
+                     * @property {number} IN_PROGRESS=4 IN_PROGRESS value
+                     * @property {number} COMPLETED=5 COMPLETED value
+                     * @property {number} FAILED=6 FAILED value
+                     * @property {number} NOT_ANSWERED=7 NOT_ANSWERED value
+                     * @property {number} BUSY=8 BUSY value
+                     * @property {number} REJECTED=9 REJECTED value
+                     */
+                    Call.State = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "STATE_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "QUEUED"] = 1;
+                        values[valuesById[2] = "STARTING"] = 2;
+                        values[valuesById[3] = "RINGING"] = 3;
+                        values[valuesById[4] = "IN_PROGRESS"] = 4;
+                        values[valuesById[5] = "COMPLETED"] = 5;
+                        values[valuesById[6] = "FAILED"] = 6;
+                        values[valuesById[7] = "NOT_ANSWERED"] = 7;
+                        values[valuesById[8] = "BUSY"] = 8;
+                        values[valuesById[9] = "REJECTED"] = 9;
+                        return values;
+                    })();
+    
+                    /**
+                     * Direction enum.
+                     * @name enfonica.voice.v1beta1.Call.Direction
+                     * @enum {number}
+                     * @property {number} DIRECTION_UNSPECIFIED=0 DIRECTION_UNSPECIFIED value
+                     * @property {number} OUTGOING=1 OUTGOING value
+                     * @property {number} INCOMING=2 INCOMING value
+                     */
+                    Call.Direction = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "DIRECTION_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "OUTGOING"] = 1;
+                        values[valuesById[2] = "INCOMING"] = 2;
+                        return values;
+                    })();
+    
+                    /**
+                     * Transport enum.
+                     * @name enfonica.voice.v1beta1.Call.Transport
+                     * @enum {number}
+                     * @property {number} TRANSPORT_UNSPECIFIED=0 TRANSPORT_UNSPECIFIED value
+                     * @property {number} PSTN=1 PSTN value
+                     * @property {number} CLIENT=2 CLIENT value
+                     * @property {number} SIP=3 SIP value
+                     */
+                    Call.Transport = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "TRANSPORT_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "PSTN"] = 1;
+                        values[valuesById[2] = "CLIENT"] = 2;
+                        values[valuesById[3] = "SIP"] = 3;
+                        return values;
+                    })();
     
                     return Call;
                 })();
@@ -791,8 +1456,7 @@
                      * @property {string|null} [parent] ListCallsRequest parent
                      * @property {number|null} [pageSize] ListCallsRequest pageSize
                      * @property {string|null} [pageToken] ListCallsRequest pageToken
-                     * @property {google.protobuf.ITimestamp|null} [startTime] ListCallsRequest startTime
-                     * @property {google.protobuf.ITimestamp|null} [endTime] ListCallsRequest endTime
+                     * @property {string|null} [filter] ListCallsRequest filter
                      */
     
                     /**
@@ -835,20 +1499,12 @@
                     ListCallsRequest.prototype.pageToken = "";
     
                     /**
-                     * ListCallsRequest startTime.
-                     * @member {google.protobuf.ITimestamp|null|undefined} startTime
+                     * ListCallsRequest filter.
+                     * @member {string} filter
                      * @memberof enfonica.voice.v1beta1.ListCallsRequest
                      * @instance
                      */
-                    ListCallsRequest.prototype.startTime = null;
-    
-                    /**
-                     * ListCallsRequest endTime.
-                     * @member {google.protobuf.ITimestamp|null|undefined} endTime
-                     * @memberof enfonica.voice.v1beta1.ListCallsRequest
-                     * @instance
-                     */
-                    ListCallsRequest.prototype.endTime = null;
+                    ListCallsRequest.prototype.filter = "";
     
                     /**
                      * Creates a new ListCallsRequest instance using the specified properties.
@@ -880,10 +1536,8 @@
                             writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pageSize);
                         if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
                             writer.uint32(/* id 3, wireType 2 =*/26).string(message.pageToken);
-                        if (message.startTime != null && Object.hasOwnProperty.call(message, "startTime"))
-                            $root.google.protobuf.Timestamp.encode(message.startTime, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-                        if (message.endTime != null && Object.hasOwnProperty.call(message, "endTime"))
-                            $root.google.protobuf.Timestamp.encode(message.endTime, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                        if (message.filter != null && Object.hasOwnProperty.call(message, "filter"))
+                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.filter);
                         return writer;
                     };
     
@@ -928,10 +1582,7 @@
                                 message.pageToken = reader.string();
                                 break;
                             case 4:
-                                message.startTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
-                                break;
-                            case 5:
-                                message.endTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                message.filter = reader.string();
                                 break;
                             default:
                                 reader.skipType(tag & 7);
@@ -977,16 +1628,9 @@
                         if (message.pageToken != null && message.hasOwnProperty("pageToken"))
                             if (!$util.isString(message.pageToken))
                                 return "pageToken: string expected";
-                        if (message.startTime != null && message.hasOwnProperty("startTime")) {
-                            var error = $root.google.protobuf.Timestamp.verify(message.startTime);
-                            if (error)
-                                return "startTime." + error;
-                        }
-                        if (message.endTime != null && message.hasOwnProperty("endTime")) {
-                            var error = $root.google.protobuf.Timestamp.verify(message.endTime);
-                            if (error)
-                                return "endTime." + error;
-                        }
+                        if (message.filter != null && message.hasOwnProperty("filter"))
+                            if (!$util.isString(message.filter))
+                                return "filter: string expected";
                         return null;
                     };
     
@@ -1008,16 +1652,8 @@
                             message.pageSize = object.pageSize | 0;
                         if (object.pageToken != null)
                             message.pageToken = String(object.pageToken);
-                        if (object.startTime != null) {
-                            if (typeof object.startTime !== "object")
-                                throw TypeError(".enfonica.voice.v1beta1.ListCallsRequest.startTime: object expected");
-                            message.startTime = $root.google.protobuf.Timestamp.fromObject(object.startTime);
-                        }
-                        if (object.endTime != null) {
-                            if (typeof object.endTime !== "object")
-                                throw TypeError(".enfonica.voice.v1beta1.ListCallsRequest.endTime: object expected");
-                            message.endTime = $root.google.protobuf.Timestamp.fromObject(object.endTime);
-                        }
+                        if (object.filter != null)
+                            message.filter = String(object.filter);
                         return message;
                     };
     
@@ -1038,8 +1674,7 @@
                             object.parent = "";
                             object.pageSize = 0;
                             object.pageToken = "";
-                            object.startTime = null;
-                            object.endTime = null;
+                            object.filter = "";
                         }
                         if (message.parent != null && message.hasOwnProperty("parent"))
                             object.parent = message.parent;
@@ -1047,10 +1682,8 @@
                             object.pageSize = message.pageSize;
                         if (message.pageToken != null && message.hasOwnProperty("pageToken"))
                             object.pageToken = message.pageToken;
-                        if (message.startTime != null && message.hasOwnProperty("startTime"))
-                            object.startTime = $root.google.protobuf.Timestamp.toObject(message.startTime, options);
-                        if (message.endTime != null && message.hasOwnProperty("endTime"))
-                            object.endTime = $root.google.protobuf.Timestamp.toObject(message.endTime, options);
+                        if (message.filter != null && message.hasOwnProperty("filter"))
+                            object.filter = message.filter;
                         return object;
                     };
     
@@ -1739,6 +2372,7 @@
                                 return "source: enum value expected";
                             case 0:
                             case 1:
+                            case 2:
                                 break;
                             }
                         if (message.duration != null && message.hasOwnProperty("duration")) {
@@ -1839,6 +2473,10 @@
                         case "RECORD_ACTION":
                         case 1:
                             message.source = 1;
+                            break;
+                        case "CALL_RECORDING":
+                        case 2:
+                            message.source = 2;
                             break;
                         }
                         if (object.duration != null) {
@@ -1980,11 +2618,13 @@
                      * @enum {number}
                      * @property {number} SOURCE_UNSPECIFIED=0 SOURCE_UNSPECIFIED value
                      * @property {number} RECORD_ACTION=1 RECORD_ACTION value
+                     * @property {number} CALL_RECORDING=2 CALL_RECORDING value
                      */
                     Recording.Source = (function() {
                         var valuesById = {}, values = Object.create(valuesById);
                         values[valuesById[0] = "SOURCE_UNSPECIFIED"] = 0;
                         values[valuesById[1] = "RECORD_ACTION"] = 1;
+                        values[valuesById[2] = "CALL_RECORDING"] = 2;
                         return values;
                     })();
     

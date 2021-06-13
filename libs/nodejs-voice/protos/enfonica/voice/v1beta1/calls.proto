@@ -37,6 +37,18 @@ service Calls {
   option (google.api.oauth_scopes) =
       "https://api.enfonica.com/auth/voice";
 
+  // Creates a call in the state QUEUED. This will cause an outgoing call
+  // to be started.
+  //
+  // The caller must have `voice.calls.create` permission on the project.
+  rpc CreateCall(CreateCallRequest) returns (Call) {
+    option (google.api.http) = {
+    post: "/v1beta1/{parent=projects/*}/calls"
+      body: "call"
+    };
+    option (google.api.method_signature) = "parent,call";
+  }
+
   // Retrieves a Call identified by the supplied resource name.
   //
   // The caller must have `voice.calls.get` permission on the project.
@@ -65,6 +77,25 @@ message Call {
     type: "voice.api.enfonica.com/Call"
     pattern: "projects/{project}/calls/{call}"
   };
+
+  // Options that are applied to the call when it is an outgoing call created
+  // by the API.
+  message ApiCallOptions {
+    // One or more URIs where VoiceML requests should be made to control the call.
+    // The first URI will be attempted first, while the other URIs are only used
+    // if the initial URI fails. Can be any supported URI.
+    // Minimum 1 URI, maximum 5 URIs.
+    repeated string handler_uris = 1 [(google.api.field_behavior) = REQUIRED];
+
+    // The URL where state updates should be sent.
+    string state_update_uri = 2;
+
+    // The maximum amount of time, in seconds, the call is allowed to attempt an endpoint.
+    // Default 30 seconds. Minimum 1, maximum 600 seconds.
+    // (-- api-linter: core::0142::time-field-type=disabled
+    //     aip.dev/not-precedent: This is not a timestamp. --)
+    int32 timeout_seconds = 3;
+  }
 
   // The state of a call.
   enum State {
@@ -127,7 +158,23 @@ message Call {
     SIP = 3;
   }
 
-  // Resource name of the call. It must match the pattern `projects/*/calls/*`
+  // How a call was created.
+  enum CreateMethod {
+    // Unspecified create method.
+    CREATE_METHOD_UNSPECIFIED = 0;
+
+    // The call was created as a result of receiving an incoming call.
+    INCOMING_CALL = 1;
+
+    // The call was created by its parent call,
+    // e.g. VoiceML `<Call>` or `<Redirect>`.
+    PARENT_CALL = 2;
+
+    // The call was creating using the API.
+    API = 3;
+  }
+
+  // Resource name of the call. It is of the form `projects/*/calls/*`
   string name = 1;
 
   // The recipient phone number in +E164.
@@ -146,21 +193,6 @@ message Call {
 
   // Whether the Caller ID is private.
   bool is_private = 4;
-
-  // The URL where status updates should be sent.
-  string status_update_uri = 5;
-
-  // The URL where VoiceML requests should be made to control the call.
-  // Required when creating a call using the API, but may not be present
-  // otherwise.
-  string handle_uri = 6 [(google.api.field_behavior) = REQUIRED];
-
-  // The maximum amount of time the call is allowed to spend in Enfonica's outgoing
-  // call queue, in seconds. If it is queued for longer than this, then it will be
-  // aborted.
-  // (-- api-linter: core::0142::time-field-type=disabled
-  //     aip.dev/not-precedent: Not a timestamp. --)
-  int32 validity_period_seconds = 7;
 
   // You can store any arbitrary data against labels. The maximum number of keys is 50.
   // The maximum length of all keys and values combined is 10kB.
@@ -211,6 +243,27 @@ message Call {
   // for outgoing calls that were created during the execution of another call,
   // of the form `projects/*/calls/*`.
   string originating_call = 22 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // How this call started.
+  CreateMethod create_method = 23 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The options to use to handle this call. This is only required when a call is created
+  // using the API.
+  ApiCallOptions options = 24 [(google.api.field_behavior) = REQUIRED];
+}
+
+// Request to create a new call.
+message CreateCallRequest {
+  // The project under which to create the call in the form `projects/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "voice.api.enfonica.com/Call"
+    }
+  ];
+
+  // The call resource to be created.
+  Call call = 2 [(google.api.field_behavior) = REQUIRED];
 }
 
 // The GetCall request call.

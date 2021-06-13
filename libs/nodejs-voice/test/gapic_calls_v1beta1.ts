@@ -194,6 +194,118 @@ describe('v1beta1.CallsClient', () => {
     assert.strictEqual(result, fakeProjectId);
   });
 
+  describe('createCall', () => {
+    it('invokes createCall without error', async () => {
+      const client = new callsModule.v1beta1.CallsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.CreateCallRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.Call()
+      );
+      client.innerApiCalls.createCall = stubSimpleCall(expectedResponse);
+      const [response] = await client.createCall(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.createCall as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes createCall without error using callback', async () => {
+      const client = new callsModule.v1beta1.CallsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.CreateCallRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.Call()
+      );
+      client.innerApiCalls.createCall = stubSimpleCallWithCallback(
+        expectedResponse
+      );
+      const promise = new Promise((resolve, reject) => {
+        client.createCall(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.voice.v1beta1.ICall | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.createCall as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes createCall with error', async () => {
+      const client = new callsModule.v1beta1.CallsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.CreateCallRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.createCall = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(client.createCall(request), expectedError);
+      assert(
+        (client.innerApiCalls.createCall as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
   describe('getCall', () => {
     it('invokes getCall without error', async () => {
       const client = new callsModule.v1beta1.CallsClient({

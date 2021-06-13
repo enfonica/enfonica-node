@@ -173,6 +173,9 @@ export namespace enfonica {
                 /** PhoneNumberInstance incomingCallHandlerUris */
                 incomingCallHandlerUris?: (string[]|null);
 
+                /** PhoneNumberInstance callRecordingTrigger */
+                callRecordingTrigger?: (enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger|keyof typeof enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger|null);
+
                 /** PhoneNumberInstance createTime */
                 createTime?: (google.protobuf.ITimestamp|null);
 
@@ -209,6 +212,9 @@ export namespace enfonica {
 
                 /** PhoneNumberInstance incomingCallHandlerUris. */
                 public incomingCallHandlerUris: string[];
+
+                /** PhoneNumberInstance callRecordingTrigger. */
+                public callRecordingTrigger: (enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger|keyof typeof enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger);
 
                 /** PhoneNumberInstance createTime. */
                 public createTime?: (google.protobuf.ITimestamp|null);
@@ -298,6 +304,14 @@ export namespace enfonica {
                     ACTIVE = 1,
                     DELETED = 2,
                     SUSPENDED = 3
+                }
+
+                /** RecordingTrigger enum. */
+                enum RecordingTrigger {
+                    RECORDING_TRIGGER_UNSPECIFIED = 0,
+                    DISABLED = 1,
+                    ANSWER = 2,
+                    BRIDGE = 3
                 }
             }
 

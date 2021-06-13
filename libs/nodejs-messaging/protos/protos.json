@@ -303,17 +303,15 @@
                     },
                     "startTime": {
                       "type": "google.protobuf.Timestamp",
-                      "id": 4,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
+                      "id": 4
                     },
                     "endTime": {
                       "type": "google.protobuf.Timestamp",
-                      "id": 5,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
+                      "id": 5
+                    },
+                    "filter": {
+                      "type": "string",
+                      "id": 6
                     }
                   }
                 },

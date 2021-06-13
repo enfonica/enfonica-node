@@ -190,6 +190,66 @@ export namespace enfonica {
 
                 /** Call name */
                 name?: (string|null);
+
+                /** Call to */
+                to?: (string|null);
+
+                /** Call from */
+                from?: (string|null);
+
+                /** Call isPrivate */
+                isPrivate?: (boolean|null);
+
+                /** Call statusUpdateUri */
+                statusUpdateUri?: (string|null);
+
+                /** Call handleUri */
+                handleUri?: (string|null);
+
+                /** Call validityPeriodSeconds */
+                validityPeriodSeconds?: (number|null);
+
+                /** Call labels */
+                labels?: ({ [k: string]: string }|null);
+
+                /** Call transport */
+                transport?: (enfonica.voice.v1beta1.Call.Transport|keyof typeof enfonica.voice.v1beta1.Call.Transport|null);
+
+                /** Call direction */
+                direction?: (enfonica.voice.v1beta1.Call.Direction|keyof typeof enfonica.voice.v1beta1.Call.Direction|null);
+
+                /** Call errorCode */
+                errorCode?: (string|null);
+
+                /** Call errorMessage */
+                errorMessage?: (string|null);
+
+                /** Call price */
+                price?: (google.type.IMoney|null);
+
+                /** Call state */
+                state?: (enfonica.voice.v1beta1.Call.State|keyof typeof enfonica.voice.v1beta1.Call.State|null);
+
+                /** Call createTime */
+                createTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call startTime */
+                startTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call ringTime */
+                ringTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call answerTime */
+                answerTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call endTime */
+                endTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call bridged */
+                bridged?: (boolean|null);
+
+                /** Call originatingCall */
+                originatingCall?: (string|null);
             }
 
             /** Represents a Call. */
@@ -203,6 +263,66 @@ export namespace enfonica {
 
                 /** Call name. */
                 public name: string;
+
+                /** Call to. */
+                public to: string;
+
+                /** Call from. */
+                public from: string;
+
+                /** Call isPrivate. */
+                public isPrivate: boolean;
+
+                /** Call statusUpdateUri. */
+                public statusUpdateUri: string;
+
+                /** Call handleUri. */
+                public handleUri: string;
+
+                /** Call validityPeriodSeconds. */
+                public validityPeriodSeconds: number;
+
+                /** Call labels. */
+                public labels: { [k: string]: string };
+
+                /** Call transport. */
+                public transport: (enfonica.voice.v1beta1.Call.Transport|keyof typeof enfonica.voice.v1beta1.Call.Transport);
+
+                /** Call direction. */
+                public direction: (enfonica.voice.v1beta1.Call.Direction|keyof typeof enfonica.voice.v1beta1.Call.Direction);
+
+                /** Call errorCode. */
+                public errorCode: string;
+
+                /** Call errorMessage. */
+                public errorMessage: string;
+
+                /** Call price. */
+                public price?: (google.type.IMoney|null);
+
+                /** Call state. */
+                public state: (enfonica.voice.v1beta1.Call.State|keyof typeof enfonica.voice.v1beta1.Call.State);
+
+                /** Call createTime. */
+                public createTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call startTime. */
+                public startTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call ringTime. */
+                public ringTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call answerTime. */
+                public answerTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call endTime. */
+                public endTime?: (google.protobuf.ITimestamp|null);
+
+                /** Call bridged. */
+                public bridged: boolean;
+
+                /** Call originatingCall. */
+                public originatingCall: string;
 
                 /**
                  * Creates a new Call instance using the specified properties.
@@ -273,6 +393,38 @@ export namespace enfonica {
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
+            }
+
+            namespace Call {
+
+                /** State enum. */
+                enum State {
+                    STATE_UNSPECIFIED = 0,
+                    QUEUED = 1,
+                    STARTING = 2,
+                    RINGING = 3,
+                    IN_PROGRESS = 4,
+                    COMPLETED = 5,
+                    FAILED = 6,
+                    NOT_ANSWERED = 7,
+                    BUSY = 8,
+                    REJECTED = 9
+                }
+
+                /** Direction enum. */
+                enum Direction {
+                    DIRECTION_UNSPECIFIED = 0,
+                    OUTGOING = 1,
+                    INCOMING = 2
+                }
+
+                /** Transport enum. */
+                enum Transport {
+                    TRANSPORT_UNSPECIFIED = 0,
+                    PSTN = 1,
+                    CLIENT = 2,
+                    SIP = 3
+                }
             }
 
             /** Properties of a GetCallRequest. */
@@ -377,11 +529,8 @@ export namespace enfonica {
                 /** ListCallsRequest pageToken */
                 pageToken?: (string|null);
 
-                /** ListCallsRequest startTime */
-                startTime?: (google.protobuf.ITimestamp|null);
-
-                /** ListCallsRequest endTime */
-                endTime?: (google.protobuf.ITimestamp|null);
+                /** ListCallsRequest filter */
+                filter?: (string|null);
             }
 
             /** Represents a ListCallsRequest. */
@@ -402,11 +551,8 @@ export namespace enfonica {
                 /** ListCallsRequest pageToken. */
                 public pageToken: string;
 
-                /** ListCallsRequest startTime. */
-                public startTime?: (google.protobuf.ITimestamp|null);
-
-                /** ListCallsRequest endTime. */
-                public endTime?: (google.protobuf.ITimestamp|null);
+                /** ListCallsRequest filter. */
+                public filter: string;
 
                 /**
                  * Creates a new ListCallsRequest instance using the specified properties.
@@ -817,7 +963,8 @@ export namespace enfonica {
                 /** Source enum. */
                 enum Source {
                     SOURCE_UNSPECIFIED = 0,
-                    RECORD_ACTION = 1
+                    RECORD_ACTION = 1,
+                    CALL_RECORDING = 2
                 }
 
                 /** State enum. */
