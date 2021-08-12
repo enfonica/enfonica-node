@@ -2645,10 +2645,12 @@
                      * @interface ISearchPhoneNumbersRequest
                      * @property {number|null} [pageSize] SearchPhoneNumbersRequest pageSize
                      * @property {string|null} [pageToken] SearchPhoneNumbersRequest pageToken
-                     * @property {Array.<enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability>|null} [capabilities] SearchPhoneNumbersRequest capabilities
                      * @property {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null} [numberType] SearchPhoneNumbersRequest numberType
                      * @property {string|null} [countryCode] SearchPhoneNumbersRequest countryCode
                      * @property {string|null} [prefix] SearchPhoneNumbersRequest prefix
+                     * @property {boolean|null} [supportsVoice] SearchPhoneNumbersRequest supportsVoice
+                     * @property {boolean|null} [supportsSms] SearchPhoneNumbersRequest supportsSms
+                     * @property {boolean|null} [supportsMms] SearchPhoneNumbersRequest supportsMms
                      */
     
                     /**
@@ -2660,7 +2662,6 @@
                      * @param {enfonica.numbering.v1beta1.ISearchPhoneNumbersRequest=} [properties] Properties to set
                      */
                     function SearchPhoneNumbersRequest(properties) {
-                        this.capabilities = [];
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
@@ -2682,14 +2683,6 @@
                      * @instance
                      */
                     SearchPhoneNumbersRequest.prototype.pageToken = "";
-    
-                    /**
-                     * SearchPhoneNumbersRequest capabilities.
-                     * @member {Array.<enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability>} capabilities
-                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
-                     * @instance
-                     */
-                    SearchPhoneNumbersRequest.prototype.capabilities = $util.emptyArray;
     
                     /**
                      * SearchPhoneNumbersRequest numberType.
@@ -2714,6 +2707,30 @@
                      * @instance
                      */
                     SearchPhoneNumbersRequest.prototype.prefix = "";
+    
+                    /**
+                     * SearchPhoneNumbersRequest supportsVoice.
+                     * @member {boolean} supportsVoice
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.supportsVoice = false;
+    
+                    /**
+                     * SearchPhoneNumbersRequest supportsSms.
+                     * @member {boolean} supportsSms
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.supportsSms = false;
+    
+                    /**
+                     * SearchPhoneNumbersRequest supportsMms.
+                     * @member {boolean} supportsMms
+                     * @memberof enfonica.numbering.v1beta1.SearchPhoneNumbersRequest
+                     * @instance
+                     */
+                    SearchPhoneNumbersRequest.prototype.supportsMms = false;
     
                     /**
                      * Creates a new SearchPhoneNumbersRequest instance using the specified properties.
@@ -2743,18 +2760,18 @@
                             writer.uint32(/* id 1, wireType 0 =*/8).int32(message.pageSize);
                         if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
                             writer.uint32(/* id 2, wireType 2 =*/18).string(message.pageToken);
-                        if (message.capabilities != null && message.capabilities.length) {
-                            writer.uint32(/* id 3, wireType 2 =*/26).fork();
-                            for (var i = 0; i < message.capabilities.length; ++i)
-                                writer.int32(message.capabilities[i]);
-                            writer.ldelim();
-                        }
                         if (message.numberType != null && Object.hasOwnProperty.call(message, "numberType"))
                             writer.uint32(/* id 4, wireType 0 =*/32).int32(message.numberType);
                         if (message.countryCode != null && Object.hasOwnProperty.call(message, "countryCode"))
                             writer.uint32(/* id 5, wireType 2 =*/42).string(message.countryCode);
                         if (message.prefix != null && Object.hasOwnProperty.call(message, "prefix"))
                             writer.uint32(/* id 6, wireType 2 =*/50).string(message.prefix);
+                        if (message.supportsVoice != null && Object.hasOwnProperty.call(message, "supportsVoice"))
+                            writer.uint32(/* id 7, wireType 0 =*/56).bool(message.supportsVoice);
+                        if (message.supportsSms != null && Object.hasOwnProperty.call(message, "supportsSms"))
+                            writer.uint32(/* id 8, wireType 0 =*/64).bool(message.supportsSms);
+                        if (message.supportsMms != null && Object.hasOwnProperty.call(message, "supportsMms"))
+                            writer.uint32(/* id 9, wireType 0 =*/72).bool(message.supportsMms);
                         return writer;
                     };
     
@@ -2795,16 +2812,6 @@
                             case 2:
                                 message.pageToken = reader.string();
                                 break;
-                            case 3:
-                                if (!(message.capabilities && message.capabilities.length))
-                                    message.capabilities = [];
-                                if ((tag & 7) === 2) {
-                                    var end2 = reader.uint32() + reader.pos;
-                                    while (reader.pos < end2)
-                                        message.capabilities.push(reader.int32());
-                                } else
-                                    message.capabilities.push(reader.int32());
-                                break;
                             case 4:
                                 message.numberType = reader.int32();
                                 break;
@@ -2813,6 +2820,15 @@
                                 break;
                             case 6:
                                 message.prefix = reader.string();
+                                break;
+                            case 7:
+                                message.supportsVoice = reader.bool();
+                                break;
+                            case 8:
+                                message.supportsSms = reader.bool();
+                                break;
+                            case 9:
+                                message.supportsMms = reader.bool();
                                 break;
                             default:
                                 reader.skipType(tag & 7);
@@ -2855,20 +2871,6 @@
                         if (message.pageToken != null && message.hasOwnProperty("pageToken"))
                             if (!$util.isString(message.pageToken))
                                 return "pageToken: string expected";
-                        if (message.capabilities != null && message.hasOwnProperty("capabilities")) {
-                            if (!Array.isArray(message.capabilities))
-                                return "capabilities: array expected";
-                            for (var i = 0; i < message.capabilities.length; ++i)
-                                switch (message.capabilities[i]) {
-                                default:
-                                    return "capabilities: enum value[] expected";
-                                case 0:
-                                case 1:
-                                case 2:
-                                case 4:
-                                    break;
-                                }
-                        }
                         if (message.numberType != null && message.hasOwnProperty("numberType"))
                             switch (message.numberType) {
                             default:
@@ -2887,6 +2889,15 @@
                         if (message.prefix != null && message.hasOwnProperty("prefix"))
                             if (!$util.isString(message.prefix))
                                 return "prefix: string expected";
+                        if (message.supportsVoice != null && message.hasOwnProperty("supportsVoice"))
+                            if (typeof message.supportsVoice !== "boolean")
+                                return "supportsVoice: boolean expected";
+                        if (message.supportsSms != null && message.hasOwnProperty("supportsSms"))
+                            if (typeof message.supportsSms !== "boolean")
+                                return "supportsSms: boolean expected";
+                        if (message.supportsMms != null && message.hasOwnProperty("supportsMms"))
+                            if (typeof message.supportsMms !== "boolean")
+                                return "supportsMms: boolean expected";
                         return null;
                     };
     
@@ -2906,31 +2917,6 @@
                             message.pageSize = object.pageSize | 0;
                         if (object.pageToken != null)
                             message.pageToken = String(object.pageToken);
-                        if (object.capabilities) {
-                            if (!Array.isArray(object.capabilities))
-                                throw TypeError(".enfonica.numbering.v1beta1.SearchPhoneNumbersRequest.capabilities: array expected");
-                            message.capabilities = [];
-                            for (var i = 0; i < object.capabilities.length; ++i)
-                                switch (object.capabilities[i]) {
-                                default:
-                                case "PHONE_NUMBER_CAPABILITY_UNSPECIFIED":
-                                case 0:
-                                    message.capabilities[i] = 0;
-                                    break;
-                                case "SMS":
-                                case 1:
-                                    message.capabilities[i] = 1;
-                                    break;
-                                case "MMS":
-                                case 2:
-                                    message.capabilities[i] = 2;
-                                    break;
-                                case "VOICE":
-                                case 4:
-                                    message.capabilities[i] = 4;
-                                    break;
-                                }
-                        }
                         switch (object.numberType) {
                         case "PHONE_NUMBER_TYPE_UNSPECIFIED":
                         case 0:
@@ -2961,6 +2947,12 @@
                             message.countryCode = String(object.countryCode);
                         if (object.prefix != null)
                             message.prefix = String(object.prefix);
+                        if (object.supportsVoice != null)
+                            message.supportsVoice = Boolean(object.supportsVoice);
+                        if (object.supportsSms != null)
+                            message.supportsSms = Boolean(object.supportsSms);
+                        if (object.supportsMms != null)
+                            message.supportsMms = Boolean(object.supportsMms);
                         return message;
                     };
     
@@ -2977,30 +2969,32 @@
                         if (!options)
                             options = {};
                         var object = {};
-                        if (options.arrays || options.defaults)
-                            object.capabilities = [];
                         if (options.defaults) {
                             object.pageSize = 0;
                             object.pageToken = "";
                             object.numberType = options.enums === String ? "PHONE_NUMBER_TYPE_UNSPECIFIED" : 0;
                             object.countryCode = "";
                             object.prefix = "";
+                            object.supportsVoice = false;
+                            object.supportsSms = false;
+                            object.supportsMms = false;
                         }
                         if (message.pageSize != null && message.hasOwnProperty("pageSize"))
                             object.pageSize = message.pageSize;
                         if (message.pageToken != null && message.hasOwnProperty("pageToken"))
                             object.pageToken = message.pageToken;
-                        if (message.capabilities && message.capabilities.length) {
-                            object.capabilities = [];
-                            for (var j = 0; j < message.capabilities.length; ++j)
-                                object.capabilities[j] = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[message.capabilities[j]] : message.capabilities[j];
-                        }
                         if (message.numberType != null && message.hasOwnProperty("numberType"))
                             object.numberType = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType[message.numberType] : message.numberType;
                         if (message.countryCode != null && message.hasOwnProperty("countryCode"))
                             object.countryCode = message.countryCode;
                         if (message.prefix != null && message.hasOwnProperty("prefix"))
                             object.prefix = message.prefix;
+                        if (message.supportsVoice != null && message.hasOwnProperty("supportsVoice"))
+                            object.supportsVoice = message.supportsVoice;
+                        if (message.supportsSms != null && message.hasOwnProperty("supportsSms"))
+                            object.supportsSms = message.supportsSms;
+                        if (message.supportsMms != null && message.hasOwnProperty("supportsMms"))
+                            object.supportsMms = message.supportsMms;
                         return object;
                     };
     
@@ -12670,43 +12664,43 @@
     
                 /**
                  * HttpRule get.
-                 * @member {string} get
+                 * @member {string|null|undefined} get
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.get = "";
+                HttpRule.prototype.get = null;
     
                 /**
                  * HttpRule put.
-                 * @member {string} put
+                 * @member {string|null|undefined} put
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.put = "";
+                HttpRule.prototype.put = null;
     
                 /**
                  * HttpRule post.
-                 * @member {string} post
+                 * @member {string|null|undefined} post
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.post = "";
+                HttpRule.prototype.post = null;
     
                 /**
                  * HttpRule delete.
-                 * @member {string} delete
+                 * @member {string|null|undefined} delete
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype["delete"] = "";
+                HttpRule.prototype["delete"] = null;
     
                 /**
                  * HttpRule patch.
-                 * @member {string} patch
+                 * @member {string|null|undefined} patch
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.patch = "";
+                HttpRule.prototype.patch = null;
     
                 /**
                  * HttpRule custom.

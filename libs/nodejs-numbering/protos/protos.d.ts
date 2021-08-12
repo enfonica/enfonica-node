@@ -1098,9 +1098,6 @@ export namespace enfonica {
                 /** SearchPhoneNumbersRequest pageToken */
                 pageToken?: (string|null);
 
-                /** SearchPhoneNumbersRequest capabilities */
-                capabilities?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[]|null);
-
                 /** SearchPhoneNumbersRequest numberType */
                 numberType?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null);
 
@@ -1109,6 +1106,15 @@ export namespace enfonica {
 
                 /** SearchPhoneNumbersRequest prefix */
                 prefix?: (string|null);
+
+                /** SearchPhoneNumbersRequest supportsVoice */
+                supportsVoice?: (boolean|null);
+
+                /** SearchPhoneNumbersRequest supportsSms */
+                supportsSms?: (boolean|null);
+
+                /** SearchPhoneNumbersRequest supportsMms */
+                supportsMms?: (boolean|null);
             }
 
             /** Represents a SearchPhoneNumbersRequest. */
@@ -1126,9 +1132,6 @@ export namespace enfonica {
                 /** SearchPhoneNumbersRequest pageToken. */
                 public pageToken: string;
 
-                /** SearchPhoneNumbersRequest capabilities. */
-                public capabilities: enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability[];
-
                 /** SearchPhoneNumbersRequest numberType. */
                 public numberType: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType);
 
@@ -1137,6 +1140,15 @@ export namespace enfonica {
 
                 /** SearchPhoneNumbersRequest prefix. */
                 public prefix: string;
+
+                /** SearchPhoneNumbersRequest supportsVoice. */
+                public supportsVoice: boolean;
+
+                /** SearchPhoneNumbersRequest supportsSms. */
+                public supportsSms: boolean;
+
+                /** SearchPhoneNumbersRequest supportsMms. */
+                public supportsMms: boolean;
 
                 /**
                  * Creates a new SearchPhoneNumbersRequest instance using the specified properties.
@@ -4773,19 +4785,19 @@ export namespace google {
             public selector: string;
 
             /** HttpRule get. */
-            public get: string;
+            public get?: (string|null);
 
             /** HttpRule put. */
-            public put: string;
+            public put?: (string|null);
 
             /** HttpRule post. */
-            public post: string;
+            public post?: (string|null);
 
             /** HttpRule delete. */
-            public delete: string;
+            public delete?: (string|null);
 
             /** HttpRule patch. */
-            public patch: string;
+            public patch?: (string|null);
 
             /** HttpRule custom. */
             public custom?: (google.api.ICustomHttpPattern|null);

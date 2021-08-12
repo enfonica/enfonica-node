@@ -165,6 +165,9 @@ export class StreamsClient {
       streamPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/streams/{streams}'
       ),
+      transcriptionPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/calls/{call}/transcriptions/{transcription}'
+      ),
     };
 
     // Some of the methods on this service provide streaming responses.
@@ -223,13 +226,14 @@ export class StreamsClient {
     const streamsStubMethods = ['streamCall'];
     for (const methodName of streamsStubMethods) {
       const callPromise = this.streamsStub.then(
-        stub => (...args: Array<{}>) => {
-          if (this._terminated) {
-            return Promise.reject('The client has already been closed.');
-          }
-          const func = stub[methodName];
-          return func.apply(stub, args);
-        },
+        stub =>
+          (...args: Array<{}>) => {
+            if (this._terminated) {
+              return Promise.reject('The client has already been closed.');
+            }
+            const func = stub[methodName];
+            return func.apply(stub, args);
+          },
         (err: Error | null | undefined) => () => {
           throw err;
         }
@@ -442,6 +446,58 @@ export class StreamsClient {
    */
   matchStreamsFromStreamName(streamName: string) {
     return this.pathTemplates.streamPathTemplate.match(streamName).streams;
+  }
+
+  /**
+   * Return a fully-qualified transcription resource name string.
+   *
+   * @param {string} project
+   * @param {string} call
+   * @param {string} transcription
+   * @returns {string} Resource name string.
+   */
+  transcriptionPath(project: string, call: string, transcription: string) {
+    return this.pathTemplates.transcriptionPathTemplate.render({
+      project: project,
+      call: call,
+      transcription: transcription,
+    });
+  }
+
+  /**
+   * Parse the project from Transcription resource.
+   *
+   * @param {string} transcriptionName
+   *   A fully-qualified path representing Transcription resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromTranscriptionName(transcriptionName: string) {
+    return this.pathTemplates.transcriptionPathTemplate.match(transcriptionName)
+      .project;
+  }
+
+  /**
+   * Parse the call from Transcription resource.
+   *
+   * @param {string} transcriptionName
+   *   A fully-qualified path representing Transcription resource.
+   * @returns {string} A string representing the call.
+   */
+  matchCallFromTranscriptionName(transcriptionName: string) {
+    return this.pathTemplates.transcriptionPathTemplate.match(transcriptionName)
+      .call;
+  }
+
+  /**
+   * Parse the transcription from Transcription resource.
+   *
+   * @param {string} transcriptionName
+   *   A fully-qualified path representing Transcription resource.
+   * @returns {string} A string representing the transcription.
+   */
+  matchTranscriptionFromTranscriptionName(transcriptionName: string) {
+    return this.pathTemplates.transcriptionPathTemplate.match(transcriptionName)
+      .transcription;
   }
 
   /**

@@ -28,10 +28,9 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
-    instance as protobuf.Message<T>,
-    {defaults: true}
-  );
+  const filledObject = (
+    instance.constructor as typeof protobuf.Message
+  ).toObject(instance as protobuf.Message<T>, {defaults: true});
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -218,9 +217,8 @@ describe('v1beta1.PhoneNumbersClient', () => {
           new protos.enfonica.numbering.v1beta1.PhoneNumber()
         ),
       ];
-      client.innerApiCalls.searchPhoneNumbers = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.searchPhoneNumbers =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.searchPhoneNumbers(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -251,9 +249,8 @@ describe('v1beta1.PhoneNumbersClient', () => {
           new protos.enfonica.numbering.v1beta1.PhoneNumber()
         ),
       ];
-      client.innerApiCalls.searchPhoneNumbers = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.searchPhoneNumbers =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.searchPhoneNumbers(
           request,
@@ -321,9 +318,8 @@ describe('v1beta1.PhoneNumbersClient', () => {
           new protos.enfonica.numbering.v1beta1.PhoneNumber()
         ),
       ];
-      client.descriptors.page.searchPhoneNumbers.createStream = stubPageStreamingCall(
-        expectedResponse
-      );
+      client.descriptors.page.searchPhoneNumbers.createStream =
+        stubPageStreamingCall(expectedResponse);
       const stream = client.searchPhoneNumbersStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.enfonica.numbering.v1beta1.PhoneNumber[] = [];
@@ -359,10 +355,8 @@ describe('v1beta1.PhoneNumbersClient', () => {
         new protos.enfonica.numbering.v1beta1.SearchPhoneNumbersRequest()
       );
       const expectedError = new Error('expected');
-      client.descriptors.page.searchPhoneNumbers.createStream = stubPageStreamingCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.searchPhoneNumbers.createStream =
+        stubPageStreamingCall(undefined, expectedError);
       const stream = client.searchPhoneNumbersStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.enfonica.numbering.v1beta1.PhoneNumber[] = [];
@@ -407,9 +401,8 @@ describe('v1beta1.PhoneNumbersClient', () => {
           new protos.enfonica.numbering.v1beta1.PhoneNumber()
         ),
       ];
-      client.descriptors.page.searchPhoneNumbers.asyncIterate = stubAsyncIterationCall(
-        expectedResponse
-      );
+      client.descriptors.page.searchPhoneNumbers.asyncIterate =
+        stubAsyncIterationCall(expectedResponse);
       const responses: protos.enfonica.numbering.v1beta1.IPhoneNumber[] = [];
       const iterable = client.searchPhoneNumbersAsync(request);
       for await (const resource of iterable) {
@@ -417,8 +410,9 @@ describe('v1beta1.PhoneNumbersClient', () => {
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (client.descriptors.page.searchPhoneNumbers
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.searchPhoneNumbers.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
     });
@@ -433,10 +427,8 @@ describe('v1beta1.PhoneNumbersClient', () => {
         new protos.enfonica.numbering.v1beta1.SearchPhoneNumbersRequest()
       );
       const expectedError = new Error('expected');
-      client.descriptors.page.searchPhoneNumbers.asyncIterate = stubAsyncIterationCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.searchPhoneNumbers.asyncIterate =
+        stubAsyncIterationCall(undefined, expectedError);
       const iterable = client.searchPhoneNumbersAsync(request);
       await assert.rejects(async () => {
         const responses: protos.enfonica.numbering.v1beta1.IPhoneNumber[] = [];
@@ -445,8 +437,9 @@ describe('v1beta1.PhoneNumbersClient', () => {
         }
       });
       assert.deepStrictEqual(
-        (client.descriptors.page.searchPhoneNumbers
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.searchPhoneNumbers.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
     });
@@ -516,8 +509,10 @@ describe('v1beta1.PhoneNumbersClient', () => {
         );
         assert.strictEqual(result, fakePath);
         assert(
-          (client.pathTemplates.phoneNumberInstancePathTemplate
-            .render as SinonStub)
+          (
+            client.pathTemplates.phoneNumberInstancePathTemplate
+              .render as SinonStub
+          )
             .getCall(-1)
             .calledWith(expectedParameters)
         );
@@ -527,21 +522,24 @@ describe('v1beta1.PhoneNumbersClient', () => {
         const result = client.matchProjectFromPhoneNumberInstanceName(fakePath);
         assert.strictEqual(result, 'projectValue');
         assert(
-          (client.pathTemplates.phoneNumberInstancePathTemplate
-            .match as SinonStub)
+          (
+            client.pathTemplates.phoneNumberInstancePathTemplate
+              .match as SinonStub
+          )
             .getCall(-1)
             .calledWith(fakePath)
         );
       });
 
       it('matchPhoneNumberInstanceFromPhoneNumberInstanceName', () => {
-        const result = client.matchPhoneNumberInstanceFromPhoneNumberInstanceName(
-          fakePath
-        );
+        const result =
+          client.matchPhoneNumberInstanceFromPhoneNumberInstanceName(fakePath);
         assert.strictEqual(result, 'phoneNumberInstanceValue');
         assert(
-          (client.pathTemplates.phoneNumberInstancePathTemplate
-            .match as SinonStub)
+          (
+            client.pathTemplates.phoneNumberInstancePathTemplate
+              .match as SinonStub
+          )
             .getCall(-1)
             .calledWith(fakePath)
         );

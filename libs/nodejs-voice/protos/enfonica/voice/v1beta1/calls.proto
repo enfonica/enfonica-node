@@ -22,6 +22,7 @@ import "google/type/money.proto";
 import "google/api/resource.proto";
 import "google/api/field_behavior.proto";
 import "google/api/client.proto";
+import "enfonica/voice/v1beta1/call_recording_config.proto";
 
 option cc_enable_arenas = true;
 option csharp_namespace = "Enfonica.Voice.V1Beta1";
@@ -95,6 +96,10 @@ message Call {
     // (-- api-linter: core::0142::time-field-type=disabled
     //     aip.dev/not-precedent: This is not a timestamp. --)
     int32 timeout_seconds = 3;
+
+    // The configuration of call recording. If not specified, no call recording
+    // will be configured.
+    CallRecordingConfig recording = 4;
   }
 
   // The state of a call.

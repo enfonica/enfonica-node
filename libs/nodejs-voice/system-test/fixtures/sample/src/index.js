@@ -24,6 +24,7 @@ function main() {
   const callsClient = new voice.CallsClient();
   const recordingsClient = new voice.RecordingsClient();
   const streamsClient = new voice.StreamsClient();
+  const transcriptionsClient = new voice.TranscriptionsClient();
 }
 
 main();

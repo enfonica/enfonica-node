@@ -28,10 +28,9 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
-    instance as protobuf.Message<T>,
-    {defaults: true}
-  );
+  const filledObject = (
+    instance.constructor as typeof protobuf.Message
+  ).toObject(instance as protobuf.Message<T>, {defaults: true});
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -247,9 +246,8 @@ describe('v1beta1.RecordingsClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.voice.v1beta1.Recording()
       );
-      client.innerApiCalls.getRecording = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.getRecording =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.getRecording(
           request,
@@ -359,9 +357,8 @@ describe('v1beta1.RecordingsClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.voice.v1beta1.Recording()
       );
-      client.innerApiCalls.deleteRecording = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.deleteRecording =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.deleteRecording(
           request,
@@ -475,9 +472,8 @@ describe('v1beta1.RecordingsClient', () => {
         generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
         generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
       ];
-      client.innerApiCalls.listRecordings = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.listRecordings =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.listRecordings(
           request,
@@ -549,9 +545,8 @@ describe('v1beta1.RecordingsClient', () => {
         generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
         generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
       ];
-      client.descriptors.page.listRecordings.createStream = stubPageStreamingCall(
-        expectedResponse
-      );
+      client.descriptors.page.listRecordings.createStream =
+        stubPageStreamingCall(expectedResponse);
       const stream = client.listRecordingsStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.enfonica.voice.v1beta1.Recording[] = [];
@@ -576,10 +571,9 @@ describe('v1beta1.RecordingsClient', () => {
           .calledWith(client.innerApiCalls.listRecordings, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listRecordings
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listRecordings.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -596,10 +590,8 @@ describe('v1beta1.RecordingsClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listRecordings.createStream = stubPageStreamingCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listRecordings.createStream =
+        stubPageStreamingCall(undefined, expectedError);
       const stream = client.listRecordingsStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.enfonica.voice.v1beta1.Recording[] = [];
@@ -623,10 +615,9 @@ describe('v1beta1.RecordingsClient', () => {
           .calledWith(client.innerApiCalls.listRecordings, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listRecordings
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listRecordings.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -647,9 +638,8 @@ describe('v1beta1.RecordingsClient', () => {
         generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
         generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
       ];
-      client.descriptors.page.listRecordings.asyncIterate = stubAsyncIterationCall(
-        expectedResponse
-      );
+      client.descriptors.page.listRecordings.asyncIterate =
+        stubAsyncIterationCall(expectedResponse);
       const responses: protos.enfonica.voice.v1beta1.IRecording[] = [];
       const iterable = client.listRecordingsAsync(request);
       for await (const resource of iterable) {
@@ -657,15 +647,15 @@ describe('v1beta1.RecordingsClient', () => {
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (client.descriptors.page.listRecordings
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listRecordings.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listRecordings
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listRecordings.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -682,10 +672,8 @@ describe('v1beta1.RecordingsClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listRecordings.asyncIterate = stubAsyncIterationCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listRecordings.asyncIterate =
+        stubAsyncIterationCall(undefined, expectedError);
       const iterable = client.listRecordingsAsync(request);
       await assert.rejects(async () => {
         const responses: protos.enfonica.voice.v1beta1.IRecording[] = [];
@@ -694,15 +682,15 @@ describe('v1beta1.RecordingsClient', () => {
         }
       });
       assert.deepStrictEqual(
-        (client.descriptors.page.listRecordings
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listRecordings.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listRecordings
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listRecordings.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -816,6 +804,70 @@ describe('v1beta1.RecordingsClient', () => {
         assert.strictEqual(result, 'recordingValue');
         assert(
           (client.pathTemplates.recordingPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+
+    describe('transcription', () => {
+      const fakePath = '/rendered/path/transcription';
+      const expectedParameters = {
+        project: 'projectValue',
+        call: 'callValue',
+        transcription: 'transcriptionValue',
+      };
+      const client = new recordingsModule.v1beta1.RecordingsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.transcriptionPathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.transcriptionPathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('transcriptionPath', () => {
+        const result = client.transcriptionPath(
+          'projectValue',
+          'callValue',
+          'transcriptionValue'
+        );
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.transcriptionPathTemplate.render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchProjectFromTranscriptionName', () => {
+        const result = client.matchProjectFromTranscriptionName(fakePath);
+        assert.strictEqual(result, 'projectValue');
+        assert(
+          (client.pathTemplates.transcriptionPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchCallFromTranscriptionName', () => {
+        const result = client.matchCallFromTranscriptionName(fakePath);
+        assert.strictEqual(result, 'callValue');
+        assert(
+          (client.pathTemplates.transcriptionPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchTranscriptionFromTranscriptionName', () => {
+        const result = client.matchTranscriptionFromTranscriptionName(fakePath);
+        assert.strictEqual(result, 'transcriptionValue');
+        assert(
+          (client.pathTemplates.transcriptionPathTemplate.match as SinonStub)
             .getCall(-1)
             .calledWith(fakePath)
         );

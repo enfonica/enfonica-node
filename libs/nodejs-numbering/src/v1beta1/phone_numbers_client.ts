@@ -229,13 +229,14 @@ export class PhoneNumbersClient {
     const phoneNumbersStubMethods = ['searchPhoneNumbers'];
     for (const methodName of phoneNumbersStubMethods) {
       const callPromise = this.phoneNumbersStub.then(
-        stub => (...args: Array<{}>) => {
-          if (this._terminated) {
-            return Promise.reject('The client has already been closed.');
-          }
-          const func = stub[methodName];
-          return func.apply(stub, args);
-        },
+        stub =>
+          (...args: Array<{}>) => {
+            if (this._terminated) {
+              return Promise.reject('The client has already been closed.');
+            }
+            const func = stub[methodName];
+            return func.apply(stub, args);
+          },
         (err: Error | null | undefined) => () => {
           throw err;
         }
@@ -525,7 +526,7 @@ export class PhoneNumbersClient {
     this.initialize();
     return this.descriptors.page.searchPhoneNumbers.asyncIterate(
       this.innerApiCalls['searchPhoneNumbers'] as GaxCall,
-      (request as unknown) as RequestType,
+      request as unknown as RequestType,
       callSettings
     ) as AsyncIterable<protos.enfonica.numbering.v1beta1.IPhoneNumber>;
   }

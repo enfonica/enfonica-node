@@ -28,10 +28,9 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
-    instance as protobuf.Message<T>,
-    {defaults: true}
-  );
+  const filledObject = (
+    instance.constructor as typeof protobuf.Message
+  ).toObject(instance as protobuf.Message<T>, {defaults: true});
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -247,9 +246,8 @@ describe('v1.MessagesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Message()
       );
-      client.innerApiCalls.createMessage = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.createMessage =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.createMessage(
           request,
@@ -359,9 +357,8 @@ describe('v1.MessagesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Message()
       );
-      client.innerApiCalls.getMessage = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.getMessage =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.getMessage(
           request,
@@ -475,9 +472,8 @@ describe('v1.MessagesClient', () => {
         generateSampleMessage(new protos.enfonica.messaging.v1.Message()),
         generateSampleMessage(new protos.enfonica.messaging.v1.Message()),
       ];
-      client.innerApiCalls.listMessages = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.listMessages =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.listMessages(
           request,
@@ -549,9 +545,8 @@ describe('v1.MessagesClient', () => {
         generateSampleMessage(new protos.enfonica.messaging.v1.Message()),
         generateSampleMessage(new protos.enfonica.messaging.v1.Message()),
       ];
-      client.descriptors.page.listMessages.createStream = stubPageStreamingCall(
-        expectedResponse
-      );
+      client.descriptors.page.listMessages.createStream =
+        stubPageStreamingCall(expectedResponse);
       const stream = client.listMessagesStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.enfonica.messaging.v1.Message[] = [];
@@ -573,10 +568,9 @@ describe('v1.MessagesClient', () => {
           .calledWith(client.innerApiCalls.listMessages, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listMessages
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listMessages.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -617,10 +611,9 @@ describe('v1.MessagesClient', () => {
           .calledWith(client.innerApiCalls.listMessages, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listMessages
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listMessages.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -641,9 +634,8 @@ describe('v1.MessagesClient', () => {
         generateSampleMessage(new protos.enfonica.messaging.v1.Message()),
         generateSampleMessage(new protos.enfonica.messaging.v1.Message()),
       ];
-      client.descriptors.page.listMessages.asyncIterate = stubAsyncIterationCall(
-        expectedResponse
-      );
+      client.descriptors.page.listMessages.asyncIterate =
+        stubAsyncIterationCall(expectedResponse);
       const responses: protos.enfonica.messaging.v1.IMessage[] = [];
       const iterable = client.listMessagesAsync(request);
       for await (const resource of iterable) {
@@ -651,15 +643,15 @@ describe('v1.MessagesClient', () => {
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (client.descriptors.page.listMessages
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listMessages.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listMessages
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listMessages.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -676,10 +668,8 @@ describe('v1.MessagesClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listMessages.asyncIterate = stubAsyncIterationCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listMessages.asyncIterate =
+        stubAsyncIterationCall(undefined, expectedError);
       const iterable = client.listMessagesAsync(request);
       await assert.rejects(async () => {
         const responses: protos.enfonica.messaging.v1.IMessage[] = [];
@@ -688,15 +678,15 @@ describe('v1.MessagesClient', () => {
         }
       });
       assert.deepStrictEqual(
-        (client.descriptors.page.listMessages
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listMessages.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listMessages
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listMessages.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });

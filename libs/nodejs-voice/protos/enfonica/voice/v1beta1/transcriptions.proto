@@ -1,0 +1,226 @@
+// Copyright 2021 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.voice.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "google/api/resource.proto";
+import "google/api/field_behavior.proto";
+import "google/api/client.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Voice.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/voice/v1beta1;voice";
+option java_multiple_files = true;
+option java_outer_classname = "TranscriptionsProto";
+option java_package = "com.enfonica.voice.v1beta1";
+option objc_class_prefix = "ENFON";
+
+// Manages Transcriptions.
+service Transcriptions {
+  option (google.api.default_host) = "voice.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/voice";
+
+  // Retrieves a Transcription identified by the supplied resource name.
+  //
+  // The caller must have `voice.transcriptions.get` permission on the project.
+  rpc GetTranscription(GetTranscriptionRequest) returns (Transcription) {
+    option (google.api.http) = {
+      get: "/v1beta1/{name=projects/*/calls/*/transcriptions/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+
+  // Lists the Transcriptions of the specified project.
+  // List returns Transcriptions sorted by create_time descending.
+  //
+  // The caller must have `voice.transcriptions.list` permission on the project.
+  rpc ListTranscriptions(ListTranscriptionsRequest) returns (ListTranscriptionsResponse) {
+    option (google.api.http) = {
+      get: "/v1beta1/{parent=projects/*/calls/*}/transcriptions"
+      additional_bindings {
+        get: "/v1beta1/{parent=projects/*}/transcriptions"
+      }
+    };
+    option (google.api.method_signature) = "parent";
+  }
+
+  // Deletes a transcription.
+  //
+  // The caller must have `voice.transcriptions.delete` permission on the project.
+  rpc DeleteTranscription(DeleteTranscriptionRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/v1beta1/{name=projects/*/calls/*/transcriptions/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+}
+
+// The Transcription resource.
+message Transcription {
+  option (google.api.resource) = {
+    type: "voice.api.enfonica.com/Transcription"
+    pattern: "projects/{project}/calls/{call}/transcriptions/{transcription}"
+  };
+
+  // The state of the transcription.
+  enum State {
+    // Unspecified state.
+    STATE_UNSPECIFIED = 0;
+
+    // The audio has not yet been transcribed.
+    PENDING = 1;
+
+    // The audio has been transcribed.
+    COMPLETED = 2;
+
+    // The transcription failed.
+    FAILED = 3;
+  }
+
+  // Resource name of the transcription. It must match the pattern `projects/*/calls/*/transcriptions/*`.
+  // The call will always refer to the parent leg of a two-leg call.
+  string name = 1;
+
+  // The recording that this transcription was created from, of the form
+  // `projects/*/calls/*/recordings/*`.
+  string recording = 2;
+
+  // The state of the transcription.
+  State state = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The duration of the audio (of one channel). The total duration that is
+  // billable is `duration * channel_count`.
+  google.protobuf.Duration duration = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The number of channels included in the transcription.
+  int32 channel_count = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The creation time of the transcription. This is the time that the
+  // transcription resource was created.
+  google.protobuf.Timestamp create_time = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The last time this resource was modified. If state is COMPLETED or FAILED,
+  // this will be the time that the resource transitioned into that state.
+  google.protobuf.Timestamp update_time = 12 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The URI to send the transcription ready webhook to when the state transitions to a terminal
+  // state (SUCCEEDED, FAILED). Must be an absolute URI.
+  string ready_uri = 13;
+
+  // The spoken utterances, ordered by when they were spoken in the recording.
+  repeated Utterance utterances = 15 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// An utterance that was spoken.
+message Utterance {
+  // Which channel this utterance was spoken on.
+  // For dual channel recordings, 0 is the parent call and 1 is the child call.
+  int32 channel = 1;
+
+  // The offset from the start of the recording that this utterance was spoken.
+  google.protobuf.Duration offset = 2;
+
+  // The duration of this utterance.
+  google.protobuf.Duration duration = 3;
+
+  // What was spoken. This includes punctuation.
+  string text = 4;
+}
+
+// The GetTranscription request transcription.
+message GetTranscriptionRequest {
+  // The resource name of the Transcription to retrieve.
+  // Must be of the form `projects/*/calls/*/transcriptions/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/Transcription"
+    }
+  ];
+
+  // Configuration of partial responses.
+  // Defaults to FULL.
+  TranscriptionView view = 2;
+}
+
+// The ListTranscriptions request transcription.
+message ListTranscriptionsRequest {
+  // The resource name of the parent of which to list transcriptions.
+  // May be of the form `projects/*/calls/*` to list the transcriptions of that
+  // specific call, or `projects/*` to list transcriptions across the entire project,
+  // which maps to `projects/*/calls/-`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "voice.api.enfonica.com/Transcription"
+    }
+  ];
+
+  // The maximum number of Transcriptions to return in the response.
+  // Default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous transcription to `ListTranscriptions`
+  // that indicates where this listing should continue from.
+  string page_token = 3;
+
+  // Configuration of partial responses.
+  // Defaults to BASIC.
+  TranscriptionView view = 4;
+}
+
+// The ListTranscriptions response transcription.
+message ListTranscriptionsResponse {
+  // A possibly paginated list of Transcriptions that are direct descendants of
+  // the specified parent resource.
+  repeated Transcription transcriptions = 1;
+
+  // A pagination token returned from a previous transcription to `ListTranscriptions`
+  // that indicates from where listing should continue.
+  string next_page_token = 2;
+}
+
+// The DeleteTranscription request message.
+message DeleteTranscriptionRequest {
+  // The resource name of the Transcription to be deleted.
+  // Must be of the form `projects/*/calls/*/transcription/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/Transcription"
+    }
+  ];
+}
+
+// Configuration of partial responses for the Transcription resource.
+enum TranscriptionView {
+  // The default / unset value.
+  // The API will default to BASIC for ListTranscriptions and FULL for GetTranscription.
+  TRANSCRIPTION_VIEW_UNSPECIFIED = 0;
+
+  // Includes all fields except [utterances][enfonica.voice.v1beta1.Transcription.utterances].
+  // This is the default for ListTranscriptions.
+  TRANSCRIPTION_VIEW_BASIC = 1;
+
+  // Includes all fields.
+  // This is the default for GetTranscription.
+  TRANSCRIPTION_VIEW_FULL = 2;
+}

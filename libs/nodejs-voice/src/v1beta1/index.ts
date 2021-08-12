@@ -19,3 +19,4 @@
 export {CallsClient} from './calls_client';
 export {RecordingsClient} from './recordings_client';
 export {StreamsClient} from './streams_client';
+export {TranscriptionsClient} from './transcriptions_client';

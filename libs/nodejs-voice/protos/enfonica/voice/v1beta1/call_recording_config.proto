@@ -1,0 +1,95 @@
+// Copyright 2021 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.voice.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/api/annotations.proto";
+import "google/api/resource.proto";
+import "google/api/field_behavior.proto";
+import "google/api/client.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Voice.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/voice/v1beta1;voice";
+option java_multiple_files = true;
+option java_outer_classname = "CallRecordingConfigProto";
+option java_package = "com.enfonica.voice.v1beta1";
+option objc_class_prefix = "ENFON";
+
+// The configuration of how a call is recorded and transcribed.
+//
+// You need to comply with certain laws and regulations, including those regarding
+// obtaining consent to record. Enfonica recommends that you consult with your legal
+// counsel to make sure that you are complying with all applicable laws in connection
+// with communications you record or store using Enfonica.
+message CallRecordingConfig {
+  // The trigger to start call recording.
+  enum CallRecordingTrigger {
+    // Unspecified recording trigger.
+    CALL_RECORDING_TRIGGER_UNSPECIFIED = 0;
+
+    // Recording is disabled.
+    DISABLED = 1;
+
+    // Recording will begin when the call is answered.
+    ANSWER = 2;
+
+    // Recording will begin when the call is bridged.
+    // This won't include any messages or menus played before the call was bridged.
+    // This is useful if you want to record only conversations.
+    BRIDGE = 3;
+  }
+
+  // Whether to record the call, and the event that should trigger recording
+  // to start. Defaults to DISABLED.
+  CallRecordingTrigger trigger = 1;
+
+  // What post processing to perform on the recording. Defaults to NONE.
+  repeated PostProcessing post_processing = 2;
+
+  // The absolute URI where the recording ready webhook should be sent.
+  string recording_ready_uri = 3;
+
+  // Whether to transcribe the call. If transcription is enabled, call recording
+  // must also be enabled. Defaults to DISABLED.
+  TranscribeOption transcribe = 4;
+
+  // The absolute URI where the transcription ready webhook should be sent.
+  string transcription_ready_uri = 5;
+}
+
+// Post processing options.
+enum PostProcessing {
+  // Unspecified post processing.
+  POST_PROCESSING_UNSPECIFIED = 0;
+
+  // Trim silence from the start and end of the audio.
+  TRIM_SILENCE = 1;
+}
+
+// How transcription should operate.
+enum TranscribeOption {
+  // Unspecified transcribe option.
+  TRANSCRIBE_OPTION_UNSPECIFIED = 0;
+
+  // Transcription is disabled.
+  DISABLED = 1;
+
+  // Transcribe using Enfonica's default transcription provider.
+  DEFAULT = 2;
+}

@@ -20,7 +20,20 @@ import * as v1beta1 from './v1beta1';
 const CallsClient = v1beta1.CallsClient;
 const RecordingsClient = v1beta1.RecordingsClient;
 const StreamsClient = v1beta1.StreamsClient;
-export {v1beta1, CallsClient, RecordingsClient, StreamsClient};
-export default {v1beta1, CallsClient, RecordingsClient, StreamsClient};
+const TranscriptionsClient = v1beta1.TranscriptionsClient;
+export {
+  v1beta1,
+  CallsClient,
+  RecordingsClient,
+  StreamsClient,
+  TranscriptionsClient,
+};
+export default {
+  v1beta1,
+  CallsClient,
+  RecordingsClient,
+  StreamsClient,
+  TranscriptionsClient,
+};
 import * as protos from '../protos/protos';
 export {protos};

@@ -21,7 +21,7 @@ import * as assert from 'assert';
 import * as sinon from 'sinon';
 import {SinonStub} from 'sinon';
 import {describe, it} from 'mocha';
-import * as callsModule from '../src';
+import * as transcriptionsModule from '../src';
 
 import {PassThrough} from 'stream';
 
@@ -112,47 +112,49 @@ function stubAsyncIterationCall<ResponseType>(
   return sinon.stub().returns(asyncIterable);
 }
 
-describe('v1beta1.CallsClient', () => {
+describe('v1beta1.TranscriptionsClient', () => {
   it('has servicePath', () => {
-    const servicePath = callsModule.v1beta1.CallsClient.servicePath;
+    const servicePath =
+      transcriptionsModule.v1beta1.TranscriptionsClient.servicePath;
     assert(servicePath);
   });
 
   it('has apiEndpoint', () => {
-    const apiEndpoint = callsModule.v1beta1.CallsClient.apiEndpoint;
+    const apiEndpoint =
+      transcriptionsModule.v1beta1.TranscriptionsClient.apiEndpoint;
     assert(apiEndpoint);
   });
 
   it('has port', () => {
-    const port = callsModule.v1beta1.CallsClient.port;
+    const port = transcriptionsModule.v1beta1.TranscriptionsClient.port;
     assert(port);
     assert(typeof port === 'number');
   });
 
   it('should create a client with no option', () => {
-    const client = new callsModule.v1beta1.CallsClient();
+    const client = new transcriptionsModule.v1beta1.TranscriptionsClient();
     assert(client);
   });
 
   it('should create a client with gRPC fallback', () => {
-    const client = new callsModule.v1beta1.CallsClient({
+    const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
       fallback: true,
     });
     assert(client);
   });
 
   it('has initialize method and supports deferred initialization', async () => {
-    const client = new callsModule.v1beta1.CallsClient({
+    const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
-    assert.strictEqual(client.callsStub, undefined);
+    assert.strictEqual(client.transcriptionsStub, undefined);
     await client.initialize();
-    assert(client.callsStub);
+    assert(client.transcriptionsStub);
   });
 
   it('has close method', () => {
-    const client = new callsModule.v1beta1.CallsClient({
+    const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -161,7 +163,7 @@ describe('v1beta1.CallsClient', () => {
 
   it('has getProjectId method', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new callsModule.v1beta1.CallsClient({
+    const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -173,7 +175,7 @@ describe('v1beta1.CallsClient', () => {
 
   it('has getProjectId method with callback', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new callsModule.v1beta1.CallsClient({
+    const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -193,18 +195,18 @@ describe('v1beta1.CallsClient', () => {
     assert.strictEqual(result, fakeProjectId);
   });
 
-  describe('createCall', () => {
-    it('invokes createCall without error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+  describe('getTranscription', () => {
+    it('invokes getTranscription without error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.CreateCallRequest()
+        new protos.enfonica.voice.v1beta1.GetTranscriptionRequest()
       );
-      request.parent = '';
-      const expectedHeaderRequestParams = 'parent=';
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -213,29 +215,29 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Call()
+        new protos.enfonica.voice.v1beta1.Transcription()
       );
-      client.innerApiCalls.createCall = stubSimpleCall(expectedResponse);
-      const [response] = await client.createCall(request);
+      client.innerApiCalls.getTranscription = stubSimpleCall(expectedResponse);
+      const [response] = await client.getTranscription(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.createCall as SinonStub)
+        (client.innerApiCalls.getTranscription as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes createCall without error using callback', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('invokes getTranscription without error using callback', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.CreateCallRequest()
+        new protos.enfonica.voice.v1beta1.GetTranscriptionRequest()
       );
-      request.parent = '';
-      const expectedHeaderRequestParams = 'parent=';
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -244,16 +246,16 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Call()
+        new protos.enfonica.voice.v1beta1.Transcription()
       );
-      client.innerApiCalls.createCall =
+      client.innerApiCalls.getTranscription =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.createCall(
+        client.getTranscription(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.ICall | null
+            result?: protos.enfonica.voice.v1beta1.ITranscription | null
           ) => {
             if (err) {
               reject(err);
@@ -266,23 +268,23 @@ describe('v1beta1.CallsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.createCall as SinonStub)
+        (client.innerApiCalls.getTranscription as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes createCall with error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('invokes getTranscription with error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.CreateCallRequest()
+        new protos.enfonica.voice.v1beta1.GetTranscriptionRequest()
       );
-      request.parent = '';
-      const expectedHeaderRequestParams = 'parent=';
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -291,28 +293,28 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.createCall = stubSimpleCall(
+      client.innerApiCalls.getTranscription = stubSimpleCall(
         undefined,
         expectedError
       );
-      await assert.rejects(client.createCall(request), expectedError);
+      await assert.rejects(client.getTranscription(request), expectedError);
       assert(
-        (client.innerApiCalls.createCall as SinonStub)
+        (client.innerApiCalls.getTranscription as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
   });
 
-  describe('getCall', () => {
-    it('invokes getCall without error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+  describe('deleteTranscription', () => {
+    it('invokes deleteTranscription without error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetCallRequest()
+        new protos.enfonica.voice.v1beta1.DeleteTranscriptionRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -324,26 +326,27 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Call()
+        new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.getCall = stubSimpleCall(expectedResponse);
-      const [response] = await client.getCall(request);
+      client.innerApiCalls.deleteTranscription =
+        stubSimpleCall(expectedResponse);
+      const [response] = await client.deleteTranscription(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.getCall as SinonStub)
+        (client.innerApiCalls.deleteTranscription as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes getCall without error using callback', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('invokes deleteTranscription without error using callback', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetCallRequest()
+        new protos.enfonica.voice.v1beta1.DeleteTranscriptionRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -355,16 +358,16 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Call()
+        new protos.google.protobuf.Empty()
       );
-      client.innerApiCalls.getCall =
+      client.innerApiCalls.deleteTranscription =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.getCall(
+        client.deleteTranscription(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.ICall | null
+            result?: protos.google.protobuf.IEmpty | null
           ) => {
             if (err) {
               reject(err);
@@ -377,20 +380,20 @@ describe('v1beta1.CallsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.getCall as SinonStub)
+        (client.innerApiCalls.deleteTranscription as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes getCall with error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('invokes deleteTranscription with error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetCallRequest()
+        new protos.enfonica.voice.v1beta1.DeleteTranscriptionRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -402,25 +405,28 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.getCall = stubSimpleCall(undefined, expectedError);
-      await assert.rejects(client.getCall(request), expectedError);
+      client.innerApiCalls.deleteTranscription = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(client.deleteTranscription(request), expectedError);
       assert(
-        (client.innerApiCalls.getCall as SinonStub)
+        (client.innerApiCalls.deleteTranscription as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
   });
 
-  describe('listCalls', () => {
-    it('invokes listCalls without error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+  describe('listTranscriptions', () => {
+    it('invokes listTranscriptions without error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListCallsRequest()
+        new protos.enfonica.voice.v1beta1.ListTranscriptionsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
@@ -432,28 +438,35 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
       ];
-      client.innerApiCalls.listCalls = stubSimpleCall(expectedResponse);
-      const [response] = await client.listCalls(request);
+      client.innerApiCalls.listTranscriptions =
+        stubSimpleCall(expectedResponse);
+      const [response] = await client.listTranscriptions(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.listCalls as SinonStub)
+        (client.innerApiCalls.listTranscriptions as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes listCalls without error using callback', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('invokes listTranscriptions without error using callback', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListCallsRequest()
+        new protos.enfonica.voice.v1beta1.ListTranscriptionsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
@@ -465,18 +478,24 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
       ];
-      client.innerApiCalls.listCalls =
+      client.innerApiCalls.listTranscriptions =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.listCalls(
+        client.listTranscriptions(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.ICall[] | null
+            result?: protos.enfonica.voice.v1beta1.ITranscription[] | null
           ) => {
             if (err) {
               reject(err);
@@ -489,20 +508,20 @@ describe('v1beta1.CallsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.listCalls as SinonStub)
+        (client.innerApiCalls.listTranscriptions as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes listCalls with error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('invokes listTranscriptions with error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListCallsRequest()
+        new protos.enfonica.voice.v1beta1.ListTranscriptionsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
@@ -514,39 +533,51 @@ describe('v1beta1.CallsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.listCalls = stubSimpleCall(undefined, expectedError);
-      await assert.rejects(client.listCalls(request), expectedError);
+      client.innerApiCalls.listTranscriptions = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(client.listTranscriptions(request), expectedError);
       assert(
-        (client.innerApiCalls.listCalls as SinonStub)
+        (client.innerApiCalls.listTranscriptions as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes listCallsStream without error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('invokes listTranscriptionsStream without error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListCallsRequest()
+        new protos.enfonica.voice.v1beta1.ListTranscriptionsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
       ];
-      client.descriptors.page.listCalls.createStream =
+      client.descriptors.page.listTranscriptions.createStream =
         stubPageStreamingCall(expectedResponse);
-      const stream = client.listCallsStream(request);
+      const stream = client.listTranscriptionsStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.enfonica.voice.v1beta1.Call[] = [];
-        stream.on('data', (response: protos.enfonica.voice.v1beta1.Call) => {
-          responses.push(response);
-        });
+        const responses: protos.enfonica.voice.v1beta1.Transcription[] = [];
+        stream.on(
+          'data',
+          (response: protos.enfonica.voice.v1beta1.Transcription) => {
+            responses.push(response);
+          }
+        );
         stream.on('end', () => {
           resolve(responses);
         });
@@ -557,39 +588,41 @@ describe('v1beta1.CallsClient', () => {
       const responses = await promise;
       assert.deepStrictEqual(responses, expectedResponse);
       assert(
-        (client.descriptors.page.listCalls.createStream as SinonStub)
+        (client.descriptors.page.listTranscriptions.createStream as SinonStub)
           .getCall(0)
-          .calledWith(client.innerApiCalls.listCalls, request)
+          .calledWith(client.innerApiCalls.listTranscriptions, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listCalls.createStream as SinonStub).getCall(0)
-          .args[2].otherArgs.headers['x-goog-request-params'],
+        (
+          client.descriptors.page.listTranscriptions.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('invokes listCallsStream with error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('invokes listTranscriptionsStream with error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListCallsRequest()
+        new protos.enfonica.voice.v1beta1.ListTranscriptionsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listCalls.createStream = stubPageStreamingCall(
-        undefined,
-        expectedError
-      );
-      const stream = client.listCallsStream(request);
+      client.descriptors.page.listTranscriptions.createStream =
+        stubPageStreamingCall(undefined, expectedError);
+      const stream = client.listTranscriptionsStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.enfonica.voice.v1beta1.Call[] = [];
-        stream.on('data', (response: protos.enfonica.voice.v1beta1.Call) => {
-          responses.push(response);
-        });
+        const responses: protos.enfonica.voice.v1beta1.Transcription[] = [];
+        stream.on(
+          'data',
+          (response: protos.enfonica.voice.v1beta1.Transcription) => {
+            responses.push(response);
+          }
+        );
         stream.on('end', () => {
           resolve(responses);
         });
@@ -599,84 +632,93 @@ describe('v1beta1.CallsClient', () => {
       });
       await assert.rejects(promise, expectedError);
       assert(
-        (client.descriptors.page.listCalls.createStream as SinonStub)
+        (client.descriptors.page.listTranscriptions.createStream as SinonStub)
           .getCall(0)
-          .calledWith(client.innerApiCalls.listCalls, request)
+          .calledWith(client.innerApiCalls.listTranscriptions, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listCalls.createStream as SinonStub).getCall(0)
-          .args[2].otherArgs.headers['x-goog-request-params'],
+        (
+          client.descriptors.page.listTranscriptions.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('uses async iteration with listCalls without error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('uses async iteration with listTranscriptions without error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListCallsRequest()
+        new protos.enfonica.voice.v1beta1.ListTranscriptionsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Call()),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
+        generateSampleMessage(
+          new protos.enfonica.voice.v1beta1.Transcription()
+        ),
       ];
-      client.descriptors.page.listCalls.asyncIterate =
+      client.descriptors.page.listTranscriptions.asyncIterate =
         stubAsyncIterationCall(expectedResponse);
-      const responses: protos.enfonica.voice.v1beta1.ICall[] = [];
-      const iterable = client.listCallsAsync(request);
+      const responses: protos.enfonica.voice.v1beta1.ITranscription[] = [];
+      const iterable = client.listTranscriptionsAsync(request);
       for await (const resource of iterable) {
         responses.push(resource!);
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (client.descriptors.page.listCalls.asyncIterate as SinonStub).getCall(0)
-          .args[1],
+        (
+          client.descriptors.page.listTranscriptions.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listCalls.asyncIterate as SinonStub).getCall(0)
-          .args[2].otherArgs.headers['x-goog-request-params'],
+        (
+          client.descriptors.page.listTranscriptions.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('uses async iteration with listCalls with error', async () => {
-      const client = new callsModule.v1beta1.CallsClient({
+    it('uses async iteration with listTranscriptions with error', async () => {
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListCallsRequest()
+        new protos.enfonica.voice.v1beta1.ListTranscriptionsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listCalls.asyncIterate = stubAsyncIterationCall(
-        undefined,
-        expectedError
-      );
-      const iterable = client.listCallsAsync(request);
+      client.descriptors.page.listTranscriptions.asyncIterate =
+        stubAsyncIterationCall(undefined, expectedError);
+      const iterable = client.listTranscriptionsAsync(request);
       await assert.rejects(async () => {
-        const responses: protos.enfonica.voice.v1beta1.ICall[] = [];
+        const responses: protos.enfonica.voice.v1beta1.ITranscription[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
         }
       });
       assert.deepStrictEqual(
-        (client.descriptors.page.listCalls.asyncIterate as SinonStub).getCall(0)
-          .args[1],
+        (
+          client.descriptors.page.listTranscriptions.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listCalls.asyncIterate as SinonStub).getCall(0)
-          .args[2].otherArgs.headers['x-goog-request-params'],
+        (
+          client.descriptors.page.listTranscriptions.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -689,7 +731,7 @@ describe('v1beta1.CallsClient', () => {
         project: 'projectValue',
         call: 'callValue',
       };
-      const client = new callsModule.v1beta1.CallsClient({
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -739,7 +781,7 @@ describe('v1beta1.CallsClient', () => {
         call: 'callValue',
         recording: 'recordingValue',
       };
-      const client = new callsModule.v1beta1.CallsClient({
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -803,7 +845,7 @@ describe('v1beta1.CallsClient', () => {
         call: 'callValue',
         transcription: 'transcriptionValue',
       };
-      const client = new callsModule.v1beta1.CallsClient({
+      const client = new transcriptionsModule.v1beta1.TranscriptionsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });

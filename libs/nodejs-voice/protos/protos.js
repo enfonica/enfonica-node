@@ -57,6 +57,411 @@
                  */
                 var v1beta1 = {};
     
+                v1beta1.CallRecordingConfig = (function() {
+    
+                    /**
+                     * Properties of a CallRecordingConfig.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ICallRecordingConfig
+                     * @property {enfonica.voice.v1beta1.CallRecordingConfig.CallRecordingTrigger|null} [trigger] CallRecordingConfig trigger
+                     * @property {Array.<enfonica.voice.v1beta1.PostProcessing>|null} [postProcessing] CallRecordingConfig postProcessing
+                     * @property {string|null} [recordingReadyUri] CallRecordingConfig recordingReadyUri
+                     * @property {enfonica.voice.v1beta1.TranscribeOption|null} [transcribe] CallRecordingConfig transcribe
+                     * @property {string|null} [transcriptionReadyUri] CallRecordingConfig transcriptionReadyUri
+                     */
+    
+                    /**
+                     * Constructs a new CallRecordingConfig.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a CallRecordingConfig.
+                     * @implements ICallRecordingConfig
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ICallRecordingConfig=} [properties] Properties to set
+                     */
+                    function CallRecordingConfig(properties) {
+                        this.postProcessing = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * CallRecordingConfig trigger.
+                     * @member {enfonica.voice.v1beta1.CallRecordingConfig.CallRecordingTrigger} trigger
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @instance
+                     */
+                    CallRecordingConfig.prototype.trigger = 0;
+    
+                    /**
+                     * CallRecordingConfig postProcessing.
+                     * @member {Array.<enfonica.voice.v1beta1.PostProcessing>} postProcessing
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @instance
+                     */
+                    CallRecordingConfig.prototype.postProcessing = $util.emptyArray;
+    
+                    /**
+                     * CallRecordingConfig recordingReadyUri.
+                     * @member {string} recordingReadyUri
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @instance
+                     */
+                    CallRecordingConfig.prototype.recordingReadyUri = "";
+    
+                    /**
+                     * CallRecordingConfig transcribe.
+                     * @member {enfonica.voice.v1beta1.TranscribeOption} transcribe
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @instance
+                     */
+                    CallRecordingConfig.prototype.transcribe = 0;
+    
+                    /**
+                     * CallRecordingConfig transcriptionReadyUri.
+                     * @member {string} transcriptionReadyUri
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @instance
+                     */
+                    CallRecordingConfig.prototype.transcriptionReadyUri = "";
+    
+                    /**
+                     * Creates a new CallRecordingConfig instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICallRecordingConfig=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.CallRecordingConfig} CallRecordingConfig instance
+                     */
+                    CallRecordingConfig.create = function create(properties) {
+                        return new CallRecordingConfig(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified CallRecordingConfig message. Does not implicitly {@link enfonica.voice.v1beta1.CallRecordingConfig.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICallRecordingConfig} message CallRecordingConfig message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CallRecordingConfig.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.trigger != null && Object.hasOwnProperty.call(message, "trigger"))
+                            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.trigger);
+                        if (message.postProcessing != null && message.postProcessing.length) {
+                            writer.uint32(/* id 2, wireType 2 =*/18).fork();
+                            for (var i = 0; i < message.postProcessing.length; ++i)
+                                writer.int32(message.postProcessing[i]);
+                            writer.ldelim();
+                        }
+                        if (message.recordingReadyUri != null && Object.hasOwnProperty.call(message, "recordingReadyUri"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.recordingReadyUri);
+                        if (message.transcribe != null && Object.hasOwnProperty.call(message, "transcribe"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).int32(message.transcribe);
+                        if (message.transcriptionReadyUri != null && Object.hasOwnProperty.call(message, "transcriptionReadyUri"))
+                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.transcriptionReadyUri);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified CallRecordingConfig message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CallRecordingConfig.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICallRecordingConfig} message CallRecordingConfig message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CallRecordingConfig.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a CallRecordingConfig message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.CallRecordingConfig} CallRecordingConfig
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CallRecordingConfig.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.CallRecordingConfig();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.trigger = reader.int32();
+                                break;
+                            case 2:
+                                if (!(message.postProcessing && message.postProcessing.length))
+                                    message.postProcessing = [];
+                                if ((tag & 7) === 2) {
+                                    var end2 = reader.uint32() + reader.pos;
+                                    while (reader.pos < end2)
+                                        message.postProcessing.push(reader.int32());
+                                } else
+                                    message.postProcessing.push(reader.int32());
+                                break;
+                            case 3:
+                                message.recordingReadyUri = reader.string();
+                                break;
+                            case 4:
+                                message.transcribe = reader.int32();
+                                break;
+                            case 5:
+                                message.transcriptionReadyUri = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a CallRecordingConfig message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.CallRecordingConfig} CallRecordingConfig
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CallRecordingConfig.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a CallRecordingConfig message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    CallRecordingConfig.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.trigger != null && message.hasOwnProperty("trigger"))
+                            switch (message.trigger) {
+                            default:
+                                return "trigger: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                                break;
+                            }
+                        if (message.postProcessing != null && message.hasOwnProperty("postProcessing")) {
+                            if (!Array.isArray(message.postProcessing))
+                                return "postProcessing: array expected";
+                            for (var i = 0; i < message.postProcessing.length; ++i)
+                                switch (message.postProcessing[i]) {
+                                default:
+                                    return "postProcessing: enum value[] expected";
+                                case 0:
+                                case 1:
+                                    break;
+                                }
+                        }
+                        if (message.recordingReadyUri != null && message.hasOwnProperty("recordingReadyUri"))
+                            if (!$util.isString(message.recordingReadyUri))
+                                return "recordingReadyUri: string expected";
+                        if (message.transcribe != null && message.hasOwnProperty("transcribe"))
+                            switch (message.transcribe) {
+                            default:
+                                return "transcribe: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                                break;
+                            }
+                        if (message.transcriptionReadyUri != null && message.hasOwnProperty("transcriptionReadyUri"))
+                            if (!$util.isString(message.transcriptionReadyUri))
+                                return "transcriptionReadyUri: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a CallRecordingConfig message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.CallRecordingConfig} CallRecordingConfig
+                     */
+                    CallRecordingConfig.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.CallRecordingConfig)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.CallRecordingConfig();
+                        switch (object.trigger) {
+                        case "CALL_RECORDING_TRIGGER_UNSPECIFIED":
+                        case 0:
+                            message.trigger = 0;
+                            break;
+                        case "DISABLED":
+                        case 1:
+                            message.trigger = 1;
+                            break;
+                        case "ANSWER":
+                        case 2:
+                            message.trigger = 2;
+                            break;
+                        case "BRIDGE":
+                        case 3:
+                            message.trigger = 3;
+                            break;
+                        }
+                        if (object.postProcessing) {
+                            if (!Array.isArray(object.postProcessing))
+                                throw TypeError(".enfonica.voice.v1beta1.CallRecordingConfig.postProcessing: array expected");
+                            message.postProcessing = [];
+                            for (var i = 0; i < object.postProcessing.length; ++i)
+                                switch (object.postProcessing[i]) {
+                                default:
+                                case "POST_PROCESSING_UNSPECIFIED":
+                                case 0:
+                                    message.postProcessing[i] = 0;
+                                    break;
+                                case "TRIM_SILENCE":
+                                case 1:
+                                    message.postProcessing[i] = 1;
+                                    break;
+                                }
+                        }
+                        if (object.recordingReadyUri != null)
+                            message.recordingReadyUri = String(object.recordingReadyUri);
+                        switch (object.transcribe) {
+                        case "TRANSCRIBE_OPTION_UNSPECIFIED":
+                        case 0:
+                            message.transcribe = 0;
+                            break;
+                        case "DISABLED":
+                        case 1:
+                            message.transcribe = 1;
+                            break;
+                        case "DEFAULT":
+                        case 2:
+                            message.transcribe = 2;
+                            break;
+                        }
+                        if (object.transcriptionReadyUri != null)
+                            message.transcriptionReadyUri = String(object.transcriptionReadyUri);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a CallRecordingConfig message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @static
+                     * @param {enfonica.voice.v1beta1.CallRecordingConfig} message CallRecordingConfig
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    CallRecordingConfig.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.postProcessing = [];
+                        if (options.defaults) {
+                            object.trigger = options.enums === String ? "CALL_RECORDING_TRIGGER_UNSPECIFIED" : 0;
+                            object.recordingReadyUri = "";
+                            object.transcribe = options.enums === String ? "TRANSCRIBE_OPTION_UNSPECIFIED" : 0;
+                            object.transcriptionReadyUri = "";
+                        }
+                        if (message.trigger != null && message.hasOwnProperty("trigger"))
+                            object.trigger = options.enums === String ? $root.enfonica.voice.v1beta1.CallRecordingConfig.CallRecordingTrigger[message.trigger] : message.trigger;
+                        if (message.postProcessing && message.postProcessing.length) {
+                            object.postProcessing = [];
+                            for (var j = 0; j < message.postProcessing.length; ++j)
+                                object.postProcessing[j] = options.enums === String ? $root.enfonica.voice.v1beta1.PostProcessing[message.postProcessing[j]] : message.postProcessing[j];
+                        }
+                        if (message.recordingReadyUri != null && message.hasOwnProperty("recordingReadyUri"))
+                            object.recordingReadyUri = message.recordingReadyUri;
+                        if (message.transcribe != null && message.hasOwnProperty("transcribe"))
+                            object.transcribe = options.enums === String ? $root.enfonica.voice.v1beta1.TranscribeOption[message.transcribe] : message.transcribe;
+                        if (message.transcriptionReadyUri != null && message.hasOwnProperty("transcriptionReadyUri"))
+                            object.transcriptionReadyUri = message.transcriptionReadyUri;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this CallRecordingConfig to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.CallRecordingConfig
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    CallRecordingConfig.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    /**
+                     * CallRecordingTrigger enum.
+                     * @name enfonica.voice.v1beta1.CallRecordingConfig.CallRecordingTrigger
+                     * @enum {number}
+                     * @property {number} CALL_RECORDING_TRIGGER_UNSPECIFIED=0 CALL_RECORDING_TRIGGER_UNSPECIFIED value
+                     * @property {number} DISABLED=1 DISABLED value
+                     * @property {number} ANSWER=2 ANSWER value
+                     * @property {number} BRIDGE=3 BRIDGE value
+                     */
+                    CallRecordingConfig.CallRecordingTrigger = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "CALL_RECORDING_TRIGGER_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "DISABLED"] = 1;
+                        values[valuesById[2] = "ANSWER"] = 2;
+                        values[valuesById[3] = "BRIDGE"] = 3;
+                        return values;
+                    })();
+    
+                    return CallRecordingConfig;
+                })();
+    
+                /**
+                 * PostProcessing enum.
+                 * @name enfonica.voice.v1beta1.PostProcessing
+                 * @enum {number}
+                 * @property {number} POST_PROCESSING_UNSPECIFIED=0 POST_PROCESSING_UNSPECIFIED value
+                 * @property {number} TRIM_SILENCE=1 TRIM_SILENCE value
+                 */
+                v1beta1.PostProcessing = (function() {
+                    var valuesById = {}, values = Object.create(valuesById);
+                    values[valuesById[0] = "POST_PROCESSING_UNSPECIFIED"] = 0;
+                    values[valuesById[1] = "TRIM_SILENCE"] = 1;
+                    return values;
+                })();
+    
+                /**
+                 * TranscribeOption enum.
+                 * @name enfonica.voice.v1beta1.TranscribeOption
+                 * @enum {number}
+                 * @property {number} TRANSCRIBE_OPTION_UNSPECIFIED=0 TRANSCRIBE_OPTION_UNSPECIFIED value
+                 * @property {number} DISABLED=1 DISABLED value
+                 * @property {number} DEFAULT=2 DEFAULT value
+                 */
+                v1beta1.TranscribeOption = (function() {
+                    var valuesById = {}, values = Object.create(valuesById);
+                    values[valuesById[0] = "TRANSCRIBE_OPTION_UNSPECIFIED"] = 0;
+                    values[valuesById[1] = "DISABLED"] = 1;
+                    values[valuesById[2] = "DEFAULT"] = 2;
+                    return values;
+                })();
+    
                 v1beta1.CallRequest = (function() {
     
                     /**
@@ -340,6 +745,39 @@
                     };
     
                     /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Calls#createCall}.
+                     * @memberof enfonica.voice.v1beta1.Calls
+                     * @typedef CreateCallCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.Call} [response] Call
+                     */
+    
+                    /**
+                     * Calls CreateCall.
+                     * @function createCall
+                     * @memberof enfonica.voice.v1beta1.Calls
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.ICreateCallRequest} request CreateCallRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Calls.CreateCallCallback} callback Node-style callback called with the error, if any, and Call
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Calls.prototype.createCall = function createCall(request, callback) {
+                        return this.rpcCall(createCall, $root.enfonica.voice.v1beta1.CreateCallRequest, $root.enfonica.voice.v1beta1.Call, request, callback);
+                    }, "name", { value: "CreateCall" });
+    
+                    /**
+                     * Calls CreateCall.
+                     * @function createCall
+                     * @memberof enfonica.voice.v1beta1.Calls
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.ICreateCallRequest} request CreateCallRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.Call>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
                      * Callback as used by {@link enfonica.voice.v1beta1.Calls#getCall}.
                      * @memberof enfonica.voice.v1beta1.Calls
                      * @typedef GetCallCallback
@@ -418,9 +856,6 @@
                      * @property {string|null} [to] Call to
                      * @property {string|null} [from] Call from
                      * @property {boolean|null} [isPrivate] Call isPrivate
-                     * @property {string|null} [statusUpdateUri] Call statusUpdateUri
-                     * @property {string|null} [handleUri] Call handleUri
-                     * @property {number|null} [validityPeriodSeconds] Call validityPeriodSeconds
                      * @property {Object.<string,string>|null} [labels] Call labels
                      * @property {enfonica.voice.v1beta1.Call.Transport|null} [transport] Call transport
                      * @property {enfonica.voice.v1beta1.Call.Direction|null} [direction] Call direction
@@ -435,6 +870,8 @@
                      * @property {google.protobuf.ITimestamp|null} [endTime] Call endTime
                      * @property {boolean|null} [bridged] Call bridged
                      * @property {string|null} [originatingCall] Call originatingCall
+                     * @property {enfonica.voice.v1beta1.Call.CreateMethod|null} [createMethod] Call createMethod
+                     * @property {enfonica.voice.v1beta1.Call.IApiCallOptions|null} [options] Call options
                      */
     
                     /**
@@ -484,30 +921,6 @@
                      * @instance
                      */
                     Call.prototype.isPrivate = false;
-    
-                    /**
-                     * Call statusUpdateUri.
-                     * @member {string} statusUpdateUri
-                     * @memberof enfonica.voice.v1beta1.Call
-                     * @instance
-                     */
-                    Call.prototype.statusUpdateUri = "";
-    
-                    /**
-                     * Call handleUri.
-                     * @member {string} handleUri
-                     * @memberof enfonica.voice.v1beta1.Call
-                     * @instance
-                     */
-                    Call.prototype.handleUri = "";
-    
-                    /**
-                     * Call validityPeriodSeconds.
-                     * @member {number} validityPeriodSeconds
-                     * @memberof enfonica.voice.v1beta1.Call
-                     * @instance
-                     */
-                    Call.prototype.validityPeriodSeconds = 0;
     
                     /**
                      * Call labels.
@@ -622,6 +1035,22 @@
                     Call.prototype.originatingCall = "";
     
                     /**
+                     * Call createMethod.
+                     * @member {enfonica.voice.v1beta1.Call.CreateMethod} createMethod
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.createMethod = 0;
+    
+                    /**
+                     * Call options.
+                     * @member {enfonica.voice.v1beta1.Call.IApiCallOptions|null|undefined} options
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.options = null;
+    
+                    /**
                      * Creates a new Call instance using the specified properties.
                      * @function create
                      * @memberof enfonica.voice.v1beta1.Call
@@ -653,12 +1082,6 @@
                             writer.uint32(/* id 3, wireType 2 =*/26).string(message.from);
                         if (message.isPrivate != null && Object.hasOwnProperty.call(message, "isPrivate"))
                             writer.uint32(/* id 4, wireType 0 =*/32).bool(message.isPrivate);
-                        if (message.statusUpdateUri != null && Object.hasOwnProperty.call(message, "statusUpdateUri"))
-                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.statusUpdateUri);
-                        if (message.handleUri != null && Object.hasOwnProperty.call(message, "handleUri"))
-                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.handleUri);
-                        if (message.validityPeriodSeconds != null && Object.hasOwnProperty.call(message, "validityPeriodSeconds"))
-                            writer.uint32(/* id 7, wireType 0 =*/56).int32(message.validityPeriodSeconds);
                         if (message.labels != null && Object.hasOwnProperty.call(message, "labels"))
                             for (var keys = Object.keys(message.labels), i = 0; i < keys.length; ++i)
                                 writer.uint32(/* id 8, wireType 2 =*/66).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]).uint32(/* id 2, wireType 2 =*/18).string(message.labels[keys[i]]).ldelim();
@@ -688,6 +1111,10 @@
                             writer.uint32(/* id 21, wireType 0 =*/168).bool(message.bridged);
                         if (message.originatingCall != null && Object.hasOwnProperty.call(message, "originatingCall"))
                             writer.uint32(/* id 22, wireType 2 =*/178).string(message.originatingCall);
+                        if (message.createMethod != null && Object.hasOwnProperty.call(message, "createMethod"))
+                            writer.uint32(/* id 23, wireType 0 =*/184).int32(message.createMethod);
+                        if (message.options != null && Object.hasOwnProperty.call(message, "options"))
+                            $root.enfonica.voice.v1beta1.Call.ApiCallOptions.encode(message.options, writer.uint32(/* id 24, wireType 2 =*/194).fork()).ldelim();
                         return writer;
                     };
     
@@ -733,15 +1160,6 @@
                                 break;
                             case 4:
                                 message.isPrivate = reader.bool();
-                                break;
-                            case 5:
-                                message.statusUpdateUri = reader.string();
-                                break;
-                            case 6:
-                                message.handleUri = reader.string();
-                                break;
-                            case 7:
-                                message.validityPeriodSeconds = reader.int32();
                                 break;
                             case 8:
                                 if (message.labels === $util.emptyObject)
@@ -804,6 +1222,12 @@
                             case 22:
                                 message.originatingCall = reader.string();
                                 break;
+                            case 23:
+                                message.createMethod = reader.int32();
+                                break;
+                            case 24:
+                                message.options = $root.enfonica.voice.v1beta1.Call.ApiCallOptions.decode(reader, reader.uint32());
+                                break;
                             default:
                                 reader.skipType(tag & 7);
                                 break;
@@ -851,15 +1275,6 @@
                         if (message.isPrivate != null && message.hasOwnProperty("isPrivate"))
                             if (typeof message.isPrivate !== "boolean")
                                 return "isPrivate: boolean expected";
-                        if (message.statusUpdateUri != null && message.hasOwnProperty("statusUpdateUri"))
-                            if (!$util.isString(message.statusUpdateUri))
-                                return "statusUpdateUri: string expected";
-                        if (message.handleUri != null && message.hasOwnProperty("handleUri"))
-                            if (!$util.isString(message.handleUri))
-                                return "handleUri: string expected";
-                        if (message.validityPeriodSeconds != null && message.hasOwnProperty("validityPeriodSeconds"))
-                            if (!$util.isInteger(message.validityPeriodSeconds))
-                                return "validityPeriodSeconds: integer expected";
                         if (message.labels != null && message.hasOwnProperty("labels")) {
                             if (!$util.isObject(message.labels))
                                 return "labels: object expected";
@@ -945,6 +1360,21 @@
                         if (message.originatingCall != null && message.hasOwnProperty("originatingCall"))
                             if (!$util.isString(message.originatingCall))
                                 return "originatingCall: string expected";
+                        if (message.createMethod != null && message.hasOwnProperty("createMethod"))
+                            switch (message.createMethod) {
+                            default:
+                                return "createMethod: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                                break;
+                            }
+                        if (message.options != null && message.hasOwnProperty("options")) {
+                            var error = $root.enfonica.voice.v1beta1.Call.ApiCallOptions.verify(message.options);
+                            if (error)
+                                return "options." + error;
+                        }
                         return null;
                     };
     
@@ -968,12 +1398,6 @@
                             message.from = String(object.from);
                         if (object.isPrivate != null)
                             message.isPrivate = Boolean(object.isPrivate);
-                        if (object.statusUpdateUri != null)
-                            message.statusUpdateUri = String(object.statusUpdateUri);
-                        if (object.handleUri != null)
-                            message.handleUri = String(object.handleUri);
-                        if (object.validityPeriodSeconds != null)
-                            message.validityPeriodSeconds = object.validityPeriodSeconds | 0;
                         if (object.labels) {
                             if (typeof object.labels !== "object")
                                 throw TypeError(".enfonica.voice.v1beta1.Call.labels: object expected");
@@ -1093,6 +1517,29 @@
                             message.bridged = Boolean(object.bridged);
                         if (object.originatingCall != null)
                             message.originatingCall = String(object.originatingCall);
+                        switch (object.createMethod) {
+                        case "CREATE_METHOD_UNSPECIFIED":
+                        case 0:
+                            message.createMethod = 0;
+                            break;
+                        case "INCOMING_CALL":
+                        case 1:
+                            message.createMethod = 1;
+                            break;
+                        case "PARENT_CALL":
+                        case 2:
+                            message.createMethod = 2;
+                            break;
+                        case "API":
+                        case 3:
+                            message.createMethod = 3;
+                            break;
+                        }
+                        if (object.options != null) {
+                            if (typeof object.options !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.options: object expected");
+                            message.options = $root.enfonica.voice.v1beta1.Call.ApiCallOptions.fromObject(object.options);
+                        }
                         return message;
                     };
     
@@ -1116,9 +1563,6 @@
                             object.to = "";
                             object.from = "";
                             object.isPrivate = false;
-                            object.statusUpdateUri = "";
-                            object.handleUri = "";
-                            object.validityPeriodSeconds = 0;
                             object.transport = options.enums === String ? "TRANSPORT_UNSPECIFIED" : 0;
                             object.direction = options.enums === String ? "DIRECTION_UNSPECIFIED" : 0;
                             object.errorCode = "";
@@ -1132,6 +1576,8 @@
                             object.endTime = null;
                             object.bridged = false;
                             object.originatingCall = "";
+                            object.createMethod = options.enums === String ? "CREATE_METHOD_UNSPECIFIED" : 0;
+                            object.options = null;
                         }
                         if (message.name != null && message.hasOwnProperty("name"))
                             object.name = message.name;
@@ -1141,12 +1587,6 @@
                             object.from = message.from;
                         if (message.isPrivate != null && message.hasOwnProperty("isPrivate"))
                             object.isPrivate = message.isPrivate;
-                        if (message.statusUpdateUri != null && message.hasOwnProperty("statusUpdateUri"))
-                            object.statusUpdateUri = message.statusUpdateUri;
-                        if (message.handleUri != null && message.hasOwnProperty("handleUri"))
-                            object.handleUri = message.handleUri;
-                        if (message.validityPeriodSeconds != null && message.hasOwnProperty("validityPeriodSeconds"))
-                            object.validityPeriodSeconds = message.validityPeriodSeconds;
                         var keys2;
                         if (message.labels && (keys2 = Object.keys(message.labels)).length) {
                             object.labels = {};
@@ -1179,6 +1619,10 @@
                             object.bridged = message.bridged;
                         if (message.originatingCall != null && message.hasOwnProperty("originatingCall"))
                             object.originatingCall = message.originatingCall;
+                        if (message.createMethod != null && message.hasOwnProperty("createMethod"))
+                            object.createMethod = options.enums === String ? $root.enfonica.voice.v1beta1.Call.CreateMethod[message.createMethod] : message.createMethod;
+                        if (message.options != null && message.hasOwnProperty("options"))
+                            object.options = $root.enfonica.voice.v1beta1.Call.ApiCallOptions.toObject(message.options, options);
                         return object;
                     };
     
@@ -1192,6 +1636,282 @@
                     Call.prototype.toJSON = function toJSON() {
                         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                     };
+    
+                    Call.ApiCallOptions = (function() {
+    
+                        /**
+                         * Properties of an ApiCallOptions.
+                         * @memberof enfonica.voice.v1beta1.Call
+                         * @interface IApiCallOptions
+                         * @property {Array.<string>|null} [handlerUris] ApiCallOptions handlerUris
+                         * @property {string|null} [stateUpdateUri] ApiCallOptions stateUpdateUri
+                         * @property {number|null} [timeoutSeconds] ApiCallOptions timeoutSeconds
+                         * @property {enfonica.voice.v1beta1.ICallRecordingConfig|null} [recording] ApiCallOptions recording
+                         */
+    
+                        /**
+                         * Constructs a new ApiCallOptions.
+                         * @memberof enfonica.voice.v1beta1.Call
+                         * @classdesc Represents an ApiCallOptions.
+                         * @implements IApiCallOptions
+                         * @constructor
+                         * @param {enfonica.voice.v1beta1.Call.IApiCallOptions=} [properties] Properties to set
+                         */
+                        function ApiCallOptions(properties) {
+                            this.handlerUris = [];
+                            if (properties)
+                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+    
+                        /**
+                         * ApiCallOptions handlerUris.
+                         * @member {Array.<string>} handlerUris
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @instance
+                         */
+                        ApiCallOptions.prototype.handlerUris = $util.emptyArray;
+    
+                        /**
+                         * ApiCallOptions stateUpdateUri.
+                         * @member {string} stateUpdateUri
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @instance
+                         */
+                        ApiCallOptions.prototype.stateUpdateUri = "";
+    
+                        /**
+                         * ApiCallOptions timeoutSeconds.
+                         * @member {number} timeoutSeconds
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @instance
+                         */
+                        ApiCallOptions.prototype.timeoutSeconds = 0;
+    
+                        /**
+                         * ApiCallOptions recording.
+                         * @member {enfonica.voice.v1beta1.ICallRecordingConfig|null|undefined} recording
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @instance
+                         */
+                        ApiCallOptions.prototype.recording = null;
+    
+                        /**
+                         * Creates a new ApiCallOptions instance using the specified properties.
+                         * @function create
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @static
+                         * @param {enfonica.voice.v1beta1.Call.IApiCallOptions=} [properties] Properties to set
+                         * @returns {enfonica.voice.v1beta1.Call.ApiCallOptions} ApiCallOptions instance
+                         */
+                        ApiCallOptions.create = function create(properties) {
+                            return new ApiCallOptions(properties);
+                        };
+    
+                        /**
+                         * Encodes the specified ApiCallOptions message. Does not implicitly {@link enfonica.voice.v1beta1.Call.ApiCallOptions.verify|verify} messages.
+                         * @function encode
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @static
+                         * @param {enfonica.voice.v1beta1.Call.IApiCallOptions} message ApiCallOptions message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        ApiCallOptions.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.handlerUris != null && message.handlerUris.length)
+                                for (var i = 0; i < message.handlerUris.length; ++i)
+                                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.handlerUris[i]);
+                            if (message.stateUpdateUri != null && Object.hasOwnProperty.call(message, "stateUpdateUri"))
+                                writer.uint32(/* id 2, wireType 2 =*/18).string(message.stateUpdateUri);
+                            if (message.timeoutSeconds != null && Object.hasOwnProperty.call(message, "timeoutSeconds"))
+                                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.timeoutSeconds);
+                            if (message.recording != null && Object.hasOwnProperty.call(message, "recording"))
+                                $root.enfonica.voice.v1beta1.CallRecordingConfig.encode(message.recording, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                            return writer;
+                        };
+    
+                        /**
+                         * Encodes the specified ApiCallOptions message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.Call.ApiCallOptions.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @static
+                         * @param {enfonica.voice.v1beta1.Call.IApiCallOptions} message ApiCallOptions message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        ApiCallOptions.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+    
+                        /**
+                         * Decodes an ApiCallOptions message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {enfonica.voice.v1beta1.Call.ApiCallOptions} ApiCallOptions
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        ApiCallOptions.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.Call.ApiCallOptions();
+                            while (reader.pos < end) {
+                                var tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    if (!(message.handlerUris && message.handlerUris.length))
+                                        message.handlerUris = [];
+                                    message.handlerUris.push(reader.string());
+                                    break;
+                                case 2:
+                                    message.stateUpdateUri = reader.string();
+                                    break;
+                                case 3:
+                                    message.timeoutSeconds = reader.int32();
+                                    break;
+                                case 4:
+                                    message.recording = $root.enfonica.voice.v1beta1.CallRecordingConfig.decode(reader, reader.uint32());
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+    
+                        /**
+                         * Decodes an ApiCallOptions message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {enfonica.voice.v1beta1.Call.ApiCallOptions} ApiCallOptions
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        ApiCallOptions.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+    
+                        /**
+                         * Verifies an ApiCallOptions message.
+                         * @function verify
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        ApiCallOptions.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.handlerUris != null && message.hasOwnProperty("handlerUris")) {
+                                if (!Array.isArray(message.handlerUris))
+                                    return "handlerUris: array expected";
+                                for (var i = 0; i < message.handlerUris.length; ++i)
+                                    if (!$util.isString(message.handlerUris[i]))
+                                        return "handlerUris: string[] expected";
+                            }
+                            if (message.stateUpdateUri != null && message.hasOwnProperty("stateUpdateUri"))
+                                if (!$util.isString(message.stateUpdateUri))
+                                    return "stateUpdateUri: string expected";
+                            if (message.timeoutSeconds != null && message.hasOwnProperty("timeoutSeconds"))
+                                if (!$util.isInteger(message.timeoutSeconds))
+                                    return "timeoutSeconds: integer expected";
+                            if (message.recording != null && message.hasOwnProperty("recording")) {
+                                var error = $root.enfonica.voice.v1beta1.CallRecordingConfig.verify(message.recording);
+                                if (error)
+                                    return "recording." + error;
+                            }
+                            return null;
+                        };
+    
+                        /**
+                         * Creates an ApiCallOptions message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {enfonica.voice.v1beta1.Call.ApiCallOptions} ApiCallOptions
+                         */
+                        ApiCallOptions.fromObject = function fromObject(object) {
+                            if (object instanceof $root.enfonica.voice.v1beta1.Call.ApiCallOptions)
+                                return object;
+                            var message = new $root.enfonica.voice.v1beta1.Call.ApiCallOptions();
+                            if (object.handlerUris) {
+                                if (!Array.isArray(object.handlerUris))
+                                    throw TypeError(".enfonica.voice.v1beta1.Call.ApiCallOptions.handlerUris: array expected");
+                                message.handlerUris = [];
+                                for (var i = 0; i < object.handlerUris.length; ++i)
+                                    message.handlerUris[i] = String(object.handlerUris[i]);
+                            }
+                            if (object.stateUpdateUri != null)
+                                message.stateUpdateUri = String(object.stateUpdateUri);
+                            if (object.timeoutSeconds != null)
+                                message.timeoutSeconds = object.timeoutSeconds | 0;
+                            if (object.recording != null) {
+                                if (typeof object.recording !== "object")
+                                    throw TypeError(".enfonica.voice.v1beta1.Call.ApiCallOptions.recording: object expected");
+                                message.recording = $root.enfonica.voice.v1beta1.CallRecordingConfig.fromObject(object.recording);
+                            }
+                            return message;
+                        };
+    
+                        /**
+                         * Creates a plain object from an ApiCallOptions message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @static
+                         * @param {enfonica.voice.v1beta1.Call.ApiCallOptions} message ApiCallOptions
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        ApiCallOptions.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            var object = {};
+                            if (options.arrays || options.defaults)
+                                object.handlerUris = [];
+                            if (options.defaults) {
+                                object.stateUpdateUri = "";
+                                object.timeoutSeconds = 0;
+                                object.recording = null;
+                            }
+                            if (message.handlerUris && message.handlerUris.length) {
+                                object.handlerUris = [];
+                                for (var j = 0; j < message.handlerUris.length; ++j)
+                                    object.handlerUris[j] = message.handlerUris[j];
+                            }
+                            if (message.stateUpdateUri != null && message.hasOwnProperty("stateUpdateUri"))
+                                object.stateUpdateUri = message.stateUpdateUri;
+                            if (message.timeoutSeconds != null && message.hasOwnProperty("timeoutSeconds"))
+                                object.timeoutSeconds = message.timeoutSeconds;
+                            if (message.recording != null && message.hasOwnProperty("recording"))
+                                object.recording = $root.enfonica.voice.v1beta1.CallRecordingConfig.toObject(message.recording, options);
+                            return object;
+                        };
+    
+                        /**
+                         * Converts this ApiCallOptions to JSON.
+                         * @function toJSON
+                         * @memberof enfonica.voice.v1beta1.Call.ApiCallOptions
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        ApiCallOptions.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+    
+                        return ApiCallOptions;
+                    })();
     
                     /**
                      * State enum.
@@ -1257,7 +1977,240 @@
                         return values;
                     })();
     
+                    /**
+                     * CreateMethod enum.
+                     * @name enfonica.voice.v1beta1.Call.CreateMethod
+                     * @enum {number}
+                     * @property {number} CREATE_METHOD_UNSPECIFIED=0 CREATE_METHOD_UNSPECIFIED value
+                     * @property {number} INCOMING_CALL=1 INCOMING_CALL value
+                     * @property {number} PARENT_CALL=2 PARENT_CALL value
+                     * @property {number} API=3 API value
+                     */
+                    Call.CreateMethod = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "CREATE_METHOD_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "INCOMING_CALL"] = 1;
+                        values[valuesById[2] = "PARENT_CALL"] = 2;
+                        values[valuesById[3] = "API"] = 3;
+                        return values;
+                    })();
+    
                     return Call;
+                })();
+    
+                v1beta1.CreateCallRequest = (function() {
+    
+                    /**
+                     * Properties of a CreateCallRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ICreateCallRequest
+                     * @property {string|null} [parent] CreateCallRequest parent
+                     * @property {enfonica.voice.v1beta1.ICall|null} [call] CreateCallRequest call
+                     */
+    
+                    /**
+                     * Constructs a new CreateCallRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a CreateCallRequest.
+                     * @implements ICreateCallRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ICreateCallRequest=} [properties] Properties to set
+                     */
+                    function CreateCallRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * CreateCallRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @instance
+                     */
+                    CreateCallRequest.prototype.parent = "";
+    
+                    /**
+                     * CreateCallRequest call.
+                     * @member {enfonica.voice.v1beta1.ICall|null|undefined} call
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @instance
+                     */
+                    CreateCallRequest.prototype.call = null;
+    
+                    /**
+                     * Creates a new CreateCallRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateCallRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.CreateCallRequest} CreateCallRequest instance
+                     */
+                    CreateCallRequest.create = function create(properties) {
+                        return new CreateCallRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified CreateCallRequest message. Does not implicitly {@link enfonica.voice.v1beta1.CreateCallRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateCallRequest} message CreateCallRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreateCallRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.call != null && Object.hasOwnProperty.call(message, "call"))
+                            $root.enfonica.voice.v1beta1.Call.encode(message.call, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified CreateCallRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CreateCallRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateCallRequest} message CreateCallRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreateCallRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a CreateCallRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.CreateCallRequest} CreateCallRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreateCallRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.CreateCallRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.call = $root.enfonica.voice.v1beta1.Call.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a CreateCallRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.CreateCallRequest} CreateCallRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreateCallRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a CreateCallRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    CreateCallRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.call != null && message.hasOwnProperty("call")) {
+                            var error = $root.enfonica.voice.v1beta1.Call.verify(message.call);
+                            if (error)
+                                return "call." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a CreateCallRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.CreateCallRequest} CreateCallRequest
+                     */
+                    CreateCallRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.CreateCallRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.CreateCallRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.call != null) {
+                            if (typeof object.call !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.CreateCallRequest.call: object expected");
+                            message.call = $root.enfonica.voice.v1beta1.Call.fromObject(object.call);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a CreateCallRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.CreateCallRequest} message CreateCallRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    CreateCallRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.call = null;
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.call != null && message.hasOwnProperty("call"))
+                            object.call = $root.enfonica.voice.v1beta1.Call.toObject(message.call, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this CreateCallRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.CreateCallRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    CreateCallRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return CreateCallRequest;
                 })();
     
                 v1beta1.GetCallRequest = (function() {
@@ -2077,7 +3030,7 @@
                      * @property {enfonica.voice.v1beta1.Recording.Source|null} [source] Recording source
                      * @property {google.protobuf.IDuration|null} [duration] Recording duration
                      * @property {number|null} [channelCount] Recording channelCount
-                     * @property {Array.<enfonica.voice.v1beta1.Recording.PostProcessing>|null} [postProcessing] Recording postProcessing
+                     * @property {Array.<enfonica.voice.v1beta1.PostProcessing>|null} [postProcessing] Recording postProcessing
                      * @property {enfonica.voice.v1beta1.Recording.ErrorCode|null} [errorCode] Recording errorCode
                      * @property {Array.<enfonica.voice.v1beta1.IRecordingAudio>|null} [audio] Recording audio
                      * @property {google.protobuf.ITimestamp|null} [startTime] Recording startTime
@@ -2144,7 +3097,7 @@
     
                     /**
                      * Recording postProcessing.
-                     * @member {Array.<enfonica.voice.v1beta1.Recording.PostProcessing>} postProcessing
+                     * @member {Array.<enfonica.voice.v1beta1.PostProcessing>} postProcessing
                      * @memberof enfonica.voice.v1beta1.Recording
                      * @instance
                      */
@@ -2583,7 +3536,7 @@
                         if (message.postProcessing && message.postProcessing.length) {
                             object.postProcessing = [];
                             for (var j = 0; j < message.postProcessing.length; ++j)
-                                object.postProcessing[j] = options.enums === String ? $root.enfonica.voice.v1beta1.Recording.PostProcessing[message.postProcessing[j]] : message.postProcessing[j];
+                                object.postProcessing[j] = options.enums === String ? $root.enfonica.voice.v1beta1.PostProcessing[message.postProcessing[j]] : message.postProcessing[j];
                         }
                         if (message.errorCode != null && message.hasOwnProperty("errorCode"))
                             object.errorCode = options.enums === String ? $root.enfonica.voice.v1beta1.Recording.ErrorCode[message.errorCode] : message.errorCode;
@@ -2645,20 +3598,6 @@
                         values[valuesById[2] = "SUCCEEDED"] = 2;
                         values[valuesById[3] = "EMPTY"] = 3;
                         values[valuesById[4] = "FAILED"] = 4;
-                        return values;
-                    })();
-    
-                    /**
-                     * PostProcessing enum.
-                     * @name enfonica.voice.v1beta1.Recording.PostProcessing
-                     * @enum {number}
-                     * @property {number} POST_PROCESSING_UNSPECIFIED=0 POST_PROCESSING_UNSPECIFIED value
-                     * @property {number} TRIM_SILENCE=1 TRIM_SILENCE value
-                     */
-                    Recording.PostProcessing = (function() {
-                        var valuesById = {}, values = Object.create(valuesById);
-                        values[valuesById[0] = "POST_PROCESSING_UNSPECIFIED"] = 0;
-                        values[valuesById[1] = "TRIM_SILENCE"] = 1;
                         return values;
                     })();
     
@@ -5989,6 +6928,1780 @@
                     return values;
                 })();
     
+                v1beta1.Transcriptions = (function() {
+    
+                    /**
+                     * Constructs a new Transcriptions service.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a Transcriptions
+                     * @extends $protobuf.rpc.Service
+                     * @constructor
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     */
+                    function Transcriptions(rpcImpl, requestDelimited, responseDelimited) {
+                        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+                    }
+    
+                    (Transcriptions.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Transcriptions;
+    
+                    /**
+                     * Creates new Transcriptions service using the specified rpc implementation.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @static
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     * @returns {Transcriptions} RPC service. Useful where requests and/or responses are streamed.
+                     */
+                    Transcriptions.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+                        return new this(rpcImpl, requestDelimited, responseDelimited);
+                    };
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#getTranscription}.
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @typedef GetTranscriptionCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.Transcription} [response] Transcription
+                     */
+    
+                    /**
+                     * Calls GetTranscription.
+                     * @function getTranscription
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IGetTranscriptionRequest} request GetTranscriptionRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Transcriptions.GetTranscriptionCallback} callback Node-style callback called with the error, if any, and Transcription
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Transcriptions.prototype.getTranscription = function getTranscription(request, callback) {
+                        return this.rpcCall(getTranscription, $root.enfonica.voice.v1beta1.GetTranscriptionRequest, $root.enfonica.voice.v1beta1.Transcription, request, callback);
+                    }, "name", { value: "GetTranscription" });
+    
+                    /**
+                     * Calls GetTranscription.
+                     * @function getTranscription
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IGetTranscriptionRequest} request GetTranscriptionRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.Transcription>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#listTranscriptions}.
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @typedef ListTranscriptionsCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.ListTranscriptionsResponse} [response] ListTranscriptionsResponse
+                     */
+    
+                    /**
+                     * Calls ListTranscriptions.
+                     * @function listTranscriptions
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsRequest} request ListTranscriptionsRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Transcriptions.ListTranscriptionsCallback} callback Node-style callback called with the error, if any, and ListTranscriptionsResponse
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Transcriptions.prototype.listTranscriptions = function listTranscriptions(request, callback) {
+                        return this.rpcCall(listTranscriptions, $root.enfonica.voice.v1beta1.ListTranscriptionsRequest, $root.enfonica.voice.v1beta1.ListTranscriptionsResponse, request, callback);
+                    }, "name", { value: "ListTranscriptions" });
+    
+                    /**
+                     * Calls ListTranscriptions.
+                     * @function listTranscriptions
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsRequest} request ListTranscriptionsRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.ListTranscriptionsResponse>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#deleteTranscription}.
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @typedef DeleteTranscriptionCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {google.protobuf.Empty} [response] Empty
+                     */
+    
+                    /**
+                     * Calls DeleteTranscription.
+                     * @function deleteTranscription
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IDeleteTranscriptionRequest} request DeleteTranscriptionRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Transcriptions.DeleteTranscriptionCallback} callback Node-style callback called with the error, if any, and Empty
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Transcriptions.prototype.deleteTranscription = function deleteTranscription(request, callback) {
+                        return this.rpcCall(deleteTranscription, $root.enfonica.voice.v1beta1.DeleteTranscriptionRequest, $root.google.protobuf.Empty, request, callback);
+                    }, "name", { value: "DeleteTranscription" });
+    
+                    /**
+                     * Calls DeleteTranscription.
+                     * @function deleteTranscription
+                     * @memberof enfonica.voice.v1beta1.Transcriptions
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IDeleteTranscriptionRequest} request DeleteTranscriptionRequest message or plain object
+                     * @returns {Promise<google.protobuf.Empty>} Promise
+                     * @variation 2
+                     */
+    
+                    return Transcriptions;
+                })();
+    
+                v1beta1.Transcription = (function() {
+    
+                    /**
+                     * Properties of a Transcription.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ITranscription
+                     * @property {string|null} [name] Transcription name
+                     * @property {string|null} [recording] Transcription recording
+                     * @property {enfonica.voice.v1beta1.Transcription.State|null} [state] Transcription state
+                     * @property {google.protobuf.IDuration|null} [duration] Transcription duration
+                     * @property {number|null} [channelCount] Transcription channelCount
+                     * @property {google.protobuf.ITimestamp|null} [createTime] Transcription createTime
+                     * @property {google.protobuf.ITimestamp|null} [updateTime] Transcription updateTime
+                     * @property {string|null} [readyUri] Transcription readyUri
+                     * @property {Array.<enfonica.voice.v1beta1.IUtterance>|null} [utterances] Transcription utterances
+                     */
+    
+                    /**
+                     * Constructs a new Transcription.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a Transcription.
+                     * @implements ITranscription
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ITranscription=} [properties] Properties to set
+                     */
+                    function Transcription(properties) {
+                        this.utterances = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * Transcription name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.name = "";
+    
+                    /**
+                     * Transcription recording.
+                     * @member {string} recording
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.recording = "";
+    
+                    /**
+                     * Transcription state.
+                     * @member {enfonica.voice.v1beta1.Transcription.State} state
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.state = 0;
+    
+                    /**
+                     * Transcription duration.
+                     * @member {google.protobuf.IDuration|null|undefined} duration
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.duration = null;
+    
+                    /**
+                     * Transcription channelCount.
+                     * @member {number} channelCount
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.channelCount = 0;
+    
+                    /**
+                     * Transcription createTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} createTime
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.createTime = null;
+    
+                    /**
+                     * Transcription updateTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} updateTime
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.updateTime = null;
+    
+                    /**
+                     * Transcription readyUri.
+                     * @member {string} readyUri
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.readyUri = "";
+    
+                    /**
+                     * Transcription utterances.
+                     * @member {Array.<enfonica.voice.v1beta1.IUtterance>} utterances
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     */
+                    Transcription.prototype.utterances = $util.emptyArray;
+    
+                    /**
+                     * Creates a new Transcription instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ITranscription=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.Transcription} Transcription instance
+                     */
+                    Transcription.create = function create(properties) {
+                        return new Transcription(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified Transcription message. Does not implicitly {@link enfonica.voice.v1beta1.Transcription.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ITranscription} message Transcription message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    Transcription.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.recording != null && Object.hasOwnProperty.call(message, "recording"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.recording);
+                        if (message.state != null && Object.hasOwnProperty.call(message, "state"))
+                            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.state);
+                        if (message.duration != null && Object.hasOwnProperty.call(message, "duration"))
+                            $root.google.protobuf.Duration.encode(message.duration, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                        if (message.channelCount != null && Object.hasOwnProperty.call(message, "channelCount"))
+                            writer.uint32(/* id 6, wireType 0 =*/48).int32(message.channelCount);
+                        if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
+                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
+                        if (message.updateTime != null && Object.hasOwnProperty.call(message, "updateTime"))
+                            $root.google.protobuf.Timestamp.encode(message.updateTime, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
+                        if (message.readyUri != null && Object.hasOwnProperty.call(message, "readyUri"))
+                            writer.uint32(/* id 13, wireType 2 =*/106).string(message.readyUri);
+                        if (message.utterances != null && message.utterances.length)
+                            for (var i = 0; i < message.utterances.length; ++i)
+                                $root.enfonica.voice.v1beta1.Utterance.encode(message.utterances[i], writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified Transcription message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.Transcription.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ITranscription} message Transcription message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    Transcription.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a Transcription message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.Transcription} Transcription
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    Transcription.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.Transcription();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.recording = reader.string();
+                                break;
+                            case 3:
+                                message.state = reader.int32();
+                                break;
+                            case 5:
+                                message.duration = $root.google.protobuf.Duration.decode(reader, reader.uint32());
+                                break;
+                            case 6:
+                                message.channelCount = reader.int32();
+                                break;
+                            case 11:
+                                message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 12:
+                                message.updateTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 13:
+                                message.readyUri = reader.string();
+                                break;
+                            case 15:
+                                if (!(message.utterances && message.utterances.length))
+                                    message.utterances = [];
+                                message.utterances.push($root.enfonica.voice.v1beta1.Utterance.decode(reader, reader.uint32()));
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a Transcription message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.Transcription} Transcription
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    Transcription.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a Transcription message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    Transcription.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.recording != null && message.hasOwnProperty("recording"))
+                            if (!$util.isString(message.recording))
+                                return "recording: string expected";
+                        if (message.state != null && message.hasOwnProperty("state"))
+                            switch (message.state) {
+                            default:
+                                return "state: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                                break;
+                            }
+                        if (message.duration != null && message.hasOwnProperty("duration")) {
+                            var error = $root.google.protobuf.Duration.verify(message.duration);
+                            if (error)
+                                return "duration." + error;
+                        }
+                        if (message.channelCount != null && message.hasOwnProperty("channelCount"))
+                            if (!$util.isInteger(message.channelCount))
+                                return "channelCount: integer expected";
+                        if (message.createTime != null && message.hasOwnProperty("createTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.createTime);
+                            if (error)
+                                return "createTime." + error;
+                        }
+                        if (message.updateTime != null && message.hasOwnProperty("updateTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.updateTime);
+                            if (error)
+                                return "updateTime." + error;
+                        }
+                        if (message.readyUri != null && message.hasOwnProperty("readyUri"))
+                            if (!$util.isString(message.readyUri))
+                                return "readyUri: string expected";
+                        if (message.utterances != null && message.hasOwnProperty("utterances")) {
+                            if (!Array.isArray(message.utterances))
+                                return "utterances: array expected";
+                            for (var i = 0; i < message.utterances.length; ++i) {
+                                var error = $root.enfonica.voice.v1beta1.Utterance.verify(message.utterances[i]);
+                                if (error)
+                                    return "utterances." + error;
+                            }
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a Transcription message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.Transcription} Transcription
+                     */
+                    Transcription.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.Transcription)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.Transcription();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.recording != null)
+                            message.recording = String(object.recording);
+                        switch (object.state) {
+                        case "STATE_UNSPECIFIED":
+                        case 0:
+                            message.state = 0;
+                            break;
+                        case "PENDING":
+                        case 1:
+                            message.state = 1;
+                            break;
+                        case "COMPLETED":
+                        case 2:
+                            message.state = 2;
+                            break;
+                        case "FAILED":
+                        case 3:
+                            message.state = 3;
+                            break;
+                        }
+                        if (object.duration != null) {
+                            if (typeof object.duration !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Transcription.duration: object expected");
+                            message.duration = $root.google.protobuf.Duration.fromObject(object.duration);
+                        }
+                        if (object.channelCount != null)
+                            message.channelCount = object.channelCount | 0;
+                        if (object.createTime != null) {
+                            if (typeof object.createTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Transcription.createTime: object expected");
+                            message.createTime = $root.google.protobuf.Timestamp.fromObject(object.createTime);
+                        }
+                        if (object.updateTime != null) {
+                            if (typeof object.updateTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Transcription.updateTime: object expected");
+                            message.updateTime = $root.google.protobuf.Timestamp.fromObject(object.updateTime);
+                        }
+                        if (object.readyUri != null)
+                            message.readyUri = String(object.readyUri);
+                        if (object.utterances) {
+                            if (!Array.isArray(object.utterances))
+                                throw TypeError(".enfonica.voice.v1beta1.Transcription.utterances: array expected");
+                            message.utterances = [];
+                            for (var i = 0; i < object.utterances.length; ++i) {
+                                if (typeof object.utterances[i] !== "object")
+                                    throw TypeError(".enfonica.voice.v1beta1.Transcription.utterances: object expected");
+                                message.utterances[i] = $root.enfonica.voice.v1beta1.Utterance.fromObject(object.utterances[i]);
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a Transcription message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @static
+                     * @param {enfonica.voice.v1beta1.Transcription} message Transcription
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    Transcription.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.utterances = [];
+                        if (options.defaults) {
+                            object.name = "";
+                            object.recording = "";
+                            object.state = options.enums === String ? "STATE_UNSPECIFIED" : 0;
+                            object.duration = null;
+                            object.channelCount = 0;
+                            object.createTime = null;
+                            object.updateTime = null;
+                            object.readyUri = "";
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.recording != null && message.hasOwnProperty("recording"))
+                            object.recording = message.recording;
+                        if (message.state != null && message.hasOwnProperty("state"))
+                            object.state = options.enums === String ? $root.enfonica.voice.v1beta1.Transcription.State[message.state] : message.state;
+                        if (message.duration != null && message.hasOwnProperty("duration"))
+                            object.duration = $root.google.protobuf.Duration.toObject(message.duration, options);
+                        if (message.channelCount != null && message.hasOwnProperty("channelCount"))
+                            object.channelCount = message.channelCount;
+                        if (message.createTime != null && message.hasOwnProperty("createTime"))
+                            object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
+                        if (message.updateTime != null && message.hasOwnProperty("updateTime"))
+                            object.updateTime = $root.google.protobuf.Timestamp.toObject(message.updateTime, options);
+                        if (message.readyUri != null && message.hasOwnProperty("readyUri"))
+                            object.readyUri = message.readyUri;
+                        if (message.utterances && message.utterances.length) {
+                            object.utterances = [];
+                            for (var j = 0; j < message.utterances.length; ++j)
+                                object.utterances[j] = $root.enfonica.voice.v1beta1.Utterance.toObject(message.utterances[j], options);
+                        }
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this Transcription to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.Transcription
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    Transcription.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    /**
+                     * State enum.
+                     * @name enfonica.voice.v1beta1.Transcription.State
+                     * @enum {number}
+                     * @property {number} STATE_UNSPECIFIED=0 STATE_UNSPECIFIED value
+                     * @property {number} PENDING=1 PENDING value
+                     * @property {number} COMPLETED=2 COMPLETED value
+                     * @property {number} FAILED=3 FAILED value
+                     */
+                    Transcription.State = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "STATE_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "PENDING"] = 1;
+                        values[valuesById[2] = "COMPLETED"] = 2;
+                        values[valuesById[3] = "FAILED"] = 3;
+                        return values;
+                    })();
+    
+                    return Transcription;
+                })();
+    
+                v1beta1.Utterance = (function() {
+    
+                    /**
+                     * Properties of an Utterance.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IUtterance
+                     * @property {number|null} [channel] Utterance channel
+                     * @property {google.protobuf.IDuration|null} [offset] Utterance offset
+                     * @property {google.protobuf.IDuration|null} [duration] Utterance duration
+                     * @property {string|null} [text] Utterance text
+                     */
+    
+                    /**
+                     * Constructs a new Utterance.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents an Utterance.
+                     * @implements IUtterance
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IUtterance=} [properties] Properties to set
+                     */
+                    function Utterance(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * Utterance channel.
+                     * @member {number} channel
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @instance
+                     */
+                    Utterance.prototype.channel = 0;
+    
+                    /**
+                     * Utterance offset.
+                     * @member {google.protobuf.IDuration|null|undefined} offset
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @instance
+                     */
+                    Utterance.prototype.offset = null;
+    
+                    /**
+                     * Utterance duration.
+                     * @member {google.protobuf.IDuration|null|undefined} duration
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @instance
+                     */
+                    Utterance.prototype.duration = null;
+    
+                    /**
+                     * Utterance text.
+                     * @member {string} text
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @instance
+                     */
+                    Utterance.prototype.text = "";
+    
+                    /**
+                     * Creates a new Utterance instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUtterance=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.Utterance} Utterance instance
+                     */
+                    Utterance.create = function create(properties) {
+                        return new Utterance(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified Utterance message. Does not implicitly {@link enfonica.voice.v1beta1.Utterance.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUtterance} message Utterance message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    Utterance.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.channel != null && Object.hasOwnProperty.call(message, "channel"))
+                            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.channel);
+                        if (message.offset != null && Object.hasOwnProperty.call(message, "offset"))
+                            $root.google.protobuf.Duration.encode(message.offset, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        if (message.duration != null && Object.hasOwnProperty.call(message, "duration"))
+                            $root.google.protobuf.Duration.encode(message.duration, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                        if (message.text != null && Object.hasOwnProperty.call(message, "text"))
+                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.text);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified Utterance message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.Utterance.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUtterance} message Utterance message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    Utterance.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes an Utterance message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.Utterance} Utterance
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    Utterance.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.Utterance();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.channel = reader.int32();
+                                break;
+                            case 2:
+                                message.offset = $root.google.protobuf.Duration.decode(reader, reader.uint32());
+                                break;
+                            case 3:
+                                message.duration = $root.google.protobuf.Duration.decode(reader, reader.uint32());
+                                break;
+                            case 4:
+                                message.text = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes an Utterance message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.Utterance} Utterance
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    Utterance.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies an Utterance message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    Utterance.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.channel != null && message.hasOwnProperty("channel"))
+                            if (!$util.isInteger(message.channel))
+                                return "channel: integer expected";
+                        if (message.offset != null && message.hasOwnProperty("offset")) {
+                            var error = $root.google.protobuf.Duration.verify(message.offset);
+                            if (error)
+                                return "offset." + error;
+                        }
+                        if (message.duration != null && message.hasOwnProperty("duration")) {
+                            var error = $root.google.protobuf.Duration.verify(message.duration);
+                            if (error)
+                                return "duration." + error;
+                        }
+                        if (message.text != null && message.hasOwnProperty("text"))
+                            if (!$util.isString(message.text))
+                                return "text: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates an Utterance message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.Utterance} Utterance
+                     */
+                    Utterance.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.Utterance)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.Utterance();
+                        if (object.channel != null)
+                            message.channel = object.channel | 0;
+                        if (object.offset != null) {
+                            if (typeof object.offset !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Utterance.offset: object expected");
+                            message.offset = $root.google.protobuf.Duration.fromObject(object.offset);
+                        }
+                        if (object.duration != null) {
+                            if (typeof object.duration !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Utterance.duration: object expected");
+                            message.duration = $root.google.protobuf.Duration.fromObject(object.duration);
+                        }
+                        if (object.text != null)
+                            message.text = String(object.text);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from an Utterance message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @static
+                     * @param {enfonica.voice.v1beta1.Utterance} message Utterance
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    Utterance.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.channel = 0;
+                            object.offset = null;
+                            object.duration = null;
+                            object.text = "";
+                        }
+                        if (message.channel != null && message.hasOwnProperty("channel"))
+                            object.channel = message.channel;
+                        if (message.offset != null && message.hasOwnProperty("offset"))
+                            object.offset = $root.google.protobuf.Duration.toObject(message.offset, options);
+                        if (message.duration != null && message.hasOwnProperty("duration"))
+                            object.duration = $root.google.protobuf.Duration.toObject(message.duration, options);
+                        if (message.text != null && message.hasOwnProperty("text"))
+                            object.text = message.text;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this Utterance to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.Utterance
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    Utterance.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return Utterance;
+                })();
+    
+                v1beta1.GetTranscriptionRequest = (function() {
+    
+                    /**
+                     * Properties of a GetTranscriptionRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IGetTranscriptionRequest
+                     * @property {string|null} [name] GetTranscriptionRequest name
+                     * @property {enfonica.voice.v1beta1.TranscriptionView|null} [view] GetTranscriptionRequest view
+                     */
+    
+                    /**
+                     * Constructs a new GetTranscriptionRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a GetTranscriptionRequest.
+                     * @implements IGetTranscriptionRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IGetTranscriptionRequest=} [properties] Properties to set
+                     */
+                    function GetTranscriptionRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * GetTranscriptionRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @instance
+                     */
+                    GetTranscriptionRequest.prototype.name = "";
+    
+                    /**
+                     * GetTranscriptionRequest view.
+                     * @member {enfonica.voice.v1beta1.TranscriptionView} view
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @instance
+                     */
+                    GetTranscriptionRequest.prototype.view = 0;
+    
+                    /**
+                     * Creates a new GetTranscriptionRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetTranscriptionRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.GetTranscriptionRequest} GetTranscriptionRequest instance
+                     */
+                    GetTranscriptionRequest.create = function create(properties) {
+                        return new GetTranscriptionRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified GetTranscriptionRequest message. Does not implicitly {@link enfonica.voice.v1beta1.GetTranscriptionRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetTranscriptionRequest} message GetTranscriptionRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetTranscriptionRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.view != null && Object.hasOwnProperty.call(message, "view"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.view);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified GetTranscriptionRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.GetTranscriptionRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetTranscriptionRequest} message GetTranscriptionRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetTranscriptionRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a GetTranscriptionRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.GetTranscriptionRequest} GetTranscriptionRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetTranscriptionRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.GetTranscriptionRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.view = reader.int32();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a GetTranscriptionRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.GetTranscriptionRequest} GetTranscriptionRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetTranscriptionRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a GetTranscriptionRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    GetTranscriptionRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.view != null && message.hasOwnProperty("view"))
+                            switch (message.view) {
+                            default:
+                                return "view: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                                break;
+                            }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a GetTranscriptionRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.GetTranscriptionRequest} GetTranscriptionRequest
+                     */
+                    GetTranscriptionRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.GetTranscriptionRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.GetTranscriptionRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        switch (object.view) {
+                        case "TRANSCRIPTION_VIEW_UNSPECIFIED":
+                        case 0:
+                            message.view = 0;
+                            break;
+                        case "TRANSCRIPTION_VIEW_BASIC":
+                        case 1:
+                            message.view = 1;
+                            break;
+                        case "TRANSCRIPTION_VIEW_FULL":
+                        case 2:
+                            message.view = 2;
+                            break;
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a GetTranscriptionRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.GetTranscriptionRequest} message GetTranscriptionRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    GetTranscriptionRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.name = "";
+                            object.view = options.enums === String ? "TRANSCRIPTION_VIEW_UNSPECIFIED" : 0;
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.view != null && message.hasOwnProperty("view"))
+                            object.view = options.enums === String ? $root.enfonica.voice.v1beta1.TranscriptionView[message.view] : message.view;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this GetTranscriptionRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.GetTranscriptionRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    GetTranscriptionRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return GetTranscriptionRequest;
+                })();
+    
+                v1beta1.ListTranscriptionsRequest = (function() {
+    
+                    /**
+                     * Properties of a ListTranscriptionsRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IListTranscriptionsRequest
+                     * @property {string|null} [parent] ListTranscriptionsRequest parent
+                     * @property {number|null} [pageSize] ListTranscriptionsRequest pageSize
+                     * @property {string|null} [pageToken] ListTranscriptionsRequest pageToken
+                     * @property {enfonica.voice.v1beta1.TranscriptionView|null} [view] ListTranscriptionsRequest view
+                     */
+    
+                    /**
+                     * Constructs a new ListTranscriptionsRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a ListTranscriptionsRequest.
+                     * @implements IListTranscriptionsRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsRequest=} [properties] Properties to set
+                     */
+                    function ListTranscriptionsRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListTranscriptionsRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @instance
+                     */
+                    ListTranscriptionsRequest.prototype.parent = "";
+    
+                    /**
+                     * ListTranscriptionsRequest pageSize.
+                     * @member {number} pageSize
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @instance
+                     */
+                    ListTranscriptionsRequest.prototype.pageSize = 0;
+    
+                    /**
+                     * ListTranscriptionsRequest pageToken.
+                     * @member {string} pageToken
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @instance
+                     */
+                    ListTranscriptionsRequest.prototype.pageToken = "";
+    
+                    /**
+                     * ListTranscriptionsRequest view.
+                     * @member {enfonica.voice.v1beta1.TranscriptionView} view
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @instance
+                     */
+                    ListTranscriptionsRequest.prototype.view = 0;
+    
+                    /**
+                     * Creates a new ListTranscriptionsRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.ListTranscriptionsRequest} ListTranscriptionsRequest instance
+                     */
+                    ListTranscriptionsRequest.create = function create(properties) {
+                        return new ListTranscriptionsRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListTranscriptionsRequest message. Does not implicitly {@link enfonica.voice.v1beta1.ListTranscriptionsRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsRequest} message ListTranscriptionsRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListTranscriptionsRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.pageSize != null && Object.hasOwnProperty.call(message, "pageSize"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pageSize);
+                        if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.pageToken);
+                        if (message.view != null && Object.hasOwnProperty.call(message, "view"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).int32(message.view);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListTranscriptionsRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListTranscriptionsRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsRequest} message ListTranscriptionsRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListTranscriptionsRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListTranscriptionsRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.ListTranscriptionsRequest} ListTranscriptionsRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListTranscriptionsRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.ListTranscriptionsRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.pageSize = reader.int32();
+                                break;
+                            case 3:
+                                message.pageToken = reader.string();
+                                break;
+                            case 4:
+                                message.view = reader.int32();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListTranscriptionsRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.ListTranscriptionsRequest} ListTranscriptionsRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListTranscriptionsRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListTranscriptionsRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListTranscriptionsRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            if (!$util.isInteger(message.pageSize))
+                                return "pageSize: integer expected";
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            if (!$util.isString(message.pageToken))
+                                return "pageToken: string expected";
+                        if (message.view != null && message.hasOwnProperty("view"))
+                            switch (message.view) {
+                            default:
+                                return "view: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                                break;
+                            }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListTranscriptionsRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.ListTranscriptionsRequest} ListTranscriptionsRequest
+                     */
+                    ListTranscriptionsRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.ListTranscriptionsRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.ListTranscriptionsRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.pageSize != null)
+                            message.pageSize = object.pageSize | 0;
+                        if (object.pageToken != null)
+                            message.pageToken = String(object.pageToken);
+                        switch (object.view) {
+                        case "TRANSCRIPTION_VIEW_UNSPECIFIED":
+                        case 0:
+                            message.view = 0;
+                            break;
+                        case "TRANSCRIPTION_VIEW_BASIC":
+                        case 1:
+                            message.view = 1;
+                            break;
+                        case "TRANSCRIPTION_VIEW_FULL":
+                        case 2:
+                            message.view = 2;
+                            break;
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListTranscriptionsRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ListTranscriptionsRequest} message ListTranscriptionsRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListTranscriptionsRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.pageSize = 0;
+                            object.pageToken = "";
+                            object.view = options.enums === String ? "TRANSCRIPTION_VIEW_UNSPECIFIED" : 0;
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            object.pageSize = message.pageSize;
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            object.pageToken = message.pageToken;
+                        if (message.view != null && message.hasOwnProperty("view"))
+                            object.view = options.enums === String ? $root.enfonica.voice.v1beta1.TranscriptionView[message.view] : message.view;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListTranscriptionsRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListTranscriptionsRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListTranscriptionsRequest;
+                })();
+    
+                v1beta1.ListTranscriptionsResponse = (function() {
+    
+                    /**
+                     * Properties of a ListTranscriptionsResponse.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IListTranscriptionsResponse
+                     * @property {Array.<enfonica.voice.v1beta1.ITranscription>|null} [transcriptions] ListTranscriptionsResponse transcriptions
+                     * @property {string|null} [nextPageToken] ListTranscriptionsResponse nextPageToken
+                     */
+    
+                    /**
+                     * Constructs a new ListTranscriptionsResponse.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a ListTranscriptionsResponse.
+                     * @implements IListTranscriptionsResponse
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsResponse=} [properties] Properties to set
+                     */
+                    function ListTranscriptionsResponse(properties) {
+                        this.transcriptions = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListTranscriptionsResponse transcriptions.
+                     * @member {Array.<enfonica.voice.v1beta1.ITranscription>} transcriptions
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @instance
+                     */
+                    ListTranscriptionsResponse.prototype.transcriptions = $util.emptyArray;
+    
+                    /**
+                     * ListTranscriptionsResponse nextPageToken.
+                     * @member {string} nextPageToken
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @instance
+                     */
+                    ListTranscriptionsResponse.prototype.nextPageToken = "";
+    
+                    /**
+                     * Creates a new ListTranscriptionsResponse instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsResponse=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.ListTranscriptionsResponse} ListTranscriptionsResponse instance
+                     */
+                    ListTranscriptionsResponse.create = function create(properties) {
+                        return new ListTranscriptionsResponse(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListTranscriptionsResponse message. Does not implicitly {@link enfonica.voice.v1beta1.ListTranscriptionsResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsResponse} message ListTranscriptionsResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListTranscriptionsResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.transcriptions != null && message.transcriptions.length)
+                            for (var i = 0; i < message.transcriptions.length; ++i)
+                                $root.enfonica.voice.v1beta1.Transcription.encode(message.transcriptions[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListTranscriptionsResponse message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListTranscriptionsResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListTranscriptionsResponse} message ListTranscriptionsResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListTranscriptionsResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListTranscriptionsResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.ListTranscriptionsResponse} ListTranscriptionsResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListTranscriptionsResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.ListTranscriptionsResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.transcriptions && message.transcriptions.length))
+                                    message.transcriptions = [];
+                                message.transcriptions.push($root.enfonica.voice.v1beta1.Transcription.decode(reader, reader.uint32()));
+                                break;
+                            case 2:
+                                message.nextPageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListTranscriptionsResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.ListTranscriptionsResponse} ListTranscriptionsResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListTranscriptionsResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListTranscriptionsResponse message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListTranscriptionsResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.transcriptions != null && message.hasOwnProperty("transcriptions")) {
+                            if (!Array.isArray(message.transcriptions))
+                                return "transcriptions: array expected";
+                            for (var i = 0; i < message.transcriptions.length; ++i) {
+                                var error = $root.enfonica.voice.v1beta1.Transcription.verify(message.transcriptions[i]);
+                                if (error)
+                                    return "transcriptions." + error;
+                            }
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            if (!$util.isString(message.nextPageToken))
+                                return "nextPageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListTranscriptionsResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.ListTranscriptionsResponse} ListTranscriptionsResponse
+                     */
+                    ListTranscriptionsResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.ListTranscriptionsResponse)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.ListTranscriptionsResponse();
+                        if (object.transcriptions) {
+                            if (!Array.isArray(object.transcriptions))
+                                throw TypeError(".enfonica.voice.v1beta1.ListTranscriptionsResponse.transcriptions: array expected");
+                            message.transcriptions = [];
+                            for (var i = 0; i < object.transcriptions.length; ++i) {
+                                if (typeof object.transcriptions[i] !== "object")
+                                    throw TypeError(".enfonica.voice.v1beta1.ListTranscriptionsResponse.transcriptions: object expected");
+                                message.transcriptions[i] = $root.enfonica.voice.v1beta1.Transcription.fromObject(object.transcriptions[i]);
+                            }
+                        }
+                        if (object.nextPageToken != null)
+                            message.nextPageToken = String(object.nextPageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListTranscriptionsResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ListTranscriptionsResponse} message ListTranscriptionsResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListTranscriptionsResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.transcriptions = [];
+                        if (options.defaults)
+                            object.nextPageToken = "";
+                        if (message.transcriptions && message.transcriptions.length) {
+                            object.transcriptions = [];
+                            for (var j = 0; j < message.transcriptions.length; ++j)
+                                object.transcriptions[j] = $root.enfonica.voice.v1beta1.Transcription.toObject(message.transcriptions[j], options);
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            object.nextPageToken = message.nextPageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListTranscriptionsResponse to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.ListTranscriptionsResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListTranscriptionsResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListTranscriptionsResponse;
+                })();
+    
+                v1beta1.DeleteTranscriptionRequest = (function() {
+    
+                    /**
+                     * Properties of a DeleteTranscriptionRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IDeleteTranscriptionRequest
+                     * @property {string|null} [name] DeleteTranscriptionRequest name
+                     */
+    
+                    /**
+                     * Constructs a new DeleteTranscriptionRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a DeleteTranscriptionRequest.
+                     * @implements IDeleteTranscriptionRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IDeleteTranscriptionRequest=} [properties] Properties to set
+                     */
+                    function DeleteTranscriptionRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * DeleteTranscriptionRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @instance
+                     */
+                    DeleteTranscriptionRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new DeleteTranscriptionRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteTranscriptionRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.DeleteTranscriptionRequest} DeleteTranscriptionRequest instance
+                     */
+                    DeleteTranscriptionRequest.create = function create(properties) {
+                        return new DeleteTranscriptionRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified DeleteTranscriptionRequest message. Does not implicitly {@link enfonica.voice.v1beta1.DeleteTranscriptionRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteTranscriptionRequest} message DeleteTranscriptionRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeleteTranscriptionRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified DeleteTranscriptionRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.DeleteTranscriptionRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteTranscriptionRequest} message DeleteTranscriptionRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeleteTranscriptionRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a DeleteTranscriptionRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.DeleteTranscriptionRequest} DeleteTranscriptionRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeleteTranscriptionRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.DeleteTranscriptionRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a DeleteTranscriptionRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.DeleteTranscriptionRequest} DeleteTranscriptionRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeleteTranscriptionRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a DeleteTranscriptionRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    DeleteTranscriptionRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a DeleteTranscriptionRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.DeleteTranscriptionRequest} DeleteTranscriptionRequest
+                     */
+                    DeleteTranscriptionRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.DeleteTranscriptionRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.DeleteTranscriptionRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a DeleteTranscriptionRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.DeleteTranscriptionRequest} message DeleteTranscriptionRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    DeleteTranscriptionRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this DeleteTranscriptionRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.DeleteTranscriptionRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    DeleteTranscriptionRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return DeleteTranscriptionRequest;
+                })();
+    
+                /**
+                 * TranscriptionView enum.
+                 * @name enfonica.voice.v1beta1.TranscriptionView
+                 * @enum {number}
+                 * @property {number} TRANSCRIPTION_VIEW_UNSPECIFIED=0 TRANSCRIPTION_VIEW_UNSPECIFIED value
+                 * @property {number} TRANSCRIPTION_VIEW_BASIC=1 TRANSCRIPTION_VIEW_BASIC value
+                 * @property {number} TRANSCRIPTION_VIEW_FULL=2 TRANSCRIPTION_VIEW_FULL value
+                 */
+                v1beta1.TranscriptionView = (function() {
+                    var valuesById = {}, values = Object.create(valuesById);
+                    values[valuesById[0] = "TRANSCRIPTION_VIEW_UNSPECIFIED"] = 0;
+                    values[valuesById[1] = "TRANSCRIPTION_VIEW_BASIC"] = 1;
+                    values[valuesById[2] = "TRANSCRIPTION_VIEW_FULL"] = 2;
+                    return values;
+                })();
+    
                 return v1beta1;
             })();
     
@@ -6238,6 +8951,230 @@
                 };
     
                 return Timestamp;
+            })();
+    
+            protobuf.Duration = (function() {
+    
+                /**
+                 * Properties of a Duration.
+                 * @memberof google.protobuf
+                 * @interface IDuration
+                 * @property {number|Long|null} [seconds] Duration seconds
+                 * @property {number|null} [nanos] Duration nanos
+                 */
+    
+                /**
+                 * Constructs a new Duration.
+                 * @memberof google.protobuf
+                 * @classdesc Represents a Duration.
+                 * @implements IDuration
+                 * @constructor
+                 * @param {google.protobuf.IDuration=} [properties] Properties to set
+                 */
+                function Duration(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+    
+                /**
+                 * Duration seconds.
+                 * @member {number|Long} seconds
+                 * @memberof google.protobuf.Duration
+                 * @instance
+                 */
+                Duration.prototype.seconds = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+    
+                /**
+                 * Duration nanos.
+                 * @member {number} nanos
+                 * @memberof google.protobuf.Duration
+                 * @instance
+                 */
+                Duration.prototype.nanos = 0;
+    
+                /**
+                 * Creates a new Duration instance using the specified properties.
+                 * @function create
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {google.protobuf.IDuration=} [properties] Properties to set
+                 * @returns {google.protobuf.Duration} Duration instance
+                 */
+                Duration.create = function create(properties) {
+                    return new Duration(properties);
+                };
+    
+                /**
+                 * Encodes the specified Duration message. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+                 * @function encode
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {google.protobuf.IDuration} message Duration message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Duration.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.seconds != null && Object.hasOwnProperty.call(message, "seconds"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).int64(message.seconds);
+                    if (message.nanos != null && Object.hasOwnProperty.call(message, "nanos"))
+                        writer.uint32(/* id 2, wireType 0 =*/16).int32(message.nanos);
+                    return writer;
+                };
+    
+                /**
+                 * Encodes the specified Duration message, length delimited. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {google.protobuf.IDuration} message Duration message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Duration.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+    
+                /**
+                 * Decodes a Duration message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {google.protobuf.Duration} Duration
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Duration.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Duration();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1:
+                            message.seconds = reader.int64();
+                            break;
+                        case 2:
+                            message.nanos = reader.int32();
+                            break;
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Decodes a Duration message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {google.protobuf.Duration} Duration
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Duration.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+    
+                /**
+                 * Verifies a Duration message.
+                 * @function verify
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Duration.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.seconds != null && message.hasOwnProperty("seconds"))
+                        if (!$util.isInteger(message.seconds) && !(message.seconds && $util.isInteger(message.seconds.low) && $util.isInteger(message.seconds.high)))
+                            return "seconds: integer|Long expected";
+                    if (message.nanos != null && message.hasOwnProperty("nanos"))
+                        if (!$util.isInteger(message.nanos))
+                            return "nanos: integer expected";
+                    return null;
+                };
+    
+                /**
+                 * Creates a Duration message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {google.protobuf.Duration} Duration
+                 */
+                Duration.fromObject = function fromObject(object) {
+                    if (object instanceof $root.google.protobuf.Duration)
+                        return object;
+                    var message = new $root.google.protobuf.Duration();
+                    if (object.seconds != null)
+                        if ($util.Long)
+                            (message.seconds = $util.Long.fromValue(object.seconds)).unsigned = false;
+                        else if (typeof object.seconds === "string")
+                            message.seconds = parseInt(object.seconds, 10);
+                        else if (typeof object.seconds === "number")
+                            message.seconds = object.seconds;
+                        else if (typeof object.seconds === "object")
+                            message.seconds = new $util.LongBits(object.seconds.low >>> 0, object.seconds.high >>> 0).toNumber();
+                    if (object.nanos != null)
+                        message.nanos = object.nanos | 0;
+                    return message;
+                };
+    
+                /**
+                 * Creates a plain object from a Duration message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {google.protobuf.Duration} message Duration
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Duration.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.defaults) {
+                        if ($util.Long) {
+                            var long = new $util.Long(0, 0, false);
+                            object.seconds = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                        } else
+                            object.seconds = options.longs === String ? "0" : 0;
+                        object.nanos = 0;
+                    }
+                    if (message.seconds != null && message.hasOwnProperty("seconds"))
+                        if (typeof message.seconds === "number")
+                            object.seconds = options.longs === String ? String(message.seconds) : message.seconds;
+                        else
+                            object.seconds = options.longs === String ? $util.Long.prototype.toString.call(message.seconds) : options.longs === Number ? new $util.LongBits(message.seconds.low >>> 0, message.seconds.high >>> 0).toNumber() : message.seconds;
+                    if (message.nanos != null && message.hasOwnProperty("nanos"))
+                        object.nanos = message.nanos;
+                    return object;
+                };
+    
+                /**
+                 * Converts this Duration to JSON.
+                 * @function toJSON
+                 * @memberof google.protobuf.Duration
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Duration.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                return Duration;
             })();
     
             protobuf.FileDescriptorSet = (function() {
@@ -14920,230 +17857,6 @@
                 return GeneratedCodeInfo;
             })();
     
-            protobuf.Duration = (function() {
-    
-                /**
-                 * Properties of a Duration.
-                 * @memberof google.protobuf
-                 * @interface IDuration
-                 * @property {number|Long|null} [seconds] Duration seconds
-                 * @property {number|null} [nanos] Duration nanos
-                 */
-    
-                /**
-                 * Constructs a new Duration.
-                 * @memberof google.protobuf
-                 * @classdesc Represents a Duration.
-                 * @implements IDuration
-                 * @constructor
-                 * @param {google.protobuf.IDuration=} [properties] Properties to set
-                 */
-                function Duration(properties) {
-                    if (properties)
-                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                            if (properties[keys[i]] != null)
-                                this[keys[i]] = properties[keys[i]];
-                }
-    
-                /**
-                 * Duration seconds.
-                 * @member {number|Long} seconds
-                 * @memberof google.protobuf.Duration
-                 * @instance
-                 */
-                Duration.prototype.seconds = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-    
-                /**
-                 * Duration nanos.
-                 * @member {number} nanos
-                 * @memberof google.protobuf.Duration
-                 * @instance
-                 */
-                Duration.prototype.nanos = 0;
-    
-                /**
-                 * Creates a new Duration instance using the specified properties.
-                 * @function create
-                 * @memberof google.protobuf.Duration
-                 * @static
-                 * @param {google.protobuf.IDuration=} [properties] Properties to set
-                 * @returns {google.protobuf.Duration} Duration instance
-                 */
-                Duration.create = function create(properties) {
-                    return new Duration(properties);
-                };
-    
-                /**
-                 * Encodes the specified Duration message. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
-                 * @function encode
-                 * @memberof google.protobuf.Duration
-                 * @static
-                 * @param {google.protobuf.IDuration} message Duration message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                Duration.encode = function encode(message, writer) {
-                    if (!writer)
-                        writer = $Writer.create();
-                    if (message.seconds != null && Object.hasOwnProperty.call(message, "seconds"))
-                        writer.uint32(/* id 1, wireType 0 =*/8).int64(message.seconds);
-                    if (message.nanos != null && Object.hasOwnProperty.call(message, "nanos"))
-                        writer.uint32(/* id 2, wireType 0 =*/16).int32(message.nanos);
-                    return writer;
-                };
-    
-                /**
-                 * Encodes the specified Duration message, length delimited. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
-                 * @function encodeDelimited
-                 * @memberof google.protobuf.Duration
-                 * @static
-                 * @param {google.protobuf.IDuration} message Duration message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                Duration.encodeDelimited = function encodeDelimited(message, writer) {
-                    return this.encode(message, writer).ldelim();
-                };
-    
-                /**
-                 * Decodes a Duration message from the specified reader or buffer.
-                 * @function decode
-                 * @memberof google.protobuf.Duration
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @param {number} [length] Message length if known beforehand
-                 * @returns {google.protobuf.Duration} Duration
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                Duration.decode = function decode(reader, length) {
-                    if (!(reader instanceof $Reader))
-                        reader = $Reader.create(reader);
-                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Duration();
-                    while (reader.pos < end) {
-                        var tag = reader.uint32();
-                        switch (tag >>> 3) {
-                        case 1:
-                            message.seconds = reader.int64();
-                            break;
-                        case 2:
-                            message.nanos = reader.int32();
-                            break;
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
-                        }
-                    }
-                    return message;
-                };
-    
-                /**
-                 * Decodes a Duration message from the specified reader or buffer, length delimited.
-                 * @function decodeDelimited
-                 * @memberof google.protobuf.Duration
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @returns {google.protobuf.Duration} Duration
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                Duration.decodeDelimited = function decodeDelimited(reader) {
-                    if (!(reader instanceof $Reader))
-                        reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
-                };
-    
-                /**
-                 * Verifies a Duration message.
-                 * @function verify
-                 * @memberof google.protobuf.Duration
-                 * @static
-                 * @param {Object.<string,*>} message Plain object to verify
-                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                 */
-                Duration.verify = function verify(message) {
-                    if (typeof message !== "object" || message === null)
-                        return "object expected";
-                    if (message.seconds != null && message.hasOwnProperty("seconds"))
-                        if (!$util.isInteger(message.seconds) && !(message.seconds && $util.isInteger(message.seconds.low) && $util.isInteger(message.seconds.high)))
-                            return "seconds: integer|Long expected";
-                    if (message.nanos != null && message.hasOwnProperty("nanos"))
-                        if (!$util.isInteger(message.nanos))
-                            return "nanos: integer expected";
-                    return null;
-                };
-    
-                /**
-                 * Creates a Duration message from a plain object. Also converts values to their respective internal types.
-                 * @function fromObject
-                 * @memberof google.protobuf.Duration
-                 * @static
-                 * @param {Object.<string,*>} object Plain object
-                 * @returns {google.protobuf.Duration} Duration
-                 */
-                Duration.fromObject = function fromObject(object) {
-                    if (object instanceof $root.google.protobuf.Duration)
-                        return object;
-                    var message = new $root.google.protobuf.Duration();
-                    if (object.seconds != null)
-                        if ($util.Long)
-                            (message.seconds = $util.Long.fromValue(object.seconds)).unsigned = false;
-                        else if (typeof object.seconds === "string")
-                            message.seconds = parseInt(object.seconds, 10);
-                        else if (typeof object.seconds === "number")
-                            message.seconds = object.seconds;
-                        else if (typeof object.seconds === "object")
-                            message.seconds = new $util.LongBits(object.seconds.low >>> 0, object.seconds.high >>> 0).toNumber();
-                    if (object.nanos != null)
-                        message.nanos = object.nanos | 0;
-                    return message;
-                };
-    
-                /**
-                 * Creates a plain object from a Duration message. Also converts values to other types if specified.
-                 * @function toObject
-                 * @memberof google.protobuf.Duration
-                 * @static
-                 * @param {google.protobuf.Duration} message Duration
-                 * @param {$protobuf.IConversionOptions} [options] Conversion options
-                 * @returns {Object.<string,*>} Plain object
-                 */
-                Duration.toObject = function toObject(message, options) {
-                    if (!options)
-                        options = {};
-                    var object = {};
-                    if (options.defaults) {
-                        if ($util.Long) {
-                            var long = new $util.Long(0, 0, false);
-                            object.seconds = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                        } else
-                            object.seconds = options.longs === String ? "0" : 0;
-                        object.nanos = 0;
-                    }
-                    if (message.seconds != null && message.hasOwnProperty("seconds"))
-                        if (typeof message.seconds === "number")
-                            object.seconds = options.longs === String ? String(message.seconds) : message.seconds;
-                        else
-                            object.seconds = options.longs === String ? $util.Long.prototype.toString.call(message.seconds) : options.longs === Number ? new $util.LongBits(message.seconds.low >>> 0, message.seconds.high >>> 0).toNumber() : message.seconds;
-                    if (message.nanos != null && message.hasOwnProperty("nanos"))
-                        object.nanos = message.nanos;
-                    return object;
-                };
-    
-                /**
-                 * Converts this Duration to JSON.
-                 * @function toJSON
-                 * @memberof google.protobuf.Duration
-                 * @instance
-                 * @returns {Object.<string,*>} JSON object
-                 */
-                Duration.prototype.toJSON = function toJSON() {
-                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                };
-    
-                return Duration;
-            })();
-    
             protobuf.Any = (function() {
     
                 /**
@@ -15361,6 +18074,166 @@
                 };
     
                 return Any;
+            })();
+    
+            protobuf.Empty = (function() {
+    
+                /**
+                 * Properties of an Empty.
+                 * @memberof google.protobuf
+                 * @interface IEmpty
+                 */
+    
+                /**
+                 * Constructs a new Empty.
+                 * @memberof google.protobuf
+                 * @classdesc Represents an Empty.
+                 * @implements IEmpty
+                 * @constructor
+                 * @param {google.protobuf.IEmpty=} [properties] Properties to set
+                 */
+                function Empty(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+    
+                /**
+                 * Creates a new Empty instance using the specified properties.
+                 * @function create
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty=} [properties] Properties to set
+                 * @returns {google.protobuf.Empty} Empty instance
+                 */
+                Empty.create = function create(properties) {
+                    return new Empty(properties);
+                };
+    
+                /**
+                 * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+                 * @function encode
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty} message Empty message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Empty.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    return writer;
+                };
+    
+                /**
+                 * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty} message Empty message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Empty.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+    
+                /**
+                 * Decodes an Empty message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {google.protobuf.Empty} Empty
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Empty.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Empty();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Decodes an Empty message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {google.protobuf.Empty} Empty
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Empty.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+    
+                /**
+                 * Verifies an Empty message.
+                 * @function verify
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Empty.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    return null;
+                };
+    
+                /**
+                 * Creates an Empty message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {google.protobuf.Empty} Empty
+                 */
+                Empty.fromObject = function fromObject(object) {
+                    if (object instanceof $root.google.protobuf.Empty)
+                        return object;
+                    return new $root.google.protobuf.Empty();
+                };
+    
+                /**
+                 * Creates a plain object from an Empty message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.Empty} message Empty
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Empty.toObject = function toObject() {
+                    return {};
+                };
+    
+                /**
+                 * Converts this Empty to JSON.
+                 * @function toJSON
+                 * @memberof google.protobuf.Empty
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Empty.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                return Empty;
             })();
     
             return protobuf;
@@ -15650,43 +18523,43 @@
     
                 /**
                  * HttpRule get.
-                 * @member {string} get
+                 * @member {string|null|undefined} get
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.get = "";
+                HttpRule.prototype.get = null;
     
                 /**
                  * HttpRule put.
-                 * @member {string} put
+                 * @member {string|null|undefined} put
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.put = "";
+                HttpRule.prototype.put = null;
     
                 /**
                  * HttpRule post.
-                 * @member {string} post
+                 * @member {string|null|undefined} post
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.post = "";
+                HttpRule.prototype.post = null;
     
                 /**
                  * HttpRule delete.
-                 * @member {string} delete
+                 * @member {string|null|undefined} delete
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype["delete"] = "";
+                HttpRule.prototype["delete"] = null;
     
                 /**
                  * HttpRule patch.
-                 * @member {string} patch
+                 * @member {string|null|undefined} patch
                  * @memberof google.api.HttpRule
                  * @instance
                  */
-                HttpRule.prototype.patch = "";
+                HttpRule.prototype.patch = null;
     
                 /**
                  * HttpRule custom.

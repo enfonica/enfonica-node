@@ -28,10 +28,9 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
-    instance as protobuf.Message<T>,
-    {defaults: true}
-  );
+  const filledObject = (
+    instance.constructor as typeof protobuf.Message
+  ).toObject(instance as protobuf.Message<T>, {defaults: true});
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -216,9 +215,8 @@ describe('v1.UnsubscribersClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Unsubscriber()
       );
-      client.innerApiCalls.createUnsubscriber = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.createUnsubscriber =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.createUnsubscriber(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -249,9 +247,8 @@ describe('v1.UnsubscribersClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Unsubscriber()
       );
-      client.innerApiCalls.createUnsubscriber = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.createUnsubscriber =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.createUnsubscriber(
           request,
@@ -361,9 +358,8 @@ describe('v1.UnsubscribersClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Unsubscriber()
       );
-      client.innerApiCalls.getUnsubscriber = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.getUnsubscriber =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.getUnsubscriber(
           request,
@@ -443,9 +439,8 @@ describe('v1.UnsubscribersClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Unsubscriber()
       );
-      client.innerApiCalls.updateUnsubscriber = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.updateUnsubscriber =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.updateUnsubscriber(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -477,9 +472,8 @@ describe('v1.UnsubscribersClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Unsubscriber()
       );
-      client.innerApiCalls.updateUnsubscriber = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.updateUnsubscriber =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.updateUnsubscriber(
           request,
@@ -559,9 +553,8 @@ describe('v1.UnsubscribersClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Unsubscriber()
       );
-      client.innerApiCalls.deleteUnsubscriber = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.deleteUnsubscriber =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.deleteUnsubscriber(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -592,9 +585,8 @@ describe('v1.UnsubscribersClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.messaging.v1.Unsubscriber()
       );
-      client.innerApiCalls.deleteUnsubscriber = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.deleteUnsubscriber =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.deleteUnsubscriber(
           request,
@@ -708,9 +700,8 @@ describe('v1.UnsubscribersClient', () => {
         generateSampleMessage(new protos.enfonica.messaging.v1.Unsubscriber()),
         generateSampleMessage(new protos.enfonica.messaging.v1.Unsubscriber()),
       ];
-      client.innerApiCalls.listUnsubscribers = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.listUnsubscribers =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.listUnsubscribers(
           request,
@@ -782,9 +773,8 @@ describe('v1.UnsubscribersClient', () => {
         generateSampleMessage(new protos.enfonica.messaging.v1.Unsubscriber()),
         generateSampleMessage(new protos.enfonica.messaging.v1.Unsubscriber()),
       ];
-      client.descriptors.page.listUnsubscribers.createStream = stubPageStreamingCall(
-        expectedResponse
-      );
+      client.descriptors.page.listUnsubscribers.createStream =
+        stubPageStreamingCall(expectedResponse);
       const stream = client.listUnsubscribersStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.enfonica.messaging.v1.Unsubscriber[] = [];
@@ -809,10 +799,9 @@ describe('v1.UnsubscribersClient', () => {
           .calledWith(client.innerApiCalls.listUnsubscribers, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listUnsubscribers
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listUnsubscribers.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -829,10 +818,8 @@ describe('v1.UnsubscribersClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listUnsubscribers.createStream = stubPageStreamingCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listUnsubscribers.createStream =
+        stubPageStreamingCall(undefined, expectedError);
       const stream = client.listUnsubscribersStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.enfonica.messaging.v1.Unsubscriber[] = [];
@@ -856,10 +843,9 @@ describe('v1.UnsubscribersClient', () => {
           .calledWith(client.innerApiCalls.listUnsubscribers, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listUnsubscribers
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listUnsubscribers.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -880,9 +866,8 @@ describe('v1.UnsubscribersClient', () => {
         generateSampleMessage(new protos.enfonica.messaging.v1.Unsubscriber()),
         generateSampleMessage(new protos.enfonica.messaging.v1.Unsubscriber()),
       ];
-      client.descriptors.page.listUnsubscribers.asyncIterate = stubAsyncIterationCall(
-        expectedResponse
-      );
+      client.descriptors.page.listUnsubscribers.asyncIterate =
+        stubAsyncIterationCall(expectedResponse);
       const responses: protos.enfonica.messaging.v1.IUnsubscriber[] = [];
       const iterable = client.listUnsubscribersAsync(request);
       for await (const resource of iterable) {
@@ -890,15 +875,15 @@ describe('v1.UnsubscribersClient', () => {
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (client.descriptors.page.listUnsubscribers
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listUnsubscribers.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listUnsubscribers
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listUnsubscribers.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -915,10 +900,8 @@ describe('v1.UnsubscribersClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listUnsubscribers.asyncIterate = stubAsyncIterationCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listUnsubscribers.asyncIterate =
+        stubAsyncIterationCall(undefined, expectedError);
       const iterable = client.listUnsubscribersAsync(request);
       await assert.rejects(async () => {
         const responses: protos.enfonica.messaging.v1.IUnsubscriber[] = [];
@@ -927,15 +910,15 @@ describe('v1.UnsubscribersClient', () => {
         }
       });
       assert.deepStrictEqual(
-        (client.descriptors.page.listUnsubscribers
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listUnsubscribers.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listUnsubscribers
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listUnsubscribers.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });

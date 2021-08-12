@@ -387,11 +387,6 @@
                       "type": "string",
                       "id": 2
                     },
-                    "capabilities": {
-                      "rule": "repeated",
-                      "type": "PhoneNumber.PhoneNumberCapability",
-                      "id": 3
-                    },
                     "numberType": {
                       "type": "PhoneNumber.PhoneNumberType",
                       "id": 4
@@ -406,6 +401,18 @@
                     "prefix": {
                       "type": "string",
                       "id": 6
+                    },
+                    "supportsVoice": {
+                      "type": "bool",
+                      "id": 7
+                    },
+                    "supportsSms": {
+                      "type": "bool",
+                      "id": 8
+                    },
+                    "supportsMms": {
+                      "type": "bool",
+                      "id": 9
                     }
                   }
                 },

@@ -1,6 +1,6 @@
 {
   "name": "@enfonica/numbering",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Enfonica Numbering SDK for Node.js",
   "repository": "enfonica-node/libs/nodejs-numbering",
   "license": "Apache-2.0",

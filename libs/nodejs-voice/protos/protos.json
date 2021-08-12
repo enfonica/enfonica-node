@@ -10,13 +10,61 @@
                 "csharp_namespace": "Enfonica.Voice.V1Beta1",
                 "go_package": "github.com/enfonica/enfonica-go/voice/v1beta1;voice",
                 "java_multiple_files": true,
-                "java_outer_classname": "StreamsProto",
+                "java_outer_classname": "TranscriptionsProto",
                 "java_package": "com.enfonica.voice.v1beta1",
                 "objc_class_prefix": "ENFON",
                 "(google.api.resource_definition).type": "voice.api.enfonica.com/Stream",
                 "(google.api.resource_definition).pattern": "projects/{project}/streams/{streams}"
               },
               "nested": {
+                "CallRecordingConfig": {
+                  "fields": {
+                    "trigger": {
+                      "type": "CallRecordingTrigger",
+                      "id": 1
+                    },
+                    "postProcessing": {
+                      "rule": "repeated",
+                      "type": "PostProcessing",
+                      "id": 2
+                    },
+                    "recordingReadyUri": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "transcribe": {
+                      "type": "TranscribeOption",
+                      "id": 4
+                    },
+                    "transcriptionReadyUri": {
+                      "type": "string",
+                      "id": 5
+                    }
+                  },
+                  "nested": {
+                    "CallRecordingTrigger": {
+                      "values": {
+                        "CALL_RECORDING_TRIGGER_UNSPECIFIED": 0,
+                        "DISABLED": 1,
+                        "ANSWER": 2,
+                        "BRIDGE": 3
+                      }
+                    }
+                  }
+                },
+                "PostProcessing": {
+                  "values": {
+                    "POST_PROCESSING_UNSPECIFIED": 0,
+                    "TRIM_SILENCE": 1
+                  }
+                },
+                "TranscribeOption": {
+                  "values": {
+                    "TRANSCRIBE_OPTION_UNSPECIFIED": 0,
+                    "DISABLED": 1,
+                    "DEFAULT": 2
+                  }
+                },
                 "CallRequest": {
                   "fields": {
                     "call": {
@@ -36,6 +84,26 @@
                     "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/voice"
                   },
                   "methods": {
+                    "CreateCall": {
+                      "requestType": "CreateCallRequest",
+                      "responseType": "Call",
+                      "options": {
+                        "(google.api.http).post": "/v1beta1/{parent=projects/*}/calls",
+                        "(google.api.http).body": "call",
+                        "(google.api.method_signature)": "parent,call"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "post": "/v1beta1/{parent=projects/*}/calls",
+                            "body": "call"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent,call"
+                        }
+                      ]
+                    },
                     "GetCall": {
                       "requestType": "GetCallRequest",
                       "responseType": "Call",
@@ -101,21 +169,6 @@
                     "isPrivate": {
                       "type": "bool",
                       "id": 4
-                    },
-                    "statusUpdateUri": {
-                      "type": "string",
-                      "id": 5
-                    },
-                    "handleUri": {
-                      "type": "string",
-                      "id": 6,
-                      "options": {
-                        "(google.api.field_behavior)": "REQUIRED"
-                      }
-                    },
-                    "validityPeriodSeconds": {
-                      "type": "int32",
-                      "id": 7
                     },
                     "labels": {
                       "keyType": "string",
@@ -212,9 +265,47 @@
                       "options": {
                         "(google.api.field_behavior)": "OUTPUT_ONLY"
                       }
+                    },
+                    "createMethod": {
+                      "type": "CreateMethod",
+                      "id": 23,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "options": {
+                      "type": "ApiCallOptions",
+                      "id": 24,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
                     }
                   },
                   "nested": {
+                    "ApiCallOptions": {
+                      "fields": {
+                        "handlerUris": {
+                          "rule": "repeated",
+                          "type": "string",
+                          "id": 1,
+                          "options": {
+                            "(google.api.field_behavior)": "REQUIRED"
+                          }
+                        },
+                        "stateUpdateUri": {
+                          "type": "string",
+                          "id": 2
+                        },
+                        "timeoutSeconds": {
+                          "type": "int32",
+                          "id": 3
+                        },
+                        "recording": {
+                          "type": "CallRecordingConfig",
+                          "id": 4
+                        }
+                      }
+                    },
                     "State": {
                       "values": {
                         "STATE_UNSPECIFIED": 0,
@@ -242,6 +333,33 @@
                         "PSTN": 1,
                         "CLIENT": 2,
                         "SIP": 3
+                      }
+                    },
+                    "CreateMethod": {
+                      "values": {
+                        "CREATE_METHOD_UNSPECIFIED": 0,
+                        "INCOMING_CALL": 1,
+                        "PARENT_CALL": 2,
+                        "API": 3
+                      }
+                    }
+                  }
+                },
+                "CreateCallRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "voice.api.enfonica.com/Call"
+                      }
+                    },
+                    "call": {
+                      "type": "Call",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
                       }
                     }
                   }
@@ -450,12 +568,6 @@
                         "SUCCEEDED": 2,
                         "EMPTY": 3,
                         "FAILED": 4
-                      }
-                    },
-                    "PostProcessing": {
-                      "values": {
-                        "POST_PROCESSING_UNSPECIFIED": 0,
-                        "TRIM_SILENCE": 1
                       }
                     },
                     "ErrorCode": {
@@ -710,6 +822,237 @@
                     "AUDIO_ENCODING_MULAW": 1,
                     "AUDIO_ENCODING_ALAW": 2
                   }
+                },
+                "Transcriptions": {
+                  "options": {
+                    "(google.api.default_host)": "voice.api.enfonica.com",
+                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/voice"
+                  },
+                  "methods": {
+                    "GetTranscription": {
+                      "requestType": "GetTranscriptionRequest",
+                      "responseType": "Transcription",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{name=projects/*/calls/*/transcriptions/*}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{name=projects/*/calls/*/transcriptions/*}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    },
+                    "ListTranscriptions": {
+                      "requestType": "ListTranscriptionsRequest",
+                      "responseType": "ListTranscriptionsResponse",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{parent=projects/*/calls/*}/transcriptions",
+                        "(google.api.http).additional_bindings.get": "/v1beta1/{parent=projects/*}/transcriptions",
+                        "(google.api.method_signature)": "parent"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{parent=projects/*/calls/*}/transcriptions",
+                            "additional_bindings": {
+                              "get": "/v1beta1/{parent=projects/*}/transcriptions"
+                            }
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent"
+                        }
+                      ]
+                    },
+                    "DeleteTranscription": {
+                      "requestType": "DeleteTranscriptionRequest",
+                      "responseType": "google.protobuf.Empty",
+                      "options": {
+                        "(google.api.http).delete": "/v1beta1/{name=projects/*/calls/*/transcriptions/*}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "delete": "/v1beta1/{name=projects/*/calls/*/transcriptions/*}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "Transcription": {
+                  "options": {
+                    "(google.api.resource).type": "voice.api.enfonica.com/Transcription",
+                    "(google.api.resource).pattern": "projects/{project}/calls/{call}/transcriptions/{transcription}"
+                  },
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "recording": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "state": {
+                      "type": "State",
+                      "id": 3,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "duration": {
+                      "type": "google.protobuf.Duration",
+                      "id": 5,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "channelCount": {
+                      "type": "int32",
+                      "id": 6,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "createTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 11,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "updateTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 12,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "readyUri": {
+                      "type": "string",
+                      "id": 13
+                    },
+                    "utterances": {
+                      "rule": "repeated",
+                      "type": "Utterance",
+                      "id": 15,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    }
+                  },
+                  "nested": {
+                    "State": {
+                      "values": {
+                        "STATE_UNSPECIFIED": 0,
+                        "PENDING": 1,
+                        "COMPLETED": 2,
+                        "FAILED": 3
+                      }
+                    }
+                  }
+                },
+                "Utterance": {
+                  "fields": {
+                    "channel": {
+                      "type": "int32",
+                      "id": 1
+                    },
+                    "offset": {
+                      "type": "google.protobuf.Duration",
+                      "id": 2
+                    },
+                    "duration": {
+                      "type": "google.protobuf.Duration",
+                      "id": 3
+                    },
+                    "text": {
+                      "type": "string",
+                      "id": 4
+                    }
+                  }
+                },
+                "GetTranscriptionRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "voice.api.enfonica.com/Transcription"
+                      }
+                    },
+                    "view": {
+                      "type": "TranscriptionView",
+                      "id": 2
+                    }
+                  }
+                },
+                "ListTranscriptionsRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "voice.api.enfonica.com/Transcription"
+                      }
+                    },
+                    "pageSize": {
+                      "type": "int32",
+                      "id": 2
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "view": {
+                      "type": "TranscriptionView",
+                      "id": 4
+                    }
+                  }
+                },
+                "ListTranscriptionsResponse": {
+                  "fields": {
+                    "transcriptions": {
+                      "rule": "repeated",
+                      "type": "Transcription",
+                      "id": 1
+                    },
+                    "nextPageToken": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "DeleteTranscriptionRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "voice.api.enfonica.com/Transcription"
+                      }
+                    }
+                  }
+                },
+                "TranscriptionView": {
+                  "values": {
+                    "TRANSCRIPTION_VIEW_UNSPECIFIED": 0,
+                    "TRANSCRIPTION_VIEW_BASIC": 1,
+                    "TRANSCRIPTION_VIEW_FULL": 2
+                  }
                 }
               }
             }
@@ -731,6 +1074,18 @@
           },
           "nested": {
             "Timestamp": {
+              "fields": {
+                "seconds": {
+                  "type": "int64",
+                  "id": 1
+                },
+                "nanos": {
+                  "type": "int32",
+                  "id": 2
+                }
+              }
+            },
+            "Duration": {
               "fields": {
                 "seconds": {
                   "type": "int64",
@@ -1626,18 +1981,6 @@
                 }
               }
             },
-            "Duration": {
-              "fields": {
-                "seconds": {
-                  "type": "int64",
-                  "id": 1
-                },
-                "nanos": {
-                  "type": "int32",
-                  "id": 2
-                }
-              }
-            },
             "Any": {
               "fields": {
                 "type_url": {
@@ -1649,6 +1992,9 @@
                   "id": 2
                 }
               }
+            },
+            "Empty": {
+              "fields": {}
             }
           }
         },

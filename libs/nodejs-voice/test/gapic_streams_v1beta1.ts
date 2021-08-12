@@ -28,10 +28,9 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
-    instance as protobuf.Message<T>,
-    {defaults: true}
-  );
+  const filledObject = (
+    instance.constructor as typeof protobuf.Message
+  ).toObject(instance as protobuf.Message<T>, {defaults: true});
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -168,9 +167,8 @@ describe('v1beta1.StreamsClient', () => {
           .calledWithExactly(undefined)
       );
       assert.deepStrictEqual(
-        (((stream as unknown) as PassThrough)._transform as SinonStub).getCall(
-          0
-        ).args[0],
+        ((stream as unknown as PassThrough)._transform as SinonStub).getCall(0)
+          .args[0],
         request
       );
     });
@@ -210,9 +208,8 @@ describe('v1beta1.StreamsClient', () => {
           .calledWithExactly(undefined)
       );
       assert.deepStrictEqual(
-        (((stream as unknown) as PassThrough)._transform as SinonStub).getCall(
-          0
-        ).args[0],
+        ((stream as unknown as PassThrough)._transform as SinonStub).getCall(0)
+          .args[0],
         request
       );
     });
@@ -375,6 +372,70 @@ describe('v1beta1.StreamsClient', () => {
         assert.strictEqual(result, 'streamsValue');
         assert(
           (client.pathTemplates.streamPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+
+    describe('transcription', () => {
+      const fakePath = '/rendered/path/transcription';
+      const expectedParameters = {
+        project: 'projectValue',
+        call: 'callValue',
+        transcription: 'transcriptionValue',
+      };
+      const client = new streamsModule.v1beta1.StreamsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.transcriptionPathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.transcriptionPathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('transcriptionPath', () => {
+        const result = client.transcriptionPath(
+          'projectValue',
+          'callValue',
+          'transcriptionValue'
+        );
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.transcriptionPathTemplate.render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchProjectFromTranscriptionName', () => {
+        const result = client.matchProjectFromTranscriptionName(fakePath);
+        assert.strictEqual(result, 'projectValue');
+        assert(
+          (client.pathTemplates.transcriptionPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchCallFromTranscriptionName', () => {
+        const result = client.matchCallFromTranscriptionName(fakePath);
+        assert.strictEqual(result, 'callValue');
+        assert(
+          (client.pathTemplates.transcriptionPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchTranscriptionFromTranscriptionName', () => {
+        const result = client.matchTranscriptionFromTranscriptionName(fakePath);
+        assert.strictEqual(result, 'transcriptionValue');
+        assert(
+          (client.pathTemplates.transcriptionPathTemplate.match as SinonStub)
             .getCall(-1)
             .calledWith(fakePath)
         );

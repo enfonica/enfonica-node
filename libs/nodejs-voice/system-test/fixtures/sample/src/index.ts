@@ -16,12 +16,13 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-import {CallsClient, RecordingsClient, StreamsClient} from 'voice';
+import {CallsClient, RecordingsClient, StreamsClient, TranscriptionsClient} from 'voice';
 
 function main() {
   new CallsClient();
   new RecordingsClient();
   new StreamsClient();
+  new TranscriptionsClient();
 }
 
 main();

@@ -168,6 +168,9 @@ export class RecordingsClient {
       recordingPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/calls/{call}/recordings/{recording}'
       ),
+      transcriptionPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/calls/{call}/transcriptions/{transcription}'
+      ),
     };
 
     // Some of the methods on this service return "paged" results,
@@ -233,13 +236,14 @@ export class RecordingsClient {
     ];
     for (const methodName of recordingsStubMethods) {
       const callPromise = this.recordingsStub.then(
-        stub => (...args: Array<{}>) => {
-          if (this._terminated) {
-            return Promise.reject('The client has already been closed.');
-          }
-          const func = stub[methodName];
-          return func.apply(stub, args);
-        },
+        stub =>
+          (...args: Array<{}>) => {
+            if (this._terminated) {
+              return Promise.reject('The client has already been closed.');
+            }
+            const func = stub[methodName];
+            return func.apply(stub, args);
+          },
         (err: Error | null | undefined) => () => {
           throw err;
         }
@@ -386,11 +390,10 @@ export class RecordingsClient {
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers[
-      'x-goog-request-params'
-    ] = gax.routingHeader.fromParams({
-      name: request.name || '',
-    });
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        name: request.name || '',
+      });
     this.initialize();
     return this.innerApiCalls.getRecording(request, options, callback);
   }
@@ -471,11 +474,10 @@ export class RecordingsClient {
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers[
-      'x-goog-request-params'
-    ] = gax.routingHeader.fromParams({
-      name: request.name || '',
-    });
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        name: request.name || '',
+      });
     this.initialize();
     return this.innerApiCalls.deleteRecording(request, options, callback);
   }
@@ -581,11 +583,10 @@ export class RecordingsClient {
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers[
-      'x-goog-request-params'
-    ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
-    });
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        parent: request.parent || '',
+      });
     this.initialize();
     return this.innerApiCalls.listRecordings(request, options, callback);
   }
@@ -632,11 +633,10 @@ export class RecordingsClient {
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers[
-      'x-goog-request-params'
-    ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
-    });
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        parent: request.parent || '',
+      });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
     return this.descriptors.page.listRecordings.createStream(
@@ -680,17 +680,16 @@ export class RecordingsClient {
     options = options || {};
     options.otherArgs = options.otherArgs || {};
     options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers[
-      'x-goog-request-params'
-    ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
-    });
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        parent: request.parent || '',
+      });
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
     return this.descriptors.page.listRecordings.asyncIterate(
       this.innerApiCalls['listRecordings'] as GaxCall,
-      (request as unknown) as RequestType,
+      request as unknown as RequestType,
       callSettings
     ) as AsyncIterable<protos.enfonica.voice.v1beta1.IRecording>;
   }
@@ -783,6 +782,58 @@ export class RecordingsClient {
   matchRecordingFromRecordingName(recordingName: string) {
     return this.pathTemplates.recordingPathTemplate.match(recordingName)
       .recording;
+  }
+
+  /**
+   * Return a fully-qualified transcription resource name string.
+   *
+   * @param {string} project
+   * @param {string} call
+   * @param {string} transcription
+   * @returns {string} Resource name string.
+   */
+  transcriptionPath(project: string, call: string, transcription: string) {
+    return this.pathTemplates.transcriptionPathTemplate.render({
+      project: project,
+      call: call,
+      transcription: transcription,
+    });
+  }
+
+  /**
+   * Parse the project from Transcription resource.
+   *
+   * @param {string} transcriptionName
+   *   A fully-qualified path representing Transcription resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromTranscriptionName(transcriptionName: string) {
+    return this.pathTemplates.transcriptionPathTemplate.match(transcriptionName)
+      .project;
+  }
+
+  /**
+   * Parse the call from Transcription resource.
+   *
+   * @param {string} transcriptionName
+   *   A fully-qualified path representing Transcription resource.
+   * @returns {string} A string representing the call.
+   */
+  matchCallFromTranscriptionName(transcriptionName: string) {
+    return this.pathTemplates.transcriptionPathTemplate.match(transcriptionName)
+      .call;
+  }
+
+  /**
+   * Parse the transcription from Transcription resource.
+   *
+   * @param {string} transcriptionName
+   *   A fully-qualified path representing Transcription resource.
+   * @returns {string} A string representing the transcription.
+   */
+  matchTranscriptionFromTranscriptionName(transcriptionName: string) {
+    return this.pathTemplates.transcriptionPathTemplate.match(transcriptionName)
+      .transcription;
   }
 
   /**

@@ -28,10 +28,9 @@ import {PassThrough} from 'stream';
 import {protobuf} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
-    instance as protobuf.Message<T>,
-    {defaults: true}
-  );
+  const filledObject = (
+    instance.constructor as typeof protobuf.Message
+  ).toObject(instance as protobuf.Message<T>, {defaults: true});
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -134,49 +133,46 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
   });
 
   it('should create a client with no option', () => {
-    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient();
+    const client =
+      new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient();
     assert(client);
   });
 
   it('should create a client with gRPC fallback', () => {
-    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-      {
+    const client =
+      new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
         fallback: true,
-      }
-    );
+      });
     assert(client);
   });
 
   it('has initialize method and supports deferred initialization', async () => {
-    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-      {
+    const client =
+      new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
-      }
-    );
+      });
     assert.strictEqual(client.phoneNumberInstancesStub, undefined);
     await client.initialize();
     assert(client.phoneNumberInstancesStub);
   });
 
   it('has close method', () => {
-    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-      {
+    const client =
+      new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
-      }
-    );
+      });
     client.close();
   });
 
   it('has getProjectId method', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-      {
+    const client =
+      new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
-      }
-    );
+      });
     client.auth.getProjectId = sinon.stub().resolves(fakeProjectId);
     const result = await client.getProjectId();
     assert.strictEqual(result, fakeProjectId);
@@ -185,12 +181,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
 
   it('has getProjectId method with callback', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-      {
+    const client =
+      new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
-      }
-    );
+      });
     client.auth.getProjectId = sinon
       .stub()
       .callsArgWith(0, null, fakeProjectId);
@@ -209,12 +204,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
 
   describe('createPhoneNumberInstance', () => {
     it('invokes createPhoneNumberInstance without error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest()
@@ -231,9 +225,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
       );
-      client.innerApiCalls.createPhoneNumberInstance = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.createPhoneNumberInstance =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.createPhoneNumberInstance(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -244,12 +237,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes createPhoneNumberInstance without error using callback', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest()
@@ -266,9 +258,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
       );
-      client.innerApiCalls.createPhoneNumberInstance = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.createPhoneNumberInstance =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.createPhoneNumberInstance(
           request,
@@ -294,12 +285,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes createPhoneNumberInstance with error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.CreatePhoneNumberInstanceRequest()
@@ -332,12 +322,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
 
   describe('getPhoneNumberInstance', () => {
     it('invokes getPhoneNumberInstance without error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest()
@@ -354,9 +343,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
       );
-      client.innerApiCalls.getPhoneNumberInstance = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.getPhoneNumberInstance =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.getPhoneNumberInstance(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -367,12 +355,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes getPhoneNumberInstance without error using callback', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest()
@@ -389,9 +376,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
       );
-      client.innerApiCalls.getPhoneNumberInstance = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.getPhoneNumberInstance =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.getPhoneNumberInstance(
           request,
@@ -417,12 +403,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes getPhoneNumberInstance with error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.GetPhoneNumberInstanceRequest()
@@ -455,12 +440,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
 
   describe('updatePhoneNumberInstance', () => {
     it('invokes updatePhoneNumberInstance without error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest()
@@ -477,9 +461,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
       );
-      client.innerApiCalls.updatePhoneNumberInstance = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.updatePhoneNumberInstance =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.updatePhoneNumberInstance(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -490,12 +473,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes updatePhoneNumberInstance without error using callback', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest()
@@ -512,9 +494,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
       );
-      client.innerApiCalls.updatePhoneNumberInstance = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.updatePhoneNumberInstance =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.updatePhoneNumberInstance(
           request,
@@ -540,12 +521,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes updatePhoneNumberInstance with error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.UpdatePhoneNumberInstanceRequest()
@@ -578,12 +558,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
 
   describe('deletePhoneNumberInstance', () => {
     it('invokes deletePhoneNumberInstance without error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest()
@@ -600,9 +579,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
       );
-      client.innerApiCalls.deletePhoneNumberInstance = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.deletePhoneNumberInstance =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.deletePhoneNumberInstance(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -613,12 +591,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes deletePhoneNumberInstance without error using callback', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest()
@@ -635,9 +612,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
       );
-      client.innerApiCalls.deletePhoneNumberInstance = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.deletePhoneNumberInstance =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.deletePhoneNumberInstance(
           request,
@@ -663,12 +639,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes deletePhoneNumberInstance with error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.DeletePhoneNumberInstanceRequest()
@@ -701,12 +676,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
 
   describe('listPhoneNumberInstances', () => {
     it('invokes listPhoneNumberInstances without error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
@@ -731,9 +705,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
           new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
         ),
       ];
-      client.innerApiCalls.listPhoneNumberInstances = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.listPhoneNumberInstances =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.listPhoneNumberInstances(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -744,12 +717,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes listPhoneNumberInstances without error using callback', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
@@ -774,9 +746,8 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
           new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
         ),
       ];
-      client.innerApiCalls.listPhoneNumberInstances = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.listPhoneNumberInstances =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.listPhoneNumberInstances(
           request,
@@ -804,12 +775,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes listPhoneNumberInstances with error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
@@ -840,12 +810,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
     });
 
     it('invokes listPhoneNumberInstancesStream without error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
@@ -863,12 +832,12 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
           new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
         ),
       ];
-      client.descriptors.page.listPhoneNumberInstances.createStream = stubPageStreamingCall(
-        expectedResponse
-      );
+      client.descriptors.page.listPhoneNumberInstances.createStream =
+        stubPageStreamingCall(expectedResponse);
       const stream = client.listPhoneNumberInstancesStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.enfonica.numbering.v1beta1.PhoneNumberInstance[] = [];
+        const responses: protos.enfonica.numbering.v1beta1.PhoneNumberInstance[] =
+          [];
         stream.on(
           'data',
           (response: protos.enfonica.numbering.v1beta1.PhoneNumberInstance) => {
@@ -885,27 +854,28 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const responses = await promise;
       assert.deepStrictEqual(responses, expectedResponse);
       assert(
-        (client.descriptors.page.listPhoneNumberInstances
-          .createStream as SinonStub)
+        (
+          client.descriptors.page.listPhoneNumberInstances
+            .createStream as SinonStub
+        )
           .getCall(0)
           .calledWith(client.innerApiCalls.listPhoneNumberInstances, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listPhoneNumberInstances
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listPhoneNumberInstances
+            .createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
     it('invokes listPhoneNumberInstancesStream with error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
@@ -913,13 +883,12 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listPhoneNumberInstances.createStream = stubPageStreamingCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listPhoneNumberInstances.createStream =
+        stubPageStreamingCall(undefined, expectedError);
       const stream = client.listPhoneNumberInstancesStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.enfonica.numbering.v1beta1.PhoneNumberInstance[] = [];
+        const responses: protos.enfonica.numbering.v1beta1.PhoneNumberInstance[] =
+          [];
         stream.on(
           'data',
           (response: protos.enfonica.numbering.v1beta1.PhoneNumberInstance) => {
@@ -935,27 +904,28 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       });
       await assert.rejects(promise, expectedError);
       assert(
-        (client.descriptors.page.listPhoneNumberInstances
-          .createStream as SinonStub)
+        (
+          client.descriptors.page.listPhoneNumberInstances
+            .createStream as SinonStub
+        )
           .getCall(0)
           .calledWith(client.innerApiCalls.listPhoneNumberInstances, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listPhoneNumberInstances
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listPhoneNumberInstances
+            .createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
     it('uses async iteration with listPhoneNumberInstances without error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
@@ -973,36 +943,37 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
           new protos.enfonica.numbering.v1beta1.PhoneNumberInstance()
         ),
       ];
-      client.descriptors.page.listPhoneNumberInstances.asyncIterate = stubAsyncIterationCall(
-        expectedResponse
-      );
-      const responses: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[] = [];
+      client.descriptors.page.listPhoneNumberInstances.asyncIterate =
+        stubAsyncIterationCall(expectedResponse);
+      const responses: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[] =
+        [];
       const iterable = client.listPhoneNumberInstancesAsync(request);
       for await (const resource of iterable) {
         responses.push(resource!);
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (client.descriptors.page.listPhoneNumberInstances
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listPhoneNumberInstances
+            .asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listPhoneNumberInstances
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listPhoneNumberInstances
+            .asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
     it('uses async iteration with listPhoneNumberInstances with error', async () => {
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       const request = generateSampleMessage(
         new protos.enfonica.numbering.v1beta1.ListPhoneNumberInstancesRequest()
@@ -1010,27 +981,28 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listPhoneNumberInstances.asyncIterate = stubAsyncIterationCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listPhoneNumberInstances.asyncIterate =
+        stubAsyncIterationCall(undefined, expectedError);
       const iterable = client.listPhoneNumberInstancesAsync(request);
       await assert.rejects(async () => {
-        const responses: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[] = [];
+        const responses: protos.enfonica.numbering.v1beta1.IPhoneNumberInstance[] =
+          [];
         for await (const resource of iterable) {
           responses.push(resource!);
         }
       });
       assert.deepStrictEqual(
-        (client.descriptors.page.listPhoneNumberInstances
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listPhoneNumberInstances
+            .asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listPhoneNumberInstances
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listPhoneNumberInstances
+            .asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -1042,12 +1014,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
       const expectedParameters = {
         phone_number: 'phoneNumberValue',
       };
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       client.pathTemplates.phoneNumberPathTemplate.render = sinon
         .stub()
@@ -1083,12 +1054,11 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
         project: 'projectValue',
         phone_number_instance: 'phoneNumberInstanceValue',
       };
-      const client = new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient(
-        {
+      const client =
+        new phonenumberinstancesModule.v1beta1.PhoneNumberInstancesClient({
           credentials: {client_email: 'bogus', private_key: 'bogus'},
           projectId: 'bogus',
-        }
-      );
+        });
       client.initialize();
       client.pathTemplates.phoneNumberInstancePathTemplate.render = sinon
         .stub()
@@ -1104,8 +1074,10 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
         );
         assert.strictEqual(result, fakePath);
         assert(
-          (client.pathTemplates.phoneNumberInstancePathTemplate
-            .render as SinonStub)
+          (
+            client.pathTemplates.phoneNumberInstancePathTemplate
+              .render as SinonStub
+          )
             .getCall(-1)
             .calledWith(expectedParameters)
         );
@@ -1115,21 +1087,24 @@ describe('v1beta1.PhoneNumberInstancesClient', () => {
         const result = client.matchProjectFromPhoneNumberInstanceName(fakePath);
         assert.strictEqual(result, 'projectValue');
         assert(
-          (client.pathTemplates.phoneNumberInstancePathTemplate
-            .match as SinonStub)
+          (
+            client.pathTemplates.phoneNumberInstancePathTemplate
+              .match as SinonStub
+          )
             .getCall(-1)
             .calledWith(fakePath)
         );
       });
 
       it('matchPhoneNumberInstanceFromPhoneNumberInstanceName', () => {
-        const result = client.matchPhoneNumberInstanceFromPhoneNumberInstanceName(
-          fakePath
-        );
+        const result =
+          client.matchPhoneNumberInstanceFromPhoneNumberInstanceName(fakePath);
         assert.strictEqual(result, 'phoneNumberInstanceValue');
         assert(
-          (client.pathTemplates.phoneNumberInstancePathTemplate
-            .match as SinonStub)
+          (
+            client.pathTemplates.phoneNumberInstancePathTemplate
+              .match as SinonStub
+          )
             .getCall(-1)
             .calledWith(fakePath)
         );

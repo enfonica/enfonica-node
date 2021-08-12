@@ -31,16 +31,16 @@ import * as path from 'path';
 import {Transform} from 'stream';
 import {RequestType} from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
-import * as gapicConfig from './calls_client_config.json';
+import * as gapicConfig from './transcriptions_client_config.json';
 
 const version = require('../../../package.json').version;
 
 /**
- *  Manages Calls.
+ *  Manages Transcriptions.
  * @class
  * @memberof v1beta1
  */
-export class CallsClient {
+export class TranscriptionsClient {
   private _terminated = false;
   private _opts: ClientOptions;
   private _gaxModule: typeof gax | typeof gax.fallback;
@@ -56,10 +56,10 @@ export class CallsClient {
   };
   innerApiCalls: {[name: string]: Function};
   pathTemplates: {[name: string]: gax.PathTemplate};
-  callsStub?: Promise<{[name: string]: Function}>;
+  transcriptionsStub?: Promise<{[name: string]: Function}>;
 
   /**
-   * Construct an instance of CallsClient.
+   * Construct an instance of TranscriptionsClient.
    *
    * @param {object} [options] - The configuration object. See the subsequent
    *   parameters for more details.
@@ -86,7 +86,7 @@ export class CallsClient {
 
   constructor(opts?: any) {
     // Ensure that options include the service address and port.
-    const staticMembers = this.constructor as typeof CallsClient;
+    const staticMembers = this.constructor as typeof TranscriptionsClient;
     const servicePath =
       opts && opts.servicePath
         ? opts.servicePath
@@ -113,12 +113,12 @@ export class CallsClient {
     // If we're running in browser, it's OK to omit `fallback` since
     // google-gax has `browser` field in its `package.json`.
     // For Electron (which does not respect `browser` field),
-    // pass `{fallback: true}` to the CallsClient constructor.
+    // pass `{fallback: true}` to the TranscriptionsClient constructor.
     this._gaxModule = opts.fallback ? gax.fallback : gax;
 
     // Create a `gaxGrpc` object, with any grpc-specific options
     // sent to the client.
-    opts.scopes = (this.constructor as typeof CallsClient).scopes;
+    opts.scopes = (this.constructor as typeof TranscriptionsClient).scopes;
     this._gaxGrpc = new this._gaxModule.GrpcClient(opts);
 
     // Save options to use in initialize() method.
@@ -177,16 +177,16 @@ export class CallsClient {
     // (e.g. 50 results at a time, with tokens to get subsequent
     // pages). Denote the keys used for pagination and results.
     this.descriptors.page = {
-      listCalls: new this._gaxModule.PageDescriptor(
+      listTranscriptions: new this._gaxModule.PageDescriptor(
         'pageToken',
         'nextPageToken',
-        'calls'
+        'transcriptions'
       ),
     };
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-      'enfonica.voice.v1beta1.Calls',
+      'enfonica.voice.v1beta1.Transcriptions',
       gapicConfig as gax.ClientConfig,
       opts.clientConfig || {},
       {'x-goog-api-client': clientHeader.join(' ')}
@@ -211,27 +211,31 @@ export class CallsClient {
    */
   initialize() {
     // If the client stub promise is already initialized, return immediately.
-    if (this.callsStub) {
-      return this.callsStub;
+    if (this.transcriptionsStub) {
+      return this.transcriptionsStub;
     }
 
     // Put together the "service stub" for
-    // enfonica.voice.v1beta1.Calls.
-    this.callsStub = this._gaxGrpc.createStub(
+    // enfonica.voice.v1beta1.Transcriptions.
+    this.transcriptionsStub = this._gaxGrpc.createStub(
       this._opts.fallback
         ? (this._protos as protobuf.Root).lookupService(
-            'enfonica.voice.v1beta1.Calls'
+            'enfonica.voice.v1beta1.Transcriptions'
           )
         : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (this._protos as any).enfonica.voice.v1beta1.Calls,
+          (this._protos as any).enfonica.voice.v1beta1.Transcriptions,
       this._opts
     ) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const callsStubMethods = ['createCall', 'getCall', 'listCalls'];
-    for (const methodName of callsStubMethods) {
-      const callPromise = this.callsStub.then(
+    const transcriptionsStubMethods = [
+      'getTranscription',
+      'listTranscriptions',
+      'deleteTranscription',
+    ];
+    for (const methodName of transcriptionsStubMethods) {
+      const callPromise = this.transcriptionsStub.then(
         stub =>
           (...args: Array<{}>) => {
             if (this._terminated) {
@@ -255,7 +259,7 @@ export class CallsClient {
       this.innerApiCalls[methodName] = apiCall;
     }
 
-    return this.callsStub;
+    return this.transcriptionsStub;
   }
 
   /**
@@ -308,151 +312,72 @@ export class CallsClient {
   // -------------------
   // -- Service calls --
   // -------------------
-  createCall(
-    request: protos.enfonica.voice.v1beta1.ICreateCallRequest,
+  getTranscription(
+    request: protos.enfonica.voice.v1beta1.IGetTranscriptionRequest,
     options?: gax.CallOptions
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.ICreateCallRequest | undefined,
+      protos.enfonica.voice.v1beta1.ITranscription,
+      protos.enfonica.voice.v1beta1.IGetTranscriptionRequest | undefined,
       {} | undefined
     ]
   >;
-  createCall(
-    request: protos.enfonica.voice.v1beta1.ICreateCallRequest,
+  getTranscription(
+    request: protos.enfonica.voice.v1beta1.IGetTranscriptionRequest,
     options: gax.CallOptions,
     callback: Callback<
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.ICreateCallRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.ITranscription,
+      protos.enfonica.voice.v1beta1.IGetTranscriptionRequest | null | undefined,
       {} | null | undefined
     >
   ): void;
-  createCall(
-    request: protos.enfonica.voice.v1beta1.ICreateCallRequest,
+  getTranscription(
+    request: protos.enfonica.voice.v1beta1.IGetTranscriptionRequest,
     callback: Callback<
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.ICreateCallRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.ITranscription,
+      protos.enfonica.voice.v1beta1.IGetTranscriptionRequest | null | undefined,
       {} | null | undefined
     >
   ): void;
   /**
-   * Creates a call in the state QUEUED. This will cause an outgoing call
-   * to be started.
+   * Retrieves a Transcription identified by the supplied resource name.
    *
-   * The caller must have `voice.calls.create` permission on the project.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   The project under which to create the call in the form `projects/*`.
-   * @param {enfonica.voice.v1beta1.Call} request.call
-   *   The call resource to be created.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Call]{@link enfonica.voice.v1beta1.Call}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  createCall(
-    request: protos.enfonica.voice.v1beta1.ICreateCallRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
-          protos.enfonica.voice.v1beta1.ICall,
-          protos.enfonica.voice.v1beta1.ICreateCallRequest | null | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.ICreateCallRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.ICreateCallRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
-    request = request || {};
-    let options: gax.CallOptions;
-    if (typeof optionsOrCallback === 'function' && callback === undefined) {
-      callback = optionsOrCallback;
-      options = {};
-    } else {
-      options = optionsOrCallback as gax.CallOptions;
-    }
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        parent: request.parent || '',
-      });
-    this.initialize();
-    return this.innerApiCalls.createCall(request, options, callback);
-  }
-  getCall(
-    request: protos.enfonica.voice.v1beta1.IGetCallRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.IGetCallRequest | undefined,
-      {} | undefined
-    ]
-  >;
-  getCall(
-    request: protos.enfonica.voice.v1beta1.IGetCallRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.IGetCallRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  getCall(
-    request: protos.enfonica.voice.v1beta1.IGetCallRequest,
-    callback: Callback<
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.IGetCallRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Retrieves a Call identified by the supplied resource name.
-   *
-   * The caller must have `voice.calls.get` permission on the project.
+   * The caller must have `voice.transcriptions.get` permission on the project.
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.name
-   *   The resource name of the Call to retrieve.
-   *   Must be of the form `projects/* /calls/*`.
+   *   The resource name of the Transcription to retrieve.
+   *   Must be of the form `projects/* /calls/* /transcriptions/*`.
+   * @param {enfonica.voice.v1beta1.TranscriptionView} request.view
+   *   Configuration of partial responses.
+   *   Defaults to FULL.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Call]{@link enfonica.voice.v1beta1.Call}.
+   *   The first element of the array is an object representing [Transcription]{@link enfonica.voice.v1beta1.Transcription}.
    *   The promise has a method named "cancel" which cancels the ongoing API call.
    */
-  getCall(
-    request: protos.enfonica.voice.v1beta1.IGetCallRequest,
+  getTranscription(
+    request: protos.enfonica.voice.v1beta1.IGetTranscriptionRequest,
     optionsOrCallback?:
       | gax.CallOptions
       | Callback<
-          protos.enfonica.voice.v1beta1.ICall,
-          protos.enfonica.voice.v1beta1.IGetCallRequest | null | undefined,
+          protos.enfonica.voice.v1beta1.ITranscription,
+          | protos.enfonica.voice.v1beta1.IGetTranscriptionRequest
+          | null
+          | undefined,
           {} | null | undefined
         >,
     callback?: Callback<
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.IGetCallRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.ITranscription,
+      protos.enfonica.voice.v1beta1.IGetTranscriptionRequest | null | undefined,
       {} | null | undefined
     >
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.ICall,
-      protos.enfonica.voice.v1beta1.IGetCallRequest | undefined,
+      protos.enfonica.voice.v1beta1.ITranscription,
+      protos.enfonica.voice.v1beta1.IGetTranscriptionRequest | undefined,
       {} | undefined
     ]
   > | void {
@@ -472,106 +397,193 @@ export class CallsClient {
         name: request.name || '',
       });
     this.initialize();
-    return this.innerApiCalls.getCall(request, options, callback);
+    return this.innerApiCalls.getTranscription(request, options, callback);
   }
-
-  listCalls(
-    request: protos.enfonica.voice.v1beta1.IListCallsRequest,
+  deleteTranscription(
+    request: protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest,
     options?: gax.CallOptions
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.ICall[],
-      protos.enfonica.voice.v1beta1.IListCallsRequest | null,
-      protos.enfonica.voice.v1beta1.IListCallsResponse
+      protos.google.protobuf.IEmpty,
+      protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest | undefined,
+      {} | undefined
     ]
   >;
-  listCalls(
-    request: protos.enfonica.voice.v1beta1.IListCallsRequest,
+  deleteTranscription(
+    request: protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest,
     options: gax.CallOptions,
-    callback: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListCallsRequest,
-      protos.enfonica.voice.v1beta1.IListCallsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.ICall
+    callback: Callback<
+      protos.google.protobuf.IEmpty,
+      | protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest
+      | null
+      | undefined,
+      {} | null | undefined
     >
   ): void;
-  listCalls(
-    request: protos.enfonica.voice.v1beta1.IListCallsRequest,
-    callback: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListCallsRequest,
-      protos.enfonica.voice.v1beta1.IListCallsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.ICall
+  deleteTranscription(
+    request: protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest,
+    callback: Callback<
+      protos.google.protobuf.IEmpty,
+      | protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest
+      | null
+      | undefined,
+      {} | null | undefined
     >
   ): void;
   /**
-   * Lists the Calls of the specified project.
-   * List returns Calls sorted by create_time descending.
+   * Deletes a transcription.
    *
-   * The caller must have `voice.calls.list` permission on the project.
+   * The caller must have `voice.transcriptions.delete` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.name
+   *   The resource name of the Transcription to be deleted.
+   *   Must be of the form `projects/* /calls/* /transcription/*`.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  deleteTranscription(
+    request: protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.google.protobuf.IEmpty,
+          | protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest
+          | null
+          | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.google.protobuf.IEmpty,
+      | protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest
+      | null
+      | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.google.protobuf.IEmpty,
+      protos.enfonica.voice.v1beta1.IDeleteTranscriptionRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        name: request.name || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.deleteTranscription(request, options, callback);
+  }
+
+  listTranscriptions(
+    request: protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ITranscription[],
+      protos.enfonica.voice.v1beta1.IListTranscriptionsRequest | null,
+      protos.enfonica.voice.v1beta1.IListTranscriptionsResponse
+    ]
+  >;
+  listTranscriptions(
+    request: protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
+    options: gax.CallOptions,
+    callback: PaginationCallback<
+      protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
+      | protos.enfonica.voice.v1beta1.IListTranscriptionsResponse
+      | null
+      | undefined,
+      protos.enfonica.voice.v1beta1.ITranscription
+    >
+  ): void;
+  listTranscriptions(
+    request: protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
+    callback: PaginationCallback<
+      protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
+      | protos.enfonica.voice.v1beta1.IListTranscriptionsResponse
+      | null
+      | undefined,
+      protos.enfonica.voice.v1beta1.ITranscription
+    >
+  ): void;
+  /**
+   * Lists the Transcriptions of the specified project.
+   * List returns Transcriptions sorted by create_time descending.
+   *
+   * The caller must have `voice.transcriptions.list` permission on the project.
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list calls.
-   *   Must be of the form `projects/*`.
+   *   The resource name of the parent of which to list transcriptions.
+   *   May be of the form `projects/* /calls/*` to list the transcriptions of that
+   *   specific call, or `projects/*` to list transcriptions across the entire project,
+   *   which maps to `projects/* /calls/-`.
    * @param {number} request.pageSize
-   *   The maximum number of Calls to return in the response.
+   *   The maximum number of Transcriptions to return in the response.
    *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
-   *   A pagination token returned from a previous call to `ListCalls`
+   *   A pagination token returned from a previous transcription to `ListTranscriptions`
    *   that indicates where this listing should continue from.
-   * @param {string} request.filter
-   *   Filter string to specify which results should be returned.
-   *
-   *   The following fields can be filtered:
-   *   - `createTime`
-   *   - `to`
-   *   - `from`
-   *   - `state`
-   *   - `direction`
-   *   - `transport`
-   *
-   *   For example:
-   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
-   *   state = COMPLETED OR state = BUSY AND to = '+61*' OR from = '+61*'
-   *
-   *   Note that OR has higher precendence than AND.
+   * @param {enfonica.voice.v1beta1.TranscriptionView} request.view
+   *   Configuration of partial responses.
+   *   Defaults to BASIC.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [Call]{@link enfonica.voice.v1beta1.Call}.
+   *   The first element of the array is Array of [Transcription]{@link enfonica.voice.v1beta1.Transcription}.
    *   The client library support auto-pagination by default: it will call the API as many
    *   times as needed and will merge results from all the pages into this array.
    *
    *   When autoPaginate: false is specified through options, the array has three elements.
-   *   The first element is Array of [Call]{@link enfonica.voice.v1beta1.Call} that corresponds to
+   *   The first element is Array of [Transcription]{@link enfonica.voice.v1beta1.Transcription} that corresponds to
    *   the one page received from the API server.
-   *   If the second element is not null it contains the request object of type [ListCallsRequest]{@link enfonica.voice.v1beta1.ListCallsRequest}
+   *   If the second element is not null it contains the request object of type [ListTranscriptionsRequest]{@link enfonica.voice.v1beta1.ListTranscriptionsRequest}
    *   that can be used to obtain the next page of the results.
    *   If it is null, the next page does not exist.
    *   The third element contains the raw response received from the API server. Its type is
-   *   [ListCallsResponse]{@link enfonica.voice.v1beta1.ListCallsResponse}.
+   *   [ListTranscriptionsResponse]{@link enfonica.voice.v1beta1.ListTranscriptionsResponse}.
    *
    *   The promise has a method named "cancel" which cancels the ongoing API call.
    */
-  listCalls(
-    request: protos.enfonica.voice.v1beta1.IListCallsRequest,
+  listTranscriptions(
+    request: protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
     optionsOrCallback?:
       | gax.CallOptions
       | PaginationCallback<
-          protos.enfonica.voice.v1beta1.IListCallsRequest,
-          protos.enfonica.voice.v1beta1.IListCallsResponse | null | undefined,
-          protos.enfonica.voice.v1beta1.ICall
+          protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
+          | protos.enfonica.voice.v1beta1.IListTranscriptionsResponse
+          | null
+          | undefined,
+          protos.enfonica.voice.v1beta1.ITranscription
         >,
     callback?: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListCallsRequest,
-      protos.enfonica.voice.v1beta1.IListCallsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.ICall
+      protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
+      | protos.enfonica.voice.v1beta1.IListTranscriptionsResponse
+      | null
+      | undefined,
+      protos.enfonica.voice.v1beta1.ITranscription
     >
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.ICall[],
-      protos.enfonica.voice.v1beta1.IListCallsRequest | null,
-      protos.enfonica.voice.v1beta1.IListCallsResponse
+      protos.enfonica.voice.v1beta1.ITranscription[],
+      protos.enfonica.voice.v1beta1.IListTranscriptionsRequest | null,
+      protos.enfonica.voice.v1beta1.IListTranscriptionsResponse
     ]
   > | void {
     request = request || {};
@@ -590,13 +602,13 @@ export class CallsClient {
         parent: request.parent || '',
       });
     this.initialize();
-    return this.innerApiCalls.listCalls(request, options, callback);
+    return this.innerApiCalls.listTranscriptions(request, options, callback);
   }
 
   /**
-   * Equivalent to {@link listCalls}, but returns a NodeJS Stream object.
+   * Equivalent to {@link listTranscriptions}, but returns a NodeJS Stream object.
    *
-   * This fetches the paged responses for {@link listCalls} continuously
+   * This fetches the paged responses for {@link listTranscriptions} continuously
    * and invokes the callback registered for 'data' event for each element in the
    * responses.
    *
@@ -609,37 +621,26 @@ export class CallsClient {
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list calls.
-   *   Must be of the form `projects/*`.
+   *   The resource name of the parent of which to list transcriptions.
+   *   May be of the form `projects/* /calls/*` to list the transcriptions of that
+   *   specific call, or `projects/*` to list transcriptions across the entire project,
+   *   which maps to `projects/* /calls/-`.
    * @param {number} request.pageSize
-   *   The maximum number of Calls to return in the response.
+   *   The maximum number of Transcriptions to return in the response.
    *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
-   *   A pagination token returned from a previous call to `ListCalls`
+   *   A pagination token returned from a previous transcription to `ListTranscriptions`
    *   that indicates where this listing should continue from.
-   * @param {string} request.filter
-   *   Filter string to specify which results should be returned.
-   *
-   *   The following fields can be filtered:
-   *   - `createTime`
-   *   - `to`
-   *   - `from`
-   *   - `state`
-   *   - `direction`
-   *   - `transport`
-   *
-   *   For example:
-   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
-   *   state = COMPLETED OR state = BUSY AND to = '+61*' OR from = '+61*'
-   *
-   *   Note that OR has higher precendence than AND.
+   * @param {enfonica.voice.v1beta1.TranscriptionView} request.view
+   *   Configuration of partial responses.
+   *   Defaults to BASIC.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
-   *   An object stream which emits an object representing [Call]{@link enfonica.voice.v1beta1.Call} on 'data' event.
+   *   An object stream which emits an object representing [Transcription]{@link enfonica.voice.v1beta1.Transcription} on 'data' event.
    */
-  listCallsStream(
-    request?: protos.enfonica.voice.v1beta1.IListCallsRequest,
+  listTranscriptionsStream(
+    request?: protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
     options?: gax.CallOptions
   ): Transform {
     request = request || {};
@@ -652,54 +653,43 @@ export class CallsClient {
       });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
-    return this.descriptors.page.listCalls.createStream(
-      this.innerApiCalls.listCalls as gax.GaxCall,
+    return this.descriptors.page.listTranscriptions.createStream(
+      this.innerApiCalls.listTranscriptions as gax.GaxCall,
       request,
       callSettings
     );
   }
 
   /**
-   * Equivalent to {@link listCalls}, but returns an iterable object.
+   * Equivalent to {@link listTranscriptions}, but returns an iterable object.
    *
    * for-await-of syntax is used with the iterable to recursively get response element on-demand.
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list calls.
-   *   Must be of the form `projects/*`.
+   *   The resource name of the parent of which to list transcriptions.
+   *   May be of the form `projects/* /calls/*` to list the transcriptions of that
+   *   specific call, or `projects/*` to list transcriptions across the entire project,
+   *   which maps to `projects/* /calls/-`.
    * @param {number} request.pageSize
-   *   The maximum number of Calls to return in the response.
+   *   The maximum number of Transcriptions to return in the response.
    *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
-   *   A pagination token returned from a previous call to `ListCalls`
+   *   A pagination token returned from a previous transcription to `ListTranscriptions`
    *   that indicates where this listing should continue from.
-   * @param {string} request.filter
-   *   Filter string to specify which results should be returned.
-   *
-   *   The following fields can be filtered:
-   *   - `createTime`
-   *   - `to`
-   *   - `from`
-   *   - `state`
-   *   - `direction`
-   *   - `transport`
-   *
-   *   For example:
-   *   createTime >= '2021-01-01T06:00:00.0Z' AND createTime < '2021-02-01' AND
-   *   state = COMPLETED OR state = BUSY AND to = '+61*' OR from = '+61*'
-   *
-   *   Note that OR has higher precendence than AND.
+   * @param {enfonica.voice.v1beta1.TranscriptionView} request.view
+   *   Configuration of partial responses.
+   *   Defaults to BASIC.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}
    *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
    */
-  listCallsAsync(
-    request?: protos.enfonica.voice.v1beta1.IListCallsRequest,
+  listTranscriptionsAsync(
+    request?: protos.enfonica.voice.v1beta1.IListTranscriptionsRequest,
     options?: gax.CallOptions
-  ): AsyncIterable<protos.enfonica.voice.v1beta1.ICall> {
+  ): AsyncIterable<protos.enfonica.voice.v1beta1.ITranscription> {
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -711,11 +701,11 @@ export class CallsClient {
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
-    return this.descriptors.page.listCalls.asyncIterate(
-      this.innerApiCalls['listCalls'] as GaxCall,
+    return this.descriptors.page.listTranscriptions.asyncIterate(
+      this.innerApiCalls['listTranscriptions'] as GaxCall,
       request as unknown as RequestType,
       callSettings
-    ) as AsyncIterable<protos.enfonica.voice.v1beta1.ICall>;
+    ) as AsyncIterable<protos.enfonica.voice.v1beta1.ITranscription>;
   }
   // --------------------
   // -- Path templates --
@@ -868,7 +858,7 @@ export class CallsClient {
   close(): Promise<void> {
     this.initialize();
     if (!this._terminated) {
-      return this.callsStub!.then(stub => {
+      return this.transcriptionsStub!.then(stub => {
         this._terminated = true;
         stub.close();
       });

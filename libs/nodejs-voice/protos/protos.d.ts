@@ -23,6 +23,144 @@ export namespace enfonica {
         /** Namespace v1beta1. */
         namespace v1beta1 {
 
+            /** Properties of a CallRecordingConfig. */
+            interface ICallRecordingConfig {
+
+                /** CallRecordingConfig trigger */
+                trigger?: (enfonica.voice.v1beta1.CallRecordingConfig.CallRecordingTrigger|keyof typeof enfonica.voice.v1beta1.CallRecordingConfig.CallRecordingTrigger|null);
+
+                /** CallRecordingConfig postProcessing */
+                postProcessing?: (enfonica.voice.v1beta1.PostProcessing[]|null);
+
+                /** CallRecordingConfig recordingReadyUri */
+                recordingReadyUri?: (string|null);
+
+                /** CallRecordingConfig transcribe */
+                transcribe?: (enfonica.voice.v1beta1.TranscribeOption|keyof typeof enfonica.voice.v1beta1.TranscribeOption|null);
+
+                /** CallRecordingConfig transcriptionReadyUri */
+                transcriptionReadyUri?: (string|null);
+            }
+
+            /** Represents a CallRecordingConfig. */
+            class CallRecordingConfig implements ICallRecordingConfig {
+
+                /**
+                 * Constructs a new CallRecordingConfig.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ICallRecordingConfig);
+
+                /** CallRecordingConfig trigger. */
+                public trigger: (enfonica.voice.v1beta1.CallRecordingConfig.CallRecordingTrigger|keyof typeof enfonica.voice.v1beta1.CallRecordingConfig.CallRecordingTrigger);
+
+                /** CallRecordingConfig postProcessing. */
+                public postProcessing: enfonica.voice.v1beta1.PostProcessing[];
+
+                /** CallRecordingConfig recordingReadyUri. */
+                public recordingReadyUri: string;
+
+                /** CallRecordingConfig transcribe. */
+                public transcribe: (enfonica.voice.v1beta1.TranscribeOption|keyof typeof enfonica.voice.v1beta1.TranscribeOption);
+
+                /** CallRecordingConfig transcriptionReadyUri. */
+                public transcriptionReadyUri: string;
+
+                /**
+                 * Creates a new CallRecordingConfig instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns CallRecordingConfig instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ICallRecordingConfig): enfonica.voice.v1beta1.CallRecordingConfig;
+
+                /**
+                 * Encodes the specified CallRecordingConfig message. Does not implicitly {@link enfonica.voice.v1beta1.CallRecordingConfig.verify|verify} messages.
+                 * @param message CallRecordingConfig message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ICallRecordingConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified CallRecordingConfig message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CallRecordingConfig.verify|verify} messages.
+                 * @param message CallRecordingConfig message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ICallRecordingConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a CallRecordingConfig message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns CallRecordingConfig
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.CallRecordingConfig;
+
+                /**
+                 * Decodes a CallRecordingConfig message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns CallRecordingConfig
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.CallRecordingConfig;
+
+                /**
+                 * Verifies a CallRecordingConfig message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a CallRecordingConfig message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns CallRecordingConfig
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.CallRecordingConfig;
+
+                /**
+                 * Creates a plain object from a CallRecordingConfig message. Also converts values to other types if specified.
+                 * @param message CallRecordingConfig
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.CallRecordingConfig, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this CallRecordingConfig to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            namespace CallRecordingConfig {
+
+                /** CallRecordingTrigger enum. */
+                enum CallRecordingTrigger {
+                    CALL_RECORDING_TRIGGER_UNSPECIFIED = 0,
+                    DISABLED = 1,
+                    ANSWER = 2,
+                    BRIDGE = 3
+                }
+            }
+
+            /** PostProcessing enum. */
+            enum PostProcessing {
+                POST_PROCESSING_UNSPECIFIED = 0,
+                TRIM_SILENCE = 1
+            }
+
+            /** TranscribeOption enum. */
+            enum TranscribeOption {
+                TRANSCRIBE_OPTION_UNSPECIFIED = 0,
+                DISABLED = 1,
+                DEFAULT = 2
+            }
+
             /** Properties of a CallRequest. */
             interface ICallRequest {
 
@@ -140,6 +278,20 @@ export namespace enfonica {
                 public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Calls;
 
                 /**
+                 * Calls CreateCall.
+                 * @param request CreateCallRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and Call
+                 */
+                public createCall(request: enfonica.voice.v1beta1.ICreateCallRequest, callback: enfonica.voice.v1beta1.Calls.CreateCallCallback): void;
+
+                /**
+                 * Calls CreateCall.
+                 * @param request CreateCallRequest message or plain object
+                 * @returns Promise
+                 */
+                public createCall(request: enfonica.voice.v1beta1.ICreateCallRequest): Promise<enfonica.voice.v1beta1.Call>;
+
+                /**
                  * Calls GetCall.
                  * @param request GetCallRequest message or plain object
                  * @param callback Node-style callback called with the error, if any, and Call
@@ -171,6 +323,13 @@ export namespace enfonica {
             namespace Calls {
 
                 /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Calls#createCall}.
+                 * @param error Error, if any
+                 * @param [response] Call
+                 */
+                type CreateCallCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Call) => void;
+
+                /**
                  * Callback as used by {@link enfonica.voice.v1beta1.Calls#getCall}.
                  * @param error Error, if any
                  * @param [response] Call
@@ -199,15 +358,6 @@ export namespace enfonica {
 
                 /** Call isPrivate */
                 isPrivate?: (boolean|null);
-
-                /** Call statusUpdateUri */
-                statusUpdateUri?: (string|null);
-
-                /** Call handleUri */
-                handleUri?: (string|null);
-
-                /** Call validityPeriodSeconds */
-                validityPeriodSeconds?: (number|null);
 
                 /** Call labels */
                 labels?: ({ [k: string]: string }|null);
@@ -250,6 +400,12 @@ export namespace enfonica {
 
                 /** Call originatingCall */
                 originatingCall?: (string|null);
+
+                /** Call createMethod */
+                createMethod?: (enfonica.voice.v1beta1.Call.CreateMethod|keyof typeof enfonica.voice.v1beta1.Call.CreateMethod|null);
+
+                /** Call options */
+                options?: (enfonica.voice.v1beta1.Call.IApiCallOptions|null);
             }
 
             /** Represents a Call. */
@@ -272,15 +428,6 @@ export namespace enfonica {
 
                 /** Call isPrivate. */
                 public isPrivate: boolean;
-
-                /** Call statusUpdateUri. */
-                public statusUpdateUri: string;
-
-                /** Call handleUri. */
-                public handleUri: string;
-
-                /** Call validityPeriodSeconds. */
-                public validityPeriodSeconds: number;
 
                 /** Call labels. */
                 public labels: { [k: string]: string };
@@ -323,6 +470,12 @@ export namespace enfonica {
 
                 /** Call originatingCall. */
                 public originatingCall: string;
+
+                /** Call createMethod. */
+                public createMethod: (enfonica.voice.v1beta1.Call.CreateMethod|keyof typeof enfonica.voice.v1beta1.Call.CreateMethod);
+
+                /** Call options. */
+                public options?: (enfonica.voice.v1beta1.Call.IApiCallOptions|null);
 
                 /**
                  * Creates a new Call instance using the specified properties.
@@ -397,6 +550,114 @@ export namespace enfonica {
 
             namespace Call {
 
+                /** Properties of an ApiCallOptions. */
+                interface IApiCallOptions {
+
+                    /** ApiCallOptions handlerUris */
+                    handlerUris?: (string[]|null);
+
+                    /** ApiCallOptions stateUpdateUri */
+                    stateUpdateUri?: (string|null);
+
+                    /** ApiCallOptions timeoutSeconds */
+                    timeoutSeconds?: (number|null);
+
+                    /** ApiCallOptions recording */
+                    recording?: (enfonica.voice.v1beta1.ICallRecordingConfig|null);
+                }
+
+                /** Represents an ApiCallOptions. */
+                class ApiCallOptions implements IApiCallOptions {
+
+                    /**
+                     * Constructs a new ApiCallOptions.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: enfonica.voice.v1beta1.Call.IApiCallOptions);
+
+                    /** ApiCallOptions handlerUris. */
+                    public handlerUris: string[];
+
+                    /** ApiCallOptions stateUpdateUri. */
+                    public stateUpdateUri: string;
+
+                    /** ApiCallOptions timeoutSeconds. */
+                    public timeoutSeconds: number;
+
+                    /** ApiCallOptions recording. */
+                    public recording?: (enfonica.voice.v1beta1.ICallRecordingConfig|null);
+
+                    /**
+                     * Creates a new ApiCallOptions instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns ApiCallOptions instance
+                     */
+                    public static create(properties?: enfonica.voice.v1beta1.Call.IApiCallOptions): enfonica.voice.v1beta1.Call.ApiCallOptions;
+
+                    /**
+                     * Encodes the specified ApiCallOptions message. Does not implicitly {@link enfonica.voice.v1beta1.Call.ApiCallOptions.verify|verify} messages.
+                     * @param message ApiCallOptions message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: enfonica.voice.v1beta1.Call.IApiCallOptions, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified ApiCallOptions message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.Call.ApiCallOptions.verify|verify} messages.
+                     * @param message ApiCallOptions message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: enfonica.voice.v1beta1.Call.IApiCallOptions, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes an ApiCallOptions message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns ApiCallOptions
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.Call.ApiCallOptions;
+
+                    /**
+                     * Decodes an ApiCallOptions message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns ApiCallOptions
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.Call.ApiCallOptions;
+
+                    /**
+                     * Verifies an ApiCallOptions message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates an ApiCallOptions message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns ApiCallOptions
+                     */
+                    public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.Call.ApiCallOptions;
+
+                    /**
+                     * Creates a plain object from an ApiCallOptions message. Also converts values to other types if specified.
+                     * @param message ApiCallOptions
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: enfonica.voice.v1beta1.Call.ApiCallOptions, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this ApiCallOptions to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+
                 /** State enum. */
                 enum State {
                     STATE_UNSPECIFIED = 0,
@@ -425,6 +686,110 @@ export namespace enfonica {
                     CLIENT = 2,
                     SIP = 3
                 }
+
+                /** CreateMethod enum. */
+                enum CreateMethod {
+                    CREATE_METHOD_UNSPECIFIED = 0,
+                    INCOMING_CALL = 1,
+                    PARENT_CALL = 2,
+                    API = 3
+                }
+            }
+
+            /** Properties of a CreateCallRequest. */
+            interface ICreateCallRequest {
+
+                /** CreateCallRequest parent */
+                parent?: (string|null);
+
+                /** CreateCallRequest call */
+                call?: (enfonica.voice.v1beta1.ICall|null);
+            }
+
+            /** Represents a CreateCallRequest. */
+            class CreateCallRequest implements ICreateCallRequest {
+
+                /**
+                 * Constructs a new CreateCallRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ICreateCallRequest);
+
+                /** CreateCallRequest parent. */
+                public parent: string;
+
+                /** CreateCallRequest call. */
+                public call?: (enfonica.voice.v1beta1.ICall|null);
+
+                /**
+                 * Creates a new CreateCallRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns CreateCallRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ICreateCallRequest): enfonica.voice.v1beta1.CreateCallRequest;
+
+                /**
+                 * Encodes the specified CreateCallRequest message. Does not implicitly {@link enfonica.voice.v1beta1.CreateCallRequest.verify|verify} messages.
+                 * @param message CreateCallRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ICreateCallRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified CreateCallRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CreateCallRequest.verify|verify} messages.
+                 * @param message CreateCallRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ICreateCallRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a CreateCallRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns CreateCallRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.CreateCallRequest;
+
+                /**
+                 * Decodes a CreateCallRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns CreateCallRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.CreateCallRequest;
+
+                /**
+                 * Verifies a CreateCallRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a CreateCallRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns CreateCallRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.CreateCallRequest;
+
+                /**
+                 * Creates a plain object from a CreateCallRequest message. Also converts values to other types if specified.
+                 * @param message CreateCallRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.CreateCallRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this CreateCallRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
             }
 
             /** Properties of a GetCallRequest. */
@@ -827,7 +1192,7 @@ export namespace enfonica {
                 channelCount?: (number|null);
 
                 /** Recording postProcessing */
-                postProcessing?: (enfonica.voice.v1beta1.Recording.PostProcessing[]|null);
+                postProcessing?: (enfonica.voice.v1beta1.PostProcessing[]|null);
 
                 /** Recording errorCode */
                 errorCode?: (enfonica.voice.v1beta1.Recording.ErrorCode|keyof typeof enfonica.voice.v1beta1.Recording.ErrorCode|null);
@@ -870,7 +1235,7 @@ export namespace enfonica {
                 public channelCount: number;
 
                 /** Recording postProcessing. */
-                public postProcessing: enfonica.voice.v1beta1.Recording.PostProcessing[];
+                public postProcessing: enfonica.voice.v1beta1.PostProcessing[];
 
                 /** Recording errorCode. */
                 public errorCode: (enfonica.voice.v1beta1.Recording.ErrorCode|keyof typeof enfonica.voice.v1beta1.Recording.ErrorCode);
@@ -974,12 +1339,6 @@ export namespace enfonica {
                     SUCCEEDED = 2,
                     EMPTY = 3,
                     FAILED = 4
-                }
-
-                /** PostProcessing enum. */
-                enum PostProcessing {
-                    POST_PROCESSING_UNSPECIFIED = 0,
-                    TRIM_SILENCE = 1
                 }
 
                 /** ErrorCode enum. */
@@ -2417,6 +2776,747 @@ export namespace enfonica {
                 AUDIO_ENCODING_MULAW = 1,
                 AUDIO_ENCODING_ALAW = 2
             }
+
+            /** Represents a Transcriptions */
+            class Transcriptions extends $protobuf.rpc.Service {
+
+                /**
+                 * Constructs a new Transcriptions service.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 */
+                constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+                /**
+                 * Creates new Transcriptions service using the specified rpc implementation.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 * @returns RPC service. Useful where requests and/or responses are streamed.
+                 */
+                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Transcriptions;
+
+                /**
+                 * Calls GetTranscription.
+                 * @param request GetTranscriptionRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and Transcription
+                 */
+                public getTranscription(request: enfonica.voice.v1beta1.IGetTranscriptionRequest, callback: enfonica.voice.v1beta1.Transcriptions.GetTranscriptionCallback): void;
+
+                /**
+                 * Calls GetTranscription.
+                 * @param request GetTranscriptionRequest message or plain object
+                 * @returns Promise
+                 */
+                public getTranscription(request: enfonica.voice.v1beta1.IGetTranscriptionRequest): Promise<enfonica.voice.v1beta1.Transcription>;
+
+                /**
+                 * Calls ListTranscriptions.
+                 * @param request ListTranscriptionsRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and ListTranscriptionsResponse
+                 */
+                public listTranscriptions(request: enfonica.voice.v1beta1.IListTranscriptionsRequest, callback: enfonica.voice.v1beta1.Transcriptions.ListTranscriptionsCallback): void;
+
+                /**
+                 * Calls ListTranscriptions.
+                 * @param request ListTranscriptionsRequest message or plain object
+                 * @returns Promise
+                 */
+                public listTranscriptions(request: enfonica.voice.v1beta1.IListTranscriptionsRequest): Promise<enfonica.voice.v1beta1.ListTranscriptionsResponse>;
+
+                /**
+                 * Calls DeleteTranscription.
+                 * @param request DeleteTranscriptionRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and Empty
+                 */
+                public deleteTranscription(request: enfonica.voice.v1beta1.IDeleteTranscriptionRequest, callback: enfonica.voice.v1beta1.Transcriptions.DeleteTranscriptionCallback): void;
+
+                /**
+                 * Calls DeleteTranscription.
+                 * @param request DeleteTranscriptionRequest message or plain object
+                 * @returns Promise
+                 */
+                public deleteTranscription(request: enfonica.voice.v1beta1.IDeleteTranscriptionRequest): Promise<google.protobuf.Empty>;
+            }
+
+            namespace Transcriptions {
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#getTranscription}.
+                 * @param error Error, if any
+                 * @param [response] Transcription
+                 */
+                type GetTranscriptionCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Transcription) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#listTranscriptions}.
+                 * @param error Error, if any
+                 * @param [response] ListTranscriptionsResponse
+                 */
+                type ListTranscriptionsCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.ListTranscriptionsResponse) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#deleteTranscription}.
+                 * @param error Error, if any
+                 * @param [response] Empty
+                 */
+                type DeleteTranscriptionCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
+            }
+
+            /** Properties of a Transcription. */
+            interface ITranscription {
+
+                /** Transcription name */
+                name?: (string|null);
+
+                /** Transcription recording */
+                recording?: (string|null);
+
+                /** Transcription state */
+                state?: (enfonica.voice.v1beta1.Transcription.State|keyof typeof enfonica.voice.v1beta1.Transcription.State|null);
+
+                /** Transcription duration */
+                duration?: (google.protobuf.IDuration|null);
+
+                /** Transcription channelCount */
+                channelCount?: (number|null);
+
+                /** Transcription createTime */
+                createTime?: (google.protobuf.ITimestamp|null);
+
+                /** Transcription updateTime */
+                updateTime?: (google.protobuf.ITimestamp|null);
+
+                /** Transcription readyUri */
+                readyUri?: (string|null);
+
+                /** Transcription utterances */
+                utterances?: (enfonica.voice.v1beta1.IUtterance[]|null);
+            }
+
+            /** Represents a Transcription. */
+            class Transcription implements ITranscription {
+
+                /**
+                 * Constructs a new Transcription.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ITranscription);
+
+                /** Transcription name. */
+                public name: string;
+
+                /** Transcription recording. */
+                public recording: string;
+
+                /** Transcription state. */
+                public state: (enfonica.voice.v1beta1.Transcription.State|keyof typeof enfonica.voice.v1beta1.Transcription.State);
+
+                /** Transcription duration. */
+                public duration?: (google.protobuf.IDuration|null);
+
+                /** Transcription channelCount. */
+                public channelCount: number;
+
+                /** Transcription createTime. */
+                public createTime?: (google.protobuf.ITimestamp|null);
+
+                /** Transcription updateTime. */
+                public updateTime?: (google.protobuf.ITimestamp|null);
+
+                /** Transcription readyUri. */
+                public readyUri: string;
+
+                /** Transcription utterances. */
+                public utterances: enfonica.voice.v1beta1.IUtterance[];
+
+                /**
+                 * Creates a new Transcription instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Transcription instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ITranscription): enfonica.voice.v1beta1.Transcription;
+
+                /**
+                 * Encodes the specified Transcription message. Does not implicitly {@link enfonica.voice.v1beta1.Transcription.verify|verify} messages.
+                 * @param message Transcription message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ITranscription, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Transcription message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.Transcription.verify|verify} messages.
+                 * @param message Transcription message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ITranscription, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Transcription message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Transcription
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.Transcription;
+
+                /**
+                 * Decodes a Transcription message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Transcription
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.Transcription;
+
+                /**
+                 * Verifies a Transcription message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Transcription message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Transcription
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.Transcription;
+
+                /**
+                 * Creates a plain object from a Transcription message. Also converts values to other types if specified.
+                 * @param message Transcription
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.Transcription, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Transcription to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            namespace Transcription {
+
+                /** State enum. */
+                enum State {
+                    STATE_UNSPECIFIED = 0,
+                    PENDING = 1,
+                    COMPLETED = 2,
+                    FAILED = 3
+                }
+            }
+
+            /** Properties of an Utterance. */
+            interface IUtterance {
+
+                /** Utterance channel */
+                channel?: (number|null);
+
+                /** Utterance offset */
+                offset?: (google.protobuf.IDuration|null);
+
+                /** Utterance duration */
+                duration?: (google.protobuf.IDuration|null);
+
+                /** Utterance text */
+                text?: (string|null);
+            }
+
+            /** Represents an Utterance. */
+            class Utterance implements IUtterance {
+
+                /**
+                 * Constructs a new Utterance.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IUtterance);
+
+                /** Utterance channel. */
+                public channel: number;
+
+                /** Utterance offset. */
+                public offset?: (google.protobuf.IDuration|null);
+
+                /** Utterance duration. */
+                public duration?: (google.protobuf.IDuration|null);
+
+                /** Utterance text. */
+                public text: string;
+
+                /**
+                 * Creates a new Utterance instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Utterance instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IUtterance): enfonica.voice.v1beta1.Utterance;
+
+                /**
+                 * Encodes the specified Utterance message. Does not implicitly {@link enfonica.voice.v1beta1.Utterance.verify|verify} messages.
+                 * @param message Utterance message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IUtterance, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Utterance message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.Utterance.verify|verify} messages.
+                 * @param message Utterance message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IUtterance, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an Utterance message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Utterance
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.Utterance;
+
+                /**
+                 * Decodes an Utterance message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Utterance
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.Utterance;
+
+                /**
+                 * Verifies an Utterance message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an Utterance message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Utterance
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.Utterance;
+
+                /**
+                 * Creates a plain object from an Utterance message. Also converts values to other types if specified.
+                 * @param message Utterance
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.Utterance, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Utterance to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a GetTranscriptionRequest. */
+            interface IGetTranscriptionRequest {
+
+                /** GetTranscriptionRequest name */
+                name?: (string|null);
+
+                /** GetTranscriptionRequest view */
+                view?: (enfonica.voice.v1beta1.TranscriptionView|keyof typeof enfonica.voice.v1beta1.TranscriptionView|null);
+            }
+
+            /** Represents a GetTranscriptionRequest. */
+            class GetTranscriptionRequest implements IGetTranscriptionRequest {
+
+                /**
+                 * Constructs a new GetTranscriptionRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IGetTranscriptionRequest);
+
+                /** GetTranscriptionRequest name. */
+                public name: string;
+
+                /** GetTranscriptionRequest view. */
+                public view: (enfonica.voice.v1beta1.TranscriptionView|keyof typeof enfonica.voice.v1beta1.TranscriptionView);
+
+                /**
+                 * Creates a new GetTranscriptionRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns GetTranscriptionRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IGetTranscriptionRequest): enfonica.voice.v1beta1.GetTranscriptionRequest;
+
+                /**
+                 * Encodes the specified GetTranscriptionRequest message. Does not implicitly {@link enfonica.voice.v1beta1.GetTranscriptionRequest.verify|verify} messages.
+                 * @param message GetTranscriptionRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IGetTranscriptionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified GetTranscriptionRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.GetTranscriptionRequest.verify|verify} messages.
+                 * @param message GetTranscriptionRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IGetTranscriptionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a GetTranscriptionRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns GetTranscriptionRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.GetTranscriptionRequest;
+
+                /**
+                 * Decodes a GetTranscriptionRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns GetTranscriptionRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.GetTranscriptionRequest;
+
+                /**
+                 * Verifies a GetTranscriptionRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a GetTranscriptionRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns GetTranscriptionRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.GetTranscriptionRequest;
+
+                /**
+                 * Creates a plain object from a GetTranscriptionRequest message. Also converts values to other types if specified.
+                 * @param message GetTranscriptionRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.GetTranscriptionRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this GetTranscriptionRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListTranscriptionsRequest. */
+            interface IListTranscriptionsRequest {
+
+                /** ListTranscriptionsRequest parent */
+                parent?: (string|null);
+
+                /** ListTranscriptionsRequest pageSize */
+                pageSize?: (number|null);
+
+                /** ListTranscriptionsRequest pageToken */
+                pageToken?: (string|null);
+
+                /** ListTranscriptionsRequest view */
+                view?: (enfonica.voice.v1beta1.TranscriptionView|keyof typeof enfonica.voice.v1beta1.TranscriptionView|null);
+            }
+
+            /** Represents a ListTranscriptionsRequest. */
+            class ListTranscriptionsRequest implements IListTranscriptionsRequest {
+
+                /**
+                 * Constructs a new ListTranscriptionsRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IListTranscriptionsRequest);
+
+                /** ListTranscriptionsRequest parent. */
+                public parent: string;
+
+                /** ListTranscriptionsRequest pageSize. */
+                public pageSize: number;
+
+                /** ListTranscriptionsRequest pageToken. */
+                public pageToken: string;
+
+                /** ListTranscriptionsRequest view. */
+                public view: (enfonica.voice.v1beta1.TranscriptionView|keyof typeof enfonica.voice.v1beta1.TranscriptionView);
+
+                /**
+                 * Creates a new ListTranscriptionsRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListTranscriptionsRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IListTranscriptionsRequest): enfonica.voice.v1beta1.ListTranscriptionsRequest;
+
+                /**
+                 * Encodes the specified ListTranscriptionsRequest message. Does not implicitly {@link enfonica.voice.v1beta1.ListTranscriptionsRequest.verify|verify} messages.
+                 * @param message ListTranscriptionsRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IListTranscriptionsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListTranscriptionsRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListTranscriptionsRequest.verify|verify} messages.
+                 * @param message ListTranscriptionsRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IListTranscriptionsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListTranscriptionsRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListTranscriptionsRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.ListTranscriptionsRequest;
+
+                /**
+                 * Decodes a ListTranscriptionsRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListTranscriptionsRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.ListTranscriptionsRequest;
+
+                /**
+                 * Verifies a ListTranscriptionsRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListTranscriptionsRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListTranscriptionsRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.ListTranscriptionsRequest;
+
+                /**
+                 * Creates a plain object from a ListTranscriptionsRequest message. Also converts values to other types if specified.
+                 * @param message ListTranscriptionsRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.ListTranscriptionsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListTranscriptionsRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListTranscriptionsResponse. */
+            interface IListTranscriptionsResponse {
+
+                /** ListTranscriptionsResponse transcriptions */
+                transcriptions?: (enfonica.voice.v1beta1.ITranscription[]|null);
+
+                /** ListTranscriptionsResponse nextPageToken */
+                nextPageToken?: (string|null);
+            }
+
+            /** Represents a ListTranscriptionsResponse. */
+            class ListTranscriptionsResponse implements IListTranscriptionsResponse {
+
+                /**
+                 * Constructs a new ListTranscriptionsResponse.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IListTranscriptionsResponse);
+
+                /** ListTranscriptionsResponse transcriptions. */
+                public transcriptions: enfonica.voice.v1beta1.ITranscription[];
+
+                /** ListTranscriptionsResponse nextPageToken. */
+                public nextPageToken: string;
+
+                /**
+                 * Creates a new ListTranscriptionsResponse instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListTranscriptionsResponse instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IListTranscriptionsResponse): enfonica.voice.v1beta1.ListTranscriptionsResponse;
+
+                /**
+                 * Encodes the specified ListTranscriptionsResponse message. Does not implicitly {@link enfonica.voice.v1beta1.ListTranscriptionsResponse.verify|verify} messages.
+                 * @param message ListTranscriptionsResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IListTranscriptionsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListTranscriptionsResponse message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListTranscriptionsResponse.verify|verify} messages.
+                 * @param message ListTranscriptionsResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IListTranscriptionsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListTranscriptionsResponse message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListTranscriptionsResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.ListTranscriptionsResponse;
+
+                /**
+                 * Decodes a ListTranscriptionsResponse message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListTranscriptionsResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.ListTranscriptionsResponse;
+
+                /**
+                 * Verifies a ListTranscriptionsResponse message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListTranscriptionsResponse message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListTranscriptionsResponse
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.ListTranscriptionsResponse;
+
+                /**
+                 * Creates a plain object from a ListTranscriptionsResponse message. Also converts values to other types if specified.
+                 * @param message ListTranscriptionsResponse
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.ListTranscriptionsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListTranscriptionsResponse to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a DeleteTranscriptionRequest. */
+            interface IDeleteTranscriptionRequest {
+
+                /** DeleteTranscriptionRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a DeleteTranscriptionRequest. */
+            class DeleteTranscriptionRequest implements IDeleteTranscriptionRequest {
+
+                /**
+                 * Constructs a new DeleteTranscriptionRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IDeleteTranscriptionRequest);
+
+                /** DeleteTranscriptionRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new DeleteTranscriptionRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns DeleteTranscriptionRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IDeleteTranscriptionRequest): enfonica.voice.v1beta1.DeleteTranscriptionRequest;
+
+                /**
+                 * Encodes the specified DeleteTranscriptionRequest message. Does not implicitly {@link enfonica.voice.v1beta1.DeleteTranscriptionRequest.verify|verify} messages.
+                 * @param message DeleteTranscriptionRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IDeleteTranscriptionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified DeleteTranscriptionRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.DeleteTranscriptionRequest.verify|verify} messages.
+                 * @param message DeleteTranscriptionRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IDeleteTranscriptionRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a DeleteTranscriptionRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns DeleteTranscriptionRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.DeleteTranscriptionRequest;
+
+                /**
+                 * Decodes a DeleteTranscriptionRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns DeleteTranscriptionRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.DeleteTranscriptionRequest;
+
+                /**
+                 * Verifies a DeleteTranscriptionRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a DeleteTranscriptionRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns DeleteTranscriptionRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.DeleteTranscriptionRequest;
+
+                /**
+                 * Creates a plain object from a DeleteTranscriptionRequest message. Also converts values to other types if specified.
+                 * @param message DeleteTranscriptionRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.DeleteTranscriptionRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this DeleteTranscriptionRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** TranscriptionView enum. */
+            enum TranscriptionView {
+                TRANSCRIPTION_VIEW_UNSPECIFIED = 0,
+                TRANSCRIPTION_VIEW_BASIC = 1,
+                TRANSCRIPTION_VIEW_FULL = 2
+            }
         }
     }
 }
@@ -2518,6 +3618,102 @@ export namespace google {
 
             /**
              * Converts this Timestamp to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a Duration. */
+        interface IDuration {
+
+            /** Duration seconds */
+            seconds?: (number|Long|string|null);
+
+            /** Duration nanos */
+            nanos?: (number|null);
+        }
+
+        /** Represents a Duration. */
+        class Duration implements IDuration {
+
+            /**
+             * Constructs a new Duration.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IDuration);
+
+            /** Duration seconds. */
+            public seconds: (number|Long|string);
+
+            /** Duration nanos. */
+            public nanos: number;
+
+            /**
+             * Creates a new Duration instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Duration instance
+             */
+            public static create(properties?: google.protobuf.IDuration): google.protobuf.Duration;
+
+            /**
+             * Encodes the specified Duration message. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+             * @param message Duration message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IDuration, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Duration message, length delimited. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+             * @param message Duration message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IDuration, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Duration message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Duration
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Duration;
+
+            /**
+             * Decodes a Duration message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Duration
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Duration;
+
+            /**
+             * Verifies a Duration message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Duration message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Duration
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Duration;
+
+            /**
+             * Creates a plain object from a Duration message. Also converts values to other types if specified.
+             * @param message Duration
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Duration, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Duration to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -5649,102 +6845,6 @@ export namespace google {
             }
         }
 
-        /** Properties of a Duration. */
-        interface IDuration {
-
-            /** Duration seconds */
-            seconds?: (number|Long|string|null);
-
-            /** Duration nanos */
-            nanos?: (number|null);
-        }
-
-        /** Represents a Duration. */
-        class Duration implements IDuration {
-
-            /**
-             * Constructs a new Duration.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.protobuf.IDuration);
-
-            /** Duration seconds. */
-            public seconds: (number|Long|string);
-
-            /** Duration nanos. */
-            public nanos: number;
-
-            /**
-             * Creates a new Duration instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns Duration instance
-             */
-            public static create(properties?: google.protobuf.IDuration): google.protobuf.Duration;
-
-            /**
-             * Encodes the specified Duration message. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
-             * @param message Duration message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.protobuf.IDuration, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Duration message, length delimited. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
-             * @param message Duration message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.protobuf.IDuration, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a Duration message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Duration
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Duration;
-
-            /**
-             * Decodes a Duration message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Duration
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Duration;
-
-            /**
-             * Verifies a Duration message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a Duration message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Duration
-             */
-            public static fromObject(object: { [k: string]: any }): google.protobuf.Duration;
-
-            /**
-             * Creates a plain object from a Duration message. Also converts values to other types if specified.
-             * @param message Duration
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.protobuf.Duration, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Duration to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
         /** Properties of an Any. */
         interface IAny {
 
@@ -5836,6 +6936,90 @@ export namespace google {
 
             /**
              * Converts this Any to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of an Empty. */
+        interface IEmpty {
+        }
+
+        /** Represents an Empty. */
+        class Empty implements IEmpty {
+
+            /**
+             * Constructs a new Empty.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IEmpty);
+
+            /**
+             * Creates a new Empty instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Empty instance
+             */
+            public static create(properties?: google.protobuf.IEmpty): google.protobuf.Empty;
+
+            /**
+             * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+             * @param message Empty message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+             * @param message Empty message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Empty message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Empty
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Empty;
+
+            /**
+             * Decodes an Empty message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Empty
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Empty;
+
+            /**
+             * Verifies an Empty message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Empty message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Empty
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Empty;
+
+            /**
+             * Creates a plain object from an Empty message. Also converts values to other types if specified.
+             * @param message Empty
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Empty, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Empty to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -5988,19 +7172,19 @@ export namespace google {
             public selector: string;
 
             /** HttpRule get. */
-            public get: string;
+            public get?: (string|null);
 
             /** HttpRule put. */
-            public put: string;
+            public put?: (string|null);
 
             /** HttpRule post. */
-            public post: string;
+            public post?: (string|null);
 
             /** HttpRule delete. */
-            public delete: string;
+            public delete?: (string|null);
 
             /** HttpRule patch. */
-            public patch: string;
+            public patch?: (string|null);
 
             /** HttpRule custom. */
             public custom?: (google.api.ICustomHttpPattern|null);

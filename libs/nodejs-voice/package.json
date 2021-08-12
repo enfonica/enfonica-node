@@ -1,6 +1,6 @@
 {
   "name": "@enfonica/voice",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Enfonica Numbering SDK for Node.js",
   "repository": "enfonica-node/libs/nodejs-voice",
   "license": "Apache-2.0",
@@ -23,7 +23,8 @@
     "@enfonica/voice",
     "calls",
     "recordings",
-    "streams"
+    "streams",
+    "transcriptions"
   ],
   "scripts": {
     "clean": "gts clean",
