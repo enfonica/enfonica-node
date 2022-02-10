@@ -1,6 +1,6 @@
 {
   "name": "@enfonica/voice",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Enfonica Numbering SDK for Node.js",
   "repository": "enfonica-node/libs/nodejs-voice",
   "license": "Apache-2.0",
@@ -21,8 +21,11 @@
     "cloud",
     "enfonica voice",
     "@enfonica/voice",
+    "aliases",
     "calls",
     "recordings",
+    "sip domains",
+    "sip info service",
     "streams",
     "transcriptions"
   ],

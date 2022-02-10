@@ -116,6 +116,13 @@ message PhoneNumberInstance {
 
     // The phone number instance has been suspended.
     SUSPENDED = 3;
+
+    // Activation for this phone number instance is pending, possibly because
+    // the associated phone number is awaiting port in.
+    //
+    // This state is used when the associated phone number has not yet been
+    // activated (ie its `activate_time` is not set).
+    PENDING = 4;
   }
 
   // The trigger to start call recording.
@@ -194,6 +201,13 @@ message PhoneNumberInstance {
 
   // The deletion time of the phone number instance, if it has been deleted.
   google.protobuf.Timestamp delete_time = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The time when the phone number instance became active. For a phone number
+  // purchased from inventory, this should match `create_time`. For a phone
+  // number that was ported in, this will be the time when the port in was
+  // successful. If not set, the instance has not become active.
+  // Output only.
+  google.protobuf.Timestamp activate_time = 13 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The state of the phone number instance in its lifecycle.
   LifecycleState lifecycle_state = 12 [(google.api.field_behavior) = OUTPUT_ONLY];

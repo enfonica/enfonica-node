@@ -1,4 +1,4 @@
-// Copyright 2021 Enfonica Pty Ltd
+// Copyright 2022 Enfonica Pty Ltd
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -156,11 +156,20 @@ export class StreamsClient {
     // identifiers to uniquely identify resources within the API.
     // Create useful helper objects for these.
     this.pathTemplates = {
+      aliasPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/sipDomains/{sip_domain}/aliases/{alias}'
+      ),
       callPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/calls/{call}'
       ),
       recordingPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/calls/{call}/recordings/{recording}'
+      ),
+      sipDomainPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/sipDomains/{sip_domain}'
+      ),
+      sipInfoPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/calls/{call}/sipInfo'
       ),
       streamPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/streams/{streams}'
@@ -326,6 +335,55 @@ export class StreamsClient {
   // --------------------
 
   /**
+   * Return a fully-qualified alias resource name string.
+   *
+   * @param {string} project
+   * @param {string} sip_domain
+   * @param {string} alias
+   * @returns {string} Resource name string.
+   */
+  aliasPath(project: string, sipDomain: string, alias: string) {
+    return this.pathTemplates.aliasPathTemplate.render({
+      project: project,
+      sip_domain: sipDomain,
+      alias: alias,
+    });
+  }
+
+  /**
+   * Parse the project from Alias resource.
+   *
+   * @param {string} aliasName
+   *   A fully-qualified path representing Alias resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromAliasName(aliasName: string) {
+    return this.pathTemplates.aliasPathTemplate.match(aliasName).project;
+  }
+
+  /**
+   * Parse the sip_domain from Alias resource.
+   *
+   * @param {string} aliasName
+   *   A fully-qualified path representing Alias resource.
+   * @returns {string} A string representing the sip_domain.
+   */
+  matchSipDomainFromAliasName(aliasName: string) {
+    return this.pathTemplates.aliasPathTemplate.match(aliasName).sip_domain;
+  }
+
+  /**
+   * Parse the alias from Alias resource.
+   *
+   * @param {string} aliasName
+   *   A fully-qualified path representing Alias resource.
+   * @returns {string} A string representing the alias.
+   */
+  matchAliasFromAliasName(aliasName: string) {
+    return this.pathTemplates.aliasPathTemplate.match(aliasName).alias;
+  }
+
+  /**
    * Return a fully-qualified call resource name string.
    *
    * @param {string} project
@@ -410,6 +468,80 @@ export class StreamsClient {
   matchRecordingFromRecordingName(recordingName: string) {
     return this.pathTemplates.recordingPathTemplate.match(recordingName)
       .recording;
+  }
+
+  /**
+   * Return a fully-qualified sipDomain resource name string.
+   *
+   * @param {string} project
+   * @param {string} sip_domain
+   * @returns {string} Resource name string.
+   */
+  sipDomainPath(project: string, sipDomain: string) {
+    return this.pathTemplates.sipDomainPathTemplate.render({
+      project: project,
+      sip_domain: sipDomain,
+    });
+  }
+
+  /**
+   * Parse the project from SipDomain resource.
+   *
+   * @param {string} sipDomainName
+   *   A fully-qualified path representing SipDomain resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromSipDomainName(sipDomainName: string) {
+    return this.pathTemplates.sipDomainPathTemplate.match(sipDomainName)
+      .project;
+  }
+
+  /**
+   * Parse the sip_domain from SipDomain resource.
+   *
+   * @param {string} sipDomainName
+   *   A fully-qualified path representing SipDomain resource.
+   * @returns {string} A string representing the sip_domain.
+   */
+  matchSipDomainFromSipDomainName(sipDomainName: string) {
+    return this.pathTemplates.sipDomainPathTemplate.match(sipDomainName)
+      .sip_domain;
+  }
+
+  /**
+   * Return a fully-qualified sipInfo resource name string.
+   *
+   * @param {string} project
+   * @param {string} call
+   * @returns {string} Resource name string.
+   */
+  sipInfoPath(project: string, call: string) {
+    return this.pathTemplates.sipInfoPathTemplate.render({
+      project: project,
+      call: call,
+    });
+  }
+
+  /**
+   * Parse the project from SipInfo resource.
+   *
+   * @param {string} sipInfoName
+   *   A fully-qualified path representing SipInfo resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromSipInfoName(sipInfoName: string) {
+    return this.pathTemplates.sipInfoPathTemplate.match(sipInfoName).project;
+  }
+
+  /**
+   * Parse the call from SipInfo resource.
+   *
+   * @param {string} sipInfoName
+   *   A fully-qualified path representing SipInfo resource.
+   * @returns {string} A string representing the call.
+   */
+  matchCallFromSipInfoName(sipInfoName: string) {
+    return this.pathTemplates.sipInfoPathTemplate.match(sipInfoName).call;
   }
 
   /**

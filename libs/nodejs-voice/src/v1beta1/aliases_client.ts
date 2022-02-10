@@ -31,16 +31,16 @@ import * as path from 'path';
 import {Transform} from 'stream';
 import {RequestType} from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
-import * as gapicConfig from './recordings_client_config.json';
+import * as gapicConfig from './aliases_client_config.json';
 
 const version = require('../../../package.json').version;
 
 /**
- *  Manages Recordings.
+ *  Manages SIP aliases.
  * @class
  * @memberof v1beta1
  */
-export class RecordingsClient {
+export class AliasesClient {
   private _terminated = false;
   private _opts: ClientOptions;
   private _gaxModule: typeof gax | typeof gax.fallback;
@@ -56,10 +56,10 @@ export class RecordingsClient {
   };
   innerApiCalls: {[name: string]: Function};
   pathTemplates: {[name: string]: gax.PathTemplate};
-  recordingsStub?: Promise<{[name: string]: Function}>;
+  aliasesStub?: Promise<{[name: string]: Function}>;
 
   /**
-   * Construct an instance of RecordingsClient.
+   * Construct an instance of AliasesClient.
    *
    * @param {object} [options] - The configuration object. See the subsequent
    *   parameters for more details.
@@ -86,7 +86,7 @@ export class RecordingsClient {
 
   constructor(opts?: any) {
     // Ensure that options include the service address and port.
-    const staticMembers = this.constructor as typeof RecordingsClient;
+    const staticMembers = this.constructor as typeof AliasesClient;
     const servicePath =
       opts && opts.servicePath
         ? opts.servicePath
@@ -113,12 +113,12 @@ export class RecordingsClient {
     // If we're running in browser, it's OK to omit `fallback` since
     // google-gax has `browser` field in its `package.json`.
     // For Electron (which does not respect `browser` field),
-    // pass `{fallback: true}` to the RecordingsClient constructor.
+    // pass `{fallback: true}` to the AliasesClient constructor.
     this._gaxModule = opts.fallback ? gax.fallback : gax;
 
     // Create a `gaxGrpc` object, with any grpc-specific options
     // sent to the client.
-    opts.scopes = (this.constructor as typeof RecordingsClient).scopes;
+    opts.scopes = (this.constructor as typeof AliasesClient).scopes;
     this._gaxGrpc = new this._gaxModule.GrpcClient(opts);
 
     // Save options to use in initialize() method.
@@ -186,16 +186,16 @@ export class RecordingsClient {
     // (e.g. 50 results at a time, with tokens to get subsequent
     // pages). Denote the keys used for pagination and results.
     this.descriptors.page = {
-      listRecordings: new this._gaxModule.PageDescriptor(
+      listAliases: new this._gaxModule.PageDescriptor(
         'pageToken',
         'nextPageToken',
-        'recordings'
+        'aliases'
       ),
     };
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-      'enfonica.voice.v1beta1.Recordings',
+      'enfonica.voice.v1beta1.Aliases',
       gapicConfig as gax.ClientConfig,
       opts.clientConfig || {},
       {'x-goog-api-client': clientHeader.join(' ')}
@@ -220,31 +220,33 @@ export class RecordingsClient {
    */
   initialize() {
     // If the client stub promise is already initialized, return immediately.
-    if (this.recordingsStub) {
-      return this.recordingsStub;
+    if (this.aliasesStub) {
+      return this.aliasesStub;
     }
 
     // Put together the "service stub" for
-    // enfonica.voice.v1beta1.Recordings.
-    this.recordingsStub = this._gaxGrpc.createStub(
+    // enfonica.voice.v1beta1.Aliases.
+    this.aliasesStub = this._gaxGrpc.createStub(
       this._opts.fallback
         ? (this._protos as protobuf.Root).lookupService(
-            'enfonica.voice.v1beta1.Recordings'
+            'enfonica.voice.v1beta1.Aliases'
           )
         : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (this._protos as any).enfonica.voice.v1beta1.Recordings,
+          (this._protos as any).enfonica.voice.v1beta1.Aliases,
       this._opts
     ) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const recordingsStubMethods = [
-      'getRecording',
-      'listRecordings',
-      'deleteRecording',
+    const aliasesStubMethods = [
+      'createAlias',
+      'getAlias',
+      'listAliases',
+      'updateAlias',
+      'deleteAlias',
     ];
-    for (const methodName of recordingsStubMethods) {
-      const callPromise = this.recordingsStub.then(
+    for (const methodName of aliasesStubMethods) {
+      const callPromise = this.aliasesStub.then(
         stub =>
           (...args: Array<{}>) => {
             if (this._terminated) {
@@ -268,7 +270,7 @@ export class RecordingsClient {
       this.innerApiCalls[methodName] = apiCall;
     }
 
-    return this.recordingsStub;
+    return this.aliasesStub;
   }
 
   /**
@@ -321,264 +323,78 @@ export class RecordingsClient {
   // -------------------
   // -- Service calls --
   // -------------------
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  createAlias(
+    request: protos.enfonica.voice.v1beta1.ICreateAliasRequest,
     options?: gax.CallOptions
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | undefined,
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.ICreateAliasRequest | undefined,
       {} | undefined
     ]
   >;
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  createAlias(
+    request: protos.enfonica.voice.v1beta1.ICreateAliasRequest,
     options: gax.CallOptions,
     callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.ICreateAliasRequest | null | undefined,
       {} | null | undefined
     >
   ): void;
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  createAlias(
+    request: protos.enfonica.voice.v1beta1.ICreateAliasRequest,
     callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.ICreateAliasRequest | null | undefined,
       {} | null | undefined
     >
   ): void;
   /**
-   * Retrieves a Recording identified by the supplied resource name.
+   * Creates a alias.
    *
-   * The caller must have `voice.recordings.get` permission on the project.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   The resource name of the Recording to retrieve.
-   *   Must be of the form `projects/* /calls/* /recordings/*`.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to FULL.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Recording]{@link enfonica.voice.v1beta1.Recording}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
-          protos.enfonica.voice.v1beta1.IRecording,
-          protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
-    request = request || {};
-    let options: gax.CallOptions;
-    if (typeof optionsOrCallback === 'function' && callback === undefined) {
-      callback = optionsOrCallback;
-      options = {};
-    } else {
-      options = optionsOrCallback as gax.CallOptions;
-    }
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        name: request.name || '',
-      });
-    this.initialize();
-    return this.innerApiCalls.getRecording(request, options, callback);
-  }
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | undefined,
-      {} | undefined
-    ]
-  >;
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes a recording.
-   *
-   * The caller must have `voice.recordings.delete` permission on the project.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   The resource name of the Recording to be deleted.
-   *   Must be of the form `projects/* /calls/* /recording/*`.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Recording]{@link enfonica.voice.v1beta1.Recording}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
-          protos.enfonica.voice.v1beta1.IRecording,
-          | protos.enfonica.voice.v1beta1.IDeleteRecordingRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
-    request = request || {};
-    let options: gax.CallOptions;
-    if (typeof optionsOrCallback === 'function' && callback === undefined) {
-      callback = optionsOrCallback;
-      options = {};
-    } else {
-      options = optionsOrCallback as gax.CallOptions;
-    }
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        name: request.name || '',
-      });
-    this.initialize();
-    return this.innerApiCalls.deleteRecording(request, options, callback);
-  }
-
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording[],
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest | null,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse
-    ]
-  >;
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    options: gax.CallOptions,
-    callback: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
-    >
-  ): void;
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    callback: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
-    >
-  ): void;
-  /**
-   * Lists the Recordings of the specified project.
-   * List returns Recordings sorted by create_time descending.
-   *
-   * The caller must have `voice.recordings.list` permission on the project.
+   * The caller must have `voice.aliases.create` permission on the project.
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
-   * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
-   *   Default value of 10 and maximum value of 100.
-   * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
-   *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
+   *   The SIP domain under which to create the alias in the form `projects/* /sipDomains/*`.
+   * @param {enfonica.voice.v1beta1.Alias} request.alias
+   *   The alias resource to be created.
+   * @param {string} request.aliasId
+   *   The `alias_id` component of the resource name to create, which will be of the form
+   *   `projects/{project_id}/sipDomains/{sip_domain_id}/aliases/{alias_id}`.
+   *
+   *   This also forms the address of the alias, of the form: {alias}@{sip_domain_id}.sip.enfonica.com
+   *
+   *   This must be lowercase alpha-numeric or hyphens and
+   *   must start and end with an alpha-numeric character, and must be a minimum of 2 and maximum of 30 characters.
+   *   This is captured in the following regular expression: ^{@link a-z0-9-|a-z0-9}{0,28}[a-z0-9]$
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [Recording]{@link enfonica.voice.v1beta1.Recording}.
-   *   The client library support auto-pagination by default: it will call the API as many
-   *   times as needed and will merge results from all the pages into this array.
-   *
-   *   When autoPaginate: false is specified through options, the array has three elements.
-   *   The first element is Array of [Recording]{@link enfonica.voice.v1beta1.Recording} that corresponds to
-   *   the one page received from the API server.
-   *   If the second element is not null it contains the request object of type [ListRecordingsRequest]{@link enfonica.voice.v1beta1.ListRecordingsRequest}
-   *   that can be used to obtain the next page of the results.
-   *   If it is null, the next page does not exist.
-   *   The third element contains the raw response received from the API server. Its type is
-   *   [ListRecordingsResponse]{@link enfonica.voice.v1beta1.ListRecordingsResponse}.
-   *
+   *   The first element of the array is an object representing [Alias]{@link enfonica.voice.v1beta1.Alias}.
    *   The promise has a method named "cancel" which cancels the ongoing API call.
    */
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
+  createAlias(
+    request: protos.enfonica.voice.v1beta1.ICreateAliasRequest,
     optionsOrCallback?:
       | gax.CallOptions
-      | PaginationCallback<
-          protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-          | protos.enfonica.voice.v1beta1.IListRecordingsResponse
-          | null
-          | undefined,
-          protos.enfonica.voice.v1beta1.IRecording
+      | Callback<
+          protos.enfonica.voice.v1beta1.IAlias,
+          protos.enfonica.voice.v1beta1.ICreateAliasRequest | null | undefined,
+          {} | null | undefined
         >,
-    callback?: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
+    callback?: Callback<
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.ICreateAliasRequest | null | undefined,
+      {} | null | undefined
     >
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.IRecording[],
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest | null,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.ICreateAliasRequest | undefined,
+      {} | undefined
     ]
   > | void {
     request = request || {};
@@ -597,13 +413,361 @@ export class RecordingsClient {
         parent: request.parent || '',
       });
     this.initialize();
-    return this.innerApiCalls.listRecordings(request, options, callback);
+    return this.innerApiCalls.createAlias(request, options, callback);
+  }
+  getAlias(
+    request: protos.enfonica.voice.v1beta1.IGetAliasRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IGetAliasRequest | undefined,
+      {} | undefined
+    ]
+  >;
+  getAlias(
+    request: protos.enfonica.voice.v1beta1.IGetAliasRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IGetAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  getAlias(
+    request: protos.enfonica.voice.v1beta1.IGetAliasRequest,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IGetAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Retrieves a alias identified by the supplied resource name.
+   *
+   * The caller must have `voice.aliases.get` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.name
+   *   The resource name of the alias to retrieve.
+   *   Must be of the form `projects/* /sipDomains/* /aliases/*`.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Alias]{@link enfonica.voice.v1beta1.Alias}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  getAlias(
+    request: protos.enfonica.voice.v1beta1.IGetAliasRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.enfonica.voice.v1beta1.IAlias,
+          protos.enfonica.voice.v1beta1.IGetAliasRequest | null | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IGetAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IGetAliasRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        name: request.name || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.getAlias(request, options, callback);
+  }
+  updateAlias(
+    request: protos.enfonica.voice.v1beta1.IUpdateAliasRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IUpdateAliasRequest | undefined,
+      {} | undefined
+    ]
+  >;
+  updateAlias(
+    request: protos.enfonica.voice.v1beta1.IUpdateAliasRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IUpdateAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  updateAlias(
+    request: protos.enfonica.voice.v1beta1.IUpdateAliasRequest,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IUpdateAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Updates a alias.
+   *
+   * The caller must have `voice.aliases.update` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {enfonica.voice.v1beta1.Alias} request.alias
+   *   The new definition of the Alias.
+   * @param {google.protobuf.FieldMask} request.updateMask
+   *   Fields to be updated.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Alias]{@link enfonica.voice.v1beta1.Alias}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  updateAlias(
+    request: protos.enfonica.voice.v1beta1.IUpdateAliasRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.enfonica.voice.v1beta1.IAlias,
+          protos.enfonica.voice.v1beta1.IUpdateAliasRequest | null | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IUpdateAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.IAlias,
+      protos.enfonica.voice.v1beta1.IUpdateAliasRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        'alias.name': request.alias!.name || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.updateAlias(request, options, callback);
+  }
+  deleteAlias(
+    request: protos.enfonica.voice.v1beta1.IDeleteAliasRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.google.protobuf.IEmpty,
+      protos.enfonica.voice.v1beta1.IDeleteAliasRequest | undefined,
+      {} | undefined
+    ]
+  >;
+  deleteAlias(
+    request: protos.enfonica.voice.v1beta1.IDeleteAliasRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.google.protobuf.IEmpty,
+      protos.enfonica.voice.v1beta1.IDeleteAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  deleteAlias(
+    request: protos.enfonica.voice.v1beta1.IDeleteAliasRequest,
+    callback: Callback<
+      protos.google.protobuf.IEmpty,
+      protos.enfonica.voice.v1beta1.IDeleteAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Deletes the specified alias.
+   *
+   * The caller must have `voice.aliases.delete` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.name
+   *   The resource name of the alias to be deleted.
+   *   Must be of the form `projects/* /sipDomains/* /aliases/*`.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  deleteAlias(
+    request: protos.enfonica.voice.v1beta1.IDeleteAliasRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.google.protobuf.IEmpty,
+          protos.enfonica.voice.v1beta1.IDeleteAliasRequest | null | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.google.protobuf.IEmpty,
+      protos.enfonica.voice.v1beta1.IDeleteAliasRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.google.protobuf.IEmpty,
+      protos.enfonica.voice.v1beta1.IDeleteAliasRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        name: request.name || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.deleteAlias(request, options, callback);
+  }
+
+  listAliases(
+    request: protos.enfonica.voice.v1beta1.IListAliasesRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.IAlias[],
+      protos.enfonica.voice.v1beta1.IListAliasesRequest | null,
+      protos.enfonica.voice.v1beta1.IListAliasesResponse
+    ]
+  >;
+  listAliases(
+    request: protos.enfonica.voice.v1beta1.IListAliasesRequest,
+    options: gax.CallOptions,
+    callback: PaginationCallback<
+      protos.enfonica.voice.v1beta1.IListAliasesRequest,
+      protos.enfonica.voice.v1beta1.IListAliasesResponse | null | undefined,
+      protos.enfonica.voice.v1beta1.IAlias
+    >
+  ): void;
+  listAliases(
+    request: protos.enfonica.voice.v1beta1.IListAliasesRequest,
+    callback: PaginationCallback<
+      protos.enfonica.voice.v1beta1.IListAliasesRequest,
+      protos.enfonica.voice.v1beta1.IListAliasesResponse | null | undefined,
+      protos.enfonica.voice.v1beta1.IAlias
+    >
+  ): void;
+  /**
+   * Lists all Aliases.
+   * List returns alias sorted by create_time descending.
+   *
+   * The caller must have `voice.aliases.list` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.parent
+   *   The SIP domain under which to list aliases, in the form `projects/* /sipDomains/*`.
+   * @param {number} request.pageSize
+   *   The maximum number of aliases to return in the response.
+   *   Default value of 10 and maximum value of 100.
+   * @param {string} request.pageToken
+   *   A pagination token returned from a previous call to `ListAliases`
+   *   that indicates where this listing should continue from.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is Array of [Alias]{@link enfonica.voice.v1beta1.Alias}.
+   *   The client library support auto-pagination by default: it will call the API as many
+   *   times as needed and will merge results from all the pages into this array.
+   *
+   *   When autoPaginate: false is specified through options, the array has three elements.
+   *   The first element is Array of [Alias]{@link enfonica.voice.v1beta1.Alias} that corresponds to
+   *   the one page received from the API server.
+   *   If the second element is not null it contains the request object of type [ListAliasesRequest]{@link enfonica.voice.v1beta1.ListAliasesRequest}
+   *   that can be used to obtain the next page of the results.
+   *   If it is null, the next page does not exist.
+   *   The third element contains the raw response received from the API server. Its type is
+   *   [ListAliasesResponse]{@link enfonica.voice.v1beta1.ListAliasesResponse}.
+   *
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  listAliases(
+    request: protos.enfonica.voice.v1beta1.IListAliasesRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | PaginationCallback<
+          protos.enfonica.voice.v1beta1.IListAliasesRequest,
+          protos.enfonica.voice.v1beta1.IListAliasesResponse | null | undefined,
+          protos.enfonica.voice.v1beta1.IAlias
+        >,
+    callback?: PaginationCallback<
+      protos.enfonica.voice.v1beta1.IListAliasesRequest,
+      protos.enfonica.voice.v1beta1.IListAliasesResponse | null | undefined,
+      protos.enfonica.voice.v1beta1.IAlias
+    >
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.IAlias[],
+      protos.enfonica.voice.v1beta1.IListAliasesRequest | null,
+      protos.enfonica.voice.v1beta1.IListAliasesResponse
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        parent: request.parent || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.listAliases(request, options, callback);
   }
 
   /**
-   * Equivalent to {@link listRecordings}, but returns a NodeJS Stream object.
+   * Equivalent to {@link listAliases}, but returns a NodeJS Stream object.
    *
-   * This fetches the paged responses for {@link listRecordings} continuously
+   * This fetches the paged responses for {@link listAliases} continuously
    * and invokes the callback registered for 'data' event for each element in the
    * responses.
    *
@@ -616,26 +780,20 @@ export class RecordingsClient {
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
+   *   The SIP domain under which to list aliases, in the form `projects/* /sipDomains/*`.
    * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
+   *   The maximum number of aliases to return in the response.
    *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
+   *   A pagination token returned from a previous call to `ListAliases`
    *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
-   *   An object stream which emits an object representing [Recording]{@link enfonica.voice.v1beta1.Recording} on 'data' event.
+   *   An object stream which emits an object representing [Alias]{@link enfonica.voice.v1beta1.Alias} on 'data' event.
    */
-  listRecordingsStream(
-    request?: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
+  listAliasesStream(
+    request?: protos.enfonica.voice.v1beta1.IListAliasesRequest,
     options?: gax.CallOptions
   ): Transform {
     request = request || {};
@@ -648,43 +806,37 @@ export class RecordingsClient {
       });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
-    return this.descriptors.page.listRecordings.createStream(
-      this.innerApiCalls.listRecordings as gax.GaxCall,
+    return this.descriptors.page.listAliases.createStream(
+      this.innerApiCalls.listAliases as gax.GaxCall,
       request,
       callSettings
     );
   }
 
   /**
-   * Equivalent to {@link listRecordings}, but returns an iterable object.
+   * Equivalent to {@link listAliases}, but returns an iterable object.
    *
    * for-await-of syntax is used with the iterable to recursively get response element on-demand.
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
+   *   The SIP domain under which to list aliases, in the form `projects/* /sipDomains/*`.
    * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
+   *   The maximum number of aliases to return in the response.
    *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
+   *   A pagination token returned from a previous call to `ListAliases`
    *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}
    *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
    */
-  listRecordingsAsync(
-    request?: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
+  listAliasesAsync(
+    request?: protos.enfonica.voice.v1beta1.IListAliasesRequest,
     options?: gax.CallOptions
-  ): AsyncIterable<protos.enfonica.voice.v1beta1.IRecording> {
+  ): AsyncIterable<protos.enfonica.voice.v1beta1.IAlias> {
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -696,11 +848,11 @@ export class RecordingsClient {
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
-    return this.descriptors.page.listRecordings.asyncIterate(
-      this.innerApiCalls['listRecordings'] as GaxCall,
+    return this.descriptors.page.listAliases.asyncIterate(
+      this.innerApiCalls['listAliases'] as GaxCall,
       request as unknown as RequestType,
       callSettings
-    ) as AsyncIterable<protos.enfonica.voice.v1beta1.IRecording>;
+    ) as AsyncIterable<protos.enfonica.voice.v1beta1.IAlias>;
   }
   // --------------------
   // -- Path templates --
@@ -976,7 +1128,7 @@ export class RecordingsClient {
   close(): Promise<void> {
     this.initialize();
     if (!this._terminated) {
-      return this.recordingsStub!.then(stub => {
+      return this.aliasesStub!.then(stub => {
         this._terminated = true;
         stub.close();
       });

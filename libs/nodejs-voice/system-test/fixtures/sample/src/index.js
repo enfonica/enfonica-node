@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,8 +21,11 @@
 const voice = require('voice');
 
 function main() {
+  const aliasesClient = new voice.AliasesClient();
   const callsClient = new voice.CallsClient();
   const recordingsClient = new voice.RecordingsClient();
+  const sipDomainsClient = new voice.SipDomainsClient();
+  const sipInfoServiceClient = new voice.SipInfoServiceClient();
   const streamsClient = new voice.StreamsClient();
   const transcriptionsClient = new voice.TranscriptionsClient();
 }

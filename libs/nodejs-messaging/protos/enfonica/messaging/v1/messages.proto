@@ -179,29 +179,29 @@ message Message {
   // The recipient phone number in +E164.
   // (-- api-linter: core::0140::prepositions=disabled
   //     aip.dev/not-precedent: Not a preposition. --)
-  string to = 2;
+  string to = 2 [(google.api.field_behavior) = REQUIRED];
 
   // The phone number in +E164 or alphanumeric sender ID that initiated the message.
   // (-- api-linter: core::0140::prepositions=disabled
   //     aip.dev/not-precedent: Not a preposition. --)
   // (-- api-linter: core::0140::reserved-words=disabled
   //     aip.dev/not-precedent: `from` is a core concept in Enfonica APIs. --)
-  string from = 3;
+  string from = 3 [(google.api.field_behavior) = REQUIRED];
 
   // The text of the message. Maximum of 1530 characters for messages encoding using GSM
   // 7-bit encoding and 670 characters for messages encoding using UCS2 encoding. If a
   // longer body is specified, it will be truncated to the maximum length.
   string body = 4;
 
-  // The URL where status updates should be sent.
-  // TODO: define better.
+  // The URL where [status updates webhooks](https://enfonica.com/docs/cloud-sms/webhooks/#message-status-update)
+  // should be sent.
   // (-- api-linter: core::0140::uri=disabled
   //     aip.dev/not-precedent: url is used in this package. --)
   string status_update_url = 5;
 
-  // The URL where replies should be sent. This overrides any message handler URLs defined
-  // against the phone number receiving the reply.
-  // TODO: define better.
+  // The URL where replies, in the form of [incoming message webhooks](https://enfonica.com/docs/cloud-sms/webhooks/#incoming-message)
+  // should be sent. This overrides any message handler URLs defined against the
+  // phone number receiving the reply.
   // (-- api-linter: core::0140::uri=disabled
   //     aip.dev/not-precedent: url is used in this package. --)
   string reply_url = 6;
@@ -232,19 +232,16 @@ message Message {
   Direction direction = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // If the outgoing message failed to be delivered, the reason why.
-  // todo: should this be an enum?
   string error_code = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The human readable message associated with the error.
-  // todo: do we need this if error code is an enum?
   string error_message = 12 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The number of segments that make up the body.
-  // todo: explain this.
   int32 segment_count = 13 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The price of this message. This may not be populated until a certain stage in the message
-  // lifecycle.  todo: is this right? how does/will this work?
+  // lifecycle.
   google.type.Money price = 14 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The current status of the message.
@@ -253,7 +250,7 @@ message Message {
   Status status = 15 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The identity that created the message.  This may be your user or service account,
-  // or identities used internally by Enfonica products. todo: is this right? should we do this?
+  // or identities used internally by Enfonica products.
   string create_identity = 16 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The creation time of the message.
@@ -323,6 +320,7 @@ message ListMessagesRequest {
   //
   // (-- api-linter: core::0132::request-unknown-fields=disabled
   //     aip.dev/not-precedent: List has additional fields in this package. --)
+  // (-- deprecated --)
   google.protobuf.Timestamp start_time = 4;
 
   // The timestamp (exclusive) until which to retrieve messages. The
@@ -333,6 +331,7 @@ message ListMessagesRequest {
   //
   // (-- api-linter: core::0132::request-unknown-fields=disabled
   //     aip.dev/not-precedent: List has additional fields in this package. --)
+  // (-- deprecated --)
   google.protobuf.Timestamp end_time = 5;
 
   // Filter string to specify which results should be returned.
@@ -359,7 +358,8 @@ message ListMessagesResponse {
   // the specified parent resource.
   repeated Message messages = 1;
 
-  // A pagination token returned from a previous call to `ListMessages`
-  // that indicates from where listing should continue.
+  // If this is set, it indicates there are additional results and contains the
+  // token to retrieve the next page of results. To use this, pass it in the
+  // `page_token` field when calling `ListMessages`.
   string next_page_token = 2;
 }

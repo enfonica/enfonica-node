@@ -1,4 +1,4 @@
-// Copyright 2021 Enfonica Pty Ltd
+// Copyright 2022 Enfonica Pty Ltd
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -527,6 +527,7 @@ export class MessagesClient {
    *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   *   (-- deprecated --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
@@ -536,6 +537,7 @@ export class MessagesClient {
    *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   *   (-- deprecated --)
    * @param {string} request.filter
    *   Filter string to specify which results should be returned.
    *
@@ -643,6 +645,7 @@ export class MessagesClient {
    *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   *   (-- deprecated --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
@@ -652,6 +655,7 @@ export class MessagesClient {
    *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   *   (-- deprecated --)
    * @param {string} request.filter
    *   Filter string to specify which results should be returned.
    *
@@ -719,6 +723,7 @@ export class MessagesClient {
    *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   *   (-- deprecated --)
    * @param {google.protobuf.Timestamp} request.endTime
    *   The timestamp (exclusive) until which to retrieve messages. The
    *   create_time of the Message is used.
@@ -728,6 +733,7 @@ export class MessagesClient {
    *
    *   (-- api-linter: core::0132::request-unknown-fields=disabled
    *       aip.dev/not-precedent: List has additional fields in this package. --)
+   *   (-- deprecated --)
    * @param {string} request.filter
    *   Filter string to specify which results should be returned.
    *

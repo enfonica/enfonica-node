@@ -108,9 +108,16 @@ message PhoneNumber {
   // The capabilities of the phone number.
   repeated PhoneNumberCapability capabilities = 3;
 
-  // The SKU that will be used to bill the phone number.
-  // In the form `services/*/skus/*`.
+  // The SKU that will be used to bill the phone number for the monthly service
+  // charge. In the form `services/*/skus/*`.
+  // Output only.
   string sku = 4;
+
+  // The SKU that will be used to bill the phone number for the once-off
+  // activation charge. In the form `services/*/skus/*`. If not set, there is
+  // no activation charge.
+  // Output only.
+  string activation_sku = 5;
 
   // The type of phone number.
   PhoneNumberType number_type = 10;

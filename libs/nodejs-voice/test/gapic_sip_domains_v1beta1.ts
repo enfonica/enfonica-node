@@ -21,7 +21,7 @@ import * as assert from 'assert';
 import * as sinon from 'sinon';
 import {SinonStub} from 'sinon';
 import {describe, it} from 'mocha';
-import * as recordingsModule from '../src';
+import * as sipdomainsModule from '../src';
 
 import {PassThrough} from 'stream';
 
@@ -112,47 +112,47 @@ function stubAsyncIterationCall<ResponseType>(
   return sinon.stub().returns(asyncIterable);
 }
 
-describe('v1beta1.RecordingsClient', () => {
+describe('v1beta1.SipDomainsClient', () => {
   it('has servicePath', () => {
-    const servicePath = recordingsModule.v1beta1.RecordingsClient.servicePath;
+    const servicePath = sipdomainsModule.v1beta1.SipDomainsClient.servicePath;
     assert(servicePath);
   });
 
   it('has apiEndpoint', () => {
-    const apiEndpoint = recordingsModule.v1beta1.RecordingsClient.apiEndpoint;
+    const apiEndpoint = sipdomainsModule.v1beta1.SipDomainsClient.apiEndpoint;
     assert(apiEndpoint);
   });
 
   it('has port', () => {
-    const port = recordingsModule.v1beta1.RecordingsClient.port;
+    const port = sipdomainsModule.v1beta1.SipDomainsClient.port;
     assert(port);
     assert(typeof port === 'number');
   });
 
   it('should create a client with no option', () => {
-    const client = new recordingsModule.v1beta1.RecordingsClient();
+    const client = new sipdomainsModule.v1beta1.SipDomainsClient();
     assert(client);
   });
 
   it('should create a client with gRPC fallback', () => {
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new sipdomainsModule.v1beta1.SipDomainsClient({
       fallback: true,
     });
     assert(client);
   });
 
   it('has initialize method and supports deferred initialization', async () => {
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new sipdomainsModule.v1beta1.SipDomainsClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
-    assert.strictEqual(client.recordingsStub, undefined);
+    assert.strictEqual(client.sipDomainsStub, undefined);
     await client.initialize();
-    assert(client.recordingsStub);
+    assert(client.sipDomainsStub);
   });
 
   it('has close method', () => {
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new sipdomainsModule.v1beta1.SipDomainsClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -161,7 +161,7 @@ describe('v1beta1.RecordingsClient', () => {
 
   it('has getProjectId method', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new sipdomainsModule.v1beta1.SipDomainsClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -173,7 +173,7 @@ describe('v1beta1.RecordingsClient', () => {
 
   it('has getProjectId method with callback', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new sipdomainsModule.v1beta1.SipDomainsClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -193,18 +193,18 @@ describe('v1beta1.RecordingsClient', () => {
     assert.strictEqual(result, fakeProjectId);
   });
 
-  describe('getRecording', () => {
-    it('invokes getRecording without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+  describe('createSipDomain', () => {
+    it('invokes createSipDomain without error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetRecordingRequest()
+        new protos.enfonica.voice.v1beta1.CreateSipDomainRequest()
       );
-      request.name = '';
-      const expectedHeaderRequestParams = 'name=';
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -213,29 +213,29 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Recording()
+        new protos.enfonica.voice.v1beta1.SipDomain()
       );
-      client.innerApiCalls.getRecording = stubSimpleCall(expectedResponse);
-      const [response] = await client.getRecording(request);
+      client.innerApiCalls.createSipDomain = stubSimpleCall(expectedResponse);
+      const [response] = await client.createSipDomain(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.getRecording as SinonStub)
+        (client.innerApiCalls.createSipDomain as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes getRecording without error using callback', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes createSipDomain without error using callback', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetRecordingRequest()
+        new protos.enfonica.voice.v1beta1.CreateSipDomainRequest()
       );
-      request.name = '';
-      const expectedHeaderRequestParams = 'name=';
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -244,16 +244,16 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Recording()
+        new protos.enfonica.voice.v1beta1.SipDomain()
       );
-      client.innerApiCalls.getRecording =
+      client.innerApiCalls.createSipDomain =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.getRecording(
+        client.createSipDomain(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.IRecording | null
+            result?: protos.enfonica.voice.v1beta1.ISipDomain | null
           ) => {
             if (err) {
               reject(err);
@@ -266,23 +266,23 @@ describe('v1beta1.RecordingsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.getRecording as SinonStub)
+        (client.innerApiCalls.createSipDomain as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes getRecording with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes createSipDomain with error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetRecordingRequest()
+        new protos.enfonica.voice.v1beta1.CreateSipDomainRequest()
       );
-      request.name = '';
-      const expectedHeaderRequestParams = 'name=';
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -291,28 +291,28 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.getRecording = stubSimpleCall(
+      client.innerApiCalls.createSipDomain = stubSimpleCall(
         undefined,
         expectedError
       );
-      await assert.rejects(client.getRecording(request), expectedError);
+      await assert.rejects(client.createSipDomain(request), expectedError);
       assert(
-        (client.innerApiCalls.getRecording as SinonStub)
+        (client.innerApiCalls.createSipDomain as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
   });
 
-  describe('deleteRecording', () => {
-    it('invokes deleteRecording without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+  describe('getSipDomain', () => {
+    it('invokes getSipDomain without error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.DeleteRecordingRequest()
+        new protos.enfonica.voice.v1beta1.GetSipDomainRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -324,26 +324,26 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Recording()
+        new protos.enfonica.voice.v1beta1.SipDomain()
       );
-      client.innerApiCalls.deleteRecording = stubSimpleCall(expectedResponse);
-      const [response] = await client.deleteRecording(request);
+      client.innerApiCalls.getSipDomain = stubSimpleCall(expectedResponse);
+      const [response] = await client.getSipDomain(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.deleteRecording as SinonStub)
+        (client.innerApiCalls.getSipDomain as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes deleteRecording without error using callback', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes getSipDomain without error using callback', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.DeleteRecordingRequest()
+        new protos.enfonica.voice.v1beta1.GetSipDomainRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -355,16 +355,16 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Recording()
+        new protos.enfonica.voice.v1beta1.SipDomain()
       );
-      client.innerApiCalls.deleteRecording =
+      client.innerApiCalls.getSipDomain =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.deleteRecording(
+        client.getSipDomain(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.IRecording | null
+            result?: protos.enfonica.voice.v1beta1.ISipDomain | null
           ) => {
             if (err) {
               reject(err);
@@ -377,20 +377,20 @@ describe('v1beta1.RecordingsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.deleteRecording as SinonStub)
+        (client.innerApiCalls.getSipDomain as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes deleteRecording with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes getSipDomain with error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.DeleteRecordingRequest()
+        new protos.enfonica.voice.v1beta1.GetSipDomainRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -402,31 +402,32 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.deleteRecording = stubSimpleCall(
+      client.innerApiCalls.getSipDomain = stubSimpleCall(
         undefined,
         expectedError
       );
-      await assert.rejects(client.deleteRecording(request), expectedError);
+      await assert.rejects(client.getSipDomain(request), expectedError);
       assert(
-        (client.innerApiCalls.deleteRecording as SinonStub)
+        (client.innerApiCalls.getSipDomain as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
   });
 
-  describe('listRecordings', () => {
-    it('invokes listRecordings without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+  describe('updateSipDomain', () => {
+    it('invokes updateSipDomain without error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.UpdateSipDomainRequest()
       );
-      request.parent = '';
-      const expectedHeaderRequestParams = 'parent=';
+      request.sipDomain = {};
+      request.sipDomain.name = '';
+      const expectedHeaderRequestParams = 'sip_domain.name=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -434,32 +435,31 @@ describe('v1beta1.RecordingsClient', () => {
           },
         },
       };
-      const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-      ];
-      client.innerApiCalls.listRecordings = stubSimpleCall(expectedResponse);
-      const [response] = await client.listRecordings(request);
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.SipDomain()
+      );
+      client.innerApiCalls.updateSipDomain = stubSimpleCall(expectedResponse);
+      const [response] = await client.updateSipDomain(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.listRecordings as SinonStub)
+        (client.innerApiCalls.updateSipDomain as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes listRecordings without error using callback', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes updateSipDomain without error using callback', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.UpdateSipDomainRequest()
       );
-      request.parent = '';
-      const expectedHeaderRequestParams = 'parent=';
+      request.sipDomain = {};
+      request.sipDomain.name = '';
+      const expectedHeaderRequestParams = 'sip_domain.name=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -467,19 +467,17 @@ describe('v1beta1.RecordingsClient', () => {
           },
         },
       };
-      const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-      ];
-      client.innerApiCalls.listRecordings =
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.SipDomain()
+      );
+      client.innerApiCalls.updateSipDomain =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.listRecordings(
+        client.updateSipDomain(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.IRecording[] | null
+            result?: protos.enfonica.voice.v1beta1.ISipDomain | null
           ) => {
             if (err) {
               reject(err);
@@ -492,20 +490,247 @@ describe('v1beta1.RecordingsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.listRecordings as SinonStub)
+        (client.innerApiCalls.updateSipDomain as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes listRecordings with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes updateSipDomain with error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.UpdateSipDomainRequest()
+      );
+      request.sipDomain = {};
+      request.sipDomain.name = '';
+      const expectedHeaderRequestParams = 'sip_domain.name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.updateSipDomain = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(client.updateSipDomain(request), expectedError);
+      assert(
+        (client.innerApiCalls.updateSipDomain as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
+  describe('deleteSipDomain', () => {
+    it('invokes deleteSipDomain without error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.DeleteSipDomainRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.SipDomain()
+      );
+      client.innerApiCalls.deleteSipDomain = stubSimpleCall(expectedResponse);
+      const [response] = await client.deleteSipDomain(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.deleteSipDomain as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes deleteSipDomain without error using callback', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.DeleteSipDomainRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.SipDomain()
+      );
+      client.innerApiCalls.deleteSipDomain =
+        stubSimpleCallWithCallback(expectedResponse);
+      const promise = new Promise((resolve, reject) => {
+        client.deleteSipDomain(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.voice.v1beta1.ISipDomain | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.deleteSipDomain as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes deleteSipDomain with error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.DeleteSipDomainRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.deleteSipDomain = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(client.deleteSipDomain(request), expectedError);
+      assert(
+        (client.innerApiCalls.deleteSipDomain as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
+  describe('listSipDomains', () => {
+    it('invokes listSipDomains without error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.ListSipDomainsRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = [
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+      ];
+      client.innerApiCalls.listSipDomains = stubSimpleCall(expectedResponse);
+      const [response] = await client.listSipDomains(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.listSipDomains as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes listSipDomains without error using callback', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.ListSipDomainsRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = [
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+      ];
+      client.innerApiCalls.listSipDomains =
+        stubSimpleCallWithCallback(expectedResponse);
+      const promise = new Promise((resolve, reject) => {
+        client.listSipDomains(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.voice.v1beta1.ISipDomain[] | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.listSipDomains as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes listSipDomains with error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.ListSipDomainsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
@@ -517,42 +742,42 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.listRecordings = stubSimpleCall(
+      client.innerApiCalls.listSipDomains = stubSimpleCall(
         undefined,
         expectedError
       );
-      await assert.rejects(client.listRecordings(request), expectedError);
+      await assert.rejects(client.listSipDomains(request), expectedError);
       assert(
-        (client.innerApiCalls.listRecordings as SinonStub)
+        (client.innerApiCalls.listSipDomains as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes listRecordingsStream without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes listSipDomainsStream without error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.ListSipDomainsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
       ];
-      client.descriptors.page.listRecordings.createStream =
+      client.descriptors.page.listSipDomains.createStream =
         stubPageStreamingCall(expectedResponse);
-      const stream = client.listRecordingsStream(request);
+      const stream = client.listSipDomainsStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.enfonica.voice.v1beta1.Recording[] = [];
+        const responses: protos.enfonica.voice.v1beta1.SipDomain[] = [];
         stream.on(
           'data',
-          (response: protos.enfonica.voice.v1beta1.Recording) => {
+          (response: protos.enfonica.voice.v1beta1.SipDomain) => {
             responses.push(response);
           }
         );
@@ -566,38 +791,38 @@ describe('v1beta1.RecordingsClient', () => {
       const responses = await promise;
       assert.deepStrictEqual(responses, expectedResponse);
       assert(
-        (client.descriptors.page.listRecordings.createStream as SinonStub)
+        (client.descriptors.page.listSipDomains.createStream as SinonStub)
           .getCall(0)
-          .calledWith(client.innerApiCalls.listRecordings, request)
+          .calledWith(client.innerApiCalls.listSipDomains, request)
       );
       assert.strictEqual(
         (
-          client.descriptors.page.listRecordings.createStream as SinonStub
+          client.descriptors.page.listSipDomains.createStream as SinonStub
         ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('invokes listRecordingsStream with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes listSipDomainsStream with error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.ListSipDomainsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listRecordings.createStream =
+      client.descriptors.page.listSipDomains.createStream =
         stubPageStreamingCall(undefined, expectedError);
-      const stream = client.listRecordingsStream(request);
+      const stream = client.listSipDomainsStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.enfonica.voice.v1beta1.Recording[] = [];
+        const responses: protos.enfonica.voice.v1beta1.SipDomain[] = [];
         stream.on(
           'data',
-          (response: protos.enfonica.voice.v1beta1.Recording) => {
+          (response: protos.enfonica.voice.v1beta1.SipDomain) => {
             responses.push(response);
           }
         );
@@ -610,86 +835,86 @@ describe('v1beta1.RecordingsClient', () => {
       });
       await assert.rejects(promise, expectedError);
       assert(
-        (client.descriptors.page.listRecordings.createStream as SinonStub)
+        (client.descriptors.page.listSipDomains.createStream as SinonStub)
           .getCall(0)
-          .calledWith(client.innerApiCalls.listRecordings, request)
+          .calledWith(client.innerApiCalls.listSipDomains, request)
       );
       assert.strictEqual(
         (
-          client.descriptors.page.listRecordings.createStream as SinonStub
+          client.descriptors.page.listSipDomains.createStream as SinonStub
         ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('uses async iteration with listRecordings without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('uses async iteration with listSipDomains without error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.ListSipDomainsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.SipDomain()),
       ];
-      client.descriptors.page.listRecordings.asyncIterate =
+      client.descriptors.page.listSipDomains.asyncIterate =
         stubAsyncIterationCall(expectedResponse);
-      const responses: protos.enfonica.voice.v1beta1.IRecording[] = [];
-      const iterable = client.listRecordingsAsync(request);
+      const responses: protos.enfonica.voice.v1beta1.ISipDomain[] = [];
+      const iterable = client.listSipDomainsAsync(request);
       for await (const resource of iterable) {
         responses.push(resource!);
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
         (
-          client.descriptors.page.listRecordings.asyncIterate as SinonStub
+          client.descriptors.page.listSipDomains.asyncIterate as SinonStub
         ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
         (
-          client.descriptors.page.listRecordings.asyncIterate as SinonStub
+          client.descriptors.page.listSipDomains.asyncIterate as SinonStub
         ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('uses async iteration with listRecordings with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('uses async iteration with listSipDomains with error', async () => {
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.ListSipDomainsRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listRecordings.asyncIterate =
+      client.descriptors.page.listSipDomains.asyncIterate =
         stubAsyncIterationCall(undefined, expectedError);
-      const iterable = client.listRecordingsAsync(request);
+      const iterable = client.listSipDomainsAsync(request);
       await assert.rejects(async () => {
-        const responses: protos.enfonica.voice.v1beta1.IRecording[] = [];
+        const responses: protos.enfonica.voice.v1beta1.ISipDomain[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
         }
       });
       assert.deepStrictEqual(
         (
-          client.descriptors.page.listRecordings.asyncIterate as SinonStub
+          client.descriptors.page.listSipDomains.asyncIterate as SinonStub
         ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
         (
-          client.descriptors.page.listRecordings.asyncIterate as SinonStub
+          client.descriptors.page.listSipDomains.asyncIterate as SinonStub
         ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
@@ -704,7 +929,7 @@ describe('v1beta1.RecordingsClient', () => {
         sip_domain: 'sipDomainValue',
         alias: 'aliasValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -767,7 +992,7 @@ describe('v1beta1.RecordingsClient', () => {
         project: 'projectValue',
         call: 'callValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -817,7 +1042,7 @@ describe('v1beta1.RecordingsClient', () => {
         call: 'callValue',
         recording: 'recordingValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -880,7 +1105,7 @@ describe('v1beta1.RecordingsClient', () => {
         project: 'projectValue',
         sip_domain: 'sipDomainValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -929,7 +1154,7 @@ describe('v1beta1.RecordingsClient', () => {
         project: 'projectValue',
         call: 'callValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -979,7 +1204,7 @@ describe('v1beta1.RecordingsClient', () => {
         call: 'callValue',
         transcription: 'transcriptionValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new sipdomainsModule.v1beta1.SipDomainsClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });

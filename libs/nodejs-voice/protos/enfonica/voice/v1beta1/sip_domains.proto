@@ -1,0 +1,285 @@
+// Copyright 2021 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.voice.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+import "enfonica/voice/v1beta1/call_recording_config.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Voice.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/voice/v1beta1;voice";
+option java_multiple_files = true;
+option java_outer_classname = "SipDomainsProto";
+option java_package = "com.enfonica.voice.v1beta1";
+option objc_class_prefix = "ENFON";
+
+// Manages SIP Domains.
+service SipDomains {
+  option (google.api.default_host) = "voice.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/voice";
+
+  // Creates a sip domain.
+  //
+  // The caller must have `voice.sipDomains.create` permission on the project.
+  rpc CreateSipDomain(CreateSipDomainRequest) returns (SipDomain) {
+    option (google.api.http) = {
+      post: "/v1beta1/{parent=projects/*}/sipDomains"
+      body: "sip_domain"
+    };
+    option (google.api.method_signature) = "parent,sip_domain,sip_domain_id";
+  }
+
+  // Retrieves a sip domain identified by the supplied resource name.
+  //
+  // The caller must have `voice.sipDomains.get` permission on the project.
+  rpc GetSipDomain(GetSipDomainRequest) returns (SipDomain) {
+    option (google.api.http) = {
+      get: "/v1beta1/{name=projects/*/sipDomains/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+
+  // Lists all SipDomains.
+  // List returns sip domain sorted by create_time descending.
+  //
+  // The caller must have `voice.sipDomains.list` permission on the project.
+  rpc ListSipDomains(ListSipDomainsRequest) returns (ListSipDomainsResponse) {
+    option (google.api.http) = {
+      get: "/v1beta1/{parent=projects/*}/sipDomains"
+    };
+    option (google.api.method_signature) = "parent";
+  }
+
+  // Updates a sip domain.
+  //
+  // The caller must have `voice.sipDomains.update` permission on the project.
+  rpc UpdateSipDomain(UpdateSipDomainRequest) returns (SipDomain) {
+    option (google.api.http) = {
+      patch: "/v1beta1/{sip_domain.name=projects/*/sipDomains/*}"
+      body: "sip_domain"
+    };
+    option (google.api.method_signature) = "sip_domain,update_mask";
+  }
+
+  // Performs a soft-delete of the specified SIP domain.
+  //
+  // The caller must have `voice.sipDomains.delete` permission on the project.
+  rpc DeleteSipDomain(DeleteSipDomainRequest) returns (SipDomain) {
+    option (google.api.http) = {
+      delete: "/v1beta1/{name=projects/*/sipDomains/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+}
+
+// The SipDomain resource.
+message SipDomain {
+  option (google.api.resource) = {
+    type: "voice.api.enfonica.com/SipDomain"
+    pattern: "projects/{project}/sipDomains/{sip_domain}"
+  };
+
+  // Call termination modes.
+  enum TerminationMode {
+    // Unspecified termination mode.
+    TERMINATION_MODE_UNSPECIFIED = 0;
+
+    // Call termination is not permitted.
+    TERMINATION_MODE_DISABLED = 1;
+
+    // Calls to this SIP domain will be routed over the PSTN.
+    PSTN_TRUNK = 2;
+
+    // Calls to this SIP domain will be handled by a VoiceML endpoint.
+    PROGRAMMABLE = 3;
+  }
+
+  // Resource name of the sip domain. It must match the pattern
+  // `projects/{project_id}/sipDomains/{sip_domain_id}`
+  string name = 1;
+
+  // The subdomain component of the SIP domain. This is the {sip_domain_id} value
+  // from `name` and is a convenience field. The FQDN of the SIP domain
+  // will be <sip_domain_id>.sip.enfonica.com.
+  //
+  // This value must be globally unique.
+  //
+  // This must be lowercase alpha-numeric or hyphens and
+  // must start and end with an alpha-numeric character, and must be a minimum of 2 and maximum of 30 characters. 
+  // This is captured in the following regular expression: ^[a-z0-9][a-z0-9-]{0,28}[a-z0-9]$
+  string sip_domain_id = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The display name of the sip domain for use in the UI.
+  // Max length 100 characters.
+  string display_name = 3;
+
+  // Whether REGISTER is supported for users.
+  bool allow_register = 4;
+
+  // How call termination will be handled. This can be configured to act as a simple SIP trunk,
+  // or as a programmable SIP domain.
+  TerminationMode call_termination_mode = 5;
+
+  // List of URIs in priority order that will be executed for call termination.
+  // This is only used when call_termination_mode is PROGRAMMABLE.
+  //
+  // The first URI is the primary, and the subsequent URIs are used in order
+  // if the previous URIs fail.
+  //
+  // The following URIs are supported:
+  // - absolute `http` and `https` URIs.
+  //
+  // Additional URIs may be supported in the future.
+  //
+  // Maximum 5 URIs.
+  //
+  // At least one entry must be specified when call_termination_mode is PROGRAMMABLE.
+  repeated string call_termination_handler_uris = 6;
+
+  // A list of up to 100 IP blocks that are permitted to use this SIP domain.
+  //
+  // How authorization works changes based on this whitelist and users:
+  // - If this list is empty and there are no users defined, the SIP domain cannot be used.
+  // - If this list is specified and there are no users defined, any IP that matches the
+  //   whitelist can place calls without authentication.
+  // - If this list is specified and users are defined, user authentication is required
+  //   and can only occur when their IP matches this whitelist.
+  //
+  // (-- api-linter: core::0203::required=disabled
+  //     aip.dev/not-precedent: Rule triggering incorrectly. --)
+  repeated CidrBlock cidr_blocks = 8;
+
+  // The configuration of call recording and transcription. If not set, then
+  // call recording is disabled.
+  CallRecordingConfig call_recording = 9;
+
+  // The creation time of the sip domain.
+  google.protobuf.Timestamp create_time = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The deletion time of the sip domain, if it has been deleted.
+  google.protobuf.Timestamp delete_time = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// Repesents a block of IPv4 addresses.
+message CidrBlock {
+  // The display name of this CIDR block. May be up to 100 characters in length.
+  string display_name = 1;
+
+  // The block of IPv4 addresses in CIDR notation.
+  string cidr_block = 2;
+}
+
+// Request to create a new sip domain.
+message CreateSipDomainRequest {
+  // The project under which to create the sip domain
+  // in the form `projects/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "voice.api.enfonica.com/SipDomain"
+    }
+  ];
+
+  // The sip domain resource to be created.
+  SipDomain sip_domain = 2 [(google.api.field_behavior) = REQUIRED];
+
+  // The subdomain component of the SIP domain. This is the {sip_domain_id} value
+  // from `name` and can only be set on create. The FQDN of the SIP domain
+  // will be <sip_domain_id>.sip.enfonica.com.
+  //
+  // This value must be globally unique. If the identifier already exists, the create
+  // method will fail with ALREADY_EXISTS.
+  //
+  // This must be lowercase alpha-numeric or hyphens and
+  // must start and end with an alpha-numeric character, and must be a minimum of 2 and maximum of 30 characters. 
+  // This is captured in the following regular expression: ^[a-z0-9][a-z0-9-]{0,28}[a-z0-9]$
+  // Can only be set on create.
+  string sip_domain_id = 3 [(google.api.field_behavior) = REQUIRED];
+}
+
+// The GetSipDomain request message.
+message GetSipDomainRequest {
+  // The resource name of the sip domain to retrieve.
+  // Must be of the form `projects/*/sipDomains/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/SipDomain"
+    }
+  ];
+}
+
+// The ListSipDomains request.
+message ListSipDomainsRequest {
+  // The project under which to list sip domain, in the form `projects/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "voice.api.enfonica.com/SipDomain"
+    }
+  ];
+
+  // The maximum number of sip domain to return in the response.
+  // Default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous call to `ListSipDomains`
+  // that indicates where this listing should continue from.
+  string page_token = 3;
+
+  // Whether to include deleted sip domains in the response.
+  // Defaults to false.
+  bool show_deleted = 4;
+}
+
+// The ListSipDomains response.
+message ListSipDomainsResponse {
+  // A possibly paginated list of sip domain that are direct descendants of
+  // the specified parent resource.
+  repeated SipDomain sip_domains = 1;
+
+  // A pagination token returned from a previous call to `ListSipDomains`
+  // that indicates from where listing should continue.
+  string next_page_token = 2;
+}
+
+// The request message for updating a SIP domain's properties.
+message UpdateSipDomainRequest {
+  // The new definition of the SipDomain.
+  SipDomain sip_domain = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // Fields to be updated.
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+// The DeleteSipDomain request message.
+message DeleteSipDomainRequest {
+  // The resource name of the sip domain to be deleted.
+  // Must be of the form `projects/*/sipDomains/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/SipDomain"
+    }
+  ];
+}

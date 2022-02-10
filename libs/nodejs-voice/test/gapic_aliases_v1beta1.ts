@@ -21,7 +21,7 @@ import * as assert from 'assert';
 import * as sinon from 'sinon';
 import {SinonStub} from 'sinon';
 import {describe, it} from 'mocha';
-import * as recordingsModule from '../src';
+import * as aliasesModule from '../src';
 
 import {PassThrough} from 'stream';
 
@@ -112,47 +112,47 @@ function stubAsyncIterationCall<ResponseType>(
   return sinon.stub().returns(asyncIterable);
 }
 
-describe('v1beta1.RecordingsClient', () => {
+describe('v1beta1.AliasesClient', () => {
   it('has servicePath', () => {
-    const servicePath = recordingsModule.v1beta1.RecordingsClient.servicePath;
+    const servicePath = aliasesModule.v1beta1.AliasesClient.servicePath;
     assert(servicePath);
   });
 
   it('has apiEndpoint', () => {
-    const apiEndpoint = recordingsModule.v1beta1.RecordingsClient.apiEndpoint;
+    const apiEndpoint = aliasesModule.v1beta1.AliasesClient.apiEndpoint;
     assert(apiEndpoint);
   });
 
   it('has port', () => {
-    const port = recordingsModule.v1beta1.RecordingsClient.port;
+    const port = aliasesModule.v1beta1.AliasesClient.port;
     assert(port);
     assert(typeof port === 'number');
   });
 
   it('should create a client with no option', () => {
-    const client = new recordingsModule.v1beta1.RecordingsClient();
+    const client = new aliasesModule.v1beta1.AliasesClient();
     assert(client);
   });
 
   it('should create a client with gRPC fallback', () => {
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new aliasesModule.v1beta1.AliasesClient({
       fallback: true,
     });
     assert(client);
   });
 
   it('has initialize method and supports deferred initialization', async () => {
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new aliasesModule.v1beta1.AliasesClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
-    assert.strictEqual(client.recordingsStub, undefined);
+    assert.strictEqual(client.aliasesStub, undefined);
     await client.initialize();
-    assert(client.recordingsStub);
+    assert(client.aliasesStub);
   });
 
   it('has close method', () => {
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new aliasesModule.v1beta1.AliasesClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -161,7 +161,7 @@ describe('v1beta1.RecordingsClient', () => {
 
   it('has getProjectId method', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new aliasesModule.v1beta1.AliasesClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -173,7 +173,7 @@ describe('v1beta1.RecordingsClient', () => {
 
   it('has getProjectId method with callback', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new recordingsModule.v1beta1.RecordingsClient({
+    const client = new aliasesModule.v1beta1.AliasesClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -193,18 +193,18 @@ describe('v1beta1.RecordingsClient', () => {
     assert.strictEqual(result, fakeProjectId);
   });
 
-  describe('getRecording', () => {
-    it('invokes getRecording without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+  describe('createAlias', () => {
+    it('invokes createAlias without error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetRecordingRequest()
+        new protos.enfonica.voice.v1beta1.CreateAliasRequest()
       );
-      request.name = '';
-      const expectedHeaderRequestParams = 'name=';
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -213,29 +213,29 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Recording()
+        new protos.enfonica.voice.v1beta1.Alias()
       );
-      client.innerApiCalls.getRecording = stubSimpleCall(expectedResponse);
-      const [response] = await client.getRecording(request);
+      client.innerApiCalls.createAlias = stubSimpleCall(expectedResponse);
+      const [response] = await client.createAlias(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.getRecording as SinonStub)
+        (client.innerApiCalls.createAlias as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes getRecording without error using callback', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes createAlias without error using callback', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetRecordingRequest()
+        new protos.enfonica.voice.v1beta1.CreateAliasRequest()
       );
-      request.name = '';
-      const expectedHeaderRequestParams = 'name=';
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -244,16 +244,16 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Recording()
+        new protos.enfonica.voice.v1beta1.Alias()
       );
-      client.innerApiCalls.getRecording =
+      client.innerApiCalls.createAlias =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.getRecording(
+        client.createAlias(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.IRecording | null
+            result?: protos.enfonica.voice.v1beta1.IAlias | null
           ) => {
             if (err) {
               reject(err);
@@ -266,23 +266,23 @@ describe('v1beta1.RecordingsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.getRecording as SinonStub)
+        (client.innerApiCalls.createAlias as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes getRecording with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes createAlias with error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.GetRecordingRequest()
+        new protos.enfonica.voice.v1beta1.CreateAliasRequest()
       );
-      request.name = '';
-      const expectedHeaderRequestParams = 'name=';
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -291,28 +291,28 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.getRecording = stubSimpleCall(
+      client.innerApiCalls.createAlias = stubSimpleCall(
         undefined,
         expectedError
       );
-      await assert.rejects(client.getRecording(request), expectedError);
+      await assert.rejects(client.createAlias(request), expectedError);
       assert(
-        (client.innerApiCalls.getRecording as SinonStub)
+        (client.innerApiCalls.createAlias as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
   });
 
-  describe('deleteRecording', () => {
-    it('invokes deleteRecording without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+  describe('getAlias', () => {
+    it('invokes getAlias without error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.DeleteRecordingRequest()
+        new protos.enfonica.voice.v1beta1.GetAliasRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -324,26 +324,26 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Recording()
+        new protos.enfonica.voice.v1beta1.Alias()
       );
-      client.innerApiCalls.deleteRecording = stubSimpleCall(expectedResponse);
-      const [response] = await client.deleteRecording(request);
+      client.innerApiCalls.getAlias = stubSimpleCall(expectedResponse);
+      const [response] = await client.getAlias(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.deleteRecording as SinonStub)
+        (client.innerApiCalls.getAlias as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes deleteRecording without error using callback', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes getAlias without error using callback', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.DeleteRecordingRequest()
+        new protos.enfonica.voice.v1beta1.GetAliasRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -355,16 +355,16 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.Recording()
+        new protos.enfonica.voice.v1beta1.Alias()
       );
-      client.innerApiCalls.deleteRecording =
+      client.innerApiCalls.getAlias =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.deleteRecording(
+        client.getAlias(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.IRecording | null
+            result?: protos.enfonica.voice.v1beta1.IAlias | null
           ) => {
             if (err) {
               reject(err);
@@ -377,20 +377,20 @@ describe('v1beta1.RecordingsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.deleteRecording as SinonStub)
+        (client.innerApiCalls.getAlias as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes deleteRecording with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes getAlias with error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.DeleteRecordingRequest()
+        new protos.enfonica.voice.v1beta1.GetAliasRequest()
       );
       request.name = '';
       const expectedHeaderRequestParams = 'name=';
@@ -402,31 +402,29 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.deleteRecording = stubSimpleCall(
-        undefined,
-        expectedError
-      );
-      await assert.rejects(client.deleteRecording(request), expectedError);
+      client.innerApiCalls.getAlias = stubSimpleCall(undefined, expectedError);
+      await assert.rejects(client.getAlias(request), expectedError);
       assert(
-        (client.innerApiCalls.deleteRecording as SinonStub)
+        (client.innerApiCalls.getAlias as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
   });
 
-  describe('listRecordings', () => {
-    it('invokes listRecordings without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+  describe('updateAlias', () => {
+    it('invokes updateAlias without error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.UpdateAliasRequest()
       );
-      request.parent = '';
-      const expectedHeaderRequestParams = 'parent=';
+      request.alias = {};
+      request.alias.name = '';
+      const expectedHeaderRequestParams = 'alias.name=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -434,32 +432,31 @@ describe('v1beta1.RecordingsClient', () => {
           },
         },
       };
-      const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-      ];
-      client.innerApiCalls.listRecordings = stubSimpleCall(expectedResponse);
-      const [response] = await client.listRecordings(request);
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.Alias()
+      );
+      client.innerApiCalls.updateAlias = stubSimpleCall(expectedResponse);
+      const [response] = await client.updateAlias(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.listRecordings as SinonStub)
+        (client.innerApiCalls.updateAlias as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes listRecordings without error using callback', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes updateAlias without error using callback', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.UpdateAliasRequest()
       );
-      request.parent = '';
-      const expectedHeaderRequestParams = 'parent=';
+      request.alias = {};
+      request.alias.name = '';
+      const expectedHeaderRequestParams = 'alias.name=';
       const expectedOptions = {
         otherArgs: {
           headers: {
@@ -467,19 +464,17 @@ describe('v1beta1.RecordingsClient', () => {
           },
         },
       };
-      const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-      ];
-      client.innerApiCalls.listRecordings =
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.Alias()
+      );
+      client.innerApiCalls.updateAlias =
         stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        client.listRecordings(
+        client.updateAlias(
           request,
           (
             err?: Error | null,
-            result?: protos.enfonica.voice.v1beta1.IRecording[] | null
+            result?: protos.enfonica.voice.v1beta1.IAlias | null
           ) => {
             if (err) {
               reject(err);
@@ -492,20 +487,247 @@ describe('v1beta1.RecordingsClient', () => {
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.listRecordings as SinonStub)
+        (client.innerApiCalls.updateAlias as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes listRecordings with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes updateAlias with error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.UpdateAliasRequest()
+      );
+      request.alias = {};
+      request.alias.name = '';
+      const expectedHeaderRequestParams = 'alias.name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.updateAlias = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(client.updateAlias(request), expectedError);
+      assert(
+        (client.innerApiCalls.updateAlias as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
+  describe('deleteAlias', () => {
+    it('invokes deleteAlias without error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.DeleteAliasRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.google.protobuf.Empty()
+      );
+      client.innerApiCalls.deleteAlias = stubSimpleCall(expectedResponse);
+      const [response] = await client.deleteAlias(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.deleteAlias as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes deleteAlias without error using callback', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.DeleteAliasRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.google.protobuf.Empty()
+      );
+      client.innerApiCalls.deleteAlias =
+        stubSimpleCallWithCallback(expectedResponse);
+      const promise = new Promise((resolve, reject) => {
+        client.deleteAlias(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.google.protobuf.IEmpty | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.deleteAlias as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes deleteAlias with error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.DeleteAliasRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedError = new Error('expected');
+      client.innerApiCalls.deleteAlias = stubSimpleCall(
+        undefined,
+        expectedError
+      );
+      await assert.rejects(client.deleteAlias(request), expectedError);
+      assert(
+        (client.innerApiCalls.deleteAlias as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+  });
+
+  describe('listAliases', () => {
+    it('invokes listAliases without error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.ListAliasesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = [
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+      ];
+      client.innerApiCalls.listAliases = stubSimpleCall(expectedResponse);
+      const [response] = await client.listAliases(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.listAliases as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes listAliases without error using callback', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.ListAliasesRequest()
+      );
+      request.parent = '';
+      const expectedHeaderRequestParams = 'parent=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = [
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+      ];
+      client.innerApiCalls.listAliases =
+        stubSimpleCallWithCallback(expectedResponse);
+      const promise = new Promise((resolve, reject) => {
+        client.listAliases(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.voice.v1beta1.IAlias[] | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+      const response = await promise;
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.listAliases as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions /*, callback defined above */)
+      );
+    });
+
+    it('invokes listAliases with error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.ListAliasesRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
@@ -517,45 +739,42 @@ describe('v1beta1.RecordingsClient', () => {
         },
       };
       const expectedError = new Error('expected');
-      client.innerApiCalls.listRecordings = stubSimpleCall(
+      client.innerApiCalls.listAliases = stubSimpleCall(
         undefined,
         expectedError
       );
-      await assert.rejects(client.listRecordings(request), expectedError);
+      await assert.rejects(client.listAliases(request), expectedError);
       assert(
-        (client.innerApiCalls.listRecordings as SinonStub)
+        (client.innerApiCalls.listAliases as SinonStub)
           .getCall(0)
           .calledWith(request, expectedOptions, undefined)
       );
     });
 
-    it('invokes listRecordingsStream without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes listAliasesStream without error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.ListAliasesRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
       ];
-      client.descriptors.page.listRecordings.createStream =
+      client.descriptors.page.listAliases.createStream =
         stubPageStreamingCall(expectedResponse);
-      const stream = client.listRecordingsStream(request);
+      const stream = client.listAliasesStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.enfonica.voice.v1beta1.Recording[] = [];
-        stream.on(
-          'data',
-          (response: protos.enfonica.voice.v1beta1.Recording) => {
-            responses.push(response);
-          }
-        );
+        const responses: protos.enfonica.voice.v1beta1.Alias[] = [];
+        stream.on('data', (response: protos.enfonica.voice.v1beta1.Alias) => {
+          responses.push(response);
+        });
         stream.on('end', () => {
           resolve(responses);
         });
@@ -566,41 +785,40 @@ describe('v1beta1.RecordingsClient', () => {
       const responses = await promise;
       assert.deepStrictEqual(responses, expectedResponse);
       assert(
-        (client.descriptors.page.listRecordings.createStream as SinonStub)
+        (client.descriptors.page.listAliases.createStream as SinonStub)
           .getCall(0)
-          .calledWith(client.innerApiCalls.listRecordings, request)
+          .calledWith(client.innerApiCalls.listAliases, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listRecordings.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listAliases.createStream as SinonStub).getCall(
+          0
+        ).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('invokes listRecordingsStream with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('invokes listAliasesStream with error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.ListAliasesRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listRecordings.createStream =
-        stubPageStreamingCall(undefined, expectedError);
-      const stream = client.listRecordingsStream(request);
+      client.descriptors.page.listAliases.createStream = stubPageStreamingCall(
+        undefined,
+        expectedError
+      );
+      const stream = client.listAliasesStream(request);
       const promise = new Promise((resolve, reject) => {
-        const responses: protos.enfonica.voice.v1beta1.Recording[] = [];
-        stream.on(
-          'data',
-          (response: protos.enfonica.voice.v1beta1.Recording) => {
-            responses.push(response);
-          }
-        );
+        const responses: protos.enfonica.voice.v1beta1.Alias[] = [];
+        stream.on('data', (response: protos.enfonica.voice.v1beta1.Alias) => {
+          responses.push(response);
+        });
         stream.on('end', () => {
           resolve(responses);
         });
@@ -610,87 +828,89 @@ describe('v1beta1.RecordingsClient', () => {
       });
       await assert.rejects(promise, expectedError);
       assert(
-        (client.descriptors.page.listRecordings.createStream as SinonStub)
+        (client.descriptors.page.listAliases.createStream as SinonStub)
           .getCall(0)
-          .calledWith(client.innerApiCalls.listRecordings, request)
+          .calledWith(client.innerApiCalls.listAliases, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listRecordings.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listAliases.createStream as SinonStub).getCall(
+          0
+        ).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('uses async iteration with listRecordings without error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('uses async iteration with listAliases without error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.ListAliasesRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedResponse = [
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
-        generateSampleMessage(new protos.enfonica.voice.v1beta1.Recording()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
+        generateSampleMessage(new protos.enfonica.voice.v1beta1.Alias()),
       ];
-      client.descriptors.page.listRecordings.asyncIterate =
+      client.descriptors.page.listAliases.asyncIterate =
         stubAsyncIterationCall(expectedResponse);
-      const responses: protos.enfonica.voice.v1beta1.IRecording[] = [];
-      const iterable = client.listRecordingsAsync(request);
+      const responses: protos.enfonica.voice.v1beta1.IAlias[] = [];
+      const iterable = client.listAliasesAsync(request);
       for await (const resource of iterable) {
         responses.push(resource!);
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listRecordings.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listAliases.asyncIterate as SinonStub).getCall(
+          0
+        ).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listRecordings.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listAliases.asyncIterate as SinonStub).getCall(
+          0
+        ).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
 
-    it('uses async iteration with listRecordings with error', async () => {
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+    it('uses async iteration with listAliases with error', async () => {
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.ListRecordingsRequest()
+        new protos.enfonica.voice.v1beta1.ListAliasesRequest()
       );
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listRecordings.asyncIterate =
-        stubAsyncIterationCall(undefined, expectedError);
-      const iterable = client.listRecordingsAsync(request);
+      client.descriptors.page.listAliases.asyncIterate = stubAsyncIterationCall(
+        undefined,
+        expectedError
+      );
+      const iterable = client.listAliasesAsync(request);
       await assert.rejects(async () => {
-        const responses: protos.enfonica.voice.v1beta1.IRecording[] = [];
+        const responses: protos.enfonica.voice.v1beta1.IAlias[] = [];
         for await (const resource of iterable) {
           responses.push(resource!);
         }
       });
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listRecordings.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listAliases.asyncIterate as SinonStub).getCall(
+          0
+        ).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listRecordings.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listAliases.asyncIterate as SinonStub).getCall(
+          0
+        ).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -704,7 +924,7 @@ describe('v1beta1.RecordingsClient', () => {
         sip_domain: 'sipDomainValue',
         alias: 'aliasValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -767,7 +987,7 @@ describe('v1beta1.RecordingsClient', () => {
         project: 'projectValue',
         call: 'callValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -817,7 +1037,7 @@ describe('v1beta1.RecordingsClient', () => {
         call: 'callValue',
         recording: 'recordingValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -880,7 +1100,7 @@ describe('v1beta1.RecordingsClient', () => {
         project: 'projectValue',
         sip_domain: 'sipDomainValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -929,7 +1149,7 @@ describe('v1beta1.RecordingsClient', () => {
         project: 'projectValue',
         call: 'callValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -979,7 +1199,7 @@ describe('v1beta1.RecordingsClient', () => {
         call: 'callValue',
         transcription: 'transcriptionValue',
       };
-      const client = new recordingsModule.v1beta1.RecordingsClient({
+      const client = new aliasesModule.v1beta1.AliasesClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });

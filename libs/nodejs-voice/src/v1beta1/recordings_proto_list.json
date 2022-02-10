@@ -1,8 +1,11 @@
 [
+  "../../protos/enfonica/voice/v1beta1/aliases.proto",
   "../../protos/enfonica/voice/v1beta1/call_recording_config.proto",
   "../../protos/enfonica/voice/v1beta1/call_request.proto",
   "../../protos/enfonica/voice/v1beta1/calls.proto",
   "../../protos/enfonica/voice/v1beta1/recordings.proto",
+  "../../protos/enfonica/voice/v1beta1/sip_domains.proto",
+  "../../protos/enfonica/voice/v1beta1/sip_info.proto",
   "../../protos/enfonica/voice/v1beta1/streams.proto",
   "../../protos/enfonica/voice/v1beta1/transcriptions.proto"
 ]

@@ -21,9 +21,7 @@ import * as assert from 'assert';
 import * as sinon from 'sinon';
 import {SinonStub} from 'sinon';
 import {describe, it} from 'mocha';
-import * as streamsModule from '../src';
-
-import {PassThrough} from 'stream';
+import * as sipinfoserviceModule from '../src';
 
 import {protobuf} from 'google-gax';
 
@@ -36,61 +34,64 @@ function generateSampleMessage<T extends object>(instance: T) {
   ) as T;
 }
 
-function stubBidiStreamingCall<ResponseType>(
+function stubSimpleCall<ResponseType>(response?: ResponseType, error?: Error) {
+  return error
+    ? sinon.stub().rejects(error)
+    : sinon.stub().resolves([response]);
+}
+
+function stubSimpleCallWithCallback<ResponseType>(
   response?: ResponseType,
   error?: Error
 ) {
-  const transformStub = error
+  return error
     ? sinon.stub().callsArgWith(2, error)
     : sinon.stub().callsArgWith(2, null, response);
-  const mockStream = new PassThrough({
-    objectMode: true,
-    transform: transformStub,
-  });
-  return sinon.stub().returns(mockStream);
 }
 
-describe('v1beta1.StreamsClient', () => {
+describe('v1beta1.SipInfoServiceClient', () => {
   it('has servicePath', () => {
-    const servicePath = streamsModule.v1beta1.StreamsClient.servicePath;
+    const servicePath =
+      sipinfoserviceModule.v1beta1.SipInfoServiceClient.servicePath;
     assert(servicePath);
   });
 
   it('has apiEndpoint', () => {
-    const apiEndpoint = streamsModule.v1beta1.StreamsClient.apiEndpoint;
+    const apiEndpoint =
+      sipinfoserviceModule.v1beta1.SipInfoServiceClient.apiEndpoint;
     assert(apiEndpoint);
   });
 
   it('has port', () => {
-    const port = streamsModule.v1beta1.StreamsClient.port;
+    const port = sipinfoserviceModule.v1beta1.SipInfoServiceClient.port;
     assert(port);
     assert(typeof port === 'number');
   });
 
   it('should create a client with no option', () => {
-    const client = new streamsModule.v1beta1.StreamsClient();
+    const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient();
     assert(client);
   });
 
   it('should create a client with gRPC fallback', () => {
-    const client = new streamsModule.v1beta1.StreamsClient({
+    const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
       fallback: true,
     });
     assert(client);
   });
 
   it('has initialize method and supports deferred initialization', async () => {
-    const client = new streamsModule.v1beta1.StreamsClient({
+    const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
-    assert.strictEqual(client.streamsStub, undefined);
+    assert.strictEqual(client.sipInfoServiceStub, undefined);
     await client.initialize();
-    assert(client.streamsStub);
+    assert(client.sipInfoServiceStub);
   });
 
   it('has close method', () => {
-    const client = new streamsModule.v1beta1.StreamsClient({
+    const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -99,7 +100,7 @@ describe('v1beta1.StreamsClient', () => {
 
   it('has getProjectId method', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new streamsModule.v1beta1.StreamsClient({
+    const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -111,7 +112,7 @@ describe('v1beta1.StreamsClient', () => {
 
   it('has getProjectId method with callback', async () => {
     const fakeProjectId = 'fake-project-id';
-    const client = new streamsModule.v1beta1.StreamsClient({
+    const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
       credentials: {client_email: 'bogus', private_key: 'bogus'},
       projectId: 'bogus',
     });
@@ -131,86 +132,113 @@ describe('v1beta1.StreamsClient', () => {
     assert.strictEqual(result, fakeProjectId);
   });
 
-  describe('streamCall', () => {
-    it('invokes streamCall without error', async () => {
-      const client = new streamsModule.v1beta1.StreamsClient({
+  describe('getSipInfo', () => {
+    it('invokes getSipInfo without error', async () => {
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.StreamCallRequest()
+        new protos.enfonica.voice.v1beta1.GetSipInfoRequest()
       );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
       const expectedResponse = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.StreamCallResponse()
+        new protos.enfonica.voice.v1beta1.SipInfo()
       );
-      client.innerApiCalls.streamCall = stubBidiStreamingCall(expectedResponse);
-      const stream = client.streamCall();
+      client.innerApiCalls.getSipInfo = stubSimpleCall(expectedResponse);
+      const [response] = await client.getSipInfo(request);
+      assert.deepStrictEqual(response, expectedResponse);
+      assert(
+        (client.innerApiCalls.getSipInfo as SinonStub)
+          .getCall(0)
+          .calledWith(request, expectedOptions, undefined)
+      );
+    });
+
+    it('invokes getSipInfo without error using callback', async () => {
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      const request = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.GetSipInfoRequest()
+      );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
+      const expectedResponse = generateSampleMessage(
+        new protos.enfonica.voice.v1beta1.SipInfo()
+      );
+      client.innerApiCalls.getSipInfo =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
-        stream.on(
-          'data',
-          (response: protos.enfonica.voice.v1beta1.StreamCallResponse) => {
-            resolve(response);
+        client.getSipInfo(
+          request,
+          (
+            err?: Error | null,
+            result?: protos.enfonica.voice.v1beta1.ISipInfo | null
+          ) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(result);
+            }
           }
         );
-        stream.on('error', (err: Error) => {
-          reject(err);
-        });
-        stream.write(request);
-        stream.end();
       });
       const response = await promise;
       assert.deepStrictEqual(response, expectedResponse);
       assert(
-        (client.innerApiCalls.streamCall as SinonStub)
+        (client.innerApiCalls.getSipInfo as SinonStub)
           .getCall(0)
-          .calledWithExactly(undefined)
-      );
-      assert.deepStrictEqual(
-        ((stream as unknown as PassThrough)._transform as SinonStub).getCall(0)
-          .args[0],
-        request
+          .calledWith(request, expectedOptions /*, callback defined above */)
       );
     });
 
-    it('invokes streamCall with error', async () => {
-      const client = new streamsModule.v1beta1.StreamsClient({
+    it('invokes getSipInfo with error', async () => {
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
       client.initialize();
       const request = generateSampleMessage(
-        new protos.enfonica.voice.v1beta1.StreamCallRequest()
+        new protos.enfonica.voice.v1beta1.GetSipInfoRequest()
       );
+      request.name = '';
+      const expectedHeaderRequestParams = 'name=';
+      const expectedOptions = {
+        otherArgs: {
+          headers: {
+            'x-goog-request-params': expectedHeaderRequestParams,
+          },
+        },
+      };
       const expectedError = new Error('expected');
-      client.innerApiCalls.streamCall = stubBidiStreamingCall(
+      client.innerApiCalls.getSipInfo = stubSimpleCall(
         undefined,
         expectedError
       );
-      const stream = client.streamCall();
-      const promise = new Promise((resolve, reject) => {
-        stream.on(
-          'data',
-          (response: protos.enfonica.voice.v1beta1.StreamCallResponse) => {
-            resolve(response);
-          }
-        );
-        stream.on('error', (err: Error) => {
-          reject(err);
-        });
-        stream.write(request);
-        stream.end();
-      });
-      await assert.rejects(promise, expectedError);
+      await assert.rejects(client.getSipInfo(request), expectedError);
       assert(
-        (client.innerApiCalls.streamCall as SinonStub)
+        (client.innerApiCalls.getSipInfo as SinonStub)
           .getCall(0)
-          .calledWithExactly(undefined)
-      );
-      assert.deepStrictEqual(
-        ((stream as unknown as PassThrough)._transform as SinonStub).getCall(0)
-          .args[0],
-        request
+          .calledWith(request, expectedOptions, undefined)
       );
     });
   });
@@ -223,7 +251,7 @@ describe('v1beta1.StreamsClient', () => {
         sip_domain: 'sipDomainValue',
         alias: 'aliasValue',
       };
-      const client = new streamsModule.v1beta1.StreamsClient({
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -286,7 +314,7 @@ describe('v1beta1.StreamsClient', () => {
         project: 'projectValue',
         call: 'callValue',
       };
-      const client = new streamsModule.v1beta1.StreamsClient({
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -336,7 +364,7 @@ describe('v1beta1.StreamsClient', () => {
         call: 'callValue',
         recording: 'recordingValue',
       };
-      const client = new streamsModule.v1beta1.StreamsClient({
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -399,7 +427,7 @@ describe('v1beta1.StreamsClient', () => {
         project: 'projectValue',
         sip_domain: 'sipDomainValue',
       };
-      const client = new streamsModule.v1beta1.StreamsClient({
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -448,7 +476,7 @@ describe('v1beta1.StreamsClient', () => {
         project: 'projectValue',
         call: 'callValue',
       };
-      const client = new streamsModule.v1beta1.StreamsClient({
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
@@ -491,55 +519,6 @@ describe('v1beta1.StreamsClient', () => {
       });
     });
 
-    describe('stream', () => {
-      const fakePath = '/rendered/path/stream';
-      const expectedParameters = {
-        project: 'projectValue',
-        streams: 'streamsValue',
-      };
-      const client = new streamsModule.v1beta1.StreamsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      client.initialize();
-      client.pathTemplates.streamPathTemplate.render = sinon
-        .stub()
-        .returns(fakePath);
-      client.pathTemplates.streamPathTemplate.match = sinon
-        .stub()
-        .returns(expectedParameters);
-
-      it('streamPath', () => {
-        const result = client.streamPath('projectValue', 'streamsValue');
-        assert.strictEqual(result, fakePath);
-        assert(
-          (client.pathTemplates.streamPathTemplate.render as SinonStub)
-            .getCall(-1)
-            .calledWith(expectedParameters)
-        );
-      });
-
-      it('matchProjectFromStreamName', () => {
-        const result = client.matchProjectFromStreamName(fakePath);
-        assert.strictEqual(result, 'projectValue');
-        assert(
-          (client.pathTemplates.streamPathTemplate.match as SinonStub)
-            .getCall(-1)
-            .calledWith(fakePath)
-        );
-      });
-
-      it('matchStreamsFromStreamName', () => {
-        const result = client.matchStreamsFromStreamName(fakePath);
-        assert.strictEqual(result, 'streamsValue');
-        assert(
-          (client.pathTemplates.streamPathTemplate.match as SinonStub)
-            .getCall(-1)
-            .calledWith(fakePath)
-        );
-      });
-    });
-
     describe('transcription', () => {
       const fakePath = '/rendered/path/transcription';
       const expectedParameters = {
@@ -547,7 +526,7 @@ describe('v1beta1.StreamsClient', () => {
         call: 'callValue',
         transcription: 'transcriptionValue',
       };
-      const client = new streamsModule.v1beta1.StreamsClient({
+      const client = new sipinfoserviceModule.v1beta1.SipInfoServiceClient({
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });

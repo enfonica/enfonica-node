@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,21 +17,30 @@
 // ** All changes to this file may be overwritten. **
 
 import * as v1beta1 from './v1beta1';
+const AliasesClient = v1beta1.AliasesClient;
 const CallsClient = v1beta1.CallsClient;
 const RecordingsClient = v1beta1.RecordingsClient;
+const SipDomainsClient = v1beta1.SipDomainsClient;
+const SipInfoServiceClient = v1beta1.SipInfoServiceClient;
 const StreamsClient = v1beta1.StreamsClient;
 const TranscriptionsClient = v1beta1.TranscriptionsClient;
 export {
   v1beta1,
+  AliasesClient,
   CallsClient,
   RecordingsClient,
+  SipDomainsClient,
+  SipInfoServiceClient,
   StreamsClient,
   TranscriptionsClient,
 };
 export default {
   v1beta1,
+  AliasesClient,
   CallsClient,
   RecordingsClient,
+  SipDomainsClient,
+  SipInfoServiceClient,
   StreamsClient,
   TranscriptionsClient,
 };

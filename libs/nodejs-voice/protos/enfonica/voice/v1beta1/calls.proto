@@ -17,11 +17,13 @@ syntax = "proto3";
 package enfonica.voice.v1beta1;
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
 import "google/api/annotations.proto";
 import "google/type/money.proto";
 import "google/api/resource.proto";
 import "google/api/field_behavior.proto";
 import "google/api/client.proto";
+import "google/type/latlng.proto";
 import "enfonica/voice/v1beta1/call_recording_config.proto";
 
 option cc_enable_arenas = true;
@@ -182,19 +184,46 @@ message Call {
   // Resource name of the call. It is of the form `projects/*/calls/*`
   string name = 1;
 
-  // The recipient phone number in +E164.
+  // The recipient of the call.
+  //
+  // For PSTN calls, this is the phone number in +E164 format.
+  //
+  // For calls to a SIP domain, this is the URI in the To header, in the format
+  // `sip:user-or-number@domain`.
+  //
+  // When placing outgoing API calls, only PSTN is supported.
   // (-- api-linter: core::0140::prepositions=disabled
   //     aip.dev/not-precedent: Not a preposition. --)
   string to = 2 [(google.api.field_behavior) = REQUIRED];
 
-  // The phone number in +E164 that initiated the call (the Caller ID / CLI).
-  // `from` is required on Create, but its value may be hidden in subsequent
-  // Get/List calls if `private` is true.
+  // The originator of the call.
+  //
+  // For PSTN calls, this is the CLI (Caller ID) in +E164 format. When placing
+  // outgoing API calls, this is required.
+  //
+  // For calls to a SIP domain, this is the URI in the From header, in the
+  // format `sip:user-or-number@domain`.
+  //
+  // This field will not be set if the CLI originated from the PSTN and
+  // `is_private` is true.
   // (-- api-linter: core::0140::prepositions=disabled
   //     aip.dev/not-precedent: Not a preposition. --)
   // (-- api-linter: core::0140::reserved-words=disabled
   //     aip.dev/not-precedent: `from` is a core concept in Enfonica APIs. --)
   string from = 3 [(google.api.field_behavior) = REQUIRED];
+
+  // The approximate location where the call originated from. Only set for
+  // INCOMING calls (this may be changed in the future).
+  // (-- api-linter: core::0140::prepositions=disabled
+  //     aip.dev/not-precedent: Not a preposition. --)
+  NumberLocation from_location = 25;
+
+  // The zone associated with the `from` phone number, if applicable. Only
+  // applicable for PSTN. Only set for INCOMING calls (this may be changed in
+  // the future).
+  // (-- api-linter: core::0140::prepositions=disabled
+  //     aip.dev/not-precedent: Not a preposition. --)
+  string from_zone = 26;
 
   // Whether the Caller ID is private.
   bool is_private = 4;
@@ -216,8 +245,13 @@ message Call {
   // The human readable call associated with the error.
   string error_message = 12 [(google.api.field_behavior) = OUTPUT_ONLY];
 
-  // The price of this call. This may not be populated until a certain stage in the call
-  // lifecycle.
+  // The price of this call. This may be set at various times. Generally,
+  // it is available when the call reaches a terminal state, either immediately
+  // or shortly afterwards.
+  //
+  // This price is the price of the call itself, and does not include charges
+  // from the consumption of other paid services, such as text-to-speech and
+  // transcription.
   google.type.Money price = 13 [(google.api.field_behavior) = OUTPUT_ONLY];
 
   // The current state of the call.
@@ -255,6 +289,34 @@ message Call {
   // The options to use to handle this call. This is only required when a call is created
   // using the API.
   ApiCallOptions options = 24 [(google.api.field_behavior) = REQUIRED];
+
+  // The `Call-ID` header of the call. Only set when transport is SIP.
+  string sip_call_id = 27 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The duration for which the call was answered. If the call was not answered
+  // or it has not reached a terminal state, this field will not be set.
+  google.protobuf.Duration answer_duration = 28 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// Location information for a phone number.
+message NumberLocation {
+  // CLDR region code of the country/region. See http://cldr.unicode.org/ and
+  // http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
+  // for details. Example: "AU" for Australia.
+  string region_code = 1;
+
+  // If known, the highest administrative subdivision of a country or region.
+  // For example, this can be a state, a territory, a province, an oblast, or a
+  // prefecture.
+  string administrative_area = 2;
+
+  // If known, the locality associated with the phone number.
+  // Generally refers to the city/town portion of the address.
+  // Examples: AU suburb, US city, IT comune, UK post town.
+  string locality = 3;
+
+  // If known, the approximate coordinates of the location.
+  google.type.LatLng coordinates = 4;
 }
 
 // Request to create a new call.

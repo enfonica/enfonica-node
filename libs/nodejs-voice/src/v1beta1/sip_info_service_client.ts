@@ -18,29 +18,20 @@
 
 import * as gax from 'google-gax';
 import * as localAuth from '@enfonica/auth-library';
-import {
-  Callback,
-  CallOptions,
-  Descriptors,
-  ClientOptions,
-  PaginationCallback,
-  GaxCall,
-} from 'google-gax';
+import {Callback, CallOptions, Descriptors, ClientOptions} from 'google-gax';
 import * as path from 'path';
 
-import {Transform} from 'stream';
-import {RequestType} from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
-import * as gapicConfig from './recordings_client_config.json';
+import * as gapicConfig from './sip_info_service_client_config.json';
 
 const version = require('../../../package.json').version;
 
 /**
- *  Manages Recordings.
+ *  Provides information about SIP calls.
  * @class
  * @memberof v1beta1
  */
-export class RecordingsClient {
+export class SipInfoServiceClient {
   private _terminated = false;
   private _opts: ClientOptions;
   private _gaxModule: typeof gax | typeof gax.fallback;
@@ -56,10 +47,10 @@ export class RecordingsClient {
   };
   innerApiCalls: {[name: string]: Function};
   pathTemplates: {[name: string]: gax.PathTemplate};
-  recordingsStub?: Promise<{[name: string]: Function}>;
+  sipInfoServiceStub?: Promise<{[name: string]: Function}>;
 
   /**
-   * Construct an instance of RecordingsClient.
+   * Construct an instance of SipInfoServiceClient.
    *
    * @param {object} [options] - The configuration object. See the subsequent
    *   parameters for more details.
@@ -86,7 +77,7 @@ export class RecordingsClient {
 
   constructor(opts?: any) {
     // Ensure that options include the service address and port.
-    const staticMembers = this.constructor as typeof RecordingsClient;
+    const staticMembers = this.constructor as typeof SipInfoServiceClient;
     const servicePath =
       opts && opts.servicePath
         ? opts.servicePath
@@ -113,12 +104,12 @@ export class RecordingsClient {
     // If we're running in browser, it's OK to omit `fallback` since
     // google-gax has `browser` field in its `package.json`.
     // For Electron (which does not respect `browser` field),
-    // pass `{fallback: true}` to the RecordingsClient constructor.
+    // pass `{fallback: true}` to the SipInfoServiceClient constructor.
     this._gaxModule = opts.fallback ? gax.fallback : gax;
 
     // Create a `gaxGrpc` object, with any grpc-specific options
     // sent to the client.
-    opts.scopes = (this.constructor as typeof RecordingsClient).scopes;
+    opts.scopes = (this.constructor as typeof SipInfoServiceClient).scopes;
     this._gaxGrpc = new this._gaxModule.GrpcClient(opts);
 
     // Save options to use in initialize() method.
@@ -182,20 +173,9 @@ export class RecordingsClient {
       ),
     };
 
-    // Some of the methods on this service return "paged" results,
-    // (e.g. 50 results at a time, with tokens to get subsequent
-    // pages). Denote the keys used for pagination and results.
-    this.descriptors.page = {
-      listRecordings: new this._gaxModule.PageDescriptor(
-        'pageToken',
-        'nextPageToken',
-        'recordings'
-      ),
-    };
-
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-      'enfonica.voice.v1beta1.Recordings',
+      'enfonica.voice.v1beta1.SipInfoService',
       gapicConfig as gax.ClientConfig,
       opts.clientConfig || {},
       {'x-goog-api-client': clientHeader.join(' ')}
@@ -220,31 +200,27 @@ export class RecordingsClient {
    */
   initialize() {
     // If the client stub promise is already initialized, return immediately.
-    if (this.recordingsStub) {
-      return this.recordingsStub;
+    if (this.sipInfoServiceStub) {
+      return this.sipInfoServiceStub;
     }
 
     // Put together the "service stub" for
-    // enfonica.voice.v1beta1.Recordings.
-    this.recordingsStub = this._gaxGrpc.createStub(
+    // enfonica.voice.v1beta1.SipInfoService.
+    this.sipInfoServiceStub = this._gaxGrpc.createStub(
       this._opts.fallback
         ? (this._protos as protobuf.Root).lookupService(
-            'enfonica.voice.v1beta1.Recordings'
+            'enfonica.voice.v1beta1.SipInfoService'
           )
         : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (this._protos as any).enfonica.voice.v1beta1.Recordings,
+          (this._protos as any).enfonica.voice.v1beta1.SipInfoService,
       this._opts
     ) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const recordingsStubMethods = [
-      'getRecording',
-      'listRecordings',
-      'deleteRecording',
-    ];
-    for (const methodName of recordingsStubMethods) {
-      const callPromise = this.recordingsStub.then(
+    const sipInfoServiceStubMethods = ['getSipInfo'];
+    for (const methodName of sipInfoServiceStubMethods) {
+      const callPromise = this.sipInfoServiceStub.then(
         stub =>
           (...args: Array<{}>) => {
             if (this._terminated) {
@@ -258,7 +234,7 @@ export class RecordingsClient {
         }
       );
 
-      const descriptor = this.descriptors.page[methodName] || undefined;
+      const descriptor = undefined;
       const apiCall = this._gaxModule.createApiCall(
         callPromise,
         this._defaults[methodName],
@@ -268,7 +244,7 @@ export class RecordingsClient {
       this.innerApiCalls[methodName] = apiCall;
     }
 
-    return this.recordingsStub;
+    return this.sipInfoServiceStub;
   }
 
   /**
@@ -321,70 +297,70 @@ export class RecordingsClient {
   // -------------------
   // -- Service calls --
   // -------------------
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  getSipInfo(
+    request: protos.enfonica.voice.v1beta1.IGetSipInfoRequest,
     options?: gax.CallOptions
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | undefined,
+      protos.enfonica.voice.v1beta1.ISipInfo,
+      protos.enfonica.voice.v1beta1.IGetSipInfoRequest | undefined,
       {} | undefined
     ]
   >;
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  getSipInfo(
+    request: protos.enfonica.voice.v1beta1.IGetSipInfoRequest,
     options: gax.CallOptions,
     callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.ISipInfo,
+      protos.enfonica.voice.v1beta1.IGetSipInfoRequest | null | undefined,
       {} | null | undefined
     >
   ): void;
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  getSipInfo(
+    request: protos.enfonica.voice.v1beta1.IGetSipInfoRequest,
     callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.ISipInfo,
+      protos.enfonica.voice.v1beta1.IGetSipInfoRequest | null | undefined,
       {} | null | undefined
     >
   ): void;
   /**
-   * Retrieves a Recording identified by the supplied resource name.
+   * Retrieves SIP information about the specified SIP call. If the call is not
+   * a SIP call, throws NOT_FOUND. If the call has not yet completed, throws
+   * FAILED_PRECONDITION. If the SIP call was created greater than 30 days ago,
+   * returns NOT_FOUND.
    *
-   * The caller must have `voice.recordings.get` permission on the project.
+   * The caller must have `voice.calls.get` permission on the project.
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.name
-   *   The resource name of the Recording to retrieve.
-   *   Must be of the form `projects/* /calls/* /recordings/*`.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to FULL.
+   *   The resource name of the SipInfo to retrieve.
+   *   Must be of the form `projects/* /calls/* /sipInfo`.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Recording]{@link enfonica.voice.v1beta1.Recording}.
+   *   The first element of the array is an object representing [SipInfo]{@link enfonica.voice.v1beta1.SipInfo}.
    *   The promise has a method named "cancel" which cancels the ongoing API call.
    */
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  getSipInfo(
+    request: protos.enfonica.voice.v1beta1.IGetSipInfoRequest,
     optionsOrCallback?:
       | gax.CallOptions
       | Callback<
-          protos.enfonica.voice.v1beta1.IRecording,
-          protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
+          protos.enfonica.voice.v1beta1.ISipInfo,
+          protos.enfonica.voice.v1beta1.IGetSipInfoRequest | null | undefined,
           {} | null | undefined
         >,
     callback?: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.ISipInfo,
+      protos.enfonica.voice.v1beta1.IGetSipInfoRequest | null | undefined,
       {} | null | undefined
     >
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | undefined,
+      protos.enfonica.voice.v1beta1.ISipInfo,
+      protos.enfonica.voice.v1beta1.IGetSipInfoRequest | undefined,
       {} | undefined
     ]
   > | void {
@@ -404,304 +380,9 @@ export class RecordingsClient {
         name: request.name || '',
       });
     this.initialize();
-    return this.innerApiCalls.getRecording(request, options, callback);
-  }
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | undefined,
-      {} | undefined
-    ]
-  >;
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes a recording.
-   *
-   * The caller must have `voice.recordings.delete` permission on the project.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   The resource name of the Recording to be deleted.
-   *   Must be of the form `projects/* /calls/* /recording/*`.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Recording]{@link enfonica.voice.v1beta1.Recording}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
-          protos.enfonica.voice.v1beta1.IRecording,
-          | protos.enfonica.voice.v1beta1.IDeleteRecordingRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
-    request = request || {};
-    let options: gax.CallOptions;
-    if (typeof optionsOrCallback === 'function' && callback === undefined) {
-      callback = optionsOrCallback;
-      options = {};
-    } else {
-      options = optionsOrCallback as gax.CallOptions;
-    }
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        name: request.name || '',
-      });
-    this.initialize();
-    return this.innerApiCalls.deleteRecording(request, options, callback);
+    return this.innerApiCalls.getSipInfo(request, options, callback);
   }
 
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording[],
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest | null,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse
-    ]
-  >;
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    options: gax.CallOptions,
-    callback: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
-    >
-  ): void;
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    callback: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
-    >
-  ): void;
-  /**
-   * Lists the Recordings of the specified project.
-   * List returns Recordings sorted by create_time descending.
-   *
-   * The caller must have `voice.recordings.list` permission on the project.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
-   * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
-   *   Default value of 10 and maximum value of 100.
-   * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
-   *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [Recording]{@link enfonica.voice.v1beta1.Recording}.
-   *   The client library support auto-pagination by default: it will call the API as many
-   *   times as needed and will merge results from all the pages into this array.
-   *
-   *   When autoPaginate: false is specified through options, the array has three elements.
-   *   The first element is Array of [Recording]{@link enfonica.voice.v1beta1.Recording} that corresponds to
-   *   the one page received from the API server.
-   *   If the second element is not null it contains the request object of type [ListRecordingsRequest]{@link enfonica.voice.v1beta1.ListRecordingsRequest}
-   *   that can be used to obtain the next page of the results.
-   *   If it is null, the next page does not exist.
-   *   The third element contains the raw response received from the API server. Its type is
-   *   [ListRecordingsResponse]{@link enfonica.voice.v1beta1.ListRecordingsResponse}.
-   *
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | PaginationCallback<
-          protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-          | protos.enfonica.voice.v1beta1.IListRecordingsResponse
-          | null
-          | undefined,
-          protos.enfonica.voice.v1beta1.IRecording
-        >,
-    callback?: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
-    >
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording[],
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest | null,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse
-    ]
-  > | void {
-    request = request || {};
-    let options: gax.CallOptions;
-    if (typeof optionsOrCallback === 'function' && callback === undefined) {
-      callback = optionsOrCallback;
-      options = {};
-    } else {
-      options = optionsOrCallback as gax.CallOptions;
-    }
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        parent: request.parent || '',
-      });
-    this.initialize();
-    return this.innerApiCalls.listRecordings(request, options, callback);
-  }
-
-  /**
-   * Equivalent to {@link listRecordings}, but returns a NodeJS Stream object.
-   *
-   * This fetches the paged responses for {@link listRecordings} continuously
-   * and invokes the callback registered for 'data' event for each element in the
-   * responses.
-   *
-   * The returned object has 'end' method when no more elements are required.
-   *
-   * autoPaginate option will be ignored.
-   *
-   * @see {@link https://nodejs.org/api/stream.html}
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
-   * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
-   *   Default value of 10 and maximum value of 100.
-   * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
-   *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Stream}
-   *   An object stream which emits an object representing [Recording]{@link enfonica.voice.v1beta1.Recording} on 'data' event.
-   */
-  listRecordingsStream(
-    request?: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    options?: gax.CallOptions
-  ): Transform {
-    request = request || {};
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        parent: request.parent || '',
-      });
-    const callSettings = new gax.CallSettings(options);
-    this.initialize();
-    return this.descriptors.page.listRecordings.createStream(
-      this.innerApiCalls.listRecordings as gax.GaxCall,
-      request,
-      callSettings
-    );
-  }
-
-  /**
-   * Equivalent to {@link listRecordings}, but returns an iterable object.
-   *
-   * for-await-of syntax is used with the iterable to recursively get response element on-demand.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
-   * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
-   *   Default value of 10 and maximum value of 100.
-   * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
-   *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Object}
-   *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
-   */
-  listRecordingsAsync(
-    request?: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    options?: gax.CallOptions
-  ): AsyncIterable<protos.enfonica.voice.v1beta1.IRecording> {
-    request = request || {};
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        parent: request.parent || '',
-      });
-    options = options || {};
-    const callSettings = new gax.CallSettings(options);
-    this.initialize();
-    return this.descriptors.page.listRecordings.asyncIterate(
-      this.innerApiCalls['listRecordings'] as GaxCall,
-      request as unknown as RequestType,
-      callSettings
-    ) as AsyncIterable<protos.enfonica.voice.v1beta1.IRecording>;
-  }
   // --------------------
   // -- Path templates --
   // --------------------
@@ -976,7 +657,7 @@ export class RecordingsClient {
   close(): Promise<void> {
     this.initialize();
     if (!this._terminated) {
-      return this.recordingsStub!.then(stub => {
+      return this.sipInfoServiceStub!.then(stub => {
         this._terminated = true;
         stub.close();
       });

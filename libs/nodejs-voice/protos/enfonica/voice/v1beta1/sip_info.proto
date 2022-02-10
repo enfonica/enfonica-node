@@ -1,0 +1,119 @@
+// Copyright 2021 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.voice.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/api/annotations.proto";
+import "google/api/resource.proto";
+import "google/api/field_behavior.proto";
+import "google/api/client.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Voice.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/voice/v1beta1;voice";
+option java_multiple_files = true;
+option java_outer_classname = "SipInfoProto";
+option java_package = "com.enfonica.voice.v1beta1";
+option objc_class_prefix = "ENFON";
+
+// Provides information about SIP calls.
+service SipInfoService {
+  option (google.api.default_host) = "voice.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/voice";
+
+  // Retrieves SIP information about the specified SIP call. If the call is not
+  // a SIP call, throws NOT_FOUND. If the call has not yet completed, throws
+  // FAILED_PRECONDITION. If the SIP call was created greater than 30 days ago,
+  // returns NOT_FOUND.
+  //
+  // The caller must have `voice.calls.get` permission on the project.
+  rpc GetSipInfo(GetSipInfoRequest) returns (SipInfo) {
+    option (google.api.http) = {
+    get: "/v1beta1/{name=projects/*/calls/*/sipInfo}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+}
+
+// The SipInfo resource. This represents information about a SIP call.
+message SipInfo {
+  option (google.api.resource) = {
+    type: "voice.api.enfonica.com/SipInfo"
+    pattern: "projects/{project}/calls/{call}/sipInfo"
+  };
+
+  // Resource name of the sip_info. It is of the form
+  // `projects/*/calls/*/sipInfo`
+  string name = 1;
+
+  // The time that the SIP dialog started.
+  google.protobuf.Timestamp start_time = 2;
+
+  // The time that the SIP dialog ended.
+  google.protobuf.Timestamp end_time = 3;
+
+  // The messages, in chronological order, that form the SIP dialog.
+  repeated SipMessage messages = 4;
+
+  // The `Call-ID` of the SIP call.
+  string sip_call_id = 5;
+
+  // The PCAP file data.
+  bytes pcap = 6;
+}
+
+// A SIP message that is part of a dialog.
+message SipMessage {
+  // The offset relative to the start_time that this message was sent/received.
+  google.protobuf.Duration offset_duration = 1;
+
+  // The source IP where the message originated.
+  string source_ip = 2;
+
+  // The source port where the message originated.
+  int32 source_port = 3;
+
+  // The destination IP where the message was sent.
+  string destination_ip = 4;
+
+  // The destination port where the message was sent.
+  int32 destination_port = 5;
+
+  // The method or response code. For example, "INVITE" or "100".
+  string method = 6;
+
+  // The full request line. For example, "100 Trying".
+  string request_line = 7;
+
+  // The entire contents of the SIP packet, including the request line, headers
+  // and body.
+  string data = 8;
+}
+
+// The GetSipInfo request message.
+message GetSipInfoRequest {
+  // The resource name of the SipInfo to retrieve.
+  // Must be of the form `projects/*/calls/*/sipInfo`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/SipInfo"
+    }
+  ];
+}

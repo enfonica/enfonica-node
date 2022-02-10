@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -683,6 +683,70 @@ describe('v1beta1.CallsClient', () => {
   });
 
   describe('Path templates', () => {
+    describe('alias', () => {
+      const fakePath = '/rendered/path/alias';
+      const expectedParameters = {
+        project: 'projectValue',
+        sip_domain: 'sipDomainValue',
+        alias: 'aliasValue',
+      };
+      const client = new callsModule.v1beta1.CallsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.aliasPathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.aliasPathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('aliasPath', () => {
+        const result = client.aliasPath(
+          'projectValue',
+          'sipDomainValue',
+          'aliasValue'
+        );
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.aliasPathTemplate.render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchProjectFromAliasName', () => {
+        const result = client.matchProjectFromAliasName(fakePath);
+        assert.strictEqual(result, 'projectValue');
+        assert(
+          (client.pathTemplates.aliasPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchSipDomainFromAliasName', () => {
+        const result = client.matchSipDomainFromAliasName(fakePath);
+        assert.strictEqual(result, 'sipDomainValue');
+        assert(
+          (client.pathTemplates.aliasPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchAliasFromAliasName', () => {
+        const result = client.matchAliasFromAliasName(fakePath);
+        assert.strictEqual(result, 'aliasValue');
+        assert(
+          (client.pathTemplates.aliasPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+
     describe('call', () => {
       const fakePath = '/rendered/path/call';
       const expectedParameters = {
@@ -790,6 +854,104 @@ describe('v1beta1.CallsClient', () => {
         assert.strictEqual(result, 'recordingValue');
         assert(
           (client.pathTemplates.recordingPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+
+    describe('sipDomain', () => {
+      const fakePath = '/rendered/path/sipDomain';
+      const expectedParameters = {
+        project: 'projectValue',
+        sip_domain: 'sipDomainValue',
+      };
+      const client = new callsModule.v1beta1.CallsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.sipDomainPathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.sipDomainPathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('sipDomainPath', () => {
+        const result = client.sipDomainPath('projectValue', 'sipDomainValue');
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.sipDomainPathTemplate.render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchProjectFromSipDomainName', () => {
+        const result = client.matchProjectFromSipDomainName(fakePath);
+        assert.strictEqual(result, 'projectValue');
+        assert(
+          (client.pathTemplates.sipDomainPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchSipDomainFromSipDomainName', () => {
+        const result = client.matchSipDomainFromSipDomainName(fakePath);
+        assert.strictEqual(result, 'sipDomainValue');
+        assert(
+          (client.pathTemplates.sipDomainPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+    });
+
+    describe('sipInfo', () => {
+      const fakePath = '/rendered/path/sipInfo';
+      const expectedParameters = {
+        project: 'projectValue',
+        call: 'callValue',
+      };
+      const client = new callsModule.v1beta1.CallsClient({
+        credentials: {client_email: 'bogus', private_key: 'bogus'},
+        projectId: 'bogus',
+      });
+      client.initialize();
+      client.pathTemplates.sipInfoPathTemplate.render = sinon
+        .stub()
+        .returns(fakePath);
+      client.pathTemplates.sipInfoPathTemplate.match = sinon
+        .stub()
+        .returns(expectedParameters);
+
+      it('sipInfoPath', () => {
+        const result = client.sipInfoPath('projectValue', 'callValue');
+        assert.strictEqual(result, fakePath);
+        assert(
+          (client.pathTemplates.sipInfoPathTemplate.render as SinonStub)
+            .getCall(-1)
+            .calledWith(expectedParameters)
+        );
+      });
+
+      it('matchProjectFromSipInfoName', () => {
+        const result = client.matchProjectFromSipInfoName(fakePath);
+        assert.strictEqual(result, 'projectValue');
+        assert(
+          (client.pathTemplates.sipInfoPathTemplate.match as SinonStub)
+            .getCall(-1)
+            .calledWith(fakePath)
+        );
+      });
+
+      it('matchCallFromSipInfoName', () => {
+        const result = client.matchCallFromSipInfoName(fakePath);
+        assert.strictEqual(result, 'callValue');
+        assert(
+          (client.pathTemplates.sipInfoPathTemplate.match as SinonStub)
             .getCall(-1)
             .calledWith(fakePath)
         );

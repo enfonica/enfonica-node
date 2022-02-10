@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,11 +16,14 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-import {CallsClient, RecordingsClient, StreamsClient, TranscriptionsClient} from 'voice';
+import {AliasesClient, CallsClient, RecordingsClient, SipDomainsClient, SipInfoServiceClient, StreamsClient, TranscriptionsClient} from 'voice';
 
 function main() {
+  new AliasesClient();
   new CallsClient();
   new RecordingsClient();
+  new SipDomainsClient();
+  new SipInfoServiceClient();
   new StreamsClient();
   new TranscriptionsClient();
 }

@@ -31,16 +31,16 @@ import * as path from 'path';
 import {Transform} from 'stream';
 import {RequestType} from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
-import * as gapicConfig from './recordings_client_config.json';
+import * as gapicConfig from './sip_domains_client_config.json';
 
 const version = require('../../../package.json').version;
 
 /**
- *  Manages Recordings.
+ *  Manages SIP Domains.
  * @class
  * @memberof v1beta1
  */
-export class RecordingsClient {
+export class SipDomainsClient {
   private _terminated = false;
   private _opts: ClientOptions;
   private _gaxModule: typeof gax | typeof gax.fallback;
@@ -56,10 +56,10 @@ export class RecordingsClient {
   };
   innerApiCalls: {[name: string]: Function};
   pathTemplates: {[name: string]: gax.PathTemplate};
-  recordingsStub?: Promise<{[name: string]: Function}>;
+  sipDomainsStub?: Promise<{[name: string]: Function}>;
 
   /**
-   * Construct an instance of RecordingsClient.
+   * Construct an instance of SipDomainsClient.
    *
    * @param {object} [options] - The configuration object. See the subsequent
    *   parameters for more details.
@@ -86,7 +86,7 @@ export class RecordingsClient {
 
   constructor(opts?: any) {
     // Ensure that options include the service address and port.
-    const staticMembers = this.constructor as typeof RecordingsClient;
+    const staticMembers = this.constructor as typeof SipDomainsClient;
     const servicePath =
       opts && opts.servicePath
         ? opts.servicePath
@@ -113,12 +113,12 @@ export class RecordingsClient {
     // If we're running in browser, it's OK to omit `fallback` since
     // google-gax has `browser` field in its `package.json`.
     // For Electron (which does not respect `browser` field),
-    // pass `{fallback: true}` to the RecordingsClient constructor.
+    // pass `{fallback: true}` to the SipDomainsClient constructor.
     this._gaxModule = opts.fallback ? gax.fallback : gax;
 
     // Create a `gaxGrpc` object, with any grpc-specific options
     // sent to the client.
-    opts.scopes = (this.constructor as typeof RecordingsClient).scopes;
+    opts.scopes = (this.constructor as typeof SipDomainsClient).scopes;
     this._gaxGrpc = new this._gaxModule.GrpcClient(opts);
 
     // Save options to use in initialize() method.
@@ -186,16 +186,16 @@ export class RecordingsClient {
     // (e.g. 50 results at a time, with tokens to get subsequent
     // pages). Denote the keys used for pagination and results.
     this.descriptors.page = {
-      listRecordings: new this._gaxModule.PageDescriptor(
+      listSipDomains: new this._gaxModule.PageDescriptor(
         'pageToken',
         'nextPageToken',
-        'recordings'
+        'sipDomains'
       ),
     };
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-      'enfonica.voice.v1beta1.Recordings',
+      'enfonica.voice.v1beta1.SipDomains',
       gapicConfig as gax.ClientConfig,
       opts.clientConfig || {},
       {'x-goog-api-client': clientHeader.join(' ')}
@@ -220,31 +220,33 @@ export class RecordingsClient {
    */
   initialize() {
     // If the client stub promise is already initialized, return immediately.
-    if (this.recordingsStub) {
-      return this.recordingsStub;
+    if (this.sipDomainsStub) {
+      return this.sipDomainsStub;
     }
 
     // Put together the "service stub" for
-    // enfonica.voice.v1beta1.Recordings.
-    this.recordingsStub = this._gaxGrpc.createStub(
+    // enfonica.voice.v1beta1.SipDomains.
+    this.sipDomainsStub = this._gaxGrpc.createStub(
       this._opts.fallback
         ? (this._protos as protobuf.Root).lookupService(
-            'enfonica.voice.v1beta1.Recordings'
+            'enfonica.voice.v1beta1.SipDomains'
           )
         : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (this._protos as any).enfonica.voice.v1beta1.Recordings,
+          (this._protos as any).enfonica.voice.v1beta1.SipDomains,
       this._opts
     ) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const recordingsStubMethods = [
-      'getRecording',
-      'listRecordings',
-      'deleteRecording',
+    const sipDomainsStubMethods = [
+      'createSipDomain',
+      'getSipDomain',
+      'listSipDomains',
+      'updateSipDomain',
+      'deleteSipDomain',
     ];
-    for (const methodName of recordingsStubMethods) {
-      const callPromise = this.recordingsStub.then(
+    for (const methodName of sipDomainsStubMethods) {
+      const callPromise = this.sipDomainsStub.then(
         stub =>
           (...args: Array<{}>) => {
             if (this._terminated) {
@@ -268,7 +270,7 @@ export class RecordingsClient {
       this.innerApiCalls[methodName] = apiCall;
     }
 
-    return this.recordingsStub;
+    return this.sipDomainsStub;
   }
 
   /**
@@ -321,264 +323,84 @@ export class RecordingsClient {
   // -------------------
   // -- Service calls --
   // -------------------
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  createSipDomain(
+    request: protos.enfonica.voice.v1beta1.ICreateSipDomainRequest,
     options?: gax.CallOptions
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | undefined,
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.ICreateSipDomainRequest | undefined,
       {} | undefined
     ]
   >;
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  createSipDomain(
+    request: protos.enfonica.voice.v1beta1.ICreateSipDomainRequest,
     options: gax.CallOptions,
     callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.ICreateSipDomainRequest | null | undefined,
       {} | null | undefined
     >
   ): void;
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
+  createSipDomain(
+    request: protos.enfonica.voice.v1beta1.ICreateSipDomainRequest,
     callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.ICreateSipDomainRequest | null | undefined,
       {} | null | undefined
     >
   ): void;
   /**
-   * Retrieves a Recording identified by the supplied resource name.
+   * Creates a sip domain.
    *
-   * The caller must have `voice.recordings.get` permission on the project.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   The resource name of the Recording to retrieve.
-   *   Must be of the form `projects/* /calls/* /recordings/*`.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to FULL.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Recording]{@link enfonica.voice.v1beta1.Recording}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  getRecording(
-    request: protos.enfonica.voice.v1beta1.IGetRecordingRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
-          protos.enfonica.voice.v1beta1.IRecording,
-          protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IGetRecordingRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
-    request = request || {};
-    let options: gax.CallOptions;
-    if (typeof optionsOrCallback === 'function' && callback === undefined) {
-      callback = optionsOrCallback;
-      options = {};
-    } else {
-      options = optionsOrCallback as gax.CallOptions;
-    }
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        name: request.name || '',
-      });
-    this.initialize();
-    return this.innerApiCalls.getRecording(request, options, callback);
-  }
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | undefined,
-      {} | undefined
-    ]
-  >;
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    options: gax.CallOptions,
-    callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    callback: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes a recording.
-   *
-   * The caller must have `voice.recordings.delete` permission on the project.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   The resource name of the Recording to be deleted.
-   *   Must be of the form `projects/* /calls/* /recording/*`.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Recording]{@link enfonica.voice.v1beta1.Recording}.
-   *   The promise has a method named "cancel" which cancels the ongoing API call.
-   */
-  deleteRecording(
-    request: protos.enfonica.voice.v1beta1.IDeleteRecordingRequest,
-    optionsOrCallback?:
-      | gax.CallOptions
-      | Callback<
-          protos.enfonica.voice.v1beta1.IRecording,
-          | protos.enfonica.voice.v1beta1.IDeleteRecordingRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | null | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording,
-      protos.enfonica.voice.v1beta1.IDeleteRecordingRequest | undefined,
-      {} | undefined
-    ]
-  > | void {
-    request = request || {};
-    let options: gax.CallOptions;
-    if (typeof optionsOrCallback === 'function' && callback === undefined) {
-      callback = optionsOrCallback;
-      options = {};
-    } else {
-      options = optionsOrCallback as gax.CallOptions;
-    }
-    options = options || {};
-    options.otherArgs = options.otherArgs || {};
-    options.otherArgs.headers = options.otherArgs.headers || {};
-    options.otherArgs.headers['x-goog-request-params'] =
-      gax.routingHeader.fromParams({
-        name: request.name || '',
-      });
-    this.initialize();
-    return this.innerApiCalls.deleteRecording(request, options, callback);
-  }
-
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    options?: gax.CallOptions
-  ): Promise<
-    [
-      protos.enfonica.voice.v1beta1.IRecording[],
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest | null,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse
-    ]
-  >;
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    options: gax.CallOptions,
-    callback: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
-    >
-  ): void;
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-    callback: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
-    >
-  ): void;
-  /**
-   * Lists the Recordings of the specified project.
-   * List returns Recordings sorted by create_time descending.
-   *
-   * The caller must have `voice.recordings.list` permission on the project.
+   * The caller must have `voice.sipDomains.create` permission on the project.
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
-   * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
-   *   Default value of 10 and maximum value of 100.
-   * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
-   *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
+   *   The project under which to create the sip domain
+   *   in the form `projects/*`.
+   * @param {enfonica.voice.v1beta1.SipDomain} request.sipDomain
+   *   The sip domain resource to be created.
+   * @param {string} request.sipDomainId
+   *   The subdomain component of the SIP domain. This is the {sip_domain_id} value
+   *   from `name` and can only be set on create. The FQDN of the SIP domain
+   *   will be <sip_domain_id>.sip.enfonica.com.
+   *
+   *   This value must be globally unique. If the identifier already exists, the create
+   *   method will fail with ALREADY_EXISTS.
+   *
+   *   This must be lowercase alpha-numeric or hyphens and
+   *   must start and end with an alpha-numeric character, and must be a minimum of 2 and maximum of 30 characters.
+   *   This is captured in the following regular expression: ^{@link a-z0-9-|a-z0-9}{0,28}[a-z0-9]$
+   *   Can only be set on create.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [Recording]{@link enfonica.voice.v1beta1.Recording}.
-   *   The client library support auto-pagination by default: it will call the API as many
-   *   times as needed and will merge results from all the pages into this array.
-   *
-   *   When autoPaginate: false is specified through options, the array has three elements.
-   *   The first element is Array of [Recording]{@link enfonica.voice.v1beta1.Recording} that corresponds to
-   *   the one page received from the API server.
-   *   If the second element is not null it contains the request object of type [ListRecordingsRequest]{@link enfonica.voice.v1beta1.ListRecordingsRequest}
-   *   that can be used to obtain the next page of the results.
-   *   If it is null, the next page does not exist.
-   *   The third element contains the raw response received from the API server. Its type is
-   *   [ListRecordingsResponse]{@link enfonica.voice.v1beta1.ListRecordingsResponse}.
-   *
+   *   The first element of the array is an object representing [SipDomain]{@link enfonica.voice.v1beta1.SipDomain}.
    *   The promise has a method named "cancel" which cancels the ongoing API call.
    */
-  listRecordings(
-    request: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
+  createSipDomain(
+    request: protos.enfonica.voice.v1beta1.ICreateSipDomainRequest,
     optionsOrCallback?:
       | gax.CallOptions
-      | PaginationCallback<
-          protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-          | protos.enfonica.voice.v1beta1.IListRecordingsResponse
+      | Callback<
+          protos.enfonica.voice.v1beta1.ISipDomain,
+          | protos.enfonica.voice.v1beta1.ICreateSipDomainRequest
           | null
           | undefined,
-          protos.enfonica.voice.v1beta1.IRecording
+          {} | null | undefined
         >,
-    callback?: PaginationCallback<
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse | null | undefined,
-      protos.enfonica.voice.v1beta1.IRecording
+    callback?: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.ICreateSipDomainRequest | null | undefined,
+      {} | null | undefined
     >
   ): Promise<
     [
-      protos.enfonica.voice.v1beta1.IRecording[],
-      protos.enfonica.voice.v1beta1.IListRecordingsRequest | null,
-      protos.enfonica.voice.v1beta1.IListRecordingsResponse
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.ICreateSipDomainRequest | undefined,
+      {} | undefined
     ]
   > | void {
     request = request || {};
@@ -597,13 +419,370 @@ export class RecordingsClient {
         parent: request.parent || '',
       });
     this.initialize();
-    return this.innerApiCalls.listRecordings(request, options, callback);
+    return this.innerApiCalls.createSipDomain(request, options, callback);
+  }
+  getSipDomain(
+    request: protos.enfonica.voice.v1beta1.IGetSipDomainRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IGetSipDomainRequest | undefined,
+      {} | undefined
+    ]
+  >;
+  getSipDomain(
+    request: protos.enfonica.voice.v1beta1.IGetSipDomainRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IGetSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  getSipDomain(
+    request: protos.enfonica.voice.v1beta1.IGetSipDomainRequest,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IGetSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Retrieves a sip domain identified by the supplied resource name.
+   *
+   * The caller must have `voice.sipDomains.get` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.name
+   *   The resource name of the sip domain to retrieve.
+   *   Must be of the form `projects/* /sipDomains/*`.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [SipDomain]{@link enfonica.voice.v1beta1.SipDomain}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  getSipDomain(
+    request: protos.enfonica.voice.v1beta1.IGetSipDomainRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.enfonica.voice.v1beta1.ISipDomain,
+          protos.enfonica.voice.v1beta1.IGetSipDomainRequest | null | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IGetSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IGetSipDomainRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        name: request.name || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.getSipDomain(request, options, callback);
+  }
+  updateSipDomain(
+    request: protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest | undefined,
+      {} | undefined
+    ]
+  >;
+  updateSipDomain(
+    request: protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  updateSipDomain(
+    request: protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Updates a sip domain.
+   *
+   * The caller must have `voice.sipDomains.update` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {enfonica.voice.v1beta1.SipDomain} request.sipDomain
+   *   The new definition of the SipDomain.
+   * @param {google.protobuf.FieldMask} request.updateMask
+   *   Fields to be updated.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [SipDomain]{@link enfonica.voice.v1beta1.SipDomain}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  updateSipDomain(
+    request: protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.enfonica.voice.v1beta1.ISipDomain,
+          | protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest
+          | null
+          | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IUpdateSipDomainRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        'sip_domain.name': request.sipDomain!.name || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.updateSipDomain(request, options, callback);
+  }
+  deleteSipDomain(
+    request: protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest | undefined,
+      {} | undefined
+    ]
+  >;
+  deleteSipDomain(
+    request: protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  deleteSipDomain(
+    request: protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest,
+    callback: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Performs a soft-delete of the specified SIP domain.
+   *
+   * The caller must have `voice.sipDomains.delete` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.name
+   *   The resource name of the sip domain to be deleted.
+   *   Must be of the form `projects/* /sipDomains/*`.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [SipDomain]{@link enfonica.voice.v1beta1.SipDomain}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  deleteSipDomain(
+    request: protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.enfonica.voice.v1beta1.ISipDomain,
+          | protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest
+          | null
+          | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ISipDomain,
+      protos.enfonica.voice.v1beta1.IDeleteSipDomainRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        name: request.name || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.deleteSipDomain(request, options, callback);
+  }
+
+  listSipDomains(
+    request: protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ISipDomain[],
+      protos.enfonica.voice.v1beta1.IListSipDomainsRequest | null,
+      protos.enfonica.voice.v1beta1.IListSipDomainsResponse
+    ]
+  >;
+  listSipDomains(
+    request: protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
+    options: gax.CallOptions,
+    callback: PaginationCallback<
+      protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
+      protos.enfonica.voice.v1beta1.IListSipDomainsResponse | null | undefined,
+      protos.enfonica.voice.v1beta1.ISipDomain
+    >
+  ): void;
+  listSipDomains(
+    request: protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
+    callback: PaginationCallback<
+      protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
+      protos.enfonica.voice.v1beta1.IListSipDomainsResponse | null | undefined,
+      protos.enfonica.voice.v1beta1.ISipDomain
+    >
+  ): void;
+  /**
+   * Lists all SipDomains.
+   * List returns sip domain sorted by create_time descending.
+   *
+   * The caller must have `voice.sipDomains.list` permission on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.parent
+   *   The project under which to list sip domain, in the form `projects/*`.
+   * @param {number} request.pageSize
+   *   The maximum number of sip domain to return in the response.
+   *   Default value of 10 and maximum value of 100.
+   * @param {string} request.pageToken
+   *   A pagination token returned from a previous call to `ListSipDomains`
+   *   that indicates where this listing should continue from.
+   * @param {boolean} request.showDeleted
+   *   Whether to include deleted sip domains in the response.
+   *   Defaults to false.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is Array of [SipDomain]{@link enfonica.voice.v1beta1.SipDomain}.
+   *   The client library support auto-pagination by default: it will call the API as many
+   *   times as needed and will merge results from all the pages into this array.
+   *
+   *   When autoPaginate: false is specified through options, the array has three elements.
+   *   The first element is Array of [SipDomain]{@link enfonica.voice.v1beta1.SipDomain} that corresponds to
+   *   the one page received from the API server.
+   *   If the second element is not null it contains the request object of type [ListSipDomainsRequest]{@link enfonica.voice.v1beta1.ListSipDomainsRequest}
+   *   that can be used to obtain the next page of the results.
+   *   If it is null, the next page does not exist.
+   *   The third element contains the raw response received from the API server. Its type is
+   *   [ListSipDomainsResponse]{@link enfonica.voice.v1beta1.ListSipDomainsResponse}.
+   *
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  listSipDomains(
+    request: protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | PaginationCallback<
+          protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
+          | protos.enfonica.voice.v1beta1.IListSipDomainsResponse
+          | null
+          | undefined,
+          protos.enfonica.voice.v1beta1.ISipDomain
+        >,
+    callback?: PaginationCallback<
+      protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
+      protos.enfonica.voice.v1beta1.IListSipDomainsResponse | null | undefined,
+      protos.enfonica.voice.v1beta1.ISipDomain
+    >
+  ): Promise<
+    [
+      protos.enfonica.voice.v1beta1.ISipDomain[],
+      protos.enfonica.voice.v1beta1.IListSipDomainsRequest | null,
+      protos.enfonica.voice.v1beta1.IListSipDomainsResponse
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        parent: request.parent || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.listSipDomains(request, options, callback);
   }
 
   /**
-   * Equivalent to {@link listRecordings}, but returns a NodeJS Stream object.
+   * Equivalent to {@link listSipDomains}, but returns a NodeJS Stream object.
    *
-   * This fetches the paged responses for {@link listRecordings} continuously
+   * This fetches the paged responses for {@link listSipDomains} continuously
    * and invokes the callback registered for 'data' event for each element in the
    * responses.
    *
@@ -616,26 +795,23 @@ export class RecordingsClient {
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
+   *   The project under which to list sip domain, in the form `projects/*`.
    * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
+   *   The maximum number of sip domain to return in the response.
    *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
+   *   A pagination token returned from a previous call to `ListSipDomains`
    *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
+   * @param {boolean} request.showDeleted
+   *   Whether to include deleted sip domains in the response.
+   *   Defaults to false.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Stream}
-   *   An object stream which emits an object representing [Recording]{@link enfonica.voice.v1beta1.Recording} on 'data' event.
+   *   An object stream which emits an object representing [SipDomain]{@link enfonica.voice.v1beta1.SipDomain} on 'data' event.
    */
-  listRecordingsStream(
-    request?: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
+  listSipDomainsStream(
+    request?: protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
     options?: gax.CallOptions
   ): Transform {
     request = request || {};
@@ -648,43 +824,40 @@ export class RecordingsClient {
       });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
-    return this.descriptors.page.listRecordings.createStream(
-      this.innerApiCalls.listRecordings as gax.GaxCall,
+    return this.descriptors.page.listSipDomains.createStream(
+      this.innerApiCalls.listSipDomains as gax.GaxCall,
       request,
       callSettings
     );
   }
 
   /**
-   * Equivalent to {@link listRecordings}, but returns an iterable object.
+   * Equivalent to {@link listSipDomains}, but returns an iterable object.
    *
    * for-await-of syntax is used with the iterable to recursively get response element on-demand.
    *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
-   *   The resource name of the parent of which to list recordings.
-   *   May be of the form `projects/* /calls/*` to list the recordings of that
-   *   specific call, or `projects/*` to list recordings across the entire project,
-   *   which maps to `projects/* /calls/-`.
+   *   The project under which to list sip domain, in the form `projects/*`.
    * @param {number} request.pageSize
-   *   The maximum number of Recordings to return in the response.
+   *   The maximum number of sip domain to return in the response.
    *   Default value of 10 and maximum value of 100.
    * @param {string} request.pageToken
-   *   A pagination token returned from a previous recording to `ListRecordings`
+   *   A pagination token returned from a previous call to `ListSipDomains`
    *   that indicates where this listing should continue from.
-   * @param {enfonica.voice.v1beta1.RecordingView} request.view
-   *   Configuration of partial responses.
-   *   Defaults to BASIC.
+   * @param {boolean} request.showDeleted
+   *   Whether to include deleted sip domains in the response.
+   *   Defaults to false.
    * @param {object} [options]
    *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
    * @returns {Object}
    *   An iterable Object that conforms to @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols.
    */
-  listRecordingsAsync(
-    request?: protos.enfonica.voice.v1beta1.IListRecordingsRequest,
+  listSipDomainsAsync(
+    request?: protos.enfonica.voice.v1beta1.IListSipDomainsRequest,
     options?: gax.CallOptions
-  ): AsyncIterable<protos.enfonica.voice.v1beta1.IRecording> {
+  ): AsyncIterable<protos.enfonica.voice.v1beta1.ISipDomain> {
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -696,11 +869,11 @@ export class RecordingsClient {
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
-    return this.descriptors.page.listRecordings.asyncIterate(
-      this.innerApiCalls['listRecordings'] as GaxCall,
+    return this.descriptors.page.listSipDomains.asyncIterate(
+      this.innerApiCalls['listSipDomains'] as GaxCall,
       request as unknown as RequestType,
       callSettings
-    ) as AsyncIterable<protos.enfonica.voice.v1beta1.IRecording>;
+    ) as AsyncIterable<protos.enfonica.voice.v1beta1.ISipDomain>;
   }
   // --------------------
   // -- Path templates --
@@ -976,7 +1149,7 @@ export class RecordingsClient {
   close(): Promise<void> {
     this.initialize();
     if (!this._terminated) {
-      return this.recordingsStub!.then(stub => {
+      return this.sipDomainsStub!.then(stub => {
         this._terminated = true;
         stub.close();
       });

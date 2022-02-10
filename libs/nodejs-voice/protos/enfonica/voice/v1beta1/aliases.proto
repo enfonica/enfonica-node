@@ -1,0 +1,243 @@
+// Copyright 2021 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.voice.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Voice.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/voice/v1beta1;voice";
+option java_multiple_files = true;
+option java_outer_classname = "AliasesProto";
+option java_package = "com.enfonica.voice.v1beta1";
+option objc_class_prefix = "ENFON";
+
+// Manages SIP aliases.
+service Aliases {
+  option (google.api.default_host) = "voice.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/voice";
+
+  // Creates a alias.
+  //
+  // The caller must have `voice.aliases.create` permission on the project.
+  rpc CreateAlias(CreateAliasRequest) returns (Alias) {
+    option (google.api.http) = {
+    post: "/v1beta1/{parent=projects/*/sipDomains/*}/aliases"
+      body: "alias"
+    };
+    option (google.api.method_signature) = "parent,alias,alias_id";
+  }
+
+  // Retrieves a alias identified by the supplied resource name.
+  //
+  // The caller must have `voice.aliases.get` permission on the project.
+  rpc GetAlias(GetAliasRequest) returns (Alias) {
+    option (google.api.http) = {
+      get: "/v1beta1/{name=projects/*/sipDomains/*/aliases/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+
+  // Lists all Aliases.
+  // List returns alias sorted by create_time descending.
+  //
+  // The caller must have `voice.aliases.list` permission on the project.
+  rpc ListAliases(ListAliasesRequest) returns (ListAliasesResponse) {
+    option (google.api.http) = {
+      get: "/v1beta1/{parent=projects/*/sipDomains/*}/aliases"
+    };
+    option (google.api.method_signature) = "parent";
+  }
+
+  // Updates a alias.
+  //
+  // The caller must have `voice.aliases.update` permission on the project.
+  rpc UpdateAlias(UpdateAliasRequest) returns (Alias) {
+    option (google.api.http) = {
+      patch: "/v1beta1/{alias.name=projects/*/sipDomains/*/aliases/*}"
+      body: "alias"
+    };
+    option (google.api.method_signature) = "alias,update_mask";
+  }
+
+  // Deletes the specified alias.
+  //
+  // The caller must have `voice.aliases.delete` permission on the project.
+  rpc DeleteAlias(DeleteAliasRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/v1beta1/{name=projects/*/sipDomains/*/aliases/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+}
+
+// The Alias resource.
+message Alias {
+  option (google.api.resource) = {
+    type: "voice.api.enfonica.com/Alias"
+    pattern: "projects/{project}/sipDomains/{sip_domain}/aliases/{alias}"
+  };
+
+  // Resource name of the alias. It must match the pattern
+  // `projects/{project_id}/sipDomains/{sip_domain_id}/aliases/{alias_id}`
+  string name = 1;
+
+  // A convenience field for the `alias_id` component of the resource name.
+  //
+  // This forms the address of the alias, of the form: {alias}@{sip_domain_id}.sip.enfonica.com
+  string alias_id = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The display name of the alias for use in the UI.
+  // Max length 100 characters.
+  string display_name = 3;
+
+  // The configuration of this alias.
+  oneof config {
+    // Config the alias as a load balancer.
+    LoadBalancerConfig load_balancer_config = 4;
+  }
+
+  // The creation time of the alias.
+  google.protobuf.Timestamp create_time = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// The configuration of an origination load balancer.
+message LoadBalancerConfig {
+  // The endpoints that are included in the load balancer.
+  // May contain a maximum of 10 endpoints.
+  repeated LoadBalancerEndpoint endpoints = 1;
+
+  // The failover URIs to execute in case all endpoints do not work.
+  //
+  // This is useful for configuring disaster recovery for your incoming calls,
+  // and can direct to any supported endpoint type, including: programmable
+  // voice, Flow, SIP and tel URIs.
+  repeated string failover_call_handler_uris = 2;
+}
+
+// An endpoint that is part of a load balancer.
+message LoadBalancerEndpoint {
+  // The [SIP URI](https://enfonica.com/docs/cloud-sip/sip-uris/) of the endpoint.
+  string uri = 1;
+
+  // The priority of the endpoint. Value must be in the range [0,65535].
+  // Lower priority endpoints will be attempted first.
+  int32 priority = 2;
+
+  // The weighting to apply to this endpoint when selecting endpoints.
+  // Endpoints of the same priority will be selected by weighted randomization
+  // using this value. Value must be in the range [1,65535]. Default value
+  // is 10.
+  int32 weight = 3;
+
+  // Whether this endpoint is enabled. If disabled, it won't be selected.
+  bool enabled = 4;
+}
+
+// Request to create a new alias.
+message CreateAliasRequest {
+  // The SIP domain under which to create the alias in the form `projects/*/sipDomains/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "voice.api.enfonica.com/Alias"
+    }
+  ];
+
+  // The alias resource to be created.
+  Alias alias = 2 [(google.api.field_behavior) = REQUIRED];
+
+  // The `alias_id` component of the resource name to create, which will be of the form
+  // `projects/{project_id}/sipDomains/{sip_domain_id}/aliases/{alias_id}`.
+  //
+  // This also forms the address of the alias, of the form: {alias}@{sip_domain_id}.sip.enfonica.com
+  //
+  // This must be lowercase alpha-numeric or hyphens and
+  // must start and end with an alpha-numeric character, and must be a minimum of 2 and maximum of 30 characters. 
+  // This is captured in the following regular expression: ^[a-z0-9][a-z0-9-]{0,28}[a-z0-9]$
+  string alias_id = 3 [(google.api.field_behavior) = REQUIRED];
+}
+
+// The GetAlias request message.
+message GetAliasRequest {
+  // The resource name of the alias to retrieve.
+  // Must be of the form `projects/*/sipDomains/*/aliases/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/Alias"
+    }
+  ];
+}
+
+// The ListAliases request.
+message ListAliasesRequest {
+  // The SIP domain under which to list aliases, in the form `projects/*/sipDomains/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "voice.api.enfonica.com/Alias"
+    }
+  ];
+
+  // The maximum number of aliases to return in the response.
+  // Default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous call to `ListAliases`
+  // that indicates where this listing should continue from.
+  string page_token = 3;
+}
+
+// The ListAliases response.
+message ListAliasesResponse {
+  // A possibly paginated list of alias that are direct descendants of
+  // the specified parent resource.
+  repeated Alias aliases = 1;
+
+  // A pagination token returned from a previous call to `ListAliases`
+  // that indicates from where listing should continue.
+  string next_page_token = 2;
+}
+
+// The request message for updating a alias's properties.
+message UpdateAliasRequest {
+  // The new definition of the Alias.
+  Alias alias = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // Fields to be updated.
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+// The DeleteAlias request message.
+message DeleteAliasRequest {
+  // The resource name of the alias to be deleted.
+  // Must be of the form `projects/*/sipDomains/*/aliases/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "voice.api.enfonica.com/Alias"
+    }
+  ];
+}
