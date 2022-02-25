@@ -17,6 +17,281 @@
                 "(google.api.resource_definition).pattern": "projects/{project}/streams/{streams}"
               },
               "nested": {
+                "Aliases": {
+                  "options": {
+                    "(google.api.default_host)": "voice.api.enfonica.com",
+                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/voice"
+                  },
+                  "methods": {
+                    "CreateAlias": {
+                      "requestType": "CreateAliasRequest",
+                      "responseType": "Alias",
+                      "options": {
+                        "(google.api.http).post": "/v1beta1/{parent=projects/*/sipDomains/*}/aliases",
+                        "(google.api.http).body": "alias",
+                        "(google.api.method_signature)": "parent,alias,alias_id"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "post": "/v1beta1/{parent=projects/*/sipDomains/*}/aliases",
+                            "body": "alias"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent,alias,alias_id"
+                        }
+                      ]
+                    },
+                    "GetAlias": {
+                      "requestType": "GetAliasRequest",
+                      "responseType": "Alias",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{name=projects/*/sipDomains/*/aliases/*}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{name=projects/*/sipDomains/*/aliases/*}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    },
+                    "ListAliases": {
+                      "requestType": "ListAliasesRequest",
+                      "responseType": "ListAliasesResponse",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{parent=projects/*/sipDomains/*}/aliases",
+                        "(google.api.method_signature)": "parent"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{parent=projects/*/sipDomains/*}/aliases"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent"
+                        }
+                      ]
+                    },
+                    "UpdateAlias": {
+                      "requestType": "UpdateAliasRequest",
+                      "responseType": "Alias",
+                      "options": {
+                        "(google.api.http).patch": "/v1beta1/{alias.name=projects/*/sipDomains/*/aliases/*}",
+                        "(google.api.http).body": "alias",
+                        "(google.api.method_signature)": "alias,update_mask"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "patch": "/v1beta1/{alias.name=projects/*/sipDomains/*/aliases/*}",
+                            "body": "alias"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "alias,update_mask"
+                        }
+                      ]
+                    },
+                    "DeleteAlias": {
+                      "requestType": "DeleteAliasRequest",
+                      "responseType": "google.protobuf.Empty",
+                      "options": {
+                        "(google.api.http).delete": "/v1beta1/{name=projects/*/sipDomains/*/aliases/*}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "delete": "/v1beta1/{name=projects/*/sipDomains/*/aliases/*}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "Alias": {
+                  "options": {
+                    "(google.api.resource).type": "voice.api.enfonica.com/Alias",
+                    "(google.api.resource).pattern": "projects/{project}/sipDomains/{sip_domain}/aliases/{alias}"
+                  },
+                  "oneofs": {
+                    "config": {
+                      "oneof": [
+                        "loadBalancerConfig"
+                      ]
+                    }
+                  },
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "aliasId": {
+                      "type": "string",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "loadBalancerConfig": {
+                      "type": "LoadBalancerConfig",
+                      "id": 4
+                    },
+                    "createTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 10,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    }
+                  }
+                },
+                "LoadBalancerConfig": {
+                  "fields": {
+                    "endpoints": {
+                      "rule": "repeated",
+                      "type": "LoadBalancerEndpoint",
+                      "id": 1
+                    },
+                    "failoverCallHandlerUris": {
+                      "rule": "repeated",
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "LoadBalancerEndpoint": {
+                  "fields": {
+                    "uri": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "priority": {
+                      "type": "int32",
+                      "id": 2
+                    },
+                    "weight": {
+                      "type": "int32",
+                      "id": 3
+                    },
+                    "enabled": {
+                      "type": "bool",
+                      "id": 4
+                    }
+                  }
+                },
+                "CreateAliasRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "voice.api.enfonica.com/Alias"
+                      }
+                    },
+                    "alias": {
+                      "type": "Alias",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    },
+                    "aliasId": {
+                      "type": "string",
+                      "id": 3,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    }
+                  }
+                },
+                "GetAliasRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "voice.api.enfonica.com/Alias"
+                      }
+                    }
+                  }
+                },
+                "ListAliasesRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "voice.api.enfonica.com/Alias"
+                      }
+                    },
+                    "pageSize": {
+                      "type": "int32",
+                      "id": 2
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "id": 3
+                    }
+                  }
+                },
+                "ListAliasesResponse": {
+                  "fields": {
+                    "aliases": {
+                      "rule": "repeated",
+                      "type": "Alias",
+                      "id": 1
+                    },
+                    "nextPageToken": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "UpdateAliasRequest": {
+                  "fields": {
+                    "alias": {
+                      "type": "Alias",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    },
+                    "updateMask": {
+                      "type": "google.protobuf.FieldMask",
+                      "id": 2
+                    }
+                  }
+                },
+                "DeleteAliasRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "voice.api.enfonica.com/Alias"
+                      }
+                    }
+                  }
+                },
                 "CallRecordingConfig": {
                   "fields": {
                     "trigger": {
@@ -166,6 +441,14 @@
                         "(google.api.field_behavior)": "REQUIRED"
                       }
                     },
+                    "fromLocation": {
+                      "type": "NumberLocation",
+                      "id": 25
+                    },
+                    "fromZone": {
+                      "type": "string",
+                      "id": 26
+                    },
                     "isPrivate": {
                       "type": "bool",
                       "id": 4
@@ -279,6 +562,20 @@
                       "options": {
                         "(google.api.field_behavior)": "REQUIRED"
                       }
+                    },
+                    "sipCallId": {
+                      "type": "string",
+                      "id": 27,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "answerDuration": {
+                      "type": "google.protobuf.Duration",
+                      "id": 28,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
                     }
                   },
                   "nested": {
@@ -342,6 +639,26 @@
                         "PARENT_CALL": 2,
                         "API": 3
                       }
+                    }
+                  }
+                },
+                "NumberLocation": {
+                  "fields": {
+                    "regionCode": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "administrativeArea": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "locality": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "coordinates": {
+                      "type": "google.type.LatLng",
+                      "id": 4
                     }
                   }
                 },
@@ -682,6 +999,398 @@
                     "RECORDING_VIEW_UNSPECIFIED": 0,
                     "BASIC": 1,
                     "FULL": 2
+                  }
+                },
+                "SipDomains": {
+                  "options": {
+                    "(google.api.default_host)": "voice.api.enfonica.com",
+                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/voice"
+                  },
+                  "methods": {
+                    "CreateSipDomain": {
+                      "requestType": "CreateSipDomainRequest",
+                      "responseType": "SipDomain",
+                      "options": {
+                        "(google.api.http).post": "/v1beta1/{parent=projects/*}/sipDomains",
+                        "(google.api.http).body": "sip_domain",
+                        "(google.api.method_signature)": "parent,sip_domain,sip_domain_id"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "post": "/v1beta1/{parent=projects/*}/sipDomains",
+                            "body": "sip_domain"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent,sip_domain,sip_domain_id"
+                        }
+                      ]
+                    },
+                    "GetSipDomain": {
+                      "requestType": "GetSipDomainRequest",
+                      "responseType": "SipDomain",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{name=projects/*/sipDomains/*}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{name=projects/*/sipDomains/*}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    },
+                    "ListSipDomains": {
+                      "requestType": "ListSipDomainsRequest",
+                      "responseType": "ListSipDomainsResponse",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{parent=projects/*}/sipDomains",
+                        "(google.api.method_signature)": "parent"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{parent=projects/*}/sipDomains"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent"
+                        }
+                      ]
+                    },
+                    "UpdateSipDomain": {
+                      "requestType": "UpdateSipDomainRequest",
+                      "responseType": "SipDomain",
+                      "options": {
+                        "(google.api.http).patch": "/v1beta1/{sip_domain.name=projects/*/sipDomains/*}",
+                        "(google.api.http).body": "sip_domain",
+                        "(google.api.method_signature)": "sip_domain,update_mask"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "patch": "/v1beta1/{sip_domain.name=projects/*/sipDomains/*}",
+                            "body": "sip_domain"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "sip_domain,update_mask"
+                        }
+                      ]
+                    },
+                    "DeleteSipDomain": {
+                      "requestType": "DeleteSipDomainRequest",
+                      "responseType": "SipDomain",
+                      "options": {
+                        "(google.api.http).delete": "/v1beta1/{name=projects/*/sipDomains/*}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "delete": "/v1beta1/{name=projects/*/sipDomains/*}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "SipDomain": {
+                  "options": {
+                    "(google.api.resource).type": "voice.api.enfonica.com/SipDomain",
+                    "(google.api.resource).pattern": "projects/{project}/sipDomains/{sip_domain}"
+                  },
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "sipDomainId": {
+                      "type": "string",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "allowRegister": {
+                      "type": "bool",
+                      "id": 4
+                    },
+                    "callTerminationMode": {
+                      "type": "TerminationMode",
+                      "id": 5
+                    },
+                    "callTerminationHandlerUris": {
+                      "rule": "repeated",
+                      "type": "string",
+                      "id": 6
+                    },
+                    "cidrBlocks": {
+                      "rule": "repeated",
+                      "type": "CidrBlock",
+                      "id": 8
+                    },
+                    "callRecording": {
+                      "type": "CallRecordingConfig",
+                      "id": 9
+                    },
+                    "createTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 10,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "deleteTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 11,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    }
+                  },
+                  "nested": {
+                    "TerminationMode": {
+                      "values": {
+                        "TERMINATION_MODE_UNSPECIFIED": 0,
+                        "TERMINATION_MODE_DISABLED": 1,
+                        "PSTN_TRUNK": 2,
+                        "PROGRAMMABLE": 3
+                      }
+                    }
+                  }
+                },
+                "CidrBlock": {
+                  "fields": {
+                    "displayName": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "cidrBlock": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "CreateSipDomainRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "voice.api.enfonica.com/SipDomain"
+                      }
+                    },
+                    "sipDomain": {
+                      "type": "SipDomain",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    },
+                    "sipDomainId": {
+                      "type": "string",
+                      "id": 3,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    }
+                  }
+                },
+                "GetSipDomainRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "voice.api.enfonica.com/SipDomain"
+                      }
+                    }
+                  }
+                },
+                "ListSipDomainsRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "voice.api.enfonica.com/SipDomain"
+                      }
+                    },
+                    "pageSize": {
+                      "type": "int32",
+                      "id": 2
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "showDeleted": {
+                      "type": "bool",
+                      "id": 4
+                    }
+                  }
+                },
+                "ListSipDomainsResponse": {
+                  "fields": {
+                    "sipDomains": {
+                      "rule": "repeated",
+                      "type": "SipDomain",
+                      "id": 1
+                    },
+                    "nextPageToken": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "UpdateSipDomainRequest": {
+                  "fields": {
+                    "sipDomain": {
+                      "type": "SipDomain",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    },
+                    "updateMask": {
+                      "type": "google.protobuf.FieldMask",
+                      "id": 2
+                    }
+                  }
+                },
+                "DeleteSipDomainRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "voice.api.enfonica.com/SipDomain"
+                      }
+                    }
+                  }
+                },
+                "SipInfoService": {
+                  "options": {
+                    "(google.api.default_host)": "voice.api.enfonica.com",
+                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/voice"
+                  },
+                  "methods": {
+                    "GetSipInfo": {
+                      "requestType": "GetSipInfoRequest",
+                      "responseType": "SipInfo",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{name=projects/*/calls/*/sipInfo}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{name=projects/*/calls/*/sipInfo}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "SipInfo": {
+                  "options": {
+                    "(google.api.resource).type": "voice.api.enfonica.com/SipInfo",
+                    "(google.api.resource).pattern": "projects/{project}/calls/{call}/sipInfo"
+                  },
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "startTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 2
+                    },
+                    "endTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 3
+                    },
+                    "messages": {
+                      "rule": "repeated",
+                      "type": "SipMessage",
+                      "id": 4
+                    },
+                    "sipCallId": {
+                      "type": "string",
+                      "id": 5
+                    },
+                    "pcap": {
+                      "type": "bytes",
+                      "id": 6
+                    }
+                  }
+                },
+                "SipMessage": {
+                  "fields": {
+                    "offsetDuration": {
+                      "type": "google.protobuf.Duration",
+                      "id": 1
+                    },
+                    "sourceIp": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "sourcePort": {
+                      "type": "int32",
+                      "id": 3
+                    },
+                    "destinationIp": {
+                      "type": "string",
+                      "id": 4
+                    },
+                    "destinationPort": {
+                      "type": "int32",
+                      "id": 5
+                    },
+                    "method": {
+                      "type": "string",
+                      "id": 6
+                    },
+                    "requestLine": {
+                      "type": "string",
+                      "id": 7
+                    },
+                    "data": {
+                      "type": "string",
+                      "id": 8
+                    }
+                  }
+                },
+                "GetSipInfoRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "voice.api.enfonica.com/SipInfo"
+                      }
+                    }
                   }
                 },
                 "Streams": {
@@ -1085,17 +1794,17 @@
                 }
               }
             },
-            "Duration": {
+            "FieldMask": {
               "fields": {
-                "seconds": {
-                  "type": "int64",
+                "paths": {
+                  "rule": "repeated",
+                  "type": "string",
                   "id": 1
-                },
-                "nanos": {
-                  "type": "int32",
-                  "id": 2
                 }
               }
+            },
+            "Empty": {
+              "fields": {}
             },
             "FileDescriptorSet": {
               "fields": {
@@ -1981,6 +2690,18 @@
                 }
               }
             },
+            "Duration": {
+              "fields": {
+                "seconds": {
+                  "type": "int64",
+                  "id": 1
+                },
+                "nanos": {
+                  "type": "int32",
+                  "id": 2
+                }
+              }
+            },
             "Any": {
               "fields": {
                 "type_url": {
@@ -1992,9 +2713,6 @@
                   "id": 2
                 }
               }
-            },
-            "Empty": {
-              "fields": {}
             }
           }
         },
@@ -2002,7 +2720,7 @@
           "options": {
             "go_package": "google.golang.org/genproto/googleapis/api/annotations;annotations",
             "java_multiple_files": true,
-            "java_outer_classname": "ClientProto",
+            "java_outer_classname": "ResourceProto",
             "java_package": "com.google.api",
             "objc_class_prefix": "GAPI",
             "cc_enable_arenas": true
@@ -2095,6 +2813,39 @@
                 }
               }
             },
+            "methodSignature": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 1051,
+              "extend": "google.protobuf.MethodOptions"
+            },
+            "defaultHost": {
+              "type": "string",
+              "id": 1049,
+              "extend": "google.protobuf.ServiceOptions"
+            },
+            "oauthScopes": {
+              "type": "string",
+              "id": 1050,
+              "extend": "google.protobuf.ServiceOptions"
+            },
+            "fieldBehavior": {
+              "rule": "repeated",
+              "type": "google.api.FieldBehavior",
+              "id": 1052,
+              "extend": "google.protobuf.FieldOptions"
+            },
+            "FieldBehavior": {
+              "values": {
+                "FIELD_BEHAVIOR_UNSPECIFIED": 0,
+                "OPTIONAL": 1,
+                "REQUIRED": 2,
+                "OUTPUT_ONLY": 3,
+                "INPUT_ONLY": 4,
+                "IMMUTABLE": 5,
+                "UNORDERED_LIST": 6
+              }
+            },
             "resourceReference": {
               "type": "google.api.ResourceReference",
               "id": 1055,
@@ -2171,48 +2922,15 @@
                   "id": 2
                 }
               }
-            },
-            "fieldBehavior": {
-              "rule": "repeated",
-              "type": "google.api.FieldBehavior",
-              "id": 1052,
-              "extend": "google.protobuf.FieldOptions"
-            },
-            "FieldBehavior": {
-              "values": {
-                "FIELD_BEHAVIOR_UNSPECIFIED": 0,
-                "OPTIONAL": 1,
-                "REQUIRED": 2,
-                "OUTPUT_ONLY": 3,
-                "INPUT_ONLY": 4,
-                "IMMUTABLE": 5,
-                "UNORDERED_LIST": 6
-              }
-            },
-            "methodSignature": {
-              "rule": "repeated",
-              "type": "string",
-              "id": 1051,
-              "extend": "google.protobuf.MethodOptions"
-            },
-            "defaultHost": {
-              "type": "string",
-              "id": 1049,
-              "extend": "google.protobuf.ServiceOptions"
-            },
-            "oauthScopes": {
-              "type": "string",
-              "id": 1050,
-              "extend": "google.protobuf.ServiceOptions"
             }
           }
         },
         "type": {
           "options": {
             "cc_enable_arenas": true,
-            "go_package": "google.golang.org/genproto/googleapis/type/money;money",
+            "go_package": "google.golang.org/genproto/googleapis/type/latlng;latlng",
             "java_multiple_files": true,
-            "java_outer_classname": "MoneyProto",
+            "java_outer_classname": "LatLngProto",
             "java_package": "com.google.type",
             "objc_class_prefix": "GTP"
           },
@@ -2230,6 +2948,18 @@
                 "nanos": {
                   "type": "int32",
                   "id": 3
+                }
+              }
+            },
+            "LatLng": {
+              "fields": {
+                "latitude": {
+                  "type": "double",
+                  "id": 1
+                },
+                "longitude": {
+                  "type": "double",
+                  "id": 2
                 }
               }
             }

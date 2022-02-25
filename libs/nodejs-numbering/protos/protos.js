@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -272,6 +272,7 @@
                      * @property {enfonica.numbering.v1beta1.PhoneNumberInstance.RecordingTrigger|null} [callRecordingTrigger] PhoneNumberInstance callRecordingTrigger
                      * @property {google.protobuf.ITimestamp|null} [createTime] PhoneNumberInstance createTime
                      * @property {google.protobuf.ITimestamp|null} [deleteTime] PhoneNumberInstance deleteTime
+                     * @property {google.protobuf.ITimestamp|null} [activateTime] PhoneNumberInstance activateTime
                      * @property {enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|null} [lifecycleState] PhoneNumberInstance lifecycleState
                      */
     
@@ -366,6 +367,14 @@
                     PhoneNumberInstance.prototype.deleteTime = null;
     
                     /**
+                     * PhoneNumberInstance activateTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} activateTime
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
+                     * @instance
+                     */
+                    PhoneNumberInstance.prototype.activateTime = null;
+    
+                    /**
                      * PhoneNumberInstance lifecycleState.
                      * @member {enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState} lifecycleState
                      * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
@@ -420,6 +429,8 @@
                             $root.google.protobuf.Timestamp.encode(message.deleteTime, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
                         if (message.lifecycleState != null && Object.hasOwnProperty.call(message, "lifecycleState"))
                             writer.uint32(/* id 12, wireType 0 =*/96).int32(message.lifecycleState);
+                        if (message.activateTime != null && Object.hasOwnProperty.call(message, "activateTime"))
+                            $root.google.protobuf.Timestamp.encode(message.activateTime, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
                         return writer;
                     };
     
@@ -503,6 +514,9 @@
                                 break;
                             case 11:
                                 message.deleteTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 13:
+                                message.activateTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
                                 break;
                             case 12:
                                 message.lifecycleState = reader.int32();
@@ -595,6 +609,11 @@
                             if (error)
                                 return "deleteTime." + error;
                         }
+                        if (message.activateTime != null && message.hasOwnProperty("activateTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.activateTime);
+                            if (error)
+                                return "activateTime." + error;
+                        }
                         if (message.lifecycleState != null && message.hasOwnProperty("lifecycleState"))
                             switch (message.lifecycleState) {
                             default:
@@ -603,6 +622,7 @@
                             case 1:
                             case 2:
                             case 3:
+                            case 4:
                                 break;
                             }
                         return null;
@@ -678,6 +698,11 @@
                                 throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.deleteTime: object expected");
                             message.deleteTime = $root.google.protobuf.Timestamp.fromObject(object.deleteTime);
                         }
+                        if (object.activateTime != null) {
+                            if (typeof object.activateTime !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.activateTime: object expected");
+                            message.activateTime = $root.google.protobuf.Timestamp.fromObject(object.activateTime);
+                        }
                         switch (object.lifecycleState) {
                         case "LIFECYCLE_STATE_UNSPECIFIED":
                         case 0:
@@ -694,6 +719,10 @@
                         case "SUSPENDED":
                         case 3:
                             message.lifecycleState = 3;
+                            break;
+                        case "PENDING":
+                        case 4:
+                            message.lifecycleState = 4;
                             break;
                         }
                         return message;
@@ -726,6 +755,7 @@
                             object.createTime = null;
                             object.deleteTime = null;
                             object.lifecycleState = options.enums === String ? "LIFECYCLE_STATE_UNSPECIFIED" : 0;
+                            object.activateTime = null;
                         }
                         if (message.name != null && message.hasOwnProperty("name"))
                             object.name = message.name;
@@ -757,6 +787,8 @@
                             object.deleteTime = $root.google.protobuf.Timestamp.toObject(message.deleteTime, options);
                         if (message.lifecycleState != null && message.hasOwnProperty("lifecycleState"))
                             object.lifecycleState = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState[message.lifecycleState] : message.lifecycleState;
+                        if (message.activateTime != null && message.hasOwnProperty("activateTime"))
+                            object.activateTime = $root.google.protobuf.Timestamp.toObject(message.activateTime, options);
                         return object;
                     };
     
@@ -779,6 +811,7 @@
                      * @property {number} ACTIVE=1 ACTIVE value
                      * @property {number} DELETED=2 DELETED value
                      * @property {number} SUSPENDED=3 SUSPENDED value
+                     * @property {number} PENDING=4 PENDING value
                      */
                     PhoneNumberInstance.LifecycleState = (function() {
                         var valuesById = {}, values = Object.create(valuesById);
@@ -786,6 +819,7 @@
                         values[valuesById[1] = "ACTIVE"] = 1;
                         values[valuesById[2] = "DELETED"] = 2;
                         values[valuesById[3] = "SUSPENDED"] = 3;
+                        values[valuesById[4] = "PENDING"] = 4;
                         return values;
                     })();
     
@@ -2226,6 +2260,7 @@
                      * @property {string|null} [phoneNumber] PhoneNumber phoneNumber
                      * @property {Array.<enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberCapability>|null} [capabilities] PhoneNumber capabilities
                      * @property {string|null} [sku] PhoneNumber sku
+                     * @property {string|null} [activationSku] PhoneNumber activationSku
                      * @property {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null} [numberType] PhoneNumber numberType
                      * @property {string|null} [countryCode] PhoneNumber countryCode
                      */
@@ -2279,6 +2314,14 @@
                     PhoneNumber.prototype.sku = "";
     
                     /**
+                     * PhoneNumber activationSku.
+                     * @member {string} activationSku
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumber
+                     * @instance
+                     */
+                    PhoneNumber.prototype.activationSku = "";
+    
+                    /**
                      * PhoneNumber numberType.
                      * @member {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} numberType
                      * @memberof enfonica.numbering.v1beta1.PhoneNumber
@@ -2330,6 +2373,8 @@
                         }
                         if (message.sku != null && Object.hasOwnProperty.call(message, "sku"))
                             writer.uint32(/* id 4, wireType 2 =*/34).string(message.sku);
+                        if (message.activationSku != null && Object.hasOwnProperty.call(message, "activationSku"))
+                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.activationSku);
                         if (message.numberType != null && Object.hasOwnProperty.call(message, "numberType"))
                             writer.uint32(/* id 10, wireType 0 =*/80).int32(message.numberType);
                         if (message.countryCode != null && Object.hasOwnProperty.call(message, "countryCode"))
@@ -2386,6 +2431,9 @@
                                 break;
                             case 4:
                                 message.sku = reader.string();
+                                break;
+                            case 5:
+                                message.activationSku = reader.string();
                                 break;
                             case 10:
                                 message.numberType = reader.int32();
@@ -2451,6 +2499,9 @@
                         if (message.sku != null && message.hasOwnProperty("sku"))
                             if (!$util.isString(message.sku))
                                 return "sku: string expected";
+                        if (message.activationSku != null && message.hasOwnProperty("activationSku"))
+                            if (!$util.isString(message.activationSku))
+                                return "activationSku: string expected";
                         if (message.numberType != null && message.hasOwnProperty("numberType"))
                             switch (message.numberType) {
                             default:
@@ -2512,6 +2563,8 @@
                         }
                         if (object.sku != null)
                             message.sku = String(object.sku);
+                        if (object.activationSku != null)
+                            message.activationSku = String(object.activationSku);
                         switch (object.numberType) {
                         case "PHONE_NUMBER_TYPE_UNSPECIFIED":
                         case 0:
@@ -2562,6 +2615,7 @@
                             object.name = "";
                             object.phoneNumber = "";
                             object.sku = "";
+                            object.activationSku = "";
                             object.numberType = options.enums === String ? "PHONE_NUMBER_TYPE_UNSPECIFIED" : 0;
                             object.countryCode = "";
                         }
@@ -2576,6 +2630,8 @@
                         }
                         if (message.sku != null && message.hasOwnProperty("sku"))
                             object.sku = message.sku;
+                        if (message.activationSku != null && message.hasOwnProperty("activationSku"))
+                            object.activationSku = message.activationSku;
                         if (message.numberType != null && message.hasOwnProperty("numberType"))
                             object.numberType = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType[message.numberType] : message.numberType;
                         if (message.countryCode != null && message.hasOwnProperty("countryCode"))

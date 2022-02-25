@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -56,6 +56,2307 @@
                  * @namespace
                  */
                 var v1beta1 = {};
+    
+                v1beta1.Aliases = (function() {
+    
+                    /**
+                     * Constructs a new Aliases service.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents an Aliases
+                     * @extends $protobuf.rpc.Service
+                     * @constructor
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     */
+                    function Aliases(rpcImpl, requestDelimited, responseDelimited) {
+                        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+                    }
+    
+                    (Aliases.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Aliases;
+    
+                    /**
+                     * Creates new Aliases service using the specified rpc implementation.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @static
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     * @returns {Aliases} RPC service. Useful where requests and/or responses are streamed.
+                     */
+                    Aliases.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+                        return new this(rpcImpl, requestDelimited, responseDelimited);
+                    };
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Aliases#createAlias}.
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @typedef CreateAliasCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.Alias} [response] Alias
+                     */
+    
+                    /**
+                     * Calls CreateAlias.
+                     * @function createAlias
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.ICreateAliasRequest} request CreateAliasRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Aliases.CreateAliasCallback} callback Node-style callback called with the error, if any, and Alias
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Aliases.prototype.createAlias = function createAlias(request, callback) {
+                        return this.rpcCall(createAlias, $root.enfonica.voice.v1beta1.CreateAliasRequest, $root.enfonica.voice.v1beta1.Alias, request, callback);
+                    }, "name", { value: "CreateAlias" });
+    
+                    /**
+                     * Calls CreateAlias.
+                     * @function createAlias
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.ICreateAliasRequest} request CreateAliasRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.Alias>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Aliases#getAlias}.
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @typedef GetAliasCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.Alias} [response] Alias
+                     */
+    
+                    /**
+                     * Calls GetAlias.
+                     * @function getAlias
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IGetAliasRequest} request GetAliasRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Aliases.GetAliasCallback} callback Node-style callback called with the error, if any, and Alias
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Aliases.prototype.getAlias = function getAlias(request, callback) {
+                        return this.rpcCall(getAlias, $root.enfonica.voice.v1beta1.GetAliasRequest, $root.enfonica.voice.v1beta1.Alias, request, callback);
+                    }, "name", { value: "GetAlias" });
+    
+                    /**
+                     * Calls GetAlias.
+                     * @function getAlias
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IGetAliasRequest} request GetAliasRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.Alias>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Aliases#listAliases}.
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @typedef ListAliasesCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.ListAliasesResponse} [response] ListAliasesResponse
+                     */
+    
+                    /**
+                     * Calls ListAliases.
+                     * @function listAliases
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IListAliasesRequest} request ListAliasesRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Aliases.ListAliasesCallback} callback Node-style callback called with the error, if any, and ListAliasesResponse
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Aliases.prototype.listAliases = function listAliases(request, callback) {
+                        return this.rpcCall(listAliases, $root.enfonica.voice.v1beta1.ListAliasesRequest, $root.enfonica.voice.v1beta1.ListAliasesResponse, request, callback);
+                    }, "name", { value: "ListAliases" });
+    
+                    /**
+                     * Calls ListAliases.
+                     * @function listAliases
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IListAliasesRequest} request ListAliasesRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.ListAliasesResponse>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Aliases#updateAlias}.
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @typedef UpdateAliasCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.Alias} [response] Alias
+                     */
+    
+                    /**
+                     * Calls UpdateAlias.
+                     * @function updateAlias
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IUpdateAliasRequest} request UpdateAliasRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Aliases.UpdateAliasCallback} callback Node-style callback called with the error, if any, and Alias
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Aliases.prototype.updateAlias = function updateAlias(request, callback) {
+                        return this.rpcCall(updateAlias, $root.enfonica.voice.v1beta1.UpdateAliasRequest, $root.enfonica.voice.v1beta1.Alias, request, callback);
+                    }, "name", { value: "UpdateAlias" });
+    
+                    /**
+                     * Calls UpdateAlias.
+                     * @function updateAlias
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IUpdateAliasRequest} request UpdateAliasRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.Alias>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.Aliases#deleteAlias}.
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @typedef DeleteAliasCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {google.protobuf.Empty} [response] Empty
+                     */
+    
+                    /**
+                     * Calls DeleteAlias.
+                     * @function deleteAlias
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IDeleteAliasRequest} request DeleteAliasRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.Aliases.DeleteAliasCallback} callback Node-style callback called with the error, if any, and Empty
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(Aliases.prototype.deleteAlias = function deleteAlias(request, callback) {
+                        return this.rpcCall(deleteAlias, $root.enfonica.voice.v1beta1.DeleteAliasRequest, $root.google.protobuf.Empty, request, callback);
+                    }, "name", { value: "DeleteAlias" });
+    
+                    /**
+                     * Calls DeleteAlias.
+                     * @function deleteAlias
+                     * @memberof enfonica.voice.v1beta1.Aliases
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IDeleteAliasRequest} request DeleteAliasRequest message or plain object
+                     * @returns {Promise<google.protobuf.Empty>} Promise
+                     * @variation 2
+                     */
+    
+                    return Aliases;
+                })();
+    
+                v1beta1.Alias = (function() {
+    
+                    /**
+                     * Properties of an Alias.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IAlias
+                     * @property {string|null} [name] Alias name
+                     * @property {string|null} [aliasId] Alias aliasId
+                     * @property {string|null} [displayName] Alias displayName
+                     * @property {enfonica.voice.v1beta1.ILoadBalancerConfig|null} [loadBalancerConfig] Alias loadBalancerConfig
+                     * @property {google.protobuf.ITimestamp|null} [createTime] Alias createTime
+                     */
+    
+                    /**
+                     * Constructs a new Alias.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents an Alias.
+                     * @implements IAlias
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IAlias=} [properties] Properties to set
+                     */
+                    function Alias(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * Alias name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @instance
+                     */
+                    Alias.prototype.name = "";
+    
+                    /**
+                     * Alias aliasId.
+                     * @member {string} aliasId
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @instance
+                     */
+                    Alias.prototype.aliasId = "";
+    
+                    /**
+                     * Alias displayName.
+                     * @member {string} displayName
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @instance
+                     */
+                    Alias.prototype.displayName = "";
+    
+                    /**
+                     * Alias loadBalancerConfig.
+                     * @member {enfonica.voice.v1beta1.ILoadBalancerConfig|null|undefined} loadBalancerConfig
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @instance
+                     */
+                    Alias.prototype.loadBalancerConfig = null;
+    
+                    /**
+                     * Alias createTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} createTime
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @instance
+                     */
+                    Alias.prototype.createTime = null;
+    
+                    // OneOf field names bound to virtual getters and setters
+                    var $oneOfFields;
+    
+                    /**
+                     * Alias config.
+                     * @member {"loadBalancerConfig"|undefined} config
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @instance
+                     */
+                    Object.defineProperty(Alias.prototype, "config", {
+                        get: $util.oneOfGetter($oneOfFields = ["loadBalancerConfig"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+    
+                    /**
+                     * Creates a new Alias instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IAlias=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.Alias} Alias instance
+                     */
+                    Alias.create = function create(properties) {
+                        return new Alias(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified Alias message. Does not implicitly {@link enfonica.voice.v1beta1.Alias.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IAlias} message Alias message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    Alias.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.aliasId != null && Object.hasOwnProperty.call(message, "aliasId"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.aliasId);
+                        if (message.displayName != null && Object.hasOwnProperty.call(message, "displayName"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.displayName);
+                        if (message.loadBalancerConfig != null && Object.hasOwnProperty.call(message, "loadBalancerConfig"))
+                            $root.enfonica.voice.v1beta1.LoadBalancerConfig.encode(message.loadBalancerConfig, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                        if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
+                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified Alias message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.Alias.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IAlias} message Alias message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    Alias.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes an Alias message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.Alias} Alias
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    Alias.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.Alias();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.aliasId = reader.string();
+                                break;
+                            case 3:
+                                message.displayName = reader.string();
+                                break;
+                            case 4:
+                                message.loadBalancerConfig = $root.enfonica.voice.v1beta1.LoadBalancerConfig.decode(reader, reader.uint32());
+                                break;
+                            case 10:
+                                message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes an Alias message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.Alias} Alias
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    Alias.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies an Alias message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    Alias.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        var properties = {};
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.aliasId != null && message.hasOwnProperty("aliasId"))
+                            if (!$util.isString(message.aliasId))
+                                return "aliasId: string expected";
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            if (!$util.isString(message.displayName))
+                                return "displayName: string expected";
+                        if (message.loadBalancerConfig != null && message.hasOwnProperty("loadBalancerConfig")) {
+                            properties.config = 1;
+                            {
+                                var error = $root.enfonica.voice.v1beta1.LoadBalancerConfig.verify(message.loadBalancerConfig);
+                                if (error)
+                                    return "loadBalancerConfig." + error;
+                            }
+                        }
+                        if (message.createTime != null && message.hasOwnProperty("createTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.createTime);
+                            if (error)
+                                return "createTime." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates an Alias message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.Alias} Alias
+                     */
+                    Alias.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.Alias)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.Alias();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.aliasId != null)
+                            message.aliasId = String(object.aliasId);
+                        if (object.displayName != null)
+                            message.displayName = String(object.displayName);
+                        if (object.loadBalancerConfig != null) {
+                            if (typeof object.loadBalancerConfig !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Alias.loadBalancerConfig: object expected");
+                            message.loadBalancerConfig = $root.enfonica.voice.v1beta1.LoadBalancerConfig.fromObject(object.loadBalancerConfig);
+                        }
+                        if (object.createTime != null) {
+                            if (typeof object.createTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Alias.createTime: object expected");
+                            message.createTime = $root.google.protobuf.Timestamp.fromObject(object.createTime);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from an Alias message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @static
+                     * @param {enfonica.voice.v1beta1.Alias} message Alias
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    Alias.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.name = "";
+                            object.aliasId = "";
+                            object.displayName = "";
+                            object.createTime = null;
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.aliasId != null && message.hasOwnProperty("aliasId"))
+                            object.aliasId = message.aliasId;
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            object.displayName = message.displayName;
+                        if (message.loadBalancerConfig != null && message.hasOwnProperty("loadBalancerConfig")) {
+                            object.loadBalancerConfig = $root.enfonica.voice.v1beta1.LoadBalancerConfig.toObject(message.loadBalancerConfig, options);
+                            if (options.oneofs)
+                                object.config = "loadBalancerConfig";
+                        }
+                        if (message.createTime != null && message.hasOwnProperty("createTime"))
+                            object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this Alias to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.Alias
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    Alias.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return Alias;
+                })();
+    
+                v1beta1.LoadBalancerConfig = (function() {
+    
+                    /**
+                     * Properties of a LoadBalancerConfig.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ILoadBalancerConfig
+                     * @property {Array.<enfonica.voice.v1beta1.ILoadBalancerEndpoint>|null} [endpoints] LoadBalancerConfig endpoints
+                     * @property {Array.<string>|null} [failoverCallHandlerUris] LoadBalancerConfig failoverCallHandlerUris
+                     */
+    
+                    /**
+                     * Constructs a new LoadBalancerConfig.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a LoadBalancerConfig.
+                     * @implements ILoadBalancerConfig
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ILoadBalancerConfig=} [properties] Properties to set
+                     */
+                    function LoadBalancerConfig(properties) {
+                        this.endpoints = [];
+                        this.failoverCallHandlerUris = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * LoadBalancerConfig endpoints.
+                     * @member {Array.<enfonica.voice.v1beta1.ILoadBalancerEndpoint>} endpoints
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @instance
+                     */
+                    LoadBalancerConfig.prototype.endpoints = $util.emptyArray;
+    
+                    /**
+                     * LoadBalancerConfig failoverCallHandlerUris.
+                     * @member {Array.<string>} failoverCallHandlerUris
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @instance
+                     */
+                    LoadBalancerConfig.prototype.failoverCallHandlerUris = $util.emptyArray;
+    
+                    /**
+                     * Creates a new LoadBalancerConfig instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ILoadBalancerConfig=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.LoadBalancerConfig} LoadBalancerConfig instance
+                     */
+                    LoadBalancerConfig.create = function create(properties) {
+                        return new LoadBalancerConfig(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified LoadBalancerConfig message. Does not implicitly {@link enfonica.voice.v1beta1.LoadBalancerConfig.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ILoadBalancerConfig} message LoadBalancerConfig message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    LoadBalancerConfig.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.endpoints != null && message.endpoints.length)
+                            for (var i = 0; i < message.endpoints.length; ++i)
+                                $root.enfonica.voice.v1beta1.LoadBalancerEndpoint.encode(message.endpoints[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.failoverCallHandlerUris != null && message.failoverCallHandlerUris.length)
+                            for (var i = 0; i < message.failoverCallHandlerUris.length; ++i)
+                                writer.uint32(/* id 2, wireType 2 =*/18).string(message.failoverCallHandlerUris[i]);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified LoadBalancerConfig message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.LoadBalancerConfig.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ILoadBalancerConfig} message LoadBalancerConfig message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    LoadBalancerConfig.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a LoadBalancerConfig message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.LoadBalancerConfig} LoadBalancerConfig
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    LoadBalancerConfig.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.LoadBalancerConfig();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.endpoints && message.endpoints.length))
+                                    message.endpoints = [];
+                                message.endpoints.push($root.enfonica.voice.v1beta1.LoadBalancerEndpoint.decode(reader, reader.uint32()));
+                                break;
+                            case 2:
+                                if (!(message.failoverCallHandlerUris && message.failoverCallHandlerUris.length))
+                                    message.failoverCallHandlerUris = [];
+                                message.failoverCallHandlerUris.push(reader.string());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a LoadBalancerConfig message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.LoadBalancerConfig} LoadBalancerConfig
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    LoadBalancerConfig.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a LoadBalancerConfig message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    LoadBalancerConfig.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.endpoints != null && message.hasOwnProperty("endpoints")) {
+                            if (!Array.isArray(message.endpoints))
+                                return "endpoints: array expected";
+                            for (var i = 0; i < message.endpoints.length; ++i) {
+                                var error = $root.enfonica.voice.v1beta1.LoadBalancerEndpoint.verify(message.endpoints[i]);
+                                if (error)
+                                    return "endpoints." + error;
+                            }
+                        }
+                        if (message.failoverCallHandlerUris != null && message.hasOwnProperty("failoverCallHandlerUris")) {
+                            if (!Array.isArray(message.failoverCallHandlerUris))
+                                return "failoverCallHandlerUris: array expected";
+                            for (var i = 0; i < message.failoverCallHandlerUris.length; ++i)
+                                if (!$util.isString(message.failoverCallHandlerUris[i]))
+                                    return "failoverCallHandlerUris: string[] expected";
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a LoadBalancerConfig message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.LoadBalancerConfig} LoadBalancerConfig
+                     */
+                    LoadBalancerConfig.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.LoadBalancerConfig)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.LoadBalancerConfig();
+                        if (object.endpoints) {
+                            if (!Array.isArray(object.endpoints))
+                                throw TypeError(".enfonica.voice.v1beta1.LoadBalancerConfig.endpoints: array expected");
+                            message.endpoints = [];
+                            for (var i = 0; i < object.endpoints.length; ++i) {
+                                if (typeof object.endpoints[i] !== "object")
+                                    throw TypeError(".enfonica.voice.v1beta1.LoadBalancerConfig.endpoints: object expected");
+                                message.endpoints[i] = $root.enfonica.voice.v1beta1.LoadBalancerEndpoint.fromObject(object.endpoints[i]);
+                            }
+                        }
+                        if (object.failoverCallHandlerUris) {
+                            if (!Array.isArray(object.failoverCallHandlerUris))
+                                throw TypeError(".enfonica.voice.v1beta1.LoadBalancerConfig.failoverCallHandlerUris: array expected");
+                            message.failoverCallHandlerUris = [];
+                            for (var i = 0; i < object.failoverCallHandlerUris.length; ++i)
+                                message.failoverCallHandlerUris[i] = String(object.failoverCallHandlerUris[i]);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a LoadBalancerConfig message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @static
+                     * @param {enfonica.voice.v1beta1.LoadBalancerConfig} message LoadBalancerConfig
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    LoadBalancerConfig.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults) {
+                            object.endpoints = [];
+                            object.failoverCallHandlerUris = [];
+                        }
+                        if (message.endpoints && message.endpoints.length) {
+                            object.endpoints = [];
+                            for (var j = 0; j < message.endpoints.length; ++j)
+                                object.endpoints[j] = $root.enfonica.voice.v1beta1.LoadBalancerEndpoint.toObject(message.endpoints[j], options);
+                        }
+                        if (message.failoverCallHandlerUris && message.failoverCallHandlerUris.length) {
+                            object.failoverCallHandlerUris = [];
+                            for (var j = 0; j < message.failoverCallHandlerUris.length; ++j)
+                                object.failoverCallHandlerUris[j] = message.failoverCallHandlerUris[j];
+                        }
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this LoadBalancerConfig to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerConfig
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    LoadBalancerConfig.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return LoadBalancerConfig;
+                })();
+    
+                v1beta1.LoadBalancerEndpoint = (function() {
+    
+                    /**
+                     * Properties of a LoadBalancerEndpoint.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ILoadBalancerEndpoint
+                     * @property {string|null} [uri] LoadBalancerEndpoint uri
+                     * @property {number|null} [priority] LoadBalancerEndpoint priority
+                     * @property {number|null} [weight] LoadBalancerEndpoint weight
+                     * @property {boolean|null} [enabled] LoadBalancerEndpoint enabled
+                     */
+    
+                    /**
+                     * Constructs a new LoadBalancerEndpoint.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a LoadBalancerEndpoint.
+                     * @implements ILoadBalancerEndpoint
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ILoadBalancerEndpoint=} [properties] Properties to set
+                     */
+                    function LoadBalancerEndpoint(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * LoadBalancerEndpoint uri.
+                     * @member {string} uri
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @instance
+                     */
+                    LoadBalancerEndpoint.prototype.uri = "";
+    
+                    /**
+                     * LoadBalancerEndpoint priority.
+                     * @member {number} priority
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @instance
+                     */
+                    LoadBalancerEndpoint.prototype.priority = 0;
+    
+                    /**
+                     * LoadBalancerEndpoint weight.
+                     * @member {number} weight
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @instance
+                     */
+                    LoadBalancerEndpoint.prototype.weight = 0;
+    
+                    /**
+                     * LoadBalancerEndpoint enabled.
+                     * @member {boolean} enabled
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @instance
+                     */
+                    LoadBalancerEndpoint.prototype.enabled = false;
+    
+                    /**
+                     * Creates a new LoadBalancerEndpoint instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ILoadBalancerEndpoint=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.LoadBalancerEndpoint} LoadBalancerEndpoint instance
+                     */
+                    LoadBalancerEndpoint.create = function create(properties) {
+                        return new LoadBalancerEndpoint(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified LoadBalancerEndpoint message. Does not implicitly {@link enfonica.voice.v1beta1.LoadBalancerEndpoint.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ILoadBalancerEndpoint} message LoadBalancerEndpoint message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    LoadBalancerEndpoint.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.uri != null && Object.hasOwnProperty.call(message, "uri"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.uri);
+                        if (message.priority != null && Object.hasOwnProperty.call(message, "priority"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.priority);
+                        if (message.weight != null && Object.hasOwnProperty.call(message, "weight"))
+                            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.weight);
+                        if (message.enabled != null && Object.hasOwnProperty.call(message, "enabled"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).bool(message.enabled);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified LoadBalancerEndpoint message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.LoadBalancerEndpoint.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ILoadBalancerEndpoint} message LoadBalancerEndpoint message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    LoadBalancerEndpoint.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a LoadBalancerEndpoint message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.LoadBalancerEndpoint} LoadBalancerEndpoint
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    LoadBalancerEndpoint.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.LoadBalancerEndpoint();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.uri = reader.string();
+                                break;
+                            case 2:
+                                message.priority = reader.int32();
+                                break;
+                            case 3:
+                                message.weight = reader.int32();
+                                break;
+                            case 4:
+                                message.enabled = reader.bool();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a LoadBalancerEndpoint message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.LoadBalancerEndpoint} LoadBalancerEndpoint
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    LoadBalancerEndpoint.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a LoadBalancerEndpoint message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    LoadBalancerEndpoint.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.uri != null && message.hasOwnProperty("uri"))
+                            if (!$util.isString(message.uri))
+                                return "uri: string expected";
+                        if (message.priority != null && message.hasOwnProperty("priority"))
+                            if (!$util.isInteger(message.priority))
+                                return "priority: integer expected";
+                        if (message.weight != null && message.hasOwnProperty("weight"))
+                            if (!$util.isInteger(message.weight))
+                                return "weight: integer expected";
+                        if (message.enabled != null && message.hasOwnProperty("enabled"))
+                            if (typeof message.enabled !== "boolean")
+                                return "enabled: boolean expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a LoadBalancerEndpoint message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.LoadBalancerEndpoint} LoadBalancerEndpoint
+                     */
+                    LoadBalancerEndpoint.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.LoadBalancerEndpoint)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.LoadBalancerEndpoint();
+                        if (object.uri != null)
+                            message.uri = String(object.uri);
+                        if (object.priority != null)
+                            message.priority = object.priority | 0;
+                        if (object.weight != null)
+                            message.weight = object.weight | 0;
+                        if (object.enabled != null)
+                            message.enabled = Boolean(object.enabled);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a LoadBalancerEndpoint message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @static
+                     * @param {enfonica.voice.v1beta1.LoadBalancerEndpoint} message LoadBalancerEndpoint
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    LoadBalancerEndpoint.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.uri = "";
+                            object.priority = 0;
+                            object.weight = 0;
+                            object.enabled = false;
+                        }
+                        if (message.uri != null && message.hasOwnProperty("uri"))
+                            object.uri = message.uri;
+                        if (message.priority != null && message.hasOwnProperty("priority"))
+                            object.priority = message.priority;
+                        if (message.weight != null && message.hasOwnProperty("weight"))
+                            object.weight = message.weight;
+                        if (message.enabled != null && message.hasOwnProperty("enabled"))
+                            object.enabled = message.enabled;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this LoadBalancerEndpoint to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.LoadBalancerEndpoint
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    LoadBalancerEndpoint.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return LoadBalancerEndpoint;
+                })();
+    
+                v1beta1.CreateAliasRequest = (function() {
+    
+                    /**
+                     * Properties of a CreateAliasRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ICreateAliasRequest
+                     * @property {string|null} [parent] CreateAliasRequest parent
+                     * @property {enfonica.voice.v1beta1.IAlias|null} [alias] CreateAliasRequest alias
+                     * @property {string|null} [aliasId] CreateAliasRequest aliasId
+                     */
+    
+                    /**
+                     * Constructs a new CreateAliasRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a CreateAliasRequest.
+                     * @implements ICreateAliasRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ICreateAliasRequest=} [properties] Properties to set
+                     */
+                    function CreateAliasRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * CreateAliasRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @instance
+                     */
+                    CreateAliasRequest.prototype.parent = "";
+    
+                    /**
+                     * CreateAliasRequest alias.
+                     * @member {enfonica.voice.v1beta1.IAlias|null|undefined} alias
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @instance
+                     */
+                    CreateAliasRequest.prototype.alias = null;
+    
+                    /**
+                     * CreateAliasRequest aliasId.
+                     * @member {string} aliasId
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @instance
+                     */
+                    CreateAliasRequest.prototype.aliasId = "";
+    
+                    /**
+                     * Creates a new CreateAliasRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateAliasRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.CreateAliasRequest} CreateAliasRequest instance
+                     */
+                    CreateAliasRequest.create = function create(properties) {
+                        return new CreateAliasRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified CreateAliasRequest message. Does not implicitly {@link enfonica.voice.v1beta1.CreateAliasRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateAliasRequest} message CreateAliasRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreateAliasRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.alias != null && Object.hasOwnProperty.call(message, "alias"))
+                            $root.enfonica.voice.v1beta1.Alias.encode(message.alias, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        if (message.aliasId != null && Object.hasOwnProperty.call(message, "aliasId"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.aliasId);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified CreateAliasRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CreateAliasRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateAliasRequest} message CreateAliasRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreateAliasRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a CreateAliasRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.CreateAliasRequest} CreateAliasRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreateAliasRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.CreateAliasRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.alias = $root.enfonica.voice.v1beta1.Alias.decode(reader, reader.uint32());
+                                break;
+                            case 3:
+                                message.aliasId = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a CreateAliasRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.CreateAliasRequest} CreateAliasRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreateAliasRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a CreateAliasRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    CreateAliasRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.alias != null && message.hasOwnProperty("alias")) {
+                            var error = $root.enfonica.voice.v1beta1.Alias.verify(message.alias);
+                            if (error)
+                                return "alias." + error;
+                        }
+                        if (message.aliasId != null && message.hasOwnProperty("aliasId"))
+                            if (!$util.isString(message.aliasId))
+                                return "aliasId: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a CreateAliasRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.CreateAliasRequest} CreateAliasRequest
+                     */
+                    CreateAliasRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.CreateAliasRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.CreateAliasRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.alias != null) {
+                            if (typeof object.alias !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.CreateAliasRequest.alias: object expected");
+                            message.alias = $root.enfonica.voice.v1beta1.Alias.fromObject(object.alias);
+                        }
+                        if (object.aliasId != null)
+                            message.aliasId = String(object.aliasId);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a CreateAliasRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.CreateAliasRequest} message CreateAliasRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    CreateAliasRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.alias = null;
+                            object.aliasId = "";
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.alias != null && message.hasOwnProperty("alias"))
+                            object.alias = $root.enfonica.voice.v1beta1.Alias.toObject(message.alias, options);
+                        if (message.aliasId != null && message.hasOwnProperty("aliasId"))
+                            object.aliasId = message.aliasId;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this CreateAliasRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.CreateAliasRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    CreateAliasRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return CreateAliasRequest;
+                })();
+    
+                v1beta1.GetAliasRequest = (function() {
+    
+                    /**
+                     * Properties of a GetAliasRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IGetAliasRequest
+                     * @property {string|null} [name] GetAliasRequest name
+                     */
+    
+                    /**
+                     * Constructs a new GetAliasRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a GetAliasRequest.
+                     * @implements IGetAliasRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IGetAliasRequest=} [properties] Properties to set
+                     */
+                    function GetAliasRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * GetAliasRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @instance
+                     */
+                    GetAliasRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new GetAliasRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetAliasRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.GetAliasRequest} GetAliasRequest instance
+                     */
+                    GetAliasRequest.create = function create(properties) {
+                        return new GetAliasRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified GetAliasRequest message. Does not implicitly {@link enfonica.voice.v1beta1.GetAliasRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetAliasRequest} message GetAliasRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetAliasRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified GetAliasRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.GetAliasRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetAliasRequest} message GetAliasRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetAliasRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a GetAliasRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.GetAliasRequest} GetAliasRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetAliasRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.GetAliasRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a GetAliasRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.GetAliasRequest} GetAliasRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetAliasRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a GetAliasRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    GetAliasRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a GetAliasRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.GetAliasRequest} GetAliasRequest
+                     */
+                    GetAliasRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.GetAliasRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.GetAliasRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a GetAliasRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.GetAliasRequest} message GetAliasRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    GetAliasRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this GetAliasRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.GetAliasRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    GetAliasRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return GetAliasRequest;
+                })();
+    
+                v1beta1.ListAliasesRequest = (function() {
+    
+                    /**
+                     * Properties of a ListAliasesRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IListAliasesRequest
+                     * @property {string|null} [parent] ListAliasesRequest parent
+                     * @property {number|null} [pageSize] ListAliasesRequest pageSize
+                     * @property {string|null} [pageToken] ListAliasesRequest pageToken
+                     */
+    
+                    /**
+                     * Constructs a new ListAliasesRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a ListAliasesRequest.
+                     * @implements IListAliasesRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IListAliasesRequest=} [properties] Properties to set
+                     */
+                    function ListAliasesRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListAliasesRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @instance
+                     */
+                    ListAliasesRequest.prototype.parent = "";
+    
+                    /**
+                     * ListAliasesRequest pageSize.
+                     * @member {number} pageSize
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @instance
+                     */
+                    ListAliasesRequest.prototype.pageSize = 0;
+    
+                    /**
+                     * ListAliasesRequest pageToken.
+                     * @member {string} pageToken
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @instance
+                     */
+                    ListAliasesRequest.prototype.pageToken = "";
+    
+                    /**
+                     * Creates a new ListAliasesRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListAliasesRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.ListAliasesRequest} ListAliasesRequest instance
+                     */
+                    ListAliasesRequest.create = function create(properties) {
+                        return new ListAliasesRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListAliasesRequest message. Does not implicitly {@link enfonica.voice.v1beta1.ListAliasesRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListAliasesRequest} message ListAliasesRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListAliasesRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.pageSize != null && Object.hasOwnProperty.call(message, "pageSize"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pageSize);
+                        if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.pageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListAliasesRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListAliasesRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListAliasesRequest} message ListAliasesRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListAliasesRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListAliasesRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.ListAliasesRequest} ListAliasesRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListAliasesRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.ListAliasesRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.pageSize = reader.int32();
+                                break;
+                            case 3:
+                                message.pageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListAliasesRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.ListAliasesRequest} ListAliasesRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListAliasesRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListAliasesRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListAliasesRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            if (!$util.isInteger(message.pageSize))
+                                return "pageSize: integer expected";
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            if (!$util.isString(message.pageToken))
+                                return "pageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListAliasesRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.ListAliasesRequest} ListAliasesRequest
+                     */
+                    ListAliasesRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.ListAliasesRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.ListAliasesRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.pageSize != null)
+                            message.pageSize = object.pageSize | 0;
+                        if (object.pageToken != null)
+                            message.pageToken = String(object.pageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListAliasesRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ListAliasesRequest} message ListAliasesRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListAliasesRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.pageSize = 0;
+                            object.pageToken = "";
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            object.pageSize = message.pageSize;
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            object.pageToken = message.pageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListAliasesRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.ListAliasesRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListAliasesRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListAliasesRequest;
+                })();
+    
+                v1beta1.ListAliasesResponse = (function() {
+    
+                    /**
+                     * Properties of a ListAliasesResponse.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IListAliasesResponse
+                     * @property {Array.<enfonica.voice.v1beta1.IAlias>|null} [aliases] ListAliasesResponse aliases
+                     * @property {string|null} [nextPageToken] ListAliasesResponse nextPageToken
+                     */
+    
+                    /**
+                     * Constructs a new ListAliasesResponse.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a ListAliasesResponse.
+                     * @implements IListAliasesResponse
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IListAliasesResponse=} [properties] Properties to set
+                     */
+                    function ListAliasesResponse(properties) {
+                        this.aliases = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListAliasesResponse aliases.
+                     * @member {Array.<enfonica.voice.v1beta1.IAlias>} aliases
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @instance
+                     */
+                    ListAliasesResponse.prototype.aliases = $util.emptyArray;
+    
+                    /**
+                     * ListAliasesResponse nextPageToken.
+                     * @member {string} nextPageToken
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @instance
+                     */
+                    ListAliasesResponse.prototype.nextPageToken = "";
+    
+                    /**
+                     * Creates a new ListAliasesResponse instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListAliasesResponse=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.ListAliasesResponse} ListAliasesResponse instance
+                     */
+                    ListAliasesResponse.create = function create(properties) {
+                        return new ListAliasesResponse(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListAliasesResponse message. Does not implicitly {@link enfonica.voice.v1beta1.ListAliasesResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListAliasesResponse} message ListAliasesResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListAliasesResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.aliases != null && message.aliases.length)
+                            for (var i = 0; i < message.aliases.length; ++i)
+                                $root.enfonica.voice.v1beta1.Alias.encode(message.aliases[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListAliasesResponse message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListAliasesResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListAliasesResponse} message ListAliasesResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListAliasesResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListAliasesResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.ListAliasesResponse} ListAliasesResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListAliasesResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.ListAliasesResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.aliases && message.aliases.length))
+                                    message.aliases = [];
+                                message.aliases.push($root.enfonica.voice.v1beta1.Alias.decode(reader, reader.uint32()));
+                                break;
+                            case 2:
+                                message.nextPageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListAliasesResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.ListAliasesResponse} ListAliasesResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListAliasesResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListAliasesResponse message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListAliasesResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.aliases != null && message.hasOwnProperty("aliases")) {
+                            if (!Array.isArray(message.aliases))
+                                return "aliases: array expected";
+                            for (var i = 0; i < message.aliases.length; ++i) {
+                                var error = $root.enfonica.voice.v1beta1.Alias.verify(message.aliases[i]);
+                                if (error)
+                                    return "aliases." + error;
+                            }
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            if (!$util.isString(message.nextPageToken))
+                                return "nextPageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListAliasesResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.ListAliasesResponse} ListAliasesResponse
+                     */
+                    ListAliasesResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.ListAliasesResponse)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.ListAliasesResponse();
+                        if (object.aliases) {
+                            if (!Array.isArray(object.aliases))
+                                throw TypeError(".enfonica.voice.v1beta1.ListAliasesResponse.aliases: array expected");
+                            message.aliases = [];
+                            for (var i = 0; i < object.aliases.length; ++i) {
+                                if (typeof object.aliases[i] !== "object")
+                                    throw TypeError(".enfonica.voice.v1beta1.ListAliasesResponse.aliases: object expected");
+                                message.aliases[i] = $root.enfonica.voice.v1beta1.Alias.fromObject(object.aliases[i]);
+                            }
+                        }
+                        if (object.nextPageToken != null)
+                            message.nextPageToken = String(object.nextPageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListAliasesResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ListAliasesResponse} message ListAliasesResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListAliasesResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.aliases = [];
+                        if (options.defaults)
+                            object.nextPageToken = "";
+                        if (message.aliases && message.aliases.length) {
+                            object.aliases = [];
+                            for (var j = 0; j < message.aliases.length; ++j)
+                                object.aliases[j] = $root.enfonica.voice.v1beta1.Alias.toObject(message.aliases[j], options);
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            object.nextPageToken = message.nextPageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListAliasesResponse to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.ListAliasesResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListAliasesResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListAliasesResponse;
+                })();
+    
+                v1beta1.UpdateAliasRequest = (function() {
+    
+                    /**
+                     * Properties of an UpdateAliasRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IUpdateAliasRequest
+                     * @property {enfonica.voice.v1beta1.IAlias|null} [alias] UpdateAliasRequest alias
+                     * @property {google.protobuf.IFieldMask|null} [updateMask] UpdateAliasRequest updateMask
+                     */
+    
+                    /**
+                     * Constructs a new UpdateAliasRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents an UpdateAliasRequest.
+                     * @implements IUpdateAliasRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IUpdateAliasRequest=} [properties] Properties to set
+                     */
+                    function UpdateAliasRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * UpdateAliasRequest alias.
+                     * @member {enfonica.voice.v1beta1.IAlias|null|undefined} alias
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @instance
+                     */
+                    UpdateAliasRequest.prototype.alias = null;
+    
+                    /**
+                     * UpdateAliasRequest updateMask.
+                     * @member {google.protobuf.IFieldMask|null|undefined} updateMask
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @instance
+                     */
+                    UpdateAliasRequest.prototype.updateMask = null;
+    
+                    /**
+                     * Creates a new UpdateAliasRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUpdateAliasRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.UpdateAliasRequest} UpdateAliasRequest instance
+                     */
+                    UpdateAliasRequest.create = function create(properties) {
+                        return new UpdateAliasRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified UpdateAliasRequest message. Does not implicitly {@link enfonica.voice.v1beta1.UpdateAliasRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUpdateAliasRequest} message UpdateAliasRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    UpdateAliasRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.alias != null && Object.hasOwnProperty.call(message, "alias"))
+                            $root.enfonica.voice.v1beta1.Alias.encode(message.alias, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.updateMask != null && Object.hasOwnProperty.call(message, "updateMask"))
+                            $root.google.protobuf.FieldMask.encode(message.updateMask, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified UpdateAliasRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.UpdateAliasRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUpdateAliasRequest} message UpdateAliasRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    UpdateAliasRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes an UpdateAliasRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.UpdateAliasRequest} UpdateAliasRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    UpdateAliasRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.UpdateAliasRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.alias = $root.enfonica.voice.v1beta1.Alias.decode(reader, reader.uint32());
+                                break;
+                            case 2:
+                                message.updateMask = $root.google.protobuf.FieldMask.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes an UpdateAliasRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.UpdateAliasRequest} UpdateAliasRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    UpdateAliasRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies an UpdateAliasRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    UpdateAliasRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.alias != null && message.hasOwnProperty("alias")) {
+                            var error = $root.enfonica.voice.v1beta1.Alias.verify(message.alias);
+                            if (error)
+                                return "alias." + error;
+                        }
+                        if (message.updateMask != null && message.hasOwnProperty("updateMask")) {
+                            var error = $root.google.protobuf.FieldMask.verify(message.updateMask);
+                            if (error)
+                                return "updateMask." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates an UpdateAliasRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.UpdateAliasRequest} UpdateAliasRequest
+                     */
+                    UpdateAliasRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.UpdateAliasRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.UpdateAliasRequest();
+                        if (object.alias != null) {
+                            if (typeof object.alias !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.UpdateAliasRequest.alias: object expected");
+                            message.alias = $root.enfonica.voice.v1beta1.Alias.fromObject(object.alias);
+                        }
+                        if (object.updateMask != null) {
+                            if (typeof object.updateMask !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.UpdateAliasRequest.updateMask: object expected");
+                            message.updateMask = $root.google.protobuf.FieldMask.fromObject(object.updateMask);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from an UpdateAliasRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.UpdateAliasRequest} message UpdateAliasRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    UpdateAliasRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.alias = null;
+                            object.updateMask = null;
+                        }
+                        if (message.alias != null && message.hasOwnProperty("alias"))
+                            object.alias = $root.enfonica.voice.v1beta1.Alias.toObject(message.alias, options);
+                        if (message.updateMask != null && message.hasOwnProperty("updateMask"))
+                            object.updateMask = $root.google.protobuf.FieldMask.toObject(message.updateMask, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this UpdateAliasRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.UpdateAliasRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    UpdateAliasRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return UpdateAliasRequest;
+                })();
+    
+                v1beta1.DeleteAliasRequest = (function() {
+    
+                    /**
+                     * Properties of a DeleteAliasRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IDeleteAliasRequest
+                     * @property {string|null} [name] DeleteAliasRequest name
+                     */
+    
+                    /**
+                     * Constructs a new DeleteAliasRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a DeleteAliasRequest.
+                     * @implements IDeleteAliasRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IDeleteAliasRequest=} [properties] Properties to set
+                     */
+                    function DeleteAliasRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * DeleteAliasRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @instance
+                     */
+                    DeleteAliasRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new DeleteAliasRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteAliasRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.DeleteAliasRequest} DeleteAliasRequest instance
+                     */
+                    DeleteAliasRequest.create = function create(properties) {
+                        return new DeleteAliasRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified DeleteAliasRequest message. Does not implicitly {@link enfonica.voice.v1beta1.DeleteAliasRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteAliasRequest} message DeleteAliasRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeleteAliasRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified DeleteAliasRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.DeleteAliasRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteAliasRequest} message DeleteAliasRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeleteAliasRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a DeleteAliasRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.DeleteAliasRequest} DeleteAliasRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeleteAliasRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.DeleteAliasRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a DeleteAliasRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.DeleteAliasRequest} DeleteAliasRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeleteAliasRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a DeleteAliasRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    DeleteAliasRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a DeleteAliasRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.DeleteAliasRequest} DeleteAliasRequest
+                     */
+                    DeleteAliasRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.DeleteAliasRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.DeleteAliasRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a DeleteAliasRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.DeleteAliasRequest} message DeleteAliasRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    DeleteAliasRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this DeleteAliasRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.DeleteAliasRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    DeleteAliasRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return DeleteAliasRequest;
+                })();
     
                 v1beta1.CallRecordingConfig = (function() {
     
@@ -855,6 +3156,8 @@
                      * @property {string|null} [name] Call name
                      * @property {string|null} [to] Call to
                      * @property {string|null} [from] Call from
+                     * @property {enfonica.voice.v1beta1.INumberLocation|null} [fromLocation] Call fromLocation
+                     * @property {string|null} [fromZone] Call fromZone
                      * @property {boolean|null} [isPrivate] Call isPrivate
                      * @property {Object.<string,string>|null} [labels] Call labels
                      * @property {enfonica.voice.v1beta1.Call.Transport|null} [transport] Call transport
@@ -872,6 +3175,8 @@
                      * @property {string|null} [originatingCall] Call originatingCall
                      * @property {enfonica.voice.v1beta1.Call.CreateMethod|null} [createMethod] Call createMethod
                      * @property {enfonica.voice.v1beta1.Call.IApiCallOptions|null} [options] Call options
+                     * @property {string|null} [sipCallId] Call sipCallId
+                     * @property {google.protobuf.IDuration|null} [answerDuration] Call answerDuration
                      */
     
                     /**
@@ -913,6 +3218,22 @@
                      * @instance
                      */
                     Call.prototype.from = "";
+    
+                    /**
+                     * Call fromLocation.
+                     * @member {enfonica.voice.v1beta1.INumberLocation|null|undefined} fromLocation
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.fromLocation = null;
+    
+                    /**
+                     * Call fromZone.
+                     * @member {string} fromZone
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.fromZone = "";
     
                     /**
                      * Call isPrivate.
@@ -1051,6 +3372,22 @@
                     Call.prototype.options = null;
     
                     /**
+                     * Call sipCallId.
+                     * @member {string} sipCallId
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.sipCallId = "";
+    
+                    /**
+                     * Call answerDuration.
+                     * @member {google.protobuf.IDuration|null|undefined} answerDuration
+                     * @memberof enfonica.voice.v1beta1.Call
+                     * @instance
+                     */
+                    Call.prototype.answerDuration = null;
+    
+                    /**
                      * Creates a new Call instance using the specified properties.
                      * @function create
                      * @memberof enfonica.voice.v1beta1.Call
@@ -1115,6 +3452,14 @@
                             writer.uint32(/* id 23, wireType 0 =*/184).int32(message.createMethod);
                         if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                             $root.enfonica.voice.v1beta1.Call.ApiCallOptions.encode(message.options, writer.uint32(/* id 24, wireType 2 =*/194).fork()).ldelim();
+                        if (message.fromLocation != null && Object.hasOwnProperty.call(message, "fromLocation"))
+                            $root.enfonica.voice.v1beta1.NumberLocation.encode(message.fromLocation, writer.uint32(/* id 25, wireType 2 =*/202).fork()).ldelim();
+                        if (message.fromZone != null && Object.hasOwnProperty.call(message, "fromZone"))
+                            writer.uint32(/* id 26, wireType 2 =*/210).string(message.fromZone);
+                        if (message.sipCallId != null && Object.hasOwnProperty.call(message, "sipCallId"))
+                            writer.uint32(/* id 27, wireType 2 =*/218).string(message.sipCallId);
+                        if (message.answerDuration != null && Object.hasOwnProperty.call(message, "answerDuration"))
+                            $root.google.protobuf.Duration.encode(message.answerDuration, writer.uint32(/* id 28, wireType 2 =*/226).fork()).ldelim();
                         return writer;
                     };
     
@@ -1157,6 +3502,12 @@
                                 break;
                             case 3:
                                 message.from = reader.string();
+                                break;
+                            case 25:
+                                message.fromLocation = $root.enfonica.voice.v1beta1.NumberLocation.decode(reader, reader.uint32());
+                                break;
+                            case 26:
+                                message.fromZone = reader.string();
                                 break;
                             case 4:
                                 message.isPrivate = reader.bool();
@@ -1228,6 +3579,12 @@
                             case 24:
                                 message.options = $root.enfonica.voice.v1beta1.Call.ApiCallOptions.decode(reader, reader.uint32());
                                 break;
+                            case 27:
+                                message.sipCallId = reader.string();
+                                break;
+                            case 28:
+                                message.answerDuration = $root.google.protobuf.Duration.decode(reader, reader.uint32());
+                                break;
                             default:
                                 reader.skipType(tag & 7);
                                 break;
@@ -1272,6 +3629,14 @@
                         if (message.from != null && message.hasOwnProperty("from"))
                             if (!$util.isString(message.from))
                                 return "from: string expected";
+                        if (message.fromLocation != null && message.hasOwnProperty("fromLocation")) {
+                            var error = $root.enfonica.voice.v1beta1.NumberLocation.verify(message.fromLocation);
+                            if (error)
+                                return "fromLocation." + error;
+                        }
+                        if (message.fromZone != null && message.hasOwnProperty("fromZone"))
+                            if (!$util.isString(message.fromZone))
+                                return "fromZone: string expected";
                         if (message.isPrivate != null && message.hasOwnProperty("isPrivate"))
                             if (typeof message.isPrivate !== "boolean")
                                 return "isPrivate: boolean expected";
@@ -1375,6 +3740,14 @@
                             if (error)
                                 return "options." + error;
                         }
+                        if (message.sipCallId != null && message.hasOwnProperty("sipCallId"))
+                            if (!$util.isString(message.sipCallId))
+                                return "sipCallId: string expected";
+                        if (message.answerDuration != null && message.hasOwnProperty("answerDuration")) {
+                            var error = $root.google.protobuf.Duration.verify(message.answerDuration);
+                            if (error)
+                                return "answerDuration." + error;
+                        }
                         return null;
                     };
     
@@ -1396,6 +3769,13 @@
                             message.to = String(object.to);
                         if (object.from != null)
                             message.from = String(object.from);
+                        if (object.fromLocation != null) {
+                            if (typeof object.fromLocation !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.fromLocation: object expected");
+                            message.fromLocation = $root.enfonica.voice.v1beta1.NumberLocation.fromObject(object.fromLocation);
+                        }
+                        if (object.fromZone != null)
+                            message.fromZone = String(object.fromZone);
                         if (object.isPrivate != null)
                             message.isPrivate = Boolean(object.isPrivate);
                         if (object.labels) {
@@ -1540,6 +3920,13 @@
                                 throw TypeError(".enfonica.voice.v1beta1.Call.options: object expected");
                             message.options = $root.enfonica.voice.v1beta1.Call.ApiCallOptions.fromObject(object.options);
                         }
+                        if (object.sipCallId != null)
+                            message.sipCallId = String(object.sipCallId);
+                        if (object.answerDuration != null) {
+                            if (typeof object.answerDuration !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.Call.answerDuration: object expected");
+                            message.answerDuration = $root.google.protobuf.Duration.fromObject(object.answerDuration);
+                        }
                         return message;
                     };
     
@@ -1578,6 +3965,10 @@
                             object.originatingCall = "";
                             object.createMethod = options.enums === String ? "CREATE_METHOD_UNSPECIFIED" : 0;
                             object.options = null;
+                            object.fromLocation = null;
+                            object.fromZone = "";
+                            object.sipCallId = "";
+                            object.answerDuration = null;
                         }
                         if (message.name != null && message.hasOwnProperty("name"))
                             object.name = message.name;
@@ -1623,6 +4014,14 @@
                             object.createMethod = options.enums === String ? $root.enfonica.voice.v1beta1.Call.CreateMethod[message.createMethod] : message.createMethod;
                         if (message.options != null && message.hasOwnProperty("options"))
                             object.options = $root.enfonica.voice.v1beta1.Call.ApiCallOptions.toObject(message.options, options);
+                        if (message.fromLocation != null && message.hasOwnProperty("fromLocation"))
+                            object.fromLocation = $root.enfonica.voice.v1beta1.NumberLocation.toObject(message.fromLocation, options);
+                        if (message.fromZone != null && message.hasOwnProperty("fromZone"))
+                            object.fromZone = message.fromZone;
+                        if (message.sipCallId != null && message.hasOwnProperty("sipCallId"))
+                            object.sipCallId = message.sipCallId;
+                        if (message.answerDuration != null && message.hasOwnProperty("answerDuration"))
+                            object.answerDuration = $root.google.protobuf.Duration.toObject(message.answerDuration, options);
                         return object;
                     };
     
@@ -1996,6 +4395,265 @@
                     })();
     
                     return Call;
+                })();
+    
+                v1beta1.NumberLocation = (function() {
+    
+                    /**
+                     * Properties of a NumberLocation.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface INumberLocation
+                     * @property {string|null} [regionCode] NumberLocation regionCode
+                     * @property {string|null} [administrativeArea] NumberLocation administrativeArea
+                     * @property {string|null} [locality] NumberLocation locality
+                     * @property {google.type.ILatLng|null} [coordinates] NumberLocation coordinates
+                     */
+    
+                    /**
+                     * Constructs a new NumberLocation.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a NumberLocation.
+                     * @implements INumberLocation
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.INumberLocation=} [properties] Properties to set
+                     */
+                    function NumberLocation(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * NumberLocation regionCode.
+                     * @member {string} regionCode
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @instance
+                     */
+                    NumberLocation.prototype.regionCode = "";
+    
+                    /**
+                     * NumberLocation administrativeArea.
+                     * @member {string} administrativeArea
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @instance
+                     */
+                    NumberLocation.prototype.administrativeArea = "";
+    
+                    /**
+                     * NumberLocation locality.
+                     * @member {string} locality
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @instance
+                     */
+                    NumberLocation.prototype.locality = "";
+    
+                    /**
+                     * NumberLocation coordinates.
+                     * @member {google.type.ILatLng|null|undefined} coordinates
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @instance
+                     */
+                    NumberLocation.prototype.coordinates = null;
+    
+                    /**
+                     * Creates a new NumberLocation instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @static
+                     * @param {enfonica.voice.v1beta1.INumberLocation=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.NumberLocation} NumberLocation instance
+                     */
+                    NumberLocation.create = function create(properties) {
+                        return new NumberLocation(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified NumberLocation message. Does not implicitly {@link enfonica.voice.v1beta1.NumberLocation.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @static
+                     * @param {enfonica.voice.v1beta1.INumberLocation} message NumberLocation message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    NumberLocation.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.regionCode != null && Object.hasOwnProperty.call(message, "regionCode"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.regionCode);
+                        if (message.administrativeArea != null && Object.hasOwnProperty.call(message, "administrativeArea"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.administrativeArea);
+                        if (message.locality != null && Object.hasOwnProperty.call(message, "locality"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.locality);
+                        if (message.coordinates != null && Object.hasOwnProperty.call(message, "coordinates"))
+                            $root.google.type.LatLng.encode(message.coordinates, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified NumberLocation message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.NumberLocation.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @static
+                     * @param {enfonica.voice.v1beta1.INumberLocation} message NumberLocation message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    NumberLocation.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a NumberLocation message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.NumberLocation} NumberLocation
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    NumberLocation.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.NumberLocation();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.regionCode = reader.string();
+                                break;
+                            case 2:
+                                message.administrativeArea = reader.string();
+                                break;
+                            case 3:
+                                message.locality = reader.string();
+                                break;
+                            case 4:
+                                message.coordinates = $root.google.type.LatLng.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a NumberLocation message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.NumberLocation} NumberLocation
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    NumberLocation.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a NumberLocation message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    NumberLocation.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.regionCode != null && message.hasOwnProperty("regionCode"))
+                            if (!$util.isString(message.regionCode))
+                                return "regionCode: string expected";
+                        if (message.administrativeArea != null && message.hasOwnProperty("administrativeArea"))
+                            if (!$util.isString(message.administrativeArea))
+                                return "administrativeArea: string expected";
+                        if (message.locality != null && message.hasOwnProperty("locality"))
+                            if (!$util.isString(message.locality))
+                                return "locality: string expected";
+                        if (message.coordinates != null && message.hasOwnProperty("coordinates")) {
+                            var error = $root.google.type.LatLng.verify(message.coordinates);
+                            if (error)
+                                return "coordinates." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a NumberLocation message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.NumberLocation} NumberLocation
+                     */
+                    NumberLocation.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.NumberLocation)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.NumberLocation();
+                        if (object.regionCode != null)
+                            message.regionCode = String(object.regionCode);
+                        if (object.administrativeArea != null)
+                            message.administrativeArea = String(object.administrativeArea);
+                        if (object.locality != null)
+                            message.locality = String(object.locality);
+                        if (object.coordinates != null) {
+                            if (typeof object.coordinates !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.NumberLocation.coordinates: object expected");
+                            message.coordinates = $root.google.type.LatLng.fromObject(object.coordinates);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a NumberLocation message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @static
+                     * @param {enfonica.voice.v1beta1.NumberLocation} message NumberLocation
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    NumberLocation.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.regionCode = "";
+                            object.administrativeArea = "";
+                            object.locality = "";
+                            object.coordinates = null;
+                        }
+                        if (message.regionCode != null && message.hasOwnProperty("regionCode"))
+                            object.regionCode = message.regionCode;
+                        if (message.administrativeArea != null && message.hasOwnProperty("administrativeArea"))
+                            object.administrativeArea = message.administrativeArea;
+                        if (message.locality != null && message.hasOwnProperty("locality"))
+                            object.locality = message.locality;
+                        if (message.coordinates != null && message.hasOwnProperty("coordinates"))
+                            object.coordinates = $root.google.type.LatLng.toObject(message.coordinates, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this NumberLocation to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.NumberLocation
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    NumberLocation.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return NumberLocation;
                 })();
     
                 v1beta1.CreateCallRequest = (function() {
@@ -4862,6 +7520,3154 @@
                     values[valuesById[1] = "BASIC"] = 1;
                     values[valuesById[2] = "FULL"] = 2;
                     return values;
+                })();
+    
+                v1beta1.SipDomains = (function() {
+    
+                    /**
+                     * Constructs a new SipDomains service.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a SipDomains
+                     * @extends $protobuf.rpc.Service
+                     * @constructor
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     */
+                    function SipDomains(rpcImpl, requestDelimited, responseDelimited) {
+                        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+                    }
+    
+                    (SipDomains.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = SipDomains;
+    
+                    /**
+                     * Creates new SipDomains service using the specified rpc implementation.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @static
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     * @returns {SipDomains} RPC service. Useful where requests and/or responses are streamed.
+                     */
+                    SipDomains.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+                        return new this(rpcImpl, requestDelimited, responseDelimited);
+                    };
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#createSipDomain}.
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @typedef CreateSipDomainCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.SipDomain} [response] SipDomain
+                     */
+    
+                    /**
+                     * Calls CreateSipDomain.
+                     * @function createSipDomain
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.ICreateSipDomainRequest} request CreateSipDomainRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.SipDomains.CreateSipDomainCallback} callback Node-style callback called with the error, if any, and SipDomain
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(SipDomains.prototype.createSipDomain = function createSipDomain(request, callback) {
+                        return this.rpcCall(createSipDomain, $root.enfonica.voice.v1beta1.CreateSipDomainRequest, $root.enfonica.voice.v1beta1.SipDomain, request, callback);
+                    }, "name", { value: "CreateSipDomain" });
+    
+                    /**
+                     * Calls CreateSipDomain.
+                     * @function createSipDomain
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.ICreateSipDomainRequest} request CreateSipDomainRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.SipDomain>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#getSipDomain}.
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @typedef GetSipDomainCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.SipDomain} [response] SipDomain
+                     */
+    
+                    /**
+                     * Calls GetSipDomain.
+                     * @function getSipDomain
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IGetSipDomainRequest} request GetSipDomainRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.SipDomains.GetSipDomainCallback} callback Node-style callback called with the error, if any, and SipDomain
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(SipDomains.prototype.getSipDomain = function getSipDomain(request, callback) {
+                        return this.rpcCall(getSipDomain, $root.enfonica.voice.v1beta1.GetSipDomainRequest, $root.enfonica.voice.v1beta1.SipDomain, request, callback);
+                    }, "name", { value: "GetSipDomain" });
+    
+                    /**
+                     * Calls GetSipDomain.
+                     * @function getSipDomain
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IGetSipDomainRequest} request GetSipDomainRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.SipDomain>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#listSipDomains}.
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @typedef ListSipDomainsCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.ListSipDomainsResponse} [response] ListSipDomainsResponse
+                     */
+    
+                    /**
+                     * Calls ListSipDomains.
+                     * @function listSipDomains
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsRequest} request ListSipDomainsRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.SipDomains.ListSipDomainsCallback} callback Node-style callback called with the error, if any, and ListSipDomainsResponse
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(SipDomains.prototype.listSipDomains = function listSipDomains(request, callback) {
+                        return this.rpcCall(listSipDomains, $root.enfonica.voice.v1beta1.ListSipDomainsRequest, $root.enfonica.voice.v1beta1.ListSipDomainsResponse, request, callback);
+                    }, "name", { value: "ListSipDomains" });
+    
+                    /**
+                     * Calls ListSipDomains.
+                     * @function listSipDomains
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsRequest} request ListSipDomainsRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.ListSipDomainsResponse>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#updateSipDomain}.
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @typedef UpdateSipDomainCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.SipDomain} [response] SipDomain
+                     */
+    
+                    /**
+                     * Calls UpdateSipDomain.
+                     * @function updateSipDomain
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IUpdateSipDomainRequest} request UpdateSipDomainRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.SipDomains.UpdateSipDomainCallback} callback Node-style callback called with the error, if any, and SipDomain
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(SipDomains.prototype.updateSipDomain = function updateSipDomain(request, callback) {
+                        return this.rpcCall(updateSipDomain, $root.enfonica.voice.v1beta1.UpdateSipDomainRequest, $root.enfonica.voice.v1beta1.SipDomain, request, callback);
+                    }, "name", { value: "UpdateSipDomain" });
+    
+                    /**
+                     * Calls UpdateSipDomain.
+                     * @function updateSipDomain
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IUpdateSipDomainRequest} request UpdateSipDomainRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.SipDomain>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#deleteSipDomain}.
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @typedef DeleteSipDomainCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.SipDomain} [response] SipDomain
+                     */
+    
+                    /**
+                     * Calls DeleteSipDomain.
+                     * @function deleteSipDomain
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IDeleteSipDomainRequest} request DeleteSipDomainRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.SipDomains.DeleteSipDomainCallback} callback Node-style callback called with the error, if any, and SipDomain
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(SipDomains.prototype.deleteSipDomain = function deleteSipDomain(request, callback) {
+                        return this.rpcCall(deleteSipDomain, $root.enfonica.voice.v1beta1.DeleteSipDomainRequest, $root.enfonica.voice.v1beta1.SipDomain, request, callback);
+                    }, "name", { value: "DeleteSipDomain" });
+    
+                    /**
+                     * Calls DeleteSipDomain.
+                     * @function deleteSipDomain
+                     * @memberof enfonica.voice.v1beta1.SipDomains
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IDeleteSipDomainRequest} request DeleteSipDomainRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.SipDomain>} Promise
+                     * @variation 2
+                     */
+    
+                    return SipDomains;
+                })();
+    
+                v1beta1.SipDomain = (function() {
+    
+                    /**
+                     * Properties of a SipDomain.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ISipDomain
+                     * @property {string|null} [name] SipDomain name
+                     * @property {string|null} [sipDomainId] SipDomain sipDomainId
+                     * @property {string|null} [displayName] SipDomain displayName
+                     * @property {boolean|null} [allowRegister] SipDomain allowRegister
+                     * @property {enfonica.voice.v1beta1.SipDomain.TerminationMode|null} [callTerminationMode] SipDomain callTerminationMode
+                     * @property {Array.<string>|null} [callTerminationHandlerUris] SipDomain callTerminationHandlerUris
+                     * @property {Array.<enfonica.voice.v1beta1.ICidrBlock>|null} [cidrBlocks] SipDomain cidrBlocks
+                     * @property {enfonica.voice.v1beta1.ICallRecordingConfig|null} [callRecording] SipDomain callRecording
+                     * @property {google.protobuf.ITimestamp|null} [createTime] SipDomain createTime
+                     * @property {google.protobuf.ITimestamp|null} [deleteTime] SipDomain deleteTime
+                     */
+    
+                    /**
+                     * Constructs a new SipDomain.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a SipDomain.
+                     * @implements ISipDomain
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ISipDomain=} [properties] Properties to set
+                     */
+                    function SipDomain(properties) {
+                        this.callTerminationHandlerUris = [];
+                        this.cidrBlocks = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SipDomain name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.name = "";
+    
+                    /**
+                     * SipDomain sipDomainId.
+                     * @member {string} sipDomainId
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.sipDomainId = "";
+    
+                    /**
+                     * SipDomain displayName.
+                     * @member {string} displayName
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.displayName = "";
+    
+                    /**
+                     * SipDomain allowRegister.
+                     * @member {boolean} allowRegister
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.allowRegister = false;
+    
+                    /**
+                     * SipDomain callTerminationMode.
+                     * @member {enfonica.voice.v1beta1.SipDomain.TerminationMode} callTerminationMode
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.callTerminationMode = 0;
+    
+                    /**
+                     * SipDomain callTerminationHandlerUris.
+                     * @member {Array.<string>} callTerminationHandlerUris
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.callTerminationHandlerUris = $util.emptyArray;
+    
+                    /**
+                     * SipDomain cidrBlocks.
+                     * @member {Array.<enfonica.voice.v1beta1.ICidrBlock>} cidrBlocks
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.cidrBlocks = $util.emptyArray;
+    
+                    /**
+                     * SipDomain callRecording.
+                     * @member {enfonica.voice.v1beta1.ICallRecordingConfig|null|undefined} callRecording
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.callRecording = null;
+    
+                    /**
+                     * SipDomain createTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} createTime
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.createTime = null;
+    
+                    /**
+                     * SipDomain deleteTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} deleteTime
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     */
+                    SipDomain.prototype.deleteTime = null;
+    
+                    /**
+                     * Creates a new SipDomain instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipDomain=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.SipDomain} SipDomain instance
+                     */
+                    SipDomain.create = function create(properties) {
+                        return new SipDomain(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SipDomain message. Does not implicitly {@link enfonica.voice.v1beta1.SipDomain.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipDomain} message SipDomain message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SipDomain.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.sipDomainId != null && Object.hasOwnProperty.call(message, "sipDomainId"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.sipDomainId);
+                        if (message.displayName != null && Object.hasOwnProperty.call(message, "displayName"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.displayName);
+                        if (message.allowRegister != null && Object.hasOwnProperty.call(message, "allowRegister"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).bool(message.allowRegister);
+                        if (message.callTerminationMode != null && Object.hasOwnProperty.call(message, "callTerminationMode"))
+                            writer.uint32(/* id 5, wireType 0 =*/40).int32(message.callTerminationMode);
+                        if (message.callTerminationHandlerUris != null && message.callTerminationHandlerUris.length)
+                            for (var i = 0; i < message.callTerminationHandlerUris.length; ++i)
+                                writer.uint32(/* id 6, wireType 2 =*/50).string(message.callTerminationHandlerUris[i]);
+                        if (message.cidrBlocks != null && message.cidrBlocks.length)
+                            for (var i = 0; i < message.cidrBlocks.length; ++i)
+                                $root.enfonica.voice.v1beta1.CidrBlock.encode(message.cidrBlocks[i], writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
+                        if (message.callRecording != null && Object.hasOwnProperty.call(message, "callRecording"))
+                            $root.enfonica.voice.v1beta1.CallRecordingConfig.encode(message.callRecording, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+                        if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
+                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
+                        if (message.deleteTime != null && Object.hasOwnProperty.call(message, "deleteTime"))
+                            $root.google.protobuf.Timestamp.encode(message.deleteTime, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SipDomain message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.SipDomain.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipDomain} message SipDomain message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SipDomain.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SipDomain message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.SipDomain} SipDomain
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SipDomain.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.SipDomain();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.sipDomainId = reader.string();
+                                break;
+                            case 3:
+                                message.displayName = reader.string();
+                                break;
+                            case 4:
+                                message.allowRegister = reader.bool();
+                                break;
+                            case 5:
+                                message.callTerminationMode = reader.int32();
+                                break;
+                            case 6:
+                                if (!(message.callTerminationHandlerUris && message.callTerminationHandlerUris.length))
+                                    message.callTerminationHandlerUris = [];
+                                message.callTerminationHandlerUris.push(reader.string());
+                                break;
+                            case 8:
+                                if (!(message.cidrBlocks && message.cidrBlocks.length))
+                                    message.cidrBlocks = [];
+                                message.cidrBlocks.push($root.enfonica.voice.v1beta1.CidrBlock.decode(reader, reader.uint32()));
+                                break;
+                            case 9:
+                                message.callRecording = $root.enfonica.voice.v1beta1.CallRecordingConfig.decode(reader, reader.uint32());
+                                break;
+                            case 10:
+                                message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 11:
+                                message.deleteTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SipDomain message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.SipDomain} SipDomain
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SipDomain.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SipDomain message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SipDomain.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.sipDomainId != null && message.hasOwnProperty("sipDomainId"))
+                            if (!$util.isString(message.sipDomainId))
+                                return "sipDomainId: string expected";
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            if (!$util.isString(message.displayName))
+                                return "displayName: string expected";
+                        if (message.allowRegister != null && message.hasOwnProperty("allowRegister"))
+                            if (typeof message.allowRegister !== "boolean")
+                                return "allowRegister: boolean expected";
+                        if (message.callTerminationMode != null && message.hasOwnProperty("callTerminationMode"))
+                            switch (message.callTerminationMode) {
+                            default:
+                                return "callTerminationMode: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                                break;
+                            }
+                        if (message.callTerminationHandlerUris != null && message.hasOwnProperty("callTerminationHandlerUris")) {
+                            if (!Array.isArray(message.callTerminationHandlerUris))
+                                return "callTerminationHandlerUris: array expected";
+                            for (var i = 0; i < message.callTerminationHandlerUris.length; ++i)
+                                if (!$util.isString(message.callTerminationHandlerUris[i]))
+                                    return "callTerminationHandlerUris: string[] expected";
+                        }
+                        if (message.cidrBlocks != null && message.hasOwnProperty("cidrBlocks")) {
+                            if (!Array.isArray(message.cidrBlocks))
+                                return "cidrBlocks: array expected";
+                            for (var i = 0; i < message.cidrBlocks.length; ++i) {
+                                var error = $root.enfonica.voice.v1beta1.CidrBlock.verify(message.cidrBlocks[i]);
+                                if (error)
+                                    return "cidrBlocks." + error;
+                            }
+                        }
+                        if (message.callRecording != null && message.hasOwnProperty("callRecording")) {
+                            var error = $root.enfonica.voice.v1beta1.CallRecordingConfig.verify(message.callRecording);
+                            if (error)
+                                return "callRecording." + error;
+                        }
+                        if (message.createTime != null && message.hasOwnProperty("createTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.createTime);
+                            if (error)
+                                return "createTime." + error;
+                        }
+                        if (message.deleteTime != null && message.hasOwnProperty("deleteTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.deleteTime);
+                            if (error)
+                                return "deleteTime." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SipDomain message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.SipDomain} SipDomain
+                     */
+                    SipDomain.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.SipDomain)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.SipDomain();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.sipDomainId != null)
+                            message.sipDomainId = String(object.sipDomainId);
+                        if (object.displayName != null)
+                            message.displayName = String(object.displayName);
+                        if (object.allowRegister != null)
+                            message.allowRegister = Boolean(object.allowRegister);
+                        switch (object.callTerminationMode) {
+                        case "TERMINATION_MODE_UNSPECIFIED":
+                        case 0:
+                            message.callTerminationMode = 0;
+                            break;
+                        case "TERMINATION_MODE_DISABLED":
+                        case 1:
+                            message.callTerminationMode = 1;
+                            break;
+                        case "PSTN_TRUNK":
+                        case 2:
+                            message.callTerminationMode = 2;
+                            break;
+                        case "PROGRAMMABLE":
+                        case 3:
+                            message.callTerminationMode = 3;
+                            break;
+                        }
+                        if (object.callTerminationHandlerUris) {
+                            if (!Array.isArray(object.callTerminationHandlerUris))
+                                throw TypeError(".enfonica.voice.v1beta1.SipDomain.callTerminationHandlerUris: array expected");
+                            message.callTerminationHandlerUris = [];
+                            for (var i = 0; i < object.callTerminationHandlerUris.length; ++i)
+                                message.callTerminationHandlerUris[i] = String(object.callTerminationHandlerUris[i]);
+                        }
+                        if (object.cidrBlocks) {
+                            if (!Array.isArray(object.cidrBlocks))
+                                throw TypeError(".enfonica.voice.v1beta1.SipDomain.cidrBlocks: array expected");
+                            message.cidrBlocks = [];
+                            for (var i = 0; i < object.cidrBlocks.length; ++i) {
+                                if (typeof object.cidrBlocks[i] !== "object")
+                                    throw TypeError(".enfonica.voice.v1beta1.SipDomain.cidrBlocks: object expected");
+                                message.cidrBlocks[i] = $root.enfonica.voice.v1beta1.CidrBlock.fromObject(object.cidrBlocks[i]);
+                            }
+                        }
+                        if (object.callRecording != null) {
+                            if (typeof object.callRecording !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.SipDomain.callRecording: object expected");
+                            message.callRecording = $root.enfonica.voice.v1beta1.CallRecordingConfig.fromObject(object.callRecording);
+                        }
+                        if (object.createTime != null) {
+                            if (typeof object.createTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.SipDomain.createTime: object expected");
+                            message.createTime = $root.google.protobuf.Timestamp.fromObject(object.createTime);
+                        }
+                        if (object.deleteTime != null) {
+                            if (typeof object.deleteTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.SipDomain.deleteTime: object expected");
+                            message.deleteTime = $root.google.protobuf.Timestamp.fromObject(object.deleteTime);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SipDomain message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @static
+                     * @param {enfonica.voice.v1beta1.SipDomain} message SipDomain
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SipDomain.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults) {
+                            object.callTerminationHandlerUris = [];
+                            object.cidrBlocks = [];
+                        }
+                        if (options.defaults) {
+                            object.name = "";
+                            object.sipDomainId = "";
+                            object.displayName = "";
+                            object.allowRegister = false;
+                            object.callTerminationMode = options.enums === String ? "TERMINATION_MODE_UNSPECIFIED" : 0;
+                            object.callRecording = null;
+                            object.createTime = null;
+                            object.deleteTime = null;
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.sipDomainId != null && message.hasOwnProperty("sipDomainId"))
+                            object.sipDomainId = message.sipDomainId;
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            object.displayName = message.displayName;
+                        if (message.allowRegister != null && message.hasOwnProperty("allowRegister"))
+                            object.allowRegister = message.allowRegister;
+                        if (message.callTerminationMode != null && message.hasOwnProperty("callTerminationMode"))
+                            object.callTerminationMode = options.enums === String ? $root.enfonica.voice.v1beta1.SipDomain.TerminationMode[message.callTerminationMode] : message.callTerminationMode;
+                        if (message.callTerminationHandlerUris && message.callTerminationHandlerUris.length) {
+                            object.callTerminationHandlerUris = [];
+                            for (var j = 0; j < message.callTerminationHandlerUris.length; ++j)
+                                object.callTerminationHandlerUris[j] = message.callTerminationHandlerUris[j];
+                        }
+                        if (message.cidrBlocks && message.cidrBlocks.length) {
+                            object.cidrBlocks = [];
+                            for (var j = 0; j < message.cidrBlocks.length; ++j)
+                                object.cidrBlocks[j] = $root.enfonica.voice.v1beta1.CidrBlock.toObject(message.cidrBlocks[j], options);
+                        }
+                        if (message.callRecording != null && message.hasOwnProperty("callRecording"))
+                            object.callRecording = $root.enfonica.voice.v1beta1.CallRecordingConfig.toObject(message.callRecording, options);
+                        if (message.createTime != null && message.hasOwnProperty("createTime"))
+                            object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
+                        if (message.deleteTime != null && message.hasOwnProperty("deleteTime"))
+                            object.deleteTime = $root.google.protobuf.Timestamp.toObject(message.deleteTime, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SipDomain to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.SipDomain
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SipDomain.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    /**
+                     * TerminationMode enum.
+                     * @name enfonica.voice.v1beta1.SipDomain.TerminationMode
+                     * @enum {number}
+                     * @property {number} TERMINATION_MODE_UNSPECIFIED=0 TERMINATION_MODE_UNSPECIFIED value
+                     * @property {number} TERMINATION_MODE_DISABLED=1 TERMINATION_MODE_DISABLED value
+                     * @property {number} PSTN_TRUNK=2 PSTN_TRUNK value
+                     * @property {number} PROGRAMMABLE=3 PROGRAMMABLE value
+                     */
+                    SipDomain.TerminationMode = (function() {
+                        var valuesById = {}, values = Object.create(valuesById);
+                        values[valuesById[0] = "TERMINATION_MODE_UNSPECIFIED"] = 0;
+                        values[valuesById[1] = "TERMINATION_MODE_DISABLED"] = 1;
+                        values[valuesById[2] = "PSTN_TRUNK"] = 2;
+                        values[valuesById[3] = "PROGRAMMABLE"] = 3;
+                        return values;
+                    })();
+    
+                    return SipDomain;
+                })();
+    
+                v1beta1.CidrBlock = (function() {
+    
+                    /**
+                     * Properties of a CidrBlock.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ICidrBlock
+                     * @property {string|null} [displayName] CidrBlock displayName
+                     * @property {string|null} [cidrBlock] CidrBlock cidrBlock
+                     */
+    
+                    /**
+                     * Constructs a new CidrBlock.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a CidrBlock.
+                     * @implements ICidrBlock
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ICidrBlock=} [properties] Properties to set
+                     */
+                    function CidrBlock(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * CidrBlock displayName.
+                     * @member {string} displayName
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @instance
+                     */
+                    CidrBlock.prototype.displayName = "";
+    
+                    /**
+                     * CidrBlock cidrBlock.
+                     * @member {string} cidrBlock
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @instance
+                     */
+                    CidrBlock.prototype.cidrBlock = "";
+    
+                    /**
+                     * Creates a new CidrBlock instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICidrBlock=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.CidrBlock} CidrBlock instance
+                     */
+                    CidrBlock.create = function create(properties) {
+                        return new CidrBlock(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified CidrBlock message. Does not implicitly {@link enfonica.voice.v1beta1.CidrBlock.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICidrBlock} message CidrBlock message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CidrBlock.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.displayName != null && Object.hasOwnProperty.call(message, "displayName"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.displayName);
+                        if (message.cidrBlock != null && Object.hasOwnProperty.call(message, "cidrBlock"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.cidrBlock);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified CidrBlock message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CidrBlock.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICidrBlock} message CidrBlock message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CidrBlock.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a CidrBlock message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.CidrBlock} CidrBlock
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CidrBlock.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.CidrBlock();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.displayName = reader.string();
+                                break;
+                            case 2:
+                                message.cidrBlock = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a CidrBlock message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.CidrBlock} CidrBlock
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CidrBlock.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a CidrBlock message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    CidrBlock.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            if (!$util.isString(message.displayName))
+                                return "displayName: string expected";
+                        if (message.cidrBlock != null && message.hasOwnProperty("cidrBlock"))
+                            if (!$util.isString(message.cidrBlock))
+                                return "cidrBlock: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a CidrBlock message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.CidrBlock} CidrBlock
+                     */
+                    CidrBlock.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.CidrBlock)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.CidrBlock();
+                        if (object.displayName != null)
+                            message.displayName = String(object.displayName);
+                        if (object.cidrBlock != null)
+                            message.cidrBlock = String(object.cidrBlock);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a CidrBlock message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @static
+                     * @param {enfonica.voice.v1beta1.CidrBlock} message CidrBlock
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    CidrBlock.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.displayName = "";
+                            object.cidrBlock = "";
+                        }
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            object.displayName = message.displayName;
+                        if (message.cidrBlock != null && message.hasOwnProperty("cidrBlock"))
+                            object.cidrBlock = message.cidrBlock;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this CidrBlock to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.CidrBlock
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    CidrBlock.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return CidrBlock;
+                })();
+    
+                v1beta1.CreateSipDomainRequest = (function() {
+    
+                    /**
+                     * Properties of a CreateSipDomainRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ICreateSipDomainRequest
+                     * @property {string|null} [parent] CreateSipDomainRequest parent
+                     * @property {enfonica.voice.v1beta1.ISipDomain|null} [sipDomain] CreateSipDomainRequest sipDomain
+                     * @property {string|null} [sipDomainId] CreateSipDomainRequest sipDomainId
+                     */
+    
+                    /**
+                     * Constructs a new CreateSipDomainRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a CreateSipDomainRequest.
+                     * @implements ICreateSipDomainRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ICreateSipDomainRequest=} [properties] Properties to set
+                     */
+                    function CreateSipDomainRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * CreateSipDomainRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @instance
+                     */
+                    CreateSipDomainRequest.prototype.parent = "";
+    
+                    /**
+                     * CreateSipDomainRequest sipDomain.
+                     * @member {enfonica.voice.v1beta1.ISipDomain|null|undefined} sipDomain
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @instance
+                     */
+                    CreateSipDomainRequest.prototype.sipDomain = null;
+    
+                    /**
+                     * CreateSipDomainRequest sipDomainId.
+                     * @member {string} sipDomainId
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @instance
+                     */
+                    CreateSipDomainRequest.prototype.sipDomainId = "";
+    
+                    /**
+                     * Creates a new CreateSipDomainRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateSipDomainRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.CreateSipDomainRequest} CreateSipDomainRequest instance
+                     */
+                    CreateSipDomainRequest.create = function create(properties) {
+                        return new CreateSipDomainRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified CreateSipDomainRequest message. Does not implicitly {@link enfonica.voice.v1beta1.CreateSipDomainRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateSipDomainRequest} message CreateSipDomainRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreateSipDomainRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.sipDomain != null && Object.hasOwnProperty.call(message, "sipDomain"))
+                            $root.enfonica.voice.v1beta1.SipDomain.encode(message.sipDomain, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        if (message.sipDomainId != null && Object.hasOwnProperty.call(message, "sipDomainId"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.sipDomainId);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified CreateSipDomainRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CreateSipDomainRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ICreateSipDomainRequest} message CreateSipDomainRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreateSipDomainRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a CreateSipDomainRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.CreateSipDomainRequest} CreateSipDomainRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreateSipDomainRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.CreateSipDomainRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.sipDomain = $root.enfonica.voice.v1beta1.SipDomain.decode(reader, reader.uint32());
+                                break;
+                            case 3:
+                                message.sipDomainId = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a CreateSipDomainRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.CreateSipDomainRequest} CreateSipDomainRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreateSipDomainRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a CreateSipDomainRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    CreateSipDomainRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.sipDomain != null && message.hasOwnProperty("sipDomain")) {
+                            var error = $root.enfonica.voice.v1beta1.SipDomain.verify(message.sipDomain);
+                            if (error)
+                                return "sipDomain." + error;
+                        }
+                        if (message.sipDomainId != null && message.hasOwnProperty("sipDomainId"))
+                            if (!$util.isString(message.sipDomainId))
+                                return "sipDomainId: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a CreateSipDomainRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.CreateSipDomainRequest} CreateSipDomainRequest
+                     */
+                    CreateSipDomainRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.CreateSipDomainRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.CreateSipDomainRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.sipDomain != null) {
+                            if (typeof object.sipDomain !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.CreateSipDomainRequest.sipDomain: object expected");
+                            message.sipDomain = $root.enfonica.voice.v1beta1.SipDomain.fromObject(object.sipDomain);
+                        }
+                        if (object.sipDomainId != null)
+                            message.sipDomainId = String(object.sipDomainId);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a CreateSipDomainRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.CreateSipDomainRequest} message CreateSipDomainRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    CreateSipDomainRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.sipDomain = null;
+                            object.sipDomainId = "";
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.sipDomain != null && message.hasOwnProperty("sipDomain"))
+                            object.sipDomain = $root.enfonica.voice.v1beta1.SipDomain.toObject(message.sipDomain, options);
+                        if (message.sipDomainId != null && message.hasOwnProperty("sipDomainId"))
+                            object.sipDomainId = message.sipDomainId;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this CreateSipDomainRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.CreateSipDomainRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    CreateSipDomainRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return CreateSipDomainRequest;
+                })();
+    
+                v1beta1.GetSipDomainRequest = (function() {
+    
+                    /**
+                     * Properties of a GetSipDomainRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IGetSipDomainRequest
+                     * @property {string|null} [name] GetSipDomainRequest name
+                     */
+    
+                    /**
+                     * Constructs a new GetSipDomainRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a GetSipDomainRequest.
+                     * @implements IGetSipDomainRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IGetSipDomainRequest=} [properties] Properties to set
+                     */
+                    function GetSipDomainRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * GetSipDomainRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @instance
+                     */
+                    GetSipDomainRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new GetSipDomainRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetSipDomainRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.GetSipDomainRequest} GetSipDomainRequest instance
+                     */
+                    GetSipDomainRequest.create = function create(properties) {
+                        return new GetSipDomainRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified GetSipDomainRequest message. Does not implicitly {@link enfonica.voice.v1beta1.GetSipDomainRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetSipDomainRequest} message GetSipDomainRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetSipDomainRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified GetSipDomainRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.GetSipDomainRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetSipDomainRequest} message GetSipDomainRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetSipDomainRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a GetSipDomainRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.GetSipDomainRequest} GetSipDomainRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetSipDomainRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.GetSipDomainRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a GetSipDomainRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.GetSipDomainRequest} GetSipDomainRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetSipDomainRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a GetSipDomainRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    GetSipDomainRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a GetSipDomainRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.GetSipDomainRequest} GetSipDomainRequest
+                     */
+                    GetSipDomainRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.GetSipDomainRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.GetSipDomainRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a GetSipDomainRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.GetSipDomainRequest} message GetSipDomainRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    GetSipDomainRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this GetSipDomainRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.GetSipDomainRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    GetSipDomainRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return GetSipDomainRequest;
+                })();
+    
+                v1beta1.ListSipDomainsRequest = (function() {
+    
+                    /**
+                     * Properties of a ListSipDomainsRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IListSipDomainsRequest
+                     * @property {string|null} [parent] ListSipDomainsRequest parent
+                     * @property {number|null} [pageSize] ListSipDomainsRequest pageSize
+                     * @property {string|null} [pageToken] ListSipDomainsRequest pageToken
+                     * @property {boolean|null} [showDeleted] ListSipDomainsRequest showDeleted
+                     */
+    
+                    /**
+                     * Constructs a new ListSipDomainsRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a ListSipDomainsRequest.
+                     * @implements IListSipDomainsRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsRequest=} [properties] Properties to set
+                     */
+                    function ListSipDomainsRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListSipDomainsRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @instance
+                     */
+                    ListSipDomainsRequest.prototype.parent = "";
+    
+                    /**
+                     * ListSipDomainsRequest pageSize.
+                     * @member {number} pageSize
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @instance
+                     */
+                    ListSipDomainsRequest.prototype.pageSize = 0;
+    
+                    /**
+                     * ListSipDomainsRequest pageToken.
+                     * @member {string} pageToken
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @instance
+                     */
+                    ListSipDomainsRequest.prototype.pageToken = "";
+    
+                    /**
+                     * ListSipDomainsRequest showDeleted.
+                     * @member {boolean} showDeleted
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @instance
+                     */
+                    ListSipDomainsRequest.prototype.showDeleted = false;
+    
+                    /**
+                     * Creates a new ListSipDomainsRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.ListSipDomainsRequest} ListSipDomainsRequest instance
+                     */
+                    ListSipDomainsRequest.create = function create(properties) {
+                        return new ListSipDomainsRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListSipDomainsRequest message. Does not implicitly {@link enfonica.voice.v1beta1.ListSipDomainsRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsRequest} message ListSipDomainsRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListSipDomainsRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.pageSize != null && Object.hasOwnProperty.call(message, "pageSize"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pageSize);
+                        if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.pageToken);
+                        if (message.showDeleted != null && Object.hasOwnProperty.call(message, "showDeleted"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).bool(message.showDeleted);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListSipDomainsRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListSipDomainsRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsRequest} message ListSipDomainsRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListSipDomainsRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListSipDomainsRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.ListSipDomainsRequest} ListSipDomainsRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListSipDomainsRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.ListSipDomainsRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.pageSize = reader.int32();
+                                break;
+                            case 3:
+                                message.pageToken = reader.string();
+                                break;
+                            case 4:
+                                message.showDeleted = reader.bool();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListSipDomainsRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.ListSipDomainsRequest} ListSipDomainsRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListSipDomainsRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListSipDomainsRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListSipDomainsRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            if (!$util.isInteger(message.pageSize))
+                                return "pageSize: integer expected";
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            if (!$util.isString(message.pageToken))
+                                return "pageToken: string expected";
+                        if (message.showDeleted != null && message.hasOwnProperty("showDeleted"))
+                            if (typeof message.showDeleted !== "boolean")
+                                return "showDeleted: boolean expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListSipDomainsRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.ListSipDomainsRequest} ListSipDomainsRequest
+                     */
+                    ListSipDomainsRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.ListSipDomainsRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.ListSipDomainsRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.pageSize != null)
+                            message.pageSize = object.pageSize | 0;
+                        if (object.pageToken != null)
+                            message.pageToken = String(object.pageToken);
+                        if (object.showDeleted != null)
+                            message.showDeleted = Boolean(object.showDeleted);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListSipDomainsRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ListSipDomainsRequest} message ListSipDomainsRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListSipDomainsRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.pageSize = 0;
+                            object.pageToken = "";
+                            object.showDeleted = false;
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            object.pageSize = message.pageSize;
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            object.pageToken = message.pageToken;
+                        if (message.showDeleted != null && message.hasOwnProperty("showDeleted"))
+                            object.showDeleted = message.showDeleted;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListSipDomainsRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListSipDomainsRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListSipDomainsRequest;
+                })();
+    
+                v1beta1.ListSipDomainsResponse = (function() {
+    
+                    /**
+                     * Properties of a ListSipDomainsResponse.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IListSipDomainsResponse
+                     * @property {Array.<enfonica.voice.v1beta1.ISipDomain>|null} [sipDomains] ListSipDomainsResponse sipDomains
+                     * @property {string|null} [nextPageToken] ListSipDomainsResponse nextPageToken
+                     */
+    
+                    /**
+                     * Constructs a new ListSipDomainsResponse.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a ListSipDomainsResponse.
+                     * @implements IListSipDomainsResponse
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsResponse=} [properties] Properties to set
+                     */
+                    function ListSipDomainsResponse(properties) {
+                        this.sipDomains = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListSipDomainsResponse sipDomains.
+                     * @member {Array.<enfonica.voice.v1beta1.ISipDomain>} sipDomains
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @instance
+                     */
+                    ListSipDomainsResponse.prototype.sipDomains = $util.emptyArray;
+    
+                    /**
+                     * ListSipDomainsResponse nextPageToken.
+                     * @member {string} nextPageToken
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @instance
+                     */
+                    ListSipDomainsResponse.prototype.nextPageToken = "";
+    
+                    /**
+                     * Creates a new ListSipDomainsResponse instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsResponse=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.ListSipDomainsResponse} ListSipDomainsResponse instance
+                     */
+                    ListSipDomainsResponse.create = function create(properties) {
+                        return new ListSipDomainsResponse(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListSipDomainsResponse message. Does not implicitly {@link enfonica.voice.v1beta1.ListSipDomainsResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsResponse} message ListSipDomainsResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListSipDomainsResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.sipDomains != null && message.sipDomains.length)
+                            for (var i = 0; i < message.sipDomains.length; ++i)
+                                $root.enfonica.voice.v1beta1.SipDomain.encode(message.sipDomains[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListSipDomainsResponse message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListSipDomainsResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IListSipDomainsResponse} message ListSipDomainsResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListSipDomainsResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListSipDomainsResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.ListSipDomainsResponse} ListSipDomainsResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListSipDomainsResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.ListSipDomainsResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.sipDomains && message.sipDomains.length))
+                                    message.sipDomains = [];
+                                message.sipDomains.push($root.enfonica.voice.v1beta1.SipDomain.decode(reader, reader.uint32()));
+                                break;
+                            case 2:
+                                message.nextPageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListSipDomainsResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.ListSipDomainsResponse} ListSipDomainsResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListSipDomainsResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListSipDomainsResponse message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListSipDomainsResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.sipDomains != null && message.hasOwnProperty("sipDomains")) {
+                            if (!Array.isArray(message.sipDomains))
+                                return "sipDomains: array expected";
+                            for (var i = 0; i < message.sipDomains.length; ++i) {
+                                var error = $root.enfonica.voice.v1beta1.SipDomain.verify(message.sipDomains[i]);
+                                if (error)
+                                    return "sipDomains." + error;
+                            }
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            if (!$util.isString(message.nextPageToken))
+                                return "nextPageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListSipDomainsResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.ListSipDomainsResponse} ListSipDomainsResponse
+                     */
+                    ListSipDomainsResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.ListSipDomainsResponse)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.ListSipDomainsResponse();
+                        if (object.sipDomains) {
+                            if (!Array.isArray(object.sipDomains))
+                                throw TypeError(".enfonica.voice.v1beta1.ListSipDomainsResponse.sipDomains: array expected");
+                            message.sipDomains = [];
+                            for (var i = 0; i < object.sipDomains.length; ++i) {
+                                if (typeof object.sipDomains[i] !== "object")
+                                    throw TypeError(".enfonica.voice.v1beta1.ListSipDomainsResponse.sipDomains: object expected");
+                                message.sipDomains[i] = $root.enfonica.voice.v1beta1.SipDomain.fromObject(object.sipDomains[i]);
+                            }
+                        }
+                        if (object.nextPageToken != null)
+                            message.nextPageToken = String(object.nextPageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListSipDomainsResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ListSipDomainsResponse} message ListSipDomainsResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListSipDomainsResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.sipDomains = [];
+                        if (options.defaults)
+                            object.nextPageToken = "";
+                        if (message.sipDomains && message.sipDomains.length) {
+                            object.sipDomains = [];
+                            for (var j = 0; j < message.sipDomains.length; ++j)
+                                object.sipDomains[j] = $root.enfonica.voice.v1beta1.SipDomain.toObject(message.sipDomains[j], options);
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            object.nextPageToken = message.nextPageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListSipDomainsResponse to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.ListSipDomainsResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListSipDomainsResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListSipDomainsResponse;
+                })();
+    
+                v1beta1.UpdateSipDomainRequest = (function() {
+    
+                    /**
+                     * Properties of an UpdateSipDomainRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IUpdateSipDomainRequest
+                     * @property {enfonica.voice.v1beta1.ISipDomain|null} [sipDomain] UpdateSipDomainRequest sipDomain
+                     * @property {google.protobuf.IFieldMask|null} [updateMask] UpdateSipDomainRequest updateMask
+                     */
+    
+                    /**
+                     * Constructs a new UpdateSipDomainRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents an UpdateSipDomainRequest.
+                     * @implements IUpdateSipDomainRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IUpdateSipDomainRequest=} [properties] Properties to set
+                     */
+                    function UpdateSipDomainRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * UpdateSipDomainRequest sipDomain.
+                     * @member {enfonica.voice.v1beta1.ISipDomain|null|undefined} sipDomain
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @instance
+                     */
+                    UpdateSipDomainRequest.prototype.sipDomain = null;
+    
+                    /**
+                     * UpdateSipDomainRequest updateMask.
+                     * @member {google.protobuf.IFieldMask|null|undefined} updateMask
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @instance
+                     */
+                    UpdateSipDomainRequest.prototype.updateMask = null;
+    
+                    /**
+                     * Creates a new UpdateSipDomainRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUpdateSipDomainRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.UpdateSipDomainRequest} UpdateSipDomainRequest instance
+                     */
+                    UpdateSipDomainRequest.create = function create(properties) {
+                        return new UpdateSipDomainRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified UpdateSipDomainRequest message. Does not implicitly {@link enfonica.voice.v1beta1.UpdateSipDomainRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUpdateSipDomainRequest} message UpdateSipDomainRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    UpdateSipDomainRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.sipDomain != null && Object.hasOwnProperty.call(message, "sipDomain"))
+                            $root.enfonica.voice.v1beta1.SipDomain.encode(message.sipDomain, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.updateMask != null && Object.hasOwnProperty.call(message, "updateMask"))
+                            $root.google.protobuf.FieldMask.encode(message.updateMask, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified UpdateSipDomainRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.UpdateSipDomainRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IUpdateSipDomainRequest} message UpdateSipDomainRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    UpdateSipDomainRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes an UpdateSipDomainRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.UpdateSipDomainRequest} UpdateSipDomainRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    UpdateSipDomainRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.UpdateSipDomainRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.sipDomain = $root.enfonica.voice.v1beta1.SipDomain.decode(reader, reader.uint32());
+                                break;
+                            case 2:
+                                message.updateMask = $root.google.protobuf.FieldMask.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes an UpdateSipDomainRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.UpdateSipDomainRequest} UpdateSipDomainRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    UpdateSipDomainRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies an UpdateSipDomainRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    UpdateSipDomainRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.sipDomain != null && message.hasOwnProperty("sipDomain")) {
+                            var error = $root.enfonica.voice.v1beta1.SipDomain.verify(message.sipDomain);
+                            if (error)
+                                return "sipDomain." + error;
+                        }
+                        if (message.updateMask != null && message.hasOwnProperty("updateMask")) {
+                            var error = $root.google.protobuf.FieldMask.verify(message.updateMask);
+                            if (error)
+                                return "updateMask." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates an UpdateSipDomainRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.UpdateSipDomainRequest} UpdateSipDomainRequest
+                     */
+                    UpdateSipDomainRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.UpdateSipDomainRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.UpdateSipDomainRequest();
+                        if (object.sipDomain != null) {
+                            if (typeof object.sipDomain !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.UpdateSipDomainRequest.sipDomain: object expected");
+                            message.sipDomain = $root.enfonica.voice.v1beta1.SipDomain.fromObject(object.sipDomain);
+                        }
+                        if (object.updateMask != null) {
+                            if (typeof object.updateMask !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.UpdateSipDomainRequest.updateMask: object expected");
+                            message.updateMask = $root.google.protobuf.FieldMask.fromObject(object.updateMask);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from an UpdateSipDomainRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.UpdateSipDomainRequest} message UpdateSipDomainRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    UpdateSipDomainRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.sipDomain = null;
+                            object.updateMask = null;
+                        }
+                        if (message.sipDomain != null && message.hasOwnProperty("sipDomain"))
+                            object.sipDomain = $root.enfonica.voice.v1beta1.SipDomain.toObject(message.sipDomain, options);
+                        if (message.updateMask != null && message.hasOwnProperty("updateMask"))
+                            object.updateMask = $root.google.protobuf.FieldMask.toObject(message.updateMask, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this UpdateSipDomainRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.UpdateSipDomainRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    UpdateSipDomainRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return UpdateSipDomainRequest;
+                })();
+    
+                v1beta1.DeleteSipDomainRequest = (function() {
+    
+                    /**
+                     * Properties of a DeleteSipDomainRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IDeleteSipDomainRequest
+                     * @property {string|null} [name] DeleteSipDomainRequest name
+                     */
+    
+                    /**
+                     * Constructs a new DeleteSipDomainRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a DeleteSipDomainRequest.
+                     * @implements IDeleteSipDomainRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IDeleteSipDomainRequest=} [properties] Properties to set
+                     */
+                    function DeleteSipDomainRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * DeleteSipDomainRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @instance
+                     */
+                    DeleteSipDomainRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new DeleteSipDomainRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteSipDomainRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.DeleteSipDomainRequest} DeleteSipDomainRequest instance
+                     */
+                    DeleteSipDomainRequest.create = function create(properties) {
+                        return new DeleteSipDomainRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified DeleteSipDomainRequest message. Does not implicitly {@link enfonica.voice.v1beta1.DeleteSipDomainRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteSipDomainRequest} message DeleteSipDomainRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeleteSipDomainRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified DeleteSipDomainRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.DeleteSipDomainRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IDeleteSipDomainRequest} message DeleteSipDomainRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeleteSipDomainRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a DeleteSipDomainRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.DeleteSipDomainRequest} DeleteSipDomainRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeleteSipDomainRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.DeleteSipDomainRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a DeleteSipDomainRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.DeleteSipDomainRequest} DeleteSipDomainRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeleteSipDomainRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a DeleteSipDomainRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    DeleteSipDomainRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a DeleteSipDomainRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.DeleteSipDomainRequest} DeleteSipDomainRequest
+                     */
+                    DeleteSipDomainRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.DeleteSipDomainRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.DeleteSipDomainRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a DeleteSipDomainRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.DeleteSipDomainRequest} message DeleteSipDomainRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    DeleteSipDomainRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this DeleteSipDomainRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.DeleteSipDomainRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    DeleteSipDomainRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return DeleteSipDomainRequest;
+                })();
+    
+                v1beta1.SipInfoService = (function() {
+    
+                    /**
+                     * Constructs a new SipInfoService service.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a SipInfoService
+                     * @extends $protobuf.rpc.Service
+                     * @constructor
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     */
+                    function SipInfoService(rpcImpl, requestDelimited, responseDelimited) {
+                        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+                    }
+    
+                    (SipInfoService.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = SipInfoService;
+    
+                    /**
+                     * Creates new SipInfoService service using the specified rpc implementation.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.SipInfoService
+                     * @static
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     * @returns {SipInfoService} RPC service. Useful where requests and/or responses are streamed.
+                     */
+                    SipInfoService.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+                        return new this(rpcImpl, requestDelimited, responseDelimited);
+                    };
+    
+                    /**
+                     * Callback as used by {@link enfonica.voice.v1beta1.SipInfoService#getSipInfo}.
+                     * @memberof enfonica.voice.v1beta1.SipInfoService
+                     * @typedef GetSipInfoCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.voice.v1beta1.SipInfo} [response] SipInfo
+                     */
+    
+                    /**
+                     * Calls GetSipInfo.
+                     * @function getSipInfo
+                     * @memberof enfonica.voice.v1beta1.SipInfoService
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IGetSipInfoRequest} request GetSipInfoRequest message or plain object
+                     * @param {enfonica.voice.v1beta1.SipInfoService.GetSipInfoCallback} callback Node-style callback called with the error, if any, and SipInfo
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(SipInfoService.prototype.getSipInfo = function getSipInfo(request, callback) {
+                        return this.rpcCall(getSipInfo, $root.enfonica.voice.v1beta1.GetSipInfoRequest, $root.enfonica.voice.v1beta1.SipInfo, request, callback);
+                    }, "name", { value: "GetSipInfo" });
+    
+                    /**
+                     * Calls GetSipInfo.
+                     * @function getSipInfo
+                     * @memberof enfonica.voice.v1beta1.SipInfoService
+                     * @instance
+                     * @param {enfonica.voice.v1beta1.IGetSipInfoRequest} request GetSipInfoRequest message or plain object
+                     * @returns {Promise<enfonica.voice.v1beta1.SipInfo>} Promise
+                     * @variation 2
+                     */
+    
+                    return SipInfoService;
+                })();
+    
+                v1beta1.SipInfo = (function() {
+    
+                    /**
+                     * Properties of a SipInfo.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ISipInfo
+                     * @property {string|null} [name] SipInfo name
+                     * @property {google.protobuf.ITimestamp|null} [startTime] SipInfo startTime
+                     * @property {google.protobuf.ITimestamp|null} [endTime] SipInfo endTime
+                     * @property {Array.<enfonica.voice.v1beta1.ISipMessage>|null} [messages] SipInfo messages
+                     * @property {string|null} [sipCallId] SipInfo sipCallId
+                     * @property {Uint8Array|null} [pcap] SipInfo pcap
+                     */
+    
+                    /**
+                     * Constructs a new SipInfo.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a SipInfo.
+                     * @implements ISipInfo
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ISipInfo=} [properties] Properties to set
+                     */
+                    function SipInfo(properties) {
+                        this.messages = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SipInfo name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @instance
+                     */
+                    SipInfo.prototype.name = "";
+    
+                    /**
+                     * SipInfo startTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} startTime
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @instance
+                     */
+                    SipInfo.prototype.startTime = null;
+    
+                    /**
+                     * SipInfo endTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} endTime
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @instance
+                     */
+                    SipInfo.prototype.endTime = null;
+    
+                    /**
+                     * SipInfo messages.
+                     * @member {Array.<enfonica.voice.v1beta1.ISipMessage>} messages
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @instance
+                     */
+                    SipInfo.prototype.messages = $util.emptyArray;
+    
+                    /**
+                     * SipInfo sipCallId.
+                     * @member {string} sipCallId
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @instance
+                     */
+                    SipInfo.prototype.sipCallId = "";
+    
+                    /**
+                     * SipInfo pcap.
+                     * @member {Uint8Array} pcap
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @instance
+                     */
+                    SipInfo.prototype.pcap = $util.newBuffer([]);
+    
+                    /**
+                     * Creates a new SipInfo instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipInfo=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.SipInfo} SipInfo instance
+                     */
+                    SipInfo.create = function create(properties) {
+                        return new SipInfo(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SipInfo message. Does not implicitly {@link enfonica.voice.v1beta1.SipInfo.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipInfo} message SipInfo message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SipInfo.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.startTime != null && Object.hasOwnProperty.call(message, "startTime"))
+                            $root.google.protobuf.Timestamp.encode(message.startTime, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        if (message.endTime != null && Object.hasOwnProperty.call(message, "endTime"))
+                            $root.google.protobuf.Timestamp.encode(message.endTime, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                        if (message.messages != null && message.messages.length)
+                            for (var i = 0; i < message.messages.length; ++i)
+                                $root.enfonica.voice.v1beta1.SipMessage.encode(message.messages[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                        if (message.sipCallId != null && Object.hasOwnProperty.call(message, "sipCallId"))
+                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.sipCallId);
+                        if (message.pcap != null && Object.hasOwnProperty.call(message, "pcap"))
+                            writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.pcap);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SipInfo message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.SipInfo.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipInfo} message SipInfo message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SipInfo.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SipInfo message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.SipInfo} SipInfo
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SipInfo.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.SipInfo();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.startTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 3:
+                                message.endTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 4:
+                                if (!(message.messages && message.messages.length))
+                                    message.messages = [];
+                                message.messages.push($root.enfonica.voice.v1beta1.SipMessage.decode(reader, reader.uint32()));
+                                break;
+                            case 5:
+                                message.sipCallId = reader.string();
+                                break;
+                            case 6:
+                                message.pcap = reader.bytes();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SipInfo message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.SipInfo} SipInfo
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SipInfo.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SipInfo message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SipInfo.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.startTime != null && message.hasOwnProperty("startTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.startTime);
+                            if (error)
+                                return "startTime." + error;
+                        }
+                        if (message.endTime != null && message.hasOwnProperty("endTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.endTime);
+                            if (error)
+                                return "endTime." + error;
+                        }
+                        if (message.messages != null && message.hasOwnProperty("messages")) {
+                            if (!Array.isArray(message.messages))
+                                return "messages: array expected";
+                            for (var i = 0; i < message.messages.length; ++i) {
+                                var error = $root.enfonica.voice.v1beta1.SipMessage.verify(message.messages[i]);
+                                if (error)
+                                    return "messages." + error;
+                            }
+                        }
+                        if (message.sipCallId != null && message.hasOwnProperty("sipCallId"))
+                            if (!$util.isString(message.sipCallId))
+                                return "sipCallId: string expected";
+                        if (message.pcap != null && message.hasOwnProperty("pcap"))
+                            if (!(message.pcap && typeof message.pcap.length === "number" || $util.isString(message.pcap)))
+                                return "pcap: buffer expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SipInfo message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.SipInfo} SipInfo
+                     */
+                    SipInfo.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.SipInfo)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.SipInfo();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.startTime != null) {
+                            if (typeof object.startTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.SipInfo.startTime: object expected");
+                            message.startTime = $root.google.protobuf.Timestamp.fromObject(object.startTime);
+                        }
+                        if (object.endTime != null) {
+                            if (typeof object.endTime !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.SipInfo.endTime: object expected");
+                            message.endTime = $root.google.protobuf.Timestamp.fromObject(object.endTime);
+                        }
+                        if (object.messages) {
+                            if (!Array.isArray(object.messages))
+                                throw TypeError(".enfonica.voice.v1beta1.SipInfo.messages: array expected");
+                            message.messages = [];
+                            for (var i = 0; i < object.messages.length; ++i) {
+                                if (typeof object.messages[i] !== "object")
+                                    throw TypeError(".enfonica.voice.v1beta1.SipInfo.messages: object expected");
+                                message.messages[i] = $root.enfonica.voice.v1beta1.SipMessage.fromObject(object.messages[i]);
+                            }
+                        }
+                        if (object.sipCallId != null)
+                            message.sipCallId = String(object.sipCallId);
+                        if (object.pcap != null)
+                            if (typeof object.pcap === "string")
+                                $util.base64.decode(object.pcap, message.pcap = $util.newBuffer($util.base64.length(object.pcap)), 0);
+                            else if (object.pcap.length)
+                                message.pcap = object.pcap;
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SipInfo message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @static
+                     * @param {enfonica.voice.v1beta1.SipInfo} message SipInfo
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SipInfo.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.messages = [];
+                        if (options.defaults) {
+                            object.name = "";
+                            object.startTime = null;
+                            object.endTime = null;
+                            object.sipCallId = "";
+                            if (options.bytes === String)
+                                object.pcap = "";
+                            else {
+                                object.pcap = [];
+                                if (options.bytes !== Array)
+                                    object.pcap = $util.newBuffer(object.pcap);
+                            }
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.startTime != null && message.hasOwnProperty("startTime"))
+                            object.startTime = $root.google.protobuf.Timestamp.toObject(message.startTime, options);
+                        if (message.endTime != null && message.hasOwnProperty("endTime"))
+                            object.endTime = $root.google.protobuf.Timestamp.toObject(message.endTime, options);
+                        if (message.messages && message.messages.length) {
+                            object.messages = [];
+                            for (var j = 0; j < message.messages.length; ++j)
+                                object.messages[j] = $root.enfonica.voice.v1beta1.SipMessage.toObject(message.messages[j], options);
+                        }
+                        if (message.sipCallId != null && message.hasOwnProperty("sipCallId"))
+                            object.sipCallId = message.sipCallId;
+                        if (message.pcap != null && message.hasOwnProperty("pcap"))
+                            object.pcap = options.bytes === String ? $util.base64.encode(message.pcap, 0, message.pcap.length) : options.bytes === Array ? Array.prototype.slice.call(message.pcap) : message.pcap;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SipInfo to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.SipInfo
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SipInfo.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return SipInfo;
+                })();
+    
+                v1beta1.SipMessage = (function() {
+    
+                    /**
+                     * Properties of a SipMessage.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface ISipMessage
+                     * @property {google.protobuf.IDuration|null} [offsetDuration] SipMessage offsetDuration
+                     * @property {string|null} [sourceIp] SipMessage sourceIp
+                     * @property {number|null} [sourcePort] SipMessage sourcePort
+                     * @property {string|null} [destinationIp] SipMessage destinationIp
+                     * @property {number|null} [destinationPort] SipMessage destinationPort
+                     * @property {string|null} [method] SipMessage method
+                     * @property {string|null} [requestLine] SipMessage requestLine
+                     * @property {string|null} [data] SipMessage data
+                     */
+    
+                    /**
+                     * Constructs a new SipMessage.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a SipMessage.
+                     * @implements ISipMessage
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.ISipMessage=} [properties] Properties to set
+                     */
+                    function SipMessage(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SipMessage offsetDuration.
+                     * @member {google.protobuf.IDuration|null|undefined} offsetDuration
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     */
+                    SipMessage.prototype.offsetDuration = null;
+    
+                    /**
+                     * SipMessage sourceIp.
+                     * @member {string} sourceIp
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     */
+                    SipMessage.prototype.sourceIp = "";
+    
+                    /**
+                     * SipMessage sourcePort.
+                     * @member {number} sourcePort
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     */
+                    SipMessage.prototype.sourcePort = 0;
+    
+                    /**
+                     * SipMessage destinationIp.
+                     * @member {string} destinationIp
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     */
+                    SipMessage.prototype.destinationIp = "";
+    
+                    /**
+                     * SipMessage destinationPort.
+                     * @member {number} destinationPort
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     */
+                    SipMessage.prototype.destinationPort = 0;
+    
+                    /**
+                     * SipMessage method.
+                     * @member {string} method
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     */
+                    SipMessage.prototype.method = "";
+    
+                    /**
+                     * SipMessage requestLine.
+                     * @member {string} requestLine
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     */
+                    SipMessage.prototype.requestLine = "";
+    
+                    /**
+                     * SipMessage data.
+                     * @member {string} data
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     */
+                    SipMessage.prototype.data = "";
+    
+                    /**
+                     * Creates a new SipMessage instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipMessage=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.SipMessage} SipMessage instance
+                     */
+                    SipMessage.create = function create(properties) {
+                        return new SipMessage(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SipMessage message. Does not implicitly {@link enfonica.voice.v1beta1.SipMessage.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipMessage} message SipMessage message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SipMessage.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.offsetDuration != null && Object.hasOwnProperty.call(message, "offsetDuration"))
+                            $root.google.protobuf.Duration.encode(message.offsetDuration, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.sourceIp != null && Object.hasOwnProperty.call(message, "sourceIp"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.sourceIp);
+                        if (message.sourcePort != null && Object.hasOwnProperty.call(message, "sourcePort"))
+                            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.sourcePort);
+                        if (message.destinationIp != null && Object.hasOwnProperty.call(message, "destinationIp"))
+                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.destinationIp);
+                        if (message.destinationPort != null && Object.hasOwnProperty.call(message, "destinationPort"))
+                            writer.uint32(/* id 5, wireType 0 =*/40).int32(message.destinationPort);
+                        if (message.method != null && Object.hasOwnProperty.call(message, "method"))
+                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.method);
+                        if (message.requestLine != null && Object.hasOwnProperty.call(message, "requestLine"))
+                            writer.uint32(/* id 7, wireType 2 =*/58).string(message.requestLine);
+                        if (message.data != null && Object.hasOwnProperty.call(message, "data"))
+                            writer.uint32(/* id 8, wireType 2 =*/66).string(message.data);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SipMessage message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.SipMessage.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @static
+                     * @param {enfonica.voice.v1beta1.ISipMessage} message SipMessage message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SipMessage.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SipMessage message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.SipMessage} SipMessage
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SipMessage.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.SipMessage();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.offsetDuration = $root.google.protobuf.Duration.decode(reader, reader.uint32());
+                                break;
+                            case 2:
+                                message.sourceIp = reader.string();
+                                break;
+                            case 3:
+                                message.sourcePort = reader.int32();
+                                break;
+                            case 4:
+                                message.destinationIp = reader.string();
+                                break;
+                            case 5:
+                                message.destinationPort = reader.int32();
+                                break;
+                            case 6:
+                                message.method = reader.string();
+                                break;
+                            case 7:
+                                message.requestLine = reader.string();
+                                break;
+                            case 8:
+                                message.data = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SipMessage message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.SipMessage} SipMessage
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SipMessage.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SipMessage message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SipMessage.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.offsetDuration != null && message.hasOwnProperty("offsetDuration")) {
+                            var error = $root.google.protobuf.Duration.verify(message.offsetDuration);
+                            if (error)
+                                return "offsetDuration." + error;
+                        }
+                        if (message.sourceIp != null && message.hasOwnProperty("sourceIp"))
+                            if (!$util.isString(message.sourceIp))
+                                return "sourceIp: string expected";
+                        if (message.sourcePort != null && message.hasOwnProperty("sourcePort"))
+                            if (!$util.isInteger(message.sourcePort))
+                                return "sourcePort: integer expected";
+                        if (message.destinationIp != null && message.hasOwnProperty("destinationIp"))
+                            if (!$util.isString(message.destinationIp))
+                                return "destinationIp: string expected";
+                        if (message.destinationPort != null && message.hasOwnProperty("destinationPort"))
+                            if (!$util.isInteger(message.destinationPort))
+                                return "destinationPort: integer expected";
+                        if (message.method != null && message.hasOwnProperty("method"))
+                            if (!$util.isString(message.method))
+                                return "method: string expected";
+                        if (message.requestLine != null && message.hasOwnProperty("requestLine"))
+                            if (!$util.isString(message.requestLine))
+                                return "requestLine: string expected";
+                        if (message.data != null && message.hasOwnProperty("data"))
+                            if (!$util.isString(message.data))
+                                return "data: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SipMessage message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.SipMessage} SipMessage
+                     */
+                    SipMessage.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.SipMessage)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.SipMessage();
+                        if (object.offsetDuration != null) {
+                            if (typeof object.offsetDuration !== "object")
+                                throw TypeError(".enfonica.voice.v1beta1.SipMessage.offsetDuration: object expected");
+                            message.offsetDuration = $root.google.protobuf.Duration.fromObject(object.offsetDuration);
+                        }
+                        if (object.sourceIp != null)
+                            message.sourceIp = String(object.sourceIp);
+                        if (object.sourcePort != null)
+                            message.sourcePort = object.sourcePort | 0;
+                        if (object.destinationIp != null)
+                            message.destinationIp = String(object.destinationIp);
+                        if (object.destinationPort != null)
+                            message.destinationPort = object.destinationPort | 0;
+                        if (object.method != null)
+                            message.method = String(object.method);
+                        if (object.requestLine != null)
+                            message.requestLine = String(object.requestLine);
+                        if (object.data != null)
+                            message.data = String(object.data);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SipMessage message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @static
+                     * @param {enfonica.voice.v1beta1.SipMessage} message SipMessage
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SipMessage.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.offsetDuration = null;
+                            object.sourceIp = "";
+                            object.sourcePort = 0;
+                            object.destinationIp = "";
+                            object.destinationPort = 0;
+                            object.method = "";
+                            object.requestLine = "";
+                            object.data = "";
+                        }
+                        if (message.offsetDuration != null && message.hasOwnProperty("offsetDuration"))
+                            object.offsetDuration = $root.google.protobuf.Duration.toObject(message.offsetDuration, options);
+                        if (message.sourceIp != null && message.hasOwnProperty("sourceIp"))
+                            object.sourceIp = message.sourceIp;
+                        if (message.sourcePort != null && message.hasOwnProperty("sourcePort"))
+                            object.sourcePort = message.sourcePort;
+                        if (message.destinationIp != null && message.hasOwnProperty("destinationIp"))
+                            object.destinationIp = message.destinationIp;
+                        if (message.destinationPort != null && message.hasOwnProperty("destinationPort"))
+                            object.destinationPort = message.destinationPort;
+                        if (message.method != null && message.hasOwnProperty("method"))
+                            object.method = message.method;
+                        if (message.requestLine != null && message.hasOwnProperty("requestLine"))
+                            object.requestLine = message.requestLine;
+                        if (message.data != null && message.hasOwnProperty("data"))
+                            object.data = message.data;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SipMessage to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.SipMessage
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SipMessage.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return SipMessage;
+                })();
+    
+                v1beta1.GetSipInfoRequest = (function() {
+    
+                    /**
+                     * Properties of a GetSipInfoRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @interface IGetSipInfoRequest
+                     * @property {string|null} [name] GetSipInfoRequest name
+                     */
+    
+                    /**
+                     * Constructs a new GetSipInfoRequest.
+                     * @memberof enfonica.voice.v1beta1
+                     * @classdesc Represents a GetSipInfoRequest.
+                     * @implements IGetSipInfoRequest
+                     * @constructor
+                     * @param {enfonica.voice.v1beta1.IGetSipInfoRequest=} [properties] Properties to set
+                     */
+                    function GetSipInfoRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * GetSipInfoRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @instance
+                     */
+                    GetSipInfoRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new GetSipInfoRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetSipInfoRequest=} [properties] Properties to set
+                     * @returns {enfonica.voice.v1beta1.GetSipInfoRequest} GetSipInfoRequest instance
+                     */
+                    GetSipInfoRequest.create = function create(properties) {
+                        return new GetSipInfoRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified GetSipInfoRequest message. Does not implicitly {@link enfonica.voice.v1beta1.GetSipInfoRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetSipInfoRequest} message GetSipInfoRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetSipInfoRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified GetSipInfoRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.GetSipInfoRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.IGetSipInfoRequest} message GetSipInfoRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetSipInfoRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a GetSipInfoRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.voice.v1beta1.GetSipInfoRequest} GetSipInfoRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetSipInfoRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.voice.v1beta1.GetSipInfoRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a GetSipInfoRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.voice.v1beta1.GetSipInfoRequest} GetSipInfoRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetSipInfoRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a GetSipInfoRequest message.
+                     * @function verify
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    GetSipInfoRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a GetSipInfoRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.voice.v1beta1.GetSipInfoRequest} GetSipInfoRequest
+                     */
+                    GetSipInfoRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.voice.v1beta1.GetSipInfoRequest)
+                            return object;
+                        var message = new $root.enfonica.voice.v1beta1.GetSipInfoRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a GetSipInfoRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @static
+                     * @param {enfonica.voice.v1beta1.GetSipInfoRequest} message GetSipInfoRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    GetSipInfoRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this GetSipInfoRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.voice.v1beta1.GetSipInfoRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    GetSipInfoRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return GetSipInfoRequest;
                 })();
     
                 v1beta1.Streams = (function() {
@@ -8953,25 +14759,25 @@
                 return Timestamp;
             })();
     
-            protobuf.Duration = (function() {
+            protobuf.FieldMask = (function() {
     
                 /**
-                 * Properties of a Duration.
+                 * Properties of a FieldMask.
                  * @memberof google.protobuf
-                 * @interface IDuration
-                 * @property {number|Long|null} [seconds] Duration seconds
-                 * @property {number|null} [nanos] Duration nanos
+                 * @interface IFieldMask
+                 * @property {Array.<string>|null} [paths] FieldMask paths
                  */
     
                 /**
-                 * Constructs a new Duration.
+                 * Constructs a new FieldMask.
                  * @memberof google.protobuf
-                 * @classdesc Represents a Duration.
-                 * @implements IDuration
+                 * @classdesc Represents a FieldMask.
+                 * @implements IFieldMask
                  * @constructor
-                 * @param {google.protobuf.IDuration=} [properties] Properties to set
+                 * @param {google.protobuf.IFieldMask=} [properties] Properties to set
                  */
-                function Duration(properties) {
+                function FieldMask(properties) {
+                    this.paths = [];
                     if (properties)
                         for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                             if (properties[keys[i]] != null)
@@ -8979,88 +14785,78 @@
                 }
     
                 /**
-                 * Duration seconds.
-                 * @member {number|Long} seconds
-                 * @memberof google.protobuf.Duration
+                 * FieldMask paths.
+                 * @member {Array.<string>} paths
+                 * @memberof google.protobuf.FieldMask
                  * @instance
                  */
-                Duration.prototype.seconds = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                FieldMask.prototype.paths = $util.emptyArray;
     
                 /**
-                 * Duration nanos.
-                 * @member {number} nanos
-                 * @memberof google.protobuf.Duration
-                 * @instance
-                 */
-                Duration.prototype.nanos = 0;
-    
-                /**
-                 * Creates a new Duration instance using the specified properties.
+                 * Creates a new FieldMask instance using the specified properties.
                  * @function create
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @static
-                 * @param {google.protobuf.IDuration=} [properties] Properties to set
-                 * @returns {google.protobuf.Duration} Duration instance
+                 * @param {google.protobuf.IFieldMask=} [properties] Properties to set
+                 * @returns {google.protobuf.FieldMask} FieldMask instance
                  */
-                Duration.create = function create(properties) {
-                    return new Duration(properties);
+                FieldMask.create = function create(properties) {
+                    return new FieldMask(properties);
                 };
     
                 /**
-                 * Encodes the specified Duration message. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+                 * Encodes the specified FieldMask message. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
                  * @function encode
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @static
-                 * @param {google.protobuf.IDuration} message Duration message or plain object to encode
+                 * @param {google.protobuf.IFieldMask} message FieldMask message or plain object to encode
                  * @param {$protobuf.Writer} [writer] Writer to encode to
                  * @returns {$protobuf.Writer} Writer
                  */
-                Duration.encode = function encode(message, writer) {
+                FieldMask.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.seconds != null && Object.hasOwnProperty.call(message, "seconds"))
-                        writer.uint32(/* id 1, wireType 0 =*/8).int64(message.seconds);
-                    if (message.nanos != null && Object.hasOwnProperty.call(message, "nanos"))
-                        writer.uint32(/* id 2, wireType 0 =*/16).int32(message.nanos);
+                    if (message.paths != null && message.paths.length)
+                        for (var i = 0; i < message.paths.length; ++i)
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.paths[i]);
                     return writer;
                 };
     
                 /**
-                 * Encodes the specified Duration message, length delimited. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+                 * Encodes the specified FieldMask message, length delimited. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
                  * @function encodeDelimited
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @static
-                 * @param {google.protobuf.IDuration} message Duration message or plain object to encode
+                 * @param {google.protobuf.IFieldMask} message FieldMask message or plain object to encode
                  * @param {$protobuf.Writer} [writer] Writer to encode to
                  * @returns {$protobuf.Writer} Writer
                  */
-                Duration.encodeDelimited = function encodeDelimited(message, writer) {
+                FieldMask.encodeDelimited = function encodeDelimited(message, writer) {
                     return this.encode(message, writer).ldelim();
                 };
     
                 /**
-                 * Decodes a Duration message from the specified reader or buffer.
+                 * Decodes a FieldMask message from the specified reader or buffer.
                  * @function decode
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @static
                  * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                  * @param {number} [length] Message length if known beforehand
-                 * @returns {google.protobuf.Duration} Duration
+                 * @returns {google.protobuf.FieldMask} FieldMask
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                Duration.decode = function decode(reader, length) {
+                FieldMask.decode = function decode(reader, length) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
-                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Duration();
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.FieldMask();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
                         case 1:
-                            message.seconds = reader.int64();
-                            break;
-                        case 2:
-                            message.nanos = reader.int32();
+                            if (!(message.paths && message.paths.length))
+                                message.paths = [];
+                            message.paths.push(reader.string());
                             break;
                         default:
                             reader.skipType(tag & 7);
@@ -9071,110 +14867,259 @@
                 };
     
                 /**
-                 * Decodes a Duration message from the specified reader or buffer, length delimited.
+                 * Decodes a FieldMask message from the specified reader or buffer, length delimited.
                  * @function decodeDelimited
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @static
                  * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @returns {google.protobuf.Duration} Duration
+                 * @returns {google.protobuf.FieldMask} FieldMask
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                Duration.decodeDelimited = function decodeDelimited(reader) {
+                FieldMask.decodeDelimited = function decodeDelimited(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
                     return this.decode(reader, reader.uint32());
                 };
     
                 /**
-                 * Verifies a Duration message.
+                 * Verifies a FieldMask message.
                  * @function verify
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @static
                  * @param {Object.<string,*>} message Plain object to verify
                  * @returns {string|null} `null` if valid, otherwise the reason why it is not
                  */
-                Duration.verify = function verify(message) {
+                FieldMask.verify = function verify(message) {
                     if (typeof message !== "object" || message === null)
                         return "object expected";
-                    if (message.seconds != null && message.hasOwnProperty("seconds"))
-                        if (!$util.isInteger(message.seconds) && !(message.seconds && $util.isInteger(message.seconds.low) && $util.isInteger(message.seconds.high)))
-                            return "seconds: integer|Long expected";
-                    if (message.nanos != null && message.hasOwnProperty("nanos"))
-                        if (!$util.isInteger(message.nanos))
-                            return "nanos: integer expected";
+                    if (message.paths != null && message.hasOwnProperty("paths")) {
+                        if (!Array.isArray(message.paths))
+                            return "paths: array expected";
+                        for (var i = 0; i < message.paths.length; ++i)
+                            if (!$util.isString(message.paths[i]))
+                                return "paths: string[] expected";
+                    }
                     return null;
                 };
     
                 /**
-                 * Creates a Duration message from a plain object. Also converts values to their respective internal types.
+                 * Creates a FieldMask message from a plain object. Also converts values to their respective internal types.
                  * @function fromObject
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @static
                  * @param {Object.<string,*>} object Plain object
-                 * @returns {google.protobuf.Duration} Duration
+                 * @returns {google.protobuf.FieldMask} FieldMask
                  */
-                Duration.fromObject = function fromObject(object) {
-                    if (object instanceof $root.google.protobuf.Duration)
+                FieldMask.fromObject = function fromObject(object) {
+                    if (object instanceof $root.google.protobuf.FieldMask)
                         return object;
-                    var message = new $root.google.protobuf.Duration();
-                    if (object.seconds != null)
-                        if ($util.Long)
-                            (message.seconds = $util.Long.fromValue(object.seconds)).unsigned = false;
-                        else if (typeof object.seconds === "string")
-                            message.seconds = parseInt(object.seconds, 10);
-                        else if (typeof object.seconds === "number")
-                            message.seconds = object.seconds;
-                        else if (typeof object.seconds === "object")
-                            message.seconds = new $util.LongBits(object.seconds.low >>> 0, object.seconds.high >>> 0).toNumber();
-                    if (object.nanos != null)
-                        message.nanos = object.nanos | 0;
+                    var message = new $root.google.protobuf.FieldMask();
+                    if (object.paths) {
+                        if (!Array.isArray(object.paths))
+                            throw TypeError(".google.protobuf.FieldMask.paths: array expected");
+                        message.paths = [];
+                        for (var i = 0; i < object.paths.length; ++i)
+                            message.paths[i] = String(object.paths[i]);
+                    }
                     return message;
                 };
     
                 /**
-                 * Creates a plain object from a Duration message. Also converts values to other types if specified.
+                 * Creates a plain object from a FieldMask message. Also converts values to other types if specified.
                  * @function toObject
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @static
-                 * @param {google.protobuf.Duration} message Duration
+                 * @param {google.protobuf.FieldMask} message FieldMask
                  * @param {$protobuf.IConversionOptions} [options] Conversion options
                  * @returns {Object.<string,*>} Plain object
                  */
-                Duration.toObject = function toObject(message, options) {
+                FieldMask.toObject = function toObject(message, options) {
                     if (!options)
                         options = {};
                     var object = {};
-                    if (options.defaults) {
-                        if ($util.Long) {
-                            var long = new $util.Long(0, 0, false);
-                            object.seconds = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                        } else
-                            object.seconds = options.longs === String ? "0" : 0;
-                        object.nanos = 0;
+                    if (options.arrays || options.defaults)
+                        object.paths = [];
+                    if (message.paths && message.paths.length) {
+                        object.paths = [];
+                        for (var j = 0; j < message.paths.length; ++j)
+                            object.paths[j] = message.paths[j];
                     }
-                    if (message.seconds != null && message.hasOwnProperty("seconds"))
-                        if (typeof message.seconds === "number")
-                            object.seconds = options.longs === String ? String(message.seconds) : message.seconds;
-                        else
-                            object.seconds = options.longs === String ? $util.Long.prototype.toString.call(message.seconds) : options.longs === Number ? new $util.LongBits(message.seconds.low >>> 0, message.seconds.high >>> 0).toNumber() : message.seconds;
-                    if (message.nanos != null && message.hasOwnProperty("nanos"))
-                        object.nanos = message.nanos;
                     return object;
                 };
     
                 /**
-                 * Converts this Duration to JSON.
+                 * Converts this FieldMask to JSON.
                  * @function toJSON
-                 * @memberof google.protobuf.Duration
+                 * @memberof google.protobuf.FieldMask
                  * @instance
                  * @returns {Object.<string,*>} JSON object
                  */
-                Duration.prototype.toJSON = function toJSON() {
+                FieldMask.prototype.toJSON = function toJSON() {
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
     
-                return Duration;
+                return FieldMask;
+            })();
+    
+            protobuf.Empty = (function() {
+    
+                /**
+                 * Properties of an Empty.
+                 * @memberof google.protobuf
+                 * @interface IEmpty
+                 */
+    
+                /**
+                 * Constructs a new Empty.
+                 * @memberof google.protobuf
+                 * @classdesc Represents an Empty.
+                 * @implements IEmpty
+                 * @constructor
+                 * @param {google.protobuf.IEmpty=} [properties] Properties to set
+                 */
+                function Empty(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+    
+                /**
+                 * Creates a new Empty instance using the specified properties.
+                 * @function create
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty=} [properties] Properties to set
+                 * @returns {google.protobuf.Empty} Empty instance
+                 */
+                Empty.create = function create(properties) {
+                    return new Empty(properties);
+                };
+    
+                /**
+                 * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+                 * @function encode
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty} message Empty message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Empty.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    return writer;
+                };
+    
+                /**
+                 * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty} message Empty message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Empty.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+    
+                /**
+                 * Decodes an Empty message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {google.protobuf.Empty} Empty
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Empty.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Empty();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Decodes an Empty message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {google.protobuf.Empty} Empty
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Empty.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+    
+                /**
+                 * Verifies an Empty message.
+                 * @function verify
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Empty.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    return null;
+                };
+    
+                /**
+                 * Creates an Empty message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {google.protobuf.Empty} Empty
+                 */
+                Empty.fromObject = function fromObject(object) {
+                    if (object instanceof $root.google.protobuf.Empty)
+                        return object;
+                    return new $root.google.protobuf.Empty();
+                };
+    
+                /**
+                 * Creates a plain object from an Empty message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.Empty} message Empty
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Empty.toObject = function toObject() {
+                    return {};
+                };
+    
+                /**
+                 * Converts this Empty to JSON.
+                 * @function toJSON
+                 * @memberof google.protobuf.Empty
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Empty.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                return Empty;
             })();
     
             protobuf.FileDescriptorSet = (function() {
@@ -14397,8 +20342,8 @@
                  * @property {boolean|null} [deprecated] FieldOptions deprecated
                  * @property {boolean|null} [weak] FieldOptions weak
                  * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] FieldOptions uninterpretedOption
-                 * @property {google.api.IResourceReference|null} [".google.api.resourceReference"] FieldOptions .google.api.resourceReference
                  * @property {Array.<google.api.FieldBehavior>|null} [".google.api.fieldBehavior"] FieldOptions .google.api.fieldBehavior
+                 * @property {google.api.IResourceReference|null} [".google.api.resourceReference"] FieldOptions .google.api.resourceReference
                  */
     
                 /**
@@ -14475,20 +20420,20 @@
                 FieldOptions.prototype.uninterpretedOption = $util.emptyArray;
     
                 /**
-                 * FieldOptions .google.api.resourceReference.
-                 * @member {google.api.IResourceReference|null|undefined} .google.api.resourceReference
-                 * @memberof google.protobuf.FieldOptions
-                 * @instance
-                 */
-                FieldOptions.prototype[".google.api.resourceReference"] = null;
-    
-                /**
                  * FieldOptions .google.api.fieldBehavior.
                  * @member {Array.<google.api.FieldBehavior>} .google.api.fieldBehavior
                  * @memberof google.protobuf.FieldOptions
                  * @instance
                  */
                 FieldOptions.prototype[".google.api.fieldBehavior"] = $util.emptyArray;
+    
+                /**
+                 * FieldOptions .google.api.resourceReference.
+                 * @member {google.api.IResourceReference|null|undefined} .google.api.resourceReference
+                 * @memberof google.protobuf.FieldOptions
+                 * @instance
+                 */
+                FieldOptions.prototype[".google.api.resourceReference"] = null;
     
                 /**
                  * Creates a new FieldOptions instance using the specified properties.
@@ -14594,9 +20539,6 @@
                                 message.uninterpretedOption = [];
                             message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                             break;
-                        case 1055:
-                            message[".google.api.resourceReference"] = $root.google.api.ResourceReference.decode(reader, reader.uint32());
-                            break;
                         case 1052:
                             if (!(message[".google.api.fieldBehavior"] && message[".google.api.fieldBehavior"].length))
                                 message[".google.api.fieldBehavior"] = [];
@@ -14606,6 +20548,9 @@
                                     message[".google.api.fieldBehavior"].push(reader.int32());
                             } else
                                 message[".google.api.fieldBehavior"].push(reader.int32());
+                            break;
+                        case 1055:
+                            message[".google.api.resourceReference"] = $root.google.api.ResourceReference.decode(reader, reader.uint32());
                             break;
                         default:
                             reader.skipType(tag & 7);
@@ -14681,11 +20626,6 @@
                                 return "uninterpretedOption." + error;
                         }
                     }
-                    if (message[".google.api.resourceReference"] != null && message.hasOwnProperty(".google.api.resourceReference")) {
-                        var error = $root.google.api.ResourceReference.verify(message[".google.api.resourceReference"]);
-                        if (error)
-                            return ".google.api.resourceReference." + error;
-                    }
                     if (message[".google.api.fieldBehavior"] != null && message.hasOwnProperty(".google.api.fieldBehavior")) {
                         if (!Array.isArray(message[".google.api.fieldBehavior"]))
                             return ".google.api.fieldBehavior: array expected";
@@ -14702,6 +20642,11 @@
                             case 6:
                                 break;
                             }
+                    }
+                    if (message[".google.api.resourceReference"] != null && message.hasOwnProperty(".google.api.resourceReference")) {
+                        var error = $root.google.api.ResourceReference.verify(message[".google.api.resourceReference"]);
+                        if (error)
+                            return ".google.api.resourceReference." + error;
                     }
                     return null;
                 };
@@ -14764,11 +20709,6 @@
                             message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                         }
                     }
-                    if (object[".google.api.resourceReference"] != null) {
-                        if (typeof object[".google.api.resourceReference"] !== "object")
-                            throw TypeError(".google.protobuf.FieldOptions..google.api.resourceReference: object expected");
-                        message[".google.api.resourceReference"] = $root.google.api.ResourceReference.fromObject(object[".google.api.resourceReference"]);
-                    }
                     if (object[".google.api.fieldBehavior"]) {
                         if (!Array.isArray(object[".google.api.fieldBehavior"]))
                             throw TypeError(".google.protobuf.FieldOptions..google.api.fieldBehavior: array expected");
@@ -14805,6 +20745,11 @@
                                 message[".google.api.fieldBehavior"][i] = 6;
                                 break;
                             }
+                    }
+                    if (object[".google.api.resourceReference"] != null) {
+                        if (typeof object[".google.api.resourceReference"] !== "object")
+                            throw TypeError(".google.protobuf.FieldOptions..google.api.resourceReference: object expected");
+                        message[".google.api.resourceReference"] = $root.google.api.ResourceReference.fromObject(object[".google.api.resourceReference"]);
                     }
                     return message;
                 };
@@ -17857,6 +23802,230 @@
                 return GeneratedCodeInfo;
             })();
     
+            protobuf.Duration = (function() {
+    
+                /**
+                 * Properties of a Duration.
+                 * @memberof google.protobuf
+                 * @interface IDuration
+                 * @property {number|Long|null} [seconds] Duration seconds
+                 * @property {number|null} [nanos] Duration nanos
+                 */
+    
+                /**
+                 * Constructs a new Duration.
+                 * @memberof google.protobuf
+                 * @classdesc Represents a Duration.
+                 * @implements IDuration
+                 * @constructor
+                 * @param {google.protobuf.IDuration=} [properties] Properties to set
+                 */
+                function Duration(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+    
+                /**
+                 * Duration seconds.
+                 * @member {number|Long} seconds
+                 * @memberof google.protobuf.Duration
+                 * @instance
+                 */
+                Duration.prototype.seconds = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+    
+                /**
+                 * Duration nanos.
+                 * @member {number} nanos
+                 * @memberof google.protobuf.Duration
+                 * @instance
+                 */
+                Duration.prototype.nanos = 0;
+    
+                /**
+                 * Creates a new Duration instance using the specified properties.
+                 * @function create
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {google.protobuf.IDuration=} [properties] Properties to set
+                 * @returns {google.protobuf.Duration} Duration instance
+                 */
+                Duration.create = function create(properties) {
+                    return new Duration(properties);
+                };
+    
+                /**
+                 * Encodes the specified Duration message. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+                 * @function encode
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {google.protobuf.IDuration} message Duration message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Duration.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.seconds != null && Object.hasOwnProperty.call(message, "seconds"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).int64(message.seconds);
+                    if (message.nanos != null && Object.hasOwnProperty.call(message, "nanos"))
+                        writer.uint32(/* id 2, wireType 0 =*/16).int32(message.nanos);
+                    return writer;
+                };
+    
+                /**
+                 * Encodes the specified Duration message, length delimited. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {google.protobuf.IDuration} message Duration message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Duration.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+    
+                /**
+                 * Decodes a Duration message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {google.protobuf.Duration} Duration
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Duration.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Duration();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1:
+                            message.seconds = reader.int64();
+                            break;
+                        case 2:
+                            message.nanos = reader.int32();
+                            break;
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Decodes a Duration message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {google.protobuf.Duration} Duration
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Duration.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+    
+                /**
+                 * Verifies a Duration message.
+                 * @function verify
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Duration.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.seconds != null && message.hasOwnProperty("seconds"))
+                        if (!$util.isInteger(message.seconds) && !(message.seconds && $util.isInteger(message.seconds.low) && $util.isInteger(message.seconds.high)))
+                            return "seconds: integer|Long expected";
+                    if (message.nanos != null && message.hasOwnProperty("nanos"))
+                        if (!$util.isInteger(message.nanos))
+                            return "nanos: integer expected";
+                    return null;
+                };
+    
+                /**
+                 * Creates a Duration message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {google.protobuf.Duration} Duration
+                 */
+                Duration.fromObject = function fromObject(object) {
+                    if (object instanceof $root.google.protobuf.Duration)
+                        return object;
+                    var message = new $root.google.protobuf.Duration();
+                    if (object.seconds != null)
+                        if ($util.Long)
+                            (message.seconds = $util.Long.fromValue(object.seconds)).unsigned = false;
+                        else if (typeof object.seconds === "string")
+                            message.seconds = parseInt(object.seconds, 10);
+                        else if (typeof object.seconds === "number")
+                            message.seconds = object.seconds;
+                        else if (typeof object.seconds === "object")
+                            message.seconds = new $util.LongBits(object.seconds.low >>> 0, object.seconds.high >>> 0).toNumber();
+                    if (object.nanos != null)
+                        message.nanos = object.nanos | 0;
+                    return message;
+                };
+    
+                /**
+                 * Creates a plain object from a Duration message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof google.protobuf.Duration
+                 * @static
+                 * @param {google.protobuf.Duration} message Duration
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Duration.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.defaults) {
+                        if ($util.Long) {
+                            var long = new $util.Long(0, 0, false);
+                            object.seconds = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                        } else
+                            object.seconds = options.longs === String ? "0" : 0;
+                        object.nanos = 0;
+                    }
+                    if (message.seconds != null && message.hasOwnProperty("seconds"))
+                        if (typeof message.seconds === "number")
+                            object.seconds = options.longs === String ? String(message.seconds) : message.seconds;
+                        else
+                            object.seconds = options.longs === String ? $util.Long.prototype.toString.call(message.seconds) : options.longs === Number ? new $util.LongBits(message.seconds.low >>> 0, message.seconds.high >>> 0).toNumber() : message.seconds;
+                    if (message.nanos != null && message.hasOwnProperty("nanos"))
+                        object.nanos = message.nanos;
+                    return object;
+                };
+    
+                /**
+                 * Converts this Duration to JSON.
+                 * @function toJSON
+                 * @memberof google.protobuf.Duration
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Duration.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                return Duration;
+            })();
+    
             protobuf.Any = (function() {
     
                 /**
@@ -18074,166 +24243,6 @@
                 };
     
                 return Any;
-            })();
-    
-            protobuf.Empty = (function() {
-    
-                /**
-                 * Properties of an Empty.
-                 * @memberof google.protobuf
-                 * @interface IEmpty
-                 */
-    
-                /**
-                 * Constructs a new Empty.
-                 * @memberof google.protobuf
-                 * @classdesc Represents an Empty.
-                 * @implements IEmpty
-                 * @constructor
-                 * @param {google.protobuf.IEmpty=} [properties] Properties to set
-                 */
-                function Empty(properties) {
-                    if (properties)
-                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                            if (properties[keys[i]] != null)
-                                this[keys[i]] = properties[keys[i]];
-                }
-    
-                /**
-                 * Creates a new Empty instance using the specified properties.
-                 * @function create
-                 * @memberof google.protobuf.Empty
-                 * @static
-                 * @param {google.protobuf.IEmpty=} [properties] Properties to set
-                 * @returns {google.protobuf.Empty} Empty instance
-                 */
-                Empty.create = function create(properties) {
-                    return new Empty(properties);
-                };
-    
-                /**
-                 * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
-                 * @function encode
-                 * @memberof google.protobuf.Empty
-                 * @static
-                 * @param {google.protobuf.IEmpty} message Empty message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                Empty.encode = function encode(message, writer) {
-                    if (!writer)
-                        writer = $Writer.create();
-                    return writer;
-                };
-    
-                /**
-                 * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
-                 * @function encodeDelimited
-                 * @memberof google.protobuf.Empty
-                 * @static
-                 * @param {google.protobuf.IEmpty} message Empty message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                Empty.encodeDelimited = function encodeDelimited(message, writer) {
-                    return this.encode(message, writer).ldelim();
-                };
-    
-                /**
-                 * Decodes an Empty message from the specified reader or buffer.
-                 * @function decode
-                 * @memberof google.protobuf.Empty
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @param {number} [length] Message length if known beforehand
-                 * @returns {google.protobuf.Empty} Empty
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                Empty.decode = function decode(reader, length) {
-                    if (!(reader instanceof $Reader))
-                        reader = $Reader.create(reader);
-                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Empty();
-                    while (reader.pos < end) {
-                        var tag = reader.uint32();
-                        switch (tag >>> 3) {
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
-                        }
-                    }
-                    return message;
-                };
-    
-                /**
-                 * Decodes an Empty message from the specified reader or buffer, length delimited.
-                 * @function decodeDelimited
-                 * @memberof google.protobuf.Empty
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @returns {google.protobuf.Empty} Empty
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                Empty.decodeDelimited = function decodeDelimited(reader) {
-                    if (!(reader instanceof $Reader))
-                        reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
-                };
-    
-                /**
-                 * Verifies an Empty message.
-                 * @function verify
-                 * @memberof google.protobuf.Empty
-                 * @static
-                 * @param {Object.<string,*>} message Plain object to verify
-                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                 */
-                Empty.verify = function verify(message) {
-                    if (typeof message !== "object" || message === null)
-                        return "object expected";
-                    return null;
-                };
-    
-                /**
-                 * Creates an Empty message from a plain object. Also converts values to their respective internal types.
-                 * @function fromObject
-                 * @memberof google.protobuf.Empty
-                 * @static
-                 * @param {Object.<string,*>} object Plain object
-                 * @returns {google.protobuf.Empty} Empty
-                 */
-                Empty.fromObject = function fromObject(object) {
-                    if (object instanceof $root.google.protobuf.Empty)
-                        return object;
-                    return new $root.google.protobuf.Empty();
-                };
-    
-                /**
-                 * Creates a plain object from an Empty message. Also converts values to other types if specified.
-                 * @function toObject
-                 * @memberof google.protobuf.Empty
-                 * @static
-                 * @param {google.protobuf.Empty} message Empty
-                 * @param {$protobuf.IConversionOptions} [options] Conversion options
-                 * @returns {Object.<string,*>} Plain object
-                 */
-                Empty.toObject = function toObject() {
-                    return {};
-                };
-    
-                /**
-                 * Converts this Empty to JSON.
-                 * @function toJSON
-                 * @memberof google.protobuf.Empty
-                 * @instance
-                 * @returns {Object.<string,*>} JSON object
-                 */
-                Empty.prototype.toJSON = function toJSON() {
-                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                };
-    
-                return Empty;
             })();
     
             return protobuf;
@@ -19152,6 +25161,30 @@
                 return CustomHttpPattern;
             })();
     
+            /**
+             * FieldBehavior enum.
+             * @name google.api.FieldBehavior
+             * @enum {number}
+             * @property {number} FIELD_BEHAVIOR_UNSPECIFIED=0 FIELD_BEHAVIOR_UNSPECIFIED value
+             * @property {number} OPTIONAL=1 OPTIONAL value
+             * @property {number} REQUIRED=2 REQUIRED value
+             * @property {number} OUTPUT_ONLY=3 OUTPUT_ONLY value
+             * @property {number} INPUT_ONLY=4 INPUT_ONLY value
+             * @property {number} IMMUTABLE=5 IMMUTABLE value
+             * @property {number} UNORDERED_LIST=6 UNORDERED_LIST value
+             */
+            api.FieldBehavior = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "FIELD_BEHAVIOR_UNSPECIFIED"] = 0;
+                values[valuesById[1] = "OPTIONAL"] = 1;
+                values[valuesById[2] = "REQUIRED"] = 2;
+                values[valuesById[3] = "OUTPUT_ONLY"] = 3;
+                values[valuesById[4] = "INPUT_ONLY"] = 4;
+                values[valuesById[5] = "IMMUTABLE"] = 5;
+                values[valuesById[6] = "UNORDERED_LIST"] = 6;
+                return values;
+            })();
+    
             api.ResourceDescriptor = (function() {
     
                 /**
@@ -19787,30 +25820,6 @@
                 return ResourceReference;
             })();
     
-            /**
-             * FieldBehavior enum.
-             * @name google.api.FieldBehavior
-             * @enum {number}
-             * @property {number} FIELD_BEHAVIOR_UNSPECIFIED=0 FIELD_BEHAVIOR_UNSPECIFIED value
-             * @property {number} OPTIONAL=1 OPTIONAL value
-             * @property {number} REQUIRED=2 REQUIRED value
-             * @property {number} OUTPUT_ONLY=3 OUTPUT_ONLY value
-             * @property {number} INPUT_ONLY=4 INPUT_ONLY value
-             * @property {number} IMMUTABLE=5 IMMUTABLE value
-             * @property {number} UNORDERED_LIST=6 UNORDERED_LIST value
-             */
-            api.FieldBehavior = (function() {
-                var valuesById = {}, values = Object.create(valuesById);
-                values[valuesById[0] = "FIELD_BEHAVIOR_UNSPECIFIED"] = 0;
-                values[valuesById[1] = "OPTIONAL"] = 1;
-                values[valuesById[2] = "REQUIRED"] = 2;
-                values[valuesById[3] = "OUTPUT_ONLY"] = 3;
-                values[valuesById[4] = "INPUT_ONLY"] = 4;
-                values[valuesById[5] = "IMMUTABLE"] = 5;
-                values[valuesById[6] = "UNORDERED_LIST"] = 6;
-                return values;
-            })();
-    
             return api;
         })();
     
@@ -20067,6 +26076,216 @@
                 };
     
                 return Money;
+            })();
+    
+            type.LatLng = (function() {
+    
+                /**
+                 * Properties of a LatLng.
+                 * @memberof google.type
+                 * @interface ILatLng
+                 * @property {number|null} [latitude] LatLng latitude
+                 * @property {number|null} [longitude] LatLng longitude
+                 */
+    
+                /**
+                 * Constructs a new LatLng.
+                 * @memberof google.type
+                 * @classdesc Represents a LatLng.
+                 * @implements ILatLng
+                 * @constructor
+                 * @param {google.type.ILatLng=} [properties] Properties to set
+                 */
+                function LatLng(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+    
+                /**
+                 * LatLng latitude.
+                 * @member {number} latitude
+                 * @memberof google.type.LatLng
+                 * @instance
+                 */
+                LatLng.prototype.latitude = 0;
+    
+                /**
+                 * LatLng longitude.
+                 * @member {number} longitude
+                 * @memberof google.type.LatLng
+                 * @instance
+                 */
+                LatLng.prototype.longitude = 0;
+    
+                /**
+                 * Creates a new LatLng instance using the specified properties.
+                 * @function create
+                 * @memberof google.type.LatLng
+                 * @static
+                 * @param {google.type.ILatLng=} [properties] Properties to set
+                 * @returns {google.type.LatLng} LatLng instance
+                 */
+                LatLng.create = function create(properties) {
+                    return new LatLng(properties);
+                };
+    
+                /**
+                 * Encodes the specified LatLng message. Does not implicitly {@link google.type.LatLng.verify|verify} messages.
+                 * @function encode
+                 * @memberof google.type.LatLng
+                 * @static
+                 * @param {google.type.ILatLng} message LatLng message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                LatLng.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.latitude != null && Object.hasOwnProperty.call(message, "latitude"))
+                        writer.uint32(/* id 1, wireType 1 =*/9).double(message.latitude);
+                    if (message.longitude != null && Object.hasOwnProperty.call(message, "longitude"))
+                        writer.uint32(/* id 2, wireType 1 =*/17).double(message.longitude);
+                    return writer;
+                };
+    
+                /**
+                 * Encodes the specified LatLng message, length delimited. Does not implicitly {@link google.type.LatLng.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof google.type.LatLng
+                 * @static
+                 * @param {google.type.ILatLng} message LatLng message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                LatLng.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+    
+                /**
+                 * Decodes a LatLng message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof google.type.LatLng
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {google.type.LatLng} LatLng
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                LatLng.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.type.LatLng();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1:
+                            message.latitude = reader.double();
+                            break;
+                        case 2:
+                            message.longitude = reader.double();
+                            break;
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Decodes a LatLng message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof google.type.LatLng
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {google.type.LatLng} LatLng
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                LatLng.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+    
+                /**
+                 * Verifies a LatLng message.
+                 * @function verify
+                 * @memberof google.type.LatLng
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                LatLng.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.latitude != null && message.hasOwnProperty("latitude"))
+                        if (typeof message.latitude !== "number")
+                            return "latitude: number expected";
+                    if (message.longitude != null && message.hasOwnProperty("longitude"))
+                        if (typeof message.longitude !== "number")
+                            return "longitude: number expected";
+                    return null;
+                };
+    
+                /**
+                 * Creates a LatLng message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof google.type.LatLng
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {google.type.LatLng} LatLng
+                 */
+                LatLng.fromObject = function fromObject(object) {
+                    if (object instanceof $root.google.type.LatLng)
+                        return object;
+                    var message = new $root.google.type.LatLng();
+                    if (object.latitude != null)
+                        message.latitude = Number(object.latitude);
+                    if (object.longitude != null)
+                        message.longitude = Number(object.longitude);
+                    return message;
+                };
+    
+                /**
+                 * Creates a plain object from a LatLng message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof google.type.LatLng
+                 * @static
+                 * @param {google.type.LatLng} message LatLng
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                LatLng.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.defaults) {
+                        object.latitude = 0;
+                        object.longitude = 0;
+                    }
+                    if (message.latitude != null && message.hasOwnProperty("latitude"))
+                        object.latitude = options.json && !isFinite(message.latitude) ? String(message.latitude) : message.latitude;
+                    if (message.longitude != null && message.hasOwnProperty("longitude"))
+                        object.longitude = options.json && !isFinite(message.longitude) ? String(message.longitude) : message.longitude;
+                    return object;
+                };
+    
+                /**
+                 * Converts this LatLng to JSON.
+                 * @function toJSON
+                 * @memberof google.type.LatLng
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                LatLng.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                return LatLng;
             })();
     
             return type;

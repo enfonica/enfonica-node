@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,6 +22,1032 @@ export namespace enfonica {
 
         /** Namespace v1beta1. */
         namespace v1beta1 {
+
+            /** Represents an Aliases */
+            class Aliases extends $protobuf.rpc.Service {
+
+                /**
+                 * Constructs a new Aliases service.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 */
+                constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+                /**
+                 * Creates new Aliases service using the specified rpc implementation.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 * @returns RPC service. Useful where requests and/or responses are streamed.
+                 */
+                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Aliases;
+
+                /**
+                 * Calls CreateAlias.
+                 * @param request CreateAliasRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and Alias
+                 */
+                public createAlias(request: enfonica.voice.v1beta1.ICreateAliasRequest, callback: enfonica.voice.v1beta1.Aliases.CreateAliasCallback): void;
+
+                /**
+                 * Calls CreateAlias.
+                 * @param request CreateAliasRequest message or plain object
+                 * @returns Promise
+                 */
+                public createAlias(request: enfonica.voice.v1beta1.ICreateAliasRequest): Promise<enfonica.voice.v1beta1.Alias>;
+
+                /**
+                 * Calls GetAlias.
+                 * @param request GetAliasRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and Alias
+                 */
+                public getAlias(request: enfonica.voice.v1beta1.IGetAliasRequest, callback: enfonica.voice.v1beta1.Aliases.GetAliasCallback): void;
+
+                /**
+                 * Calls GetAlias.
+                 * @param request GetAliasRequest message or plain object
+                 * @returns Promise
+                 */
+                public getAlias(request: enfonica.voice.v1beta1.IGetAliasRequest): Promise<enfonica.voice.v1beta1.Alias>;
+
+                /**
+                 * Calls ListAliases.
+                 * @param request ListAliasesRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and ListAliasesResponse
+                 */
+                public listAliases(request: enfonica.voice.v1beta1.IListAliasesRequest, callback: enfonica.voice.v1beta1.Aliases.ListAliasesCallback): void;
+
+                /**
+                 * Calls ListAliases.
+                 * @param request ListAliasesRequest message or plain object
+                 * @returns Promise
+                 */
+                public listAliases(request: enfonica.voice.v1beta1.IListAliasesRequest): Promise<enfonica.voice.v1beta1.ListAliasesResponse>;
+
+                /**
+                 * Calls UpdateAlias.
+                 * @param request UpdateAliasRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and Alias
+                 */
+                public updateAlias(request: enfonica.voice.v1beta1.IUpdateAliasRequest, callback: enfonica.voice.v1beta1.Aliases.UpdateAliasCallback): void;
+
+                /**
+                 * Calls UpdateAlias.
+                 * @param request UpdateAliasRequest message or plain object
+                 * @returns Promise
+                 */
+                public updateAlias(request: enfonica.voice.v1beta1.IUpdateAliasRequest): Promise<enfonica.voice.v1beta1.Alias>;
+
+                /**
+                 * Calls DeleteAlias.
+                 * @param request DeleteAliasRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and Empty
+                 */
+                public deleteAlias(request: enfonica.voice.v1beta1.IDeleteAliasRequest, callback: enfonica.voice.v1beta1.Aliases.DeleteAliasCallback): void;
+
+                /**
+                 * Calls DeleteAlias.
+                 * @param request DeleteAliasRequest message or plain object
+                 * @returns Promise
+                 */
+                public deleteAlias(request: enfonica.voice.v1beta1.IDeleteAliasRequest): Promise<google.protobuf.Empty>;
+            }
+
+            namespace Aliases {
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#createAlias}.
+                 * @param error Error, if any
+                 * @param [response] Alias
+                 */
+                type CreateAliasCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Alias) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#getAlias}.
+                 * @param error Error, if any
+                 * @param [response] Alias
+                 */
+                type GetAliasCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Alias) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#listAliases}.
+                 * @param error Error, if any
+                 * @param [response] ListAliasesResponse
+                 */
+                type ListAliasesCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.ListAliasesResponse) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#updateAlias}.
+                 * @param error Error, if any
+                 * @param [response] Alias
+                 */
+                type UpdateAliasCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Alias) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#deleteAlias}.
+                 * @param error Error, if any
+                 * @param [response] Empty
+                 */
+                type DeleteAliasCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
+            }
+
+            /** Properties of an Alias. */
+            interface IAlias {
+
+                /** Alias name */
+                name?: (string|null);
+
+                /** Alias aliasId */
+                aliasId?: (string|null);
+
+                /** Alias displayName */
+                displayName?: (string|null);
+
+                /** Alias loadBalancerConfig */
+                loadBalancerConfig?: (enfonica.voice.v1beta1.ILoadBalancerConfig|null);
+
+                /** Alias createTime */
+                createTime?: (google.protobuf.ITimestamp|null);
+            }
+
+            /** Represents an Alias. */
+            class Alias implements IAlias {
+
+                /**
+                 * Constructs a new Alias.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IAlias);
+
+                /** Alias name. */
+                public name: string;
+
+                /** Alias aliasId. */
+                public aliasId: string;
+
+                /** Alias displayName. */
+                public displayName: string;
+
+                /** Alias loadBalancerConfig. */
+                public loadBalancerConfig?: (enfonica.voice.v1beta1.ILoadBalancerConfig|null);
+
+                /** Alias createTime. */
+                public createTime?: (google.protobuf.ITimestamp|null);
+
+                /** Alias config. */
+                public config?: "loadBalancerConfig";
+
+                /**
+                 * Creates a new Alias instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Alias instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IAlias): enfonica.voice.v1beta1.Alias;
+
+                /**
+                 * Encodes the specified Alias message. Does not implicitly {@link enfonica.voice.v1beta1.Alias.verify|verify} messages.
+                 * @param message Alias message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IAlias, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Alias message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.Alias.verify|verify} messages.
+                 * @param message Alias message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IAlias, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an Alias message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Alias
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.Alias;
+
+                /**
+                 * Decodes an Alias message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Alias
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.Alias;
+
+                /**
+                 * Verifies an Alias message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an Alias message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Alias
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.Alias;
+
+                /**
+                 * Creates a plain object from an Alias message. Also converts values to other types if specified.
+                 * @param message Alias
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.Alias, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Alias to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a LoadBalancerConfig. */
+            interface ILoadBalancerConfig {
+
+                /** LoadBalancerConfig endpoints */
+                endpoints?: (enfonica.voice.v1beta1.ILoadBalancerEndpoint[]|null);
+
+                /** LoadBalancerConfig failoverCallHandlerUris */
+                failoverCallHandlerUris?: (string[]|null);
+            }
+
+            /** Represents a LoadBalancerConfig. */
+            class LoadBalancerConfig implements ILoadBalancerConfig {
+
+                /**
+                 * Constructs a new LoadBalancerConfig.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ILoadBalancerConfig);
+
+                /** LoadBalancerConfig endpoints. */
+                public endpoints: enfonica.voice.v1beta1.ILoadBalancerEndpoint[];
+
+                /** LoadBalancerConfig failoverCallHandlerUris. */
+                public failoverCallHandlerUris: string[];
+
+                /**
+                 * Creates a new LoadBalancerConfig instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns LoadBalancerConfig instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ILoadBalancerConfig): enfonica.voice.v1beta1.LoadBalancerConfig;
+
+                /**
+                 * Encodes the specified LoadBalancerConfig message. Does not implicitly {@link enfonica.voice.v1beta1.LoadBalancerConfig.verify|verify} messages.
+                 * @param message LoadBalancerConfig message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ILoadBalancerConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified LoadBalancerConfig message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.LoadBalancerConfig.verify|verify} messages.
+                 * @param message LoadBalancerConfig message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ILoadBalancerConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a LoadBalancerConfig message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns LoadBalancerConfig
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.LoadBalancerConfig;
+
+                /**
+                 * Decodes a LoadBalancerConfig message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns LoadBalancerConfig
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.LoadBalancerConfig;
+
+                /**
+                 * Verifies a LoadBalancerConfig message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a LoadBalancerConfig message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns LoadBalancerConfig
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.LoadBalancerConfig;
+
+                /**
+                 * Creates a plain object from a LoadBalancerConfig message. Also converts values to other types if specified.
+                 * @param message LoadBalancerConfig
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.LoadBalancerConfig, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this LoadBalancerConfig to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a LoadBalancerEndpoint. */
+            interface ILoadBalancerEndpoint {
+
+                /** LoadBalancerEndpoint uri */
+                uri?: (string|null);
+
+                /** LoadBalancerEndpoint priority */
+                priority?: (number|null);
+
+                /** LoadBalancerEndpoint weight */
+                weight?: (number|null);
+
+                /** LoadBalancerEndpoint enabled */
+                enabled?: (boolean|null);
+            }
+
+            /** Represents a LoadBalancerEndpoint. */
+            class LoadBalancerEndpoint implements ILoadBalancerEndpoint {
+
+                /**
+                 * Constructs a new LoadBalancerEndpoint.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ILoadBalancerEndpoint);
+
+                /** LoadBalancerEndpoint uri. */
+                public uri: string;
+
+                /** LoadBalancerEndpoint priority. */
+                public priority: number;
+
+                /** LoadBalancerEndpoint weight. */
+                public weight: number;
+
+                /** LoadBalancerEndpoint enabled. */
+                public enabled: boolean;
+
+                /**
+                 * Creates a new LoadBalancerEndpoint instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns LoadBalancerEndpoint instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ILoadBalancerEndpoint): enfonica.voice.v1beta1.LoadBalancerEndpoint;
+
+                /**
+                 * Encodes the specified LoadBalancerEndpoint message. Does not implicitly {@link enfonica.voice.v1beta1.LoadBalancerEndpoint.verify|verify} messages.
+                 * @param message LoadBalancerEndpoint message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ILoadBalancerEndpoint, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified LoadBalancerEndpoint message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.LoadBalancerEndpoint.verify|verify} messages.
+                 * @param message LoadBalancerEndpoint message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ILoadBalancerEndpoint, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a LoadBalancerEndpoint message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns LoadBalancerEndpoint
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.LoadBalancerEndpoint;
+
+                /**
+                 * Decodes a LoadBalancerEndpoint message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns LoadBalancerEndpoint
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.LoadBalancerEndpoint;
+
+                /**
+                 * Verifies a LoadBalancerEndpoint message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a LoadBalancerEndpoint message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns LoadBalancerEndpoint
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.LoadBalancerEndpoint;
+
+                /**
+                 * Creates a plain object from a LoadBalancerEndpoint message. Also converts values to other types if specified.
+                 * @param message LoadBalancerEndpoint
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.LoadBalancerEndpoint, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this LoadBalancerEndpoint to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a CreateAliasRequest. */
+            interface ICreateAliasRequest {
+
+                /** CreateAliasRequest parent */
+                parent?: (string|null);
+
+                /** CreateAliasRequest alias */
+                alias?: (enfonica.voice.v1beta1.IAlias|null);
+
+                /** CreateAliasRequest aliasId */
+                aliasId?: (string|null);
+            }
+
+            /** Represents a CreateAliasRequest. */
+            class CreateAliasRequest implements ICreateAliasRequest {
+
+                /**
+                 * Constructs a new CreateAliasRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ICreateAliasRequest);
+
+                /** CreateAliasRequest parent. */
+                public parent: string;
+
+                /** CreateAliasRequest alias. */
+                public alias?: (enfonica.voice.v1beta1.IAlias|null);
+
+                /** CreateAliasRequest aliasId. */
+                public aliasId: string;
+
+                /**
+                 * Creates a new CreateAliasRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns CreateAliasRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ICreateAliasRequest): enfonica.voice.v1beta1.CreateAliasRequest;
+
+                /**
+                 * Encodes the specified CreateAliasRequest message. Does not implicitly {@link enfonica.voice.v1beta1.CreateAliasRequest.verify|verify} messages.
+                 * @param message CreateAliasRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ICreateAliasRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified CreateAliasRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CreateAliasRequest.verify|verify} messages.
+                 * @param message CreateAliasRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ICreateAliasRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a CreateAliasRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns CreateAliasRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.CreateAliasRequest;
+
+                /**
+                 * Decodes a CreateAliasRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns CreateAliasRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.CreateAliasRequest;
+
+                /**
+                 * Verifies a CreateAliasRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a CreateAliasRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns CreateAliasRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.CreateAliasRequest;
+
+                /**
+                 * Creates a plain object from a CreateAliasRequest message. Also converts values to other types if specified.
+                 * @param message CreateAliasRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.CreateAliasRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this CreateAliasRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a GetAliasRequest. */
+            interface IGetAliasRequest {
+
+                /** GetAliasRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a GetAliasRequest. */
+            class GetAliasRequest implements IGetAliasRequest {
+
+                /**
+                 * Constructs a new GetAliasRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IGetAliasRequest);
+
+                /** GetAliasRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new GetAliasRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns GetAliasRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IGetAliasRequest): enfonica.voice.v1beta1.GetAliasRequest;
+
+                /**
+                 * Encodes the specified GetAliasRequest message. Does not implicitly {@link enfonica.voice.v1beta1.GetAliasRequest.verify|verify} messages.
+                 * @param message GetAliasRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IGetAliasRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified GetAliasRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.GetAliasRequest.verify|verify} messages.
+                 * @param message GetAliasRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IGetAliasRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a GetAliasRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns GetAliasRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.GetAliasRequest;
+
+                /**
+                 * Decodes a GetAliasRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns GetAliasRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.GetAliasRequest;
+
+                /**
+                 * Verifies a GetAliasRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a GetAliasRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns GetAliasRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.GetAliasRequest;
+
+                /**
+                 * Creates a plain object from a GetAliasRequest message. Also converts values to other types if specified.
+                 * @param message GetAliasRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.GetAliasRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this GetAliasRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListAliasesRequest. */
+            interface IListAliasesRequest {
+
+                /** ListAliasesRequest parent */
+                parent?: (string|null);
+
+                /** ListAliasesRequest pageSize */
+                pageSize?: (number|null);
+
+                /** ListAliasesRequest pageToken */
+                pageToken?: (string|null);
+            }
+
+            /** Represents a ListAliasesRequest. */
+            class ListAliasesRequest implements IListAliasesRequest {
+
+                /**
+                 * Constructs a new ListAliasesRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IListAliasesRequest);
+
+                /** ListAliasesRequest parent. */
+                public parent: string;
+
+                /** ListAliasesRequest pageSize. */
+                public pageSize: number;
+
+                /** ListAliasesRequest pageToken. */
+                public pageToken: string;
+
+                /**
+                 * Creates a new ListAliasesRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListAliasesRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IListAliasesRequest): enfonica.voice.v1beta1.ListAliasesRequest;
+
+                /**
+                 * Encodes the specified ListAliasesRequest message. Does not implicitly {@link enfonica.voice.v1beta1.ListAliasesRequest.verify|verify} messages.
+                 * @param message ListAliasesRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IListAliasesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListAliasesRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListAliasesRequest.verify|verify} messages.
+                 * @param message ListAliasesRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IListAliasesRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListAliasesRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListAliasesRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.ListAliasesRequest;
+
+                /**
+                 * Decodes a ListAliasesRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListAliasesRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.ListAliasesRequest;
+
+                /**
+                 * Verifies a ListAliasesRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListAliasesRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListAliasesRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.ListAliasesRequest;
+
+                /**
+                 * Creates a plain object from a ListAliasesRequest message. Also converts values to other types if specified.
+                 * @param message ListAliasesRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.ListAliasesRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListAliasesRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListAliasesResponse. */
+            interface IListAliasesResponse {
+
+                /** ListAliasesResponse aliases */
+                aliases?: (enfonica.voice.v1beta1.IAlias[]|null);
+
+                /** ListAliasesResponse nextPageToken */
+                nextPageToken?: (string|null);
+            }
+
+            /** Represents a ListAliasesResponse. */
+            class ListAliasesResponse implements IListAliasesResponse {
+
+                /**
+                 * Constructs a new ListAliasesResponse.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IListAliasesResponse);
+
+                /** ListAliasesResponse aliases. */
+                public aliases: enfonica.voice.v1beta1.IAlias[];
+
+                /** ListAliasesResponse nextPageToken. */
+                public nextPageToken: string;
+
+                /**
+                 * Creates a new ListAliasesResponse instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListAliasesResponse instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IListAliasesResponse): enfonica.voice.v1beta1.ListAliasesResponse;
+
+                /**
+                 * Encodes the specified ListAliasesResponse message. Does not implicitly {@link enfonica.voice.v1beta1.ListAliasesResponse.verify|verify} messages.
+                 * @param message ListAliasesResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IListAliasesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListAliasesResponse message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListAliasesResponse.verify|verify} messages.
+                 * @param message ListAliasesResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IListAliasesResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListAliasesResponse message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListAliasesResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.ListAliasesResponse;
+
+                /**
+                 * Decodes a ListAliasesResponse message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListAliasesResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.ListAliasesResponse;
+
+                /**
+                 * Verifies a ListAliasesResponse message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListAliasesResponse message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListAliasesResponse
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.ListAliasesResponse;
+
+                /**
+                 * Creates a plain object from a ListAliasesResponse message. Also converts values to other types if specified.
+                 * @param message ListAliasesResponse
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.ListAliasesResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListAliasesResponse to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of an UpdateAliasRequest. */
+            interface IUpdateAliasRequest {
+
+                /** UpdateAliasRequest alias */
+                alias?: (enfonica.voice.v1beta1.IAlias|null);
+
+                /** UpdateAliasRequest updateMask */
+                updateMask?: (google.protobuf.IFieldMask|null);
+            }
+
+            /** Represents an UpdateAliasRequest. */
+            class UpdateAliasRequest implements IUpdateAliasRequest {
+
+                /**
+                 * Constructs a new UpdateAliasRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IUpdateAliasRequest);
+
+                /** UpdateAliasRequest alias. */
+                public alias?: (enfonica.voice.v1beta1.IAlias|null);
+
+                /** UpdateAliasRequest updateMask. */
+                public updateMask?: (google.protobuf.IFieldMask|null);
+
+                /**
+                 * Creates a new UpdateAliasRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns UpdateAliasRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IUpdateAliasRequest): enfonica.voice.v1beta1.UpdateAliasRequest;
+
+                /**
+                 * Encodes the specified UpdateAliasRequest message. Does not implicitly {@link enfonica.voice.v1beta1.UpdateAliasRequest.verify|verify} messages.
+                 * @param message UpdateAliasRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IUpdateAliasRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified UpdateAliasRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.UpdateAliasRequest.verify|verify} messages.
+                 * @param message UpdateAliasRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IUpdateAliasRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an UpdateAliasRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns UpdateAliasRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.UpdateAliasRequest;
+
+                /**
+                 * Decodes an UpdateAliasRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns UpdateAliasRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.UpdateAliasRequest;
+
+                /**
+                 * Verifies an UpdateAliasRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an UpdateAliasRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns UpdateAliasRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.UpdateAliasRequest;
+
+                /**
+                 * Creates a plain object from an UpdateAliasRequest message. Also converts values to other types if specified.
+                 * @param message UpdateAliasRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.UpdateAliasRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this UpdateAliasRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a DeleteAliasRequest. */
+            interface IDeleteAliasRequest {
+
+                /** DeleteAliasRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a DeleteAliasRequest. */
+            class DeleteAliasRequest implements IDeleteAliasRequest {
+
+                /**
+                 * Constructs a new DeleteAliasRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IDeleteAliasRequest);
+
+                /** DeleteAliasRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new DeleteAliasRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns DeleteAliasRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IDeleteAliasRequest): enfonica.voice.v1beta1.DeleteAliasRequest;
+
+                /**
+                 * Encodes the specified DeleteAliasRequest message. Does not implicitly {@link enfonica.voice.v1beta1.DeleteAliasRequest.verify|verify} messages.
+                 * @param message DeleteAliasRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IDeleteAliasRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified DeleteAliasRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.DeleteAliasRequest.verify|verify} messages.
+                 * @param message DeleteAliasRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IDeleteAliasRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a DeleteAliasRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns DeleteAliasRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.DeleteAliasRequest;
+
+                /**
+                 * Decodes a DeleteAliasRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns DeleteAliasRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.DeleteAliasRequest;
+
+                /**
+                 * Verifies a DeleteAliasRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a DeleteAliasRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns DeleteAliasRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.DeleteAliasRequest;
+
+                /**
+                 * Creates a plain object from a DeleteAliasRequest message. Also converts values to other types if specified.
+                 * @param message DeleteAliasRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.DeleteAliasRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this DeleteAliasRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
 
             /** Properties of a CallRecordingConfig. */
             interface ICallRecordingConfig {
@@ -356,6 +1382,12 @@ export namespace enfonica {
                 /** Call from */
                 from?: (string|null);
 
+                /** Call fromLocation */
+                fromLocation?: (enfonica.voice.v1beta1.INumberLocation|null);
+
+                /** Call fromZone */
+                fromZone?: (string|null);
+
                 /** Call isPrivate */
                 isPrivate?: (boolean|null);
 
@@ -406,6 +1438,12 @@ export namespace enfonica {
 
                 /** Call options */
                 options?: (enfonica.voice.v1beta1.Call.IApiCallOptions|null);
+
+                /** Call sipCallId */
+                sipCallId?: (string|null);
+
+                /** Call answerDuration */
+                answerDuration?: (google.protobuf.IDuration|null);
             }
 
             /** Represents a Call. */
@@ -425,6 +1463,12 @@ export namespace enfonica {
 
                 /** Call from. */
                 public from: string;
+
+                /** Call fromLocation. */
+                public fromLocation?: (enfonica.voice.v1beta1.INumberLocation|null);
+
+                /** Call fromZone. */
+                public fromZone: string;
 
                 /** Call isPrivate. */
                 public isPrivate: boolean;
@@ -476,6 +1520,12 @@ export namespace enfonica {
 
                 /** Call options. */
                 public options?: (enfonica.voice.v1beta1.Call.IApiCallOptions|null);
+
+                /** Call sipCallId. */
+                public sipCallId: string;
+
+                /** Call answerDuration. */
+                public answerDuration?: (google.protobuf.IDuration|null);
 
                 /**
                  * Creates a new Call instance using the specified properties.
@@ -694,6 +1744,114 @@ export namespace enfonica {
                     PARENT_CALL = 2,
                     API = 3
                 }
+            }
+
+            /** Properties of a NumberLocation. */
+            interface INumberLocation {
+
+                /** NumberLocation regionCode */
+                regionCode?: (string|null);
+
+                /** NumberLocation administrativeArea */
+                administrativeArea?: (string|null);
+
+                /** NumberLocation locality */
+                locality?: (string|null);
+
+                /** NumberLocation coordinates */
+                coordinates?: (google.type.ILatLng|null);
+            }
+
+            /** Represents a NumberLocation. */
+            class NumberLocation implements INumberLocation {
+
+                /**
+                 * Constructs a new NumberLocation.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.INumberLocation);
+
+                /** NumberLocation regionCode. */
+                public regionCode: string;
+
+                /** NumberLocation administrativeArea. */
+                public administrativeArea: string;
+
+                /** NumberLocation locality. */
+                public locality: string;
+
+                /** NumberLocation coordinates. */
+                public coordinates?: (google.type.ILatLng|null);
+
+                /**
+                 * Creates a new NumberLocation instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns NumberLocation instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.INumberLocation): enfonica.voice.v1beta1.NumberLocation;
+
+                /**
+                 * Encodes the specified NumberLocation message. Does not implicitly {@link enfonica.voice.v1beta1.NumberLocation.verify|verify} messages.
+                 * @param message NumberLocation message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.INumberLocation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified NumberLocation message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.NumberLocation.verify|verify} messages.
+                 * @param message NumberLocation message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.INumberLocation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a NumberLocation message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns NumberLocation
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.NumberLocation;
+
+                /**
+                 * Decodes a NumberLocation message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns NumberLocation
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.NumberLocation;
+
+                /**
+                 * Verifies a NumberLocation message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a NumberLocation message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns NumberLocation
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.NumberLocation;
+
+                /**
+                 * Creates a plain object from a NumberLocation message. Also converts values to other types if specified.
+                 * @param message NumberLocation
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.NumberLocation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this NumberLocation to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
             }
 
             /** Properties of a CreateCallRequest. */
@@ -1868,6 +3026,1355 @@ export namespace enfonica {
                 RECORDING_VIEW_UNSPECIFIED = 0,
                 BASIC = 1,
                 FULL = 2
+            }
+
+            /** Represents a SipDomains */
+            class SipDomains extends $protobuf.rpc.Service {
+
+                /**
+                 * Constructs a new SipDomains service.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 */
+                constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+                /**
+                 * Creates new SipDomains service using the specified rpc implementation.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 * @returns RPC service. Useful where requests and/or responses are streamed.
+                 */
+                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): SipDomains;
+
+                /**
+                 * Calls CreateSipDomain.
+                 * @param request CreateSipDomainRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and SipDomain
+                 */
+                public createSipDomain(request: enfonica.voice.v1beta1.ICreateSipDomainRequest, callback: enfonica.voice.v1beta1.SipDomains.CreateSipDomainCallback): void;
+
+                /**
+                 * Calls CreateSipDomain.
+                 * @param request CreateSipDomainRequest message or plain object
+                 * @returns Promise
+                 */
+                public createSipDomain(request: enfonica.voice.v1beta1.ICreateSipDomainRequest): Promise<enfonica.voice.v1beta1.SipDomain>;
+
+                /**
+                 * Calls GetSipDomain.
+                 * @param request GetSipDomainRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and SipDomain
+                 */
+                public getSipDomain(request: enfonica.voice.v1beta1.IGetSipDomainRequest, callback: enfonica.voice.v1beta1.SipDomains.GetSipDomainCallback): void;
+
+                /**
+                 * Calls GetSipDomain.
+                 * @param request GetSipDomainRequest message or plain object
+                 * @returns Promise
+                 */
+                public getSipDomain(request: enfonica.voice.v1beta1.IGetSipDomainRequest): Promise<enfonica.voice.v1beta1.SipDomain>;
+
+                /**
+                 * Calls ListSipDomains.
+                 * @param request ListSipDomainsRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and ListSipDomainsResponse
+                 */
+                public listSipDomains(request: enfonica.voice.v1beta1.IListSipDomainsRequest, callback: enfonica.voice.v1beta1.SipDomains.ListSipDomainsCallback): void;
+
+                /**
+                 * Calls ListSipDomains.
+                 * @param request ListSipDomainsRequest message or plain object
+                 * @returns Promise
+                 */
+                public listSipDomains(request: enfonica.voice.v1beta1.IListSipDomainsRequest): Promise<enfonica.voice.v1beta1.ListSipDomainsResponse>;
+
+                /**
+                 * Calls UpdateSipDomain.
+                 * @param request UpdateSipDomainRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and SipDomain
+                 */
+                public updateSipDomain(request: enfonica.voice.v1beta1.IUpdateSipDomainRequest, callback: enfonica.voice.v1beta1.SipDomains.UpdateSipDomainCallback): void;
+
+                /**
+                 * Calls UpdateSipDomain.
+                 * @param request UpdateSipDomainRequest message or plain object
+                 * @returns Promise
+                 */
+                public updateSipDomain(request: enfonica.voice.v1beta1.IUpdateSipDomainRequest): Promise<enfonica.voice.v1beta1.SipDomain>;
+
+                /**
+                 * Calls DeleteSipDomain.
+                 * @param request DeleteSipDomainRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and SipDomain
+                 */
+                public deleteSipDomain(request: enfonica.voice.v1beta1.IDeleteSipDomainRequest, callback: enfonica.voice.v1beta1.SipDomains.DeleteSipDomainCallback): void;
+
+                /**
+                 * Calls DeleteSipDomain.
+                 * @param request DeleteSipDomainRequest message or plain object
+                 * @returns Promise
+                 */
+                public deleteSipDomain(request: enfonica.voice.v1beta1.IDeleteSipDomainRequest): Promise<enfonica.voice.v1beta1.SipDomain>;
+            }
+
+            namespace SipDomains {
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#createSipDomain}.
+                 * @param error Error, if any
+                 * @param [response] SipDomain
+                 */
+                type CreateSipDomainCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.SipDomain) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#getSipDomain}.
+                 * @param error Error, if any
+                 * @param [response] SipDomain
+                 */
+                type GetSipDomainCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.SipDomain) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#listSipDomains}.
+                 * @param error Error, if any
+                 * @param [response] ListSipDomainsResponse
+                 */
+                type ListSipDomainsCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.ListSipDomainsResponse) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#updateSipDomain}.
+                 * @param error Error, if any
+                 * @param [response] SipDomain
+                 */
+                type UpdateSipDomainCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.SipDomain) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#deleteSipDomain}.
+                 * @param error Error, if any
+                 * @param [response] SipDomain
+                 */
+                type DeleteSipDomainCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.SipDomain) => void;
+            }
+
+            /** Properties of a SipDomain. */
+            interface ISipDomain {
+
+                /** SipDomain name */
+                name?: (string|null);
+
+                /** SipDomain sipDomainId */
+                sipDomainId?: (string|null);
+
+                /** SipDomain displayName */
+                displayName?: (string|null);
+
+                /** SipDomain allowRegister */
+                allowRegister?: (boolean|null);
+
+                /** SipDomain callTerminationMode */
+                callTerminationMode?: (enfonica.voice.v1beta1.SipDomain.TerminationMode|keyof typeof enfonica.voice.v1beta1.SipDomain.TerminationMode|null);
+
+                /** SipDomain callTerminationHandlerUris */
+                callTerminationHandlerUris?: (string[]|null);
+
+                /** SipDomain cidrBlocks */
+                cidrBlocks?: (enfonica.voice.v1beta1.ICidrBlock[]|null);
+
+                /** SipDomain callRecording */
+                callRecording?: (enfonica.voice.v1beta1.ICallRecordingConfig|null);
+
+                /** SipDomain createTime */
+                createTime?: (google.protobuf.ITimestamp|null);
+
+                /** SipDomain deleteTime */
+                deleteTime?: (google.protobuf.ITimestamp|null);
+            }
+
+            /** Represents a SipDomain. */
+            class SipDomain implements ISipDomain {
+
+                /**
+                 * Constructs a new SipDomain.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ISipDomain);
+
+                /** SipDomain name. */
+                public name: string;
+
+                /** SipDomain sipDomainId. */
+                public sipDomainId: string;
+
+                /** SipDomain displayName. */
+                public displayName: string;
+
+                /** SipDomain allowRegister. */
+                public allowRegister: boolean;
+
+                /** SipDomain callTerminationMode. */
+                public callTerminationMode: (enfonica.voice.v1beta1.SipDomain.TerminationMode|keyof typeof enfonica.voice.v1beta1.SipDomain.TerminationMode);
+
+                /** SipDomain callTerminationHandlerUris. */
+                public callTerminationHandlerUris: string[];
+
+                /** SipDomain cidrBlocks. */
+                public cidrBlocks: enfonica.voice.v1beta1.ICidrBlock[];
+
+                /** SipDomain callRecording. */
+                public callRecording?: (enfonica.voice.v1beta1.ICallRecordingConfig|null);
+
+                /** SipDomain createTime. */
+                public createTime?: (google.protobuf.ITimestamp|null);
+
+                /** SipDomain deleteTime. */
+                public deleteTime?: (google.protobuf.ITimestamp|null);
+
+                /**
+                 * Creates a new SipDomain instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SipDomain instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ISipDomain): enfonica.voice.v1beta1.SipDomain;
+
+                /**
+                 * Encodes the specified SipDomain message. Does not implicitly {@link enfonica.voice.v1beta1.SipDomain.verify|verify} messages.
+                 * @param message SipDomain message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ISipDomain, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SipDomain message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.SipDomain.verify|verify} messages.
+                 * @param message SipDomain message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ISipDomain, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SipDomain message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SipDomain
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.SipDomain;
+
+                /**
+                 * Decodes a SipDomain message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SipDomain
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.SipDomain;
+
+                /**
+                 * Verifies a SipDomain message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SipDomain message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SipDomain
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.SipDomain;
+
+                /**
+                 * Creates a plain object from a SipDomain message. Also converts values to other types if specified.
+                 * @param message SipDomain
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.SipDomain, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SipDomain to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            namespace SipDomain {
+
+                /** TerminationMode enum. */
+                enum TerminationMode {
+                    TERMINATION_MODE_UNSPECIFIED = 0,
+                    TERMINATION_MODE_DISABLED = 1,
+                    PSTN_TRUNK = 2,
+                    PROGRAMMABLE = 3
+                }
+            }
+
+            /** Properties of a CidrBlock. */
+            interface ICidrBlock {
+
+                /** CidrBlock displayName */
+                displayName?: (string|null);
+
+                /** CidrBlock cidrBlock */
+                cidrBlock?: (string|null);
+            }
+
+            /** Represents a CidrBlock. */
+            class CidrBlock implements ICidrBlock {
+
+                /**
+                 * Constructs a new CidrBlock.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ICidrBlock);
+
+                /** CidrBlock displayName. */
+                public displayName: string;
+
+                /** CidrBlock cidrBlock. */
+                public cidrBlock: string;
+
+                /**
+                 * Creates a new CidrBlock instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns CidrBlock instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ICidrBlock): enfonica.voice.v1beta1.CidrBlock;
+
+                /**
+                 * Encodes the specified CidrBlock message. Does not implicitly {@link enfonica.voice.v1beta1.CidrBlock.verify|verify} messages.
+                 * @param message CidrBlock message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ICidrBlock, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified CidrBlock message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CidrBlock.verify|verify} messages.
+                 * @param message CidrBlock message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ICidrBlock, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a CidrBlock message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns CidrBlock
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.CidrBlock;
+
+                /**
+                 * Decodes a CidrBlock message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns CidrBlock
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.CidrBlock;
+
+                /**
+                 * Verifies a CidrBlock message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a CidrBlock message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns CidrBlock
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.CidrBlock;
+
+                /**
+                 * Creates a plain object from a CidrBlock message. Also converts values to other types if specified.
+                 * @param message CidrBlock
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.CidrBlock, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this CidrBlock to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a CreateSipDomainRequest. */
+            interface ICreateSipDomainRequest {
+
+                /** CreateSipDomainRequest parent */
+                parent?: (string|null);
+
+                /** CreateSipDomainRequest sipDomain */
+                sipDomain?: (enfonica.voice.v1beta1.ISipDomain|null);
+
+                /** CreateSipDomainRequest sipDomainId */
+                sipDomainId?: (string|null);
+            }
+
+            /** Represents a CreateSipDomainRequest. */
+            class CreateSipDomainRequest implements ICreateSipDomainRequest {
+
+                /**
+                 * Constructs a new CreateSipDomainRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ICreateSipDomainRequest);
+
+                /** CreateSipDomainRequest parent. */
+                public parent: string;
+
+                /** CreateSipDomainRequest sipDomain. */
+                public sipDomain?: (enfonica.voice.v1beta1.ISipDomain|null);
+
+                /** CreateSipDomainRequest sipDomainId. */
+                public sipDomainId: string;
+
+                /**
+                 * Creates a new CreateSipDomainRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns CreateSipDomainRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ICreateSipDomainRequest): enfonica.voice.v1beta1.CreateSipDomainRequest;
+
+                /**
+                 * Encodes the specified CreateSipDomainRequest message. Does not implicitly {@link enfonica.voice.v1beta1.CreateSipDomainRequest.verify|verify} messages.
+                 * @param message CreateSipDomainRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ICreateSipDomainRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified CreateSipDomainRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.CreateSipDomainRequest.verify|verify} messages.
+                 * @param message CreateSipDomainRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ICreateSipDomainRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a CreateSipDomainRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns CreateSipDomainRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.CreateSipDomainRequest;
+
+                /**
+                 * Decodes a CreateSipDomainRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns CreateSipDomainRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.CreateSipDomainRequest;
+
+                /**
+                 * Verifies a CreateSipDomainRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a CreateSipDomainRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns CreateSipDomainRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.CreateSipDomainRequest;
+
+                /**
+                 * Creates a plain object from a CreateSipDomainRequest message. Also converts values to other types if specified.
+                 * @param message CreateSipDomainRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.CreateSipDomainRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this CreateSipDomainRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a GetSipDomainRequest. */
+            interface IGetSipDomainRequest {
+
+                /** GetSipDomainRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a GetSipDomainRequest. */
+            class GetSipDomainRequest implements IGetSipDomainRequest {
+
+                /**
+                 * Constructs a new GetSipDomainRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IGetSipDomainRequest);
+
+                /** GetSipDomainRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new GetSipDomainRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns GetSipDomainRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IGetSipDomainRequest): enfonica.voice.v1beta1.GetSipDomainRequest;
+
+                /**
+                 * Encodes the specified GetSipDomainRequest message. Does not implicitly {@link enfonica.voice.v1beta1.GetSipDomainRequest.verify|verify} messages.
+                 * @param message GetSipDomainRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IGetSipDomainRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified GetSipDomainRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.GetSipDomainRequest.verify|verify} messages.
+                 * @param message GetSipDomainRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IGetSipDomainRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a GetSipDomainRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns GetSipDomainRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.GetSipDomainRequest;
+
+                /**
+                 * Decodes a GetSipDomainRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns GetSipDomainRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.GetSipDomainRequest;
+
+                /**
+                 * Verifies a GetSipDomainRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a GetSipDomainRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns GetSipDomainRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.GetSipDomainRequest;
+
+                /**
+                 * Creates a plain object from a GetSipDomainRequest message. Also converts values to other types if specified.
+                 * @param message GetSipDomainRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.GetSipDomainRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this GetSipDomainRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListSipDomainsRequest. */
+            interface IListSipDomainsRequest {
+
+                /** ListSipDomainsRequest parent */
+                parent?: (string|null);
+
+                /** ListSipDomainsRequest pageSize */
+                pageSize?: (number|null);
+
+                /** ListSipDomainsRequest pageToken */
+                pageToken?: (string|null);
+
+                /** ListSipDomainsRequest showDeleted */
+                showDeleted?: (boolean|null);
+            }
+
+            /** Represents a ListSipDomainsRequest. */
+            class ListSipDomainsRequest implements IListSipDomainsRequest {
+
+                /**
+                 * Constructs a new ListSipDomainsRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IListSipDomainsRequest);
+
+                /** ListSipDomainsRequest parent. */
+                public parent: string;
+
+                /** ListSipDomainsRequest pageSize. */
+                public pageSize: number;
+
+                /** ListSipDomainsRequest pageToken. */
+                public pageToken: string;
+
+                /** ListSipDomainsRequest showDeleted. */
+                public showDeleted: boolean;
+
+                /**
+                 * Creates a new ListSipDomainsRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListSipDomainsRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IListSipDomainsRequest): enfonica.voice.v1beta1.ListSipDomainsRequest;
+
+                /**
+                 * Encodes the specified ListSipDomainsRequest message. Does not implicitly {@link enfonica.voice.v1beta1.ListSipDomainsRequest.verify|verify} messages.
+                 * @param message ListSipDomainsRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IListSipDomainsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListSipDomainsRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListSipDomainsRequest.verify|verify} messages.
+                 * @param message ListSipDomainsRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IListSipDomainsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListSipDomainsRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListSipDomainsRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.ListSipDomainsRequest;
+
+                /**
+                 * Decodes a ListSipDomainsRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListSipDomainsRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.ListSipDomainsRequest;
+
+                /**
+                 * Verifies a ListSipDomainsRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListSipDomainsRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListSipDomainsRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.ListSipDomainsRequest;
+
+                /**
+                 * Creates a plain object from a ListSipDomainsRequest message. Also converts values to other types if specified.
+                 * @param message ListSipDomainsRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.ListSipDomainsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListSipDomainsRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListSipDomainsResponse. */
+            interface IListSipDomainsResponse {
+
+                /** ListSipDomainsResponse sipDomains */
+                sipDomains?: (enfonica.voice.v1beta1.ISipDomain[]|null);
+
+                /** ListSipDomainsResponse nextPageToken */
+                nextPageToken?: (string|null);
+            }
+
+            /** Represents a ListSipDomainsResponse. */
+            class ListSipDomainsResponse implements IListSipDomainsResponse {
+
+                /**
+                 * Constructs a new ListSipDomainsResponse.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IListSipDomainsResponse);
+
+                /** ListSipDomainsResponse sipDomains. */
+                public sipDomains: enfonica.voice.v1beta1.ISipDomain[];
+
+                /** ListSipDomainsResponse nextPageToken. */
+                public nextPageToken: string;
+
+                /**
+                 * Creates a new ListSipDomainsResponse instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListSipDomainsResponse instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IListSipDomainsResponse): enfonica.voice.v1beta1.ListSipDomainsResponse;
+
+                /**
+                 * Encodes the specified ListSipDomainsResponse message. Does not implicitly {@link enfonica.voice.v1beta1.ListSipDomainsResponse.verify|verify} messages.
+                 * @param message ListSipDomainsResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IListSipDomainsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListSipDomainsResponse message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.ListSipDomainsResponse.verify|verify} messages.
+                 * @param message ListSipDomainsResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IListSipDomainsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListSipDomainsResponse message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListSipDomainsResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.ListSipDomainsResponse;
+
+                /**
+                 * Decodes a ListSipDomainsResponse message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListSipDomainsResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.ListSipDomainsResponse;
+
+                /**
+                 * Verifies a ListSipDomainsResponse message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListSipDomainsResponse message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListSipDomainsResponse
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.ListSipDomainsResponse;
+
+                /**
+                 * Creates a plain object from a ListSipDomainsResponse message. Also converts values to other types if specified.
+                 * @param message ListSipDomainsResponse
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.ListSipDomainsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListSipDomainsResponse to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of an UpdateSipDomainRequest. */
+            interface IUpdateSipDomainRequest {
+
+                /** UpdateSipDomainRequest sipDomain */
+                sipDomain?: (enfonica.voice.v1beta1.ISipDomain|null);
+
+                /** UpdateSipDomainRequest updateMask */
+                updateMask?: (google.protobuf.IFieldMask|null);
+            }
+
+            /** Represents an UpdateSipDomainRequest. */
+            class UpdateSipDomainRequest implements IUpdateSipDomainRequest {
+
+                /**
+                 * Constructs a new UpdateSipDomainRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IUpdateSipDomainRequest);
+
+                /** UpdateSipDomainRequest sipDomain. */
+                public sipDomain?: (enfonica.voice.v1beta1.ISipDomain|null);
+
+                /** UpdateSipDomainRequest updateMask. */
+                public updateMask?: (google.protobuf.IFieldMask|null);
+
+                /**
+                 * Creates a new UpdateSipDomainRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns UpdateSipDomainRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IUpdateSipDomainRequest): enfonica.voice.v1beta1.UpdateSipDomainRequest;
+
+                /**
+                 * Encodes the specified UpdateSipDomainRequest message. Does not implicitly {@link enfonica.voice.v1beta1.UpdateSipDomainRequest.verify|verify} messages.
+                 * @param message UpdateSipDomainRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IUpdateSipDomainRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified UpdateSipDomainRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.UpdateSipDomainRequest.verify|verify} messages.
+                 * @param message UpdateSipDomainRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IUpdateSipDomainRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an UpdateSipDomainRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns UpdateSipDomainRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.UpdateSipDomainRequest;
+
+                /**
+                 * Decodes an UpdateSipDomainRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns UpdateSipDomainRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.UpdateSipDomainRequest;
+
+                /**
+                 * Verifies an UpdateSipDomainRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an UpdateSipDomainRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns UpdateSipDomainRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.UpdateSipDomainRequest;
+
+                /**
+                 * Creates a plain object from an UpdateSipDomainRequest message. Also converts values to other types if specified.
+                 * @param message UpdateSipDomainRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.UpdateSipDomainRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this UpdateSipDomainRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a DeleteSipDomainRequest. */
+            interface IDeleteSipDomainRequest {
+
+                /** DeleteSipDomainRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a DeleteSipDomainRequest. */
+            class DeleteSipDomainRequest implements IDeleteSipDomainRequest {
+
+                /**
+                 * Constructs a new DeleteSipDomainRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IDeleteSipDomainRequest);
+
+                /** DeleteSipDomainRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new DeleteSipDomainRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns DeleteSipDomainRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IDeleteSipDomainRequest): enfonica.voice.v1beta1.DeleteSipDomainRequest;
+
+                /**
+                 * Encodes the specified DeleteSipDomainRequest message. Does not implicitly {@link enfonica.voice.v1beta1.DeleteSipDomainRequest.verify|verify} messages.
+                 * @param message DeleteSipDomainRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IDeleteSipDomainRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified DeleteSipDomainRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.DeleteSipDomainRequest.verify|verify} messages.
+                 * @param message DeleteSipDomainRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IDeleteSipDomainRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a DeleteSipDomainRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns DeleteSipDomainRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.DeleteSipDomainRequest;
+
+                /**
+                 * Decodes a DeleteSipDomainRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns DeleteSipDomainRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.DeleteSipDomainRequest;
+
+                /**
+                 * Verifies a DeleteSipDomainRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a DeleteSipDomainRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns DeleteSipDomainRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.DeleteSipDomainRequest;
+
+                /**
+                 * Creates a plain object from a DeleteSipDomainRequest message. Also converts values to other types if specified.
+                 * @param message DeleteSipDomainRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.DeleteSipDomainRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this DeleteSipDomainRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Represents a SipInfoService */
+            class SipInfoService extends $protobuf.rpc.Service {
+
+                /**
+                 * Constructs a new SipInfoService service.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 */
+                constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+                /**
+                 * Creates new SipInfoService service using the specified rpc implementation.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 * @returns RPC service. Useful where requests and/or responses are streamed.
+                 */
+                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): SipInfoService;
+
+                /**
+                 * Calls GetSipInfo.
+                 * @param request GetSipInfoRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and SipInfo
+                 */
+                public getSipInfo(request: enfonica.voice.v1beta1.IGetSipInfoRequest, callback: enfonica.voice.v1beta1.SipInfoService.GetSipInfoCallback): void;
+
+                /**
+                 * Calls GetSipInfo.
+                 * @param request GetSipInfoRequest message or plain object
+                 * @returns Promise
+                 */
+                public getSipInfo(request: enfonica.voice.v1beta1.IGetSipInfoRequest): Promise<enfonica.voice.v1beta1.SipInfo>;
+            }
+
+            namespace SipInfoService {
+
+                /**
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipInfoService#getSipInfo}.
+                 * @param error Error, if any
+                 * @param [response] SipInfo
+                 */
+                type GetSipInfoCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.SipInfo) => void;
+            }
+
+            /** Properties of a SipInfo. */
+            interface ISipInfo {
+
+                /** SipInfo name */
+                name?: (string|null);
+
+                /** SipInfo startTime */
+                startTime?: (google.protobuf.ITimestamp|null);
+
+                /** SipInfo endTime */
+                endTime?: (google.protobuf.ITimestamp|null);
+
+                /** SipInfo messages */
+                messages?: (enfonica.voice.v1beta1.ISipMessage[]|null);
+
+                /** SipInfo sipCallId */
+                sipCallId?: (string|null);
+
+                /** SipInfo pcap */
+                pcap?: (Uint8Array|string|null);
+            }
+
+            /** Represents a SipInfo. */
+            class SipInfo implements ISipInfo {
+
+                /**
+                 * Constructs a new SipInfo.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ISipInfo);
+
+                /** SipInfo name. */
+                public name: string;
+
+                /** SipInfo startTime. */
+                public startTime?: (google.protobuf.ITimestamp|null);
+
+                /** SipInfo endTime. */
+                public endTime?: (google.protobuf.ITimestamp|null);
+
+                /** SipInfo messages. */
+                public messages: enfonica.voice.v1beta1.ISipMessage[];
+
+                /** SipInfo sipCallId. */
+                public sipCallId: string;
+
+                /** SipInfo pcap. */
+                public pcap: (Uint8Array|string);
+
+                /**
+                 * Creates a new SipInfo instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SipInfo instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ISipInfo): enfonica.voice.v1beta1.SipInfo;
+
+                /**
+                 * Encodes the specified SipInfo message. Does not implicitly {@link enfonica.voice.v1beta1.SipInfo.verify|verify} messages.
+                 * @param message SipInfo message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ISipInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SipInfo message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.SipInfo.verify|verify} messages.
+                 * @param message SipInfo message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ISipInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SipInfo message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SipInfo
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.SipInfo;
+
+                /**
+                 * Decodes a SipInfo message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SipInfo
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.SipInfo;
+
+                /**
+                 * Verifies a SipInfo message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SipInfo message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SipInfo
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.SipInfo;
+
+                /**
+                 * Creates a plain object from a SipInfo message. Also converts values to other types if specified.
+                 * @param message SipInfo
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.SipInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SipInfo to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a SipMessage. */
+            interface ISipMessage {
+
+                /** SipMessage offsetDuration */
+                offsetDuration?: (google.protobuf.IDuration|null);
+
+                /** SipMessage sourceIp */
+                sourceIp?: (string|null);
+
+                /** SipMessage sourcePort */
+                sourcePort?: (number|null);
+
+                /** SipMessage destinationIp */
+                destinationIp?: (string|null);
+
+                /** SipMessage destinationPort */
+                destinationPort?: (number|null);
+
+                /** SipMessage method */
+                method?: (string|null);
+
+                /** SipMessage requestLine */
+                requestLine?: (string|null);
+
+                /** SipMessage data */
+                data?: (string|null);
+            }
+
+            /** Represents a SipMessage. */
+            class SipMessage implements ISipMessage {
+
+                /**
+                 * Constructs a new SipMessage.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.ISipMessage);
+
+                /** SipMessage offsetDuration. */
+                public offsetDuration?: (google.protobuf.IDuration|null);
+
+                /** SipMessage sourceIp. */
+                public sourceIp: string;
+
+                /** SipMessage sourcePort. */
+                public sourcePort: number;
+
+                /** SipMessage destinationIp. */
+                public destinationIp: string;
+
+                /** SipMessage destinationPort. */
+                public destinationPort: number;
+
+                /** SipMessage method. */
+                public method: string;
+
+                /** SipMessage requestLine. */
+                public requestLine: string;
+
+                /** SipMessage data. */
+                public data: string;
+
+                /**
+                 * Creates a new SipMessage instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SipMessage instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.ISipMessage): enfonica.voice.v1beta1.SipMessage;
+
+                /**
+                 * Encodes the specified SipMessage message. Does not implicitly {@link enfonica.voice.v1beta1.SipMessage.verify|verify} messages.
+                 * @param message SipMessage message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.ISipMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SipMessage message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.SipMessage.verify|verify} messages.
+                 * @param message SipMessage message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.ISipMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SipMessage message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SipMessage
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.SipMessage;
+
+                /**
+                 * Decodes a SipMessage message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SipMessage
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.SipMessage;
+
+                /**
+                 * Verifies a SipMessage message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SipMessage message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SipMessage
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.SipMessage;
+
+                /**
+                 * Creates a plain object from a SipMessage message. Also converts values to other types if specified.
+                 * @param message SipMessage
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.SipMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SipMessage to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a GetSipInfoRequest. */
+            interface IGetSipInfoRequest {
+
+                /** GetSipInfoRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a GetSipInfoRequest. */
+            class GetSipInfoRequest implements IGetSipInfoRequest {
+
+                /**
+                 * Constructs a new GetSipInfoRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.voice.v1beta1.IGetSipInfoRequest);
+
+                /** GetSipInfoRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new GetSipInfoRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns GetSipInfoRequest instance
+                 */
+                public static create(properties?: enfonica.voice.v1beta1.IGetSipInfoRequest): enfonica.voice.v1beta1.GetSipInfoRequest;
+
+                /**
+                 * Encodes the specified GetSipInfoRequest message. Does not implicitly {@link enfonica.voice.v1beta1.GetSipInfoRequest.verify|verify} messages.
+                 * @param message GetSipInfoRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.voice.v1beta1.IGetSipInfoRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified GetSipInfoRequest message, length delimited. Does not implicitly {@link enfonica.voice.v1beta1.GetSipInfoRequest.verify|verify} messages.
+                 * @param message GetSipInfoRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.voice.v1beta1.IGetSipInfoRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a GetSipInfoRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns GetSipInfoRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.voice.v1beta1.GetSipInfoRequest;
+
+                /**
+                 * Decodes a GetSipInfoRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns GetSipInfoRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.voice.v1beta1.GetSipInfoRequest;
+
+                /**
+                 * Verifies a GetSipInfoRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a GetSipInfoRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns GetSipInfoRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.voice.v1beta1.GetSipInfoRequest;
+
+                /**
+                 * Creates a plain object from a GetSipInfoRequest message. Also converts values to other types if specified.
+                 * @param message GetSipInfoRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.voice.v1beta1.GetSipInfoRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this GetSipInfoRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
             }
 
             /** Represents a Streams */
@@ -3623,97 +6130,175 @@ export namespace google {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of a Duration. */
-        interface IDuration {
+        /** Properties of a FieldMask. */
+        interface IFieldMask {
 
-            /** Duration seconds */
-            seconds?: (number|Long|string|null);
-
-            /** Duration nanos */
-            nanos?: (number|null);
+            /** FieldMask paths */
+            paths?: (string[]|null);
         }
 
-        /** Represents a Duration. */
-        class Duration implements IDuration {
+        /** Represents a FieldMask. */
+        class FieldMask implements IFieldMask {
 
             /**
-             * Constructs a new Duration.
+             * Constructs a new FieldMask.
              * @param [properties] Properties to set
              */
-            constructor(properties?: google.protobuf.IDuration);
+            constructor(properties?: google.protobuf.IFieldMask);
 
-            /** Duration seconds. */
-            public seconds: (number|Long|string);
-
-            /** Duration nanos. */
-            public nanos: number;
+            /** FieldMask paths. */
+            public paths: string[];
 
             /**
-             * Creates a new Duration instance using the specified properties.
+             * Creates a new FieldMask instance using the specified properties.
              * @param [properties] Properties to set
-             * @returns Duration instance
+             * @returns FieldMask instance
              */
-            public static create(properties?: google.protobuf.IDuration): google.protobuf.Duration;
+            public static create(properties?: google.protobuf.IFieldMask): google.protobuf.FieldMask;
 
             /**
-             * Encodes the specified Duration message. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
-             * @param message Duration message or plain object to encode
+             * Encodes the specified FieldMask message. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
+             * @param message FieldMask message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: google.protobuf.IDuration, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: google.protobuf.IFieldMask, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified Duration message, length delimited. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
-             * @param message Duration message or plain object to encode
+             * Encodes the specified FieldMask message, length delimited. Does not implicitly {@link google.protobuf.FieldMask.verify|verify} messages.
+             * @param message FieldMask message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: google.protobuf.IDuration, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: google.protobuf.IFieldMask, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Decodes a Duration message from the specified reader or buffer.
+             * Decodes a FieldMask message from the specified reader or buffer.
              * @param reader Reader or buffer to decode from
              * @param [length] Message length if known beforehand
-             * @returns Duration
+             * @returns FieldMask
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Duration;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.FieldMask;
 
             /**
-             * Decodes a Duration message from the specified reader or buffer, length delimited.
+             * Decodes a FieldMask message from the specified reader or buffer, length delimited.
              * @param reader Reader or buffer to decode from
-             * @returns Duration
+             * @returns FieldMask
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Duration;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.FieldMask;
 
             /**
-             * Verifies a Duration message.
+             * Verifies a FieldMask message.
              * @param message Plain object to verify
              * @returns `null` if valid, otherwise the reason why it is not
              */
             public static verify(message: { [k: string]: any }): (string|null);
 
             /**
-             * Creates a Duration message from a plain object. Also converts values to their respective internal types.
+             * Creates a FieldMask message from a plain object. Also converts values to their respective internal types.
              * @param object Plain object
-             * @returns Duration
+             * @returns FieldMask
              */
-            public static fromObject(object: { [k: string]: any }): google.protobuf.Duration;
+            public static fromObject(object: { [k: string]: any }): google.protobuf.FieldMask;
 
             /**
-             * Creates a plain object from a Duration message. Also converts values to other types if specified.
-             * @param message Duration
+             * Creates a plain object from a FieldMask message. Also converts values to other types if specified.
+             * @param message FieldMask
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: google.protobuf.Duration, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: google.protobuf.FieldMask, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
-             * Converts this Duration to JSON.
+             * Converts this FieldMask to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of an Empty. */
+        interface IEmpty {
+        }
+
+        /** Represents an Empty. */
+        class Empty implements IEmpty {
+
+            /**
+             * Constructs a new Empty.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IEmpty);
+
+            /**
+             * Creates a new Empty instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Empty instance
+             */
+            public static create(properties?: google.protobuf.IEmpty): google.protobuf.Empty;
+
+            /**
+             * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+             * @param message Empty message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+             * @param message Empty message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Empty message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Empty
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Empty;
+
+            /**
+             * Decodes an Empty message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Empty
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Empty;
+
+            /**
+             * Verifies an Empty message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Empty message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Empty
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Empty;
+
+            /**
+             * Creates a plain object from an Empty message. Also converts values to other types if specified.
+             * @param message Empty
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Empty, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Empty to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -5579,11 +8164,11 @@ export namespace google {
             /** FieldOptions uninterpretedOption */
             uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
 
-            /** FieldOptions .google.api.resourceReference */
-            ".google.api.resourceReference"?: (google.api.IResourceReference|null);
-
             /** FieldOptions .google.api.fieldBehavior */
             ".google.api.fieldBehavior"?: (google.api.FieldBehavior[]|null);
+
+            /** FieldOptions .google.api.resourceReference */
+            ".google.api.resourceReference"?: (google.api.IResourceReference|null);
         }
 
         /** Represents a FieldOptions. */
@@ -6845,6 +9430,102 @@ export namespace google {
             }
         }
 
+        /** Properties of a Duration. */
+        interface IDuration {
+
+            /** Duration seconds */
+            seconds?: (number|Long|string|null);
+
+            /** Duration nanos */
+            nanos?: (number|null);
+        }
+
+        /** Represents a Duration. */
+        class Duration implements IDuration {
+
+            /**
+             * Constructs a new Duration.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IDuration);
+
+            /** Duration seconds. */
+            public seconds: (number|Long|string);
+
+            /** Duration nanos. */
+            public nanos: number;
+
+            /**
+             * Creates a new Duration instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Duration instance
+             */
+            public static create(properties?: google.protobuf.IDuration): google.protobuf.Duration;
+
+            /**
+             * Encodes the specified Duration message. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+             * @param message Duration message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IDuration, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Duration message, length delimited. Does not implicitly {@link google.protobuf.Duration.verify|verify} messages.
+             * @param message Duration message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IDuration, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Duration message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Duration
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Duration;
+
+            /**
+             * Decodes a Duration message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Duration
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Duration;
+
+            /**
+             * Verifies a Duration message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Duration message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Duration
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Duration;
+
+            /**
+             * Creates a plain object from a Duration message. Also converts values to other types if specified.
+             * @param message Duration
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Duration, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Duration to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
         /** Properties of an Any. */
         interface IAny {
 
@@ -6936,90 +9617,6 @@ export namespace google {
 
             /**
              * Converts this Any to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        /** Properties of an Empty. */
-        interface IEmpty {
-        }
-
-        /** Represents an Empty. */
-        class Empty implements IEmpty {
-
-            /**
-             * Constructs a new Empty.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: google.protobuf.IEmpty);
-
-            /**
-             * Creates a new Empty instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns Empty instance
-             */
-            public static create(properties?: google.protobuf.IEmpty): google.protobuf.Empty;
-
-            /**
-             * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
-             * @param message Empty message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
-             * @param message Empty message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes an Empty message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Empty
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Empty;
-
-            /**
-             * Decodes an Empty message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Empty
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Empty;
-
-            /**
-             * Verifies an Empty message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates an Empty message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Empty
-             */
-            public static fromObject(object: { [k: string]: any }): google.protobuf.Empty;
-
-            /**
-             * Creates a plain object from an Empty message. Also converts values to other types if specified.
-             * @param message Empty
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: google.protobuf.Empty, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Empty to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -7368,6 +9965,17 @@ export namespace google {
             public toJSON(): { [k: string]: any };
         }
 
+        /** FieldBehavior enum. */
+        enum FieldBehavior {
+            FIELD_BEHAVIOR_UNSPECIFIED = 0,
+            OPTIONAL = 1,
+            REQUIRED = 2,
+            OUTPUT_ONLY = 3,
+            INPUT_ONLY = 4,
+            IMMUTABLE = 5,
+            UNORDERED_LIST = 6
+        }
+
         /** Properties of a ResourceDescriptor. */
         interface IResourceDescriptor {
 
@@ -7605,17 +10213,6 @@ export namespace google {
              */
             public toJSON(): { [k: string]: any };
         }
-
-        /** FieldBehavior enum. */
-        enum FieldBehavior {
-            FIELD_BEHAVIOR_UNSPECIFIED = 0,
-            OPTIONAL = 1,
-            REQUIRED = 2,
-            OUTPUT_ONLY = 3,
-            INPUT_ONLY = 4,
-            IMMUTABLE = 5,
-            UNORDERED_LIST = 6
-        }
     }
 
     /** Namespace type. */
@@ -7718,6 +10315,102 @@ export namespace google {
 
             /**
              * Converts this Money to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a LatLng. */
+        interface ILatLng {
+
+            /** LatLng latitude */
+            latitude?: (number|null);
+
+            /** LatLng longitude */
+            longitude?: (number|null);
+        }
+
+        /** Represents a LatLng. */
+        class LatLng implements ILatLng {
+
+            /**
+             * Constructs a new LatLng.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.type.ILatLng);
+
+            /** LatLng latitude. */
+            public latitude: number;
+
+            /** LatLng longitude. */
+            public longitude: number;
+
+            /**
+             * Creates a new LatLng instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns LatLng instance
+             */
+            public static create(properties?: google.type.ILatLng): google.type.LatLng;
+
+            /**
+             * Encodes the specified LatLng message. Does not implicitly {@link google.type.LatLng.verify|verify} messages.
+             * @param message LatLng message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.type.ILatLng, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified LatLng message, length delimited. Does not implicitly {@link google.type.LatLng.verify|verify} messages.
+             * @param message LatLng message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.type.ILatLng, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a LatLng message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns LatLng
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.type.LatLng;
+
+            /**
+             * Decodes a LatLng message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns LatLng
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.type.LatLng;
+
+            /**
+             * Verifies a LatLng message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a LatLng message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns LatLng
+             */
+            public static fromObject(object: { [k: string]: any }): google.type.LatLng;
+
+            /**
+             * Creates a plain object from a LatLng message. Also converts values to other types if specified.
+             * @param message LatLng
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.type.LatLng, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this LatLng to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };

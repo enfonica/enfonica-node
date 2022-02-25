@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -182,6 +182,9 @@ export namespace enfonica {
                 /** PhoneNumberInstance deleteTime */
                 deleteTime?: (google.protobuf.ITimestamp|null);
 
+                /** PhoneNumberInstance activateTime */
+                activateTime?: (google.protobuf.ITimestamp|null);
+
                 /** PhoneNumberInstance lifecycleState */
                 lifecycleState?: (enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|keyof typeof enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|null);
             }
@@ -221,6 +224,9 @@ export namespace enfonica {
 
                 /** PhoneNumberInstance deleteTime. */
                 public deleteTime?: (google.protobuf.ITimestamp|null);
+
+                /** PhoneNumberInstance activateTime. */
+                public activateTime?: (google.protobuf.ITimestamp|null);
 
                 /** PhoneNumberInstance lifecycleState. */
                 public lifecycleState: (enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|keyof typeof enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState);
@@ -303,7 +309,8 @@ export namespace enfonica {
                     LIFECYCLE_STATE_UNSPECIFIED = 0,
                     ACTIVE = 1,
                     DELETED = 2,
-                    SUSPENDED = 3
+                    SUSPENDED = 3,
+                    PENDING = 4
                 }
 
                 /** RecordingTrigger enum. */
@@ -963,6 +970,9 @@ export namespace enfonica {
                 /** PhoneNumber sku */
                 sku?: (string|null);
 
+                /** PhoneNumber activationSku */
+                activationSku?: (string|null);
+
                 /** PhoneNumber numberType */
                 numberType?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null);
 
@@ -990,6 +1000,9 @@ export namespace enfonica {
 
                 /** PhoneNumber sku. */
                 public sku: string;
+
+                /** PhoneNumber activationSku. */
+                public activationSku: string;
 
                 /** PhoneNumber numberType. */
                 public numberType: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType);
