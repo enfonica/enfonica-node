@@ -1,6 +1,6 @@
 # Enfonica Voice Client Library for Node.js
 
-Node.js idiomatic client library for [Enfonica](https://enfonica.com/) services. This library uses version 'v1beta1' of the Enfonica Voice API. View the docs for more details: [Enfonica Docs](https://enfonica.com/docs/)
+Node.js idiomatic client library for [Enfonica](https://enfonica.com/) services. This library uses version 'v1beta1' of the Enfonica Voice API. View the docs for more details: [Enfonica Docs](https://enfonica.github.io/enfonica-node/voice/)
 
 ## Supported version
 

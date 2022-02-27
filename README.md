@@ -19,7 +19,7 @@ You can obtain a service account key file from the [Enfonica Console](https://co
 
 ### Enfonica Messaging Client Library for Node.js
 
-This library uses version 'v1' of the Enfonica Messaging API. View the repo for more details: [nodejs-messaging](https://github.com/enfonica/enfonica-node/tree/master/libs/nodejs-messaging)
+This library uses version 'v1' of the Enfonica Messaging API. View the repo for more details: [nodejs-messaging](https://github.com/enfonica/enfonica-node/tree/master/libs/nodejs-messaging). To view the documentation [click here.](https://enfonica.github.io/enfonica-node/messaging/)
 
 #### Installing the client library
 
@@ -55,7 +55,7 @@ client.createMessage({
 
 ### Enfonica Numbering Client Library for Node.js
 
-This library uses version 'v1beta1' of the Enfonica Numbering API. View the repo for more details: [nodejs-numbering](https://github.com/enfonica/enfonica-node/tree/master/libs/nodejs-numbering)
+This library uses version 'v1beta1' of the Enfonica Numbering API. View the repo for more details: [nodejs-numbering](https://github.com/enfonica/enfonica-node/tree/master/libs/nodejs-numbering). To view the documentation [click here.](https://enfonica.github.io/enfonica-node/numbering/)
 
 #### Installing the client library
 
@@ -86,7 +86,7 @@ client.listPhoneNumberInstances({
 
 ### Enfonica Voice Client Library for Node.js
 
-This library uses version 'v1beta' of the Enfonica Voice API. View the repo for more details: [nodejs-voice](https://github.com/enfonica/enfonica-node/tree/master/libs/nodejs-voice)
+This library uses version 'v1beta' of the Enfonica Voice API. View the repo for more details: [nodejs-voice](https://github.com/enfonica/enfonica-node/tree/master/libs/nodejs-voice). To view the documentation [click here.](https://enfonica.github.io/enfonica-node/voice/)
 
 #### Installing the client library
 
