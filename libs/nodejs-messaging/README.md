@@ -24,23 +24,21 @@ You can obtain a service account key file from the [Enfonica Console](https://co
 ## Example
 
 ```js
-// create client
-import messaging from '@enfonica/messaging';
-const client = new messaging.MessagesClient({
-  keyFile: process.env.ENFONICA_APPLICATION_CREDENTIALS
-});
+const messaging = require('@enfonica/messaging');
+const client = new messaging.MessagesClient();
 
-// send an SMS
-client.createMessage({
-    parent: 'projects/my-example-project', 
-    message: {
-        to: '+61499888777', 
-        from: 'Enfonica', 
-        body: 'Hello world!'
+(async () => {
+    try {
+        const [response] = await client.createMessage({ 
+            parent: 'projects/my-project', 
+            message: { 
+                to: '+61421333444', 
+                from: 'MyApp', 
+                body: 'This is a test from the Cloud SMS API!' 
+            } 
+        });
+    } catch (error) {
+        console.log(error);
     }
-}).then(res => {
-    console.log(res);
-}).catch(err => {
-    console.log(err);
-});
+})();
 ```

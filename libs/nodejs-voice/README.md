@@ -25,18 +25,22 @@ You can obtain a service account key file from the [Enfonica Console](https://co
 ## Example
 
 ```js
-// create client
 import voice from '@enfonica/voice';
 const client = new voice.RecordingsClient({
   keyFile: process.env.ENFONICA_APPLICATION_CREDENTIALS
 });
 
-// list recordings
-client.listRecordings({
-    parent: 'projects/my-example-project'
-}).then(res => {
-    console.log(res);
-}).catch(err => {
-    console.log(err);
-});
+(async () => {
+    try {
+        const request = {
+            // Request body
+        }
+        const iterable = client.listRecordingsAsync(request);
+        for await (const response of iterable) {
+            // process response
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})();
 ```

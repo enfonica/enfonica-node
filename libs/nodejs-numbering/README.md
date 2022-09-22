@@ -24,18 +24,22 @@ You can obtain a service account key file from the [Enfonica Console](https://co
 ## Example
 
 ```js
-// create client
 import numbering from '@enfonica/numbering';
 const client = new numbering.PhoneNumberInstancesClient({
   keyFile: process.env.ENFONICA_APPLICATION_CREDENTIALS
 });
 
-// list phone number instances
-client.listPhoneNumberInstances({
-    parent: 'projects/my-example-project'
-}).then(res => {
-    console.log(res);
-}).catch(err => {
-    console.log(err);
-});
+(async () => {
+    try {
+        const request = {
+            // Request body
+        }
+        const iterable = messagesClient.listPhoneNumberInstancesAsync(request);
+        for await (const response of iterable) {
+            // process response
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})();
 ```
