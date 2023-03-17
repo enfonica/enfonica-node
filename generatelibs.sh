@@ -26,6 +26,6 @@ sudo cp -fr ./libs/nodejs-numbering/README.md ./temp/numbering/
 sudo cp -fr ./libs/nodejs-voice/README.md ./temp/voice/
 
 # Using the docker instance of the client generator, generate the libraries.
-docker run --rm --mount type=bind,source=/root/enfonicaapis/enfonica/messaging,destination=/in/enfonica/messaging,readonly --mount type=bind,source=`pwd`/libs/nodejs-messaging,destination=/out gcr.io/gapic-images/gapic-generator-typescript:v1.1.0
-docker run --rm --mount type=bind,source=/root/enfonicaapis/enfonica/numbering,destination=/in/enfonica/numbering,readonly --mount type=bind,source=`pwd`/libs/nodejs-numbering,destination=/out gcr.io/gapic-images/gapic-generator-typescript:v1.1.0
-docker run --rm --mount type=bind,source=/root/enfonicaapis/enfonica/voice,destination=/in/enfonica/voice,readonly --mount type=bind,source=`pwd`/libs/nodejs-voice,destination=/out gcr.io/gapic-images/gapic-generator-typescript:v1.1.0
+sudo docker run --rm --mount type=bind,source=/home/csmit/enfonica-dev/enfonicaapis/enfonica/messaging,destination=/in/enfonica/messaging,readonly --mount type=bind,source=`pwd`/libs/nodejs-messaging,destination=/out gcr.io/gapic-images/gapic-generator-typescript:v1.1.0
+sudo docker run --rm --mount type=bind,source=/home/csmit/enfonica-dev/enfonicaapis/enfonica/numbering,destination=/in/enfonica/numbering,readonly --mount type=bind,source=`pwd`/libs/nodejs-numbering,destination=/out gcr.io/gapic-images/gapic-generator-typescript:v1.1.0
+sudo docker run --rm --mount type=bind,source=/home/csmit/enfonica-dev/enfonicaapis/enfonica/voice,destination=/in/enfonica/voice,readonly --mount type=bind,source=`pwd`/libs/nodejs-voice,destination=/out gcr.io/gapic-images/gapic-generator-typescript:v1.1.0

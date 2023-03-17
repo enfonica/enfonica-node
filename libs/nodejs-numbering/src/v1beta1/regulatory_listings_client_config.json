@@ -1,6 +1,6 @@
 {
   "interfaces": {
-    "enfonica.numbering.v1beta1.PhoneNumberInstances": {
+    "enfonica.numbering.v1beta1.RegulatoryListings": {
       "retry_codes": {
         "non_idempotent": [],
         "idempotent": [
@@ -20,31 +20,27 @@
         }
       },
       "methods": {
-        "CreatePhoneNumberInstance": {
+        "CreateRegulatoryListing": {
           "retry_codes_name": "non_idempotent",
           "retry_params_name": "default"
         },
-        "GetPhoneNumberInstance": {
+        "GetRegulatoryListing": {
           "retry_codes_name": "non_idempotent",
           "retry_params_name": "default"
         },
-        "ListPhoneNumberInstances": {
+        "ListRegulatoryListings": {
           "retry_codes_name": "non_idempotent",
           "retry_params_name": "default"
         },
-        "UpdatePhoneNumberInstance": {
+        "UpdateRegulatoryListing": {
           "retry_codes_name": "non_idempotent",
           "retry_params_name": "default"
         },
-        "DeletePhoneNumberInstance": {
+        "DeleteRegulatoryListing": {
           "retry_codes_name": "non_idempotent",
           "retry_params_name": "default"
         },
-        "MovePhoneNumberInstance": {
-          "retry_codes_name": "non_idempotent",
-          "retry_params_name": "default"
-        },
-        "SplitRange": {
+        "SearchRegulatoryListings": {
           "retry_codes_name": "non_idempotent",
           "retry_params_name": "default"
         }

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,7 +19,18 @@
 import * as v1beta1 from './v1beta1';
 const PhoneNumberInstancesClient = v1beta1.PhoneNumberInstancesClient;
 const PhoneNumbersClient = v1beta1.PhoneNumbersClient;
-export {v1beta1, PhoneNumberInstancesClient, PhoneNumbersClient};
-export default {v1beta1, PhoneNumberInstancesClient, PhoneNumbersClient};
+const RegulatoryListingsClient = v1beta1.RegulatoryListingsClient;
+export {
+  v1beta1,
+  PhoneNumberInstancesClient,
+  PhoneNumbersClient,
+  RegulatoryListingsClient,
+};
+export default {
+  v1beta1,
+  PhoneNumberInstancesClient,
+  PhoneNumbersClient,
+  RegulatoryListingsClient,
+};
 import * as protos from '../protos/protos';
 export {protos};

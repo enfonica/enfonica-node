@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -117,35 +117,35 @@ export namespace enfonica {
             namespace Aliases {
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#createAlias}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases|createAlias}.
                  * @param error Error, if any
                  * @param [response] Alias
                  */
                 type CreateAliasCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Alias) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#getAlias}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases|getAlias}.
                  * @param error Error, if any
                  * @param [response] Alias
                  */
                 type GetAliasCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Alias) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#listAliases}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases|listAliases}.
                  * @param error Error, if any
                  * @param [response] ListAliasesResponse
                  */
                 type ListAliasesCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.ListAliasesResponse) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#updateAlias}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases|updateAlias}.
                  * @param error Error, if any
                  * @param [response] Alias
                  */
                 type UpdateAliasCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Alias) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases#deleteAlias}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Aliases|deleteAlias}.
                  * @param error Error, if any
                  * @param [response] Empty
                  */
@@ -1349,21 +1349,21 @@ export namespace enfonica {
             namespace Calls {
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Calls#createCall}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Calls|createCall}.
                  * @param error Error, if any
                  * @param [response] Call
                  */
                 type CreateCallCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Call) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Calls#getCall}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Calls|getCall}.
                  * @param error Error, if any
                  * @param [response] Call
                  */
                 type GetCallCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Call) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Calls#listCalls}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Calls|listCalls}.
                  * @param error Error, if any
                  * @param [response] ListCallsResponse
                  */
@@ -2310,21 +2310,21 @@ export namespace enfonica {
             namespace Recordings {
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Recordings#getRecording}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Recordings|getRecording}.
                  * @param error Error, if any
                  * @param [response] Recording
                  */
                 type GetRecordingCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Recording) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Recordings#listRecordings}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Recordings|listRecordings}.
                  * @param error Error, if any
                  * @param [response] ListRecordingsResponse
                  */
                 type ListRecordingsCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.ListRecordingsResponse) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Recordings#deleteRecording}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Recordings|deleteRecording}.
                  * @param error Error, if any
                  * @param [response] Recording
                  */
@@ -3122,35 +3122,35 @@ export namespace enfonica {
             namespace SipDomains {
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#createSipDomain}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains|createSipDomain}.
                  * @param error Error, if any
                  * @param [response] SipDomain
                  */
                 type CreateSipDomainCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.SipDomain) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#getSipDomain}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains|getSipDomain}.
                  * @param error Error, if any
                  * @param [response] SipDomain
                  */
                 type GetSipDomainCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.SipDomain) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#listSipDomains}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains|listSipDomains}.
                  * @param error Error, if any
                  * @param [response] ListSipDomainsResponse
                  */
                 type ListSipDomainsCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.ListSipDomainsResponse) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#updateSipDomain}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains|updateSipDomain}.
                  * @param error Error, if any
                  * @param [response] SipDomain
                  */
                 type UpdateSipDomainCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.SipDomain) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains#deleteSipDomain}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipDomains|deleteSipDomain}.
                  * @param error Error, if any
                  * @param [response] SipDomain
                  */
@@ -4028,7 +4028,7 @@ export namespace enfonica {
             namespace SipInfoService {
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.SipInfoService#getSipInfo}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.SipInfoService|getSipInfo}.
                  * @param error Error, if any
                  * @param [response] SipInfo
                  */
@@ -4415,7 +4415,7 @@ export namespace enfonica {
             namespace Streams {
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Streams#streamCall}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Streams|streamCall}.
                  * @param error Error, if any
                  * @param [response] StreamCallResponse
                  */
@@ -5350,21 +5350,21 @@ export namespace enfonica {
             namespace Transcriptions {
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#getTranscription}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions|getTranscription}.
                  * @param error Error, if any
                  * @param [response] Transcription
                  */
                 type GetTranscriptionCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.Transcription) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#listTranscriptions}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions|listTranscriptions}.
                  * @param error Error, if any
                  * @param [response] ListTranscriptionsResponse
                  */
                 type ListTranscriptionsCallback = (error: (Error|null), response?: enfonica.voice.v1beta1.ListTranscriptionsResponse) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions#deleteTranscription}.
+                 * Callback as used by {@link enfonica.voice.v1beta1.Transcriptions|deleteTranscription}.
                  * @param error Error, if any
                  * @param [response] Empty
                  */
@@ -8155,6 +8155,9 @@ export namespace google {
             /** FieldOptions lazy */
             lazy?: (boolean|null);
 
+            /** FieldOptions unverifiedLazy */
+            unverifiedLazy?: (boolean|null);
+
             /** FieldOptions deprecated */
             deprecated?: (boolean|null);
 
@@ -8191,6 +8194,9 @@ export namespace google {
 
             /** FieldOptions lazy. */
             public lazy: boolean;
+
+            /** FieldOptions unverifiedLazy. */
+            public unverifiedLazy: boolean;
 
             /** FieldOptions deprecated. */
             public deprecated: boolean;
@@ -9973,7 +9979,8 @@ export namespace google {
             OUTPUT_ONLY = 3,
             INPUT_ONLY = 4,
             IMMUTABLE = 5,
-            UNORDERED_LIST = 6
+            UNORDERED_LIST = 6,
+            NON_EMPTY_DEFAULT = 7
         }
 
         /** Properties of a ResourceDescriptor. */

@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -90,7 +90,7 @@
                     };
     
                     /**
-                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#createPhoneNumberInstance}.
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|createPhoneNumberInstance}.
                      * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @typedef CreatePhoneNumberInstanceCallback
                      * @type {function}
@@ -123,7 +123,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#getPhoneNumberInstance}.
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|getPhoneNumberInstance}.
                      * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @typedef GetPhoneNumberInstanceCallback
                      * @type {function}
@@ -156,7 +156,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#listPhoneNumberInstances}.
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|listPhoneNumberInstances}.
                      * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @typedef ListPhoneNumberInstancesCallback
                      * @type {function}
@@ -189,7 +189,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#updatePhoneNumberInstance}.
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|updatePhoneNumberInstance}.
                      * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @typedef UpdatePhoneNumberInstanceCallback
                      * @type {function}
@@ -222,7 +222,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#deletePhoneNumberInstance}.
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|deletePhoneNumberInstance}.
                      * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
                      * @typedef DeletePhoneNumberInstanceCallback
                      * @type {function}
@@ -254,6 +254,72 @@
                      * @variation 2
                      */
     
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|movePhoneNumberInstance}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @typedef MovePhoneNumberInstanceCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstance} [response] PhoneNumberInstance
+                     */
+    
+                    /**
+                     * Calls MovePhoneNumberInstance.
+                     * @function movePhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest} request MovePhoneNumberInstanceRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstances.MovePhoneNumberInstanceCallback} callback Node-style callback called with the error, if any, and PhoneNumberInstance
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumberInstances.prototype.movePhoneNumberInstance = function movePhoneNumberInstance(request, callback) {
+                        return this.rpcCall(movePhoneNumberInstance, $root.enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest, $root.enfonica.numbering.v1beta1.PhoneNumberInstance, request, callback);
+                    }, "name", { value: "MovePhoneNumberInstance" });
+    
+                    /**
+                     * Calls MovePhoneNumberInstance.
+                     * @function movePhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest} request MovePhoneNumberInstanceRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|splitRange}.
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @typedef SplitRangeCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.SplitRangeResponse} [response] SplitRangeResponse
+                     */
+    
+                    /**
+                     * Calls SplitRange.
+                     * @function splitRange
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeRequest} request SplitRangeRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberInstances.SplitRangeCallback} callback Node-style callback called with the error, if any, and SplitRangeResponse
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(PhoneNumberInstances.prototype.splitRange = function splitRange(request, callback) {
+                        return this.rpcCall(splitRange, $root.enfonica.numbering.v1beta1.SplitRangeRequest, $root.enfonica.numbering.v1beta1.SplitRangeResponse, request, callback);
+                    }, "name", { value: "SplitRange" });
+    
+                    /**
+                     * Calls SplitRange.
+                     * @function splitRange
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstances
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeRequest} request SplitRangeRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.SplitRangeResponse>} Promise
+                     * @variation 2
+                     */
+    
                     return PhoneNumberInstances;
                 })();
     
@@ -274,6 +340,9 @@
                      * @property {google.protobuf.ITimestamp|null} [deleteTime] PhoneNumberInstance deleteTime
                      * @property {google.protobuf.ITimestamp|null} [activateTime] PhoneNumberInstance activateTime
                      * @property {enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|null} [lifecycleState] PhoneNumberInstance lifecycleState
+                     * @property {enfonica.numbering.v1beta1.IPhoneNumberRange|null} [range] PhoneNumberInstance range
+                     * @property {string|null} [regulatoryListing] PhoneNumberInstance regulatoryListing
+                     * @property {boolean|null} [compliant] PhoneNumberInstance compliant
                      */
     
                     /**
@@ -383,6 +452,30 @@
                     PhoneNumberInstance.prototype.lifecycleState = 0;
     
                     /**
+                     * PhoneNumberInstance range.
+                     * @member {enfonica.numbering.v1beta1.IPhoneNumberRange|null|undefined} range
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
+                     * @instance
+                     */
+                    PhoneNumberInstance.prototype.range = null;
+    
+                    /**
+                     * PhoneNumberInstance regulatoryListing.
+                     * @member {string} regulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
+                     * @instance
+                     */
+                    PhoneNumberInstance.prototype.regulatoryListing = "";
+    
+                    /**
+                     * PhoneNumberInstance compliant.
+                     * @member {boolean} compliant
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
+                     * @instance
+                     */
+                    PhoneNumberInstance.prototype.compliant = false;
+    
+                    /**
                      * Creates a new PhoneNumberInstance instance using the specified properties.
                      * @function create
                      * @memberof enfonica.numbering.v1beta1.PhoneNumberInstance
@@ -431,6 +524,12 @@
                             writer.uint32(/* id 12, wireType 0 =*/96).int32(message.lifecycleState);
                         if (message.activateTime != null && Object.hasOwnProperty.call(message, "activateTime"))
                             $root.google.protobuf.Timestamp.encode(message.activateTime, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
+                        if (message.range != null && Object.hasOwnProperty.call(message, "range"))
+                            $root.enfonica.numbering.v1beta1.PhoneNumberRange.encode(message.range, writer.uint32(/* id 14, wireType 2 =*/114).fork()).ldelim();
+                        if (message.regulatoryListing != null && Object.hasOwnProperty.call(message, "regulatoryListing"))
+                            writer.uint32(/* id 15, wireType 2 =*/122).string(message.regulatoryListing);
+                        if (message.compliant != null && Object.hasOwnProperty.call(message, "compliant"))
+                            writer.uint32(/* id 16, wireType 0 =*/128).bool(message.compliant);
                         return writer;
                     };
     
@@ -520,6 +619,15 @@
                                 break;
                             case 12:
                                 message.lifecycleState = reader.int32();
+                                break;
+                            case 14:
+                                message.range = $root.enfonica.numbering.v1beta1.PhoneNumberRange.decode(reader, reader.uint32());
+                                break;
+                            case 15:
+                                message.regulatoryListing = reader.string();
+                                break;
+                            case 16:
+                                message.compliant = reader.bool();
                                 break;
                             default:
                                 reader.skipType(tag & 7);
@@ -625,6 +733,17 @@
                             case 4:
                                 break;
                             }
+                        if (message.range != null && message.hasOwnProperty("range")) {
+                            var error = $root.enfonica.numbering.v1beta1.PhoneNumberRange.verify(message.range);
+                            if (error)
+                                return "range." + error;
+                        }
+                        if (message.regulatoryListing != null && message.hasOwnProperty("regulatoryListing"))
+                            if (!$util.isString(message.regulatoryListing))
+                                return "regulatoryListing: string expected";
+                        if (message.compliant != null && message.hasOwnProperty("compliant"))
+                            if (typeof message.compliant !== "boolean")
+                                return "compliant: boolean expected";
                         return null;
                     };
     
@@ -725,6 +844,15 @@
                             message.lifecycleState = 4;
                             break;
                         }
+                        if (object.range != null) {
+                            if (typeof object.range !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.PhoneNumberInstance.range: object expected");
+                            message.range = $root.enfonica.numbering.v1beta1.PhoneNumberRange.fromObject(object.range);
+                        }
+                        if (object.regulatoryListing != null)
+                            message.regulatoryListing = String(object.regulatoryListing);
+                        if (object.compliant != null)
+                            message.compliant = Boolean(object.compliant);
                         return message;
                     };
     
@@ -756,6 +884,9 @@
                             object.deleteTime = null;
                             object.lifecycleState = options.enums === String ? "LIFECYCLE_STATE_UNSPECIFIED" : 0;
                             object.activateTime = null;
+                            object.range = null;
+                            object.regulatoryListing = "";
+                            object.compliant = false;
                         }
                         if (message.name != null && message.hasOwnProperty("name"))
                             object.name = message.name;
@@ -789,6 +920,12 @@
                             object.lifecycleState = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState[message.lifecycleState] : message.lifecycleState;
                         if (message.activateTime != null && message.hasOwnProperty("activateTime"))
                             object.activateTime = $root.google.protobuf.Timestamp.toObject(message.activateTime, options);
+                        if (message.range != null && message.hasOwnProperty("range"))
+                            object.range = $root.enfonica.numbering.v1beta1.PhoneNumberRange.toObject(message.range, options);
+                        if (message.regulatoryListing != null && message.hasOwnProperty("regulatoryListing"))
+                            object.regulatoryListing = message.regulatoryListing;
+                        if (message.compliant != null && message.hasOwnProperty("compliant"))
+                            object.compliant = message.compliant;
                         return object;
                     };
     
@@ -842,6 +979,260 @@
                     })();
     
                     return PhoneNumberInstance;
+                })();
+    
+                v1beta1.PhoneNumberRange = (function() {
+    
+                    /**
+                     * Properties of a PhoneNumberRange.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IPhoneNumberRange
+                     * @property {string|null} [primaryPhoneNumberInstance] PhoneNumberRange primaryPhoneNumberInstance
+                     * @property {string|null} [startPhoneNumber] PhoneNumberRange startPhoneNumber
+                     * @property {string|null} [endPhoneNumber] PhoneNumberRange endPhoneNumber
+                     * @property {number|null} [size] PhoneNumberRange size
+                     */
+    
+                    /**
+                     * Constructs a new PhoneNumberRange.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a PhoneNumberRange.
+                     * @implements IPhoneNumberRange
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumberRange=} [properties] Properties to set
+                     */
+                    function PhoneNumberRange(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * PhoneNumberRange primaryPhoneNumberInstance.
+                     * @member {string} primaryPhoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @instance
+                     */
+                    PhoneNumberRange.prototype.primaryPhoneNumberInstance = "";
+    
+                    /**
+                     * PhoneNumberRange startPhoneNumber.
+                     * @member {string} startPhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @instance
+                     */
+                    PhoneNumberRange.prototype.startPhoneNumber = "";
+    
+                    /**
+                     * PhoneNumberRange endPhoneNumber.
+                     * @member {string} endPhoneNumber
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @instance
+                     */
+                    PhoneNumberRange.prototype.endPhoneNumber = "";
+    
+                    /**
+                     * PhoneNumberRange size.
+                     * @member {number} size
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @instance
+                     */
+                    PhoneNumberRange.prototype.size = 0;
+    
+                    /**
+                     * Creates a new PhoneNumberRange instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumberRange=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumberRange} PhoneNumberRange instance
+                     */
+                    PhoneNumberRange.create = function create(properties) {
+                        return new PhoneNumberRange(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified PhoneNumberRange message. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumberRange.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumberRange} message PhoneNumberRange message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    PhoneNumberRange.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.primaryPhoneNumberInstance != null && Object.hasOwnProperty.call(message, "primaryPhoneNumberInstance"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.primaryPhoneNumberInstance);
+                        if (message.startPhoneNumber != null && Object.hasOwnProperty.call(message, "startPhoneNumber"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.startPhoneNumber);
+                        if (message.endPhoneNumber != null && Object.hasOwnProperty.call(message, "endPhoneNumber"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.endPhoneNumber);
+                        if (message.size != null && Object.hasOwnProperty.call(message, "size"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).int32(message.size);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified PhoneNumberRange message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumberRange.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPhoneNumberRange} message PhoneNumberRange message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    PhoneNumberRange.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a PhoneNumberRange message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumberRange} PhoneNumberRange
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    PhoneNumberRange.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.PhoneNumberRange();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.primaryPhoneNumberInstance = reader.string();
+                                break;
+                            case 2:
+                                message.startPhoneNumber = reader.string();
+                                break;
+                            case 3:
+                                message.endPhoneNumber = reader.string();
+                                break;
+                            case 4:
+                                message.size = reader.int32();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a PhoneNumberRange message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumberRange} PhoneNumberRange
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    PhoneNumberRange.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a PhoneNumberRange message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    PhoneNumberRange.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.primaryPhoneNumberInstance != null && message.hasOwnProperty("primaryPhoneNumberInstance"))
+                            if (!$util.isString(message.primaryPhoneNumberInstance))
+                                return "primaryPhoneNumberInstance: string expected";
+                        if (message.startPhoneNumber != null && message.hasOwnProperty("startPhoneNumber"))
+                            if (!$util.isString(message.startPhoneNumber))
+                                return "startPhoneNumber: string expected";
+                        if (message.endPhoneNumber != null && message.hasOwnProperty("endPhoneNumber"))
+                            if (!$util.isString(message.endPhoneNumber))
+                                return "endPhoneNumber: string expected";
+                        if (message.size != null && message.hasOwnProperty("size"))
+                            if (!$util.isInteger(message.size))
+                                return "size: integer expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a PhoneNumberRange message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.PhoneNumberRange} PhoneNumberRange
+                     */
+                    PhoneNumberRange.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.PhoneNumberRange)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.PhoneNumberRange();
+                        if (object.primaryPhoneNumberInstance != null)
+                            message.primaryPhoneNumberInstance = String(object.primaryPhoneNumberInstance);
+                        if (object.startPhoneNumber != null)
+                            message.startPhoneNumber = String(object.startPhoneNumber);
+                        if (object.endPhoneNumber != null)
+                            message.endPhoneNumber = String(object.endPhoneNumber);
+                        if (object.size != null)
+                            message.size = object.size | 0;
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a PhoneNumberRange message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.PhoneNumberRange} message PhoneNumberRange
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    PhoneNumberRange.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.primaryPhoneNumberInstance = "";
+                            object.startPhoneNumber = "";
+                            object.endPhoneNumber = "";
+                            object.size = 0;
+                        }
+                        if (message.primaryPhoneNumberInstance != null && message.hasOwnProperty("primaryPhoneNumberInstance"))
+                            object.primaryPhoneNumberInstance = message.primaryPhoneNumberInstance;
+                        if (message.startPhoneNumber != null && message.hasOwnProperty("startPhoneNumber"))
+                            object.startPhoneNumber = message.startPhoneNumber;
+                        if (message.endPhoneNumber != null && message.hasOwnProperty("endPhoneNumber"))
+                            object.endPhoneNumber = message.endPhoneNumber;
+                        if (message.size != null && message.hasOwnProperty("size"))
+                            object.size = message.size;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this PhoneNumberRange to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.PhoneNumberRange
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    PhoneNumberRange.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return PhoneNumberRange;
                 })();
     
                 v1beta1.CreatePhoneNumberInstanceRequest = (function() {
@@ -2182,6 +2573,668 @@
                     return DeletePhoneNumberInstanceRequest;
                 })();
     
+                v1beta1.MovePhoneNumberInstanceRequest = (function() {
+    
+                    /**
+                     * Properties of a MovePhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IMovePhoneNumberInstanceRequest
+                     * @property {string|null} [name] MovePhoneNumberInstanceRequest name
+                     * @property {string|null} [destinationParent] MovePhoneNumberInstanceRequest destinationParent
+                     * @property {string|null} [regulatoryListing] MovePhoneNumberInstanceRequest regulatoryListing
+                     */
+    
+                    /**
+                     * Constructs a new MovePhoneNumberInstanceRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a MovePhoneNumberInstanceRequest.
+                     * @implements IMovePhoneNumberInstanceRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest=} [properties] Properties to set
+                     */
+                    function MovePhoneNumberInstanceRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * MovePhoneNumberInstanceRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @instance
+                     */
+                    MovePhoneNumberInstanceRequest.prototype.name = "";
+    
+                    /**
+                     * MovePhoneNumberInstanceRequest destinationParent.
+                     * @member {string} destinationParent
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @instance
+                     */
+                    MovePhoneNumberInstanceRequest.prototype.destinationParent = "";
+    
+                    /**
+                     * MovePhoneNumberInstanceRequest regulatoryListing.
+                     * @member {string} regulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @instance
+                     */
+                    MovePhoneNumberInstanceRequest.prototype.regulatoryListing = "";
+    
+                    /**
+                     * Creates a new MovePhoneNumberInstanceRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest} MovePhoneNumberInstanceRequest instance
+                     */
+                    MovePhoneNumberInstanceRequest.create = function create(properties) {
+                        return new MovePhoneNumberInstanceRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified MovePhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest} message MovePhoneNumberInstanceRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    MovePhoneNumberInstanceRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.destinationParent != null && Object.hasOwnProperty.call(message, "destinationParent"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.destinationParent);
+                        if (message.regulatoryListing != null && Object.hasOwnProperty.call(message, "regulatoryListing"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.regulatoryListing);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified MovePhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest} message MovePhoneNumberInstanceRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    MovePhoneNumberInstanceRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a MovePhoneNumberInstanceRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest} MovePhoneNumberInstanceRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    MovePhoneNumberInstanceRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.destinationParent = reader.string();
+                                break;
+                            case 3:
+                                message.regulatoryListing = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a MovePhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest} MovePhoneNumberInstanceRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    MovePhoneNumberInstanceRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a MovePhoneNumberInstanceRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    MovePhoneNumberInstanceRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.destinationParent != null && message.hasOwnProperty("destinationParent"))
+                            if (!$util.isString(message.destinationParent))
+                                return "destinationParent: string expected";
+                        if (message.regulatoryListing != null && message.hasOwnProperty("regulatoryListing"))
+                            if (!$util.isString(message.regulatoryListing))
+                                return "regulatoryListing: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a MovePhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest} MovePhoneNumberInstanceRequest
+                     */
+                    MovePhoneNumberInstanceRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.destinationParent != null)
+                            message.destinationParent = String(object.destinationParent);
+                        if (object.regulatoryListing != null)
+                            message.regulatoryListing = String(object.regulatoryListing);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a MovePhoneNumberInstanceRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest} message MovePhoneNumberInstanceRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    MovePhoneNumberInstanceRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.name = "";
+                            object.destinationParent = "";
+                            object.regulatoryListing = "";
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.destinationParent != null && message.hasOwnProperty("destinationParent"))
+                            object.destinationParent = message.destinationParent;
+                        if (message.regulatoryListing != null && message.hasOwnProperty("regulatoryListing"))
+                            object.regulatoryListing = message.regulatoryListing;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this MovePhoneNumberInstanceRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    MovePhoneNumberInstanceRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return MovePhoneNumberInstanceRequest;
+                })();
+    
+                v1beta1.SplitRangeRequest = (function() {
+    
+                    /**
+                     * Properties of a SplitRangeRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ISplitRangeRequest
+                     * @property {string|null} [phoneNumberInstance] SplitRangeRequest phoneNumberInstance
+                     * @property {number|null} [size] SplitRangeRequest size
+                     */
+    
+                    /**
+                     * Constructs a new SplitRangeRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a SplitRangeRequest.
+                     * @implements ISplitRangeRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeRequest=} [properties] Properties to set
+                     */
+                    function SplitRangeRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SplitRangeRequest phoneNumberInstance.
+                     * @member {string} phoneNumberInstance
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @instance
+                     */
+                    SplitRangeRequest.prototype.phoneNumberInstance = "";
+    
+                    /**
+                     * SplitRangeRequest size.
+                     * @member {number} size
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @instance
+                     */
+                    SplitRangeRequest.prototype.size = 0;
+    
+                    /**
+                     * Creates a new SplitRangeRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.SplitRangeRequest} SplitRangeRequest instance
+                     */
+                    SplitRangeRequest.create = function create(properties) {
+                        return new SplitRangeRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SplitRangeRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.SplitRangeRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeRequest} message SplitRangeRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SplitRangeRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.phoneNumberInstance != null && Object.hasOwnProperty.call(message, "phoneNumberInstance"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.phoneNumberInstance);
+                        if (message.size != null && Object.hasOwnProperty.call(message, "size"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.size);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SplitRangeRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SplitRangeRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeRequest} message SplitRangeRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SplitRangeRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SplitRangeRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.SplitRangeRequest} SplitRangeRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SplitRangeRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.SplitRangeRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.phoneNumberInstance = reader.string();
+                                break;
+                            case 2:
+                                message.size = reader.int32();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SplitRangeRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.SplitRangeRequest} SplitRangeRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SplitRangeRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SplitRangeRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SplitRangeRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.phoneNumberInstance != null && message.hasOwnProperty("phoneNumberInstance"))
+                            if (!$util.isString(message.phoneNumberInstance))
+                                return "phoneNumberInstance: string expected";
+                        if (message.size != null && message.hasOwnProperty("size"))
+                            if (!$util.isInteger(message.size))
+                                return "size: integer expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SplitRangeRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.SplitRangeRequest} SplitRangeRequest
+                     */
+                    SplitRangeRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.SplitRangeRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.SplitRangeRequest();
+                        if (object.phoneNumberInstance != null)
+                            message.phoneNumberInstance = String(object.phoneNumberInstance);
+                        if (object.size != null)
+                            message.size = object.size | 0;
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SplitRangeRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.SplitRangeRequest} message SplitRangeRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SplitRangeRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.phoneNumberInstance = "";
+                            object.size = 0;
+                        }
+                        if (message.phoneNumberInstance != null && message.hasOwnProperty("phoneNumberInstance"))
+                            object.phoneNumberInstance = message.phoneNumberInstance;
+                        if (message.size != null && message.hasOwnProperty("size"))
+                            object.size = message.size;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SplitRangeRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SplitRangeRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return SplitRangeRequest;
+                })();
+    
+                v1beta1.SplitRangeResponse = (function() {
+    
+                    /**
+                     * Properties of a SplitRangeResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ISplitRangeResponse
+                     * @property {enfonica.numbering.v1beta1.IPhoneNumberInstance|null} [first] SplitRangeResponse first
+                     * @property {enfonica.numbering.v1beta1.IPhoneNumberInstance|null} [second] SplitRangeResponse second
+                     */
+    
+                    /**
+                     * Constructs a new SplitRangeResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a SplitRangeResponse.
+                     * @implements ISplitRangeResponse
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeResponse=} [properties] Properties to set
+                     */
+                    function SplitRangeResponse(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SplitRangeResponse first.
+                     * @member {enfonica.numbering.v1beta1.IPhoneNumberInstance|null|undefined} first
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @instance
+                     */
+                    SplitRangeResponse.prototype.first = null;
+    
+                    /**
+                     * SplitRangeResponse second.
+                     * @member {enfonica.numbering.v1beta1.IPhoneNumberInstance|null|undefined} second
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @instance
+                     */
+                    SplitRangeResponse.prototype.second = null;
+    
+                    /**
+                     * Creates a new SplitRangeResponse instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeResponse=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.SplitRangeResponse} SplitRangeResponse instance
+                     */
+                    SplitRangeResponse.create = function create(properties) {
+                        return new SplitRangeResponse(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SplitRangeResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.SplitRangeResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeResponse} message SplitRangeResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SplitRangeResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.first != null && Object.hasOwnProperty.call(message, "first"))
+                            $root.enfonica.numbering.v1beta1.PhoneNumberInstance.encode(message.first, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.second != null && Object.hasOwnProperty.call(message, "second"))
+                            $root.enfonica.numbering.v1beta1.PhoneNumberInstance.encode(message.second, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SplitRangeResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SplitRangeResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISplitRangeResponse} message SplitRangeResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SplitRangeResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SplitRangeResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.SplitRangeResponse} SplitRangeResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SplitRangeResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.SplitRangeResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.first = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.decode(reader, reader.uint32());
+                                break;
+                            case 2:
+                                message.second = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SplitRangeResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.SplitRangeResponse} SplitRangeResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SplitRangeResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SplitRangeResponse message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SplitRangeResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.first != null && message.hasOwnProperty("first")) {
+                            var error = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.verify(message.first);
+                            if (error)
+                                return "first." + error;
+                        }
+                        if (message.second != null && message.hasOwnProperty("second")) {
+                            var error = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.verify(message.second);
+                            if (error)
+                                return "second." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SplitRangeResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.SplitRangeResponse} SplitRangeResponse
+                     */
+                    SplitRangeResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.SplitRangeResponse)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.SplitRangeResponse();
+                        if (object.first != null) {
+                            if (typeof object.first !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.SplitRangeResponse.first: object expected");
+                            message.first = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.fromObject(object.first);
+                        }
+                        if (object.second != null) {
+                            if (typeof object.second !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.SplitRangeResponse.second: object expected");
+                            message.second = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.fromObject(object.second);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SplitRangeResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.SplitRangeResponse} message SplitRangeResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SplitRangeResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.first = null;
+                            object.second = null;
+                        }
+                        if (message.first != null && message.hasOwnProperty("first"))
+                            object.first = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.toObject(message.first, options);
+                        if (message.second != null && message.hasOwnProperty("second"))
+                            object.second = $root.enfonica.numbering.v1beta1.PhoneNumberInstance.toObject(message.second, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SplitRangeResponse to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.SplitRangeResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SplitRangeResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return SplitRangeResponse;
+                })();
+    
                 v1beta1.PhoneNumbers = (function() {
     
                     /**
@@ -2215,7 +3268,7 @@
                     };
     
                     /**
-                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#searchPhoneNumbers}.
+                     * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers|searchPhoneNumbers}.
                      * @memberof enfonica.numbering.v1beta1.PhoneNumbers
                      * @typedef SearchPhoneNumbersCallback
                      * @type {function}
@@ -3297,6 +4350,3130 @@
                     };
     
                     return SearchPhoneNumbersResponse;
+                })();
+    
+                v1beta1.RegulatoryListings = (function() {
+    
+                    /**
+                     * Constructs a new RegulatoryListings service.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a RegulatoryListings
+                     * @extends $protobuf.rpc.Service
+                     * @constructor
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     */
+                    function RegulatoryListings(rpcImpl, requestDelimited, responseDelimited) {
+                        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+                    }
+    
+                    (RegulatoryListings.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = RegulatoryListings;
+    
+                    /**
+                     * Creates new RegulatoryListings service using the specified rpc implementation.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @static
+                     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+                     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+                     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+                     * @returns {RegulatoryListings} RPC service. Useful where requests and/or responses are streamed.
+                     */
+                    RegulatoryListings.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+                        return new this(rpcImpl, requestDelimited, responseDelimited);
+                    };
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|createRegulatoryListing}.
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @typedef CreateRegulatoryListingCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListing} [response] RegulatoryListing
+                     */
+    
+                    /**
+                     * Calls CreateRegulatoryListing.
+                     * @function createRegulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest} request CreateRegulatoryListingRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListings.CreateRegulatoryListingCallback} callback Node-style callback called with the error, if any, and RegulatoryListing
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(RegulatoryListings.prototype.createRegulatoryListing = function createRegulatoryListing(request, callback) {
+                        return this.rpcCall(createRegulatoryListing, $root.enfonica.numbering.v1beta1.CreateRegulatoryListingRequest, $root.enfonica.numbering.v1beta1.RegulatoryListing, request, callback);
+                    }, "name", { value: "CreateRegulatoryListing" });
+    
+                    /**
+                     * Calls CreateRegulatoryListing.
+                     * @function createRegulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest} request CreateRegulatoryListingRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.RegulatoryListing>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|getRegulatoryListing}.
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @typedef GetRegulatoryListingCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListing} [response] RegulatoryListing
+                     */
+    
+                    /**
+                     * Calls GetRegulatoryListing.
+                     * @function getRegulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IGetRegulatoryListingRequest} request GetRegulatoryListingRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListings.GetRegulatoryListingCallback} callback Node-style callback called with the error, if any, and RegulatoryListing
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(RegulatoryListings.prototype.getRegulatoryListing = function getRegulatoryListing(request, callback) {
+                        return this.rpcCall(getRegulatoryListing, $root.enfonica.numbering.v1beta1.GetRegulatoryListingRequest, $root.enfonica.numbering.v1beta1.RegulatoryListing, request, callback);
+                    }, "name", { value: "GetRegulatoryListing" });
+    
+                    /**
+                     * Calls GetRegulatoryListing.
+                     * @function getRegulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IGetRegulatoryListingRequest} request GetRegulatoryListingRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.RegulatoryListing>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|listRegulatoryListings}.
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @typedef ListRegulatoryListingsCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.ListRegulatoryListingsResponse} [response] ListRegulatoryListingsResponse
+                     */
+    
+                    /**
+                     * Calls ListRegulatoryListings.
+                     * @function listRegulatoryListings
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsRequest} request ListRegulatoryListingsRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListings.ListRegulatoryListingsCallback} callback Node-style callback called with the error, if any, and ListRegulatoryListingsResponse
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(RegulatoryListings.prototype.listRegulatoryListings = function listRegulatoryListings(request, callback) {
+                        return this.rpcCall(listRegulatoryListings, $root.enfonica.numbering.v1beta1.ListRegulatoryListingsRequest, $root.enfonica.numbering.v1beta1.ListRegulatoryListingsResponse, request, callback);
+                    }, "name", { value: "ListRegulatoryListings" });
+    
+                    /**
+                     * Calls ListRegulatoryListings.
+                     * @function listRegulatoryListings
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsRequest} request ListRegulatoryListingsRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.ListRegulatoryListingsResponse>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|updateRegulatoryListing}.
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @typedef UpdateRegulatoryListingCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListing} [response] RegulatoryListing
+                     */
+    
+                    /**
+                     * Calls UpdateRegulatoryListing.
+                     * @function updateRegulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest} request UpdateRegulatoryListingRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListings.UpdateRegulatoryListingCallback} callback Node-style callback called with the error, if any, and RegulatoryListing
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(RegulatoryListings.prototype.updateRegulatoryListing = function updateRegulatoryListing(request, callback) {
+                        return this.rpcCall(updateRegulatoryListing, $root.enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest, $root.enfonica.numbering.v1beta1.RegulatoryListing, request, callback);
+                    }, "name", { value: "UpdateRegulatoryListing" });
+    
+                    /**
+                     * Calls UpdateRegulatoryListing.
+                     * @function updateRegulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest} request UpdateRegulatoryListingRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.RegulatoryListing>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|deleteRegulatoryListing}.
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @typedef DeleteRegulatoryListingCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {google.protobuf.Empty} [response] Empty
+                     */
+    
+                    /**
+                     * Calls DeleteRegulatoryListing.
+                     * @function deleteRegulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest} request DeleteRegulatoryListingRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListings.DeleteRegulatoryListingCallback} callback Node-style callback called with the error, if any, and Empty
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(RegulatoryListings.prototype.deleteRegulatoryListing = function deleteRegulatoryListing(request, callback) {
+                        return this.rpcCall(deleteRegulatoryListing, $root.enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest, $root.google.protobuf.Empty, request, callback);
+                    }, "name", { value: "DeleteRegulatoryListing" });
+    
+                    /**
+                     * Calls DeleteRegulatoryListing.
+                     * @function deleteRegulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest} request DeleteRegulatoryListingRequest message or plain object
+                     * @returns {Promise<google.protobuf.Empty>} Promise
+                     * @variation 2
+                     */
+    
+                    /**
+                     * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|searchRegulatoryListings}.
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @typedef SearchRegulatoryListingsCallback
+                     * @type {function}
+                     * @param {Error|null} error Error, if any
+                     * @param {enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse} [response] SearchRegulatoryListingsResponse
+                     */
+    
+                    /**
+                     * Calls SearchRegulatoryListings.
+                     * @function searchRegulatoryListings
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest} request SearchRegulatoryListingsRequest message or plain object
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListings.SearchRegulatoryListingsCallback} callback Node-style callback called with the error, if any, and SearchRegulatoryListingsResponse
+                     * @returns {undefined}
+                     * @variation 1
+                     */
+                    Object.defineProperty(RegulatoryListings.prototype.searchRegulatoryListings = function searchRegulatoryListings(request, callback) {
+                        return this.rpcCall(searchRegulatoryListings, $root.enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest, $root.enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse, request, callback);
+                    }, "name", { value: "SearchRegulatoryListings" });
+    
+                    /**
+                     * Calls SearchRegulatoryListings.
+                     * @function searchRegulatoryListings
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListings
+                     * @instance
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest} request SearchRegulatoryListingsRequest message or plain object
+                     * @returns {Promise<enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse>} Promise
+                     * @variation 2
+                     */
+    
+                    return RegulatoryListings;
+                })();
+    
+                v1beta1.RegulatoryListing = (function() {
+    
+                    /**
+                     * Properties of a RegulatoryListing.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IRegulatoryListing
+                     * @property {string|null} [name] RegulatoryListing name
+                     * @property {string|null} [displayName] RegulatoryListing displayName
+                     * @property {enfonica.numbering.v1beta1.IGenericAddress|null} [address] RegulatoryListing address
+                     * @property {enfonica.numbering.v1beta1.IPersonDetails|null} [person] RegulatoryListing person
+                     * @property {enfonica.numbering.v1beta1.IBusinessDetails|null} [business] RegulatoryListing business
+                     * @property {google.protobuf.ITimestamp|null} [createTime] RegulatoryListing createTime
+                     * @property {boolean|null} [valid] RegulatoryListing valid
+                     * @property {boolean|null} [verified] RegulatoryListing verified
+                     */
+    
+                    /**
+                     * Constructs a new RegulatoryListing.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a RegulatoryListing.
+                     * @implements IRegulatoryListing
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IRegulatoryListing=} [properties] Properties to set
+                     */
+                    function RegulatoryListing(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * RegulatoryListing name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    RegulatoryListing.prototype.name = "";
+    
+                    /**
+                     * RegulatoryListing displayName.
+                     * @member {string} displayName
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    RegulatoryListing.prototype.displayName = "";
+    
+                    /**
+                     * RegulatoryListing address.
+                     * @member {enfonica.numbering.v1beta1.IGenericAddress|null|undefined} address
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    RegulatoryListing.prototype.address = null;
+    
+                    /**
+                     * RegulatoryListing person.
+                     * @member {enfonica.numbering.v1beta1.IPersonDetails|null|undefined} person
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    RegulatoryListing.prototype.person = null;
+    
+                    /**
+                     * RegulatoryListing business.
+                     * @member {enfonica.numbering.v1beta1.IBusinessDetails|null|undefined} business
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    RegulatoryListing.prototype.business = null;
+    
+                    /**
+                     * RegulatoryListing createTime.
+                     * @member {google.protobuf.ITimestamp|null|undefined} createTime
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    RegulatoryListing.prototype.createTime = null;
+    
+                    /**
+                     * RegulatoryListing valid.
+                     * @member {boolean} valid
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    RegulatoryListing.prototype.valid = false;
+    
+                    /**
+                     * RegulatoryListing verified.
+                     * @member {boolean} verified
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    RegulatoryListing.prototype.verified = false;
+    
+                    // OneOf field names bound to virtual getters and setters
+                    var $oneOfFields;
+    
+                    /**
+                     * RegulatoryListing entity.
+                     * @member {"person"|"business"|undefined} entity
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     */
+                    Object.defineProperty(RegulatoryListing.prototype, "entity", {
+                        get: $util.oneOfGetter($oneOfFields = ["person", "business"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+    
+                    /**
+                     * Creates a new RegulatoryListing instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IRegulatoryListing=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.RegulatoryListing} RegulatoryListing instance
+                     */
+                    RegulatoryListing.create = function create(properties) {
+                        return new RegulatoryListing(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified RegulatoryListing message. Does not implicitly {@link enfonica.numbering.v1beta1.RegulatoryListing.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IRegulatoryListing} message RegulatoryListing message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    RegulatoryListing.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        if (message.displayName != null && Object.hasOwnProperty.call(message, "displayName"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.displayName);
+                        if (message.address != null && Object.hasOwnProperty.call(message, "address"))
+                            $root.enfonica.numbering.v1beta1.GenericAddress.encode(message.address, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                        if (message.person != null && Object.hasOwnProperty.call(message, "person"))
+                            $root.enfonica.numbering.v1beta1.PersonDetails.encode(message.person, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                        if (message.business != null && Object.hasOwnProperty.call(message, "business"))
+                            $root.enfonica.numbering.v1beta1.BusinessDetails.encode(message.business, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                        if (message.createTime != null && Object.hasOwnProperty.call(message, "createTime"))
+                            $root.google.protobuf.Timestamp.encode(message.createTime, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+                        if (message.valid != null && Object.hasOwnProperty.call(message, "valid"))
+                            writer.uint32(/* id 7, wireType 0 =*/56).bool(message.valid);
+                        if (message.verified != null && Object.hasOwnProperty.call(message, "verified"))
+                            writer.uint32(/* id 8, wireType 0 =*/64).bool(message.verified);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified RegulatoryListing message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.RegulatoryListing.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IRegulatoryListing} message RegulatoryListing message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    RegulatoryListing.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a RegulatoryListing message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.RegulatoryListing} RegulatoryListing
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    RegulatoryListing.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.RegulatoryListing();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            case 2:
+                                message.displayName = reader.string();
+                                break;
+                            case 3:
+                                message.address = $root.enfonica.numbering.v1beta1.GenericAddress.decode(reader, reader.uint32());
+                                break;
+                            case 4:
+                                message.person = $root.enfonica.numbering.v1beta1.PersonDetails.decode(reader, reader.uint32());
+                                break;
+                            case 5:
+                                message.business = $root.enfonica.numbering.v1beta1.BusinessDetails.decode(reader, reader.uint32());
+                                break;
+                            case 6:
+                                message.createTime = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                                break;
+                            case 7:
+                                message.valid = reader.bool();
+                                break;
+                            case 8:
+                                message.verified = reader.bool();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a RegulatoryListing message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.RegulatoryListing} RegulatoryListing
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    RegulatoryListing.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a RegulatoryListing message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    RegulatoryListing.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        var properties = {};
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            if (!$util.isString(message.displayName))
+                                return "displayName: string expected";
+                        if (message.address != null && message.hasOwnProperty("address")) {
+                            var error = $root.enfonica.numbering.v1beta1.GenericAddress.verify(message.address);
+                            if (error)
+                                return "address." + error;
+                        }
+                        if (message.person != null && message.hasOwnProperty("person")) {
+                            properties.entity = 1;
+                            {
+                                var error = $root.enfonica.numbering.v1beta1.PersonDetails.verify(message.person);
+                                if (error)
+                                    return "person." + error;
+                            }
+                        }
+                        if (message.business != null && message.hasOwnProperty("business")) {
+                            if (properties.entity === 1)
+                                return "entity: multiple values";
+                            properties.entity = 1;
+                            {
+                                var error = $root.enfonica.numbering.v1beta1.BusinessDetails.verify(message.business);
+                                if (error)
+                                    return "business." + error;
+                            }
+                        }
+                        if (message.createTime != null && message.hasOwnProperty("createTime")) {
+                            var error = $root.google.protobuf.Timestamp.verify(message.createTime);
+                            if (error)
+                                return "createTime." + error;
+                        }
+                        if (message.valid != null && message.hasOwnProperty("valid"))
+                            if (typeof message.valid !== "boolean")
+                                return "valid: boolean expected";
+                        if (message.verified != null && message.hasOwnProperty("verified"))
+                            if (typeof message.verified !== "boolean")
+                                return "verified: boolean expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a RegulatoryListing message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.RegulatoryListing} RegulatoryListing
+                     */
+                    RegulatoryListing.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.RegulatoryListing)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.RegulatoryListing();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        if (object.displayName != null)
+                            message.displayName = String(object.displayName);
+                        if (object.address != null) {
+                            if (typeof object.address !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.RegulatoryListing.address: object expected");
+                            message.address = $root.enfonica.numbering.v1beta1.GenericAddress.fromObject(object.address);
+                        }
+                        if (object.person != null) {
+                            if (typeof object.person !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.RegulatoryListing.person: object expected");
+                            message.person = $root.enfonica.numbering.v1beta1.PersonDetails.fromObject(object.person);
+                        }
+                        if (object.business != null) {
+                            if (typeof object.business !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.RegulatoryListing.business: object expected");
+                            message.business = $root.enfonica.numbering.v1beta1.BusinessDetails.fromObject(object.business);
+                        }
+                        if (object.createTime != null) {
+                            if (typeof object.createTime !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.RegulatoryListing.createTime: object expected");
+                            message.createTime = $root.google.protobuf.Timestamp.fromObject(object.createTime);
+                        }
+                        if (object.valid != null)
+                            message.valid = Boolean(object.valid);
+                        if (object.verified != null)
+                            message.verified = Boolean(object.verified);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a RegulatoryListing message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.RegulatoryListing} message RegulatoryListing
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    RegulatoryListing.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.name = "";
+                            object.displayName = "";
+                            object.address = null;
+                            object.createTime = null;
+                            object.valid = false;
+                            object.verified = false;
+                        }
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        if (message.displayName != null && message.hasOwnProperty("displayName"))
+                            object.displayName = message.displayName;
+                        if (message.address != null && message.hasOwnProperty("address"))
+                            object.address = $root.enfonica.numbering.v1beta1.GenericAddress.toObject(message.address, options);
+                        if (message.person != null && message.hasOwnProperty("person")) {
+                            object.person = $root.enfonica.numbering.v1beta1.PersonDetails.toObject(message.person, options);
+                            if (options.oneofs)
+                                object.entity = "person";
+                        }
+                        if (message.business != null && message.hasOwnProperty("business")) {
+                            object.business = $root.enfonica.numbering.v1beta1.BusinessDetails.toObject(message.business, options);
+                            if (options.oneofs)
+                                object.entity = "business";
+                        }
+                        if (message.createTime != null && message.hasOwnProperty("createTime"))
+                            object.createTime = $root.google.protobuf.Timestamp.toObject(message.createTime, options);
+                        if (message.valid != null && message.hasOwnProperty("valid"))
+                            object.valid = message.valid;
+                        if (message.verified != null && message.hasOwnProperty("verified"))
+                            object.verified = message.verified;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this RegulatoryListing to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.RegulatoryListing
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    RegulatoryListing.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return RegulatoryListing;
+                })();
+    
+                v1beta1.GenericAddress = (function() {
+    
+                    /**
+                     * Properties of a GenericAddress.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IGenericAddress
+                     * @property {Array.<string>|null} [addressLines] GenericAddress addressLines
+                     * @property {string|null} [locality] GenericAddress locality
+                     * @property {string|null} [administrativeArea] GenericAddress administrativeArea
+                     * @property {string|null} [postalCode] GenericAddress postalCode
+                     * @property {string|null} [regionCode] GenericAddress regionCode
+                     */
+    
+                    /**
+                     * Constructs a new GenericAddress.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a GenericAddress.
+                     * @implements IGenericAddress
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IGenericAddress=} [properties] Properties to set
+                     */
+                    function GenericAddress(properties) {
+                        this.addressLines = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * GenericAddress addressLines.
+                     * @member {Array.<string>} addressLines
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @instance
+                     */
+                    GenericAddress.prototype.addressLines = $util.emptyArray;
+    
+                    /**
+                     * GenericAddress locality.
+                     * @member {string} locality
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @instance
+                     */
+                    GenericAddress.prototype.locality = "";
+    
+                    /**
+                     * GenericAddress administrativeArea.
+                     * @member {string} administrativeArea
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @instance
+                     */
+                    GenericAddress.prototype.administrativeArea = "";
+    
+                    /**
+                     * GenericAddress postalCode.
+                     * @member {string} postalCode
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @instance
+                     */
+                    GenericAddress.prototype.postalCode = "";
+    
+                    /**
+                     * GenericAddress regionCode.
+                     * @member {string} regionCode
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @instance
+                     */
+                    GenericAddress.prototype.regionCode = "";
+    
+                    /**
+                     * Creates a new GenericAddress instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGenericAddress=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.GenericAddress} GenericAddress instance
+                     */
+                    GenericAddress.create = function create(properties) {
+                        return new GenericAddress(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified GenericAddress message. Does not implicitly {@link enfonica.numbering.v1beta1.GenericAddress.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGenericAddress} message GenericAddress message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GenericAddress.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.addressLines != null && message.addressLines.length)
+                            for (var i = 0; i < message.addressLines.length; ++i)
+                                writer.uint32(/* id 1, wireType 2 =*/10).string(message.addressLines[i]);
+                        if (message.locality != null && Object.hasOwnProperty.call(message, "locality"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.locality);
+                        if (message.postalCode != null && Object.hasOwnProperty.call(message, "postalCode"))
+                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.postalCode);
+                        if (message.regionCode != null && Object.hasOwnProperty.call(message, "regionCode"))
+                            writer.uint32(/* id 5, wireType 2 =*/42).string(message.regionCode);
+                        if (message.administrativeArea != null && Object.hasOwnProperty.call(message, "administrativeArea"))
+                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.administrativeArea);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified GenericAddress message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GenericAddress.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGenericAddress} message GenericAddress message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GenericAddress.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a GenericAddress message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.GenericAddress} GenericAddress
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GenericAddress.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.GenericAddress();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.addressLines && message.addressLines.length))
+                                    message.addressLines = [];
+                                message.addressLines.push(reader.string());
+                                break;
+                            case 2:
+                                message.locality = reader.string();
+                                break;
+                            case 6:
+                                message.administrativeArea = reader.string();
+                                break;
+                            case 4:
+                                message.postalCode = reader.string();
+                                break;
+                            case 5:
+                                message.regionCode = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a GenericAddress message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.GenericAddress} GenericAddress
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GenericAddress.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a GenericAddress message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    GenericAddress.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.addressLines != null && message.hasOwnProperty("addressLines")) {
+                            if (!Array.isArray(message.addressLines))
+                                return "addressLines: array expected";
+                            for (var i = 0; i < message.addressLines.length; ++i)
+                                if (!$util.isString(message.addressLines[i]))
+                                    return "addressLines: string[] expected";
+                        }
+                        if (message.locality != null && message.hasOwnProperty("locality"))
+                            if (!$util.isString(message.locality))
+                                return "locality: string expected";
+                        if (message.administrativeArea != null && message.hasOwnProperty("administrativeArea"))
+                            if (!$util.isString(message.administrativeArea))
+                                return "administrativeArea: string expected";
+                        if (message.postalCode != null && message.hasOwnProperty("postalCode"))
+                            if (!$util.isString(message.postalCode))
+                                return "postalCode: string expected";
+                        if (message.regionCode != null && message.hasOwnProperty("regionCode"))
+                            if (!$util.isString(message.regionCode))
+                                return "regionCode: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a GenericAddress message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.GenericAddress} GenericAddress
+                     */
+                    GenericAddress.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.GenericAddress)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.GenericAddress();
+                        if (object.addressLines) {
+                            if (!Array.isArray(object.addressLines))
+                                throw TypeError(".enfonica.numbering.v1beta1.GenericAddress.addressLines: array expected");
+                            message.addressLines = [];
+                            for (var i = 0; i < object.addressLines.length; ++i)
+                                message.addressLines[i] = String(object.addressLines[i]);
+                        }
+                        if (object.locality != null)
+                            message.locality = String(object.locality);
+                        if (object.administrativeArea != null)
+                            message.administrativeArea = String(object.administrativeArea);
+                        if (object.postalCode != null)
+                            message.postalCode = String(object.postalCode);
+                        if (object.regionCode != null)
+                            message.regionCode = String(object.regionCode);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a GenericAddress message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.GenericAddress} message GenericAddress
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    GenericAddress.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.addressLines = [];
+                        if (options.defaults) {
+                            object.locality = "";
+                            object.postalCode = "";
+                            object.regionCode = "";
+                            object.administrativeArea = "";
+                        }
+                        if (message.addressLines && message.addressLines.length) {
+                            object.addressLines = [];
+                            for (var j = 0; j < message.addressLines.length; ++j)
+                                object.addressLines[j] = message.addressLines[j];
+                        }
+                        if (message.locality != null && message.hasOwnProperty("locality"))
+                            object.locality = message.locality;
+                        if (message.postalCode != null && message.hasOwnProperty("postalCode"))
+                            object.postalCode = message.postalCode;
+                        if (message.regionCode != null && message.hasOwnProperty("regionCode"))
+                            object.regionCode = message.regionCode;
+                        if (message.administrativeArea != null && message.hasOwnProperty("administrativeArea"))
+                            object.administrativeArea = message.administrativeArea;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this GenericAddress to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.GenericAddress
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    GenericAddress.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return GenericAddress;
+                })();
+    
+                v1beta1.PersonDetails = (function() {
+    
+                    /**
+                     * Properties of a PersonDetails.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IPersonDetails
+                     * @property {string|null} [givenName] PersonDetails givenName
+                     * @property {string|null} [familyName] PersonDetails familyName
+                     */
+    
+                    /**
+                     * Constructs a new PersonDetails.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a PersonDetails.
+                     * @implements IPersonDetails
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IPersonDetails=} [properties] Properties to set
+                     */
+                    function PersonDetails(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * PersonDetails givenName.
+                     * @member {string} givenName
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @instance
+                     */
+                    PersonDetails.prototype.givenName = "";
+    
+                    /**
+                     * PersonDetails familyName.
+                     * @member {string} familyName
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @instance
+                     */
+                    PersonDetails.prototype.familyName = "";
+    
+                    /**
+                     * Creates a new PersonDetails instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPersonDetails=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.PersonDetails} PersonDetails instance
+                     */
+                    PersonDetails.create = function create(properties) {
+                        return new PersonDetails(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified PersonDetails message. Does not implicitly {@link enfonica.numbering.v1beta1.PersonDetails.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPersonDetails} message PersonDetails message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    PersonDetails.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.givenName != null && Object.hasOwnProperty.call(message, "givenName"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.givenName);
+                        if (message.familyName != null && Object.hasOwnProperty.call(message, "familyName"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.familyName);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified PersonDetails message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.PersonDetails.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IPersonDetails} message PersonDetails message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    PersonDetails.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a PersonDetails message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.PersonDetails} PersonDetails
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    PersonDetails.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.PersonDetails();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.givenName = reader.string();
+                                break;
+                            case 2:
+                                message.familyName = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a PersonDetails message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.PersonDetails} PersonDetails
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    PersonDetails.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a PersonDetails message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    PersonDetails.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.givenName != null && message.hasOwnProperty("givenName"))
+                            if (!$util.isString(message.givenName))
+                                return "givenName: string expected";
+                        if (message.familyName != null && message.hasOwnProperty("familyName"))
+                            if (!$util.isString(message.familyName))
+                                return "familyName: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a PersonDetails message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.PersonDetails} PersonDetails
+                     */
+                    PersonDetails.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.PersonDetails)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.PersonDetails();
+                        if (object.givenName != null)
+                            message.givenName = String(object.givenName);
+                        if (object.familyName != null)
+                            message.familyName = String(object.familyName);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a PersonDetails message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.PersonDetails} message PersonDetails
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    PersonDetails.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.givenName = "";
+                            object.familyName = "";
+                        }
+                        if (message.givenName != null && message.hasOwnProperty("givenName"))
+                            object.givenName = message.givenName;
+                        if (message.familyName != null && message.hasOwnProperty("familyName"))
+                            object.familyName = message.familyName;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this PersonDetails to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.PersonDetails
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    PersonDetails.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return PersonDetails;
+                })();
+    
+                v1beta1.BusinessDetails = (function() {
+    
+                    /**
+                     * Properties of a BusinessDetails.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IBusinessDetails
+                     * @property {string|null} [business] BusinessDetails business
+                     */
+    
+                    /**
+                     * Constructs a new BusinessDetails.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a BusinessDetails.
+                     * @implements IBusinessDetails
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IBusinessDetails=} [properties] Properties to set
+                     */
+                    function BusinessDetails(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * BusinessDetails business.
+                     * @member {string} business
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @instance
+                     */
+                    BusinessDetails.prototype.business = "";
+    
+                    /**
+                     * Creates a new BusinessDetails instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IBusinessDetails=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.BusinessDetails} BusinessDetails instance
+                     */
+                    BusinessDetails.create = function create(properties) {
+                        return new BusinessDetails(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified BusinessDetails message. Does not implicitly {@link enfonica.numbering.v1beta1.BusinessDetails.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IBusinessDetails} message BusinessDetails message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    BusinessDetails.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.business != null && Object.hasOwnProperty.call(message, "business"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.business);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified BusinessDetails message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.BusinessDetails.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IBusinessDetails} message BusinessDetails message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    BusinessDetails.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a BusinessDetails message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.BusinessDetails} BusinessDetails
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    BusinessDetails.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.BusinessDetails();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.business = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a BusinessDetails message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.BusinessDetails} BusinessDetails
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    BusinessDetails.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a BusinessDetails message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    BusinessDetails.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.business != null && message.hasOwnProperty("business"))
+                            if (!$util.isString(message.business))
+                                return "business: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a BusinessDetails message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.BusinessDetails} BusinessDetails
+                     */
+                    BusinessDetails.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.BusinessDetails)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.BusinessDetails();
+                        if (object.business != null)
+                            message.business = String(object.business);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a BusinessDetails message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.BusinessDetails} message BusinessDetails
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    BusinessDetails.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.business = "";
+                        if (message.business != null && message.hasOwnProperty("business"))
+                            object.business = message.business;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this BusinessDetails to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.BusinessDetails
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    BusinessDetails.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return BusinessDetails;
+                })();
+    
+                v1beta1.CreateRegulatoryListingRequest = (function() {
+    
+                    /**
+                     * Properties of a CreateRegulatoryListingRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ICreateRegulatoryListingRequest
+                     * @property {string|null} [parent] CreateRegulatoryListingRequest parent
+                     * @property {enfonica.numbering.v1beta1.IRegulatoryListing|null} [regulatoryListing] CreateRegulatoryListingRequest regulatoryListing
+                     */
+    
+                    /**
+                     * Constructs a new CreateRegulatoryListingRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a CreateRegulatoryListingRequest.
+                     * @implements ICreateRegulatoryListingRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest=} [properties] Properties to set
+                     */
+                    function CreateRegulatoryListingRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * CreateRegulatoryListingRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @instance
+                     */
+                    CreateRegulatoryListingRequest.prototype.parent = "";
+    
+                    /**
+                     * CreateRegulatoryListingRequest regulatoryListing.
+                     * @member {enfonica.numbering.v1beta1.IRegulatoryListing|null|undefined} regulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @instance
+                     */
+                    CreateRegulatoryListingRequest.prototype.regulatoryListing = null;
+    
+                    /**
+                     * Creates a new CreateRegulatoryListingRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.CreateRegulatoryListingRequest} CreateRegulatoryListingRequest instance
+                     */
+                    CreateRegulatoryListingRequest.create = function create(properties) {
+                        return new CreateRegulatoryListingRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified CreateRegulatoryListingRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.CreateRegulatoryListingRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest} message CreateRegulatoryListingRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreateRegulatoryListingRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.regulatoryListing != null && Object.hasOwnProperty.call(message, "regulatoryListing"))
+                            $root.enfonica.numbering.v1beta1.RegulatoryListing.encode(message.regulatoryListing, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified CreateRegulatoryListingRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.CreateRegulatoryListingRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest} message CreateRegulatoryListingRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    CreateRegulatoryListingRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a CreateRegulatoryListingRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.CreateRegulatoryListingRequest} CreateRegulatoryListingRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreateRegulatoryListingRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.CreateRegulatoryListingRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.regulatoryListing = $root.enfonica.numbering.v1beta1.RegulatoryListing.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a CreateRegulatoryListingRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.CreateRegulatoryListingRequest} CreateRegulatoryListingRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    CreateRegulatoryListingRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a CreateRegulatoryListingRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    CreateRegulatoryListingRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.regulatoryListing != null && message.hasOwnProperty("regulatoryListing")) {
+                            var error = $root.enfonica.numbering.v1beta1.RegulatoryListing.verify(message.regulatoryListing);
+                            if (error)
+                                return "regulatoryListing." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a CreateRegulatoryListingRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.CreateRegulatoryListingRequest} CreateRegulatoryListingRequest
+                     */
+                    CreateRegulatoryListingRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.CreateRegulatoryListingRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.CreateRegulatoryListingRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.regulatoryListing != null) {
+                            if (typeof object.regulatoryListing !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.CreateRegulatoryListingRequest.regulatoryListing: object expected");
+                            message.regulatoryListing = $root.enfonica.numbering.v1beta1.RegulatoryListing.fromObject(object.regulatoryListing);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a CreateRegulatoryListingRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.CreateRegulatoryListingRequest} message CreateRegulatoryListingRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    CreateRegulatoryListingRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.regulatoryListing = null;
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.regulatoryListing != null && message.hasOwnProperty("regulatoryListing"))
+                            object.regulatoryListing = $root.enfonica.numbering.v1beta1.RegulatoryListing.toObject(message.regulatoryListing, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this CreateRegulatoryListingRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.CreateRegulatoryListingRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    CreateRegulatoryListingRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return CreateRegulatoryListingRequest;
+                })();
+    
+                v1beta1.GetRegulatoryListingRequest = (function() {
+    
+                    /**
+                     * Properties of a GetRegulatoryListingRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IGetRegulatoryListingRequest
+                     * @property {string|null} [name] GetRegulatoryListingRequest name
+                     */
+    
+                    /**
+                     * Constructs a new GetRegulatoryListingRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a GetRegulatoryListingRequest.
+                     * @implements IGetRegulatoryListingRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IGetRegulatoryListingRequest=} [properties] Properties to set
+                     */
+                    function GetRegulatoryListingRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * GetRegulatoryListingRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @instance
+                     */
+                    GetRegulatoryListingRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new GetRegulatoryListingRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetRegulatoryListingRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.GetRegulatoryListingRequest} GetRegulatoryListingRequest instance
+                     */
+                    GetRegulatoryListingRequest.create = function create(properties) {
+                        return new GetRegulatoryListingRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified GetRegulatoryListingRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.GetRegulatoryListingRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetRegulatoryListingRequest} message GetRegulatoryListingRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetRegulatoryListingRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified GetRegulatoryListingRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GetRegulatoryListingRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IGetRegulatoryListingRequest} message GetRegulatoryListingRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    GetRegulatoryListingRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a GetRegulatoryListingRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.GetRegulatoryListingRequest} GetRegulatoryListingRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetRegulatoryListingRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.GetRegulatoryListingRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a GetRegulatoryListingRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.GetRegulatoryListingRequest} GetRegulatoryListingRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    GetRegulatoryListingRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a GetRegulatoryListingRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    GetRegulatoryListingRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a GetRegulatoryListingRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.GetRegulatoryListingRequest} GetRegulatoryListingRequest
+                     */
+                    GetRegulatoryListingRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.GetRegulatoryListingRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.GetRegulatoryListingRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a GetRegulatoryListingRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.GetRegulatoryListingRequest} message GetRegulatoryListingRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    GetRegulatoryListingRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this GetRegulatoryListingRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.GetRegulatoryListingRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    GetRegulatoryListingRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return GetRegulatoryListingRequest;
+                })();
+    
+                v1beta1.ListRegulatoryListingsRequest = (function() {
+    
+                    /**
+                     * Properties of a ListRegulatoryListingsRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IListRegulatoryListingsRequest
+                     * @property {string|null} [parent] ListRegulatoryListingsRequest parent
+                     * @property {number|null} [pageSize] ListRegulatoryListingsRequest pageSize
+                     * @property {string|null} [pageToken] ListRegulatoryListingsRequest pageToken
+                     */
+    
+                    /**
+                     * Constructs a new ListRegulatoryListingsRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a ListRegulatoryListingsRequest.
+                     * @implements IListRegulatoryListingsRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsRequest=} [properties] Properties to set
+                     */
+                    function ListRegulatoryListingsRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListRegulatoryListingsRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @instance
+                     */
+                    ListRegulatoryListingsRequest.prototype.parent = "";
+    
+                    /**
+                     * ListRegulatoryListingsRequest pageSize.
+                     * @member {number} pageSize
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @instance
+                     */
+                    ListRegulatoryListingsRequest.prototype.pageSize = 0;
+    
+                    /**
+                     * ListRegulatoryListingsRequest pageToken.
+                     * @member {string} pageToken
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @instance
+                     */
+                    ListRegulatoryListingsRequest.prototype.pageToken = "";
+    
+                    /**
+                     * Creates a new ListRegulatoryListingsRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.ListRegulatoryListingsRequest} ListRegulatoryListingsRequest instance
+                     */
+                    ListRegulatoryListingsRequest.create = function create(properties) {
+                        return new ListRegulatoryListingsRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListRegulatoryListingsRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.ListRegulatoryListingsRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsRequest} message ListRegulatoryListingsRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListRegulatoryListingsRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.pageSize != null && Object.hasOwnProperty.call(message, "pageSize"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pageSize);
+                        if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.pageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListRegulatoryListingsRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListRegulatoryListingsRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsRequest} message ListRegulatoryListingsRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListRegulatoryListingsRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListRegulatoryListingsRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.ListRegulatoryListingsRequest} ListRegulatoryListingsRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListRegulatoryListingsRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.ListRegulatoryListingsRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.pageSize = reader.int32();
+                                break;
+                            case 3:
+                                message.pageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListRegulatoryListingsRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.ListRegulatoryListingsRequest} ListRegulatoryListingsRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListRegulatoryListingsRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListRegulatoryListingsRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListRegulatoryListingsRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            if (!$util.isInteger(message.pageSize))
+                                return "pageSize: integer expected";
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            if (!$util.isString(message.pageToken))
+                                return "pageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListRegulatoryListingsRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.ListRegulatoryListingsRequest} ListRegulatoryListingsRequest
+                     */
+                    ListRegulatoryListingsRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.ListRegulatoryListingsRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.ListRegulatoryListingsRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.pageSize != null)
+                            message.pageSize = object.pageSize | 0;
+                        if (object.pageToken != null)
+                            message.pageToken = String(object.pageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListRegulatoryListingsRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ListRegulatoryListingsRequest} message ListRegulatoryListingsRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListRegulatoryListingsRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.pageSize = 0;
+                            object.pageToken = "";
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            object.pageSize = message.pageSize;
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            object.pageToken = message.pageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListRegulatoryListingsRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListRegulatoryListingsRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListRegulatoryListingsRequest;
+                })();
+    
+                v1beta1.ListRegulatoryListingsResponse = (function() {
+    
+                    /**
+                     * Properties of a ListRegulatoryListingsResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IListRegulatoryListingsResponse
+                     * @property {Array.<enfonica.numbering.v1beta1.IRegulatoryListing>|null} [regulatoryListings] ListRegulatoryListingsResponse regulatoryListings
+                     * @property {string|null} [nextPageToken] ListRegulatoryListingsResponse nextPageToken
+                     */
+    
+                    /**
+                     * Constructs a new ListRegulatoryListingsResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a ListRegulatoryListingsResponse.
+                     * @implements IListRegulatoryListingsResponse
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsResponse=} [properties] Properties to set
+                     */
+                    function ListRegulatoryListingsResponse(properties) {
+                        this.regulatoryListings = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * ListRegulatoryListingsResponse regulatoryListings.
+                     * @member {Array.<enfonica.numbering.v1beta1.IRegulatoryListing>} regulatoryListings
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @instance
+                     */
+                    ListRegulatoryListingsResponse.prototype.regulatoryListings = $util.emptyArray;
+    
+                    /**
+                     * ListRegulatoryListingsResponse nextPageToken.
+                     * @member {string} nextPageToken
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @instance
+                     */
+                    ListRegulatoryListingsResponse.prototype.nextPageToken = "";
+    
+                    /**
+                     * Creates a new ListRegulatoryListingsResponse instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsResponse=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.ListRegulatoryListingsResponse} ListRegulatoryListingsResponse instance
+                     */
+                    ListRegulatoryListingsResponse.create = function create(properties) {
+                        return new ListRegulatoryListingsResponse(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified ListRegulatoryListingsResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.ListRegulatoryListingsResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsResponse} message ListRegulatoryListingsResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListRegulatoryListingsResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.regulatoryListings != null && message.regulatoryListings.length)
+                            for (var i = 0; i < message.regulatoryListings.length; ++i)
+                                $root.enfonica.numbering.v1beta1.RegulatoryListing.encode(message.regulatoryListings[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified ListRegulatoryListingsResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListRegulatoryListingsResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IListRegulatoryListingsResponse} message ListRegulatoryListingsResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ListRegulatoryListingsResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a ListRegulatoryListingsResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.ListRegulatoryListingsResponse} ListRegulatoryListingsResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListRegulatoryListingsResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.ListRegulatoryListingsResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.regulatoryListings && message.regulatoryListings.length))
+                                    message.regulatoryListings = [];
+                                message.regulatoryListings.push($root.enfonica.numbering.v1beta1.RegulatoryListing.decode(reader, reader.uint32()));
+                                break;
+                            case 2:
+                                message.nextPageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a ListRegulatoryListingsResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.ListRegulatoryListingsResponse} ListRegulatoryListingsResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ListRegulatoryListingsResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a ListRegulatoryListingsResponse message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ListRegulatoryListingsResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.regulatoryListings != null && message.hasOwnProperty("regulatoryListings")) {
+                            if (!Array.isArray(message.regulatoryListings))
+                                return "regulatoryListings: array expected";
+                            for (var i = 0; i < message.regulatoryListings.length; ++i) {
+                                var error = $root.enfonica.numbering.v1beta1.RegulatoryListing.verify(message.regulatoryListings[i]);
+                                if (error)
+                                    return "regulatoryListings." + error;
+                            }
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            if (!$util.isString(message.nextPageToken))
+                                return "nextPageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a ListRegulatoryListingsResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.ListRegulatoryListingsResponse} ListRegulatoryListingsResponse
+                     */
+                    ListRegulatoryListingsResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.ListRegulatoryListingsResponse)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.ListRegulatoryListingsResponse();
+                        if (object.regulatoryListings) {
+                            if (!Array.isArray(object.regulatoryListings))
+                                throw TypeError(".enfonica.numbering.v1beta1.ListRegulatoryListingsResponse.regulatoryListings: array expected");
+                            message.regulatoryListings = [];
+                            for (var i = 0; i < object.regulatoryListings.length; ++i) {
+                                if (typeof object.regulatoryListings[i] !== "object")
+                                    throw TypeError(".enfonica.numbering.v1beta1.ListRegulatoryListingsResponse.regulatoryListings: object expected");
+                                message.regulatoryListings[i] = $root.enfonica.numbering.v1beta1.RegulatoryListing.fromObject(object.regulatoryListings[i]);
+                            }
+                        }
+                        if (object.nextPageToken != null)
+                            message.nextPageToken = String(object.nextPageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a ListRegulatoryListingsResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ListRegulatoryListingsResponse} message ListRegulatoryListingsResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ListRegulatoryListingsResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.regulatoryListings = [];
+                        if (options.defaults)
+                            object.nextPageToken = "";
+                        if (message.regulatoryListings && message.regulatoryListings.length) {
+                            object.regulatoryListings = [];
+                            for (var j = 0; j < message.regulatoryListings.length; ++j)
+                                object.regulatoryListings[j] = $root.enfonica.numbering.v1beta1.RegulatoryListing.toObject(message.regulatoryListings[j], options);
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            object.nextPageToken = message.nextPageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this ListRegulatoryListingsResponse to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.ListRegulatoryListingsResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ListRegulatoryListingsResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return ListRegulatoryListingsResponse;
+                })();
+    
+                v1beta1.UpdateRegulatoryListingRequest = (function() {
+    
+                    /**
+                     * Properties of an UpdateRegulatoryListingRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IUpdateRegulatoryListingRequest
+                     * @property {enfonica.numbering.v1beta1.IRegulatoryListing|null} [regulatoryListing] UpdateRegulatoryListingRequest regulatoryListing
+                     * @property {google.protobuf.IFieldMask|null} [updateMask] UpdateRegulatoryListingRequest updateMask
+                     */
+    
+                    /**
+                     * Constructs a new UpdateRegulatoryListingRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents an UpdateRegulatoryListingRequest.
+                     * @implements IUpdateRegulatoryListingRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest=} [properties] Properties to set
+                     */
+                    function UpdateRegulatoryListingRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * UpdateRegulatoryListingRequest regulatoryListing.
+                     * @member {enfonica.numbering.v1beta1.IRegulatoryListing|null|undefined} regulatoryListing
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @instance
+                     */
+                    UpdateRegulatoryListingRequest.prototype.regulatoryListing = null;
+    
+                    /**
+                     * UpdateRegulatoryListingRequest updateMask.
+                     * @member {google.protobuf.IFieldMask|null|undefined} updateMask
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @instance
+                     */
+                    UpdateRegulatoryListingRequest.prototype.updateMask = null;
+    
+                    /**
+                     * Creates a new UpdateRegulatoryListingRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest} UpdateRegulatoryListingRequest instance
+                     */
+                    UpdateRegulatoryListingRequest.create = function create(properties) {
+                        return new UpdateRegulatoryListingRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified UpdateRegulatoryListingRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest} message UpdateRegulatoryListingRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    UpdateRegulatoryListingRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.regulatoryListing != null && Object.hasOwnProperty.call(message, "regulatoryListing"))
+                            $root.enfonica.numbering.v1beta1.RegulatoryListing.encode(message.regulatoryListing, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        if (message.updateMask != null && Object.hasOwnProperty.call(message, "updateMask"))
+                            $root.google.protobuf.FieldMask.encode(message.updateMask, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified UpdateRegulatoryListingRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest} message UpdateRegulatoryListingRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    UpdateRegulatoryListingRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes an UpdateRegulatoryListingRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest} UpdateRegulatoryListingRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    UpdateRegulatoryListingRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 2:
+                                message.regulatoryListing = $root.enfonica.numbering.v1beta1.RegulatoryListing.decode(reader, reader.uint32());
+                                break;
+                            case 3:
+                                message.updateMask = $root.google.protobuf.FieldMask.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes an UpdateRegulatoryListingRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest} UpdateRegulatoryListingRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    UpdateRegulatoryListingRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies an UpdateRegulatoryListingRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    UpdateRegulatoryListingRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.regulatoryListing != null && message.hasOwnProperty("regulatoryListing")) {
+                            var error = $root.enfonica.numbering.v1beta1.RegulatoryListing.verify(message.regulatoryListing);
+                            if (error)
+                                return "regulatoryListing." + error;
+                        }
+                        if (message.updateMask != null && message.hasOwnProperty("updateMask")) {
+                            var error = $root.google.protobuf.FieldMask.verify(message.updateMask);
+                            if (error)
+                                return "updateMask." + error;
+                        }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates an UpdateRegulatoryListingRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest} UpdateRegulatoryListingRequest
+                     */
+                    UpdateRegulatoryListingRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest();
+                        if (object.regulatoryListing != null) {
+                            if (typeof object.regulatoryListing !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest.regulatoryListing: object expected");
+                            message.regulatoryListing = $root.enfonica.numbering.v1beta1.RegulatoryListing.fromObject(object.regulatoryListing);
+                        }
+                        if (object.updateMask != null) {
+                            if (typeof object.updateMask !== "object")
+                                throw TypeError(".enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest.updateMask: object expected");
+                            message.updateMask = $root.google.protobuf.FieldMask.fromObject(object.updateMask);
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from an UpdateRegulatoryListingRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest} message UpdateRegulatoryListingRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    UpdateRegulatoryListingRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.regulatoryListing = null;
+                            object.updateMask = null;
+                        }
+                        if (message.regulatoryListing != null && message.hasOwnProperty("regulatoryListing"))
+                            object.regulatoryListing = $root.enfonica.numbering.v1beta1.RegulatoryListing.toObject(message.regulatoryListing, options);
+                        if (message.updateMask != null && message.hasOwnProperty("updateMask"))
+                            object.updateMask = $root.google.protobuf.FieldMask.toObject(message.updateMask, options);
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this UpdateRegulatoryListingRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    UpdateRegulatoryListingRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return UpdateRegulatoryListingRequest;
+                })();
+    
+                v1beta1.DeleteRegulatoryListingRequest = (function() {
+    
+                    /**
+                     * Properties of a DeleteRegulatoryListingRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface IDeleteRegulatoryListingRequest
+                     * @property {string|null} [name] DeleteRegulatoryListingRequest name
+                     */
+    
+                    /**
+                     * Constructs a new DeleteRegulatoryListingRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a DeleteRegulatoryListingRequest.
+                     * @implements IDeleteRegulatoryListingRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest=} [properties] Properties to set
+                     */
+                    function DeleteRegulatoryListingRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * DeleteRegulatoryListingRequest name.
+                     * @member {string} name
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @instance
+                     */
+                    DeleteRegulatoryListingRequest.prototype.name = "";
+    
+                    /**
+                     * Creates a new DeleteRegulatoryListingRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest} DeleteRegulatoryListingRequest instance
+                     */
+                    DeleteRegulatoryListingRequest.create = function create(properties) {
+                        return new DeleteRegulatoryListingRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified DeleteRegulatoryListingRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest} message DeleteRegulatoryListingRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeleteRegulatoryListingRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified DeleteRegulatoryListingRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest} message DeleteRegulatoryListingRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    DeleteRegulatoryListingRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a DeleteRegulatoryListingRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest} DeleteRegulatoryListingRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeleteRegulatoryListingRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.name = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a DeleteRegulatoryListingRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest} DeleteRegulatoryListingRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    DeleteRegulatoryListingRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a DeleteRegulatoryListingRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    DeleteRegulatoryListingRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            if (!$util.isString(message.name))
+                                return "name: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a DeleteRegulatoryListingRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest} DeleteRegulatoryListingRequest
+                     */
+                    DeleteRegulatoryListingRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest();
+                        if (object.name != null)
+                            message.name = String(object.name);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a DeleteRegulatoryListingRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest} message DeleteRegulatoryListingRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    DeleteRegulatoryListingRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults)
+                            object.name = "";
+                        if (message.name != null && message.hasOwnProperty("name"))
+                            object.name = message.name;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this DeleteRegulatoryListingRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    DeleteRegulatoryListingRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return DeleteRegulatoryListingRequest;
+                })();
+    
+                v1beta1.SearchRegulatoryListingsRequest = (function() {
+    
+                    /**
+                     * Properties of a SearchRegulatoryListingsRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ISearchRegulatoryListingsRequest
+                     * @property {string|null} [parent] SearchRegulatoryListingsRequest parent
+                     * @property {number|null} [pageSize] SearchRegulatoryListingsRequest pageSize
+                     * @property {string|null} [pageToken] SearchRegulatoryListingsRequest pageToken
+                     * @property {string|null} [regionCode] SearchRegulatoryListingsRequest regionCode
+                     * @property {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null} [numberType] SearchRegulatoryListingsRequest numberType
+                     */
+    
+                    /**
+                     * Constructs a new SearchRegulatoryListingsRequest.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a SearchRegulatoryListingsRequest.
+                     * @implements ISearchRegulatoryListingsRequest
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest=} [properties] Properties to set
+                     */
+                    function SearchRegulatoryListingsRequest(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SearchRegulatoryListingsRequest parent.
+                     * @member {string} parent
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @instance
+                     */
+                    SearchRegulatoryListingsRequest.prototype.parent = "";
+    
+                    /**
+                     * SearchRegulatoryListingsRequest pageSize.
+                     * @member {number} pageSize
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @instance
+                     */
+                    SearchRegulatoryListingsRequest.prototype.pageSize = 0;
+    
+                    /**
+                     * SearchRegulatoryListingsRequest pageToken.
+                     * @member {string} pageToken
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @instance
+                     */
+                    SearchRegulatoryListingsRequest.prototype.pageToken = "";
+    
+                    /**
+                     * SearchRegulatoryListingsRequest regionCode.
+                     * @member {string} regionCode
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @instance
+                     */
+                    SearchRegulatoryListingsRequest.prototype.regionCode = "";
+    
+                    /**
+                     * SearchRegulatoryListingsRequest numberType.
+                     * @member {enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType} numberType
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @instance
+                     */
+                    SearchRegulatoryListingsRequest.prototype.numberType = 0;
+    
+                    /**
+                     * Creates a new SearchRegulatoryListingsRequest instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest} SearchRegulatoryListingsRequest instance
+                     */
+                    SearchRegulatoryListingsRequest.create = function create(properties) {
+                        return new SearchRegulatoryListingsRequest(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SearchRegulatoryListingsRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest} message SearchRegulatoryListingsRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SearchRegulatoryListingsRequest.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.parent != null && Object.hasOwnProperty.call(message, "parent"))
+                            writer.uint32(/* id 1, wireType 2 =*/10).string(message.parent);
+                        if (message.pageSize != null && Object.hasOwnProperty.call(message, "pageSize"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.pageSize);
+                        if (message.pageToken != null && Object.hasOwnProperty.call(message, "pageToken"))
+                            writer.uint32(/* id 3, wireType 2 =*/26).string(message.pageToken);
+                        if (message.regionCode != null && Object.hasOwnProperty.call(message, "regionCode"))
+                            writer.uint32(/* id 4, wireType 2 =*/34).string(message.regionCode);
+                        if (message.numberType != null && Object.hasOwnProperty.call(message, "numberType"))
+                            writer.uint32(/* id 5, wireType 0 =*/40).int32(message.numberType);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SearchRegulatoryListingsRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest} message SearchRegulatoryListingsRequest message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SearchRegulatoryListingsRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SearchRegulatoryListingsRequest message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest} SearchRegulatoryListingsRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SearchRegulatoryListingsRequest.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.parent = reader.string();
+                                break;
+                            case 2:
+                                message.pageSize = reader.int32();
+                                break;
+                            case 3:
+                                message.pageToken = reader.string();
+                                break;
+                            case 4:
+                                message.regionCode = reader.string();
+                                break;
+                            case 5:
+                                message.numberType = reader.int32();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SearchRegulatoryListingsRequest message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest} SearchRegulatoryListingsRequest
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SearchRegulatoryListingsRequest.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SearchRegulatoryListingsRequest message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SearchRegulatoryListingsRequest.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            if (!$util.isString(message.parent))
+                                return "parent: string expected";
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            if (!$util.isInteger(message.pageSize))
+                                return "pageSize: integer expected";
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            if (!$util.isString(message.pageToken))
+                                return "pageToken: string expected";
+                        if (message.regionCode != null && message.hasOwnProperty("regionCode"))
+                            if (!$util.isString(message.regionCode))
+                                return "regionCode: string expected";
+                        if (message.numberType != null && message.hasOwnProperty("numberType"))
+                            switch (message.numberType) {
+                            default:
+                                return "numberType: enum value expected";
+                            case 0:
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                            case 5:
+                                break;
+                            }
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SearchRegulatoryListingsRequest message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest} SearchRegulatoryListingsRequest
+                     */
+                    SearchRegulatoryListingsRequest.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest();
+                        if (object.parent != null)
+                            message.parent = String(object.parent);
+                        if (object.pageSize != null)
+                            message.pageSize = object.pageSize | 0;
+                        if (object.pageToken != null)
+                            message.pageToken = String(object.pageToken);
+                        if (object.regionCode != null)
+                            message.regionCode = String(object.regionCode);
+                        switch (object.numberType) {
+                        case "PHONE_NUMBER_TYPE_UNSPECIFIED":
+                        case 0:
+                            message.numberType = 0;
+                            break;
+                        case "LOCAL":
+                        case 1:
+                            message.numberType = 1;
+                            break;
+                        case "NATIONAL":
+                        case 2:
+                            message.numberType = 2;
+                            break;
+                        case "MOBILE":
+                        case 3:
+                            message.numberType = 3;
+                            break;
+                        case "TOLL_FREE":
+                        case 4:
+                            message.numberType = 4;
+                            break;
+                        case "SHARED_RATE":
+                        case 5:
+                            message.numberType = 5;
+                            break;
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SearchRegulatoryListingsRequest message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest} message SearchRegulatoryListingsRequest
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SearchRegulatoryListingsRequest.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.defaults) {
+                            object.parent = "";
+                            object.pageSize = 0;
+                            object.pageToken = "";
+                            object.regionCode = "";
+                            object.numberType = options.enums === String ? "PHONE_NUMBER_TYPE_UNSPECIFIED" : 0;
+                        }
+                        if (message.parent != null && message.hasOwnProperty("parent"))
+                            object.parent = message.parent;
+                        if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                            object.pageSize = message.pageSize;
+                        if (message.pageToken != null && message.hasOwnProperty("pageToken"))
+                            object.pageToken = message.pageToken;
+                        if (message.regionCode != null && message.hasOwnProperty("regionCode"))
+                            object.regionCode = message.regionCode;
+                        if (message.numberType != null && message.hasOwnProperty("numberType"))
+                            object.numberType = options.enums === String ? $root.enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType[message.numberType] : message.numberType;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SearchRegulatoryListingsRequest to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SearchRegulatoryListingsRequest.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return SearchRegulatoryListingsRequest;
+                })();
+    
+                v1beta1.SearchRegulatoryListingsResponse = (function() {
+    
+                    /**
+                     * Properties of a SearchRegulatoryListingsResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @interface ISearchRegulatoryListingsResponse
+                     * @property {Array.<enfonica.numbering.v1beta1.IRegulatoryListing>|null} [regulatoryListings] SearchRegulatoryListingsResponse regulatoryListings
+                     * @property {string|null} [nextPageToken] SearchRegulatoryListingsResponse nextPageToken
+                     */
+    
+                    /**
+                     * Constructs a new SearchRegulatoryListingsResponse.
+                     * @memberof enfonica.numbering.v1beta1
+                     * @classdesc Represents a SearchRegulatoryListingsResponse.
+                     * @implements ISearchRegulatoryListingsResponse
+                     * @constructor
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsResponse=} [properties] Properties to set
+                     */
+                    function SearchRegulatoryListingsResponse(properties) {
+                        this.regulatoryListings = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+    
+                    /**
+                     * SearchRegulatoryListingsResponse regulatoryListings.
+                     * @member {Array.<enfonica.numbering.v1beta1.IRegulatoryListing>} regulatoryListings
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @instance
+                     */
+                    SearchRegulatoryListingsResponse.prototype.regulatoryListings = $util.emptyArray;
+    
+                    /**
+                     * SearchRegulatoryListingsResponse nextPageToken.
+                     * @member {string} nextPageToken
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @instance
+                     */
+                    SearchRegulatoryListingsResponse.prototype.nextPageToken = "";
+    
+                    /**
+                     * Creates a new SearchRegulatoryListingsResponse instance using the specified properties.
+                     * @function create
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsResponse=} [properties] Properties to set
+                     * @returns {enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse} SearchRegulatoryListingsResponse instance
+                     */
+                    SearchRegulatoryListingsResponse.create = function create(properties) {
+                        return new SearchRegulatoryListingsResponse(properties);
+                    };
+    
+                    /**
+                     * Encodes the specified SearchRegulatoryListingsResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsResponse} message SearchRegulatoryListingsResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SearchRegulatoryListingsResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.regulatoryListings != null && message.regulatoryListings.length)
+                            for (var i = 0; i < message.regulatoryListings.length; ++i)
+                                $root.enfonica.numbering.v1beta1.RegulatoryListing.encode(message.regulatoryListings[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                        if (message.nextPageToken != null && Object.hasOwnProperty.call(message, "nextPageToken"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.nextPageToken);
+                        return writer;
+                    };
+    
+                    /**
+                     * Encodes the specified SearchRegulatoryListingsResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.ISearchRegulatoryListingsResponse} message SearchRegulatoryListingsResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    SearchRegulatoryListingsResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+    
+                    /**
+                     * Decodes a SearchRegulatoryListingsResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse} SearchRegulatoryListingsResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SearchRegulatoryListingsResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                if (!(message.regulatoryListings && message.regulatoryListings.length))
+                                    message.regulatoryListings = [];
+                                message.regulatoryListings.push($root.enfonica.numbering.v1beta1.RegulatoryListing.decode(reader, reader.uint32()));
+                                break;
+                            case 2:
+                                message.nextPageToken = reader.string();
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+    
+                    /**
+                     * Decodes a SearchRegulatoryListingsResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse} SearchRegulatoryListingsResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    SearchRegulatoryListingsResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+    
+                    /**
+                     * Verifies a SearchRegulatoryListingsResponse message.
+                     * @function verify
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    SearchRegulatoryListingsResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.regulatoryListings != null && message.hasOwnProperty("regulatoryListings")) {
+                            if (!Array.isArray(message.regulatoryListings))
+                                return "regulatoryListings: array expected";
+                            for (var i = 0; i < message.regulatoryListings.length; ++i) {
+                                var error = $root.enfonica.numbering.v1beta1.RegulatoryListing.verify(message.regulatoryListings[i]);
+                                if (error)
+                                    return "regulatoryListings." + error;
+                            }
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            if (!$util.isString(message.nextPageToken))
+                                return "nextPageToken: string expected";
+                        return null;
+                    };
+    
+                    /**
+                     * Creates a SearchRegulatoryListingsResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse} SearchRegulatoryListingsResponse
+                     */
+                    SearchRegulatoryListingsResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse)
+                            return object;
+                        var message = new $root.enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse();
+                        if (object.regulatoryListings) {
+                            if (!Array.isArray(object.regulatoryListings))
+                                throw TypeError(".enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse.regulatoryListings: array expected");
+                            message.regulatoryListings = [];
+                            for (var i = 0; i < object.regulatoryListings.length; ++i) {
+                                if (typeof object.regulatoryListings[i] !== "object")
+                                    throw TypeError(".enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse.regulatoryListings: object expected");
+                                message.regulatoryListings[i] = $root.enfonica.numbering.v1beta1.RegulatoryListing.fromObject(object.regulatoryListings[i]);
+                            }
+                        }
+                        if (object.nextPageToken != null)
+                            message.nextPageToken = String(object.nextPageToken);
+                        return message;
+                    };
+    
+                    /**
+                     * Creates a plain object from a SearchRegulatoryListingsResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @static
+                     * @param {enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse} message SearchRegulatoryListingsResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    SearchRegulatoryListingsResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.regulatoryListings = [];
+                        if (options.defaults)
+                            object.nextPageToken = "";
+                        if (message.regulatoryListings && message.regulatoryListings.length) {
+                            object.regulatoryListings = [];
+                            for (var j = 0; j < message.regulatoryListings.length; ++j)
+                                object.regulatoryListings[j] = $root.enfonica.numbering.v1beta1.RegulatoryListing.toObject(message.regulatoryListings[j], options);
+                        }
+                        if (message.nextPageToken != null && message.hasOwnProperty("nextPageToken"))
+                            object.nextPageToken = message.nextPageToken;
+                        return object;
+                    };
+    
+                    /**
+                     * Converts this SearchRegulatoryListingsResponse to JSON.
+                     * @function toJSON
+                     * @memberof enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    SearchRegulatoryListingsResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+    
+                    return SearchRegulatoryListingsResponse;
                 })();
     
                 return v1beta1;
@@ -8970,6 +13147,7 @@
                  * @property {boolean|null} [packed] FieldOptions packed
                  * @property {google.protobuf.FieldOptions.JSType|null} [jstype] FieldOptions jstype
                  * @property {boolean|null} [lazy] FieldOptions lazy
+                 * @property {boolean|null} [unverifiedLazy] FieldOptions unverifiedLazy
                  * @property {boolean|null} [deprecated] FieldOptions deprecated
                  * @property {boolean|null} [weak] FieldOptions weak
                  * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] FieldOptions uninterpretedOption
@@ -9025,6 +13203,14 @@
                  * @instance
                  */
                 FieldOptions.prototype.lazy = false;
+    
+                /**
+                 * FieldOptions unverifiedLazy.
+                 * @member {boolean} unverifiedLazy
+                 * @memberof google.protobuf.FieldOptions
+                 * @instance
+                 */
+                FieldOptions.prototype.unverifiedLazy = false;
     
                 /**
                  * FieldOptions deprecated.
@@ -9102,6 +13288,8 @@
                         writer.uint32(/* id 6, wireType 0 =*/48).int32(message.jstype);
                     if (message.weak != null && Object.hasOwnProperty.call(message, "weak"))
                         writer.uint32(/* id 10, wireType 0 =*/80).bool(message.weak);
+                    if (message.unverifiedLazy != null && Object.hasOwnProperty.call(message, "unverifiedLazy"))
+                        writer.uint32(/* id 15, wireType 0 =*/120).bool(message.unverifiedLazy);
                     if (message.uninterpretedOption != null && message.uninterpretedOption.length)
                         for (var i = 0; i < message.uninterpretedOption.length; ++i)
                             $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
@@ -9158,6 +13346,9 @@
                             break;
                         case 5:
                             message.lazy = reader.bool();
+                            break;
+                        case 15:
+                            message.unverifiedLazy = reader.bool();
                             break;
                         case 3:
                             message.deprecated = reader.bool();
@@ -9242,6 +13433,9 @@
                     if (message.lazy != null && message.hasOwnProperty("lazy"))
                         if (typeof message.lazy !== "boolean")
                             return "lazy: boolean expected";
+                    if (message.unverifiedLazy != null && message.hasOwnProperty("unverifiedLazy"))
+                        if (typeof message.unverifiedLazy !== "boolean")
+                            return "unverifiedLazy: boolean expected";
                     if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                         if (typeof message.deprecated !== "boolean")
                             return "deprecated: boolean expected";
@@ -9271,6 +13465,7 @@
                             case 4:
                             case 5:
                             case 6:
+                            case 7:
                                 break;
                             }
                     }
@@ -9326,6 +13521,8 @@
                     }
                     if (object.lazy != null)
                         message.lazy = Boolean(object.lazy);
+                    if (object.unverifiedLazy != null)
+                        message.unverifiedLazy = Boolean(object.unverifiedLazy);
                     if (object.deprecated != null)
                         message.deprecated = Boolean(object.deprecated);
                     if (object.weak != null)
@@ -9375,6 +13572,10 @@
                             case 6:
                                 message[".google.api.fieldBehavior"][i] = 6;
                                 break;
+                            case "NON_EMPTY_DEFAULT":
+                            case 7:
+                                message[".google.api.fieldBehavior"][i] = 7;
+                                break;
                             }
                     }
                     if (object[".google.api.resourceReference"] != null) {
@@ -9409,6 +13610,7 @@
                         object.lazy = false;
                         object.jstype = options.enums === String ? "JS_NORMAL" : 0;
                         object.weak = false;
+                        object.unverifiedLazy = false;
                         object[".google.api.resourceReference"] = null;
                     }
                     if (message.ctype != null && message.hasOwnProperty("ctype"))
@@ -9423,6 +13625,8 @@
                         object.jstype = options.enums === String ? $root.google.protobuf.FieldOptions.JSType[message.jstype] : message.jstype;
                     if (message.weak != null && message.hasOwnProperty("weak"))
                         object.weak = message.weak;
+                    if (message.unverifiedLazy != null && message.hasOwnProperty("unverifiedLazy"))
+                        object.unverifiedLazy = message.unverifiedLazy;
                     if (message.uninterpretedOption && message.uninterpretedOption.length) {
                         object.uninterpretedOption = [];
                         for (var j = 0; j < message.uninterpretedOption.length; ++j)
@@ -12433,6 +16637,166 @@
                 return GeneratedCodeInfo;
             })();
     
+            protobuf.Empty = (function() {
+    
+                /**
+                 * Properties of an Empty.
+                 * @memberof google.protobuf
+                 * @interface IEmpty
+                 */
+    
+                /**
+                 * Constructs a new Empty.
+                 * @memberof google.protobuf
+                 * @classdesc Represents an Empty.
+                 * @implements IEmpty
+                 * @constructor
+                 * @param {google.protobuf.IEmpty=} [properties] Properties to set
+                 */
+                function Empty(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+    
+                /**
+                 * Creates a new Empty instance using the specified properties.
+                 * @function create
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty=} [properties] Properties to set
+                 * @returns {google.protobuf.Empty} Empty instance
+                 */
+                Empty.create = function create(properties) {
+                    return new Empty(properties);
+                };
+    
+                /**
+                 * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+                 * @function encode
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty} message Empty message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Empty.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    return writer;
+                };
+    
+                /**
+                 * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.IEmpty} message Empty message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Empty.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+    
+                /**
+                 * Decodes an Empty message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {google.protobuf.Empty} Empty
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Empty.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Empty();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+    
+                /**
+                 * Decodes an Empty message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {google.protobuf.Empty} Empty
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Empty.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+    
+                /**
+                 * Verifies an Empty message.
+                 * @function verify
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Empty.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    return null;
+                };
+    
+                /**
+                 * Creates an Empty message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {google.protobuf.Empty} Empty
+                 */
+                Empty.fromObject = function fromObject(object) {
+                    if (object instanceof $root.google.protobuf.Empty)
+                        return object;
+                    return new $root.google.protobuf.Empty();
+                };
+    
+                /**
+                 * Creates a plain object from an Empty message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof google.protobuf.Empty
+                 * @static
+                 * @param {google.protobuf.Empty} message Empty
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Empty.toObject = function toObject() {
+                    return {};
+                };
+    
+                /**
+                 * Converts this Empty to JSON.
+                 * @function toJSON
+                 * @memberof google.protobuf.Empty
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Empty.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+    
+                return Empty;
+            })();
+    
             return protobuf;
         })();
     
@@ -13360,6 +17724,7 @@
              * @property {number} INPUT_ONLY=4 INPUT_ONLY value
              * @property {number} IMMUTABLE=5 IMMUTABLE value
              * @property {number} UNORDERED_LIST=6 UNORDERED_LIST value
+             * @property {number} NON_EMPTY_DEFAULT=7 NON_EMPTY_DEFAULT value
              */
             api.FieldBehavior = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -13370,6 +17735,7 @@
                 values[valuesById[4] = "INPUT_ONLY"] = 4;
                 values[valuesById[5] = "IMMUTABLE"] = 5;
                 values[valuesById[6] = "UNORDERED_LIST"] = 6;
+                values[valuesById[7] = "NON_EMPTY_DEFAULT"] = 7;
                 return values;
             })();
     

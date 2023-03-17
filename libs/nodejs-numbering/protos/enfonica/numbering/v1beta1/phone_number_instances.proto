@@ -1,4 +1,4 @@
-// Copyright 2020 Enfonica Pty Ltd
+// Copyright 2022 Enfonica Pty Ltd
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,13 +32,14 @@ option java_outer_classname = "PhoneNumberInstancesProto";
 option java_package = "com.enfonica.numbering.v1beta1";
 option objc_class_prefix = "ENFON";
 
-// Manages PhoneNumberInstances.
+// Manages phone number instances.
 service PhoneNumberInstances {
   option (google.api.default_host) = "numbering.api.enfonica.com";
   option (google.api.oauth_scopes) =
       "https://api.enfonica.com/auth/numbering";
 
-  // Creates a phone number instance.
+  // Creates a phone number instance. This provisions a phone number against a
+  // project.
   //
   // The caller must have `numbering.phoneNumberInstances.create` permission on the project.
   rpc CreatePhoneNumberInstance(CreatePhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
@@ -59,8 +60,9 @@ service PhoneNumberInstances {
     option (google.api.method_signature) = "name";
   }
 
-  // Lists all PhoneNumberInstances.
-  // List returns phone number instance sorted by create_time descending.
+  // Lists all phone number instances.
+  //
+  // List returns phone number instances sorted by `create_time` descending.
   //
   // The caller must have `numbering.phoneNumberInstances.list` permission on the project.
   rpc ListPhoneNumberInstances(ListPhoneNumberInstancesRequest) returns (ListPhoneNumberInstancesResponse) {
@@ -85,7 +87,7 @@ service PhoneNumberInstances {
     option (google.api.method_signature) = "name,phone_number_instance,update_mask";
   }
 
-  // Deletes a phone number instance.
+  // Deletes a phone number instance. This disconnects the phone number.
   //
   // The caller must have `numbering.phoneNumberInstances.delete` permission on the project.
   rpc DeletePhoneNumberInstance(DeletePhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
@@ -94,9 +96,51 @@ service PhoneNumberInstances {
     };
     option (google.api.method_signature) = "name";
   }
+
+  // Moves the phone number instance to another project.
+  //
+  // Warning: moving a phone number instance may cause the current configuration
+  // of the phone number instance to stop working. Any connected flows or SIP
+  // domains will need to be reconfigured in the destination project. Any
+  // programmable handler will need to accept the signing key of the destination
+  // project.
+  //
+  // The caller must have `numbering.phoneNumberInstances.move` permission on
+  // both the source and destination projects.
+  rpc MovePhoneNumberInstance(MovePhoneNumberInstanceRequest) returns (PhoneNumberInstance) {
+    option (google.api.http) = {
+      post: "/v1beta1/{name=projects/*/phoneNumberInstances/*}:move"
+      body: "*"
+    };
+    option (google.api.method_signature) = "name,destination_parent";
+  }
+
+  // Splits a phone number range into two ranges.
+  //
+  // To split a range, you specify how many numbers to keep in this range. These
+  // numbers are taken from the start of the range. The remaining numbers will
+  // be moved into a new range.
+  //
+  // For example, if you have a range +61255501100-99 and you split it with a
+  // `size` of 20, then:
+  // - the original range will be modified to +61255501100-19 (size 20)
+  // - a new range will be created with +61255501120-99 (size 80)
+  //
+  // The caller must have `numbering.phoneNumberInstances.splitRange` permission
+  // on the project.
+  rpc SplitRange(SplitRangeRequest) returns (SplitRangeResponse) {
+    option (google.api.http) = {
+      post: "/v1beta1/{phone_number_instance=projects/*/phoneNumberInstances/*}:splitRange"
+      body: "*"
+    };
+    option (google.api.method_signature) = "phone_number_instance,size";
+  }
 }
 
-// The PhoneNumberInstance resource.
+// The phone number instance resource.
+//
+// A phone number instance represents a provisioned phone number or range of
+// phone numbers.
 message PhoneNumberInstance {
   option (google.api.resource) = {
     type: "numbering.api.enfonica.com/PhoneNumberInstance"
@@ -211,6 +255,54 @@ message PhoneNumberInstance {
 
   // The state of the phone number instance in its lifecycle.
   LifecycleState lifecycle_state = 12 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // If this resource represents a range of phone numbers, this field will be
+  // set and will contain the details of the range. If this field is unset,
+  // this resource represents a single phone number.
+  PhoneNumberRange range = 14 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // The regulatory listing associated with this phone number instance. This
+  // field specifies the end-user that is using this resource. The requirements
+  // for regulatory listings varies depending on the region and type of phone
+  // number. Of the form `projects/*/regulatoryListings/*`.
+  string regulatory_listing = 15 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/RegulatoryListing"
+    }
+  ];
+
+  // Whether this phone number instance is compliant with the regulations for
+  // phone numbers that Enfonica has inferred. The value of this field is not
+  // a substitute for independent legal advice and should be used as a guide
+  // only.
+  bool compliant = 16 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// Describes a phone number range.
+//
+// A phone number range is a group of phone number instances that are
+// managed by a primary phone number instance representing the first phone
+// number in the range.
+//
+// Phone number ranges simplify the management of multiple contiguous phone
+// numbers.
+message PhoneNumberRange {
+  // The resource name of the primary phone number instance of the range.
+  string primary_phone_number_instance = 1  [
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
+
+  // The first phone number in the range.
+  string start_phone_number = 2;
+
+  // The last phone number in the range.
+  string end_phone_number = 3;
+
+  // The total quantity of phone numbers in the range.
+  int32 size = 4;
 }
 
 // Request to create a new phone number instance.
@@ -312,4 +404,61 @@ message DeletePhoneNumberInstanceRequest {
       type: "numbering.api.enfonica.com/PhoneNumberInstance"
     }
   ];
+}
+
+// The MovePhoneNumberInstance request message.
+message MovePhoneNumberInstanceRequest {
+  // The name of the phone number instance to move.
+  // Must be of the form `projects/*/phoneNumberInstances/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
+
+  // The new parent project to move the phone number instance to.
+  // Must be of the form `projects/*`.
+  string destination_parent = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
+
+  // The regulatory listing in the destination project to associate with this
+  // phone number instance. The requirements for regulatory listings varies
+  // depending on the region and type of phone number. Of the form
+  // `projects/*/regulatoryListings/*`.
+  string regulatory_listing = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/RegulatoryListing"
+    }
+  ];
+}
+
+// The SplitRange request message.
+message SplitRangeRequest {
+  // The name of the phone number instance to split. It must represent a
+  // range. Must be of the form `projects/*/phoneNumberInstances/*`.
+  string phone_number_instance = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/PhoneNumberInstance"
+    }
+  ];
+
+  // The quantity of numbers to keep in the range of the specified phone number
+  // instance. The remaining numbers will be moved to a new range.
+  int32 size = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// The SplitRange response message.
+message SplitRangeResponse {
+  // The first range, representing the phone number instance that was split.
+  PhoneNumberInstance first = 1;
+
+  // The second range, representing the remaining phone numbers in the range.
+  PhoneNumberInstance second = 2;
 }

@@ -91,11 +91,17 @@
                     },
                     "to": {
                       "type": "string",
-                      "id": 2
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
                     },
                     "from": {
                       "type": "string",
-                      "id": 3
+                      "id": 3,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
                     },
                     "body": {
                       "type": "string",
@@ -1152,6 +1158,18 @@
               ],
               "reserved": [
                 [
+                  4,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
                   8,
                   8
                 ],
@@ -1184,6 +1202,13 @@
                 "lazy": {
                   "type": "bool",
                   "id": 5,
+                  "options": {
+                    "default": false
+                  }
+                },
+                "unverifiedLazy": {
+                  "type": "bool",
+                  "id": 15,
                   "options": {
                     "default": false
                   }
@@ -1607,7 +1632,8 @@
                 "OUTPUT_ONLY": 3,
                 "INPUT_ONLY": 4,
                 "IMMUTABLE": 5,
-                "UNORDERED_LIST": 6
+                "UNORDERED_LIST": 6,
+                "NON_EMPTY_DEFAULT": 7
               }
             },
             "methodSignature": {

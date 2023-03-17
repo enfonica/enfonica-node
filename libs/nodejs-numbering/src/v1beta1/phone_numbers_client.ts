@@ -1,4 +1,4 @@
-// Copyright 2022 Enfonica Pty Ltd
+// Copyright 2023 Enfonica Pty Ltd
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -167,6 +167,9 @@ export class PhoneNumbersClient {
       ),
       phoneNumberInstancePathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/phoneNumberInstances/{phone_number_instance}'
+      ),
+      regulatoryListingPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/regulatoryListings/{regulatory_listing}'
       ),
     };
 
@@ -598,6 +601,48 @@ export class PhoneNumbersClient {
     return this.pathTemplates.phoneNumberInstancePathTemplate.match(
       phoneNumberInstanceName
     ).phone_number_instance;
+  }
+
+  /**
+   * Return a fully-qualified regulatoryListing resource name string.
+   *
+   * @param {string} project
+   * @param {string} regulatory_listing
+   * @returns {string} Resource name string.
+   */
+  regulatoryListingPath(project: string, regulatoryListing: string) {
+    return this.pathTemplates.regulatoryListingPathTemplate.render({
+      project: project,
+      regulatory_listing: regulatoryListing,
+    });
+  }
+
+  /**
+   * Parse the project from RegulatoryListing resource.
+   *
+   * @param {string} regulatoryListingName
+   *   A fully-qualified path representing RegulatoryListing resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromRegulatoryListingName(regulatoryListingName: string) {
+    return this.pathTemplates.regulatoryListingPathTemplate.match(
+      regulatoryListingName
+    ).project;
+  }
+
+  /**
+   * Parse the regulatory_listing from RegulatoryListing resource.
+   *
+   * @param {string} regulatoryListingName
+   *   A fully-qualified path representing RegulatoryListing resource.
+   * @returns {string} A string representing the regulatory_listing.
+   */
+  matchRegulatoryListingFromRegulatoryListingName(
+    regulatoryListingName: string
+  ) {
+    return this.pathTemplates.regulatoryListingPathTemplate.match(
+      regulatoryListingName
+    ).regulatory_listing;
   }
 
   /**

@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -89,21 +89,21 @@ export namespace enfonica {
             namespace Messages {
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Messages#createMessage}.
+                 * Callback as used by {@link enfonica.messaging.v1.Messages|createMessage}.
                  * @param error Error, if any
                  * @param [response] Message
                  */
                 type CreateMessageCallback = (error: (Error|null), response?: enfonica.messaging.v1.Message) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Messages#getMessage}.
+                 * Callback as used by {@link enfonica.messaging.v1.Messages|getMessage}.
                  * @param error Error, if any
                  * @param [response] Message
                  */
                 type GetMessageCallback = (error: (Error|null), response?: enfonica.messaging.v1.Message) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Messages#listMessages}.
+                 * Callback as used by {@link enfonica.messaging.v1.Messages|listMessages}.
                  * @param error Error, if any
                  * @param [response] ListMessagesResponse
                  */
@@ -866,35 +866,35 @@ export namespace enfonica {
             namespace Unsubscribers {
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#createUnsubscriber}.
+                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|createUnsubscriber}.
                  * @param error Error, if any
                  * @param [response] Unsubscriber
                  */
                 type CreateUnsubscriberCallback = (error: (Error|null), response?: enfonica.messaging.v1.Unsubscriber) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#getUnsubscriber}.
+                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|getUnsubscriber}.
                  * @param error Error, if any
                  * @param [response] Unsubscriber
                  */
                 type GetUnsubscriberCallback = (error: (Error|null), response?: enfonica.messaging.v1.Unsubscriber) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#listUnsubscribers}.
+                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|listUnsubscribers}.
                  * @param error Error, if any
                  * @param [response] ListUnsubscribersResponse
                  */
                 type ListUnsubscribersCallback = (error: (Error|null), response?: enfonica.messaging.v1.ListUnsubscribersResponse) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#updateUnsubscriber}.
+                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|updateUnsubscriber}.
                  * @param error Error, if any
                  * @param [response] Unsubscriber
                  */
                 type UpdateUnsubscriberCallback = (error: (Error|null), response?: enfonica.messaging.v1.Unsubscriber) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#deleteUnsubscriber}.
+                 * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|deleteUnsubscriber}.
                  * @param error Error, if any
                  * @param [response] Unsubscriber
                  */
@@ -3558,6 +3558,9 @@ export namespace google {
             /** FieldOptions lazy */
             lazy?: (boolean|null);
 
+            /** FieldOptions unverifiedLazy */
+            unverifiedLazy?: (boolean|null);
+
             /** FieldOptions deprecated */
             deprecated?: (boolean|null);
 
@@ -3594,6 +3597,9 @@ export namespace google {
 
             /** FieldOptions lazy. */
             public lazy: boolean;
+
+            /** FieldOptions unverifiedLazy. */
+            public unverifiedLazy: boolean;
 
             /** FieldOptions deprecated. */
             public deprecated: boolean;
@@ -5274,7 +5280,8 @@ export namespace google {
             OUTPUT_ONLY = 3,
             INPUT_ONLY = 4,
             IMMUTABLE = 5,
-            UNORDERED_LIST = 6
+            UNORDERED_LIST = 6,
+            NON_EMPTY_DEFAULT = 7
         }
 
         /** Properties of a ResourceDescriptor. */

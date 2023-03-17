@@ -10,7 +10,7 @@
                 "csharp_namespace": "Enfonica.Numbering.V1Beta1",
                 "go_package": "github.com/enfonica/enfonica-go/numbering/v1beta1;numbering",
                 "java_multiple_files": true,
-                "java_outer_classname": "PhoneNumbersProto",
+                "java_outer_classname": "RegulatoryListingsProto",
                 "java_package": "com.enfonica.numbering.v1beta1",
                 "objc_class_prefix": "ENFON"
               },
@@ -114,6 +114,46 @@
                           "(google.api.method_signature)": "name"
                         }
                       ]
+                    },
+                    "MovePhoneNumberInstance": {
+                      "requestType": "MovePhoneNumberInstanceRequest",
+                      "responseType": "PhoneNumberInstance",
+                      "options": {
+                        "(google.api.http).post": "/v1beta1/{name=projects/*/phoneNumberInstances/*}:move",
+                        "(google.api.http).body": "*",
+                        "(google.api.method_signature)": "name,destination_parent"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "post": "/v1beta1/{name=projects/*/phoneNumberInstances/*}:move",
+                            "body": "*"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name,destination_parent"
+                        }
+                      ]
+                    },
+                    "SplitRange": {
+                      "requestType": "SplitRangeRequest",
+                      "responseType": "SplitRangeResponse",
+                      "options": {
+                        "(google.api.http).post": "/v1beta1/{phone_number_instance=projects/*/phoneNumberInstances/*}:splitRange",
+                        "(google.api.http).body": "*",
+                        "(google.api.method_signature)": "phone_number_instance,size"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "post": "/v1beta1/{phone_number_instance=projects/*/phoneNumberInstances/*}:splitRange",
+                            "body": "*"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "phone_number_instance,size"
+                        }
+                      ]
                     }
                   }
                 },
@@ -181,6 +221,28 @@
                       "options": {
                         "(google.api.field_behavior)": "OUTPUT_ONLY"
                       }
+                    },
+                    "range": {
+                      "type": "PhoneNumberRange",
+                      "id": 14,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "regulatoryListing": {
+                      "type": "string",
+                      "id": 15,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY",
+                        "(google.api.resource_reference).type": "numbering.api.enfonica.com/RegulatoryListing"
+                      }
+                    },
+                    "compliant": {
+                      "type": "bool",
+                      "id": 16,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
                     }
                   },
                   "nested": {
@@ -200,6 +262,29 @@
                         "ANSWER": 2,
                         "BRIDGE": 3
                       }
+                    }
+                  }
+                },
+                "PhoneNumberRange": {
+                  "fields": {
+                    "primaryPhoneNumberInstance": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.resource_reference).type": "numbering.api.enfonica.com/PhoneNumberInstance"
+                      }
+                    },
+                    "startPhoneNumber": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "endPhoneNumber": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "size": {
+                      "type": "int32",
+                      "id": 4
                     }
                   }
                 },
@@ -307,6 +392,65 @@
                         "(google.api.field_behavior)": "REQUIRED",
                         "(google.api.resource_reference).type": "numbering.api.enfonica.com/PhoneNumberInstance"
                       }
+                    }
+                  }
+                },
+                "MovePhoneNumberInstanceRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "numbering.api.enfonica.com/PhoneNumberInstance"
+                      }
+                    },
+                    "destinationParent": {
+                      "type": "string",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "numbering.api.enfonica.com/PhoneNumberInstance"
+                      }
+                    },
+                    "regulatoryListing": {
+                      "type": "string",
+                      "id": 3,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY",
+                        "(google.api.resource_reference).type": "numbering.api.enfonica.com/RegulatoryListing"
+                      }
+                    }
+                  }
+                },
+                "SplitRangeRequest": {
+                  "fields": {
+                    "phoneNumberInstance": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "numbering.api.enfonica.com/PhoneNumberInstance"
+                      }
+                    },
+                    "size": {
+                      "type": "int32",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    }
+                  }
+                },
+                "SplitRangeResponse": {
+                  "fields": {
+                    "first": {
+                      "type": "PhoneNumberInstance",
+                      "id": 1
+                    },
+                    "second": {
+                      "type": "PhoneNumberInstance",
+                      "id": 2
                     }
                   }
                 },
@@ -433,6 +577,390 @@
                     "phoneNumbers": {
                       "rule": "repeated",
                       "type": "PhoneNumber",
+                      "id": 1
+                    },
+                    "nextPageToken": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "RegulatoryListings": {
+                  "options": {
+                    "(google.api.default_host)": "numbering.api.enfonica.com",
+                    "(google.api.oauth_scopes)": "https://api.enfonica.com/auth/numbering"
+                  },
+                  "methods": {
+                    "CreateRegulatoryListing": {
+                      "requestType": "CreateRegulatoryListingRequest",
+                      "responseType": "RegulatoryListing",
+                      "options": {
+                        "(google.api.http).post": "/v1beta1/{parent=projects/*}/regulatoryListings",
+                        "(google.api.http).body": "regulatory_listing",
+                        "(google.api.method_signature)": "parent,regulatory_listing"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "post": "/v1beta1/{parent=projects/*}/regulatoryListings",
+                            "body": "regulatory_listing"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent,regulatory_listing"
+                        }
+                      ]
+                    },
+                    "GetRegulatoryListing": {
+                      "requestType": "GetRegulatoryListingRequest",
+                      "responseType": "RegulatoryListing",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{name=projects/*/regulatoryListings/*}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{name=projects/*/regulatoryListings/*}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    },
+                    "ListRegulatoryListings": {
+                      "requestType": "ListRegulatoryListingsRequest",
+                      "responseType": "ListRegulatoryListingsResponse",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{parent=projects/*}/regulatoryListings",
+                        "(google.api.method_signature)": "parent"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{parent=projects/*}/regulatoryListings"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent"
+                        }
+                      ]
+                    },
+                    "UpdateRegulatoryListing": {
+                      "requestType": "UpdateRegulatoryListingRequest",
+                      "responseType": "RegulatoryListing",
+                      "options": {
+                        "(google.api.http).patch": "/v1beta1/{regulatory_listing.name=projects/*/regulatoryListings/*}",
+                        "(google.api.http).body": "regulatory_listing",
+                        "(google.api.method_signature)": "regulatory_listing,update_mask"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "patch": "/v1beta1/{regulatory_listing.name=projects/*/regulatoryListings/*}",
+                            "body": "regulatory_listing"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "regulatory_listing,update_mask"
+                        }
+                      ]
+                    },
+                    "DeleteRegulatoryListing": {
+                      "requestType": "DeleteRegulatoryListingRequest",
+                      "responseType": "google.protobuf.Empty",
+                      "options": {
+                        "(google.api.http).delete": "/v1beta1/{name=projects/*/regulatoryListings/*}",
+                        "(google.api.method_signature)": "name"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "delete": "/v1beta1/{name=projects/*/regulatoryListings/*}"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "name"
+                        }
+                      ]
+                    },
+                    "SearchRegulatoryListings": {
+                      "requestType": "SearchRegulatoryListingsRequest",
+                      "responseType": "SearchRegulatoryListingsResponse",
+                      "options": {
+                        "(google.api.http).get": "/v1beta1/{parent=projects/*}/regulatoryListings:search",
+                        "(google.api.method_signature)": "parent,region_code,number_type"
+                      },
+                      "parsedOptions": [
+                        {
+                          "(google.api.http)": {
+                            "get": "/v1beta1/{parent=projects/*}/regulatoryListings:search"
+                          }
+                        },
+                        {
+                          "(google.api.method_signature)": "parent,region_code,number_type"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "RegulatoryListing": {
+                  "options": {
+                    "(google.api.resource).type": "numbering.api.enfonica.com/RegulatoryListing",
+                    "(google.api.resource).pattern": "projects/{project}/regulatoryListings/{regulatory_listing}"
+                  },
+                  "oneofs": {
+                    "entity": {
+                      "oneof": [
+                        "person",
+                        "business"
+                      ]
+                    }
+                  },
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1
+                    },
+                    "displayName": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "address": {
+                      "type": "GenericAddress",
+                      "id": 3,
+                      "options": {
+                        "(google.api.field_behavior)": "IMMUTABLE"
+                      }
+                    },
+                    "person": {
+                      "type": "PersonDetails",
+                      "id": 4,
+                      "options": {
+                        "(google.api.field_behavior)": "IMMUTABLE"
+                      }
+                    },
+                    "business": {
+                      "type": "BusinessDetails",
+                      "id": 5,
+                      "options": {
+                        "(google.api.field_behavior)": "IMMUTABLE"
+                      }
+                    },
+                    "createTime": {
+                      "type": "google.protobuf.Timestamp",
+                      "id": 6,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "valid": {
+                      "type": "bool",
+                      "id": 7,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    },
+                    "verified": {
+                      "type": "bool",
+                      "id": 8,
+                      "options": {
+                        "(google.api.field_behavior)": "OUTPUT_ONLY"
+                      }
+                    }
+                  }
+                },
+                "GenericAddress": {
+                  "fields": {
+                    "addressLines": {
+                      "rule": "repeated",
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    },
+                    "locality": {
+                      "type": "string",
+                      "id": 2
+                    },
+                    "administrativeArea": {
+                      "type": "string",
+                      "id": 6
+                    },
+                    "postalCode": {
+                      "type": "string",
+                      "id": 4
+                    },
+                    "regionCode": {
+                      "type": "string",
+                      "id": 5,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    }
+                  }
+                },
+                "PersonDetails": {
+                  "fields": {
+                    "givenName": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    },
+                    "familyName": {
+                      "type": "string",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    }
+                  }
+                },
+                "BusinessDetails": {
+                  "fields": {
+                    "business": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    }
+                  }
+                },
+                "CreateRegulatoryListingRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "numbering.api.enfonica.com/RegulatoryListing"
+                      }
+                    },
+                    "regulatoryListing": {
+                      "type": "RegulatoryListing",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    }
+                  }
+                },
+                "GetRegulatoryListingRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "numbering.api.enfonica.com/RegulatoryListing"
+                      }
+                    }
+                  }
+                },
+                "ListRegulatoryListingsRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "numbering.api.enfonica.com/RegulatoryListing"
+                      }
+                    },
+                    "pageSize": {
+                      "type": "int32",
+                      "id": 2
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "id": 3
+                    }
+                  }
+                },
+                "ListRegulatoryListingsResponse": {
+                  "fields": {
+                    "regulatoryListings": {
+                      "rule": "repeated",
+                      "type": "RegulatoryListing",
+                      "id": 1
+                    },
+                    "nextPageToken": {
+                      "type": "string",
+                      "id": 2
+                    }
+                  }
+                },
+                "UpdateRegulatoryListingRequest": {
+                  "fields": {
+                    "regulatoryListing": {
+                      "type": "RegulatoryListing",
+                      "id": 2,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    },
+                    "updateMask": {
+                      "type": "google.protobuf.FieldMask",
+                      "id": 3
+                    }
+                  }
+                },
+                "DeleteRegulatoryListingRequest": {
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).type": "numbering.api.enfonica.com/RegulatoryListing"
+                      }
+                    }
+                  }
+                },
+                "SearchRegulatoryListingsRequest": {
+                  "fields": {
+                    "parent": {
+                      "type": "string",
+                      "id": 1,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED",
+                        "(google.api.resource_reference).child_type": "numbering.api.enfonica.com/RegulatoryListing"
+                      }
+                    },
+                    "pageSize": {
+                      "type": "int32",
+                      "id": 2
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "id": 3
+                    },
+                    "regionCode": {
+                      "type": "string",
+                      "id": 4,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    },
+                    "numberType": {
+                      "type": "PhoneNumber.PhoneNumberType",
+                      "id": 5,
+                      "options": {
+                        "(google.api.field_behavior)": "REQUIRED"
+                      }
+                    }
+                  }
+                },
+                "SearchRegulatoryListingsResponse": {
+                  "fields": {
+                    "regulatoryListings": {
+                      "rule": "repeated",
+                      "type": "RegulatoryListing",
                       "id": 1
                     },
                     "nextPageToken": {
@@ -1032,6 +1560,18 @@
               ],
               "reserved": [
                 [
+                  4,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
                   8,
                   8
                 ],
@@ -1064,6 +1604,13 @@
                 "lazy": {
                   "type": "bool",
                   "id": 5,
+                  "options": {
+                    "default": false
+                  }
+                },
+                "unverifiedLazy": {
+                  "type": "bool",
+                  "id": 15,
                   "options": {
                     "default": false
                   }
@@ -1364,6 +1911,9 @@
                   }
                 }
               }
+            },
+            "Empty": {
+              "fields": {}
             }
           }
         },
@@ -1494,7 +2044,8 @@
                 "OUTPUT_ONLY": 3,
                 "INPUT_ONLY": 4,
                 "IMMUTABLE": 5,
-                "UNORDERED_LIST": 6
+                "UNORDERED_LIST": 6,
+                "NON_EMPTY_DEFAULT": 7
               }
             },
             "resourceReference": {

@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -90,7 +90,7 @@
                     };
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Messages#createMessage}.
+                     * Callback as used by {@link enfonica.messaging.v1.Messages|createMessage}.
                      * @memberof enfonica.messaging.v1.Messages
                      * @typedef CreateMessageCallback
                      * @type {function}
@@ -123,7 +123,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Messages#getMessage}.
+                     * Callback as used by {@link enfonica.messaging.v1.Messages|getMessage}.
                      * @memberof enfonica.messaging.v1.Messages
                      * @typedef GetMessageCallback
                      * @type {function}
@@ -156,7 +156,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Messages#listMessages}.
+                     * Callback as used by {@link enfonica.messaging.v1.Messages|listMessages}.
                      * @memberof enfonica.messaging.v1.Messages
                      * @typedef ListMessagesCallback
                      * @type {function}
@@ -2083,7 +2083,7 @@
                     };
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#createUnsubscriber}.
+                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|createUnsubscriber}.
                      * @memberof enfonica.messaging.v1.Unsubscribers
                      * @typedef CreateUnsubscriberCallback
                      * @type {function}
@@ -2116,7 +2116,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#getUnsubscriber}.
+                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|getUnsubscriber}.
                      * @memberof enfonica.messaging.v1.Unsubscribers
                      * @typedef GetUnsubscriberCallback
                      * @type {function}
@@ -2149,7 +2149,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#listUnsubscribers}.
+                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|listUnsubscribers}.
                      * @memberof enfonica.messaging.v1.Unsubscribers
                      * @typedef ListUnsubscribersCallback
                      * @type {function}
@@ -2182,7 +2182,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#updateUnsubscriber}.
+                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|updateUnsubscriber}.
                      * @memberof enfonica.messaging.v1.Unsubscribers
                      * @typedef UpdateUnsubscriberCallback
                      * @type {function}
@@ -2215,7 +2215,7 @@
                      */
     
                     /**
-                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers#deleteUnsubscriber}.
+                     * Callback as used by {@link enfonica.messaging.v1.Unsubscribers|deleteUnsubscriber}.
                      * @memberof enfonica.messaging.v1.Unsubscribers
                      * @typedef DeleteUnsubscriberCallback
                      * @type {function}
@@ -9370,6 +9370,7 @@
                  * @property {boolean|null} [packed] FieldOptions packed
                  * @property {google.protobuf.FieldOptions.JSType|null} [jstype] FieldOptions jstype
                  * @property {boolean|null} [lazy] FieldOptions lazy
+                 * @property {boolean|null} [unverifiedLazy] FieldOptions unverifiedLazy
                  * @property {boolean|null} [deprecated] FieldOptions deprecated
                  * @property {boolean|null} [weak] FieldOptions weak
                  * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] FieldOptions uninterpretedOption
@@ -9425,6 +9426,14 @@
                  * @instance
                  */
                 FieldOptions.prototype.lazy = false;
+    
+                /**
+                 * FieldOptions unverifiedLazy.
+                 * @member {boolean} unverifiedLazy
+                 * @memberof google.protobuf.FieldOptions
+                 * @instance
+                 */
+                FieldOptions.prototype.unverifiedLazy = false;
     
                 /**
                  * FieldOptions deprecated.
@@ -9502,6 +9511,8 @@
                         writer.uint32(/* id 6, wireType 0 =*/48).int32(message.jstype);
                     if (message.weak != null && Object.hasOwnProperty.call(message, "weak"))
                         writer.uint32(/* id 10, wireType 0 =*/80).bool(message.weak);
+                    if (message.unverifiedLazy != null && Object.hasOwnProperty.call(message, "unverifiedLazy"))
+                        writer.uint32(/* id 15, wireType 0 =*/120).bool(message.unverifiedLazy);
                     if (message.uninterpretedOption != null && message.uninterpretedOption.length)
                         for (var i = 0; i < message.uninterpretedOption.length; ++i)
                             $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
@@ -9558,6 +9569,9 @@
                             break;
                         case 5:
                             message.lazy = reader.bool();
+                            break;
+                        case 15:
+                            message.unverifiedLazy = reader.bool();
                             break;
                         case 3:
                             message.deprecated = reader.bool();
@@ -9642,6 +9656,9 @@
                     if (message.lazy != null && message.hasOwnProperty("lazy"))
                         if (typeof message.lazy !== "boolean")
                             return "lazy: boolean expected";
+                    if (message.unverifiedLazy != null && message.hasOwnProperty("unverifiedLazy"))
+                        if (typeof message.unverifiedLazy !== "boolean")
+                            return "unverifiedLazy: boolean expected";
                     if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                         if (typeof message.deprecated !== "boolean")
                             return "deprecated: boolean expected";
@@ -9671,6 +9688,7 @@
                             case 4:
                             case 5:
                             case 6:
+                            case 7:
                                 break;
                             }
                     }
@@ -9726,6 +9744,8 @@
                     }
                     if (object.lazy != null)
                         message.lazy = Boolean(object.lazy);
+                    if (object.unverifiedLazy != null)
+                        message.unverifiedLazy = Boolean(object.unverifiedLazy);
                     if (object.deprecated != null)
                         message.deprecated = Boolean(object.deprecated);
                     if (object.weak != null)
@@ -9775,6 +9795,10 @@
                             case 6:
                                 message[".google.api.fieldBehavior"][i] = 6;
                                 break;
+                            case "NON_EMPTY_DEFAULT":
+                            case 7:
+                                message[".google.api.fieldBehavior"][i] = 7;
+                                break;
                             }
                     }
                     if (object[".google.api.resourceReference"] != null) {
@@ -9809,6 +9833,7 @@
                         object.lazy = false;
                         object.jstype = options.enums === String ? "JS_NORMAL" : 0;
                         object.weak = false;
+                        object.unverifiedLazy = false;
                         object[".google.api.resourceReference"] = null;
                     }
                     if (message.ctype != null && message.hasOwnProperty("ctype"))
@@ -9823,6 +9848,8 @@
                         object.jstype = options.enums === String ? $root.google.protobuf.FieldOptions.JSType[message.jstype] : message.jstype;
                     if (message.weak != null && message.hasOwnProperty("weak"))
                         object.weak = message.weak;
+                    if (message.unverifiedLazy != null && message.hasOwnProperty("unverifiedLazy"))
+                        object.unverifiedLazy = message.unverifiedLazy;
                     if (message.uninterpretedOption && message.uninterpretedOption.length) {
                         object.uninterpretedOption = [];
                         for (var j = 0; j < message.uninterpretedOption.length; ++j)
@@ -13963,6 +13990,7 @@
              * @property {number} INPUT_ONLY=4 INPUT_ONLY value
              * @property {number} IMMUTABLE=5 IMMUTABLE value
              * @property {number} UNORDERED_LIST=6 UNORDERED_LIST value
+             * @property {number} NON_EMPTY_DEFAULT=7 NON_EMPTY_DEFAULT value
              */
             api.FieldBehavior = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -13973,6 +14001,7 @@
                 values[valuesById[4] = "INPUT_ONLY"] = 4;
                 values[valuesById[5] = "IMMUTABLE"] = 5;
                 values[valuesById[6] = "UNORDERED_LIST"] = 6;
+                values[valuesById[7] = "NON_EMPTY_DEFAULT"] = 7;
                 return values;
             })();
     

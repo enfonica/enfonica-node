@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,3 +18,4 @@
 
 export {PhoneNumberInstancesClient} from './phone_number_instances_client';
 export {PhoneNumbersClient} from './phone_numbers_client';
+export {RegulatoryListingsClient} from './regulatory_listings_client';

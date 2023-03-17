@@ -1,4 +1,4 @@
-// Copyright 2022 Enfonica Pty Ltd
+// Copyright 2023 Enfonica Pty Ltd
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import * as gapicConfig from './phone_number_instances_client_config.json';
 const version = require('../../../package.json').version;
 
 /**
- *  Manages PhoneNumberInstances.
+ *  Manages phone number instances.
  * @class
  * @memberof v1beta1
  */
@@ -170,6 +170,9 @@ export class PhoneNumberInstancesClient {
       phoneNumberInstancePathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/phoneNumberInstances/{phone_number_instance}'
       ),
+      regulatoryListingPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/regulatoryListings/{regulatory_listing}'
+      ),
     };
 
     // Some of the methods on this service return "paged" results,
@@ -234,6 +237,8 @@ export class PhoneNumberInstancesClient {
       'listPhoneNumberInstances',
       'updatePhoneNumberInstance',
       'deletePhoneNumberInstance',
+      'movePhoneNumberInstance',
+      'splitRange',
     ];
     for (const methodName of phoneNumberInstancesStubMethods) {
       const callPromise = this.phoneNumberInstancesStub.then(
@@ -348,7 +353,8 @@ export class PhoneNumberInstancesClient {
     >
   ): void;
   /**
-   * Creates a phone number instance.
+   * Creates a phone number instance. This provisions a phone number against a
+   * project.
    *
    * The caller must have `numbering.phoneNumberInstances.create` permission on the project.
    *
@@ -659,7 +665,7 @@ export class PhoneNumberInstancesClient {
     >
   ): void;
   /**
-   * Deletes a phone number instance.
+   * Deletes a phone number instance. This disconnects the phone number.
    *
    * The caller must have `numbering.phoneNumberInstances.delete` permission on the project.
    *
@@ -724,6 +730,218 @@ export class PhoneNumberInstancesClient {
       callback
     );
   }
+  movePhoneNumberInstance(
+    request: protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.numbering.v1beta1.IPhoneNumberInstance,
+      (
+        | protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest
+        | undefined
+      ),
+      {} | undefined
+    ]
+  >;
+  movePhoneNumberInstance(
+    request: protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.enfonica.numbering.v1beta1.IPhoneNumberInstance,
+      | protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest
+      | null
+      | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  movePhoneNumberInstance(
+    request: protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest,
+    callback: Callback<
+      protos.enfonica.numbering.v1beta1.IPhoneNumberInstance,
+      | protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest
+      | null
+      | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Moves the phone number instance to another project.
+   *
+   * Warning: moving a phone number instance may cause the current configuration
+   * of the phone number instance to stop working. Any connected flows or SIP
+   * domains will need to be reconfigured in the destination project. Any
+   * programmable handler will need to accept the signing key of the destination
+   * project.
+   *
+   * The caller must have `numbering.phoneNumberInstances.move` permission on
+   * both the source and destination projects.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.name
+   *   The name of the phone number instance to move.
+   *   Must be of the form `projects/* /phoneNumberInstances/*`.
+   * @param {string} request.destinationParent
+   *   The new parent project to move the phone number instance to.
+   *   Must be of the form `projects/*`.
+   * @param {string} request.regulatoryListing
+   *   The regulatory listing in the destination project to associate with this
+   *   phone number instance. The requirements for regulatory listings varies
+   *   depending on the region and type of phone number. Of the form
+   *   `projects/* /regulatoryListings/*`.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [PhoneNumberInstance]{@link enfonica.numbering.v1beta1.PhoneNumberInstance}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  movePhoneNumberInstance(
+    request: protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.enfonica.numbering.v1beta1.IPhoneNumberInstance,
+          | protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest
+          | null
+          | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.enfonica.numbering.v1beta1.IPhoneNumberInstance,
+      | protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest
+      | null
+      | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.enfonica.numbering.v1beta1.IPhoneNumberInstance,
+      (
+        | protos.enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest
+        | undefined
+      ),
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        name: request.name || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.movePhoneNumberInstance(
+      request,
+      options,
+      callback
+    );
+  }
+  splitRange(
+    request: protos.enfonica.numbering.v1beta1.ISplitRangeRequest,
+    options?: gax.CallOptions
+  ): Promise<
+    [
+      protos.enfonica.numbering.v1beta1.ISplitRangeResponse,
+      protos.enfonica.numbering.v1beta1.ISplitRangeRequest | undefined,
+      {} | undefined
+    ]
+  >;
+  splitRange(
+    request: protos.enfonica.numbering.v1beta1.ISplitRangeRequest,
+    options: gax.CallOptions,
+    callback: Callback<
+      protos.enfonica.numbering.v1beta1.ISplitRangeResponse,
+      protos.enfonica.numbering.v1beta1.ISplitRangeRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  splitRange(
+    request: protos.enfonica.numbering.v1beta1.ISplitRangeRequest,
+    callback: Callback<
+      protos.enfonica.numbering.v1beta1.ISplitRangeResponse,
+      protos.enfonica.numbering.v1beta1.ISplitRangeRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Splits a phone number range into two ranges.
+   *
+   * To split a range, you specify how many numbers to keep in this range. These
+   * numbers are taken from the start of the range. The remaining numbers will
+   * be moved into a new range.
+   *
+   * For example, if you have a range +61255501100-99 and you split it with a
+   * `size` of 20, then:
+   * - the original range will be modified to +61255501100-19 (size 20)
+   * - a new range will be created with +61255501120-99 (size 80)
+   *
+   * The caller must have `numbering.phoneNumberInstances.splitRange` permission
+   * on the project.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.phoneNumberInstance
+   *   The name of the phone number instance to split. It must represent a
+   *   range. Must be of the form `projects/* /phoneNumberInstances/*`.
+   * @param {number} request.size
+   *   The quantity of numbers to keep in the range of the specified phone number
+   *   instance. The remaining numbers will be moved to a new range.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [SplitRangeResponse]{@link enfonica.numbering.v1beta1.SplitRangeResponse}.
+   *   The promise has a method named "cancel" which cancels the ongoing API call.
+   */
+  splitRange(
+    request: protos.enfonica.numbering.v1beta1.ISplitRangeRequest,
+    optionsOrCallback?:
+      | gax.CallOptions
+      | Callback<
+          protos.enfonica.numbering.v1beta1.ISplitRangeResponse,
+          | protos.enfonica.numbering.v1beta1.ISplitRangeRequest
+          | null
+          | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.enfonica.numbering.v1beta1.ISplitRangeResponse,
+      protos.enfonica.numbering.v1beta1.ISplitRangeRequest | null | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.enfonica.numbering.v1beta1.ISplitRangeResponse,
+      protos.enfonica.numbering.v1beta1.ISplitRangeRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
+    request = request || {};
+    let options: gax.CallOptions;
+    if (typeof optionsOrCallback === 'function' && callback === undefined) {
+      callback = optionsOrCallback;
+      options = {};
+    } else {
+      options = optionsOrCallback as gax.CallOptions;
+    }
+    options = options || {};
+    options.otherArgs = options.otherArgs || {};
+    options.otherArgs.headers = options.otherArgs.headers || {};
+    options.otherArgs.headers['x-goog-request-params'] =
+      gax.routingHeader.fromParams({
+        phone_number_instance: request.phoneNumberInstance || '',
+      });
+    this.initialize();
+    return this.innerApiCalls.splitRange(request, options, callback);
+  }
 
   listPhoneNumberInstances(
     request: protos.enfonica.numbering.v1beta1.IListPhoneNumberInstancesRequest,
@@ -757,8 +975,9 @@ export class PhoneNumberInstancesClient {
     >
   ): void;
   /**
-   * Lists all PhoneNumberInstances.
-   * List returns phone number instance sorted by create_time descending.
+   * Lists all phone number instances.
+   *
+   * List returns phone number instances sorted by `create_time` descending.
    *
    * The caller must have `numbering.phoneNumberInstances.list` permission on the project.
    *
@@ -1023,6 +1242,48 @@ export class PhoneNumberInstancesClient {
     return this.pathTemplates.phoneNumberInstancePathTemplate.match(
       phoneNumberInstanceName
     ).phone_number_instance;
+  }
+
+  /**
+   * Return a fully-qualified regulatoryListing resource name string.
+   *
+   * @param {string} project
+   * @param {string} regulatory_listing
+   * @returns {string} Resource name string.
+   */
+  regulatoryListingPath(project: string, regulatoryListing: string) {
+    return this.pathTemplates.regulatoryListingPathTemplate.render({
+      project: project,
+      regulatory_listing: regulatoryListing,
+    });
+  }
+
+  /**
+   * Parse the project from RegulatoryListing resource.
+   *
+   * @param {string} regulatoryListingName
+   *   A fully-qualified path representing RegulatoryListing resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromRegulatoryListingName(regulatoryListingName: string) {
+    return this.pathTemplates.regulatoryListingPathTemplate.match(
+      regulatoryListingName
+    ).project;
+  }
+
+  /**
+   * Parse the regulatory_listing from RegulatoryListing resource.
+   *
+   * @param {string} regulatoryListingName
+   *   A fully-qualified path representing RegulatoryListing resource.
+   * @returns {string} A string representing the regulatory_listing.
+   */
+  matchRegulatoryListingFromRegulatoryListingName(
+    regulatoryListingName: string
+  ) {
+    return this.pathTemplates.regulatoryListingPathTemplate.match(
+      regulatoryListingName
+    ).regulatory_listing;
   }
 
   /**

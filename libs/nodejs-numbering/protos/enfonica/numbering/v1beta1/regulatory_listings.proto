@@ -1,0 +1,323 @@
+// Copyright 2022 Enfonica Pty Ltd
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package enfonica.numbering.v1beta1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+import "enfonica/numbering/v1beta1/phone_numbers.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "Enfonica.Numbering.V1Beta1";
+option go_package = "github.com/enfonica/enfonica-go/numbering/v1beta1;numbering";
+option java_multiple_files = true;
+option java_outer_classname = "RegulatoryListingsProto";
+option java_package = "com.enfonica.numbering.v1beta1";
+option objc_class_prefix = "ENFON";
+
+// Manages regulatory listings.
+service RegulatoryListings {
+  option (google.api.default_host) = "numbering.api.enfonica.com";
+  option (google.api.oauth_scopes) =
+      "https://api.enfonica.com/auth/numbering";
+
+  // Creates a regulatory listing.
+  //
+  // By creating a regulatory listing, you acknowledge that the person or entity
+  // located at the specified address is the only party that will be utilizing
+  // phone numbers associated with this regulatory listing. You acknowledge that
+  // Enfonica may process the information provided for the purpose of identity
+  // verification, and will share this information with local telecommunications
+  // providers or authorities where required by local law. You understand that
+  // Enfonica phone numbers may be taken out of service if inaccurate or false
+  // information has been provided.
+  //
+  // The caller must have `numbering.regulatoryListings.create` permission on the project.
+  rpc CreateRegulatoryListing(CreateRegulatoryListingRequest) returns (RegulatoryListing) {
+    option (google.api.http) = {
+      post: "/v1beta1/{parent=projects/*}/regulatoryListings"
+      body: "regulatory_listing"
+    };
+    option (google.api.method_signature) = "parent,regulatory_listing";
+  }
+
+  // Retrieves a regulatory listing.
+  //
+  // The caller must have `numbering.regulatoryListings.get` permission on the project.
+  rpc GetRegulatoryListing(GetRegulatoryListingRequest) returns (RegulatoryListing) {
+    option (google.api.http) = {
+      get: "/v1beta1/{name=projects/*/regulatoryListings/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+
+  // Lists all regulatory listings.
+  //
+  // List returns regulatory listings sorted by `create_time` descending.
+  //
+  // The caller must have `numbering.regulatoryListings.list` permission on the project.
+  rpc ListRegulatoryListings(ListRegulatoryListingsRequest) returns (ListRegulatoryListingsResponse) {
+    option (google.api.http) = {
+      get: "/v1beta1/{parent=projects/*}/regulatoryListings"
+    };
+    option (google.api.method_signature) = "parent";
+  }
+
+  // Updates a regulatory listing.
+  //
+  // The caller must have `numbering.regulatoryListings.update` permission on the project.
+  rpc UpdateRegulatoryListing(UpdateRegulatoryListingRequest) returns (RegulatoryListing) {
+    option (google.api.http) = {
+      patch: "/v1beta1/{regulatory_listing.name=projects/*/regulatoryListings/*}"
+      body: "regulatory_listing"
+    };
+    option (google.api.method_signature) = "regulatory_listing,update_mask";
+  }
+
+  // Deletes a regulatory listing. Regulatory listings that are associated with
+  // an active phone number instance cannot be deleted.
+  //
+  // The caller must have `numbering.regulatoryListings.delete` permission on the project.
+  rpc DeleteRegulatoryListing(DeleteRegulatoryListingRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/v1beta1/{name=projects/*/regulatoryListings/*}"
+    };
+    option (google.api.method_signature) = "name";
+  }
+
+  // Searches all usable regulatory listings with the specified number type.
+  //
+  // List returns regulatory listings sorted by `create_time` descending.
+  //
+  // The caller must have `numbering.regulatoryListings.list` permission on the project.
+  rpc SearchRegulatoryListings(SearchRegulatoryListingsRequest) returns (SearchRegulatoryListingsResponse) {
+    option (google.api.http) = {
+      get: "/v1beta1/{parent=projects/*}/regulatoryListings:search"
+    };
+    option (google.api.method_signature) = "parent,region_code,number_type";
+  }
+}
+
+// The regulatory listing resource.
+message RegulatoryListing {
+  option (google.api.resource) = {
+    type: "numbering.api.enfonica.com/RegulatoryListing"
+    pattern: "projects/{project}/regulatoryListings/{regulatory_listing}"
+  };
+
+  // Resource name of the regulatory listing. It must match the pattern
+  // `projects/*/regulatoryListings/*`
+  string name = 1;
+
+  // The display name of the regulatory listing.
+  // Max length 100 characters.
+  string display_name = 2;
+
+  // The address of this regulatory listing.
+  GenericAddress address = 3 [(google.api.field_behavior) = IMMUTABLE];
+
+  // The entity associated with the listing.
+  oneof entity {
+    // The person associated with the listing.
+    PersonDetails person = 4 [(google.api.field_behavior) = IMMUTABLE];
+
+    // The business or corporation associated with the listing.
+    BusinessDetails business = 5 [(google.api.field_behavior) = IMMUTABLE];
+  }
+
+  // The creation time of the regulatory listing.
+  google.protobuf.Timestamp create_time = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // Whether this regulatory listing is considered valid. This state may change
+  // after manual review.
+  bool valid = 7 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // Whether this regulatory listing has been verified. Verification is only
+  // required for some types of phone numbers, and is performed at request
+  // by Enfonica.
+  bool verified = 8 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// An address in a generic format.
+//
+// The validation of some fields varies based on `region_code`. For example:
+// - AU/NZ: locality (city) required, adminsitrative_area (city) required,
+//   postal_code required with 4 digits.
+// - US: locality (city) required, adminsitrative_area (city) required,
+//   postal_code required with 5 digits.
+message GenericAddress {
+  // The address lines.
+  // Maximum length of each line is 200 characters.
+  // Must specify 1 or 2 lines.
+  repeated string address_lines = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // Generally refers to the city/town portion of the address.
+  // Examples: US city, IT comune, UK post town.
+  //
+  // In regions of the world where localities are not well defined or do not fit
+  // into this structure well, leave locality empty and use address_lines.
+  string locality = 2;
+
+  // Highest administrative subdivision which is used for postal addresses of a
+  // country or region. For example, this can be a state, a province, an oblast,
+  // or a prefecture.
+  //
+  // Many countries don't use an administrative area in postal addresses. E.g.
+  // in Switzerland this should be left unpopulated.
+  string administrative_area = 6;
+
+  // The postal code.
+  // Maximum 16 characters.
+  string postal_code = 4;
+
+  // The alpha-2 country code (capitalized).
+  string region_code = 5 [(google.api.field_behavior) = REQUIRED];
+}
+
+// The details of a person.
+message PersonDetails {
+  // The given name of the person. Maximum length 100 characters.
+  string given_name = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // The family name of the person. Maximum length 100 characters.
+  string family_name = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// The details of a business or corporation.
+message BusinessDetails {
+  // The full legal name of the business. Maximum length 200 characters.
+  string business = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+// Request to create a new regulatory listing.
+message CreateRegulatoryListingRequest {
+  // The project under which to create the regulatory listing
+  // in the form `projects/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "numbering.api.enfonica.com/RegulatoryListing"
+    }
+  ];
+
+  // The resource to be created.
+  RegulatoryListing regulatory_listing = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+// The GetRegulatoryListing request message.
+message GetRegulatoryListingRequest {
+  // The resource name of the regulatory listing to retrieve.
+  // Must be of the form `projects/*/regulatoryListings/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/RegulatoryListing"
+    }
+  ];
+}
+
+// The ListRegulatoryListings request.
+message ListRegulatoryListingsRequest {
+  // The project under which to list regulatory listing, in the form `projects/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "numbering.api.enfonica.com/RegulatoryListing"
+    }
+  ];
+
+  // The maximum number of regulatory listing to return in the response.
+  // Default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous call to `ListRegulatoryListings`
+  // that indicates where this listing should continue from.
+  string page_token = 3;
+}
+
+// The ListRegulatoryListings response.
+message ListRegulatoryListingsResponse {
+  // A possibly paginated list of regulatory listing that are direct descendants of
+  // the specified parent resource.
+  repeated RegulatoryListing regulatory_listings = 1;
+
+  // A pagination token returned from a previous call to `ListRegulatoryListings`
+  // that indicates from where listing should continue.
+  string next_page_token = 2;
+}
+
+// The UpdateRegulatoryListing request message.
+message UpdateRegulatoryListingRequest {
+  // The updated definition of the RegulatoryListing.
+  RegulatoryListing regulatory_listing = 2 [(google.api.field_behavior) = REQUIRED];
+
+  // Fields to be updated.
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+// The DeleteRegulatoryListing request message.
+message DeleteRegulatoryListingRequest {
+  // The resource name of the regulatory listing to be deleted.
+  // Must be of the form `projects/*/regulatoryListings/*`.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "numbering.api.enfonica.com/RegulatoryListing"
+    }
+  ];
+}
+
+// The SearchRegulatoryListings request.
+message SearchRegulatoryListingsRequest {
+  // The project under which to list regulatory listing, in the form `projects/*`.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "numbering.api.enfonica.com/RegulatoryListing"
+    }
+  ];
+
+  // The maximum number of regulatory listing to return in the response.
+  // Default value of 10 and maximum value of 100.
+  int32 page_size = 2;
+
+  // A pagination token returned from a previous call to `ListRegulatoryListings`
+  // that indicates where this listing should continue from.
+  string page_token = 3;
+
+  // The region code of the number that the regulatory listing must be usable
+  // with.
+  string region_code = 4 [(google.api.field_behavior) = REQUIRED];
+
+  // The type of number that the regulatory listing must be usable with.
+  PhoneNumber.PhoneNumberType number_type = 5 [(google.api.field_behavior) = REQUIRED];
+}
+
+// The SearchRegulatoryListings response.
+message SearchRegulatoryListingsResponse {
+  // A possibly paginated list of regulatory listing that are direct descendants of
+  // the specified parent resource.
+  repeated RegulatoryListing regulatory_listings = 1;
+
+  // A pagination token returned from a previous call to `ListRegulatoryListings`
+  // that indicates from where listing should continue.
+  string next_page_token = 2;
+}

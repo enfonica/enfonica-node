@@ -1,6 +1,6 @@
 {
   "name": "@enfonica/voice",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Enfonica Numbering SDK for Node.js",
   "repository": "enfonica-node/libs/nodejs-voice",
   "license": "Apache-2.0",

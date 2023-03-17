@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -112,44 +112,86 @@ export namespace enfonica {
                  * @returns Promise
                  */
                 public deletePhoneNumberInstance(request: enfonica.numbering.v1beta1.IDeletePhoneNumberInstanceRequest): Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>;
+
+                /**
+                 * Calls MovePhoneNumberInstance.
+                 * @param request MovePhoneNumberInstanceRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and PhoneNumberInstance
+                 */
+                public movePhoneNumberInstance(request: enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest, callback: enfonica.numbering.v1beta1.PhoneNumberInstances.MovePhoneNumberInstanceCallback): void;
+
+                /**
+                 * Calls MovePhoneNumberInstance.
+                 * @param request MovePhoneNumberInstanceRequest message or plain object
+                 * @returns Promise
+                 */
+                public movePhoneNumberInstance(request: enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest): Promise<enfonica.numbering.v1beta1.PhoneNumberInstance>;
+
+                /**
+                 * Calls SplitRange.
+                 * @param request SplitRangeRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and SplitRangeResponse
+                 */
+                public splitRange(request: enfonica.numbering.v1beta1.ISplitRangeRequest, callback: enfonica.numbering.v1beta1.PhoneNumberInstances.SplitRangeCallback): void;
+
+                /**
+                 * Calls SplitRange.
+                 * @param request SplitRangeRequest message or plain object
+                 * @returns Promise
+                 */
+                public splitRange(request: enfonica.numbering.v1beta1.ISplitRangeRequest): Promise<enfonica.numbering.v1beta1.SplitRangeResponse>;
             }
 
             namespace PhoneNumberInstances {
 
                 /**
-                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#createPhoneNumberInstance}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|createPhoneNumberInstance}.
                  * @param error Error, if any
                  * @param [response] PhoneNumberInstance
                  */
                 type CreatePhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#getPhoneNumberInstance}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|getPhoneNumberInstance}.
                  * @param error Error, if any
                  * @param [response] PhoneNumberInstance
                  */
                 type GetPhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#listPhoneNumberInstances}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|listPhoneNumberInstances}.
                  * @param error Error, if any
                  * @param [response] ListPhoneNumberInstancesResponse
                  */
                 type ListPhoneNumberInstancesCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.ListPhoneNumberInstancesResponse) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#updatePhoneNumberInstance}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|updatePhoneNumberInstance}.
                  * @param error Error, if any
                  * @param [response] PhoneNumberInstance
                  */
                 type UpdatePhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
 
                 /**
-                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances#deletePhoneNumberInstance}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|deletePhoneNumberInstance}.
                  * @param error Error, if any
                  * @param [response] PhoneNumberInstance
                  */
                 type DeletePhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|movePhoneNumberInstance}.
+                 * @param error Error, if any
+                 * @param [response] PhoneNumberInstance
+                 */
+                type MovePhoneNumberInstanceCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.PhoneNumberInstance) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumberInstances|splitRange}.
+                 * @param error Error, if any
+                 * @param [response] SplitRangeResponse
+                 */
+                type SplitRangeCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.SplitRangeResponse) => void;
             }
 
             /** Properties of a PhoneNumberInstance. */
@@ -187,6 +229,15 @@ export namespace enfonica {
 
                 /** PhoneNumberInstance lifecycleState */
                 lifecycleState?: (enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|keyof typeof enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|null);
+
+                /** PhoneNumberInstance range */
+                range?: (enfonica.numbering.v1beta1.IPhoneNumberRange|null);
+
+                /** PhoneNumberInstance regulatoryListing */
+                regulatoryListing?: (string|null);
+
+                /** PhoneNumberInstance compliant */
+                compliant?: (boolean|null);
             }
 
             /** Represents a PhoneNumberInstance. */
@@ -230,6 +281,15 @@ export namespace enfonica {
 
                 /** PhoneNumberInstance lifecycleState. */
                 public lifecycleState: (enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState|keyof typeof enfonica.numbering.v1beta1.PhoneNumberInstance.LifecycleState);
+
+                /** PhoneNumberInstance range. */
+                public range?: (enfonica.numbering.v1beta1.IPhoneNumberRange|null);
+
+                /** PhoneNumberInstance regulatoryListing. */
+                public regulatoryListing: string;
+
+                /** PhoneNumberInstance compliant. */
+                public compliant: boolean;
 
                 /**
                  * Creates a new PhoneNumberInstance instance using the specified properties.
@@ -320,6 +380,114 @@ export namespace enfonica {
                     ANSWER = 2,
                     BRIDGE = 3
                 }
+            }
+
+            /** Properties of a PhoneNumberRange. */
+            interface IPhoneNumberRange {
+
+                /** PhoneNumberRange primaryPhoneNumberInstance */
+                primaryPhoneNumberInstance?: (string|null);
+
+                /** PhoneNumberRange startPhoneNumber */
+                startPhoneNumber?: (string|null);
+
+                /** PhoneNumberRange endPhoneNumber */
+                endPhoneNumber?: (string|null);
+
+                /** PhoneNumberRange size */
+                size?: (number|null);
+            }
+
+            /** Represents a PhoneNumberRange. */
+            class PhoneNumberRange implements IPhoneNumberRange {
+
+                /**
+                 * Constructs a new PhoneNumberRange.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IPhoneNumberRange);
+
+                /** PhoneNumberRange primaryPhoneNumberInstance. */
+                public primaryPhoneNumberInstance: string;
+
+                /** PhoneNumberRange startPhoneNumber. */
+                public startPhoneNumber: string;
+
+                /** PhoneNumberRange endPhoneNumber. */
+                public endPhoneNumber: string;
+
+                /** PhoneNumberRange size. */
+                public size: number;
+
+                /**
+                 * Creates a new PhoneNumberRange instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns PhoneNumberRange instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IPhoneNumberRange): enfonica.numbering.v1beta1.PhoneNumberRange;
+
+                /**
+                 * Encodes the specified PhoneNumberRange message. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumberRange.verify|verify} messages.
+                 * @param message PhoneNumberRange message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IPhoneNumberRange, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified PhoneNumberRange message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.PhoneNumberRange.verify|verify} messages.
+                 * @param message PhoneNumberRange message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IPhoneNumberRange, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a PhoneNumberRange message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns PhoneNumberRange
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.PhoneNumberRange;
+
+                /**
+                 * Decodes a PhoneNumberRange message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns PhoneNumberRange
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.PhoneNumberRange;
+
+                /**
+                 * Verifies a PhoneNumberRange message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a PhoneNumberRange message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns PhoneNumberRange
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.PhoneNumberRange;
+
+                /**
+                 * Creates a plain object from a PhoneNumberRange message. Also converts values to other types if specified.
+                 * @param message PhoneNumberRange
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.PhoneNumberRange, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this PhoneNumberRange to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
             }
 
             /** Properties of a CreatePhoneNumberInstanceRequest. */
@@ -910,6 +1078,300 @@ export namespace enfonica {
                 public toJSON(): { [k: string]: any };
             }
 
+            /** Properties of a MovePhoneNumberInstanceRequest. */
+            interface IMovePhoneNumberInstanceRequest {
+
+                /** MovePhoneNumberInstanceRequest name */
+                name?: (string|null);
+
+                /** MovePhoneNumberInstanceRequest destinationParent */
+                destinationParent?: (string|null);
+
+                /** MovePhoneNumberInstanceRequest regulatoryListing */
+                regulatoryListing?: (string|null);
+            }
+
+            /** Represents a MovePhoneNumberInstanceRequest. */
+            class MovePhoneNumberInstanceRequest implements IMovePhoneNumberInstanceRequest {
+
+                /**
+                 * Constructs a new MovePhoneNumberInstanceRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest);
+
+                /** MovePhoneNumberInstanceRequest name. */
+                public name: string;
+
+                /** MovePhoneNumberInstanceRequest destinationParent. */
+                public destinationParent: string;
+
+                /** MovePhoneNumberInstanceRequest regulatoryListing. */
+                public regulatoryListing: string;
+
+                /**
+                 * Creates a new MovePhoneNumberInstanceRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns MovePhoneNumberInstanceRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest): enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest;
+
+                /**
+                 * Encodes the specified MovePhoneNumberInstanceRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message MovePhoneNumberInstanceRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified MovePhoneNumberInstanceRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest.verify|verify} messages.
+                 * @param message MovePhoneNumberInstanceRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IMovePhoneNumberInstanceRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a MovePhoneNumberInstanceRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns MovePhoneNumberInstanceRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest;
+
+                /**
+                 * Decodes a MovePhoneNumberInstanceRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns MovePhoneNumberInstanceRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest;
+
+                /**
+                 * Verifies a MovePhoneNumberInstanceRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a MovePhoneNumberInstanceRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns MovePhoneNumberInstanceRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest;
+
+                /**
+                 * Creates a plain object from a MovePhoneNumberInstanceRequest message. Also converts values to other types if specified.
+                 * @param message MovePhoneNumberInstanceRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.MovePhoneNumberInstanceRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this MovePhoneNumberInstanceRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a SplitRangeRequest. */
+            interface ISplitRangeRequest {
+
+                /** SplitRangeRequest phoneNumberInstance */
+                phoneNumberInstance?: (string|null);
+
+                /** SplitRangeRequest size */
+                size?: (number|null);
+            }
+
+            /** Represents a SplitRangeRequest. */
+            class SplitRangeRequest implements ISplitRangeRequest {
+
+                /**
+                 * Constructs a new SplitRangeRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.ISplitRangeRequest);
+
+                /** SplitRangeRequest phoneNumberInstance. */
+                public phoneNumberInstance: string;
+
+                /** SplitRangeRequest size. */
+                public size: number;
+
+                /**
+                 * Creates a new SplitRangeRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SplitRangeRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.ISplitRangeRequest): enfonica.numbering.v1beta1.SplitRangeRequest;
+
+                /**
+                 * Encodes the specified SplitRangeRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.SplitRangeRequest.verify|verify} messages.
+                 * @param message SplitRangeRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.ISplitRangeRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SplitRangeRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SplitRangeRequest.verify|verify} messages.
+                 * @param message SplitRangeRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ISplitRangeRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SplitRangeRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SplitRangeRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.SplitRangeRequest;
+
+                /**
+                 * Decodes a SplitRangeRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SplitRangeRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.SplitRangeRequest;
+
+                /**
+                 * Verifies a SplitRangeRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SplitRangeRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SplitRangeRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.SplitRangeRequest;
+
+                /**
+                 * Creates a plain object from a SplitRangeRequest message. Also converts values to other types if specified.
+                 * @param message SplitRangeRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.SplitRangeRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SplitRangeRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a SplitRangeResponse. */
+            interface ISplitRangeResponse {
+
+                /** SplitRangeResponse first */
+                first?: (enfonica.numbering.v1beta1.IPhoneNumberInstance|null);
+
+                /** SplitRangeResponse second */
+                second?: (enfonica.numbering.v1beta1.IPhoneNumberInstance|null);
+            }
+
+            /** Represents a SplitRangeResponse. */
+            class SplitRangeResponse implements ISplitRangeResponse {
+
+                /**
+                 * Constructs a new SplitRangeResponse.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.ISplitRangeResponse);
+
+                /** SplitRangeResponse first. */
+                public first?: (enfonica.numbering.v1beta1.IPhoneNumberInstance|null);
+
+                /** SplitRangeResponse second. */
+                public second?: (enfonica.numbering.v1beta1.IPhoneNumberInstance|null);
+
+                /**
+                 * Creates a new SplitRangeResponse instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SplitRangeResponse instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.ISplitRangeResponse): enfonica.numbering.v1beta1.SplitRangeResponse;
+
+                /**
+                 * Encodes the specified SplitRangeResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.SplitRangeResponse.verify|verify} messages.
+                 * @param message SplitRangeResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.ISplitRangeResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SplitRangeResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SplitRangeResponse.verify|verify} messages.
+                 * @param message SplitRangeResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ISplitRangeResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SplitRangeResponse message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SplitRangeResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.SplitRangeResponse;
+
+                /**
+                 * Decodes a SplitRangeResponse message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SplitRangeResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.SplitRangeResponse;
+
+                /**
+                 * Verifies a SplitRangeResponse message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SplitRangeResponse message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SplitRangeResponse
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.SplitRangeResponse;
+
+                /**
+                 * Creates a plain object from a SplitRangeResponse message. Also converts values to other types if specified.
+                 * @param message SplitRangeResponse
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.SplitRangeResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SplitRangeResponse to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
             /** Represents a PhoneNumbers */
             class PhoneNumbers extends $protobuf.rpc.Service {
 
@@ -948,7 +1410,7 @@ export namespace enfonica {
             namespace PhoneNumbers {
 
                 /**
-                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers#searchPhoneNumbers}.
+                 * Callback as used by {@link enfonica.numbering.v1beta1.PhoneNumbers|searchPhoneNumbers}.
                  * @param error Error, if any
                  * @param [response] SearchPhoneNumbersResponse
                  */
@@ -1325,6 +1787,1371 @@ export namespace enfonica {
 
                 /**
                  * Converts this SearchPhoneNumbersResponse to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Represents a RegulatoryListings */
+            class RegulatoryListings extends $protobuf.rpc.Service {
+
+                /**
+                 * Constructs a new RegulatoryListings service.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 */
+                constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+                /**
+                 * Creates new RegulatoryListings service using the specified rpc implementation.
+                 * @param rpcImpl RPC implementation
+                 * @param [requestDelimited=false] Whether requests are length-delimited
+                 * @param [responseDelimited=false] Whether responses are length-delimited
+                 * @returns RPC service. Useful where requests and/or responses are streamed.
+                 */
+                public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): RegulatoryListings;
+
+                /**
+                 * Calls CreateRegulatoryListing.
+                 * @param request CreateRegulatoryListingRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and RegulatoryListing
+                 */
+                public createRegulatoryListing(request: enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest, callback: enfonica.numbering.v1beta1.RegulatoryListings.CreateRegulatoryListingCallback): void;
+
+                /**
+                 * Calls CreateRegulatoryListing.
+                 * @param request CreateRegulatoryListingRequest message or plain object
+                 * @returns Promise
+                 */
+                public createRegulatoryListing(request: enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest): Promise<enfonica.numbering.v1beta1.RegulatoryListing>;
+
+                /**
+                 * Calls GetRegulatoryListing.
+                 * @param request GetRegulatoryListingRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and RegulatoryListing
+                 */
+                public getRegulatoryListing(request: enfonica.numbering.v1beta1.IGetRegulatoryListingRequest, callback: enfonica.numbering.v1beta1.RegulatoryListings.GetRegulatoryListingCallback): void;
+
+                /**
+                 * Calls GetRegulatoryListing.
+                 * @param request GetRegulatoryListingRequest message or plain object
+                 * @returns Promise
+                 */
+                public getRegulatoryListing(request: enfonica.numbering.v1beta1.IGetRegulatoryListingRequest): Promise<enfonica.numbering.v1beta1.RegulatoryListing>;
+
+                /**
+                 * Calls ListRegulatoryListings.
+                 * @param request ListRegulatoryListingsRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and ListRegulatoryListingsResponse
+                 */
+                public listRegulatoryListings(request: enfonica.numbering.v1beta1.IListRegulatoryListingsRequest, callback: enfonica.numbering.v1beta1.RegulatoryListings.ListRegulatoryListingsCallback): void;
+
+                /**
+                 * Calls ListRegulatoryListings.
+                 * @param request ListRegulatoryListingsRequest message or plain object
+                 * @returns Promise
+                 */
+                public listRegulatoryListings(request: enfonica.numbering.v1beta1.IListRegulatoryListingsRequest): Promise<enfonica.numbering.v1beta1.ListRegulatoryListingsResponse>;
+
+                /**
+                 * Calls UpdateRegulatoryListing.
+                 * @param request UpdateRegulatoryListingRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and RegulatoryListing
+                 */
+                public updateRegulatoryListing(request: enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest, callback: enfonica.numbering.v1beta1.RegulatoryListings.UpdateRegulatoryListingCallback): void;
+
+                /**
+                 * Calls UpdateRegulatoryListing.
+                 * @param request UpdateRegulatoryListingRequest message or plain object
+                 * @returns Promise
+                 */
+                public updateRegulatoryListing(request: enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest): Promise<enfonica.numbering.v1beta1.RegulatoryListing>;
+
+                /**
+                 * Calls DeleteRegulatoryListing.
+                 * @param request DeleteRegulatoryListingRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and Empty
+                 */
+                public deleteRegulatoryListing(request: enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest, callback: enfonica.numbering.v1beta1.RegulatoryListings.DeleteRegulatoryListingCallback): void;
+
+                /**
+                 * Calls DeleteRegulatoryListing.
+                 * @param request DeleteRegulatoryListingRequest message or plain object
+                 * @returns Promise
+                 */
+                public deleteRegulatoryListing(request: enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest): Promise<google.protobuf.Empty>;
+
+                /**
+                 * Calls SearchRegulatoryListings.
+                 * @param request SearchRegulatoryListingsRequest message or plain object
+                 * @param callback Node-style callback called with the error, if any, and SearchRegulatoryListingsResponse
+                 */
+                public searchRegulatoryListings(request: enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest, callback: enfonica.numbering.v1beta1.RegulatoryListings.SearchRegulatoryListingsCallback): void;
+
+                /**
+                 * Calls SearchRegulatoryListings.
+                 * @param request SearchRegulatoryListingsRequest message or plain object
+                 * @returns Promise
+                 */
+                public searchRegulatoryListings(request: enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest): Promise<enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse>;
+            }
+
+            namespace RegulatoryListings {
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|createRegulatoryListing}.
+                 * @param error Error, if any
+                 * @param [response] RegulatoryListing
+                 */
+                type CreateRegulatoryListingCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.RegulatoryListing) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|getRegulatoryListing}.
+                 * @param error Error, if any
+                 * @param [response] RegulatoryListing
+                 */
+                type GetRegulatoryListingCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.RegulatoryListing) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|listRegulatoryListings}.
+                 * @param error Error, if any
+                 * @param [response] ListRegulatoryListingsResponse
+                 */
+                type ListRegulatoryListingsCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.ListRegulatoryListingsResponse) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|updateRegulatoryListing}.
+                 * @param error Error, if any
+                 * @param [response] RegulatoryListing
+                 */
+                type UpdateRegulatoryListingCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.RegulatoryListing) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|deleteRegulatoryListing}.
+                 * @param error Error, if any
+                 * @param [response] Empty
+                 */
+                type DeleteRegulatoryListingCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
+
+                /**
+                 * Callback as used by {@link enfonica.numbering.v1beta1.RegulatoryListings|searchRegulatoryListings}.
+                 * @param error Error, if any
+                 * @param [response] SearchRegulatoryListingsResponse
+                 */
+                type SearchRegulatoryListingsCallback = (error: (Error|null), response?: enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse) => void;
+            }
+
+            /** Properties of a RegulatoryListing. */
+            interface IRegulatoryListing {
+
+                /** RegulatoryListing name */
+                name?: (string|null);
+
+                /** RegulatoryListing displayName */
+                displayName?: (string|null);
+
+                /** RegulatoryListing address */
+                address?: (enfonica.numbering.v1beta1.IGenericAddress|null);
+
+                /** RegulatoryListing person */
+                person?: (enfonica.numbering.v1beta1.IPersonDetails|null);
+
+                /** RegulatoryListing business */
+                business?: (enfonica.numbering.v1beta1.IBusinessDetails|null);
+
+                /** RegulatoryListing createTime */
+                createTime?: (google.protobuf.ITimestamp|null);
+
+                /** RegulatoryListing valid */
+                valid?: (boolean|null);
+
+                /** RegulatoryListing verified */
+                verified?: (boolean|null);
+            }
+
+            /** Represents a RegulatoryListing. */
+            class RegulatoryListing implements IRegulatoryListing {
+
+                /**
+                 * Constructs a new RegulatoryListing.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IRegulatoryListing);
+
+                /** RegulatoryListing name. */
+                public name: string;
+
+                /** RegulatoryListing displayName. */
+                public displayName: string;
+
+                /** RegulatoryListing address. */
+                public address?: (enfonica.numbering.v1beta1.IGenericAddress|null);
+
+                /** RegulatoryListing person. */
+                public person?: (enfonica.numbering.v1beta1.IPersonDetails|null);
+
+                /** RegulatoryListing business. */
+                public business?: (enfonica.numbering.v1beta1.IBusinessDetails|null);
+
+                /** RegulatoryListing createTime. */
+                public createTime?: (google.protobuf.ITimestamp|null);
+
+                /** RegulatoryListing valid. */
+                public valid: boolean;
+
+                /** RegulatoryListing verified. */
+                public verified: boolean;
+
+                /** RegulatoryListing entity. */
+                public entity?: ("person"|"business");
+
+                /**
+                 * Creates a new RegulatoryListing instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns RegulatoryListing instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IRegulatoryListing): enfonica.numbering.v1beta1.RegulatoryListing;
+
+                /**
+                 * Encodes the specified RegulatoryListing message. Does not implicitly {@link enfonica.numbering.v1beta1.RegulatoryListing.verify|verify} messages.
+                 * @param message RegulatoryListing message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IRegulatoryListing, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified RegulatoryListing message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.RegulatoryListing.verify|verify} messages.
+                 * @param message RegulatoryListing message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IRegulatoryListing, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a RegulatoryListing message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns RegulatoryListing
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.RegulatoryListing;
+
+                /**
+                 * Decodes a RegulatoryListing message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns RegulatoryListing
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.RegulatoryListing;
+
+                /**
+                 * Verifies a RegulatoryListing message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a RegulatoryListing message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns RegulatoryListing
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.RegulatoryListing;
+
+                /**
+                 * Creates a plain object from a RegulatoryListing message. Also converts values to other types if specified.
+                 * @param message RegulatoryListing
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.RegulatoryListing, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this RegulatoryListing to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a GenericAddress. */
+            interface IGenericAddress {
+
+                /** GenericAddress addressLines */
+                addressLines?: (string[]|null);
+
+                /** GenericAddress locality */
+                locality?: (string|null);
+
+                /** GenericAddress administrativeArea */
+                administrativeArea?: (string|null);
+
+                /** GenericAddress postalCode */
+                postalCode?: (string|null);
+
+                /** GenericAddress regionCode */
+                regionCode?: (string|null);
+            }
+
+            /** Represents a GenericAddress. */
+            class GenericAddress implements IGenericAddress {
+
+                /**
+                 * Constructs a new GenericAddress.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IGenericAddress);
+
+                /** GenericAddress addressLines. */
+                public addressLines: string[];
+
+                /** GenericAddress locality. */
+                public locality: string;
+
+                /** GenericAddress administrativeArea. */
+                public administrativeArea: string;
+
+                /** GenericAddress postalCode. */
+                public postalCode: string;
+
+                /** GenericAddress regionCode. */
+                public regionCode: string;
+
+                /**
+                 * Creates a new GenericAddress instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns GenericAddress instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IGenericAddress): enfonica.numbering.v1beta1.GenericAddress;
+
+                /**
+                 * Encodes the specified GenericAddress message. Does not implicitly {@link enfonica.numbering.v1beta1.GenericAddress.verify|verify} messages.
+                 * @param message GenericAddress message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IGenericAddress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified GenericAddress message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GenericAddress.verify|verify} messages.
+                 * @param message GenericAddress message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IGenericAddress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a GenericAddress message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns GenericAddress
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.GenericAddress;
+
+                /**
+                 * Decodes a GenericAddress message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns GenericAddress
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.GenericAddress;
+
+                /**
+                 * Verifies a GenericAddress message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a GenericAddress message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns GenericAddress
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.GenericAddress;
+
+                /**
+                 * Creates a plain object from a GenericAddress message. Also converts values to other types if specified.
+                 * @param message GenericAddress
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.GenericAddress, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this GenericAddress to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a PersonDetails. */
+            interface IPersonDetails {
+
+                /** PersonDetails givenName */
+                givenName?: (string|null);
+
+                /** PersonDetails familyName */
+                familyName?: (string|null);
+            }
+
+            /** Represents a PersonDetails. */
+            class PersonDetails implements IPersonDetails {
+
+                /**
+                 * Constructs a new PersonDetails.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IPersonDetails);
+
+                /** PersonDetails givenName. */
+                public givenName: string;
+
+                /** PersonDetails familyName. */
+                public familyName: string;
+
+                /**
+                 * Creates a new PersonDetails instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns PersonDetails instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IPersonDetails): enfonica.numbering.v1beta1.PersonDetails;
+
+                /**
+                 * Encodes the specified PersonDetails message. Does not implicitly {@link enfonica.numbering.v1beta1.PersonDetails.verify|verify} messages.
+                 * @param message PersonDetails message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IPersonDetails, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified PersonDetails message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.PersonDetails.verify|verify} messages.
+                 * @param message PersonDetails message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IPersonDetails, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a PersonDetails message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns PersonDetails
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.PersonDetails;
+
+                /**
+                 * Decodes a PersonDetails message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns PersonDetails
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.PersonDetails;
+
+                /**
+                 * Verifies a PersonDetails message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a PersonDetails message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns PersonDetails
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.PersonDetails;
+
+                /**
+                 * Creates a plain object from a PersonDetails message. Also converts values to other types if specified.
+                 * @param message PersonDetails
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.PersonDetails, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this PersonDetails to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a BusinessDetails. */
+            interface IBusinessDetails {
+
+                /** BusinessDetails business */
+                business?: (string|null);
+            }
+
+            /** Represents a BusinessDetails. */
+            class BusinessDetails implements IBusinessDetails {
+
+                /**
+                 * Constructs a new BusinessDetails.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IBusinessDetails);
+
+                /** BusinessDetails business. */
+                public business: string;
+
+                /**
+                 * Creates a new BusinessDetails instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns BusinessDetails instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IBusinessDetails): enfonica.numbering.v1beta1.BusinessDetails;
+
+                /**
+                 * Encodes the specified BusinessDetails message. Does not implicitly {@link enfonica.numbering.v1beta1.BusinessDetails.verify|verify} messages.
+                 * @param message BusinessDetails message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IBusinessDetails, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified BusinessDetails message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.BusinessDetails.verify|verify} messages.
+                 * @param message BusinessDetails message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IBusinessDetails, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a BusinessDetails message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns BusinessDetails
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.BusinessDetails;
+
+                /**
+                 * Decodes a BusinessDetails message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns BusinessDetails
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.BusinessDetails;
+
+                /**
+                 * Verifies a BusinessDetails message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a BusinessDetails message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns BusinessDetails
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.BusinessDetails;
+
+                /**
+                 * Creates a plain object from a BusinessDetails message. Also converts values to other types if specified.
+                 * @param message BusinessDetails
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.BusinessDetails, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this BusinessDetails to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a CreateRegulatoryListingRequest. */
+            interface ICreateRegulatoryListingRequest {
+
+                /** CreateRegulatoryListingRequest parent */
+                parent?: (string|null);
+
+                /** CreateRegulatoryListingRequest regulatoryListing */
+                regulatoryListing?: (enfonica.numbering.v1beta1.IRegulatoryListing|null);
+            }
+
+            /** Represents a CreateRegulatoryListingRequest. */
+            class CreateRegulatoryListingRequest implements ICreateRegulatoryListingRequest {
+
+                /**
+                 * Constructs a new CreateRegulatoryListingRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest);
+
+                /** CreateRegulatoryListingRequest parent. */
+                public parent: string;
+
+                /** CreateRegulatoryListingRequest regulatoryListing. */
+                public regulatoryListing?: (enfonica.numbering.v1beta1.IRegulatoryListing|null);
+
+                /**
+                 * Creates a new CreateRegulatoryListingRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns CreateRegulatoryListingRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest): enfonica.numbering.v1beta1.CreateRegulatoryListingRequest;
+
+                /**
+                 * Encodes the specified CreateRegulatoryListingRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.CreateRegulatoryListingRequest.verify|verify} messages.
+                 * @param message CreateRegulatoryListingRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified CreateRegulatoryListingRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.CreateRegulatoryListingRequest.verify|verify} messages.
+                 * @param message CreateRegulatoryListingRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ICreateRegulatoryListingRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a CreateRegulatoryListingRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns CreateRegulatoryListingRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.CreateRegulatoryListingRequest;
+
+                /**
+                 * Decodes a CreateRegulatoryListingRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns CreateRegulatoryListingRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.CreateRegulatoryListingRequest;
+
+                /**
+                 * Verifies a CreateRegulatoryListingRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a CreateRegulatoryListingRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns CreateRegulatoryListingRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.CreateRegulatoryListingRequest;
+
+                /**
+                 * Creates a plain object from a CreateRegulatoryListingRequest message. Also converts values to other types if specified.
+                 * @param message CreateRegulatoryListingRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.CreateRegulatoryListingRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this CreateRegulatoryListingRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a GetRegulatoryListingRequest. */
+            interface IGetRegulatoryListingRequest {
+
+                /** GetRegulatoryListingRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a GetRegulatoryListingRequest. */
+            class GetRegulatoryListingRequest implements IGetRegulatoryListingRequest {
+
+                /**
+                 * Constructs a new GetRegulatoryListingRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IGetRegulatoryListingRequest);
+
+                /** GetRegulatoryListingRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new GetRegulatoryListingRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns GetRegulatoryListingRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IGetRegulatoryListingRequest): enfonica.numbering.v1beta1.GetRegulatoryListingRequest;
+
+                /**
+                 * Encodes the specified GetRegulatoryListingRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.GetRegulatoryListingRequest.verify|verify} messages.
+                 * @param message GetRegulatoryListingRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IGetRegulatoryListingRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified GetRegulatoryListingRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.GetRegulatoryListingRequest.verify|verify} messages.
+                 * @param message GetRegulatoryListingRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IGetRegulatoryListingRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a GetRegulatoryListingRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns GetRegulatoryListingRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.GetRegulatoryListingRequest;
+
+                /**
+                 * Decodes a GetRegulatoryListingRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns GetRegulatoryListingRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.GetRegulatoryListingRequest;
+
+                /**
+                 * Verifies a GetRegulatoryListingRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a GetRegulatoryListingRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns GetRegulatoryListingRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.GetRegulatoryListingRequest;
+
+                /**
+                 * Creates a plain object from a GetRegulatoryListingRequest message. Also converts values to other types if specified.
+                 * @param message GetRegulatoryListingRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.GetRegulatoryListingRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this GetRegulatoryListingRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListRegulatoryListingsRequest. */
+            interface IListRegulatoryListingsRequest {
+
+                /** ListRegulatoryListingsRequest parent */
+                parent?: (string|null);
+
+                /** ListRegulatoryListingsRequest pageSize */
+                pageSize?: (number|null);
+
+                /** ListRegulatoryListingsRequest pageToken */
+                pageToken?: (string|null);
+            }
+
+            /** Represents a ListRegulatoryListingsRequest. */
+            class ListRegulatoryListingsRequest implements IListRegulatoryListingsRequest {
+
+                /**
+                 * Constructs a new ListRegulatoryListingsRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IListRegulatoryListingsRequest);
+
+                /** ListRegulatoryListingsRequest parent. */
+                public parent: string;
+
+                /** ListRegulatoryListingsRequest pageSize. */
+                public pageSize: number;
+
+                /** ListRegulatoryListingsRequest pageToken. */
+                public pageToken: string;
+
+                /**
+                 * Creates a new ListRegulatoryListingsRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListRegulatoryListingsRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IListRegulatoryListingsRequest): enfonica.numbering.v1beta1.ListRegulatoryListingsRequest;
+
+                /**
+                 * Encodes the specified ListRegulatoryListingsRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.ListRegulatoryListingsRequest.verify|verify} messages.
+                 * @param message ListRegulatoryListingsRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IListRegulatoryListingsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListRegulatoryListingsRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListRegulatoryListingsRequest.verify|verify} messages.
+                 * @param message ListRegulatoryListingsRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IListRegulatoryListingsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListRegulatoryListingsRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListRegulatoryListingsRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.ListRegulatoryListingsRequest;
+
+                /**
+                 * Decodes a ListRegulatoryListingsRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListRegulatoryListingsRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.ListRegulatoryListingsRequest;
+
+                /**
+                 * Verifies a ListRegulatoryListingsRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListRegulatoryListingsRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListRegulatoryListingsRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.ListRegulatoryListingsRequest;
+
+                /**
+                 * Creates a plain object from a ListRegulatoryListingsRequest message. Also converts values to other types if specified.
+                 * @param message ListRegulatoryListingsRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.ListRegulatoryListingsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListRegulatoryListingsRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a ListRegulatoryListingsResponse. */
+            interface IListRegulatoryListingsResponse {
+
+                /** ListRegulatoryListingsResponse regulatoryListings */
+                regulatoryListings?: (enfonica.numbering.v1beta1.IRegulatoryListing[]|null);
+
+                /** ListRegulatoryListingsResponse nextPageToken */
+                nextPageToken?: (string|null);
+            }
+
+            /** Represents a ListRegulatoryListingsResponse. */
+            class ListRegulatoryListingsResponse implements IListRegulatoryListingsResponse {
+
+                /**
+                 * Constructs a new ListRegulatoryListingsResponse.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IListRegulatoryListingsResponse);
+
+                /** ListRegulatoryListingsResponse regulatoryListings. */
+                public regulatoryListings: enfonica.numbering.v1beta1.IRegulatoryListing[];
+
+                /** ListRegulatoryListingsResponse nextPageToken. */
+                public nextPageToken: string;
+
+                /**
+                 * Creates a new ListRegulatoryListingsResponse instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns ListRegulatoryListingsResponse instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IListRegulatoryListingsResponse): enfonica.numbering.v1beta1.ListRegulatoryListingsResponse;
+
+                /**
+                 * Encodes the specified ListRegulatoryListingsResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.ListRegulatoryListingsResponse.verify|verify} messages.
+                 * @param message ListRegulatoryListingsResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IListRegulatoryListingsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified ListRegulatoryListingsResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.ListRegulatoryListingsResponse.verify|verify} messages.
+                 * @param message ListRegulatoryListingsResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IListRegulatoryListingsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a ListRegulatoryListingsResponse message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns ListRegulatoryListingsResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.ListRegulatoryListingsResponse;
+
+                /**
+                 * Decodes a ListRegulatoryListingsResponse message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns ListRegulatoryListingsResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.ListRegulatoryListingsResponse;
+
+                /**
+                 * Verifies a ListRegulatoryListingsResponse message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a ListRegulatoryListingsResponse message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns ListRegulatoryListingsResponse
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.ListRegulatoryListingsResponse;
+
+                /**
+                 * Creates a plain object from a ListRegulatoryListingsResponse message. Also converts values to other types if specified.
+                 * @param message ListRegulatoryListingsResponse
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.ListRegulatoryListingsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this ListRegulatoryListingsResponse to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of an UpdateRegulatoryListingRequest. */
+            interface IUpdateRegulatoryListingRequest {
+
+                /** UpdateRegulatoryListingRequest regulatoryListing */
+                regulatoryListing?: (enfonica.numbering.v1beta1.IRegulatoryListing|null);
+
+                /** UpdateRegulatoryListingRequest updateMask */
+                updateMask?: (google.protobuf.IFieldMask|null);
+            }
+
+            /** Represents an UpdateRegulatoryListingRequest. */
+            class UpdateRegulatoryListingRequest implements IUpdateRegulatoryListingRequest {
+
+                /**
+                 * Constructs a new UpdateRegulatoryListingRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest);
+
+                /** UpdateRegulatoryListingRequest regulatoryListing. */
+                public regulatoryListing?: (enfonica.numbering.v1beta1.IRegulatoryListing|null);
+
+                /** UpdateRegulatoryListingRequest updateMask. */
+                public updateMask?: (google.protobuf.IFieldMask|null);
+
+                /**
+                 * Creates a new UpdateRegulatoryListingRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns UpdateRegulatoryListingRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest): enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest;
+
+                /**
+                 * Encodes the specified UpdateRegulatoryListingRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest.verify|verify} messages.
+                 * @param message UpdateRegulatoryListingRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified UpdateRegulatoryListingRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest.verify|verify} messages.
+                 * @param message UpdateRegulatoryListingRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IUpdateRegulatoryListingRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an UpdateRegulatoryListingRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns UpdateRegulatoryListingRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest;
+
+                /**
+                 * Decodes an UpdateRegulatoryListingRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns UpdateRegulatoryListingRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest;
+
+                /**
+                 * Verifies an UpdateRegulatoryListingRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an UpdateRegulatoryListingRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns UpdateRegulatoryListingRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest;
+
+                /**
+                 * Creates a plain object from an UpdateRegulatoryListingRequest message. Also converts values to other types if specified.
+                 * @param message UpdateRegulatoryListingRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.UpdateRegulatoryListingRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this UpdateRegulatoryListingRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a DeleteRegulatoryListingRequest. */
+            interface IDeleteRegulatoryListingRequest {
+
+                /** DeleteRegulatoryListingRequest name */
+                name?: (string|null);
+            }
+
+            /** Represents a DeleteRegulatoryListingRequest. */
+            class DeleteRegulatoryListingRequest implements IDeleteRegulatoryListingRequest {
+
+                /**
+                 * Constructs a new DeleteRegulatoryListingRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest);
+
+                /** DeleteRegulatoryListingRequest name. */
+                public name: string;
+
+                /**
+                 * Creates a new DeleteRegulatoryListingRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns DeleteRegulatoryListingRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest): enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest;
+
+                /**
+                 * Encodes the specified DeleteRegulatoryListingRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest.verify|verify} messages.
+                 * @param message DeleteRegulatoryListingRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified DeleteRegulatoryListingRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest.verify|verify} messages.
+                 * @param message DeleteRegulatoryListingRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.IDeleteRegulatoryListingRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a DeleteRegulatoryListingRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns DeleteRegulatoryListingRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest;
+
+                /**
+                 * Decodes a DeleteRegulatoryListingRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns DeleteRegulatoryListingRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest;
+
+                /**
+                 * Verifies a DeleteRegulatoryListingRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a DeleteRegulatoryListingRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns DeleteRegulatoryListingRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest;
+
+                /**
+                 * Creates a plain object from a DeleteRegulatoryListingRequest message. Also converts values to other types if specified.
+                 * @param message DeleteRegulatoryListingRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.DeleteRegulatoryListingRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this DeleteRegulatoryListingRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a SearchRegulatoryListingsRequest. */
+            interface ISearchRegulatoryListingsRequest {
+
+                /** SearchRegulatoryListingsRequest parent */
+                parent?: (string|null);
+
+                /** SearchRegulatoryListingsRequest pageSize */
+                pageSize?: (number|null);
+
+                /** SearchRegulatoryListingsRequest pageToken */
+                pageToken?: (string|null);
+
+                /** SearchRegulatoryListingsRequest regionCode */
+                regionCode?: (string|null);
+
+                /** SearchRegulatoryListingsRequest numberType */
+                numberType?: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|null);
+            }
+
+            /** Represents a SearchRegulatoryListingsRequest. */
+            class SearchRegulatoryListingsRequest implements ISearchRegulatoryListingsRequest {
+
+                /**
+                 * Constructs a new SearchRegulatoryListingsRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest);
+
+                /** SearchRegulatoryListingsRequest parent. */
+                public parent: string;
+
+                /** SearchRegulatoryListingsRequest pageSize. */
+                public pageSize: number;
+
+                /** SearchRegulatoryListingsRequest pageToken. */
+                public pageToken: string;
+
+                /** SearchRegulatoryListingsRequest regionCode. */
+                public regionCode: string;
+
+                /** SearchRegulatoryListingsRequest numberType. */
+                public numberType: (enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType|keyof typeof enfonica.numbering.v1beta1.PhoneNumber.PhoneNumberType);
+
+                /**
+                 * Creates a new SearchRegulatoryListingsRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SearchRegulatoryListingsRequest instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest): enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest;
+
+                /**
+                 * Encodes the specified SearchRegulatoryListingsRequest message. Does not implicitly {@link enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest.verify|verify} messages.
+                 * @param message SearchRegulatoryListingsRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SearchRegulatoryListingsRequest message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest.verify|verify} messages.
+                 * @param message SearchRegulatoryListingsRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ISearchRegulatoryListingsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SearchRegulatoryListingsRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SearchRegulatoryListingsRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest;
+
+                /**
+                 * Decodes a SearchRegulatoryListingsRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SearchRegulatoryListingsRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest;
+
+                /**
+                 * Verifies a SearchRegulatoryListingsRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SearchRegulatoryListingsRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SearchRegulatoryListingsRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest;
+
+                /**
+                 * Creates a plain object from a SearchRegulatoryListingsRequest message. Also converts values to other types if specified.
+                 * @param message SearchRegulatoryListingsRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.SearchRegulatoryListingsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SearchRegulatoryListingsRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a SearchRegulatoryListingsResponse. */
+            interface ISearchRegulatoryListingsResponse {
+
+                /** SearchRegulatoryListingsResponse regulatoryListings */
+                regulatoryListings?: (enfonica.numbering.v1beta1.IRegulatoryListing[]|null);
+
+                /** SearchRegulatoryListingsResponse nextPageToken */
+                nextPageToken?: (string|null);
+            }
+
+            /** Represents a SearchRegulatoryListingsResponse. */
+            class SearchRegulatoryListingsResponse implements ISearchRegulatoryListingsResponse {
+
+                /**
+                 * Constructs a new SearchRegulatoryListingsResponse.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: enfonica.numbering.v1beta1.ISearchRegulatoryListingsResponse);
+
+                /** SearchRegulatoryListingsResponse regulatoryListings. */
+                public regulatoryListings: enfonica.numbering.v1beta1.IRegulatoryListing[];
+
+                /** SearchRegulatoryListingsResponse nextPageToken. */
+                public nextPageToken: string;
+
+                /**
+                 * Creates a new SearchRegulatoryListingsResponse instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SearchRegulatoryListingsResponse instance
+                 */
+                public static create(properties?: enfonica.numbering.v1beta1.ISearchRegulatoryListingsResponse): enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse;
+
+                /**
+                 * Encodes the specified SearchRegulatoryListingsResponse message. Does not implicitly {@link enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse.verify|verify} messages.
+                 * @param message SearchRegulatoryListingsResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: enfonica.numbering.v1beta1.ISearchRegulatoryListingsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SearchRegulatoryListingsResponse message, length delimited. Does not implicitly {@link enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse.verify|verify} messages.
+                 * @param message SearchRegulatoryListingsResponse message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: enfonica.numbering.v1beta1.ISearchRegulatoryListingsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SearchRegulatoryListingsResponse message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns SearchRegulatoryListingsResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse;
+
+                /**
+                 * Decodes a SearchRegulatoryListingsResponse message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns SearchRegulatoryListingsResponse
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse;
+
+                /**
+                 * Verifies a SearchRegulatoryListingsResponse message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SearchRegulatoryListingsResponse message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SearchRegulatoryListingsResponse
+                 */
+                public static fromObject(object: { [k: string]: any }): enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse;
+
+                /**
+                 * Creates a plain object from a SearchRegulatoryListingsResponse message. Also converts values to other types if specified.
+                 * @param message SearchRegulatoryListingsResponse
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: enfonica.numbering.v1beta1.SearchRegulatoryListingsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SearchRegulatoryListingsResponse to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
@@ -3376,6 +5203,9 @@ export namespace google {
             /** FieldOptions lazy */
             lazy?: (boolean|null);
 
+            /** FieldOptions unverifiedLazy */
+            unverifiedLazy?: (boolean|null);
+
             /** FieldOptions deprecated */
             deprecated?: (boolean|null);
 
@@ -3412,6 +5242,9 @@ export namespace google {
 
             /** FieldOptions lazy. */
             public lazy: boolean;
+
+            /** FieldOptions unverifiedLazy. */
+            public unverifiedLazy: boolean;
 
             /** FieldOptions deprecated. */
             public deprecated: boolean;
@@ -4650,6 +6483,90 @@ export namespace google {
                 public toJSON(): { [k: string]: any };
             }
         }
+
+        /** Properties of an Empty. */
+        interface IEmpty {
+        }
+
+        /** Represents an Empty. */
+        class Empty implements IEmpty {
+
+            /**
+             * Constructs a new Empty.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IEmpty);
+
+            /**
+             * Creates a new Empty instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Empty instance
+             */
+            public static create(properties?: google.protobuf.IEmpty): google.protobuf.Empty;
+
+            /**
+             * Encodes the specified Empty message. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+             * @param message Empty message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Empty message, length delimited. Does not implicitly {@link google.protobuf.Empty.verify|verify} messages.
+             * @param message Empty message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IEmpty, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Empty message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Empty
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Empty;
+
+            /**
+             * Decodes an Empty message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Empty
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Empty;
+
+            /**
+             * Verifies an Empty message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Empty message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Empty
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Empty;
+
+            /**
+             * Creates a plain object from an Empty message. Also converts values to other types if specified.
+             * @param message Empty
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Empty, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Empty to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
     }
 
     /** Namespace api. */
@@ -5002,7 +6919,8 @@ export namespace google {
             OUTPUT_ONLY = 3,
             INPUT_ONLY = 4,
             IMMUTABLE = 5,
-            UNORDERED_LIST = 6
+            UNORDERED_LIST = 6,
+            NON_EMPTY_DEFAULT = 7
         }
 
         /** Properties of a ResourceDescriptor. */
