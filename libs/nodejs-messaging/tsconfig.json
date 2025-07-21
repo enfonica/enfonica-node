@@ -15,5 +15,11 @@
     "test/*.ts",
     "test/**/*.ts",
     "system-test/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "node_modules/@types/markdown-it",
+    "build",
+    "docs"
   ]
 }
